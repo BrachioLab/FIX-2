@@ -26,7 +26,7 @@ class Image: pass
 class Text: pass
 
 cache = Cache("/shared_data0/llm_cachedir")
-client = OpenAI(api_key="")
+client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 
 
 def get_messages(prompt, system_prompt=None):
