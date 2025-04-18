@@ -17,6 +17,8 @@ import random
 import time
 import math
 
+from matplotlib.colors import LinearSegmentedColormap
+
 cache = Cache("/shared_data0/llm_cachedir")
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
@@ -59,6 +61,76 @@ def convert_pil_to_base64(pil_image):
     buffered = io.BytesIO()
     pil_image.save(buffered, format="JPEG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
+
+
+
+def normalize_inputs(inputs, mean_center=True):
+    if mean_center:
+        mean = inputs.mean([-1, -2], keepdim=True)
+    else:
+        mean = 0
+    std = inputs.std([-1, -2], keepdim=True)
+    inputs_normalized = (inputs - mean) / std
+    return inputs_normalized
+
+def get_custom_colormap(colors=None):
+    # Define color stops and corresponding colors
+    if colors is None:
+        colors = [
+            (-3, "#4c1c74"),   # Blue at -3
+            (0, "gray"),   # Gray at 0 (below this is void)
+            (3, "yellow"),   # Green at 3 (above this is cluster)
+            (20, "orange")  # Yellow at 20
+        ]
+
+    # Extract positions and colors separately
+    positions, color_values = zip(*colors)
+
+    # Normalize positions to the range [0, 1]
+    positions = [(p - min(positions)) / (max(positions) - min(positions)) for p in positions]
+
+    # Create a custom colormap
+    custom_cmap = LinearSegmentedColormap.from_list("custom_gradient", list(zip(positions, color_values)))
+    return custom_cmap
+
+
+def massmap_to_pil_norm(tensor):
+    """
+    Converts a PyTorch tensor to a PIL image.
+
+    Parameters:
+    tensor (torch.Tensor): A tensor representing the map with shape (1, H, W)
+
+    Returns:
+    PIL.Image: An image object.
+    """
+    # Check if the tensor is in the range 0-1, if yes, scale to 0-255
+    input_normalized = normalize_inputs(tensor, mean_center=False)
+    vmin=-3
+    vmax=20
+    
+    custom_cmap = get_custom_colormap([
+            (-3, "blue"),   # Blue at -3
+            (0, "gray"),   # Gray at 0 (below this is void)
+            (2.9, "red"),   # Gray at 0 (below this is void)
+            (3, "yellow"),   # Green at 3 (above this is cluster)
+            (20, "white")  # Yellow at 20
+        ])
+    plt.imshow(input_normalized.cpu()[0], cmap=custom_cmap, vmin=vmin, vmax=vmax)
+    # plt.imshow(tensor[0])
+    plt.axis('off')  # remove axes if desired
+
+    # Save the displayed image to a buffer
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
+    plt.close()
+
+    # Reset buffer position
+    buf.seek(0)
+
+    # Load the image with PIL
+    pil_image = PIL.Image.open(buf)
+    return pil_image
 
 def get_messages(prompt, images=None, system_prompt=None):
     system_message = [
@@ -143,11 +215,17 @@ def get_llm_score(prompt, images=None, system_prompt=None) -> Tuple[str, float]:
     return completion, math.exp(logprob)
 
 
+
+
 class Image: pass
 
 class Timeseries: pass
 
 class AlignmentScores: pass
+
+
+import json
+import re
 
 
 def get_llm_generated_answer(
@@ -158,11 +236,43 @@ def get_llm_generated_answer(
         example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
           e.g., the emotion classification task.
     """
-    prompt = """This is an image of a weak lensing map. Please predict Omega_m and sigma_8 values from this and provide a reasoning chain for what interpretable cosmological features you see from this map that you use to make such predictions. Provide a short paragraph that is around 100-200 words."""
+    prompt = """Analyze this weak lensing map data in the image provided.
+This data represents cosmological observations, where each value represents the spatial distribution of matter density in the universe. 
+
+Here is the colormap used to create the visualization of this weak lensing map:
+custom_cmap = get_custom_colormap([
+            (-3, "blue"),   # Blue at -3
+            (0, "gray"),   # Gray at 0 (below this is void)
+            (2.9, "red"),   # Red at 2.9 (this is the upperbound for not being a cluster)
+            (3, "yellow"),   # Yellow at 3 (above this is cluster)
+            (20, "white")  # White at 20
+        ])
+        
+Predict the values for Omega_m and sigma_8 based on the information from this weak lensing map data. Provide a reasoning chain for what interpretable weak lensing map cosmological features (e.g. voids and clusters) you see from this data that you use to make such predictions. When you provide the reasoning chain, for each claim, please be specific for the actual observations you see in this particular weak lensing map. Provide a short paragraph that is around 100-200 words, and then make the predictions.
+
+Output format:
+```json
+{
+    "Explanation": "<str, reasoning chain for predicting Omega_m and sigma_8>",
+    "Answer": {"Omega_m": <float, prediction for Omega_m>, "sigma_8": <float, prediction for sigma_8>}
+}
+```
+ """
+    
+#     prompt = """This is an image of a weak lensing map. Please predict Omega_m and sigma_8 values from this and provide a reasoning chain for what interpretable cosmological features you see from this map that you use to make such predictions. Provide a short paragraph that is around 100-200 words. And then make the prediction.
+
+# Output format:
+# ```json
+# {
+#     "Explanation": "<str, reasoning chain for predicting Omega_m and sigma_8>",
+#     "Answer": {"Omega_m": <float, prediction for Omega_m>, "sigma_8": <float, prediction for sigma_8>}
+# }
+# ```
+# """
     system_prompt = "You are an expert cosmologist."
     
     image_pil = massmap_to_pil(example)
-    return get_llm_output(prompt, [image_pil], system_prompt)
+    return text2json(get_llm_output(prompt, [image_pil], system_prompt))
 
 
 def isolate_individual_features(
@@ -209,20 +319,32 @@ def is_claim_relevant(
         atomic_claim (str): A claim to check if it is relevant to the example.
     """
     
-    system_prompt_is_claim_relevant = """You are an expert cosmologist. You need to check if a claim is relevant to the image of weak lensing map or not.
-For a claim to be relevant, it must be:
-(1) Supported by the example.
-(2) Answers the question of why the LLM gave the answer it did for this specific example.
+    system_prompt_is_claim_relevant = f"""You are an expert cosmologist. Given the reasoning chain below about how to predict Omega_m and sigma_8 of a weak lensing map, evaluate if each claim is contained in the original weak lensing map in the image.
+The weak lensing map data consists of cosmological observations, where each value represents the spatial distribution of matter density in the universe for Omega_m={answer['Omega_m']}, sigma_8={answer['sigma_8']}. 
 
-Please only answer YES or NO.
-"""
+Here is the colormap used to create the visualization of this weak lensing map:
+custom_cmap = get_custom_colormap([
+            (-3, "blue"),   # Blue at -3
+            (0, "gray"),   # Gray at 0 (below this is void)
+            (2.9, "red"),   # Red at 2.9 (this is the upperbound for not being a cluster)
+            (3, "yellow"),   # Yellow at 3 (above this is cluster)
+            (20, "white")  # White at 20
+        ])
+
+Each claim must be checked against this dataset to determine if the necessary information is present.  
+For a claim to be relevant, it must be:
+(1) Directly supported by the data recorded in the weak lensing map (i.e., the claim refers to the change and trend in values for spatial distribution of matter density in the universe).  
+(2) Answers the question of why the LLM gave the answer for a particular prediction decision for this specific example. (i.e., it directly relates to the trend that is relevant to predicting the specific Omega_m and sigma_8 values).
+
+Please only answer YES or NO."""
 
     prompt_is_claim_relevant = """Answer:
-{}
+Omega_m: {}
+Sigma_8: {}
 
 Atomic Claim:
 {}
-""".format(answer, atomic_claim)
+""".format(answer['Omega_m'], answer['sigma_8'], atomic_claim)
 
     image_pil = massmap_to_pil(example)
     completion, prob = get_llm_score(prompt_is_claim_relevant, 
@@ -236,7 +358,7 @@ Atomic Claim:
 def distill_relevant_features(
     example: str | torch.Tensor,
     answer: str,
-    atomic_claims: list[str],
+    raw_atomic_claims: list[str],
     threshold: float = 0.9
 ):
     """
@@ -249,12 +371,12 @@ def distill_relevant_features(
     """
     atomic_claims = []
     for raw_atomic_claim in raw_atomic_claims:
-        if is_claim_relevant(example, llm_generated_answer, raw_atomic_claim):
+        if is_claim_relevant(example, answer, raw_atomic_claim):
             atomic_claims.append(raw_atomic_claim)
     return atomic_claims
 
 def calculate_expert_alignment_score(
-    atomic_claims: list[str],
+    atomic_claims: list[str]
 ) -> AlignmentScores:
     """
     Computes the individual (and overall) alignment score of all the relevant atomic claims.
@@ -267,7 +389,21 @@ def calculate_expert_alignment_score(
         2. Overall alignment score of all the atomic claims.
     """
     
-    system_prompt = """You are an expert cosmologist. You need to check if each claim is aligned with domain knowledge of cosmology. Computes the individual (and overall) alignment score of all the atomic claims.
+    system_prompt = """You are an expert cosmologist. You need to check if each claim is aligned with the provided ground truth statements about cosmology, especially regarding weak lensing maps.
+    
+Cosmological categories:
+1. **Voids:** Voids (areas with little matter) appear to be particularly informative structures, possibly more so than clusters, due to their larger coverage area in sky observations.
+2. **Clusters:** Clusters of galaxies and their distribution patterns provide signals for determining initial universe parameters.
+3. **Super-clusters:** "Super-clusters" (containing multiple clusters) may play a special role in weak lensing maps that deserves further investigation.
+4. **Spatial distribution:** The spatial distribution of matter density, as revealed through weak lensing maps, contains key information about initial universe conditions.
+5. **Noise and Artifacts:** The relative importance of different cosmological structures may change when realistic noise and measurement artifacts are added to the data.
+
+For each claim, determine its alignment with the ground truth on a scale from 1 to 5:
+1: Completely contradicts ground truth
+2: Mostly contradicts ground truth
+3: Partially aligns with ground truth
+4: Mostly aligns with ground truth
+5: Completely aligns with ground truth
 
 Input format:
 Claims:
@@ -284,8 +420,8 @@ Scores:
 ```json
 {
     "alignment_scores": {
-        {"claim": "<claim 1>", "score": <alignment score ranging from 1 to 5>},
-        {"claim": "<claim 2>", "score": <alignment score ranging from 1 to 5>},
+        {"claim": "<claim 1>", "score": <alignment score ranging from 1 to 5>, "aligned_expert_knowledge": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts)>"}
+        {"claim": "<claim 2>", "score": <alignment score ranging from 1 to 5>, "aligned_expert_knowledge": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts)>"}
         ...
     },
     "total_score": <total alignment score ranging from 1 to 5>
