@@ -48,7 +48,6 @@ def text2json(text):
     match = re.search(r'```json(.*?)```', text, re.DOTALL)
     if match:
         json_str = match.group(1).strip()
-        # Escape single backslashes
         json_str = json_str.replace('\\', '\\\\')
         data = json.loads(json_str)
     else:
@@ -149,8 +148,8 @@ Explanation: <explanation>
 Here is the data for you to analyze:
 Time data: {time_data}
 Wavelength data: {wv_data} 
-Value data: {value_data}
-"""
+Value data: {value_data}"""
+
     system_prompt = "You are an expert in astrophysics."
     
     return get_llm_output(prompt, system_prompt)
@@ -264,9 +263,8 @@ The dataset includes flux measurements over time across multiple wavelengths for
         Answer: NO
         Simply listing wavelengths does not explain a classification.
 
-        Now, determine whether the following claim is relevant to the given the data and classification result.
-        """
-    
+        Now, determine whether the following claim is relevant to the given the data and classification result."""
+
     prompt_is_claim_relevant = """Answer:
 {}
 
@@ -360,6 +358,7 @@ Claim: Significant fluctuations and peaks in the data can be inferred as part of
 Score: 4
 The claim refers to fluctuations and peaks over time, which aligns with the idea of structured evolution in flux, a key temporal pattern that helps distinguish classes like SNII. However, the claim does not specify whether these patterns occur in localized segments of the time series or mention the presence of nonzero flux or uncertainty values.
 """
+
 
     prompt = """Claims:
 ```json
