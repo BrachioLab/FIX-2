@@ -26,7 +26,10 @@ class Image: pass
 class Text: pass
 
 cache = Cache("/shared_data0/llm_cachedir")
-client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
+with open("openai_key.txt", "r") as f:
+    api_key = f.read().strip()
+
+client = OpenAI(api_key=api_key)
 
 
 def get_messages(prompt, system_prompt=None):
@@ -45,7 +48,6 @@ def text2json(text):
     match = re.search(r'```json(.*?)```', text, re.DOTALL)
     if match:
         json_str = match.group(1).strip()
-        # Escape single backslashes
         json_str = json_str.replace('\\', '\\\\')
         data = json.loads(json_str)
     else:
@@ -98,13 +100,17 @@ def get_llm_score(prompt, system_prompt=None) -> Tuple[str, float]:
 
 
 def get_llm_generated_answer(
-    example: Timeseries, answer: str
+    example: Timeseries
 ) -> str:
     """
     Args:
         example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
           e.g., the timeseries classification task.
     """
+
+    with open('class_example.txt', 'r') as f:
+        class_examples = f.read()
+        
     time_data = example.time
     wv_data = example.wv
     value_data = example.value
@@ -121,9 +127,30 @@ def get_llm_generated_answer(
     Wavelength data: {wv_data} 
     Value data: {value_data} 
     """
-    prompt = f"""Analyze this supernova time series data:\n{data_str}
-    This dataset represents astrophysical observations, where each time series consists of values corresponding to different wavelengths and the time at which these values were recorded. Different wavelength corresponds to different electromagnetic spectrum at which observations of the value of supernova's light were taken. Classify the type of supernova(e.g., SNIa, SNIbc, SNIax, SNII, RRL, PISN) based on the information from this time series dataset. Provide a reasoning chain for what interpretable time series astrophysics features you see from this data that you use to make such predictions. Provide a short paragraph that is around 100-200 words."""
-    system_prompt = "You are an expert astrophysics."
+    prompt = f"""You are an expert in analyzing astrophysics data. You will be given supernova data in a time series format. Your task is to predict the class of the supernova by analyzing the data.
+
+The format of the data will be three time series as follows:
+Time data: {time_data}
+Wavelength data: {wv_data} 
+Value data: {value_data} 
+
+Each time series consists of values corresponding to different wavelengths, values, and the time at which they were recorded. 
+The wavelength variable corresponds to the type of electromagnetic spectrum used to observe the corresponding value variable which can work as filters. A different wavelength will result in a different range of possible values. By reasoning about the wavelengths and corresponding observed values over multiple timesteps, your task is to classify the type of supernova.
+The possible classes are: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, active galactic nuclei (AGN)
+
+To help you classify the given data, here are examples of data for each class. You can analyze this example data for the given classes to understand what unique features from the data contribute to each classification.
+
+{class_examples}
+
+Your turn! You will now be given data to analyze. To the best of your ability, select which supernova class the data came from. In addition to the class, provide a short paragraph that explains why you chose the selected class. Keep your explanation between 100-200 words and focus on the features of the data you used to make your classification. Your response should be formatted as follows:
+Class: <class>
+Explanation: <explanation>
+Here is the data for you to analyze:
+Time data: {time_data}
+Wavelength data: {wv_data} 
+Value data: {value_data}"""
+
+    system_prompt = "You are an expert in astrophysics."
     
     return get_llm_output(prompt, system_prompt)
 
@@ -152,8 +179,18 @@ def isolate_individual_features(
     Returns:
         raw_atomic_claims (list[str]): A list of strings where each string is an isolated claim (includes relevant and irrelevant claims).
     """
-    system_prompt_text2claims = """You are an expert astrophysics. This is the explanation and answer for classifying the supernova time series data among various classes such as SNIa, SNIbc, SNIax, SNII, RRL, PISN. Please break it down into atomic claims.
-Output format:
+    system_prompt_text2claims = """You will be given a paragraph that explains the reasoning behind classifying supernova time series data into one of the following categories: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, active galactic nuclei (AGN)
+
+Your task is to decompose this explanation into individual claims that are:
+Atomic: Each claim should express only one clear idea or judgment.
+Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
+Faithful: The claims must preserve the original meaning, nuance, and tone. 
+
+Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
+
+Here is an example of how to format your output:
+INPUT: <example explanation>
+OUTPUT:
 Claims:
 ```json
 [
@@ -162,6 +199,9 @@ Claims:
     ...
 ]
 ```
+
+Now decompose the following paragraph into atomic, standalone claims:
+INPUT: {}
 """
     raw_atomic_claims = get_llm_output(explanation, system_prompt=system_prompt_text2claims)
     return text2json(raw_atomic_claims)
@@ -198,14 +238,33 @@ def is_claim_relevant(
     Value data: {value_data} 
     """
 
-    system_prompt_is_claim_relevant = f"""You are an expert astrophysics. Given the reasoning chain below about how to classify types of supernova, evaluate if each claim is contained in the original timeseries dataset {data_str}.
-        The time series dataset consists of recorded values at different wavelengths over time for {answer}. Each claim must be checked against this dataset to determine if the necessary information is present.  
-        For a claim to be relevant, it must be:
-        (1) Directly supported by the data recorded in the time series (i.e., the claim refers to the change and trend in values for each wavelength over time).  
-        (2) Answers the question of why the LLM gave the answer for a particular classification decision for this specific example. (i.e., it directly relates to the trend that is relevant to classifying supernovae classes).
-        
-        Please only answer YES or NO."""
-    
+    system_prompt_is_claim_relevant = f"""You are an expert in astrophysics. Below is a reasoning chain explaining why a specific classification decision was made for a supernova candidate, based on its time-series data.
+The dataset includes flux measurements over time across multiple wavelengths for an object labeled {answer}. Use the full context of the dataset, {data_str}, to evaluate whether each claim is relevant. The possible classification categories include: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, active galactic nuclei (AGN)
+
+    A claim is considered relevant only if both of the following conditions are satisfied:
+        (1) It is directly supported by the time-series data (e.g., it refers to trends, changes, or patterns in flux across time and wavelengths).
+        (2) It helps explain why the model predicted this specific class (e.g., it highlights characteristics that distinguish this class from others).
+        Please only answer YES or NO.
+        Here are some examples:
+        [Example 1]
+        Claim: The dataset represents a time series of observations for a supernova event.
+        Answer: NO
+        This is a general statement and does not justify any specific classification.
+        [Example 2]
+        Claim: The time series shows a rapid increase in brightness followed by a gradual decline.
+        Answer: YES
+        This is a specific flux pattern observable in the data and indicative of certain supernova types such as SNIa.
+        [Example 3]
+        Claim: Type Ia supernovae are valuable as standard candles for measuring cosmic distances.
+        Answer: NO
+        This is background knowledge, not derived from the data.
+        [Example 4]
+        Claim: Specific wavelengths such as 7545.98 Å, 8590.90 Å, and 9710.28 Å are present in the data.
+        Answer: NO
+        Simply listing wavelengths does not explain a classification.
+
+        Now, determine whether the following claim is relevant to the given the data and classification result."""
+
     prompt_is_claim_relevant = """Answer:
 {}
 
@@ -237,28 +296,25 @@ def distill_relevant_features(
 
 
 def calculate_expert_alignment_score(
-    atomic_claims: list[str], ground_truth: list[str]
+    atomic_claims: list[str]
 ):
-    """
-    Computes the individual (and overall) alignment score of all the relevant atomic claims.
-
-    Possibly needs a domain-independent aggregation function.
-    Args:
-        atomic_claims (list[str]): A list of strings where each string is a relevant claim.
-    Returns:
-        1. Alignment score of each individual atomic claims.
-        2. Overall alignment score of all the atomic claims.
-    """
     
-    system_prompt = """You are an expert astrophysicist. You need to check if each claim is aligned with the provided ground truth statements about astrophysics, especially regarding supernovae.
-    
-For each claim, determine its alignment with the ground truth on a scale from 1 to 5:
-1: Completely contradicts ground truth
-2: Mostly contradicts ground truth
-3: Partially aligns with ground truth
-4: Mostly aligns with ground truth
-5: Completely aligns with ground truth
+    system_prompt = """You are an expert astrophysicist. Your task is to evaluate how well each of the following claims aligns with known ground truth criteria used in classifying supernovae from flux measurements across time and wavelength.
 
+The ground truth criteria below represent core observational patterns that support the classification of supernovae. These patterns often appear in localized segments of the time series:
+1. Nonzero Flux Patterns: Segments where the flux remains consistently above zero indicate successful observations and astrophysical activity. These active regions are critical for detecting transient phenomena, even if the entire time series includes gaps or inactive periods.
+2. Multi-wavelength Observability: In segments where multiple wavelength bands are recorded simultaneously, joint spectral and temporal analysis becomes possible. Variation in flux across bands captures spectral diversity, which is often essential for distinguishing between different supernova classes.
+3. Temporal Continuity: Smooth or structured flux changes over time (e.g., flat, increasing, or decreasing trend at one or more wavelengths) provides evidence of underlying physical processes like explosions, pulsations, or orbital dynamics. These temporal patterns are key to distinguishing classes.
+
+For each claim, assess how well it semantically and factually aligns with the ground truth indicators above. Avoid focusing on superficial keyword matches and evaluate the actual meaning and evidentiary alignment.
+
+Use the following relevance scale from 1 to 5:
+1: Completely contradicts: The claim fundamentally misrepresents or contradicts the criteria used in supernova classification.
+2: Mostly contradicts: The claim is largely inconsistent with known indicators or suggests irrelevant patterns.
+3: Partially aligns: The claim is related but lacks a clear or accurate connection to ground truth patterns.
+4: Mostly aligns: The claim captures a valid classification cue, though with minor vagueness or lack of specificity.
+5: Completely aligns: The claim is fully consistent with one or more ground truth indicators and describes meaningful observational patterns useful for classification.
+Also provide a brief justification for each score, explaining the reasoning in terms of the observed patterns and their relevance to classification.
 Input format:
 Claims:
 ```json
@@ -267,7 +323,6 @@ Claims:
     "<claim 2>",
     ...
 ]
-```
 
 Output format:
 Scores:
@@ -281,7 +336,29 @@ Scores:
     "total_score": <total alignment score ranging from 1 to 5>
 }
 ```
+Here are some examples:
+[Example 1]
+Claim: Observations are recorded at various wavelength overtime.
+Score: 2
+This claim loosely relates to Ground Truth #2, which emphasizes simultaneous multi-wavelength observations. However, it lacks clarity on whether multiple bands are recorded at the same time or how consistently this occurs, making the alignment weak and incomplete.
+[Example 2]
+Claim: Consistent and distinct peaks are observed in value data at specific wavelength
+Score: 3
+While temporal consistency hints at Ground Truth #3, the alignment is only partial due to lack of explicit support for peak-based or wavelength-specific patterns.
+[Example 3]
+Claim: Variations in intensity over time are typical of the lightcurve evolution of a supernova
+Score: 3
+This aligns well with ground truth #4 ("temporal continuity"), as it refers to structured temporal variation. But it's a bit generic and leans on domain knowledge which would be true for all supernova time series data.
+[Example 4]
+Claim: The flux value has a rapid increase and gradual decrease.
+Score: 5
+This describes a classic lightcurve shape of many supernovae and reflects temporal continuity (Ground Truth #3). It captures meaningful evolution in flux over time, making it highly relevant to classification.
+[Example 5]
+Claim: Significant fluctuations and peaks in the data can be inferred as part of the light curve of a Type II supernova.
+Score: 4
+The claim refers to fluctuations and peaks over time, which aligns with the idea of structured evolution in flux, a key temporal pattern that helps distinguish classes like SNII. However, the claim does not specify whether these patterns occur in localized segments of the time series or mention the presence of nonzero flux or uncertainty values.
 """
+
 
     prompt = """Claims:
 ```json
