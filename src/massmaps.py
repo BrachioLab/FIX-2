@@ -16,14 +16,25 @@ from typing import Tuple
 import random
 import time
 import math
-
+from tqdm.auto import tqdm
 from matplotlib.colors import LinearSegmentedColormap
 
-cache = Cache("/shared_data0/llm_cachedir")
+cache = Cache(os.environ.get("CACHE_DIR"))
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 client = openai.OpenAI(api_key=openai.api_key)
+
+class MassMapsExample:
+    def __init__(self, input, ground_truth, llm_prediction, llm_explanation):
+        self.input = input
+        self.ground_truth = ground_truth
+        self.llm_prediction = llm_prediction # this is the llm answer
+        self.llm_explanation = llm_explanation
+        self.claims = []
+        self.relevant_claims = []
+        self.alignment_scores = []
+        self.alignment_categories = []
 
 def massmap_to_pil(tensor):
     """
@@ -158,6 +169,44 @@ def get_messages(prompt, images=None, system_prompt=None):
     
     return messages
 
+def get_system_message(system_prompt):
+    system_message = [
+                {'role': 'system', 'content': [{'type': 'text', 'text': system_prompt}]},
+            ]
+    return system_message
+
+def get_example_message(image, user_text, user_prompt, assistant_text=None, assistant_prompt=None):
+    if image is not None:
+        image_payload = [
+            {
+                "type": 'image_url',
+                'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
+            }
+        ]
+    else:
+        image_payload = []
+    
+    user_message = {'role': 'user', 'content': image_payload + [
+            {'type': 'text', 'text': user_prompt.format(user_text)}
+        ]
+        }
+    if assistant_prompt is not None and assistant_text is not None:
+        if isinstance(assistant_text, (list, tuple)) or (hasattr(assistant_text, '__iter__') and not isinstance(assistant_text, str)):
+            assistant_message = {'role': 'assistant', 'content': [{'type': 'text', 'text': assistant_prompt.format(*assistant_text)}]}
+        else:
+            assistant_message = {'role': 'assistant', 'content': [{'type': 'text', 'text': assistant_prompt.format(assistant_text)}]}
+    else:
+        assistant_message = None
+    return user_message, assistant_message
+
+def get_few_shot_user_assistant_messages(images_list, user_text_list, user_prompt, assistant_text_list, assistant_prompt):
+    all_messages = []
+    for image, user_text, assistant_text in zip(images_list, user_text_list, assistant_text_list):
+        user_message, assistant_message = get_example_message(image, user_text, user_prompt, assistant_text, assistant_prompt)
+        all_messages.append(user_message)
+        all_messages.append(assistant_message)
+    return all_messages
+
 def text2json(text):
     match = re.search(r'```json(.*?)```', text, re.DOTALL)
     if match:
@@ -171,7 +220,7 @@ def text2json(text):
 
 
 @cache.memoize()
-def get_llm_output(prompt, images=None, system_prompt=''):
+def get_llm_output(prompt, images=None, system_prompt='', model='gpt-4o'):
     """
     prompt: str
     images: list of PIL images
@@ -179,7 +228,24 @@ def get_llm_output(prompt, images=None, system_prompt=''):
     """
     messages = get_messages(prompt, images, system_prompt)
     response = client.chat.completions.create(
-            model='gpt-4o-mini',
+            model=model,
+            messages=messages,
+            response_format={'type': 'text'},
+            temperature=0,
+            max_tokens=500,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
+        )
+    return response.choices[0].message.content
+
+@cache.memoize()
+def get_llm_output_from_messages(messages, model='gpt-4o'):
+    """
+    messages: list of messages
+    """
+    response = client.chat.completions.create(
+            model=model,
             messages=messages,
             response_format={'type': 'text'},
             temperature=0,
@@ -192,12 +258,12 @@ def get_llm_output(prompt, images=None, system_prompt=''):
 
 
 @cache.memoize()
-def get_llm_score(prompt, images=None, system_prompt=None) -> Tuple[str, float]:
+def get_llm_score(prompt, images=None, system_prompt=None, model='gpt-4o') -> Tuple[str, float]:
     if system_prompt is None:
         system_prompt = "Answer only as a YES or NO."
     messages = get_messages(prompt, images, system_prompt)
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=model,
         messages=messages,
         response_format={"type": "text"},
         temperature=0,
@@ -241,11 +307,11 @@ This data represents cosmological observations, where each value represents the 
 
 Here is the colormap used to create the visualization of this weak lensing map:
 custom_cmap = get_custom_colormap([
-            (-3, "blue"),   # Blue at -3
+            (-3, "blue"),   # Blue at -3 std
             (0, "gray"),   # Gray at 0 (below this is void)
-            (2.9, "red"),   # Red at 2.9 (this is the upperbound for not being a cluster)
-            (3, "yellow"),   # Yellow at 3 (above this is cluster)
-            (20, "white")  # White at 20
+            (2.9, "red"),   # Red at 2.9 std (this is the upperbound for not being a cluster)
+            (3, "yellow"),   # Yellow at 3 std (above this is cluster)
+            (20, "white")  # White at 20 std
         ])
         
 Predict the values for Omega_m and sigma_8 based on the information from this weak lensing map data. Provide a reasoning chain for what interpretable weak lensing map cosmological features (e.g. voids and clusters) you see from this data that you use to make such predictions. When you provide the reasoning chain, for each claim, please be specific for the actual observations you see in this particular weak lensing map. Provide a short paragraph that is around 100-200 words, and then make the predictions.
@@ -271,9 +337,22 @@ Output format:
 # """
     system_prompt = "You are an expert cosmologist."
     
-    image_pil = massmap_to_pil(example)
-    return text2json(get_llm_output(prompt, [image_pil], system_prompt))
+    image_pil = massmap_to_pil_norm(example)
+    results = text2json(get_llm_output(prompt, [image_pil], system_prompt))
 
+    # few_shot_images = [massmap_to_pil_norm(example['X'][0]) for example in few_shot_examples]
+    # few_shot_messages = get_few_shot_user_assistant_messages(
+    #     few_shot_images,
+    #     user_text_list=[example['claim'] for example in few_shot_examples],
+    #     user_prompt=example_prompt,
+    #     assistant_text_list=[(example['relevance_answer'], example['relevance_explanation']) for example in few_shot_examples],
+    #     assistant_prompt=example_assistant_prompt
+    # )
+
+    try:
+        return results['Answer'], results['Explanation']
+    except:
+        return None, None
 
 def isolate_individual_features(
     explanation: str
@@ -285,17 +364,35 @@ def isolate_individual_features(
     Returns:
         raw_atomic_claims (list[str]): A list of strings where each string is an isolated claim (includes relevant and irrelevant claims).
     """
-    system_prompt_text2claims = """You are an expert cosmologist. This is the explanation and answer for predicting from mass maps. Please break it down into atomic claims.
-Output format:
-Claims:
+    system_prompt_text2claims = """You will be given a paragraph that explains the reasoning behind using weak lensing map to predict two cosmological parameters Omega_m (which captures the average energy density of all matter in the universe (relative to the total energy density which includes radiation and dark energy)) and sigma_8 (which describes the fluctuation of matter distribution).
+
+Your task is to decompose this explanation into individual claims that are:
+Atomic: Each claim should express only one clear idea or judgment.
+Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
+Faithful: The claims must preserve the original meaning, nuance, and tone. 
+
+Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
+
+Here is an example of how to format your output:
+INPUT: The weak lensing map shows a distribution of matter density with varying colors indicating different density levels. The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density. These clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe. The blue areas represent voids, indicating low-density regions. The balance between these voids and clusters helps in estimating sigma_8, which measures the amplitude of matter fluctuations. The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter. This balance implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids. The presence of distinct clusters and voids also suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
+OUTPUT: 
 ```json
 [
-    "<claim 1>",
-    "<claim 2>",
-    ...
+"The weak lensing map shows a distribution of matter density with varying colors indicating different density levels.",
+"The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density.",
+"The present clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe.",
+"The blue areas on the map represent voids, indicating low-density regions.",
+"The balance between voids and clusters on the map helps in estimating sigma_8, which measures the amplitude of matter fluctuations.",
+"The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter.",
+"A balanced distribution of matter implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids.",
+"The presence of distinct clusters and voids suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude."
 ]
 ```
-"""
+
+Now decompose the following paragraph into atomic, standalone claims:
+INPUT: {}
+""".format(explanation)
+
 
     raw_atomic_claims = get_llm_output(explanation, system_prompt=system_prompt_text2claims)
     # return raw_atomic_claims
@@ -319,41 +416,65 @@ def is_claim_relevant(
         atomic_claim (str): A claim to check if it is relevant to the example.
     """
     
-    system_prompt_is_claim_relevant = f"""You are an expert cosmologist. Given the reasoning chain below about how to predict Omega_m and sigma_8 of a weak lensing map, evaluate if each claim is contained in the original weak lensing map in the image.
-The weak lensing map data consists of cosmological observations, where each value represents the spatial distribution of matter density in the universe for Omega_m={answer['Omega_m']}, sigma_8={answer['sigma_8']}. 
+    system_prompt_is_claim_relevant = f"""You are an expert in cosmology. Below is a reasoning chain explaining why a specific prediction decision was made for a supernova candidate, based on its time-series data.
+The data is a weak lensing map, as shown in the image, which is the spatial distribution of matter density in the universe, for Omega_m={answer['Omega_m']}, sigma_8={answer['sigma_8']}. Use the full context of the data in the image, to evaluate whether each claim is relevant. The possible values for Omega_m is between [0.1, 0.5], and for sigma_8 is between [0.4, 1.4].
 
-Here is the colormap used to create the visualization of this weak lensing map:
+Here is the colormap used to create the visualization of this weak lensing map for your reference for mapping the image to numbers:
 custom_cmap = get_custom_colormap([
-            (-3, "blue"),   # Blue at -3
+            (-3, "blue"),   # Blue at -3 std
             (0, "gray"),   # Gray at 0 (below this is void)
-            (2.9, "red"),   # Red at 2.9 (this is the upperbound for not being a cluster)
-            (3, "yellow"),   # Yellow at 3 (above this is cluster)
-            (20, "white")  # White at 20
+            (2.9, "red"),   # Red at 2.9 std (this is the upperbound for not being a cluster)
+            (3, "yellow"),   # Yellow at 3 std (above this is cluster)
+            (20, "white")  # White at 20 std
         ])
 
-Each claim must be checked against this dataset to determine if the necessary information is present.  
-For a claim to be relevant, it must be:
-(1) Directly supported by the data recorded in the weak lensing map (i.e., the claim refers to the change and trend in values for spatial distribution of matter density in the universe).  
-(2) Answers the question of why the LLM gave the answer for a particular prediction decision for this specific example. (i.e., it directly relates to the trend that is relevant to predicting the specific Omega_m and sigma_8 values).
+A claim is considered relevant only if both of the following conditions are satisfied:
+    (1) It is directly supported by the image data (e.g., it refers to trends, changes, or patterns in intensity across different spatial positions in the weak lensing map).
+    (2) It helps explain why the model predicted these specific values for Omega_m and sigma_8 (e.g., it highlights characteristics that distinguish these values from other potential values).
+    Please only answer YES or NO.
+    Here are some examples:
+    [Example 1]
+    Claim: The dataset represents the spatial distribution of matter density in the universe.
+    Answer: NO
+    This is a general statement and does not justify any specific prediction.
+    [Example 2]
+    Claim: The weak lensing map shows several yellow pixels close to each other on the left side, suggesting the existence of high-density regions or clusters.
+    Answer: YES
+    This is a specific cosmological structure observable in the data and indicative of cosmological parameters such as sigma_8.
+    [Example 3]
+    Claim: Voids are large low density regions in space.
+    Answer: NO
+    This is background knowledge, not derived from the data.
+    [Example 4]
+    Claim: There is a gray pixel in the upper left corner with value 6.2992e-04 in the data.
+    Answer: NO
+    Simply listing pixel values does not explain a prediction.
 
-Please only answer YES or NO."""
+    Now, determine whether the following claim is relevant to the given the data in the provided image and prediction result.
+"""
 
-    prompt_is_claim_relevant = """Answer:
-Omega_m: {}
-Sigma_8: {}
-
-Atomic Claim:
+    prompt_is_claim_relevant = """Claim:
 {}
-""".format(answer['Omega_m'], answer['sigma_8'], atomic_claim)
+"""
 
-    image_pil = massmap_to_pil(example)
-    completion, prob = get_llm_score(prompt_is_claim_relevant, 
-              images=[image_pil], 
-              system_prompt=system_prompt_is_claim_relevant)
+    image_pil = massmap_to_pil_norm(example)
 
-    return completion == "yes" and prob >= threshold
-    # raise NotImplementedError()
+    system_message = get_system_message(system_prompt_is_claim_relevant)
+    # def get_few_shot_user_assistant_messages(images_list, user_text_list, assistant_text_list, user_prompt, assistant_prompt):
+    
+    # def get_example_message(image, user_text, user_prompt, assistant_text=None, assistant_prompt=None):
 
+# def get_example_message(image, user_text, user_prompt, assistant_text=None, assistant_prompt=None):
+    user_message, assistant_message = get_example_message(image_pil, user_text=atomic_claim, user_prompt=prompt_is_claim_relevant)
+
+    messages = system_message + [user_message]
+
+    completion = get_llm_output_from_messages(messages)
+
+    try:
+        return completion.split('\n')[0].strip().replace('Answer for relevance: ', '').lower() == "yes"
+    except:
+        return None
 
 def distill_relevant_features(
     example: str | torch.Tensor,
@@ -376,68 +497,58 @@ def distill_relevant_features(
     return atomic_claims
 
 def calculate_expert_alignment_score(
-    atomic_claims: list[str]
-) -> AlignmentScores:
-    """
-    Computes the individual (and overall) alignment score of all the relevant atomic claims.
+    example_input: torch.Tensor, 
+    llm_prediction: str, claim: str):
+    system_prompt = """You are an expert cosmologist. Your task is to evaluate how well the following claims aligns with known ground truth criteria used in predicting cosmological parameters from weak lensing maps.
 
-    Possibly needs a domain-independent aggregation function.
-    Args:
-        atomic_claims (list[str]): A list of strings where each string is a relevant claim.
-    Returns:
-        1. Alignment score of each individual atomic claims.
-        2. Overall alignment score of all the atomic claims.
-    """
-    
-    system_prompt = """You are an expert cosmologist. You need to check if each claim is aligned with the provided ground truth statements about cosmology, especially regarding weak lensing maps.
-    
-Cosmological categories:
-1. **Voids:** Voids (areas with little matter) appear to be particularly informative structures, possibly more so than clusters, due to their larger coverage area in sky observations.
-2. **Clusters:** Clusters of galaxies and their distribution patterns provide signals for determining initial universe parameters.
+The ground truth criteria below represent core observational patterns that support the prediction of cosmological parameters Omega_m and sigma_8. These patterns often appear in groups of pixels in weak lensing maps:
+1. **Voids:** Voids are large regions under-dense relative to the mean density (pixel intensity < 0) and appear as dark regions in the mass maps.
+2. **Clusters:** Clusters are areas of concentrated high density (pixel intensity > 3std) and appear as bright dots.
 3. **Super-clusters:** "Super-clusters" (containing multiple clusters) may play a special role in weak lensing maps that deserves further investigation.
-4. **Spatial distribution:** The spatial distribution of matter density, as revealed through weak lensing maps, contains key information about initial universe conditions.
-5. **Noise and Artifacts:** The relative importance of different cosmological structures may change when realistic noise and measurement artifacts are added to the data.
+4. **Spatial distribution:** The spatial distribution of matter density.
 
-For each claim, determine its alignment with the ground truth on a scale from 1 to 5:
-1: Completely contradicts ground truth
-2: Mostly contradicts ground truth
-3: Partially aligns with ground truth
-4: Mostly aligns with ground truth
-5: Completely aligns with ground truth
+For each claim, assess how well it semantically and factually aligns with the ground truth indicators above. Avoid focusing on superficial keyword matches and evaluate the actual meaning and evidentiary alignment.
+
+Use the following relevance scale from 1 to 5:
+1: Completely contradicts: The claim fundamentally misrepresents or contradicts the criteria used in cosmological parameter prediction.
+2: Mostly contradicts: The claim is largely inconsistent with known indicators or suggests irrelevant patterns.
+3: Partially aligns: The claim is related but lacks a clear or accurate connection to ground truth patterns.
+4: Mostly aligns: The claim captures a valid prediction cue, though with minor vagueness or lack of specificity.
+5: Completely aligns: The claim is fully consistent with one or more ground truth indicators and describes meaningful observational patterns useful for prediction.
+Also provide a brief justification for each score, explaining the reasoning in terms of the observed patterns and their relevance to prediction.
 
 Input format:
-Claims:
-```json
-[
-    "<claim 1>",
-    "<claim 2>",
-    ...
-]
-```
+Claim:
+<claim 1>
 
 Output format:
 Scores:
 ```json
 {
-    "alignment_scores": {
-        {"claim": "<claim 1>", "score": <alignment score ranging from 1 to 5>, "aligned_expert_knowledge": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts)>"}
-        {"claim": "<claim 2>", "score": <alignment score ranging from 1 to 5>, "aligned_expert_knowledge": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts)>"}
-        ...
-    },
-    "total_score": <total alignment score ranging from 1 to 5>
-}
+    "claim": "<claim 1>", 
+    "score": <alignment score ranging from 1 to 5>, 
+    "category": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts/Not Aligned)>",
+    "explanation": "<a brief one/two sentence justification for making this decision>"}
 ```
 """
 
-    prompt = """Claims:
-```json
+    alignment_prompt = """Claim:
 {}
-```
-""".format(json.dumps(atomic_claims))
-          
-    alignment_scores = get_llm_output(prompt, system_prompt=system_prompt)
-    return text2json(alignment_scores)
-
+"""
+    
+    prompt = alignment_prompt.format(claim)
+    try:
+        response = get_llm_output(prompt, system_prompt=system_prompt)
+        alignment_result = text2json(response)
+    except:
+        print("Error in querying OpenAI API")
+        import pdb; pdb.set_trace()
+        return None
+    
+    alignment_score = alignment_result['score']
+    category = alignment_result['category']
+    reasoning = alignment_result['explanation']
+    return category, alignment_score, reasoning
 
 if __name__ == "__main__":
     # Uncomment line below to install exlib
