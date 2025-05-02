@@ -26,15 +26,15 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=openai.api_key)
 
 class MassMapsExample:
-    def __init__(self, input, ground_truth, llm_prediction, llm_explanation):
+    def __init__(self, input, answer, llm_answer, llm_explanation):
         self.input = input
-        self.ground_truth = ground_truth
-        self.llm_prediction = llm_prediction # this is the llm answer
+        self.answer = answer
+        self.llm_answer = llm_answer # this is the llm answer
         self.llm_explanation = llm_explanation
         self.claims = []
         self.relevant_claims = []
         self.alignment_scores = []
-        self.alignment_categories = []
+        self.expert_criteria = []
 
 def massmap_to_pil(tensor):
     """
@@ -498,8 +498,10 @@ def distill_relevant_features(
 
 def calculate_expert_alignment_score(
     example_input: torch.Tensor, 
-    llm_prediction: str, claim: str):
-    system_prompt = """You are an expert cosmologist. Your task is to evaluate how well the following claims aligns with known ground truth criteria used in predicting cosmological parameters from weak lensing maps.
+    llm_prediction: str, claim: str,
+    system_prompt=None):
+    if system_prompt is None:
+        system_prompt = """You are an expert cosmologist. Your task is to evaluate how well the following claims aligns with known ground truth criteria used in predicting cosmological parameters from weak lensing maps.
 
 The ground truth criteria below represent core observational patterns that support the prediction of cosmological parameters Omega_m and sigma_8. These patterns often appear in groups of pixels in weak lensing maps:
 1. **Voids:** Voids are large regions under-dense relative to the mean density (pixel intensity < 0) and appear as dark regions in the mass maps.
