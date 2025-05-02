@@ -42,3 +42,25 @@ The lack of explicit politeness markers prevents the utterance from being consid
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
 """
+
+decomposition_emotion = """
+You will be given a paragraph that explains why the given emotion was most reflected in a Reddit comment. Your task is to decompose this explanation into individual claims that are:
+
+Atomic: Each claim should express only one clear idea or judgment.
+Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
+Faithful: The claims must preserve the original meaning, nuance, and tone.
+
+Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
+
+Here is an example of how to format your output:
+
+INPUT: The use of "creepy" and "tbh" suggests a negative reaction or discomfort. Overall, this likely indicates the speaker finds the voicepack irritating or unsettling.
+
+OUTPUT:
+The use of "creepy" and "tbh" suggest a negative reaction.
+The use of "creepy" and "tbh" suggests a feeling of discomfort.
+The overall word choice likely indicates the speaker finds the voicepack irritating or unsettling.
+
+Now decompose the following paragraph into atomic, standalone claims:
+INPUT: {}
+"""
