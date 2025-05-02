@@ -130,3 +130,30 @@ Study these examples and fully understand the task. Now, research the field of s
 
 Your output should be a list of expert criteria, each 1 sentence long, and citations to support each criteria. Feel free to have as many expert criteria as you deem necessary. The criteria should be clear, succinct and non-overlapping with each other.
 """
+
+deep_research_emotion = """
+You are an expert in emotion psychology. You have a deep understanding of this subject. 
+Your task is to behave like an emotion psychologist and identify which criteria are important to consider for the following task:
+
+Task description: Given a Reddit comment, the task is to identify which emotion is most reflected in the comment. The possible emotions are admiration, amusement, anger, annoyance, approval, caring, confusion, curiosity, desire, disappointment, disapproval, disgust, embarrassment, excitement, fear, gratitude, grief, joy, love, nervousness, optimism, pride, realization, relief, remorse, sadness, surprise, and neutral(no emotion reflected).
+Comment: A 1-2 sentence Reddit comment.
+Emotion: The emotion most reflected in the comment.
+
+Here are some examples:
+
+[Example 1]
+Comment: Apologies, I take it all back as I’ve just seen his latest effort.
+Emotion: remorse
+
+[Example 2]
+Comment: My favourite food is anything I didn't have to cook myself.
+Emotion: neutral
+
+[Example 3]
+Comment: Demographics? I don’t know anybody under 35 who has cable tv.
+Emotion: confusion
+
+Study these examples and fully understand the task. Now, research the field of emotion psychology in order to determine a list of criteria that an expert emotion psychologist would utilize if they were performing the above task.
+
+Your output should be a list of expert criteria, each 1 sentence long, and citations from reputable academic sources to support each criteria. Feel free to have as many expert criteria as you deem necessary. The criteria should be clear, succinct and non-overlapping with each other.
+"""
