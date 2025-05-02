@@ -19,6 +19,8 @@ import math
 from tqdm.auto import tqdm
 from matplotlib.colors import LinearSegmentedColormap
 
+from .prompts.claim_decomposition import decomposition_massmaps
+
 cache = Cache(os.environ.get("CACHE_DIR"))
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
@@ -364,34 +366,45 @@ def isolate_individual_features(
     Returns:
         raw_atomic_claims (list[str]): A list of strings where each string is an isolated claim (includes relevant and irrelevant claims).
     """
-    system_prompt_text2claims = """You will be given a paragraph that explains the reasoning behind using weak lensing map to predict two cosmological parameters Omega_m (which captures the average energy density of all matter in the universe (relative to the total energy density which includes radiation and dark energy)) and sigma_8 (which describes the fluctuation of matter distribution).
 
-Your task is to decompose this explanation into individual claims that are:
-Atomic: Each claim should express only one clear idea or judgment.
-Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
-Faithful: The claims must preserve the original meaning, nuance, and tone. 
+    prompt = decomposition_massmaps.format(explanation)
+    raw_atomic_claims = get_llm_output(prompt)
+    if response == "ERROR":
+        print("Error in querying OpenAI API")
+        return None
+    response = response.replace("OUTPUT:", "").strip()
+    claims = response.split("\n")
 
-Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
+    return claims
 
-Here is an example of how to format your output:
-INPUT: The weak lensing map shows a distribution of matter density with varying colors indicating different density levels. The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density. These clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe. The blue areas represent voids, indicating low-density regions. The balance between these voids and clusters helps in estimating sigma_8, which measures the amplitude of matter fluctuations. The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter. This balance implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids. The presence of distinct clusters and voids also suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
-OUTPUT: 
-```json
-[
-"The weak lensing map shows a distribution of matter density with varying colors indicating different density levels.",
-"The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density.",
-"The present clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe.",
-"The blue areas on the map represent voids, indicating low-density regions.",
-"The balance between voids and clusters on the map helps in estimating sigma_8, which measures the amplitude of matter fluctuations.",
-"The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter.",
-"A balanced distribution of matter implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids.",
-"The presence of distinct clusters and voids suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude."
-]
-```
+#     system_prompt_text2claims = """You will be given a paragraph that explains the reasoning behind using weak lensing map to predict two cosmological parameters Omega_m (which captures the average energy density of all matter in the universe (relative to the total energy density which includes radiation and dark energy)) and sigma_8 (which describes the fluctuation of matter distribution).
 
-Now decompose the following paragraph into atomic, standalone claims:
-INPUT: {}
-""".format(explanation)
+# Your task is to decompose this explanation into individual claims that are:
+# Atomic: Each claim should express only one clear idea or judgment.
+# Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
+# Faithful: The claims must preserve the original meaning, nuance, and tone. 
+
+# Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
+
+# Here is an example of how to format your output:
+# INPUT: The weak lensing map shows a distribution of matter density with varying colors indicating different density levels. The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density. These clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe. The blue areas represent voids, indicating low-density regions. The balance between these voids and clusters helps in estimating sigma_8, which measures the amplitude of matter fluctuations. The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter. This balance implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids. The presence of distinct clusters and voids also suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
+# OUTPUT: 
+# ```json
+# [
+# "The weak lensing map shows a distribution of matter density with varying colors indicating different density levels.",
+# "The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density.",
+# "The present clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe.",
+# "The blue areas on the map represent voids, indicating low-density regions.",
+# "The balance between voids and clusters on the map helps in estimating sigma_8, which measures the amplitude of matter fluctuations.",
+# "The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter.",
+# "A balanced distribution of matter implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids.",
+# "The presence of distinct clusters and voids suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude."
+# ]
+# ```
+
+# Now decompose the following paragraph into atomic, standalone claims:
+# INPUT: {}
+# """.format(explanation)
 
 
     raw_atomic_claims = get_llm_output(explanation, system_prompt=system_prompt_text2claims)

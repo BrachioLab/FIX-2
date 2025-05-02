@@ -59,6 +59,43 @@ Politeness Rating: {}
 Claim: {}
 """
 
+
+relevance_cholec = """
+You will be given:
+- An endoscopic image of the gallbladder region during a laparoscopic cholecystectomy (the "Input").
+- A textual Claim describing a proposed "safe" or "unsafe" zone in that image (the "Claim").
+
+A claim is relevant if and only if:
+1. It refers to a visually detectable feature in the image.
+2. It pertains to identifying safe or unsafe dissection zones based on expert surgical criteria.
+
+Return your answer as:
+Relevance: <Yes/No>
+Reasoning: <A brief explanation pointing to the visual feature and criterion that supports your judgment>
+
+Examples:
+
+Example 1
+Input: [image showing fully cleared Calot's triangle]
+Claim: "Calot's triangle cleared."
+```
+Relevance: Yes
+Reasoning: The claim describes the clearance of Calot's triangle, which is a visually confirmed safety criterion for safe dissection.
+```
+
+Example 2
+Input: [image showing mottled gallbladder appearance]
+Claim: "The gallbladder appears mottled green."
+```
+Relevance: No
+Reasoning: While visible, the gallbladder color does not inform safe or unsafe dissection zones.
+```
+
+Now evaluate the following:
+Input: (see attached image)
+Claim: {}
+"""
+
 relevance_emotion = """You will be given a Reddit comment, its emotion label, and a claim that may or may not be relevant to an explanation of the emotion label. Your task is to decide whether the claim is relevant to explaining the emotion label for the specific text comment.
 
 A claim is relevant if and only if:

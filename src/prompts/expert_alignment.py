@@ -81,6 +81,57 @@ Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
 
+
+alignment_cholec = """You will be given:
+- A textual Claim describing a proposed "safe" or "unsafe" zone in laparoscopic cholecystectomy (the "Claim").
+
+Your task is as follows:
+1. Determine which expert safety criterion is most aligned with the Claim.
+2. Rate how strongly the criterion aligns with the Claim on a scale of 0.0-1.0 (in increments of 0.1), where 0.0 means "not at all" and 1.0 means "perfectly."
+
+Return your answer exactly in this format:
+```
+Category: <name of selected criterion>
+Criterion Alignment Rating: <rating>
+Reasoning: <A brief explanation of why you selected the criterion and how you judged the alignment rating>
+```
+
+-----
+Expert Safety Criteria:
+1. Calot's triangle cleared - Hepatocystic triangle must be fully cleared of fat/fibrosis so that its boundaries are unmistakable.
+2. Cystic plate exposed - The lower third of the gallbladder must be dissected off the liver to reveal the shiny cystic plate and ensure the correct dissection plane.
+3. Only two structures visible - Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
+4. Above the R4U line - Dissection must remain cephalad to an imaginary line from Rouviere's sulcus to liver segment IV to avoid the common bile duct.
+5. Infundibulum start point - Dissection should begin at the gallbladder infundibulum-cystic duct junction to stay in safe tissue planes.
+6. Subserosal plane stay - When separating the gallbladder from the liver, stay in the avascular subserosal cleavage plane under the serosal fat layer.
+7. Cystic lymph node guide - Identify the cystic lymph node and clip the artery on the gallbladder side of the node to avoid injuring the hepatic artery.
+8. No division without ID - Never divide any duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.
+9. Inflammation bailout - If dense scarring or distorted anatomy obscures Calot's triangle, convert to a subtotal "fundus-first" approach rather than blind cutting.
+10. Aberrant artery caution - Preserve any large or tortuous artery (e.g., a Moynihan's hump) that might be mistaken for the cystic artery.
+
+-----
+Examples:
+
+Example 1
+Claim: "The fat and fibrous tissue overlying Calot's triangle has been fully excised, exposing only two tubular structures."
+```
+Category: Calot's triangle cleared
+Criterion Alignment Rating: 1.0
+Reasoning: The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly.
+```
+
+Example 2
+Claim: "The cystic plate is not visible due to dense adhesions, making the gallbladder-liver plane indistinct."
+```
+Category: Cystic plate exposed
+Criterion Alignment Rating: 0.2
+Reasoning: The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score.
+```
+
+Now, determine the category and alignment rating for the following claim:
+Claim: {}
+"""
+
 alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.
 
 Your task is as follows:
