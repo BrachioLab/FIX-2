@@ -159,7 +159,7 @@ class MyOpenAIModel:
         response_format: Optional[Dict[str, Any]] = None,
         temperature: float = 1.0,
         seed: Optional[int] = None,
-        batch_size: int = 16,
+        batch_size: int = 24,
     ) -> Union[str, List[str]]:
         """
         Process one or more prompts through the OpenAI API.
@@ -178,22 +178,19 @@ class MyOpenAIModel:
         is_single_prompt = isinstance(prompts, (str, tuple))
         prompts = [prompts] if is_single_prompt else prompts
         
-        # Process prompts in batches
-        all_responses = []
-        batches = [prompts[i:i+batch_size] for i in range(0, len(prompts), batch_size)]
-        
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            for batch in batches:
-                futures = [
-                    executor.submit(
-                        self.call_openai,
-                        messages=self.prompt_to_messages(p),
-                        response_format=response_format,
-                        temperature=temperature,
-                        seed=seed,
-                    )
-                    for p in batch
-                ]
-                all_responses.extend(f.result() for f in futures)
+        # Concurrently process prompts
+        with concurrent.futures.ThreadPoolExecutor(max_workers=batch_size) as executor:
+            futures = [
+                executor.submit(
+                    self.call_openai,
+                    messages=self.prompt_to_messages(p),
+                    response_format=response_format,
+                    temperature=temperature,
+                    seed=seed,
+                )
+                for p in prompts
+            ]
+
+            all_responses = [f.result() for f in futures]
         
         return all_responses[0] if is_single_prompt else all_responses
