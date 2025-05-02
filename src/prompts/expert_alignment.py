@@ -24,7 +24,7 @@ Claim: {}
 """
 
 
-alignment_poltieness = """You will be given a single claim that relates to why a politeness rating was given to an utterance. You will also be given a series of categories that an expert linguist would use to perform this type of politeness classification.
+alignment_politeness = """You will be given a single claim that relates to why a politeness rating was given to an utterance. You will also be given a series of categories that an expert linguist would use to perform this type of politeness classification.
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
@@ -36,7 +36,7 @@ Category Alignment Rating: <rating>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
-Lexical categories:
+Expert politeness categories:
 1. Honorifics and Formal Address: The presence of respectful or formal address forms (e.g., “sir,” “usted,” “您”) signals politeness by expressing deference to the hearer’s status or social distance.
 2. Courteous Politeness Markers: Words such as “please,” “kindly,” or their multilingual variants soften requests and reflect courteous intent.
 3. Gratitude Expressions: Use of expressions like “thank you,” “thanks,” or “I appreciate it” signals recognition of the other’s contribution and positive face.
@@ -98,7 +98,6 @@ Return your answer exactly in this format:
 }
 ```
 
-
 -----
 Expert Safety Criteria:
 1. Calot's triangle cleared - Hepatocystic triangle must be fully cleared of fat/fibrosis so that its boundaries are unmistakable.
@@ -141,4 +140,61 @@ Output 2:
 
 Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
+"""
+
+
+alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.
+
+Your task is as follows:
+1. Determine which expert category is most aligned with the claim. 
+2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest). 
+
+Return your answer as:
+Category: <category>
+Category Alignment Rating: <rating>
+Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
+
+-----
+Expert emotion categories:
+1. Valence: Decide if the overall tone is pleasant or unpleasant; positive tones suggest joy or admiration, negative tones suggest sadness or anger.
+2. Arousal: Gauge how energized the wording is—calm phrasing implies low arousal emotions, intense phrasing implies high arousal emotions.
+3. Emotion Words & Emojis: Look for direct emotion terms or emoticons that explicitly name the feeling.
+4. Expressive Punctuation: Multiple exclamation marks, ALL‑CAPS, or stretched spellings signal higher emotional intensity.
+5. Humor/Laughter Markers: Tokens like “haha,” “lol,” or laughing emojis reliably indicate amusement.
+6. Confusion Phrases: Statements such as “I don’t get it” clearly mark confusion.
+7. Curiosity Questions: Genuine information‑seeking phrases (“I wonder…”, “why is…?”) point to curiosity.
+8. Surprise Exclamations: Reactions of astonishment (“No way!”, “I can’t believe it!”) denote surprise.
+9. Threat/Worry Language: References to danger or fear (“I’m scared,” “terrifying”) signal fear or nervousness.
+10. Loss or Let‑Down Words: Mentions of loss or disappointment cue sadness, disappointment, or grief.
+11. Other‑Blame Statements: Assigning fault to someone else for a bad outcome suggests anger or disapproval.
+12. Self‑Blame & Apologies: Admitting fault and saying “I’m sorry” marks remorse.
+13. Aversion Terms: Words like “gross,” “nasty,” or “disgusting” point to disgust.
+14. Praise & Compliments: Positive evaluations of someone’s actions show admiration or approval.
+15. Gratitude Expressions: Phrases such as “thanks” or “much appreciated” indicate gratitude.
+16. Affection & Care Words: Loving or nurturing language (“love this,” “sending hugs”) signals love or caring.
+17. Self‑Credit Statements: Boasting about one’s own success (“I nailed it”) signals pride.
+18. Relief Indicators: Release phrases like “phew,” “finally over,” or “what a relief” mark relief after stress ends.
+-----
+
+Here are some examples:
+[Example 1]
+Claim: The exclamations (“seriously wtf… sickest soulread ever”) show astonished praise for an impressive play.
+Category: Surprise Exclamations
+Category Alignment Rating: 0.7
+Reasoning: The phrase “seriously wtf… sickest soulread ever” indicates a strong emotional reaction of astonishment. The use of “seriously” as an intensifier and the informal hyperbolic phrasing align closely with surprise. The reason the rating is 0.7 and not higher is that while there is a strong element of astonishment, the claim also suggests admiration or praise, which is more related to Praise & Compliments. Though surprise is the more dominant signal, the claim does not fully relate to surprise.
+
+[Example 2]
+Claim: The text discusses economic inflation trends over the past decade.
+Category: Emotion Words & Emojis
+Category Alignment Rating: 0.0
+Reasoning: This claim describes factual, analytical content about economic trends and contains no reference to emotional language, emojis, or affective tone. Since the Emotion Words & Emoji category looks for direct markers of emotion (like “happy,” “sad,” “😭”), and none are present or implied in the claim, the alignment is essentially nonexistent. 
+
+[Example 3]
+Claim: The speaker is expressing happiness at a positive outcome.
+Category: Valence
+Category Alignment Rating: 1.0
+Reasoning: The claim directly identifies the emotional tone as happiness and attributes it to a positive outcome, which maps precisely onto the Valence category. Valence is concerned with whether the emotional tone is pleasant or unpleasant, and happiness due to a good result is a prototypical example of high positive valence. There are no additional cues in the claim suggesting other categories (like specific emotion words or punctuation), so Valence is both the most relevant and strongly aligned.
+
+Now, determine the category and alignment rating for the following claim:
+Claim: {}
 """

@@ -95,3 +95,42 @@ Now evaluate the following:
 Input: (see attached image)
 Claim: {}
 """
+
+relevance_emotion = """You will be given a Reddit comment, its emotion label, and a claim that may or may not be relevant to an explanation of the emotion label. Your task is to decide whether the claim is relevant to explaining the emotion label for the specific text comment.
+
+A claim is relevant if and only if:
+(1) It is supported by the content of the utterance (i.e., it does not hallucinate or speculate beyond what is said).
+(2) It helps explain why the utterance received the given emotion label (i.e., it directly relates to tone, phrasing, sentiment, or other aspects relevant to the label).
+
+Return your answer as:
+Relevance: <Yes/No>
+Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
+
+Here are some examples:
+
+[Example 1]
+Text: Apologies, I take it all back as I’ve just seen his latest effort
+Emotion Label: remorse
+Claim: The speaker shows regret and self‑reproach
+Relevance: Yes
+Reasoning: The speaker is explicitly apologizing and retracting their previous statement, which directly indicates remorse. The claim about the speaker showing regret and self-reproach aligns with the tone and content of the utterance.
+
+[Example 2]
+Text: At least it’s not anything worse, and that you are still close to that person :)
+Label: relief
+Claim: The speaker is expressing happiness at a positive outcome.
+Relevance: No
+Reasoning: This claim is not relevant as it does not relate to relief. The claim speculates a different emotion (happiness) that doesn't directly relate to the sentiment or tone of the given text.
+
+[Example 3]
+Text: seriously wtf. I want to see how the whole hand went in detail. that was the sickest soulread ever
+Label: admiration
+Claim: The exclamations (“seriously wtf… sickest soulread ever”) show astonished praise for an impressive play.
+Relevance: Yes
+Reasoning: The exclamations "seriously wtf" and "sickest soulread ever" express strong admiration and astonishment, which directly supports the emotion label of admiration. The claim accurately describes the tone of praise and amazement present in the utterance.
+
+Now, determine whether the following claim is relevant to the given text and emotion label:
+Text: {}
+Emotion Label: {}
+Claim: {}
+"""
