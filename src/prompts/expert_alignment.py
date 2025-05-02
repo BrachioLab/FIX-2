@@ -129,5 +129,5 @@ Reasoning: The claim refers to difficulty visualizing the cystic plate because o
 ```
 
 Now, determine the category and alignment rating for the following claim:
-Claim: [[CLAIM]]
+Claim: {}
 """
