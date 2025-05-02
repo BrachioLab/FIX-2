@@ -57,3 +57,21 @@ Study these examples and fully understand the task. Now, research the field of l
 
 Your output should be a list of expert criteria, each 1 sentence long, and citations to support each criteria. Feel free to have as many expert criteria as you deem necessary. The criteria should be clear, succinct and non-overlapping with each other.
 """
+
+deep_research_massmaps = """
+You are an expert in cosmology. You have a deep understanding of this subject. 
+Your task is to behave like an expert cosmologist and identify which criteria are important to consider for the following task:
+
+Task description:
+Input: A weak lensing map, which is the spatial distribution of matter density in the universe.
+Output: A prediction for Omega_m (which captures the average energy density of all matter in the universe (relative to the total energy density which includes radiation and dark energy)) and a prediction for sigma_8 (which describes the fluctuation of matter distribution)
+
+Here are some examples:
+[Example 1] (in the first image) Omega=0.1845703125, sigma=0.9883788824081421
+[Example 2] (in the second image) Omega=0.10371093451976776, sigma=1.190527319908142
+[Example 3] (in the third image) Omega=0.29082030057907104, sigma=0.4727539122104645
+
+Study these examples and fully understand the task. Now, research the field of cosmology in order to determine a list of criteria that an expert cosmologist would utilize if they were performing the above task.
+
+Your output should be a list of expert criteria, each 1 sentence long, and citations to support each criteria. Feel free to have as many expert criteria as you deem necessary. The criteria should be clear, succinct and non-overlapping with each other.
+"""
