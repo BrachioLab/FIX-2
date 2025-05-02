@@ -19,7 +19,12 @@ import math
 from tqdm.auto import tqdm
 from matplotlib.colors import LinearSegmentedColormap
 
-from .prompts.claim_decomposition import decomposition_massmaps
+from pathlib import Path
+from PIL import Image
+import PIL
+
+from prompts.claim_decomposition import decomposition_massmaps
+from prompts.relevance_filtering import relevance_massmaps
 
 cache = Cache(os.environ.get("CACHE_DIR"))
 
@@ -37,6 +42,7 @@ class MassMapsExample:
         self.relevant_claims = []
         self.alignment_scores = []
         self.expert_criteria = []
+        self.alignment_reasonings = []
 
 def massmap_to_pil(tensor):
     """
@@ -188,10 +194,6 @@ def get_example_message(image, user_text, user_prompt, assistant_text=None, assi
     else:
         image_payload = []
     
-    user_message = {'role': 'user', 'content': image_payload + [
-            {'type': 'text', 'text': user_prompt.format(user_text)}
-        ]
-        }
     if assistant_prompt is not None and assistant_text is not None:
         if isinstance(assistant_text, (list, tuple)) or (hasattr(assistant_text, '__iter__') and not isinstance(assistant_text, str)):
             assistant_message = {'role': 'assistant', 'content': [{'type': 'text', 'text': assistant_prompt.format(*assistant_text)}]}
@@ -229,35 +231,46 @@ def get_llm_output(prompt, images=None, system_prompt='', model='gpt-4o'):
     system_prompt: str
     """
     messages = get_messages(prompt, images, system_prompt)
-    response = client.chat.completions.create(
-            model=model,
-            messages=messages,
-            response_format={'type': 'text'},
-            temperature=0,
-            max_tokens=500,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0
-        )
-    return response.choices[0].message.content
+    for i in range(3):
+        try:
+            response = client.chat.completions.create(
+                    model=model,
+                    messages=messages,
+                    response_format={'type': 'text'},
+                    temperature=0,
+                    max_tokens=500,
+                    top_p=1,
+                    frequency_penalty=0,
+                    presence_penalty=0
+                )
+            return response.choices[0].message.content
+        except Exception as e:
+            print("Try {}; Error: {}".format(str(i), str(e)))     
+            time.sleep(3)
+    return "ERROR"
 
 @cache.memoize()
 def get_llm_output_from_messages(messages, model='gpt-4o'):
     """
     messages: list of messages
     """
-    response = client.chat.completions.create(
-            model=model,
-            messages=messages,
-            response_format={'type': 'text'},
-            temperature=0,
-            max_tokens=500,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0
-        )
-    return response.choices[0].message.content
-
+    for i in range(3):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages,
+                response_format={'type': 'text'},
+                temperature=0,
+                max_tokens=500,
+                top_p=1,
+                frequency_penalty=0,
+                presence_penalty=0
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            print("Try {}; Error: {}".format(str(i), str(e)))     
+            time.sleep(3)
+    return "ERROR"
 
 @cache.memoize()
 def get_llm_score(prompt, images=None, system_prompt=None, model='gpt-4o') -> Tuple[str, float]:
@@ -368,7 +381,7 @@ def isolate_individual_features(
     """
 
     prompt = decomposition_massmaps.format(explanation)
-    raw_atomic_claims = get_llm_output(prompt)
+    response = get_llm_output(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -376,41 +389,6 @@ def isolate_individual_features(
     claims = response.split("\n")
 
     return claims
-
-#     system_prompt_text2claims = """You will be given a paragraph that explains the reasoning behind using weak lensing map to predict two cosmological parameters Omega_m (which captures the average energy density of all matter in the universe (relative to the total energy density which includes radiation and dark energy)) and sigma_8 (which describes the fluctuation of matter distribution).
-
-# Your task is to decompose this explanation into individual claims that are:
-# Atomic: Each claim should express only one clear idea or judgment.
-# Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
-# Faithful: The claims must preserve the original meaning, nuance, and tone. 
-
-# Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
-
-# Here is an example of how to format your output:
-# INPUT: The weak lensing map shows a distribution of matter density with varying colors indicating different density levels. The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density. These clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe. The blue areas represent voids, indicating low-density regions. The balance between these voids and clusters helps in estimating sigma_8, which measures the amplitude of matter fluctuations. The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter. This balance implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids. The presence of distinct clusters and voids also suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
-# OUTPUT: 
-# ```json
-# [
-# "The weak lensing map shows a distribution of matter density with varying colors indicating different density levels.",
-# "The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density.",
-# "The present clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe.",
-# "The blue areas on the map represent voids, indicating low-density regions.",
-# "The balance between voids and clusters on the map helps in estimating sigma_8, which measures the amplitude of matter fluctuations.",
-# "The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter.",
-# "A balanced distribution of matter implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids.",
-# "The presence of distinct clusters and voids suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude."
-# ]
-# ```
-
-# Now decompose the following paragraph into atomic, standalone claims:
-# INPUT: {}
-# """.format(explanation)
-
-
-    raw_atomic_claims = get_llm_output(explanation, system_prompt=system_prompt_text2claims)
-    # return raw_atomic_claims
-    return text2json(raw_atomic_claims)
-
 
 def is_claim_relevant(
     example: str | torch.Tensor,
@@ -428,66 +406,65 @@ def is_claim_relevant(
         answer (str): The LLM-generated answer to the example.
         atomic_claim (str): A claim to check if it is relevant to the example.
     """
-    
-    system_prompt_is_claim_relevant = f"""You are an expert in cosmology. Below is a reasoning chain explaining why a specific prediction decision was made for a supernova candidate, based on its time-series data.
-The data is a weak lensing map, as shown in the image, which is the spatial distribution of matter density in the universe, for Omega_m={answer['Omega_m']}, sigma_8={answer['sigma_8']}. Use the full context of the data in the image, to evaluate whether each claim is relevant. The possible values for Omega_m is between [0.1, 0.5], and for sigma_8 is between [0.4, 1.4].
 
-Here is the colormap used to create the visualization of this weak lensing map for your reference for mapping the image to numbers:
-custom_cmap = get_custom_colormap([
-            (-3, "blue"),   # Blue at -3 std
-            (0, "gray"),   # Gray at 0 (below this is void)
-            (2.9, "red"),   # Red at 2.9 std (this is the upperbound for not being a cluster)
-            (3, "yellow"),   # Yellow at 3 std (above this is cluster)
-            (20, "white")  # White at 20 std
-        ])
+    # Get the images
+    # 1. Locate the *directory that this .py file lives in*
+    here = Path(__file__).resolve().parent          # .../your_script_folder
 
-A claim is considered relevant only if both of the following conditions are satisfied:
-    (1) It is directly supported by the image data (e.g., it refers to trends, changes, or patterns in intensity across different spatial positions in the weak lensing map).
-    (2) It helps explain why the model predicted these specific values for Omega_m and sigma_8 (e.g., it highlights characteristics that distinguish these values from other potential values).
-    Please only answer YES or NO.
-    Here are some examples:
-    [Example 1]
-    Claim: The dataset represents the spatial distribution of matter density in the universe.
-    Answer: NO
-    This is a general statement and does not justify any specific prediction.
-    [Example 2]
-    Claim: The weak lensing map shows several yellow pixels close to each other on the left side, suggesting the existence of high-density regions or clusters.
-    Answer: YES
-    This is a specific cosmological structure observable in the data and indicative of cosmological parameters such as sigma_8.
-    [Example 3]
-    Claim: Voids are large low density regions in space.
-    Answer: NO
-    This is background knowledge, not derived from the data.
-    [Example 4]
-    Claim: There is a gray pixel in the upper left corner with value 6.2992e-04 in the data.
-    Answer: NO
-    Simply listing pixel values does not explain a prediction.
+    # 2. Point to the images folder *relative to* that location
+    img_dir = here / "prompts"                       # e.g. .../your_script_folder/images
 
-    Now, determine whether the following claim is relevant to the given the data in the provided image and prediction result.
-"""
+    # 3. Collect every PNG/JPG (adjust the glob pattern as needed)
+    few_shot_image_paths = sorted(img_dir.glob("massmaps_relevance*.png")) + \
+                sorted(img_dir.glob("massmaps_relevance*.jpg"))
 
-    prompt_is_claim_relevant = """Claim:
-{}
-"""
+    # 4. Load them (returns a list of PIL Images here)
+    few_shot_images = [PIL.Image.open(p) for p in few_shot_image_paths]
 
-    image_pil = massmap_to_pil_norm(example)
+    assert len(few_shot_images) > 0
 
-    system_message = get_system_message(system_prompt_is_claim_relevant)
-    # def get_few_shot_user_assistant_messages(images_list, user_text_list, assistant_text_list, user_prompt, assistant_prompt):
-    
-    # def get_example_message(image, user_text, user_prompt, assistant_text=None, assistant_prompt=None):
+    # # ── optional: quick sanity check ─────────────────────────────────────────
+    # print(f"Found {len(few_shot_images)} few_shot_images:")
+    # for p in few_shot_image_paths:
+    #     print("  •", p.name)
 
-# def get_example_message(image, user_text, user_prompt, assistant_text=None, assistant_prompt=None):
-    user_message, assistant_message = get_example_message(image_pil, user_text=atomic_claim, user_prompt=prompt_is_claim_relevant)
 
-    messages = system_message + [user_message]
+    prompt = relevance_massmaps.format(f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", atomic_claim)
 
-    completion = get_llm_output_from_messages(messages)
+    current_image_pil = massmap_to_pil_norm(example)
 
-    try:
-        return completion.split('\n')[0].strip().replace('Answer for relevance: ', '').lower() == "yes"
-    except:
-        return None
+    image_payloads = []
+    for image in few_shot_images:
+        image_payloads.append(
+            {
+                "type": 'image_url',
+                'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
+            }
+    )
+
+    image_payloads.append(
+            {
+                "type": 'image_url',
+                'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(current_image_pil)}"}
+            }
+        )
+
+    user_message = {
+        'role': 'user',
+        'content': image_payloads + [
+            {'type': 'text', 'text': prompt}
+        ]
+    }
+
+    messages = [user_message]
+
+    response = get_llm_output_from_messages(messages)
+
+    response = response.replace("Relevance:", "").strip()
+    response = response.split("\n")
+    relevance = response[0].strip()
+    reasoning = response[1].replace("Reasoning:", "").strip()
+    return relevance, reasoning
 
 def distill_relevant_features(
     example: str | torch.Tensor,

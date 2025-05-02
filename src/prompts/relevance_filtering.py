@@ -95,3 +95,49 @@ Now evaluate the following:
 Input: (see attached image)
 Claim: {}
 """
+
+relevance_massmaps = """You will be given an image of a weak lensing mass map, its prediction for Omega_m and sigma_8, and a claim that may or may not be relevant to an explanation of the prediction. Your task is to decide whether the claim is relevant to explaining the prediction for this specific mass map.
+
+A claim is relevant if and only if:
+(1) It is supported by the content of the mass map (i.e., it does not hallucinate or speculate beyond what is said).
+(2) It helps explain why the mass map received the given prediction (i.e., it directly relates to the mass map's features, such as the distribution of mass, the presence of voids or clusters, or the overall structure of the map).
+
+Return your answer as:
+Relevance: <Yes/No>
+Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
+
+Here are some examples:
+
+[Example 1]
+Input: (Image 1)
+Output: Omega_m = 0.1041, sigma_8 = 0.9396
+Claim: The dataset represents the spatial distribution of matter density in the universe.
+Relevance: No
+Reasoning: This is a general statement and does not justify any specific prediction.
+
+[Example 2]
+Input: (Image 2)
+Output: Omega_m = 0.3934, sigma_8 = 0.7018
+Claim: The weak lensing map shows several yellow pixels close to each other on the left side, suggesting the existence of high-density regions or clusters.
+Relevance: Yes
+Reasoning: This is a specific cosmological structure observable in the data and indicative of cosmological parameters such as sigma_8.
+
+[Example 3]
+Input: (Image 3)
+Output: Omega_m = 0.3586, sigma_8 = 0.9762
+Claim: Voids are large low density regions in space.
+Relevance: No
+Reasoning: This is background knowledge, not derived from the data.
+
+[Example 4]
+Input: (Image 4)
+Output: Omega_m = 0.4612, sigma_8 = 0.5614
+Claim: There is a gray pixel in the upper left corner with value 6.2992e-04 in the data.
+Relevance: No
+Reasoning: Simply listing pixel values does not explain a prediction.
+
+Now, determine whether the following claim is relevant to the given mass map and prediction:
+Input: (Image 5)
+Output: {}
+Claim: {}
+"""
