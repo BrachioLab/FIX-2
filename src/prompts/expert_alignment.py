@@ -90,10 +90,12 @@ Your task is as follows:
 2. Rate how strongly the criterion aligns with the Claim on a scale of 0.0-1.0 (in increments of 0.1), where 0.0 means "not at all" and 1.0 means "perfectly."
 
 Return your answer exactly in this format:
-```
-Category: <name of selected criterion>
-Criterion Alignment Rating: <rating>
-Reasoning: <A brief explanation of why you selected the criterion and how you judged the alignment rating>
+```json
+{
+    "Category": "<name of selected criterion>",
+    "Alignment": <the alignment rating for this category>,
+    "Reasoning": "<A brief explanation of why you selected the criterion and how you judged the alignment rating>"
+}
 ```
 
 -----
@@ -114,23 +116,32 @@ Examples:
 
 Example 1
 Claim: "The fat and fibrous tissue overlying Calot's triangle has been fully excised, exposing only two tubular structures."
-```
-Category: Calot's triangle cleared
-Criterion Alignment Rating: 1.0
-Reasoning: The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly.
+
+Output 1:
+```json
+{
+    "Category": "Calot's triangle cleared",
+    "Alignment": 1.0,
+    "Reasoning": "The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly."
+}
 ```
 
 Example 2
 Claim: "The cystic plate is not visible due to dense adhesions, making the gallbladder-liver plane indistinct."
-```
-Category: Cystic plate exposed
-Criterion Alignment Rating: 0.2
-Reasoning: The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score.
+
+Output 2:
+```json
+{
+    "Category": "Cystic plate exposed",
+    "Alignment": 0.2,
+    "Reasoning": "The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score."
+}
 ```
 
 Now, determine the category and alignment rating for the following claim:
-Claim: {}
+Claim: [[CLAIM]]
 """
+
 
 alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.
 
