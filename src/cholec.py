@@ -91,61 +91,6 @@ class CholecDataset(Dataset):
         }
 
 
-def image_to_base64(
-    image: torch.Tensor | np.ndarray | PIL.Image.Image,
-    include_url_prefix: bool = True,
-    image_format: str = "PNG"
-) -> str:
-    """
-    Convert an image to a base64-encoded string, optionally with a data URL prefix.
-    
-    This function handles various input image formats (PyTorch tensor, NumPy array, or PIL Image)
-    and converts them to a standardized base64 string representation. The output can be used
-    for web-based image transmission or storage.
-    
-    Args:
-        image: Input image in one of the following formats:
-            - torch.Tensor: PyTorch tensor (C,H,W) or (H,W,C)
-            - np.ndarray: NumPy array (H,W,C) or (C,H,W)
-            - PIL.Image.Image: PIL Image object
-        include_url_prefix: If True, prepends "data:image/png;base64," to the output string
-        image_format: The format to save the image in (default: "PNG")
-        
-    Returns:
-        str: Base64-encoded image string, optionally with data URL prefix
-        
-    Raises:
-        ValueError: If the input image format is invalid or conversion fails
-    """
-    try:
-        # Convert to numpy array if tensor
-        if isinstance(image, torch.Tensor):
-            image = image.cpu().numpy()
-        
-        # Ensure image is in uint8 format with values 0-255
-        if image.dtype != np.uint8:
-            image = (image * 255).astype(np.uint8)
-        
-        # Handle channel-first format (C,H,W) -> (H,W,C)
-        if len(image.shape) == 3 and image.shape[0] == 3:
-            image = image.transpose(1, 2, 0)
-        
-        # Convert to PIL Image
-        pil_image = PIL.Image.fromarray(image)
-        
-        # Convert to base64
-        with io.BytesIO() as buffer:
-            pil_image.save(buffer, format=image_format)
-            base64_str = base64.b64encode(buffer.getvalue()).decode('utf-8')
-            
-            if include_url_prefix:
-                return f"data:image/{image_format.lower()};base64,{base64_str}"
-            return base64_str
-            
-    except Exception as e:
-        raise ValueError(f"Failed to convert image to base64: {str(e)}")
-
-
 def base64_to_image(base64_str: str, format: str = "tensor") -> torch.Tensor | PIL.Image.Image:
     """
     Convert a base64 string to an image.
@@ -247,27 +192,10 @@ def get_llm_generated_answer(
     ```
     """
 
-    messages = [
-        {'role': 'system', 'content': [
-            {'type': 'text', 'text': system_prompt}
-        ]},
-        {'role': 'user', 'content': [
-            {
-                "type": 'image_url',
-                'image_url': {'url': image_to_base64(image)}
-            },
-            {'type': 'text', 'text': user_prompt}
-        ]}
-    ]
-    
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages,
-        response_format={"type": "json_object"} 
-    )
+    llm = MyOpenAIModel(model_name=model)
+    response = llm((system_prompt, user_prompt, image), response_format={"type": "json_object"})
+    result = json.loads(response)
 
-    result = json.loads(response.choices[0].message.content)
-    
     if decode_base64_masks:
         for mask_name in ["SafeMask", "UnsafeMask"]:
             if mask_name in result and result[mask_name]:
@@ -306,47 +234,6 @@ def isolate_individual_features(
     return all_claims
 
 
-def is_claim_relevant(
-    example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
-    atomic_claim: str,
-    model: str = default_model,
-) -> bool:
-    """
-    Check if an atomic claim is relevant to the example.
-
-    Args:
-        example: The input image from the cholecystectomy dataset
-        atomic_claim: A single claim extracted from the explanation
-        model: The OpenAI model to use
-
-    Returns:
-        bool: True if the claim is relevant to the example, False otherwise
-    """
-
-    prompt = relevance_cholec.format(atomic_claim)
-
-    messages = [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "image_url",
-                    "image_url": {"url": image_to_base64(example_image)}
-                },
-                {"type": "text", "text": prompt}
-            ]
-        }
-    ]
-    
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages
-    )
-
-    result = response.choices[0].message.content
-    return "relevance: yes" in result.lower()
-
-
 def distill_relevant_features(
     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
     atomic_claims: list[str],
@@ -355,10 +242,16 @@ def distill_relevant_features(
     """
     Distill the relevant features from the atomic claims.
     """
-    relevant_claims = []
-    for claim in atomic_claims:
-        if is_claim_relevant(example_image, claim, model):
-            relevant_claims.append(claim)
+
+    prompts = [(relevance_cholec.format(claim), example_image) for claim in atomic_claims]
+    llm = MyOpenAIModel(model_name=model)
+    results = llm(prompts)
+
+    relevant_claims = [
+        claim for claim, result in zip(atomic_claims, results)
+        if "relevance: yes" in result.lower()
+    ]
+
     return relevant_claims
 
 
