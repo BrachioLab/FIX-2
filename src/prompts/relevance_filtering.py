@@ -58,3 +58,6 @@ Utterance: {}
 Politeness Rating: {}
 Claim: {}
 """
+
+relevance_cholec = """
+"""
