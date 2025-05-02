@@ -1,4 +1,4 @@
-alignment_template = """You will be given [description of input, output, claim, and expert category]
+alignment_template = """You will be given [description of claim and expert category]
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
@@ -20,16 +20,14 @@ Here are some examples:
 [Example 3]
 
 Now, determine the category and alignment rating for the following claim:
-Input: {}
-Output: {}
 Claim: {}
 """
 
 
-alignment_poltieness = """You will be given an utterance, its politeness rating on a 1-5 scale (where 1: very rude and 5: very polite), and a claim that relates to why that rating was given. You will also be given a series of lexical categories that relate to politeness.
+alignment_poltieness = """You will be given a single claim that relates to why a politeness rating was given to an utterance. You will also be given a series of categories that an expert linguist would use to perform this type of politeness classification.
 
 Your task is as follows:
-1. Determine which lexical category is most aligned with the claim. 
+1. Determine which expert category is most aligned with the claim. 
 2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest). 
 
 Return your answer as:
@@ -39,61 +37,46 @@ Reasoning: <A brief explanation of why you selected the chosen category and why 
 
 -----
 Lexical categories:
-1. Apologetic: Words and phrases used to acknowledge mistakes or express regret. (sorry, woops, oops, sry, apologize)
-2. Deference: Polite words that convey respect, admiration, or acknowledgment of someone's status or authority. (great, good, nice, interesting, cool)
-3. Direct Question: Words commonly used to form explicit questions seeking information or clarification. (what, where, why, who, when)
-4. Discourse Marker: Common transition words used to structure speech or writing. (so, then, and, but, or)
-5. Emergency: Phrases indicating urgency, immediate attention, or emergency situations. (right now, rn, as soon as possible, asap, immediately)
-6. Factuality: Expressions that assert factual information or emphasize reality. (in fact, actually, the point, the reality, the truth)
-7. First Person Plural: Sentences that contain a first-person plural pronoun. (we, our, ours, us, ourselves)
-8. First Person Singular: Sentences that contain a first-person singular pronoun. (I, my, mine, myself, me)
-9. First Person Start: Sentences that begin with a first-person singular pronoun. (I, my, mine, myself)
-10. Gratitude: Words and phrases that express appreciation and thankfulness. (thanks, thx, thank you, thank u, i appreciate)
-11. Greeting: Words and phrases used to initiate interaction or acknowledge someone’s presence. (hi, hello, hey)
-12. Negative Emotion: Words and expressions that convey strong negative emotions or discontent. (bullshit, fuck, fucking, damn, shit)
-13. Positive Emotion: Words and expressions that convey happiness, excitement, or approval. (abound, prefer, pride, priceless, pretty)
-14. Hedging: Words that soften statements, making them less direct or assertive. (think, usually, unclearly, unclear, uncertainly)
-15. Directive Speech Act: Expressions that instruct, command, or request an action from the listener. (can you, will you, can u, will u)
-16. Indirectness: Words that introduce indirectness in communication, often for politeness or subtlety. (btw, by the way)
-17. Ingroup Identity: Words that signal belonging to a specific social group or community. (mate, bro, homie, dude)
-18. Politeness Marker: Words that make a request or instruction more courteous. (please, pls, plz, plse)
-19. Polite Start: Sentences that begin with a politeness marker. (please, pls, plz)
-20. Praise: Expressions that convey approval, admiration, or compliments. (awesome, outstanding, excellent, great, neat)
-21. Commitment Marker: Words that express certainty or a strong commitment to an action or belief. (must, definitely, sure, definite, surely)
-22. Second Person: Sentences that contain a second-person pronoun. (you, your, yours, yourself, u)
-23. Second Person Start: Sentences that begin with a second-person pronoun. (you, your, yours, yourself)
-24. Polite Request: Phrases that express politeness in requests or suggestions using modal verbs. (could you, would you, could u, would u)
-25. Togetherness: Words that emphasize unity, collective action, or inclusivity. (together)
-26. Direct Address: Words directly addressing the listener in conversation. (you, u)
+1. Honorifics and Formal Address: The presence of respectful or formal address forms (e.g., “sir,” “usted,” “您”) signals politeness by expressing deference to the hearer’s status or social distance.
+2. Courteous Politeness Markers: Words such as “please,” “kindly,” or their multilingual variants soften requests and reflect courteous intent.
+3. Gratitude Expressions: Use of expressions like “thank you,” “thanks,” or “I appreciate it” signals recognition of the other’s contribution and positive face.
+4. Apologies and Acknowledgment of Fault: Phrases such as “sorry” or “I apologize” express humility and repair social breaches, marking a clear politeness strategy.
+5. Indirect and Modal Requests: Requests using modal verbs (“could you,” “would you”) or softening cues like “by the way” reduce imposition and signal respect for the hearer’s autonomy.
+6. Hedging and Tentative Language: Words like “I think,” “maybe,” or “usually” lower assertion strength and make statements more negotiable, reflecting interpersonal sensitivity.
+7. Inclusive Pronouns and Group-Oriented Phrasing: Use of “we,” “our,” or “together” expresses solidarity and reduces hierarchical distance in requests or critiques.
+8. Greeting and Interaction Initiation: Opening with a salutation (“hi,” “hello”) creates a cooperative tone and frames the conversation positively.
+9. Compliments and Praise: Positive evaluations (“great,” “awesome,” “neat”) attend to the hearer’s positive face and foster a friendly environment.
+10. Softened Disagreement or Face-Saving Critique: When disagreeing, the use of softeners, partial agreements, or concern for clarity preserves the hearer’s dignity.
+11. Urgency or Immediacy of Language: Utterances emphasizing emergency or speed (“asap,” “immediately”) can heighten perceived imposition and reduce politeness if not softened.
+12. Avoidance of Profanity or Negative Emotion: The presence of strong negative words or swearing is a key indicator of rudeness and face threat.
+13. Bluntness and Direct Commands: Requests lacking modal verbs or mitigation (“Do this”) are perceived as less polite due to their imperative structure.
+14. Empathy or Emotional Support: Recognizing the hearer’s emotional context or challenges is a politeness strategy of concern and goodwill.
+15. First-Person Subjectivity Markers: Statements that begin with “I think,” “I feel,” or “In my view” convey humility and subjectivity, reducing imposition.
+16. Second Person Responsibility or Engagement: Sentences starting with “you” or directly addressing the hearer can either signal engagement or come across as accusatory, depending on context and tone.
+17. Questions as Indirect Strategies: Questions (“what do you think?” or “could you clarify?”) reduce imposition by inviting rather than demanding input.
+18. Discourse Management with Markers: Use of discourse markers like “so,” “then,” “but” organizes conversation flow and may help manage face needs in conflict or negotiation.
+19. Ingroup Language and Informality: Use of group-identifying slang or casual expressions (“mate,” “dude,” “bro”) may foster solidarity or seem disrespectful, depending on relational norms.
 -----
 
 Here are some examples:
 [Example 1]
-Utterance: "There is no such fact - you are just making things up. There is no reason to believe that any person reading about Bologna would be particularly interested in Kappa Sigma. If they wanted to know about Kappa Sigma, they would read the Kappa Sigma article instead.."
-Politeness Rating: 2
 Claim: The utterance accuses the other person of fabricating information.
-Category: Negative Emotion
-Category Alignment Rating: 0.8
-Reasoning: The accusatory tone and claim of fabrication imply a confrontational or hostile interaction, which strongly aligns with negative emotion. While the emotion is more implicit than explicit profanity or insult, the accusatory framing still carries a strong negative charge.
+Category: Second Person Responsibility or Engagement
+Category Alignment Rating: 0.9
+Reasoning: The claim centers on the utterance accusing the other person of fabricating information, which aligns strongly with the use of direct second-person language (“you are just making things up”). This construction directly targets the listener and assigns blame, which is a key aspect of the Second Person Responsibility or Engagement category. 
 
 [Example 2]
-Utterance: "Deleted reference to REM sleep in the first sentence. It simply is not true. In fact, REM deprivation is a common side effect of antidepressant use (some attribute their effects to REM deprivation)."
-Politeness Rating: 3
 Claim: The sentence structure is overly complex and difficult to follow.
-Category: Discourse Marker
+Category: Discourse Management with Markers
 Category Alignment Rating: 0.1
-Reasoning: The claim is about sentence complexity and structure, which does not relate to any of the listed lexical categories, including Discourse Marker, which refers to specific connecting words like “so” or “but.” The utterance does not exhibit structural markers that would directly contribute to complexity based on the provided categories, making the alignment very weak.
+Reasoning: The claim concerns sentence complexity and readability, which is weakly aligned with how Discourse Management with Markers functions—lack of these markers impact information organization or textual flow. However, this category has low alignment because the claim is more about syntactic complexity than interpersonal politeness strategies. No other category more directly addresses sentence structure, so this is the closest fit, but with very low alignment.
 
 [Example 3]
-Utterance: "Tetra-gram is a compound word as is the penta-gram. Penta refers to the number 5 in Greek, tetra refers to the number 4 and gram refers to the word line in both cases. Obviously a star shape can't be shaped with 4 lines."
-Politeness Rating: 3
 Claim: The use of "obviously" might suggest a slight assumption of common knowledge.
-Category: Factuality
+Category: Hedging and Tentative Language
 Category Alignment Rating: 0.6
-Reasoning: The utterance presents factual information about word origins and geometric logic, and the claim focuses on the use of "obviously," which implies assumed knowledge rather than asserting a fact. This aligns somewhat with Factuality, but not strongly—Factuality is involved, but the assumption of common knowledge is more about tone than fact.
+Reasoning: The word "obviously" implies a presumption that the information should be universally known or accepted, which can reduce the speaker's humility and increase the assertiveness of the statement. This contrasts with hedging strategies that usually aim to soften claims and maintain interpersonal sensitivity. While "obviously" itself is not a hedge, its use relates to the degree of assertiveness in an utterance—making this category moderately relevant. The alignment is not perfect because “obviously” actually opposes hedging, but the connection lies in the shared focus on epistemic stance and assertion strength.
 
 Now, determine the category and alignment rating for the following claim:
-Utterance: {}
-Politeness Rating: {}
 Claim: {}
 """
