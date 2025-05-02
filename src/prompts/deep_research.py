@@ -42,3 +42,18 @@ Study these examples and fully understand the task. Now, research the field of p
 
 Your output should be a list of expert criteria, each 1 sentence long, and citations to support each criteria. Feel free to have as many expert criteria as you deem necessary. The criteria should be clear, succinct and non-overlapping with each other. Include critera relating to lexical, syntactic, pragmatic, socio-cultural dimensions, and/or anything else you think is relevant to the task.
 """
+
+deep_research_cholec = """
+You are an expert in laparoscopic cholecystectomy. You have a deep understanding of this subject. 
+Your task is to behave like an expert surgeon and identify which criteria are important to consider for the following task:
+
+Task description:
+Input: An image of the surgery site.
+Output: A mask that denotes where it safe and unsafe to operate.
+
+Please see the attached image as an example.
+
+Study these examples and fully understand the task. Now, research the field of laparoscopic cholecystectomy in order to determine a list of criteria that an expert surgeon would utilize if they were performing the above task.
+
+Your output should be a list of expert criteria, each 1 sentence long, and citations to support each criteria. Feel free to have as many expert criteria as you deem necessary. The criteria should be clear, succinct and non-overlapping with each other.
+"""
