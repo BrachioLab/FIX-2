@@ -28,7 +28,7 @@ alignment_politeness = """You will be given a single claim that relates to why a
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest). 
+2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
 
 Return your answer as:
 Category: <category>
