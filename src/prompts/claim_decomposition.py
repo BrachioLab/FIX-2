@@ -42,3 +42,30 @@ The lack of explicit politeness markers prevents the utterance from being consid
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
 """
+
+decomposition_massmaps = """
+You will be given a paragraph that explains why certain Omega_m and sigma_8 values were attributed to a weak lensing mass map. Your task is to decompose this explanation into individual claims that are:
+
+Atomic: Each claim should express only one clear idea or judgment.
+Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
+Faithful: The claims must preserve the original meaning, nuance, and tone. Do not omit hedging language (e.g., "seems to," "somewhat," "lacks overt markers") or subjective phrasing if present.
+
+Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
+
+Here is an example of how to format your output:
+
+INPUT: The weak lensing map shows a distribution of matter density with varying colors indicating different density levels. The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density. These clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe. The blue areas represent voids, indicating low-density regions. The balance between these voids and clusters helps in estimating sigma_8, which measures the amplitude of matter fluctuations. The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter. This balance implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids. The presence of distinct clusters and voids also suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
+
+OUTPUT:
+The weak lensing map shows a distribution of matter density with varying colors indicating different density levels.
+The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density.
+The present clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe.
+The blue areas on the map represent voids, indicating low-density regions.
+The balance between voids and clusters on the map helps in estimating sigma_8, which measures the amplitude of matter fluctuations.
+The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter.
+A balanced distribution of matter implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids.
+The presence of distinct clusters and voids suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
+
+Now decompose the following paragraph into atomic, standalone claims:
+INPUT: {}
+"""

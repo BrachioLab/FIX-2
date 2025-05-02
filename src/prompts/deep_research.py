@@ -71,7 +71,7 @@ Here are some examples:
 [Example 2] (in the second image) Omega=0.10371093451976776, sigma=1.190527319908142
 [Example 3] (in the third image) Omega=0.29082030057907104, sigma=0.4727539122104645
 
-Study these examples and fully understand the task. Now, research the field of cosmology in order to determine a list of criteria that an expert cosmologist would utilize if they were performing the above task.
+Study these examples and fully understand the task. Now, research the field of cosmology in order to determine a list of visually recognizable criteria that an expert cosmologist would utilize if they were performing the above task, which should not be computing specific statistics. Note that you do not have any other information besides the Omega and sigma information.
 
 Your output should be a list of expert criteria, each 1 sentence long, and citations to support each criteria. Feel free to have as many expert criteria as you deem necessary. The criteria should be clear, succinct and non-overlapping with each other.
 """
