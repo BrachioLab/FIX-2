@@ -1,0 +1,38 @@
+
+vanilla_baseline = """In addition to the answer, please provide a single paragraph under 200 characters explaining why you gave the answer you did."""
+
+cot_baseline = """To come up with the correct answer, think step-by-step. You should walk through each step in your reasoning process and explain how you arrived at the answer. Describe your step-by-step reasoning in a single paragraph under 200 characters. This paragraph will serve as the explanation for your answer."""
+
+socratic_baseline = """To come up with the correct answer, have a conversation with yourself. Pinpoint what you need to know, ask critical questions, and constantly challenge your understanding of the field. Describe this question-and-answer journey in a single paragraph under 200 characters. This paragraph will serve as the explanation for your answer."""
+
+least_to_most_baseline = """To come up with the correct answer, determine all of the subquestions you must answer. Start with the easiest subquestion, answer it, and then use that subquestion and answer to tackle the next subquestion. Describe your subquestion decomposition and answers in a single paragraph under 200 characters. This paragraph will serve as the explanation for your answer."""
+
+#-----------------------------------------------------------
+
+emotion_prompt = """What is the emotion of the following text? Here are the possible labels you could use: admiration, amusement, anger, annoyance, approval, caring, confusion, curiosity, desire, disappointment, disapproval, disgust, embarrassment, excitement, fear, gratitude, grief, joy, love, nervousness, optimism, pride, realization, relief, remorse, sadness, surprise, or neutral.
+
+[BASELINE_PROMPT]
+
+Your response should be 2 lines, formatted as follows:
+Label: <emotion label>
+Explanation: <explanation, as described above>
+
+Here is the text for you to classify.
+Text: {}
+"""
+
+politeness_prompt = """What is the politeness of the following utterance on a scale of 1-5? Use the following scale:
+1: extremely rude
+2: somewhat rude
+3: neutral
+4: somewhat polite
+5: extremely polite
+
+[BASELINE_PROMPT]
+
+Your response should be 2 lines, formatted as follows:
+Rating: <politeness rating>
+Explanation: <explanation, as desribed above>
+
+Utterance: {}
+"""
