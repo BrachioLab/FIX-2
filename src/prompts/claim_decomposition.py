@@ -127,7 +127,6 @@ Here is an example of how to format your output:
 
 INPUT: The value data shows significant variability, with both positive and negative values, indicating the presence of a strong peak and subsequent decline, a hallmark of SNIa light curves.
 
-
 OUTPUT:
 The value data shows significant variability.
 The data includes both positive and negative values.
@@ -157,7 +156,6 @@ The respiratory rate is 22.
 A respiratory rate of 22 is on the higher side.
 The pulse oximetry is 92%.
 A pulse oximetry reading of 92% indicates possible hypoxia.
-
 
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
