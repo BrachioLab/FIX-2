@@ -241,3 +241,123 @@ Reasoning: The claim directly identifies the emotional tone as happiness and att
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
+
+alignment_supernova = """You will be given a single claim why a such time-series data was classified to a certain class, where the possible classification categories include: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). You will also be given a series of categories that an expert astrophysicist would use to perform this type of supernova classification.
+
+Your task is as follows:
+1. Determine which expert category is most aligned with the claim. 
+2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest). 
+
+Return your answer as:
+Category: <category>
+Category Alignment Rating: <rating>
+Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
+
+-----
+Expert supernova categories:
+1. Contiguous non‑zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.
+2. Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.
+3. Peak‑to‑trough photometric amplitude separates high‑energy explosive events (multi‑magnitude outbursts) from low‑amplitude periodic or stochastic variables.
+4. Total event duration, measured from first detection to return to baseline, distinguishes short‑lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.
+5. Periodic light curves with stable periods and distinctive Fourier amplitude‑ and phase‑ratios (e.g., φ21, φ31) flag pulsators and eclipsing binaries rather than one‑off transients.
+6. Filter‑specific secondary maxima or shoulders in red/near‑IR bands—prominent in SNe Ia—are morphological features absent in most core‑collapse SNe.
+7. Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+
+-----
+
+Here are some examples:
+[Example 1]
+Claim: Observations are recorded at various wavelength overtime.
+Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category Alignment Rating: 
+Score: 0
+Reasoning: This is a general data format description rather than a discriminative feature. While it relates tangentially to Multi-wavelength Observability, it lacks any mention of spectral variation or joint analysis, and doesn't aid in distinguishing classes.
+
+[Example 2]
+Claim: Consistent and distinct peaks are observed in value data at specific wavelength.
+Category: Periodic light curves with stable periods and distinctive Fourier amplitude‑ and phase‑ratios (e.g., φ21, φ31) flag pulsators and eclipsing binaries rather than one‑off transients.
+Category Alignment Rating: 0.6
+Reasoning: The mention of consistent and distinct peaks hints at periodic behavior, potentially corresponding to pulsators or binaries. However, the claim doesn’t mention periods or Fourier components explicitly, so the match is partial.
+
+[Example 3]
+Claim: Variations in intensity over time are typical of the lightcurve evolution of a supernova.
+Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category Alignment Rating: 0.7
+Reasoning: The claim refers to general light curve behavior, which aligns with the concept of smooth, evolving flux. It supports class differentiation but is too vague to tie to a specific morphological trend or SN type, hence not a perfect match.
+
+[Example 4]
+Claim: The flux value has a rapid increase and gradual decrease.
+Category: Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.
+Category Alignment Rating: 1.0
+Reasoning: This is a direct description of the fast-rise/slow-decline morphology mentioned in the expert criteria. It is a classic feature of many supernovae and maps perfectly to this category.
+
+[Example 5]
+Claim: Significant fluctuations and peaks in the data can be inferred as part of the light curve of a Type II supernova.
+Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category Alignment Rating: 0.8
+Reasoning: Type II SNe, especially SN II-P and SN II-L, are characterized by distinct plateau or linear decline phases. The claim’s wording aligns with the idea of significant, structured flux evolution but lacks specifics (e.g., plateau shape), so the alignment is strong but not perfect.
+
+Now, determine the category and alignment rating for the following claim:
+Claim: {}
+"""
+
+alignment_sepsis = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of sepsis within the next 12 hours (Yes/No). You will also be given a series of categories that an expert clinician would use to perform this type of sepsis prediction.
+
+Your task is as follows:
+1. Determine which expert category is most aligned with the claim. 
+2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+
+Return your answer as:
+Category: <category>
+Category Alignment Rating: <rating>
+Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
+
+-----
+Expert sepsis categories:
+1. Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+2. Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+3. A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
+4. A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.
+5. Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.
+6. Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.
+7. Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
+8. An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
+9. Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
+
+-----
+
+Here are some examples:
+[Example 1]
+Claim: The patient is 86 years old. 
+Category: Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+Category Alignment Rating: 1.0
+Reasoning: The claim directly references advanced age (≥ 65), which this category identifies as a strong sepsis risk factor—perfect alignment.
+
+[Example 2]
+Claim: The patient's temperature is 99.6°F, close to the fever threshold.
+Category: Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+Category Alignment Rating: 0.4
+Reasoning: The temperature is close to the SIRS threshold (>38°C), which makes it marginally relevant. It hints at possible early sepsis, but does not meet the SIRS criterion.
+
+[Example 3]
+Claim: The patient's pulse oximetry is 92%, indicating possible hypoxia.
+Category: An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
+Category Alignment Rating: 0.6
+Reasoning: Pulse oximetry isn’t directly a SOFA measure, but hypoxia relates conceptually to impaired oxygenation (PaO₂/FiO₂). The alignment is indirect but meaningful.
+
+[Example 4]
+Claim: An elevated white blood cell count suggests an inflammatory or infectious process.
+Category: Presence of ≥ 2 SIRS criteria
+Category Alignment Rating: 1.0
+Reasoning: Elevated WBC is explicitly listed under SIRS criteria, which are used to identify systemic inflammation in early sepsis.
+
+[Example 5]
+Claim: The patient's condition warrants close monitoring and further investigation for infection.
+Category: Administration of broad‑spectrum antibiotics or drawing of blood cultures…
+Category Alignment Rating: 0.5
+Reasoning: While this reflects suspicion of infection, it lacks concrete clinical action (like antibiotic administration or culture draws). 
+
+Now, determine the category and alignment rating for the following claim:
+Claim: {}
+"""
+
