@@ -142,6 +142,49 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
+alignment_massmaps = """You will be given a single claim that relates to why a prediction was given to a mass map. You will also be given a series of categories that an expert cosmologist would use to perform this type of cosmological parameter prediction.
+
+Your task is as follows:
+1. Determine which expert category is most aligned with the claim. 
+2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+
+Return your answer as:
+Category: <category>
+Category Alignment Rating: <rating>
+Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
+
+-----
+Expert cosmology categories:
+1. Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks (massive cluster-like spots with pixel intensity > 3 standard deviations above the mean) in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
+2. Void Size and Frequency: Extensive low-convergence void regions (large, nearly empty patches with pixel intensity < 0) suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
+3. Filament Thickness and Sharpness: Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
+4. Fine-Scale Clumpiness: A grainy, fine-textured pattern of small-scale lensing fluctuations (many mini-clumps) is a visual signature of high sigma_8, whereas a smoother, more homogeneous map suggests a lower sigma_8.
+5. Connectivity of the Cosmic Web: A highly interconnected filament network (with filaments linking most clusters into a continuous web) hints at a higher Omega_m, whereas a more fragmented scene of isolated clumps separated by wide gaps is expected for a lower Omega_m.
+6. Density Contrast Extremes: Very pronounced contrast between dense regions and empty voids – i.e. bright lensing peaks adjacent to dark void areas – signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
+-----
+
+Here are some examples:
+[Example 1]
+Claim: The map shows a high count of bright, high‑convergence peaks.
+Category: Lensing Peak (Cluster) Abundance
+Category Alignment Rating: 0.9
+Reasoning: The claim centers on the map showing a high count of bright, high‑convergence peaks, which aligns strongly with the Lensing Peak (Cluster) Abundance category. The claim is a direct match for this category as it specifically addresses the abundance of high-convergence peaks that indicate massive clusters.
+
+[Example 2]
+Claim: The map shows several bright spots that appear to be randomly distributed.
+Category: Filament Thickness and Sharpness
+Category Alignment Rating: 0.0
+Reasoning: The claim describes bright spots but makes no mention of filaments, their thickness, or their sharpness, which is what this category specifically addresses. The alignment rating is 0 because the claim is describing a different feature (bright spots) that is not directly related to the characteristics of filaments in the cosmic web structure.
+
+[Example 3]
+Claim: The map shows moderate contrast between dense regions and void areas.
+Category: Density Contrast Extremes
+Category Alignment Rating: 0.5
+Reasoning: The claim addresses the contrast between dense and void regions, which directly relates to the Density Contrast Extremes category. The alignment rating is moderate because the claim identifies a relevant feature but describes it as "moderate" rather than pronounced or subdued, placing it in the middle of the spectrum for this category.
+
+Now, determine the category and alignment rating for the following claim:
+Claim: {}
+"""
 
 alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.
 
