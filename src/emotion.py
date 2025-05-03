@@ -9,6 +9,7 @@ from tqdm import tqdm
 from prompts.claim_decomposition import decomposition_emotion
 from prompts.relevance_filtering import relevance_emotion
 from prompts.expert_alignment import alignment_emotion
+from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, emotion_prompt
 
 from diskcache import Cache
 cache = Cache("/shared_data0/shreyah/llm_cache")
@@ -22,6 +23,8 @@ class EmotionExample:
         self.claims = []
         self.relevant_claims = []
         self.alignment_scores = []
+        self.alignment_categories = []
+        self.alignment_reasonings = []
 
 @cache.memoize()
 def query_openai(prompt, model="gpt-4o"):
@@ -46,18 +49,8 @@ def query_openai(prompt, model="gpt-4o"):
             time.sleep(3)
     return "ERROR"
 
-explanation_prompt = """What is the emotion of the following text? Here are the possible labels you could use: admiration, amusement, anger, annoyance, approval, caring, confusion, curiosity, desire, disappointment, disapproval, disgust, embarrassment, excitement, fear, gratitude, grief, joy, love, nervousness, optimism, pride, realization, relief, remorse, sadness, surprise, or neutral.
-
-In addition, provide a paragraph explaining why you gave the text that classification label. Your response should be 2 lines, formatted as follows:
-Label: <label>
-Explanation: <explanation>
-
-Here is the following text.
-Text: {}
-"""
-
 def get_llm_generated_answer(text: str):
-    prompt = explanation_prompt.format(text)
+    prompt = emotion_prompt.replace("[BASELINE_PROMPT", vanilla_baseline).format(text)
     response = query_openai(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")

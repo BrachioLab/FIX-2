@@ -9,23 +9,10 @@ from tqdm import tqdm
 from prompts.claim_decomposition import decomposition_politeness
 from prompts.relevance_filtering import relevance_politeness
 from prompts.expert_alignment import alignment_politeness
+from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, politeness_prompt
 
 from diskcache import Cache
 cache = Cache("/shared_data0/shreyah/llm_cache")
-
-explanation_prompt = """What is the politeness of the following utterance? Use the following 1-5 scale:
-1: extremely rude
-2: somewhat rude
-3: neutral
-4: somewhat polite
-5: extremely polite
-
-In addition, provide a paragraph explaining why you gave the utterance that rating. Your response should be 2 lines, formatted as follows:
-Rating: <rating>
-Explanation: <explanation>
-
-Utterance: {}
-"""
 
 class PolitenessExample:
     def __init__(self, utterance, ground_truth, llm_score, llm_explanation):
@@ -36,6 +23,8 @@ class PolitenessExample:
         self.claims = []
         self.relevant_claims = []
         self.alignment_scores = []
+        self.alignment_categories = []
+        self.alignment_reasonings = []
 
 
 @cache.memoize()
@@ -62,7 +51,7 @@ def query_openai(prompt, model="gpt-4o"):
     return "ERROR"
 
 def get_llm_generated_answer(utterance: str):
-    prompt = explanation_prompt.format(utterance)
+    prompt = politeness_prompt.replace("[BASELINE_PROMPT", vanilla_baseline).format(utterance)
     response = query_openai(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
