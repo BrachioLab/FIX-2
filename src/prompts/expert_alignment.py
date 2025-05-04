@@ -242,7 +242,7 @@ Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
 
-alignment_supernova = """You will be given a single claim why a such time-series data was classified to a certain class, where the possible classification categories include: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). You will also be given a series of categories that an expert astrophysicist would use to perform this type of supernova classification.
+alignment_supernova = """You will be given a single claim why a such time-series data was classified to a certain class, where the possible classification categories include: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). You will also be given a series of categories that an expert astrophysicist would use to perform this type of astrophysical classification.
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
@@ -254,7 +254,7 @@ Category Alignment Rating: <rating>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
-Expert supernova categories:
+Expert astrophysical categories:
 1. Contiguous non‑zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.
 2. Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.
 3. Peak‑to‑trough photometric amplitude separates high‑energy explosive events (multi‑magnitude outbursts) from low‑amplitude periodic or stochastic variables.

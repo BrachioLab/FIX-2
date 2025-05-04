@@ -43,7 +43,7 @@ Each time series contains observations recorded over time, with each observation
 [BASELINE_PROMPT]
 
 Your response should be 2 lines, formatted as follows:
-Label: <supernova classification label>
+Label: <astrophysical classification label>
 Explanation: <explanation, as described above>
 
 Here is the time series data for you to classify.
