@@ -241,6 +241,10 @@ A claim is relevant if and only if:
 (1) It is directly supported by the time-series data (i.e.,reference to a specific value, trend, or change in a measurement such as heart rate, temperature over time).
 (2) It helps explain why the model predicted this specific class (i.e., it contributes to explaining why the model predicted the specified class (yes/no), based on known sepsis indicators (i.e., organ dysfunction, suspected infection, SOFA criteria, vital sign abnormalities)).
 
+Return your answer as:
+Relevance: <Yes/No>
+Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
+
 Here are some examples:
 
 [Example 1]
