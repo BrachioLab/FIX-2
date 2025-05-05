@@ -25,8 +25,8 @@ from prompts.explanations import cholec_prompt, vanilla_baseline, cot_baseline, 
 cache = Cache(".cholec_cache")
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# default_model = "gpt-4o"
-default_model = "gpt-4.1-mini"
+default_model = "gpt-4o"
+# default_model = "gpt-4.1-mini"
 
 
 class CholecExample:

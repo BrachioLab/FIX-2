@@ -101,12 +101,13 @@ Expert Safety Criteria:
 2. Cystic plate exposed - The lower third of the gallbladder must be dissected off the liver to reveal the shiny cystic plate and ensure the correct dissection plane.
 3. Only two structures visible - Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
 4. Above the R4U line - Dissection must remain cephalad to an imaginary line from Rouviere's sulcus to liver segment IV to avoid the common bile duct.
-5. Infundibulum start point - Dissection should begin at the gallbladder infundibulum-cystic duct junction to stay in safe tissue planes.
-6. Subserosal plane stay - When separating the gallbladder from the liver, stay in the avascular subserosal cleavage plane under the serosal fat layer.
-7. Cystic lymph node guide - Identify the cystic lymph node and clip the artery on the gallbladder side of the node to avoid injuring the hepatic artery.
-8. No division without ID - Never divide any duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.
-9. Inflammation bailout - If dense scarring or distorted anatomy obscures Calot's triangle, convert to a subtotal "fundus-first" approach rather than blind cutting.
-10. Aberrant artery caution - Preserve any large or tortuous artery (e.g., a Moynihan's hump) that might be mistaken for the cystic artery.
+5. Safe distance from common bile duct - There should be sufficient distance between the common bile duct and the gallbladder wall to ensure safe dissection.
+6. Infundibulum start point - Dissection should begin at the gallbladder infundibulum-cystic duct junction to stay in safe tissue planes.
+7. Subserosal plane stay - When separating the gallbladder from the liver, stay in the avascular subserosal cleavage plane under the serosal fat layer.
+8. Cystic lymph node guide - Identify the cystic lymph node and clip the artery on the gallbladder side of the node to avoid injuring the hepatic artery.
+9. No division without ID - Never divide any duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.
+10. Inflammation bailout - If dense scarring or distorted anatomy obscures Calot's triangle, convert to a subtotal "fundus-first" approach rather than blind cutting.
+11. Aberrant artery caution - Preserve any large or tortuous artery (e.g., a Moynihan's hump) that might be mistaken for the cystic artery.
 
 -----
 Examples:
