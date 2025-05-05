@@ -37,7 +37,6 @@ Explanation: <explanation, as described above>
 Utterance: {}
 """
 
-<<<<<<< HEAD
 
 cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
 You will be provided with time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
@@ -55,7 +54,7 @@ Explanation: <explanation>
 Here is the ECG data for you to analyze:
 {}
 """
-=======
+
 supernova_prompt = """What is the astrophysical classification of the following time series? Here are the possible labels you can use: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), or active galactic nuclei (AGN).
 Each time series contains observations recorded over time, with each observation consisting of a timestamp, a wavelength (representing the spectral band), and a corresponding measurement value.
 
@@ -83,4 +82,5 @@ Explanation: <explanation, as described above>
 Here is the text for you to classify.
 Text: {}
 """
->>>>>>> cfb2700620cee884e2a53bad1b9accffb6ea6391
+
+
