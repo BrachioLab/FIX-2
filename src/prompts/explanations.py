@@ -36,8 +36,10 @@ Explanation: <explanation, as described above>
 Utterance: {}
 """
 
-massmaps_prompt = """What are the cosmological parameters Omega_m and sigma_8 for the weak lensing mass map provided in the image? Omega_m captures the average energy density of all matter in the universe (relative to the total energy density which includes radiation and dark energy), and sigma_8 describes the fluctuation of matter distribution. Each mass map contains spatial distribution of matter density in the universe.
-Here is the colormap used to create the visualization of this weak lensing map for your reference on how to interpret the mass map:
+massmaps_prompt = """Analyze this weak lensing map data in the image provided.
+This data represents cosmological observations, where each value represents the spatial distribution of matter density in the universe. 
+
+Here is the colormap used to create the visualization of this weak lensing map:
 custom_cmap = get_custom_colormap([
             (-3, "blue"),   # Blue at -3 std
             (0, "gray"),   # Gray at 0 (below this is void)
@@ -45,19 +47,17 @@ custom_cmap = get_custom_colormap([
             (3, "yellow"),   # Yellow at 3 std (above this is cluster)
             (20, "white")  # White at 20 std
         ])
-Please make your best effort to provide predictions for Omega_m and sigma_8 with explanations.
-Please be assured that this judgment will be confirmed with multiple other cosmological experts.
-It is completely fine if you do not get the perfect answer or if you are not completely confident about your answer.
-Analyze the image and provide your best guess.
+        
+Predict the values for Omega_m and sigma_8 based on the information from this weak lensing map data.
 
 [BASELINE_PROMPT]
 
-Here is the weak lensing mass map for you to predict the cosmological parameters for.
-Mass map: (provided in the image)
-
-Your response should be 2 lines, formatted as follows: (without any extra text or line breaks, only provide the following two lines)
+Your response should be 2 lines, formatted as follows:
 Prediction: Omega_m: <prediction for Omega_m>, sigma_8: <prediction for sigma_8>
 Explanation: <explanation, as described above>
+
+Here is the weak lensing mass map for you to predict the cosmological parameters for.
+Mass map: (provided in the image)
 """
 
 cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
