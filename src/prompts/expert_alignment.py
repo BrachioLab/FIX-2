@@ -91,7 +91,7 @@ Your task is as follows:
 
 Return your answer exactly in this format:
 Category: <name of selected criterion>,
-ID: <the ID of the selected criterion>
+Category ID: <the ID of the selected criterion>
 Alignment: <the alignment rating for this category>
 Reasoning: <A brief explanation of why you selected the criterion and how you judged the alignment rating>
 
@@ -116,7 +116,7 @@ Claim: "The fat and fibrous tissue overlying Calot's triangle has been fully exc
 
 Output 1:
 Category: Calot's triangle cleared
-ID: 1
+Category ID: 1
 Alignment: 1.0
 Reasoning: The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly.
 
@@ -126,7 +126,7 @@ Claim: "The cystic plate is not visible due to dense adhesions, making the gallb
 
 Output 2:
 Category: Cystic plate exposed
-ID: 2
+Category ID: 2
 Alignment: 0.2
 Reasoning: The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score.
 

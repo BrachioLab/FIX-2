@@ -23,6 +23,8 @@ from pathlib import Path
 from PIL import Image
 import PIL
 
+
+from prompts.explanations import massmaps_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
 from prompts.claim_decomposition import decomposition_massmaps
 from prompts.relevance_filtering import relevance_massmaps
 from prompts.expert_alignment import alignment_massmaps
@@ -45,32 +47,6 @@ class MassMapsExample:
         self.expert_criteria = []
         self.alignment_reasonings = []
 
-def massmap_to_pil(tensor):
-    """
-    Converts a PyTorch tensor to a PIL image.
-
-    Parameters:
-    tensor (torch.Tensor): A tensor representing the map with shape (1, H, W)
-
-    Returns:
-    PIL.Image: An image object.
-    """
-    # Check if the tensor is in the range 0-1, if yes, scale to 0-255
-    plt.imshow(tensor[0])
-    plt.axis('off')  # remove axes if desired
-
-    # Save the displayed image to a buffer
-    buf = io.BytesIO()
-    plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
-    plt.close()
-
-    # Reset buffer position
-    buf.seek(0)
-
-    # Load the image with PIL
-    pil_image = PIL.Image.open(buf)
-    return pil_image
-
 def convert_pil_to_base64(pil_image):
     """
     Converts a PIL image to a base64-encoded string.
@@ -81,7 +57,6 @@ def convert_pil_to_base64(pil_image):
     buffered = io.BytesIO()
     pil_image.save(buffered, format="JPEG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
-
 
 
 def normalize_inputs(inputs, mean_center=True):
@@ -273,102 +248,44 @@ def get_llm_output_from_messages(messages, model='gpt-4o'):
             time.sleep(3)
     return "ERROR"
 
-@cache.memoize()
-def get_llm_score(prompt, images=None, system_prompt=None, model='gpt-4o') -> Tuple[str, float]:
-    if system_prompt is None:
-        system_prompt = "Answer only as a YES or NO."
-    messages = get_messages(prompt, images, system_prompt)
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages,
-        response_format={"type": "text"},
-        temperature=0,
-        max_tokens=1,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-        logit_bias={31958: 100, 14695: 100},
-        logprobs=True,
-    )
-    completion = response.choices[0].logprobs.content[0].token.strip().lower()
-    logprob = response.choices[0].logprobs.content[0].logprob
-    sleep_duration = random.uniform(0.5, 2)
-    time.sleep(sleep_duration)
-    return completion, math.exp(logprob)
-
-
-
-
-class Image: pass
-
-class Timeseries: pass
-
-class AlignmentScores: pass
-
-
-import json
-import re
-
 
 def get_llm_generated_answer(
     example: str | torch.Tensor, #Image | Timeseries,
+    method: str = "vanilla"
 ) -> str:
     """
     Args:
         example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
           e.g., the emotion classification task.
     """
-    prompt = """Analyze this weak lensing map data in the image provided.
-This data represents cosmological observations, where each value represents the spatial distribution of matter density in the universe. 
+    if method == "vanilla":
+        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline)
+    elif method == "cot":
+        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
+    elif method == "socratic":
+        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", socratic_baseline)
+    elif method == "least_to_most":
+        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
+    else:
+        raise ValueError(f"Invalid method: {method}")
 
-Here is the colormap used to create the visualization of this weak lensing map:
-custom_cmap = get_custom_colormap([
-            (-3, "blue"),   # Blue at -3 std
-            (0, "gray"),   # Gray at 0 (below this is void)
-            (2.9, "red"),   # Red at 2.9 std (this is the upperbound for not being a cluster)
-            (3, "yellow"),   # Yellow at 3 std (above this is cluster)
-            (20, "white")  # White at 20 std
-        ])
-        
-Predict the values for Omega_m and sigma_8 based on the information from this weak lensing map data. Provide a reasoning chain for what interpretable weak lensing map cosmological features (e.g. voids and clusters) you see from this data that you use to make such predictions. When you provide the reasoning chain, for each claim, please be specific for the actual observations you see in this particular weak lensing map. Provide a short paragraph that is around 100-200 words, and then make the predictions.
-
-Output format:
-```json
-{
-    "Explanation": "<str, reasoning chain for predicting Omega_m and sigma_8>",
-    "Answer": {"Omega_m": <float, prediction for Omega_m>, "sigma_8": <float, prediction for sigma_8>}
-}
-```
- """
-    
-#     prompt = """This is an image of a weak lensing map. Please predict Omega_m and sigma_8 values from this and provide a reasoning chain for what interpretable cosmological features you see from this map that you use to make such predictions. Provide a short paragraph that is around 100-200 words. And then make the prediction.
-
-# Output format:
-# ```json
-# {
-#     "Explanation": "<str, reasoning chain for predicting Omega_m and sigma_8>",
-#     "Answer": {"Omega_m": <float, prediction for Omega_m>, "sigma_8": <float, prediction for sigma_8>}
-# }
-# ```
-# """
-    system_prompt = "You are an expert cosmologist."
-    
     image_pil = massmap_to_pil_norm(example)
-    results = text2json(get_llm_output(prompt, [image_pil], system_prompt))
-
-    # few_shot_images = [massmap_to_pil_norm(example['X'][0]) for example in few_shot_examples]
-    # few_shot_messages = get_few_shot_user_assistant_messages(
-    #     few_shot_images,
-    #     user_text_list=[example['claim'] for example in few_shot_examples],
-    #     user_prompt=example_prompt,
-    #     assistant_text_list=[(example['relevance_answer'], example['relevance_explanation']) for example in few_shot_examples],
-    #     assistant_prompt=example_assistant_prompt
-    # )
+    response = get_llm_output(prompt, [image_pil])
+    if response == "ERROR":
+        print("Error in querying OpenAI API")
+        return None
 
     try:
-        return results['Answer'], results['Explanation']
+        answer = response.split("\n")[0].split("Prediction: ")[1].strip()
+        # split the answer into Omega_m and sigma_8
+        answer = answer.split(", ")
+        answer = {answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), answer[1].split(": ")[0]: float(answer[1].split(": ")[1])}
+        explanation = response.split("\n")[1].split("Explanation: ")[1].strip()
+        return answer, explanation
     except:
-        return None, None
+        print(response)
+        import pdb; pdb.set_trace()
+        return None
 
 def isolate_individual_features(
     explanation: str
@@ -423,12 +340,6 @@ def is_claim_relevant(
     few_shot_images = [PIL.Image.open(p) for p in few_shot_image_paths]
 
     assert len(few_shot_images) > 0
-
-    # # ── optional: quick sanity check ─────────────────────────────────────────
-    # print(f"Found {len(few_shot_images)} few_shot_images:")
-    # for p in few_shot_image_paths:
-    #     print("  •", p.name)
-
 
     prompt = relevance_massmaps.format(f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", atomic_claim)
 
@@ -494,44 +405,6 @@ def calculate_expert_alignment_score(
     if system_prompt is None:
         system_prompt = alignment_massmaps
         
-#         """You are an expert cosmologist. Your task is to evaluate how well the following claims aligns with known ground truth criteria used in predicting cosmological parameters from weak lensing maps.
-
-# The ground truth criteria below represent core observational patterns that support the prediction of cosmological parameters Omega_m and sigma_8. These patterns often appear in groups of pixels in weak lensing maps:
-# 1. **Voids:** Voids are large regions under-dense relative to the mean density (pixel intensity < 0) and appear as dark regions in the mass maps.
-# 2. **Clusters:** Clusters are areas of concentrated high density (pixel intensity > 3std) and appear as bright dots.
-# 3. **Super-clusters:** "Super-clusters" (containing multiple clusters) may play a special role in weak lensing maps that deserves further investigation.
-# 4. **Spatial distribution:** The spatial distribution of matter density.
-
-# For each claim, assess how well it semantically and factually aligns with the ground truth indicators above. Avoid focusing on superficial keyword matches and evaluate the actual meaning and evidentiary alignment.
-
-# Use the following relevance scale from 1 to 5:
-# 1: Completely contradicts: The claim fundamentally misrepresents or contradicts the criteria used in cosmological parameter prediction.
-# 2: Mostly contradicts: The claim is largely inconsistent with known indicators or suggests irrelevant patterns.
-# 3: Partially aligns: The claim is related but lacks a clear or accurate connection to ground truth patterns.
-# 4: Mostly aligns: The claim captures a valid prediction cue, though with minor vagueness or lack of specificity.
-# 5: Completely aligns: The claim is fully consistent with one or more ground truth indicators and describes meaningful observational patterns useful for prediction.
-# Also provide a brief justification for each score, explaining the reasoning in terms of the observed patterns and their relevance to prediction.
-
-# Input format:
-# Claim:
-# <claim 1>
-
-# Output format:
-# Scores:
-# ```json
-# {
-#     "claim": "<claim 1>", 
-#     "score": <alignment score ranging from 1 to 5>, 
-#     "category": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts/Not Aligned)>",
-#     "explanation": "<a brief one/two sentence justification for making this decision>"}
-# ```
-# """
-
-#     alignment_prompt = """Claim:
-# {}
-# """
-
-# def calculate_expert_alignment_score(claim: str):
     prompt = alignment_massmaps.format(claim)
     response = get_llm_output(prompt)
     if response == "ERROR":
@@ -551,79 +424,3 @@ def calculate_expert_alignment_score(
     reasoning = response[2].replace("Reasoning:", "").strip()
     return category, alignment_score, reasoning
     
-    # prompt = alignment_prompt.format(claim)
-    # try:
-    #     response = get_llm_output(prompt, system_prompt=system_prompt)
-    #     alignment_result = text2json(response)
-    # except:
-    #     print("Error in querying OpenAI API")
-    #     import pdb; pdb.set_trace()
-    #     return None
-    
-    # alignment_score = alignment_result['score']
-    # category = alignment_result['category']
-    # reasoning = alignment_result['explanation']
-    # return category, alignment_score, reasoning
-
-if __name__ == "__main__":
-    # Uncomment line below to install exlib
-    # !pip install exlib
-    import sys; sys.path.insert(0, "../exlib/src")
-    import exlib
-
-    import torch
-    from datasets import load_dataset
-    from exlib.datasets.mass_maps import MassMapsDataset
-
-    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-
-    # Load data
-    val_dataset = MassMapsDataset(split="validation")
-
-    X, y = val_dataset[0:2]['input'], val_dataset[0:2]['label']
-
-    di = 0
-    image = X[di]
-
-    llm_generated_answer = get_llm_generated_answer(image)
-    # 'In a weak lensing map, the distribution of dark matter can be inferred from the distortion of background galaxies due to gravitational lensing. The presence of structures, such as clusters and filaments, indicates the underlying matter distribution. \n\nFrom this map, we can estimate the values of \\(\\Omega_m\\) (the matter density parameter) and \\(\\sigma_8\\) (the amplitude of density fluctuations). A higher density of dark matter structures suggests a larger \\(\\Omega_m\\), while the degree of clustering informs us about \\(\\sigma_8\\). \n\nIf the map shows significant clustering and pronounced features, we might predict \\(\\Omega_m\\) to be around 0.3 to 0.4, indicating a substantial amount of matter in the universe. For \\(\\sigma_8\\), if the structures appear tightly clustered, values around 0.8 to 0.9 could be inferred, reflecting a high amplitude of fluctuations. Conversely, a more diffuse distribution would suggest lower values. Thus, analyzing the density and distribution of features in the map allows us to make these cosmological predictions.'
-
-    raw_atomic_claims = isolate_individual_features(llm_generated_answer)
-    # ['In a weak lensing map, the distribution of dark matter can be inferred from the distortion of background galaxies due to gravitational lensing.',
-    # 'The presence of structures, such as clusters and filaments, indicates the underlying matter distribution.',
-    # 'From the weak lensing map, we can estimate the values of \\(\\Omega_m\\) (the matter density parameter) and \\(\\sigma_8\\) (the amplitude of density fluctuations).',
-    # 'A higher density of dark matter structures suggests a larger \\(\\Omega_m\\).',
-    # 'The degree of clustering in the weak lensing map informs us about \\(\\sigma_8\\).',
-    # 'If the map shows significant clustering and pronounced features, we might predict \\(\\Omega_m\\) to be around 0.3 to 0.4.',
-    # 'A prediction of \\(\\Omega_m\\) around 0.3 to 0.4 indicates a substantial amount of matter in the universe.',
-    # 'If the structures in the map appear tightly clustered, values of \\(\\sigma_8\\) around 0.8 to 0.9 could be inferred.',
-    # 'A high amplitude of fluctuations is reflected by values of \\(\\sigma_8\\) around 0.8 to 0.9.',
-    # 'A more diffuse distribution of structures in the map would suggest lower values of \\(\\sigma_8\\).',
-    # 'Analyzing the density and distribution of features in the weak lensing map allows us to make cosmological predictions.']
-
-    atomic_claims = distill_relevant_features(image, llm_generated_answer, raw_atomic_claims)
-    # ['In a weak lensing map, the distribution of dark matter can be inferred from the distortion of background galaxies due to gravitational lensing.',
-    # 'The presence of structures, such as clusters and filaments, indicates the underlying matter distribution.',
-    # 'From the weak lensing map, we can estimate the values of \\(\\Omega_m\\) (the matter density parameter) and \\(\\sigma_8\\) (the amplitude of density fluctuations).',
-    # 'A higher density of dark matter structures suggests a larger \\(\\Omega_m\\).',
-    # 'The degree of clustering in the weak lensing map informs us about \\(\\sigma_8\\).',
-    # 'A more diffuse distribution of structures in the map would suggest lower values of \\(\\sigma_8\\).',
-    # 'Analyzing the density and distribution of features in the weak lensing map allows us to make cosmological predictions.']
-
-    alignment_scores = calculate_expert_alignment_score(atomic_claims)
-    # {'alignment_scores': [{'claim': 'In a weak lensing map, the distribution of dark matter can be inferred from the distortion of background galaxies due to gravitational lensing.',
-    # 'score': 5},
-    # {'claim': 'The presence of structures, such as clusters and filaments, indicates the underlying matter distribution.',
-    # 'score': 5},
-    # {'claim': 'From the weak lensing map, we can estimate the values of \\\\(\\\\Omega_m\\\\) (the matter density parameter) and \\\\(\\\\sigma_8\\\\) (the amplitude of density fluctuations).',
-    # 'score': 5},
-    # {'claim': 'A higher density of dark matter structures suggests a larger \\\\(\\\\Omega_m\\\\).',
-    # 'score': 5},
-    # {'claim': 'The degree of clustering in the weak lensing map informs us about \\\\(\\\\sigma_8\\\\).',
-    # 'score': 5},
-    # {'claim': 'A more diffuse distribution of structures in the map would suggest lower values of \\\\(\\\\sigma_8\\\\).',
-    # 'score': 5},
-    # {'claim': 'Analyzing the density and distribution of features in the weak lensing map allows us to make cosmological predictions.',
-    # 'score': 5}],
-    # 'total_score': 5}
-    print(alignment_scores)

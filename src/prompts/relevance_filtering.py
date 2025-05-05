@@ -68,6 +68,7 @@ You will be given:
 A claim is relevant if and only if:
 1. It refers to a visually detectable feature in the image.
 2. It pertains to identifying safe or unsafe dissection zones based on expert surgical criteria.
+3. Is not a general statement about surgical practices, but rather a specific claim about a feature in the image.
 
 Return your answer as:
 Relevance: <Yes/No>
@@ -93,6 +94,7 @@ Reasoning: While visible, the gallbladder color does not inform safe or unsafe d
 
 Now evaluate the following:
 Input: (see attached image)
+
 Claim: {}
 """
 
