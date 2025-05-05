@@ -115,7 +115,7 @@ INPUT: {}
 """
 
 decomposition_supernova = """
-You will be given a paragraph that explains the reasoning behind classifying supernova time series data into one of the following categories: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). Your task is to decompose this explanation into individual claims that are:
+You will be given a paragraph that explains the reasoning behind classifying astrophysical time series data into one of the following categories: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). Your task is to decompose this explanation into individual claims that are:
 
 Atomic: Each claim should express only one clear idea or judgment.
 Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
@@ -126,7 +126,6 @@ Format your output as a list of claims separated by new lines. Do not include an
 Here is an example of how to format your output:
 
 INPUT: The value data shows significant variability, with both positive and negative values, indicating the presence of a strong peak and subsequent decline, a hallmark of SNIa light curves.
-
 
 OUTPUT:
 The value data shows significant variability.
@@ -157,7 +156,6 @@ The respiratory rate is 22.
 A respiratory rate of 22 is on the higher side.
 The pulse oximetry is 92%.
 A pulse oximetry reading of 92% indicates possible hypoxia.
-
 
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
