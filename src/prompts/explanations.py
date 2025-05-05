@@ -88,7 +88,7 @@ Label: <astrophysical classification label>
 Explanation: <explanation, as described above>
 
 Here is the time series data for you to classify.
-Text: {}
+{}
 """
 
 sepsis_prompt = """What is the sepsis risk prediction for the following time series? Here are the possible labels you can use: Yes (the patient is at high risk of developing sepsis within 12 hours) or No (the patient is not at high risk of developing sepsis within 12 hours).
@@ -101,7 +101,7 @@ Label: <emotion label>
 Explanation: <explanation, as described above>
 
 Here is the text for you to classify.
-Text: {}
+{}
 """
 
 
