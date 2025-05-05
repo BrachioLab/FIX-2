@@ -79,33 +79,35 @@ Your task is to decompose this explanation into individual claims that are:
 - Standalone: Each claim is self-contained and understandable without requiring the original paragraph.
 - Faithful: Each claim preserves the original meaning, nuance, and tone of the paragraph.
 
-
 Here is an example of how to format your output:
 
+------
+
 INPUT:
-1. Anatomical Landmarks and Safety: 
-   - **Gallbladder**: Positioned to the right, the gallbladder is typically identified by its greenish hue. Safe regions for dissection include areas immediately adjacent to the gallbladder. 
-   - **Liver**: Visible at the upper portion of the image, it must be preserved, thus avoiding direct dissection here is crucial.
-   - **Cystic Duct and Artery**: These are critical structures that need careful identification and preservation to avoid bile leakage or bleeding. 
+In this laparoscopic view, the primary anatomical landmarks evident include the liver parenchyma on the left side, the gallbladder remnant on the right, and what appears to be inflamed Calot's triangle tissue centrally located. The Calot's triangle is bordered by the cystic duct (inferiorly), common hepatic duct (medially), and the liver edge (superiorly). Safe operative dissection typically occurs within this triangle after clear identification and isolation of the cystic duct and cystic artery.
 
-2. Specific Tissue Types:
-   - **Peritoneum**: The thin, glistening tissue seen should be carefully cut to access deeper structures.
-   - **Fibrous Tissue**: Dense fibrous connective tissue around the gallbladder may need to be severed to mobilize the gallbladder. Care should be taken here to avoid vital structures underneath.
+The tissue types visible include inflamed fibrous tissue, likely from chronic or acute cholecystitis, and smooth, reddish liver parenchyma. The gallbladder tissue appears partially resected or necrotic, and there is evidence of scarring and possible adhesions. The tissue in the central area looks thickened and fibrotic, obscuring normal anatomic planes, making this an unsafe region for blind dissection without clear identification of structures.
 
-3. Potential Risks and Complications:
-   - **Bile Duct Injury**: Straying too medially can risk damage to the common bile duct, a serious complication.
-   - **Bleeding**: Injury to the cystic or hepatic artery would lead to hemorrhage, requiring immediate control.
+Key unsafe zones include the area directly adjacent to the common bile duct and hepatic artery, as aberrant anatomy or inflammation here increases the risk of vascular or biliary injury. Safe dissection requires careful blunt dissection and possibly intraoperative cholangiography to delineate anatomy before proceeding.
+
+I provided this analysis based on the visual signs of inflammation and scarring, which obscure key landmarks in Calot's triangle, increasing the risk of injuring the common bile duct or hepatic artery during laparoscopic cholecystectomy.
 
 
 OUTPUT:
-The gallbladder is typically identified by its greenish hue.
-The gallbladder is positioned to the right.
-The liver must be preserved, thus avoiding direct dissection here is crucial.
-The cystic duct and artery need careful identification and preservation to avoid bile leakage or bleeding.
-The peritoneum is the thin, glistening tissue seen should be carefully cut to access deeper structures.
-The fibrous tissue around the gallbladder may need to be severed to mobilize the gallbladder.
-Straying too medially can risk damage to the common bile duct, a serious complication.
-Injury to the cystic or hepatic artery would lead to hemorrhage, requiring immediate control.
+The liver parenchyma is evident on the left side of the image.
+The gallbladder remnant is visible on the right side of the image.
+Inflamed Calot's triangle tissue appears to be centrally located.
+The Calot's triangle is bordered by the cystic duct inferiorly, common hepatic duct medially, and liver edge superiorly.
+Safe operative dissection typically occurs within this triangle after clear identification and isolation of the cystic duct and cystic artery.
+The tissue types visible include inflamed fibrous tissue, likely from chronic or acute cholecystitis, and smooth, reddish liver parenchyma.
+The gallbladder tissue appears partially resected or necrotic.
+There is evidence of scarring and possible adhesions.
+The tissue in the central area looks thickened and fibrotic, obscuring normal anatomic planes.
+Key unsafe zones include the area directly adjacent to the common bile duct and hepatic artery, as aberrant anatomy or inflammation here increases the risk of vascular or biliary injury.
+Safe dissection requires careful blunt dissection and possibly intraoperative cholangiography to delineate anatomy before proceeding.
+The analysis is based on visual signs of inflammation and scarring.
+The inflammation and scarring obscure key landmarks in Calot's triangle.
+The obscured landmarks increase the risk of injuring the common bile duct and hepatic artery during laparoscopic cholecystectomy.
 
 
 Format your output as a list of claims, one per line. Do not include any additional text. Be concise and avoid redundacy.
