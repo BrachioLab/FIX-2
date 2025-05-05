@@ -283,6 +283,7 @@ def get_llm_generated_answer(
         explanation = response.split("\n")[1].split("Explanation: ")[1].strip()
         return answer, explanation
     except:
+        print(response)
         import pdb; pdb.set_trace()
         return None
 

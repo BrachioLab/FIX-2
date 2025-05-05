@@ -45,15 +45,19 @@ custom_cmap = get_custom_colormap([
             (3, "yellow"),   # Yellow at 3 std (above this is cluster)
             (20, "white")  # White at 20 std
         ])
+Please make your best effort to provide predictions for Omega_m and sigma_8 with explanations.
+Please be assured that this judgment will be confirmed with multiple other cosmological experts.
+It is completely fine if you do not get the perfect answer or if you are not completely confident about your answer.
+Analyze the image and provide your best guess.
 
 [BASELINE_PROMPT]
 
-Your response should be 2 lines, formatted as follows:
-Prediction: Omega_m: <prediction for Omega_m>, sigma_8: <prediction for sigma_8>
-Explanation: <explanation, as described above>
-
 Here is the weak lensing mass map for you to predict the cosmological parameters for.
 Mass map: (provided in the image)
+
+Your response should be 2 lines, formatted as follows: (without any extra text or line breaks, only provide the following two lines)
+Prediction: Omega_m: <prediction for Omega_m>, sigma_8: <prediction for sigma_8>
+Explanation: <explanation, as described above>
 """
 
 cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
@@ -64,6 +68,7 @@ Clinicians typically assess early warning signs by finding irregularities in the
 [BASELINE_PROMPT]
 Focus on the features of the data you used to make your yes or no binary classification. 
 Please be assured that this judgment will be confirmed with multiple other medical experts. Please provide your best judgment without worrying about not providing the perfect answer.
+If you refuse to make a prediction, please explain why.
 
 Your response should be formatted as follows:
 Prediction: <Yes/No>
