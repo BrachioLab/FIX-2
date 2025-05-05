@@ -242,7 +242,7 @@ Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
 
-alignment_supernova = """You will be given a single claim why a such time-series data was classified to a certain class, where the possible classification categories include: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). You will also be given a series of categories that an expert astrophysicist would use to perform this type of astrophysical classification.
+alignment_supernova = """You will be given a single claim that relates to why time-series data from a supernova was classified as a certain supernova class. The classes are as follows: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). You will also be given a series of categories that an expert astrophysicist would use to perform this type of supernova classification from time-series data.
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
