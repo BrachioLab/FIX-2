@@ -4,6 +4,7 @@ import io
 import json
 import base64
 import re
+from typing import Any
 # Third-party imports
 import numpy as np
 import torch
@@ -25,6 +26,49 @@ cache = Cache(".cholec_cache")
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 default_model = "gpt-4o"
+# default_model = "gpt-4o-mini"
+
+
+class CholecExample:
+    def __init__(
+        self,
+        id: str,
+        image: torch.Tensor,
+        organ_masks: list[torch.Tensor],
+        gonogo_masks: list[torch.Tensor],
+        llm_explanation: str,
+    ):
+        """
+        Args:
+            image: The image of the gallbladder surgery.
+            organ_masks: The masks of the organs.
+            gonogo_masks: The masks of the safe/unsafe regions.
+            llm_explanation: The explanation of the safe/unsafe regions.
+        """
+        self.id = id
+        self.image = image
+        self.organ_masks = organ_masks
+        self.gonogo_masks = gonogo_masks
+        self.llm_explanation = llm_explanation
+        self.all_claims = []
+        self.relevant_claims = []
+        self.alignment_scores = []
+        self.alignment_categories = []
+        self.alignment_reasonings = []
+        self.final_alignment_score = 0
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "llm_explanation": self.llm_explanation,
+            "all_claims": self.all_claims,
+            "relevant_claims": self.relevant_claims,
+            "alignment_scores": self.alignment_scores,
+            "alignment_categories": self.alignment_categories,
+            "alignment_reasonings": self.alignment_reasonings,
+            "final_alignment_score": self.final_alignment_score,
+        }
+
 
 class CholecDataset(Dataset):
     """
@@ -35,26 +79,16 @@ class CholecDataset(Dataset):
     For more details, see: https://huggingface.co/datasets/BrachioLab/cholec
     """
 
-    gonogo_names: str = [
-        "Background",
-        "Safe",
-        "Unsafe"
-    ]
-
-    organ_names: str = [
-        "Background",
-        "Liver",
-        "Gallbladder",
-        "Hepatocystic Triangle"
-    ]
+    gonogo_names: str = ["Background", "Safe", "Unsafe"]
+    organ_names: str = ["Background", "Liver", "Gallbladder", "Hepatocystic Triangle"]
 
     def __init__(
         self,
         split: str = "train",
         hf_data_repo: str = "BrachioLab/cholec",
-        image_size: tuple[int] = (360, 640)
+        image_size: tuple[int] = (180, 320)
     ):
-        r"""
+        """
         Args:
             split: The options are "train" and "test".
             hf_data_repo: The HuggingFace repository where the dataset is stored.
@@ -85,54 +119,17 @@ class CholecDataset(Dataset):
         gonogo = self.preprocess_labels(self.dataset[idx]["gonogo"]).long()
         organs = self.preprocess_labels(self.dataset[idx]["organ"]).long()
         return {
+            "id": self.dataset[idx]["id"],
             "image": image,     # (3,H,W)
             "gonogo": gonogo,   # (H,W)
             "organs": organs,   # (H,W)
         }
 
 
-def base64_to_image(base64_str: str, format: str = "tensor") -> torch.Tensor | PIL.Image.Image:
-    """
-    Convert a base64 string to an image.
-    
-    Args:
-        base64_str: Base64 encoded image string
-        format: Format to convert to ("tensor" or "pil")
-        
-    Returns:
-        torch.Tensor | PIL.Image.Image: The image in the requested format
-    """
-    try:
-        # Remove data URL prefix if present
-        if base64_str.startswith("data:image"):
-            base64_str = base64_str.split(",")[1]
-            
-        # First convert base64 to bytes
-        # Add padding if needed
-        padding = len(base64_str) % 4
-        if padding:
-            base64_str += '=' * (4 - padding)
-        image_bytes = base64.b64decode(base64_str)
-        
-        # Create PIL Image from bytes
-        pil_image = PIL.Image.open(io.BytesIO(image_bytes))
-        
-        if format.lower() == "pil":
-            return pil_image
-        elif format.lower() == "tensor":
-            # Convert PIL Image to tensor
-            return torch.from_numpy(np.array(pil_image)).permute(2, 0, 1).float() / 255.0
-        else:
-            raise ValueError(f"Invalid format: {format}")
-    except Exception as e:
-        raise ValueError(f"Failed to convert base64 to image: {str(e)}")
-
-
 def get_llm_generated_answer(
-    image: torch.Tensor | np.ndarray | PIL.Image.Image,
+    image: torch.Tensor | np.ndarray | PIL.Image.Image | list[Any],
     model: str = default_model,
-    decode_base64_masks: bool = False
-) -> dict[str, str | torch.Tensor | None]:
+) -> dict[str, Any]:
     """
     Generate a detailed surgical analysis and segmentation masks using an LLM.
     
@@ -152,66 +149,34 @@ def get_llm_generated_answer(
             - "UnsafeMask": Base64-encoded PNG or tensor of unsafe regions
     """
     system_prompt = """You are an expert gallbladder surgeon with extensive experience in laparoscopic cholecystectomy. 
-    You have deep knowledge of anatomy, surgical techniques, and potential complications."""
+    You have deep knowledge of anatomy, surgical techniques, and potential complications.
+    Your job is to provide a detailed explanation of the safe/unsafe regions in the image.
+    This will help surgeons evaluate the usefulness of LLMs in assisting with the identification of safe/unsafe regions.
+    """
 
     user_prompt = """Analyze the provided 2D image of a gallbladder surgery and provide an extremely detailed analysis:
 
-    1. Provide an exhaustive explanation of your reasoning for identifying safe and unsafe regions, including:
-       - Detailed anatomical landmarks and their significance
-       - Specific tissue types and their surgical implications
-       - Potential risks and complications in unsafe regions
-       - Surgical instrument considerations for each region
-       - Any visible pathology or abnormalities
-       - Critical structures that must be preserved
-       - Step-by-step reasoning for each region's classification
+    Provide an explanation of your reasoning for identifying safe and unsafe regions, including:
+    - Detailed anatomical landmarks and their significance
+    - Specific tissue types and their surgical implications
+    - Any visible pathology or abnormalities.
 
-    2. Generate two binary masks as grayscale PNG images (8-bit per pixel):
-       - A mask showing safe regions (where surgical instruments can safely operate)
-       - A mask showing unsafe regions (where surgical instruments should avoid)
-
-    For the masks:
-    - Use 0 (black) for background/unsafe regions
-    - Use 255 (white) for safe regions
-    - Save as 8-bit grayscale PNG format
-    - Return only the base64-encoded PNG data in the image_url field
-    - Do not include any data URL prefix
-    - IMPORTANT: You MUST provide both masks as valid base64-encoded PNG images
-    - The masks are required for the analysis to be complete
-    - If you cannot generate a mask, explain why in the Explanation field
-    - Each mask should be a binary image with only 0 and 255 values
-    - The masks should cover the entire image area
-    - Make sure the base64 encoding is complete and properly formatted
-
-    Output format:
-    ```json
-    {
-        "Explanation": "<str, extremely detailed reasoning chain for identifying safe and unsafe regions>",
-        "SafeMask": "<str, raw base64-encoded PNG image of safe regions>",
-        "UnsafeMask": "<str, raw base64-encoded PNG image of unsafe regions>"
-    }
-    ```
+    Be detailed and specific, but not too verbose.
     """
 
     llm = MyOpenAIModel(model_name=model)
-    response = llm((system_prompt, user_prompt, image), response_format={"type": "json_object"})
-    result = json.loads(response)
 
-    if decode_base64_masks:
-        for mask_name in ["SafeMask", "UnsafeMask"]:
-            if mask_name in result and result[mask_name]:
-                try:
-                    base64_str = result[mask_name]
-                    result[mask_name] = base64_to_image(base64_str, format="tensor")
-                except Exception as e:
-                    result[mask_name] = None
-            else:
-                result[mask_name] = None
-    
-    return result
+    if isinstance(image, list):
+        prompts = [(system_prompt, user_prompt, i) for i in image]
+        responses = llm(prompts)
+        return responses
+    else:
+        response = llm((system_prompt, user_prompt, image))
+        return response
 
 
 def isolate_individual_features(
-    explanation: str,
+    explanation: str | list[str],
     model_name: str = default_model,
 ) -> list[str]:
     """
@@ -229,9 +194,19 @@ def isolate_individual_features(
     """
 
     llm = MyOpenAIModel(model_name=model_name)
-    raw_output = llm(decomposition_cholec.format(explanation))
-    all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
-    return all_claims
+
+    if isinstance(explanation, list):
+        prompts = [decomposition_cholec.format(e) for e in explanation]
+        results = llm(prompts)
+        all_all_claims: list[list[str]] = [
+            [c.strip() for c in result.split("\n") if c.strip()]
+            for result in results
+        ]
+        return all_all_claims
+    else:
+        raw_output = llm(decomposition_cholec.format(explanation))
+        all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
+        return all_claims
 
 
 def distill_relevant_features(

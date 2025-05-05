@@ -92,9 +92,10 @@ Your task is as follows:
 Return your answer exactly in this format:
 ```json
 {
-    "Category": "<name of selected criterion>",
+    "Category": <name of selected criterion>,
+    "Category ID": <the ID of the selected criterion>,
     "Alignment": <the alignment rating for this category>,
-    "Reasoning": "<A brief explanation of why you selected the criterion and how you judged the alignment rating>"
+    "Reasoning": <A brief explanation of why you selected the criterion and how you judged the alignment rating>
 }
 ```
 
@@ -121,6 +122,7 @@ Output 1:
 ```json
 {
     "Category": "Calot's triangle cleared",
+    "Category ID": 1,
     "Alignment": 1.0,
     "Reasoning": "The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly."
 }
@@ -133,6 +135,7 @@ Output 2:
 ```json
 {
     "Category": "Cystic plate exposed",
+    "Category ID": 2,
     "Alignment": 0.2,
     "Reasoning": "The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score."
 }
