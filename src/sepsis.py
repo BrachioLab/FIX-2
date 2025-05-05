@@ -133,7 +133,6 @@ def is_claim_relevant(time_series_text, rating: str, claim: str):
     reasoning = response[1].replace("Reasoning:", "").strip()
     return relevance, reasoning
 
-
 def distill_relevant_features(example: SepsisExample):
     relevant_claims = []
     for claim in tqdm(example.claims):

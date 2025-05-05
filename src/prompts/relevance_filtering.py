@@ -238,7 +238,7 @@ Claim: {}
 relevance_sepsis = """ You will be given a time-series EHR(Electronic Health Record) data from the first 2 hours of the ED(Emergency Department) admission that includes the name of a measurement or medication and its corresponding value over time. You will also be given a binary prediction of whether a patient is at high risk of developing sepsis within the next 12 hours, and a claim that may or may not be relevant to explaining why the sepsis prediction was assigned. Your task is to decide whether the claim is relevant to explaining the patient’s sepsis prediction for the given time series data.
 
 A claim is relevant if and only if:
-(1) It is directly supported by the time-series data (i.e.,reference to a specific value, trend, or change in a measurement such as heart rate, temperature over time).
+(1) It is directly supported by the time-series data (i.e.,reference to a specific value, trend, or change in a measurement such as heart rate or temperature over time).
 (2) It helps explain why the model predicted this specific class (i.e., it contributes to explaining why the model predicted the specified class (yes/no), based on known sepsis indicators (i.e., organ dysfunction, suspected infection, SOFA criteria, vital sign abnormalities)).
 
 Return your answer as:
