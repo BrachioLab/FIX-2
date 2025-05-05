@@ -77,24 +77,39 @@ Reasoning: <A brief explanation pointing to the visual feature and criterion tha
 Examples:
 
 Example 1
-Input: [image showing fully cleared Calot's triangle]
-Claim: "Calot's triangle cleared."
+Input: [input image]
+Claim: Calot's triangle is bounded by the cystic duct laterally, common hepatic duct medially, and the inferior surface of the liver superiorly.
 ```
 Relevance: Yes
-Reasoning: The claim describes the clearance of Calot's triangle, which is a visually confirmed safety criterion for safe dissection.
+Reasoning: The claim describes the anatomical landmarks that define Calot's triangle, which is a visually confirmed safety criterion for safe dissection.
 ```
 
 Example 2
-Input: [image showing mottled gallbladder appearance]
-Claim: "The gallbladder appears mottled green."
+Input: [input image]
+Claim: The image shows the surgeon working within Calot\u2019s triangle where careful dissection is necessary.
 ```
 Relevance: No
-Reasoning: While visible, the gallbladder color does not inform safe or unsafe dissection zones.
+Reasoning: The claim is not specific to a visual feature in the image, but rather a general statement about the importance of careful dissection.
+```
+
+Example 3
+Input: [input image]
+Claim: Dissection on the gallbladder wall itself is generally safe but should be performed carefully to avoid bile spillage.
+```
+Relevance: No
+Reasoning: The claim is not specific to a visual feature in the image, but rather a general statement about the importance of careful dissection.
+```
+
+Example 4
+Input: [input image]
+Claim: The tissue being dissected appears friable with some bleeding and possible inflammation.
+```
+Relevance: Yes
+Reasoning: The claim is specific to a visual feature in the image, and pertains to identifying safe or unsafe dissection zones based on expert surgical criteria.
 ```
 
 Now evaluate the following:
 Input: (see attached image)
-
 Claim: {}
 """
 
