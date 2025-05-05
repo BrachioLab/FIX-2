@@ -159,31 +159,31 @@ Reasoning: <A brief explanation of why you selected the chosen category and why 
 -----
 Expert cosmology categories:
 1. Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks (massive cluster-like spots with pixel intensity > 3 standard deviations above the mean) in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
-2. Void Size and Frequency: Extensive low-convergence void regions (large, nearly empty patches with pixel intensity < 0) suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
+2. Void Size and Frequency: Extensive low-convergence void regions (large, nearly empty patches with pixel intensity < 0) suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
 3. Filament Thickness and Sharpness: Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
 4. Fine-Scale Clumpiness: A grainy, fine-textured pattern of small-scale lensing fluctuations (many mini-clumps) is a visual signature of high sigma_8, whereas a smoother, more homogeneous map suggests a lower sigma_8.
 5. Connectivity of the Cosmic Web: A highly interconnected filament network (with filaments linking most clusters into a continuous web) hints at a higher Omega_m, whereas a more fragmented scene of isolated clumps separated by wide gaps is expected for a lower Omega_m.
-6. Density Contrast Extremes: Very pronounced contrast between dense regions and empty voids – i.e. bright lensing peaks adjacent to dark void areas – signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
+6. Density Contrast Extremes: Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
 -----
 
 Here are some examples:
 [Example 1]
-Claim: The map shows a high count of bright, high‑convergence peaks.
+Claim: The map shows many bright convergence peaks exceeding three standard deviations above the mean.
 Category: Lensing Peak (Cluster) Abundance
 Category Alignment Rating: 0.9
-Reasoning: The claim centers on the map showing a high count of bright, high‑convergence peaks, which aligns strongly with the Lensing Peak (Cluster) Abundance category. The claim is a direct match for this category as it specifically addresses the abundance of high-convergence peaks that indicate massive clusters.
+Reasoning: The claim refers solely to the high count of > 3 std peaks—the exact diagnostic captured by this category—so alignment is very strong, though not perfect because it does not explicitly relate the peaks to sigma_8.
 
 [Example 2]
-Claim: The map shows several bright spots that appear to be randomly distributed.
+Claim: Filaments in the field are thick and sharply defined.
 Category: Filament Thickness and Sharpness
-Category Alignment Rating: 0.0
-Reasoning: The claim describes bright spots but makes no mention of filaments, their thickness, or their sharpness, which is what this category specifically addresses. The alignment rating is 0 because the claim is describing a different feature (bright spots) that is not directly related to the characteristics of filaments in the cosmic web structure.
+Category Alignment Rating: 0.6
+Reasoning: The claim focuses on filament thickness and sharpness, matching the category's core descriptor, yet it omits how this structure links to parameter values, yielding a moderate level of alignment.
 
 [Example 3]
-Claim: The map shows moderate contrast between dense regions and void areas.
-Category: Density Contrast Extremes
+Claim: A single diffuse bright patch appears in an otherwise smooth map.
+Category: Fine-Scale Clumpiness
 Category Alignment Rating: 0.5
-Reasoning: The claim addresses the contrast between dense and void regions, which directly relates to the Density Contrast Extremes category. The alignment rating is moderate because the claim identifies a relevant feature but describes it as "moderate" rather than pronounced or subdued, placing it in the middle of the spectrum for this category.
+Reasoning: While a lone diffuse patch is technically a small-scale feature, the category expects a grainy texture with many mini-clumps; the claim lacks that pattern, so alignment is minimal.
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
