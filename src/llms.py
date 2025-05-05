@@ -1,5 +1,6 @@
 import os
 import concurrent.futures
+import time
 from typing import Any, Dict, List, Optional, Union
 from openai import OpenAI
 import torch
@@ -16,7 +17,6 @@ def is_image(x: Any) -> bool:
 
 def image_to_base64(
     image: Union[torch.Tensor, np.ndarray, PIL.Image.Image],
-    include_url_prefix: bool = True,
     image_format: str = "PNG"
 ) -> str:
     """
@@ -60,9 +60,6 @@ def image_to_base64(
         with io.BytesIO() as buffer:
             pil_image.save(buffer, format=image_format)
             base64_str = base64.b64encode(buffer.getvalue()).decode('utf-8')
-            
-            if include_url_prefix:
-                return f"data:image/{image_format.lower()};base64,{base64_str}"
             return base64_str
 
     except Exception as e:
@@ -89,7 +86,9 @@ class MyOpenAIModel:
     def __init__(
         self,
         model_name: str,
-        api_key: Optional[str] = None
+        api_key: Optional[str] = None,
+        num_tries_per_request: int = 3,
+        verbose: bool = False
     ) -> None:
         self.model_name = model_name
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
@@ -98,7 +97,8 @@ class MyOpenAIModel:
             raise ValueError("OPENAI_API_KEY environment variable is not set")
             
         self.client = OpenAI(api_key=self.api_key)
-
+        self.num_tries_per_request = num_tries_per_request
+        self.verbose = verbose
 
     def call_openai(
         self,
@@ -108,21 +108,33 @@ class MyOpenAIModel:
         seed: Optional[int] = None,
     ) -> str:
         """Make a single API call to OpenAI."""
-        response = self.client.chat.completions.create(
-            model=self.model_name,
-            messages=messages,
-            temperature=temperature,
-            seed=seed,
-            response_format=response_format,
-        )
-        content = response.choices[0].message.content
-        if isinstance(content, str):
-            return content.strip()
-        elif content is None:
-            return ""
-        else:
-            raise ValueError(f"Invalid response content type: {type(content)}")
+        for _ in range(self.num_tries_per_request):
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model_name,
+                    messages=messages,
+                    temperature=temperature,
+                    seed=seed,
+                    response_format=response_format,
+                )
 
+                content = response.choices[0].message.content
+                if isinstance(content, str):
+                    return content.strip()
+
+                else:
+                    raise ValueError(f"Invalid response content: {content}")
+
+            except Exception as e:
+                if self.verbose:
+                    print(f"Error calling OpenAI: {e}")
+
+                time.sleep(3)
+
+        if self.verbose:
+            print("Failed to get a valid response from OpenAI")
+
+        return ""
 
     def prompt_to_messages(
         self,
@@ -143,7 +155,7 @@ class MyOpenAIModel:
                 elif is_image(p):
                     content.append({
                         "type": "image_url",
-                        "image_url": {"url": image_to_base64(p)}
+                        "image_url": {"url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"}
                     })
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")

@@ -1,4 +1,3 @@
-
 vanilla_baseline = """In addition to the answer, please provide a single paragraph under 3-5 sentences explaining why you gave the answer you did."""
 
 cot_baseline = """To come up with the correct answer, think step-by-step. You should walk through each step in your reasoning process and explain how you arrived at the answer. Describe your step-by-step reasoning in a single paragraph under 3-5 sentences. This paragraph will serve as the explanation for your answer."""
@@ -32,7 +31,7 @@ politeness_prompt = """What is the politeness of the following utterance on a sc
 
 Your response should be 2 lines, formatted as follows:
 Rating: <politeness rating>
-Explanation: <explanation, as desribed above>
+Explanation: <explanation, as described above>
 
 Utterance: {}
 """
@@ -55,6 +54,23 @@ Explanation: <explanation, as described above>
 
 Here is the weak lensing mass map for you to predict the cosmological parameters for.
 Mass map: (provided in the image)
+"""
+
+cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
+You will be provided with time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
+
+Your task is to determine whether this patient is at high risk of experiencing cardiac arrest within the next {} minutes.
+Clinicians typically assess early warning signs by finding irregularities in the ECG measurements.
+[BASELINE_PROMPT]
+Focus on the features of the data you used to make your yes or no binary classification. 
+Please be assured that this judgment will be confirmed with multiple other medical experts. Please provide your best judgment without worrying about not providing the perfect answer.
+
+Your response should be formatted as follows:
+Prediction: <Yes/No>
+Explanation: <explanation>
+
+Here is the ECG data for you to analyze:
+{}
 """
 
 supernova_prompt = """What is the astrophysical classification of the following time series? Here are the possible labels you can use: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), or active galactic nuclei (AGN).
@@ -84,3 +100,5 @@ Explanation: <explanation, as described above>
 Here is the text for you to classify.
 Text: {}
 """
+
+

@@ -35,10 +35,8 @@ class SepsisExample:
 
 @cache.memoize()
 def query_openai(prompt, model="gpt-4o"):
-    with open("/shared_data0/chaenyk/api_key.txt", "r") as file:
-        lines = file.readlines()
-        fix_key_line = next(line for line in lines if line.startswith("FIX_KEY"))
-        api_key = fix_key_line.split("=")[1].strip()
+    with open("../API_KEY.txt", "r") as file:
+        api_key = file.read()
     client = OpenAI(api_key=api_key)
 
     num_tries = 0

@@ -108,7 +108,7 @@ Straying too medially can risk damage to the common bile duct, a serious complic
 Injury to the cystic or hepatic artery would lead to hemorrhage, requiring immediate control.
 
 
-Format your output as a list of claims, one per line. Do not include any additional text.
+Format your output as a list of claims, one per line. Do not include any additional text. Be concise and avoid redundacy.
 
 Now decompose the following paragraph into atomic, standalone, faithful cholecystectomy claims:
 INPUT: {}

@@ -8,32 +8,37 @@ from datetime import datetime, timedelta
 ## helper functions
 
 def get_start_end_times(record):
-    start_dt = datetime.combine(datetime.today(), record.base_time)
+    start_dt = datetime.combine(record.base_date, record.base_time)
     duration_sec = record.sig_len / record.fs
     end_dt = start_dt + timedelta(seconds=duration_sec)
-    print("Date:", record.base_date)
-    print("Start time:", record.base_time)
-    print("End time:", end_dt.time())
-    return
-    # return start_dt, end_dt
+    # print("Date:", record.base_date)
+    # print("Start time:", record.base_time)
+    # print("End time:", end_dt.time())
+    return start_dt, end_dt
 
 
-def get_measurements(record, alarm_ts=None, cutoff_minutes=1):
-    # Extract relevant fields
-    signal = record.p_signal[:, 0]  # 1D array of measurements
-    fs = record.fs  # Sampling rate (Hz)
-    base_time = record.base_time  # datetime.time
-    base_date = record.base_date  # datetime.date
-    start_time = datetime.combine(base_date, base_time)
-    # Build the list in the format [time: measurement, ...] 
+def get_measurements(record, alarm_ts=None, cutoff_minutes=1, new_fs=50):
+    """
+    new_fs: the downsampled number of samples taken per second (i.e. Hz)
+    """
+    signal = record.p_signal[:, 0]  # 1D array of measurements 
+    start_time = datetime.combine(record.base_date, record.base_time)
+
     formatted = []
-    # Loop through the signal and build timestamped strings
-    for i, val in enumerate(signal):
-        current_time = start_time + timedelta(seconds=i / fs)
-        if alarm_ts != None:
-            cutoff_time = alarm_ts - timedelta(minutes=cutoff_minutes)
-            # print("Cutoff time: ", cutoff_time)
-            if current_time.time() > cutoff_time.time():
-                break
-        formatted.append(f"{current_time.time()}, {val:.6f}")
-    return formatted
+
+    # Determine cutoff time in seconds since start
+    if alarm_ts is None:
+        end_time = start_time + timedelta(seconds=record.sig_len / record.fs)
+        cutoff_time = end_time - timedelta(minutes=cutoff_minutes)
+    else:
+        cutoff_time = alarm_ts - timedelta(minutes=cutoff_minutes)
+    total_duration = (cutoff_time - start_time).total_seconds()
+    max_idx = min(len(signal), int(total_duration * record.fs))
+
+    step_sz = int(record.fs // new_fs)
+
+    for i in range(0, max_idx, step_sz):
+        current_time = start_time + timedelta(seconds=i / record.fs)
+        # formatted.append(f"{current_time.time()}, {signal[i]:.6f}")
+        formatted.append(signal[i])
+    return np.array(formatted), start_time, cutoff_time, new_fs
