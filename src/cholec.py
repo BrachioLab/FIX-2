@@ -1,7 +1,6 @@
 # Standard library imports
 import os
 import io
-import json
 import base64
 import re
 from typing import Any
@@ -20,13 +19,14 @@ from llms import MyOpenAIModel
 from prompts.claim_decomposition import decomposition_cholec
 from prompts.relevance_filtering import relevance_cholec
 from prompts.expert_alignment import alignment_cholec
+from prompts.explanations import cholec_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
 
 
 cache = Cache(".cholec_cache")
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-default_model = "gpt-4o"
-# default_model = "gpt-4o-mini"
+# default_model = "gpt-4o"
+default_model = "gpt-4.1-mini"
 
 
 class CholecExample:
@@ -129,6 +129,7 @@ class CholecDataset(Dataset):
 def get_llm_generated_answer(
     image: torch.Tensor | np.ndarray | PIL.Image.Image | list[Any],
     model: str = default_model,
+    baseline: str = "vanilla",
 ) -> dict[str, Any]:
     """
     Generate a detailed surgical analysis and segmentation masks using an LLM.
@@ -140,38 +141,35 @@ def get_llm_generated_answer(
     Args:
         image: Input surgical image in tensor, numpy array, or PIL Image format
         model: Name of the LLM model to use (default: "gpt-4o")
-        decode_base64_masks: If True, converts base64 mask strings to PyTorch tensors
+        baseline: The baseline to use for the explanation (default: "vanilla")
+            Options: "vanilla", "cot", "socratic", "least_to_most"
         
     Returns:
         Dictionary containing:
+            - "Answer": The description of where it is safe and unsafe to operate
             - "Explanation": Detailed text analysis of safe/unsafe regions
-            - "SafeMask": Base64-encoded PNG or tensor of safe regions
-            - "UnsafeMask": Base64-encoded PNG or tensor of unsafe regions
-    """
-    system_prompt = """You are an expert gallbladder surgeon with extensive experience in laparoscopic cholecystectomy. 
-    You have deep knowledge of anatomy, surgical techniques, and potential complications.
-    Your job is to provide a detailed explanation of the safe/unsafe regions in the image.
-    This will help surgeons evaluate the usefulness of LLMs in assisting with the identification of safe/unsafe regions.
-    """
-
-    user_prompt = """Analyze the provided 2D image of a gallbladder surgery and provide an extremely detailed analysis:
-
-    Provide an explanation of your reasoning for identifying safe and unsafe regions, including:
-    - Detailed anatomical landmarks and their significance
-    - Specific tissue types and their surgical implications
-    - Any visible pathology or abnormalities.
-
-    Be detailed and specific, but not too verbose.
     """
 
     llm = MyOpenAIModel(model_name=model)
 
+    if baseline.lower() == "vanilla":
+        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", vanilla_baseline)
+    elif baseline.lower() == "cot":
+        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", cot_baseline)
+    elif baseline.lower() == "socratic":
+        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", socratic_baseline)
+    elif baseline.lower() == "least_to_most":
+        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", least_to_most_baseline)
+    else:
+        raise ValueError(f"Invalid baseline: {baseline}")
+
     if isinstance(image, list):
-        prompts = [(system_prompt, user_prompt, i) for i in image]
+        prompts = [(prompt, i) for i in image]
         responses = llm(prompts)
         return responses
+
     else:
-        response = llm((system_prompt, user_prompt, image))
+        response = llm((prompt, image))
         return response
 
 
@@ -188,9 +186,6 @@ def isolate_individual_features(
 
     Returns:
         list[str]: A list of atomic claims extracted from the explanation
-
-    Raises:
-        ValueError: If the model output cannot be parsed as valid JSON
     """
 
     llm = MyOpenAIModel(model_name=model_name)
@@ -249,10 +244,6 @@ def calculate_expert_alignment_score(
 
     llm = MyOpenAIModel(model_name=model_name)
     prompts = [alignment_cholec.replace("[[CLAIM]]", claim) for claim in atomic_claims]
-    responses = llm(prompts, response_format={"type": "json_object"})
+    responses = llm(prompts)
+    return responses
 
-    try:
-        results = [json.loads(response) for response in responses]
-        return results
-    except Exception as e:
-        raise ValueError(f"Failed to parse JSON: {str(e)}")

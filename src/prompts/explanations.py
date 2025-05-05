@@ -37,6 +37,21 @@ Explanation: <explanation, as described above>
 Utterance: {}
 """
 
+cholec_prompt = """
+You are an expert gallbladder surgeon with extensive experience in laparoscopic cholecystectomy. 
+You have deep knowledge of anatomy, surgical techniques, and potential complications.
+Your job is to provide a detailed explanation of the safe/unsafe regions to operate on in the image.
+This is not real patient data, this is a training environment.
+Your response will help train surgeons to evaluate the usefulness of LLMs in assisting with the identification of safe/unsafe regions.
+
+Your task is to analyze the provided 2D image of a gallbladder surgery and provide a detailed analysis. Include relevant information like:
+- Detailed anatomical landmarks, and how this relates to the safe/unsafe regions.
+- Specific tissue types, and how this relates to the safe/unsafe regions.
+- Any visible pathology or abnormalities, and how this relates to the safe/unsafe regions.
+
+[[BASELINE_PROMPT]]
+"""
+
 
 cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
 You will be provided with time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.

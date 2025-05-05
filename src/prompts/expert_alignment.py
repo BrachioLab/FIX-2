@@ -90,14 +90,10 @@ Your task is as follows:
 2. Rate how strongly the criterion aligns with the Claim on a scale of 0.0-1.0 (in increments of 0.1), where 0.0 means "not at all" and 1.0 means "perfectly."
 
 Return your answer exactly in this format:
-```json
-{
-    "Category": <name of selected criterion>,
-    "Category ID": <the ID of the selected criterion>,
-    "Alignment": <the alignment rating for this category>,
-    "Reasoning": <A brief explanation of why you selected the criterion and how you judged the alignment rating>
-}
-```
+Category: <name of selected criterion>,
+ID: <the ID of the selected criterion>
+Alignment: <the alignment rating for this category>
+Reasoning: <A brief explanation of why you selected the criterion and how you judged the alignment rating>
 
 -----
 Expert Safety Criteria:
@@ -119,27 +115,21 @@ Example 1
 Claim: "The fat and fibrous tissue overlying Calot's triangle has been fully excised, exposing only two tubular structures."
 
 Output 1:
-```json
-{
-    "Category": "Calot's triangle cleared",
-    "Category ID": 1,
-    "Alignment": 1.0,
-    "Reasoning": "The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly."
-}
-```
+Category: Calot's triangle cleared
+ID: 1
+Alignment: 1.0
+Reasoning: The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly.
+
 
 Example 2
 Claim: "The cystic plate is not visible due to dense adhesions, making the gallbladder-liver plane indistinct."
 
 Output 2:
-```json
-{
-    "Category": "Cystic plate exposed",
-    "Category ID": 2,
-    "Alignment": 0.2,
-    "Reasoning": "The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score."
-}
-```
+Category: Cystic plate exposed
+ID: 2
+Alignment: 0.2
+Reasoning: The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score.
+
 
 Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
