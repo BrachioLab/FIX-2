@@ -273,19 +273,19 @@ def get_llm_generated_answer(
     response = get_llm_output(prompt, [image_pil])
     if response == "ERROR":
         print("Error in querying OpenAI API")
-        return None
+        return None, None
 
     try:
-        answer = response.split("\n")[0].split("Prediction: ")[1].strip()
+        response_split = [r.strip() for r in response.split("\n") if r.strip() != ""]
+        answer = response_split[0].split("Prediction: ")[1].strip()
         # split the answer into Omega_m and sigma_8
         answer = answer.split(", ")
         answer = {answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), answer[1].split(": ")[0]: float(answer[1].split(": ")[1])}
-        explanation = response.split("\n")[1].split("Explanation: ")[1].strip()
+        explanation = response_split[1].split("Explanation: ")[1].strip()
         return answer, explanation
     except:
         print(response)
-        import pdb; pdb.set_trace()
-        return None
+        return None, None
 
 def isolate_individual_features(
     explanation: str

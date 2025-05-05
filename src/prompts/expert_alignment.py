@@ -170,18 +170,21 @@ Here are some examples:
 [Example 1]
 Claim: The map shows many bright convergence peaks exceeding three standard deviations above the mean.
 Category: Lensing Peak (Cluster) Abundance
+Category ID: 1
 Category Alignment Rating: 0.9
 Reasoning: The claim refers solely to the high count of > 3 std peaks—the exact diagnostic captured by this category—so alignment is very strong, though not perfect because it does not explicitly relate the peaks to sigma_8.
 
 [Example 2]
 Claim: Filaments in the field are thick and sharply defined.
 Category: Filament Thickness and Sharpness
+Category ID: 3
 Category Alignment Rating: 0.6
 Reasoning: The claim focuses on filament thickness and sharpness, matching the category's core descriptor, yet it omits how this structure links to parameter values, yielding a moderate level of alignment.
 
 [Example 3]
 Claim: A single diffuse bright patch appears in an otherwise smooth map.
 Category: Fine-Scale Clumpiness
+Category ID: 4
 Category Alignment Rating: 0.5
 Reasoning: While a lone diffuse patch is technically a small-scale feature, the category expects a grainy texture with many mini-clumps; the claim lacks that pattern, so alignment is minimal.
 
