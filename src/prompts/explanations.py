@@ -37,6 +37,7 @@ Explanation: <explanation, as described above>
 Utterance: {}
 """
 
+<<<<<<< HEAD
 
 cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
 You will be provided with time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
@@ -54,3 +55,32 @@ Explanation: <explanation>
 Here is the ECG data for you to analyze:
 {}
 """
+=======
+supernova_prompt = """What is the astrophysical classification of the following time series? Here are the possible labels you can use: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), or active galactic nuclei (AGN).
+Each time series contains observations recorded over time, with each observation consisting of a timestamp, a wavelength (representing the spectral band), and a corresponding measurement value.
+
+[BASELINE_PROMPT]
+
+Your response should be 2 lines, formatted as follows:
+Label: <astrophysical classification label>
+Explanation: <explanation, as described above>
+
+Here is the time series data for you to classify.
+Time data: {time_data}
+Wavelength data: {wv_data} 
+Value data: {value_data} 
+"""
+
+sepsis_prompt = """What is the sepsis risk prediction for the following time series? Here are the possible labels you can use: Yes (the patient is at high risk of developing sepsis within 12 hours) or No (the patient is not at high risk of developing sepsis within 12 hours).
+The time series consists of Electronic Health Record (EHR) data collected during the first 2 hours of the patient’s emergency department (ED) admission. Each entry includes a timestamp, the name of a measurement or medication, and its corresponding value.
+
+[BASELINE_PROMPT]
+
+Your response should be 2 lines, formatted as follows:
+Label: <emotion label>
+Explanation: <explanation, as described above>
+
+Here is the text for you to classify.
+Text: {}
+"""
+>>>>>>> cfb2700620cee884e2a53bad1b9accffb6ea6391

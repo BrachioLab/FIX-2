@@ -78,12 +78,12 @@ Your output should be a list of expert criteria, each 1 sentence long, and citat
 """
 
 deep_research_supernova = """
-You are an expert in supernova classification. You have a deep understanding of this subject. 
+You are an expert in astrophysical classification. You have a deep understanding of this subject. 
 Your task is to behave like an expert astrophysicist and identify which criteria are important to consider for the following task:
 
 Task description:
 Input: Time-series data that contains observations recorded over time, where each observation includes a timestamp, a wavelength (representing the type of electromagnetic spectrum used), and a corresponding observation value. The wavelength acts as a filter indicating the spectral band of the observation.
-Output: A predicted class label from the following astrophysical object types: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, active galactic nuclei (AGN)
+Output: A predicted class label from the following astrophysical object types: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN)
 
 Here are some examples:
 [Example 1] 

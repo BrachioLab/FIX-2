@@ -25,6 +25,7 @@ import PIL
 
 from prompts.claim_decomposition import decomposition_massmaps
 from prompts.relevance_filtering import relevance_massmaps
+from prompts.expert_alignment import alignment_massmaps
 
 cache = Cache(os.environ.get("CACHE_DIR"))
 
@@ -491,56 +492,78 @@ def calculate_expert_alignment_score(
     llm_prediction: str, claim: str,
     system_prompt=None):
     if system_prompt is None:
-        system_prompt = """You are an expert cosmologist. Your task is to evaluate how well the following claims aligns with known ground truth criteria used in predicting cosmological parameters from weak lensing maps.
+        system_prompt = alignment_massmaps
+        
+#         """You are an expert cosmologist. Your task is to evaluate how well the following claims aligns with known ground truth criteria used in predicting cosmological parameters from weak lensing maps.
 
-The ground truth criteria below represent core observational patterns that support the prediction of cosmological parameters Omega_m and sigma_8. These patterns often appear in groups of pixels in weak lensing maps:
-1. **Voids:** Voids are large regions under-dense relative to the mean density (pixel intensity < 0) and appear as dark regions in the mass maps.
-2. **Clusters:** Clusters are areas of concentrated high density (pixel intensity > 3std) and appear as bright dots.
-3. **Super-clusters:** "Super-clusters" (containing multiple clusters) may play a special role in weak lensing maps that deserves further investigation.
-4. **Spatial distribution:** The spatial distribution of matter density.
+# The ground truth criteria below represent core observational patterns that support the prediction of cosmological parameters Omega_m and sigma_8. These patterns often appear in groups of pixels in weak lensing maps:
+# 1. **Voids:** Voids are large regions under-dense relative to the mean density (pixel intensity < 0) and appear as dark regions in the mass maps.
+# 2. **Clusters:** Clusters are areas of concentrated high density (pixel intensity > 3std) and appear as bright dots.
+# 3. **Super-clusters:** "Super-clusters" (containing multiple clusters) may play a special role in weak lensing maps that deserves further investigation.
+# 4. **Spatial distribution:** The spatial distribution of matter density.
 
-For each claim, assess how well it semantically and factually aligns with the ground truth indicators above. Avoid focusing on superficial keyword matches and evaluate the actual meaning and evidentiary alignment.
+# For each claim, assess how well it semantically and factually aligns with the ground truth indicators above. Avoid focusing on superficial keyword matches and evaluate the actual meaning and evidentiary alignment.
 
-Use the following relevance scale from 1 to 5:
-1: Completely contradicts: The claim fundamentally misrepresents or contradicts the criteria used in cosmological parameter prediction.
-2: Mostly contradicts: The claim is largely inconsistent with known indicators or suggests irrelevant patterns.
-3: Partially aligns: The claim is related but lacks a clear or accurate connection to ground truth patterns.
-4: Mostly aligns: The claim captures a valid prediction cue, though with minor vagueness or lack of specificity.
-5: Completely aligns: The claim is fully consistent with one or more ground truth indicators and describes meaningful observational patterns useful for prediction.
-Also provide a brief justification for each score, explaining the reasoning in terms of the observed patterns and their relevance to prediction.
+# Use the following relevance scale from 1 to 5:
+# 1: Completely contradicts: The claim fundamentally misrepresents or contradicts the criteria used in cosmological parameter prediction.
+# 2: Mostly contradicts: The claim is largely inconsistent with known indicators or suggests irrelevant patterns.
+# 3: Partially aligns: The claim is related but lacks a clear or accurate connection to ground truth patterns.
+# 4: Mostly aligns: The claim captures a valid prediction cue, though with minor vagueness or lack of specificity.
+# 5: Completely aligns: The claim is fully consistent with one or more ground truth indicators and describes meaningful observational patterns useful for prediction.
+# Also provide a brief justification for each score, explaining the reasoning in terms of the observed patterns and their relevance to prediction.
 
-Input format:
-Claim:
-<claim 1>
+# Input format:
+# Claim:
+# <claim 1>
 
-Output format:
-Scores:
-```json
-{
-    "claim": "<claim 1>", 
-    "score": <alignment score ranging from 1 to 5>, 
-    "category": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts/Not Aligned)>",
-    "explanation": "<a brief one/two sentence justification for making this decision>"}
-```
-"""
+# Output format:
+# Scores:
+# ```json
+# {
+#     "claim": "<claim 1>", 
+#     "score": <alignment score ranging from 1 to 5>, 
+#     "category": "<verbatim copy of the title of expert knowledge used (Voids/Clusters/Super-clusters/Spatial Distributions/Noise and Artifacts/Not Aligned)>",
+#     "explanation": "<a brief one/two sentence justification for making this decision>"}
+# ```
+# """
 
-    alignment_prompt = """Claim:
-{}
-"""
-    
-    prompt = alignment_prompt.format(claim)
-    try:
-        response = get_llm_output(prompt, system_prompt=system_prompt)
-        alignment_result = text2json(response)
-    except:
+#     alignment_prompt = """Claim:
+# {}
+# """
+
+# def calculate_expert_alignment_score(claim: str):
+    prompt = alignment_massmaps.format(claim)
+    response = get_llm_output(prompt)
+    if response == "ERROR":
         print("Error in querying OpenAI API")
-        import pdb; pdb.set_trace()
         return None
-    
-    alignment_score = alignment_result['score']
-    category = alignment_result['category']
-    reasoning = alignment_result['explanation']
+    response = response.replace("Category:", "").strip()
+    response = response.split("\n")
+    response = [r for r in response if r.strip() != ""]
+    category = response[0].strip()
+    alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
+    try:
+        alignment_score = float(alignment_score)
+    except:
+        print("ERROR: Could not convert alignment score to float")
+        print(response)
+        alignment_score = 0.0
+    reasoning = response[2].replace("Reasoning:", "").strip()
     return category, alignment_score, reasoning
+    
+    # prompt = alignment_prompt.format(claim)
+    # try:
+    #     response = get_llm_output(prompt, system_prompt=system_prompt)
+    #     alignment_result = text2json(response)
+    # except:
+    #     print("Error in querying OpenAI API")
+    #     import pdb; pdb.set_trace()
+    #     return None
+    
+    # alignment_score = alignment_result['score']
+    # category = alignment_result['category']
+    # reasoning = alignment_result['explanation']
+    # return category, alignment_score, reasoning
 
 if __name__ == "__main__":
     # Uncomment line below to install exlib
