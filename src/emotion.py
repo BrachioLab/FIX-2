@@ -50,7 +50,7 @@ def query_openai(prompt, model="gpt-4o"):
     return "ERROR"
 
 def get_llm_generated_answer(text: str):
-    prompt = emotion_prompt.replace("[BASELINE_PROMPT", vanilla_baseline).format(text)
+    prompt = emotion_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline).format(text)
     response = query_openai(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
