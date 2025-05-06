@@ -252,7 +252,7 @@ Output: {}
 Claim: {}
 """
 
-relevance_sepsis = """ You will be given a time-series EHR(Electronic Health Record) data from the first 2 hours of the ED(Emergency Department) admission that includes the name of a measurement or medication and its corresponding value over time. You will also be given a binary prediction of whether a patient is at high risk of developing sepsis within the next 12 hours, and a claim that may or may not be relevant to explaining why the sepsis prediction was assigned. Your task is to decide whether the claim is relevant to explaining the patient’s sepsis prediction for the given time series data.
+relevance_sepsis = """You will be given a time-series EHR(Electronic Health Record) data from the first 2 hours of the ED(Emergency Department) admission that includes the name of a measurement or medication and its corresponding value over time. You will also be given a binary prediction of whether a patient is at high risk of developing sepsis within the next 12 hours, and a claim that may or may not be relevant to explaining why the sepsis prediction was assigned. Your task is to decide whether the claim is relevant to explaining the patient’s sepsis prediction for the given time series data.
 
 A claim is relevant if and only if:
 (1) It is directly supported by the time-series data (i.e.,reference to a specific value, trend, or change in a measurement such as heart rate or temperature over time).
@@ -266,7 +266,7 @@ Here are some examples:
 
 [Example 1]
 Data: '36.0: ONDANSETRON HCL (PF) 4 MG/2 ML INJ SOLN_ 53.0, WAM DIFTYP: AUTO; 53.0: IMMATURE GRANULOCYTE_ ABSOLUTE (AUTO DIFF) WAM, .05 K/uL; 53.0: LYMPHOCYTE_ ABSOLUTE (AUTO DIFF), 1.23 K/uL; 53.0: EOSINOPHIL_ ABSOLUTE (AUTO DIFF), .24 K/uL; 53.0: LYMPHOCYTE % (AUTO DIFF), 9.9 %; 53.0: RED CELL DISTRIBUTION WIDTH (RDW), 14.0 %; 53.0: NRBC_ PERCENT (HEMATOLOGY), .0 %; 53.0: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 27.8 pg; 53.0: MEAN CORPUSCULAR VOLUME (MCV), 85.1 fL; 53.0: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 32.7 g/dL; 53.0: MONOCYTE_ ABSOLUTE (AUTO DIFF), .82 K/uL; 53.0: MONOCYTE % (AUTO DIFF), 6.6 %; 53.0: PLATELET COUNT (PLT), 230 K/uL; 53.0: HEMOGLOBIN (HGB), 11.6 g/dL; 53.0: BASOPHIL % (AUTO DIFF), .3 %; 53.0: NRBC_ ABSOLUTE (HEMATOLOGY), .00 K/uL; 53.0: NEUTROPHIL_ ABSOLUTE (AUTO DIFF), 10.07 K/uL; 53.0: BASOPHIL_ ABSOLUTE (AUTO DIFF), .04 K/uL; 53.0: EOSINOPHIL % (AUTO DIFF), 1.9 %; 53.0: NEUTROPHIL % (AUTO DIFF), 80.9 %; 53.0: WHITE BLOOD CELLS (WBC), 12.5 K/uL; 53.0: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, .4 %; 53.0: RED BLOOD CELLS (RBC), 4.17 MIL/uL; 53.0: HEMATOCRIT (HCT), 35.5 %; 57.0: HYDROMORPHONE 1 MG/ML INJ SYRG_ 57.0, LR IV BOLUS - 500 ML; 81.0: CO2, 22 mmol/L; 81.0: GLUCOSE, 95 mg/dL; 81.0: SODIUM, 139 mmol/L; 81.0: ANION GAP, 12 mmol/L; 81.0: BILIRUBIN_ TOTAL, .3 mg/dL; 81.0: GLOBULIN, 2.8 g/dL; 81.0: PROTEIN_ TOTAL, 6.5 g/dL; 81.0: MAGNESIUM, 2.0 mg/dL; 81.0: ALKALINE PHOSPHATASE, 92 U/L; 81.0: ALT (SGPT), 25 U/L; 81.0: POTASSIUM, 4.0 mmol/L; 81.0: AST (SGOT), 27 U/L; 81.0: ALBUMIN, 3.7 g/dL; 81.0: LIPASE, 19 U/L; 81.0: CHLORIDE, 105 mmol/L; 81.0: CALCIUM, 9.1 mg/dL; 81.0: CORRECTED CALCIUM, 9.3 mg/dL; 81.0: EGFR FOR AFRICAN AMERICAN, 95 mL/min/1.73 m2; 81.0: EGFR REFIT WITHOUT RACE (2021), 83 mL/min/1.73 m2; 81.0: CREATININE, .93 mg/dL; 81.0: BLOOD UREA NITROGEN (BUN), 16 mg/dL; 81.0: URIC ACID, 3.8 mg/dL; 108.0: GLUCOSE, URINE (UA): Negative; 108.0: PH, URINE (UA): 6.0; 108.0: NITRITE, URINE (UA): Negative; 108.0: SPECIFIC GRAVITY, URINE (UA): 1.016; 108.0: KETONE, URINE (UA): Negative; 0.0: Age, 32; 0.0: Gender, F; 0.0: Race, White; 0.0: Means_of_arrival, Self; 0.0: Triage_Temp, 36.7; 0.0: Triage_HR, 88.0; 0.0: Triage_RR, 18.0; 0.0: Triage_SBP, 136.0; 0.0: Triage_DBP, 100.0; 0.0: Triage_acuity, 3-Urgent; 0.0: CC, FLANK PAIN,NAUSEA'
-Prediction: False
+Prediction: No
 Claim: The dataset represents a time series of a person in ED.
 Relevance: No
 Reasoning: This is a general statement and does not justify any specific classification.
@@ -297,3 +297,30 @@ Input: {}
 Output: {}
 Claim: {}
 """
+
+relevance_cardiac = """You will be given time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
+You will also be given a binary prediction of whether the patient is at high risk of experiencing cardiac arrest within the next 5 minutes, and a claim that may or may not be relevant to explaining why the sepsis prediction was assigned. Your task is to decide whether the claim is relevant to explaining the patient’s sepsis prediction for the given time series data.
+
+A claim is relevant if and only if:
+(1) It is directly supported by the time-series ECG data.
+(2) It helps explain why the model predicted yes/no.
+
+Return your answer as:
+Relevance: <Yes/No>
+Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
+
+Here are some examples:
+
+[Example 1]
+Input Data: 
+Prediction: True
+Claim: Frequent negative drops suggest arrhythmia or conduction abnormalities.
+Relevance: Yes
+Reasoning: The ECG time series shows frequent and sharp drops into negative values (e.g., values as low as -0.71529, -0.70034, -0.65049, -0.59566, etc.), which are consistent with irregular electrical activity in the heart. Such patterns may indicate arrhythmias or conduction abnormalities, which are known precursors to cardiac arrest. Therefore, the claim is directly supported by the data and helps explain the model’s “Yes” prediction.
+
+Now, determine whether the following claim is relevant to the given the time series data and the prediction label:
+Input Data: {}
+Prediction: {}
+Claim: {}
+"""
+
