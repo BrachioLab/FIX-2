@@ -108,7 +108,6 @@ class MyOpenAIModel:
         self,
         prompts: Union[str, List[Union[str, tuple]]],
         response_format: Optional[Dict[str, Any]] = None,
-        seed: Optional[int] = None,
     ) -> Union[str, List[str]]:
         """
         Process one or more prompts through the OpenAI API.
@@ -130,12 +129,7 @@ class MyOpenAIModel:
         # Concurrently process prompts
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
             futures = [
-                executor.submit(
-                    self.single_call,
-                    messages=self.prompt_to_messages(p),
-                    response_format=response_format,
-                    seed=seed,
-                )
+                executor.submit(self.single_call_openai, prompt=p, response_format=response_format)
                 for p in prompts
             ]
 
@@ -143,13 +137,10 @@ class MyOpenAIModel:
         
         return all_responses[0] if is_single_prompt else all_responses
 
-    def prompt_to_messages(self, prompt: Union[str, tuple]) -> List[Dict[str, Any]]:
-        """Convert a prompt to the format expected by OpenAI's API."""
+    def single_call_openai(self, prompt, response_format=None) -> str:
+        """Make a single API call to OpenAI."""
         if isinstance(prompt, str):
-            return [{
-                "role": "user",
-                "content": [{"type": "text", "text": prompt}]
-            }]
+            content = [{"type": "text", "text": prompt}]
     
         elif isinstance(prompt, tuple):
             content = []
@@ -166,20 +157,17 @@ class MyOpenAIModel:
                     })
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")
-
-            return [{"role": "user", "content": content}]
         else:
             raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
-    def single_call(self, messages, response_format=None, seed=None) -> str:
-        """Make a single API call to OpenAI."""
+        messages = [{"role": "user", "content": content}]
+
         for _ in range(self.num_tries_per_request):
             try:
                 response = self.client.chat.completions.create(
                     model=self.model_name,
                     messages=messages,
                     temperature=self.temperature,
-                    seed=seed,
                     response_format=response_format,
                 )
 
@@ -249,22 +237,15 @@ class MyAnthropicModel:
         prompts = [prompts] if is_single_prompt else prompts
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
-            futures = [
-                executor.submit(self.single_call, messages=self.prompt_to_messages(p))
-                for p in prompts
-            ]
-
+            futures = [executor.submit(self.single_call_anthropic, prompt=p) for p in prompts]
             all_responses = [f.result() for f in futures]
         
         return all_responses[0] if is_single_prompt else all_responses
 
-    def prompt_to_messages(self, prompt: Union[str, tuple]) -> List[Dict[str, Any]]:
-        """Convert a prompt to the format expected by Anthropic's API."""
+    def single_call_anthropic(self, prompt) -> str:
+        """Make a single API call to Anthropic."""
         if isinstance(prompt, str):
-            return [{
-                "role": "user",
-                "content": prompt
-            }]
+            content = [{"type": "text", "text": prompt}]
         
         elif isinstance(prompt, tuple):
             content = []
@@ -286,12 +267,11 @@ class MyAnthropicModel:
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")
 
-            return [{"role": "user", "content": content}]
         else:
             raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
-    def single_call(self, messages: List[Dict[str, Any]]) -> str:
-        """Make a single API call to Anthropic."""
+        messages = [{"role": "user", "content": content}]
+
         for _ in range(self.num_tries_per_request):
             try:
                 response = self.client.messages.create(
