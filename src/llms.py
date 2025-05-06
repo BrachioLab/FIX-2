@@ -21,7 +21,7 @@ def image_to_base64(
 ) -> str:
     """
     Convert an image to a base64-encoded string, optionally with a data URL prefix.
-    
+
     This function handles various input image formats (PyTorch tensor, NumPy array, or PIL Image)
     and converts them to a standardized base64 string representation. The output can be used
     for web-based image transmission or storage.
@@ -33,10 +33,10 @@ def image_to_base64(
             - PIL.Image.Image: PIL Image object
         include_url_prefix: If True, prepends "data:image/png;base64," to the output string
         image_format: The format to save the image in (default: "PNG")
-        
+
     Returns:
         str: Base64-encoded image string, optionally with data URL prefix
-        
+
     Raises:
         ValueError: If the input image format is invalid or conversion fails
     """
@@ -44,7 +44,7 @@ def image_to_base64(
         # Convert to numpy array if tensor
         if isinstance(image, torch.Tensor):
             image = image.cpu().numpy()
-        
+
         # Ensure image is in uint8 format with values 0-255
         if image.dtype != np.uint8:
             image = (image * 255).astype(np.uint8)
@@ -59,7 +59,7 @@ def image_to_base64(
         # Convert to base64
         with io.BytesIO() as buffer:
             pil_image.save(buffer, format=image_format)
-            base64_str = base64.b64encode(buffer.getvalue()).decode('utf-8')
+            base64_str = base64.standard_b64encode(buffer.getvalue()).decode('utf-8')
             return base64_str
 
     except Exception as e:
@@ -85,7 +85,7 @@ class MyOpenAIModel:
     """
     def __init__(
         self,
-        model_name: str,
+        model_name: str = "gpt-4o-mini",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
@@ -103,34 +103,6 @@ class MyOpenAIModel:
         self.temperature = temperature
         self.batch_size = batch_size
         self.verbose = verbose
-
-    def prompt_to_messages(
-        self,
-        prompt: Union[str, tuple]
-    ) -> List[Dict[str, Any]]:
-        """Convert a prompt to the format expected by OpenAI's API."""
-        if isinstance(prompt, str):
-            return [{
-                "role": "user",
-                "content": [{"type": "text", "text": prompt}]
-            }]
-        
-        elif isinstance(prompt, tuple):
-            content = []
-            for p in prompt:
-                if isinstance(p, str):
-                    content.append({"type": "text", "text": p})
-                elif is_image(p):
-                    content.append({
-                        "type": "image_url",
-                        "image_url": {"url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"}
-                    })
-                else:
-                    raise ValueError(f"Invalid prompt type: {type(p)}")
-
-            return [{"role": "user", "content": content}]
-        else:
-            raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
     def __call__(
         self,
@@ -159,7 +131,7 @@ class MyOpenAIModel:
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
             futures = [
                 executor.submit(
-                    self.__single_call__,
+                    self.single_call,
                     messages=self.prompt_to_messages(p),
                     response_format=response_format,
                     seed=seed,
@@ -171,12 +143,35 @@ class MyOpenAIModel:
         
         return all_responses[0] if is_single_prompt else all_responses
 
-    def __single_call__(
-        self,
-        messages: List[Dict[str, Any]],
-        response_format: Optional[Dict[str, Any]] = None,
-        seed: Optional[int] = None,
-    ) -> str:
+    def prompt_to_messages(self, prompt: Union[str, tuple]) -> List[Dict[str, Any]]:
+        """Convert a prompt to the format expected by OpenAI's API."""
+        if isinstance(prompt, str):
+            return [{
+                "role": "user",
+                "content": [{"type": "text", "text": prompt}]
+            }]
+    
+        elif isinstance(prompt, tuple):
+            content = []
+            for p in prompt:
+                if isinstance(p, str):
+                    content.append({
+                        "type": "text",
+                        "text": p
+                    })
+                elif is_image(p):
+                    content.append({
+                        "type": "image_url",
+                        "image_url": {"url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"}
+                    })
+                else:
+                    raise ValueError(f"Invalid prompt type: {type(p)}")
+
+            return [{"role": "user", "content": content}]
+        else:
+            raise ValueError(f"Invalid prompt type: {type(prompt)}")
+
+    def single_call(self, messages, response_format=None, seed=None) -> str:
         """Make a single API call to OpenAI."""
         for _ in range(self.num_tries_per_request):
             try:
@@ -218,7 +213,7 @@ class MyAnthropicModel:
         verbose: bool = False,
     ):
         """Initialize the Anthropic API wrapper.
-        
+    
         Args:
             model_name: Name of the Claude model to use
             num_tries_per_request: Number of retry attempts per API call
@@ -230,19 +225,16 @@ class MyAnthropicModel:
         api_key = os.getenv("ANTHROPIC_API_KEY")
         if not api_key:
             raise ValueError("ANTHROPIC_API_KEY environment variable not set")
-            
+
         # Initialize Anthropic client
         self.client = anthropic.Anthropic(api_key=api_key)
         self.num_tries_per_request = num_tries_per_request
         self.temperature = temperature
-        self.batch_size = batch_size
         self.max_tokens = max_tokens
+        self.batch_size = batch_size
         self.verbose = verbose
 
-    def __call__(
-        self,
-        prompts: Union[str, List[str]],
-    ) -> Union[str, List[str]]:
+    def __call__(self, prompts: Union[str, List[Union[str, tuple]]]) -> Union[str, List[str]]:
         """Call Anthropic API with one or more prompts.
         
         Args:
@@ -253,28 +245,58 @@ class MyAnthropicModel:
         Returns:
             Single response string or list of response strings
         """
-        is_single_prompt = isinstance(prompts, str)
+        is_single_prompt = isinstance(prompts, (str, tuple))
         prompts = [prompts] if is_single_prompt else prompts
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
             futures = [
-                executor.submit(self.__single_call__, prompt=p) for p in prompts
+                executor.submit(self.single_call, messages=self.prompt_to_messages(p))
+                for p in prompts
             ]
 
             all_responses = [f.result() for f in futures]
         
         return all_responses[0] if is_single_prompt else all_responses
 
-    def __single_call__(
-        self,
-        prompt: str,
-    ) -> str:
+    def prompt_to_messages(self, prompt: Union[str, tuple]) -> List[Dict[str, Any]]:
+        """Convert a prompt to the format expected by Anthropic's API."""
+        if isinstance(prompt, str):
+            return [{
+                "role": "user",
+                "content": prompt
+            }]
+        
+        elif isinstance(prompt, tuple):
+            content = []
+            for p in prompt:
+                if isinstance(p, str):
+                    content.append({
+                        "type": "text",
+                        "text": p
+                    })
+                elif is_image(p):
+                    content.append({
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "image/png",
+                            "data": image_to_base64(p, "PNG")
+                        }
+                    })
+                else:
+                    raise ValueError(f"Invalid prompt type: {type(p)}")
+
+            return [{"role": "user", "content": content}]
+        else:
+            raise ValueError(f"Invalid prompt type: {type(prompt)}")
+
+    def single_call(self, messages: List[Dict[str, Any]]) -> str:
         """Make a single API call to Anthropic."""
         for _ in range(self.num_tries_per_request):
             try:
                 response = self.client.messages.create(
                     model=self.model_name,
-                    messages=[{"role": "user", "content": prompt}],
+                    messages=messages,
                     temperature=self.temperature,
                     max_tokens=self.max_tokens,
                 )
