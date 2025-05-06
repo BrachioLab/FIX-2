@@ -3,12 +3,12 @@ import concurrent.futures
 import time
 from typing import Any, Dict, List, Optional, Union
 from openai import OpenAI
+import anthropic
 import torch
 import numpy as np
-import PIL
+import PIL.Image
 import io
 import base64
-
 
 def is_image(x: Any) -> bool:
     """Check if the input is an image in a supported format."""
@@ -88,6 +88,8 @@ class MyOpenAIModel:
         model_name: str,
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
+        temperature: float = 0.1,
+        batch_size: int = 24,
         verbose: bool = False
     ) -> None:
         self.model_name = model_name
@@ -98,43 +100,9 @@ class MyOpenAIModel:
             
         self.client = OpenAI(api_key=self.api_key)
         self.num_tries_per_request = num_tries_per_request
+        self.temperature = temperature
+        self.batch_size = batch_size
         self.verbose = verbose
-
-    def call_openai(
-        self,
-        messages: List[Dict[str, Any]],
-        response_format: Optional[Dict[str, Any]] = None,
-        temperature: float = 0.1,
-        seed: Optional[int] = None,
-    ) -> str:
-        """Make a single API call to OpenAI."""
-        for _ in range(self.num_tries_per_request):
-            try:
-                response = self.client.chat.completions.create(
-                    model=self.model_name,
-                    messages=messages,
-                    temperature=temperature,
-                    seed=seed,
-                    response_format=response_format,
-                )
-
-                content = response.choices[0].message.content
-                if isinstance(content, str):
-                    return content.strip()
-
-                else:
-                    raise ValueError(f"Invalid response content: {content}")
-
-            except Exception as e:
-                if self.verbose:
-                    print(f"Error calling OpenAI: {e}")
-
-                time.sleep(3)
-
-        if self.verbose:
-            print("Failed to get a valid response from OpenAI")
-
-        return ""
 
     def prompt_to_messages(
         self,
@@ -164,14 +132,11 @@ class MyOpenAIModel:
         else:
             raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
-
     def __call__(
         self,
         prompts: Union[str, List[Union[str, tuple]]],
         response_format: Optional[Dict[str, Any]] = None,
-        temperature: float = 1.0,
         seed: Optional[int] = None,
-        batch_size: int = 24,
     ) -> Union[str, List[str]]:
         """
         Process one or more prompts through the OpenAI API.
@@ -191,13 +156,12 @@ class MyOpenAIModel:
         prompts = [prompts] if is_single_prompt else prompts
         
         # Concurrently process prompts
-        with concurrent.futures.ThreadPoolExecutor(max_workers=batch_size) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
             futures = [
                 executor.submit(
-                    self.call_openai,
+                    self.__single_call__,
                     messages=self.prompt_to_messages(p),
                     response_format=response_format,
-                    temperature=temperature,
                     seed=seed,
                 )
                 for p in prompts
@@ -206,3 +170,128 @@ class MyOpenAIModel:
             all_responses = [f.result() for f in futures]
         
         return all_responses[0] if is_single_prompt else all_responses
+
+    def __single_call__(
+        self,
+        messages: List[Dict[str, Any]],
+        response_format: Optional[Dict[str, Any]] = None,
+        seed: Optional[int] = None,
+    ) -> str:
+        """Make a single API call to OpenAI."""
+        for _ in range(self.num_tries_per_request):
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model_name,
+                    messages=messages,
+                    temperature=self.temperature,
+                    seed=seed,
+                    response_format=response_format,
+                )
+
+                content = response.choices[0].message.content
+                if isinstance(content, str):
+                    return content.strip()
+
+                else:
+                    raise ValueError(f"Invalid response content: {content}")
+
+            except Exception as e:
+                if self.verbose:
+                    print(f"Error calling OpenAI: {e}")
+
+                time.sleep(3)
+
+        if self.verbose:
+            print("Failed to get a valid response from OpenAI")
+
+        return ""
+
+
+class MyAnthropicModel:
+    def __init__(
+        self,
+        model_name: str = "claude-3-opus-20240229",
+        num_tries_per_request: int = 3,
+        temperature: float = 0.1,
+        max_tokens: int = 4096,
+        batch_size: int = 24,
+        verbose: bool = False,
+    ):
+        """Initialize the Anthropic API wrapper.
+        
+        Args:
+            model_name: Name of the Claude model to use
+            num_tries_per_request: Number of retry attempts per API call
+            verbose: Whether to print debug information
+        """
+        self.model_name = model_name
+        
+        # Try to load API key from environment
+        api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise ValueError("ANTHROPIC_API_KEY environment variable not set")
+            
+        # Initialize Anthropic client
+        self.client = anthropic.Anthropic(api_key=api_key)
+        self.num_tries_per_request = num_tries_per_request
+        self.temperature = temperature
+        self.batch_size = batch_size
+        self.max_tokens = max_tokens
+        self.verbose = verbose
+
+    def __call__(
+        self,
+        prompts: Union[str, List[str]],
+    ) -> Union[str, List[str]]:
+        """Call Anthropic API with one or more prompts.
+        
+        Args:
+            prompts: Single prompt string or list of prompt strings
+            temperature: Sampling temperature (0-1)
+            batch_size: Maximum number of concurrent API calls
+            
+        Returns:
+            Single response string or list of response strings
+        """
+        is_single_prompt = isinstance(prompts, str)
+        prompts = [prompts] if is_single_prompt else prompts
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
+            futures = [
+                executor.submit(self.__single_call__, prompt=p) for p in prompts
+            ]
+
+            all_responses = [f.result() for f in futures]
+        
+        return all_responses[0] if is_single_prompt else all_responses
+
+    def __single_call__(
+        self,
+        prompt: str,
+    ) -> str:
+        """Make a single API call to Anthropic."""
+        for _ in range(self.num_tries_per_request):
+            try:
+                response = self.client.messages.create(
+                    model=self.model_name,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=self.temperature,
+                    max_tokens=self.max_tokens,
+                )
+
+                content = response.content[0].text
+                if isinstance(content, str):
+                    return content.strip()
+                else:
+                    raise ValueError(f"Invalid response content: {content}")
+
+            except Exception as e:
+                if self.verbose:
+                    print(f"Error calling Anthropic: {e}")
+
+                time.sleep(3)
+
+        if self.verbose:
+            print("Failed to get a valid response from Anthropic")
+
+        return ""
