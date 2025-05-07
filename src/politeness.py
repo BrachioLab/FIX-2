@@ -14,6 +14,11 @@ from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseli
 from diskcache import Cache
 cache = Cache("/shared_data0/shreyah/llm_cache")
 
+prompt_dict = {"vanilla": vanilla_baseline,
+               "cot": cot_baseline,
+               "socratic": socratic_baseline,
+               "subq": least_to_most_baseline}
+
 class PolitenessExample:
     def __init__(self, utterance, ground_truth, llm_score, llm_explanation):
         self.utterance = utterance
@@ -50,8 +55,8 @@ def query_openai(prompt, model="gpt-4o"):
             time.sleep(3)
     return "ERROR"
 
-def get_llm_generated_answer(utterance: str):
-    prompt = politeness_prompt.replace("[BASELINE_PROMPT", vanilla_baseline).format(utterance)
+def get_llm_generated_answer(utterance: str, baseline: str = "vanilla"):
+    prompt = politeness_prompt.replace("[BASELINE_PROMPT", prompt_dict[baseline]).format(utterance)
     response = query_openai(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
