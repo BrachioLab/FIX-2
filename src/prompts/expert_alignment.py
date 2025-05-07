@@ -144,6 +144,7 @@ Your task is as follows:
 
 Return your answer as:
 Category: <category>
+Category ID: <category ID>
 Category Alignment Rating: <rating>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 

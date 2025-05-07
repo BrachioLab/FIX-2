@@ -251,7 +251,8 @@ def get_llm_output_from_messages(messages, model='gpt-4o'):
 
 def get_llm_generated_answer(
     example: str | torch.Tensor, #Image | Timeseries,
-    method: str = "vanilla"
+    method: str = "vanilla",
+    model: str = "gpt-4o"
 ) -> str:
     """
     Args:
@@ -259,7 +260,7 @@ def get_llm_generated_answer(
           e.g., the emotion classification task.
     """
     if method == "vanilla":
-        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline)
+        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
     elif method == "cot":
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
     elif method == "socratic":
@@ -270,7 +271,7 @@ def get_llm_generated_answer(
         raise ValueError(f"Invalid method: {method}")
 
     image_pil = massmap_to_pil_norm(example)
-    response = get_llm_output(prompt, [image_pil])
+    response = get_llm_output(prompt, [image_pil], model=model)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None, None
@@ -288,7 +289,8 @@ def get_llm_generated_answer(
         return None, None
 
 def isolate_individual_features(
-    explanation: str
+    explanation: str,
+    model: str = "gpt-4o"
 ):
     """
     Args:
@@ -299,7 +301,7 @@ def isolate_individual_features(
     """
 
     prompt = decomposition_massmaps.format(explanation)
-    response = get_llm_output(prompt)
+    response = get_llm_output(prompt, model=model)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -312,7 +314,8 @@ def is_claim_relevant(
     example: str | torch.Tensor,
     answer: str,
     atomic_claim: str,
-    threshold: float = 0.9
+    threshold: float = 0.9,
+    model: str = "gpt-4o"
 ) -> bool:
     """
     For a claim to be relevant, it must be:
@@ -370,7 +373,7 @@ def is_claim_relevant(
 
     messages = [user_message]
 
-    response = get_llm_output_from_messages(messages)
+    response = get_llm_output_from_messages(messages, model=model)
 
     response = response.replace("Relevance:", "").strip()
     response = response.split("\n")
@@ -382,7 +385,8 @@ def distill_relevant_features(
     example: str | torch.Tensor,
     answer: str,
     raw_atomic_claims: list[str],
-    threshold: float = 0.9
+    threshold: float = 0.9,
+    model: str = "gpt-4o"
 ):
     """
     Args:
@@ -394,19 +398,23 @@ def distill_relevant_features(
     """
     atomic_claims = []
     for raw_atomic_claim in raw_atomic_claims:
-        if is_claim_relevant(example, answer, raw_atomic_claim):
+        if is_claim_relevant(example, answer, raw_atomic_claim, model=model):
             atomic_claims.append(raw_atomic_claim)
     return atomic_claims
 
 def calculate_expert_alignment_score(
     example_input: torch.Tensor, 
     llm_prediction: str, claim: str,
-    system_prompt=None):
+    system_prompt=None,
+    model: str = "gpt-4o"
+):
     if system_prompt is None:
         system_prompt = alignment_massmaps
         
     prompt = alignment_massmaps.format(claim)
-    response = get_llm_output(prompt)
+    response = get_llm_output(prompt, model=model)
+    response_old = response
+    # print(response)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -414,13 +422,15 @@ def calculate_expert_alignment_score(
     response = response.split("\n")
     response = [r for r in response if r.strip() != ""]
     category = response[0].strip()
-    alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
+    category_id = response[1].replace("Category ID:", "").strip()
+    alignment_score = response[2].replace("Category Alignment Rating:", "").strip()
     try:
         alignment_score = float(alignment_score)
     except:
         print("ERROR: Could not convert alignment score to float")
         print(response)
+        import pdb; pdb.set_trace()
         alignment_score = 0.0
-    reasoning = response[2].replace("Reasoning:", "").strip()
-    return category, alignment_score, reasoning
+    reasoning = response[3].replace("Reasoning:", "").strip()
+    return category, category_id, alignment_score, reasoning
     
