@@ -184,3 +184,27 @@ The overall word choice likely indicates the speaker finds the voicepack irritat
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
 """
+
+
+decomposition_cardiac = """
+You will be given a paragraph that explains the reasoning behind predicting whether a patient is at high risk of experiencing cardiac arrest within the next {} minutes, based on time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Your task is to decompose this explanation into individual claims that are:
+
+Atomic: Each claim should express only one clear idea or judgment.
+Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
+Faithful: The claims must preserve the original meaning and information.
+
+Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
+
+Here is an example of how to format your output:
+
+INPUT: Analyzing the time-series ECG data, I noted significant irregularities that suggest a high risk of cardiac arrest. There are frequent drops in the ECG readings into negative values, which can indicate issues such as arrhythmia or other conduction abnormalities. The sharp transitions between these fluctuating values, especially the extreme negative deviations, could denote episodes of bradycardia or other arrhythmogenic events. Additionally, there is a lack of steady rhythm, visible in the fluctuating values, which might imply an underlying instability in cardiac function. These anomalies, combined with significant dips below the baseline and a significant range of fluctuation, highlight the patient’s high risk for an immediate cardiac event. This pattern indicates that the patient requires urgent medical attention to avert possible cardiac arrest within the next five minutes.
+
+OUTPUT:
+Frequent negative drops suggest arrhythmia or conduction abnormalities.
+Sharp transitions and extreme negative values may signal bradycardia or arrhythmogenic events.
+Fluctuating values and lack of steady rhythm imply cardiac instability.
+Significant dips below baseline and wide fluctuations reinforce elevated risk.
+
+Now decompose the following paragraph into atomic, standalone claims:
+INPUT: {}
+"""

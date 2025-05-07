@@ -119,4 +119,18 @@ Here is the text for you to classify.
 {}
 """
 
+cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
+You will be provided with time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
 
+Your task is to determine whether this patient is at high risk of experiencing cardiac arrest within the next {} minutes. Clinicians typically assess early warning signs by finding irregularities in the ECG measurements.
+[BASELINE_PROMPT] 
+Focus on the features of the data you used to make your yes or no binary classification. 
+Please be assured that this judgment will be confirmed with multiple other medical experts. Please provide your best judgment without worrying about not providing the perfect answer.
+
+Your response should be formatted as follows:
+Prediction: <Yes/No>
+Explanation: <explanation>
+
+Here is the ECG data for you to analyze:
+{}
+"""
