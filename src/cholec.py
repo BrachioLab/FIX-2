@@ -1,4 +1,7 @@
 import os
+import random
+from pathlib import Path
+import json
 import time
 from typing import Any
 import numpy as np
@@ -166,7 +169,7 @@ def get_llm_generated_answer(
         prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", cot_baseline)
     elif baseline.lower() == "socratic":
         prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", socratic_baseline)
-    elif baseline.lower() == "least_to_most":
+    elif baseline.lower() == "subq":
         prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", least_to_most_baseline)
     else:
         raise ValueError(f"Invalid baseline: {baseline}")
@@ -223,6 +226,7 @@ def distill_relevant_features(
 
     prompts = [(relevance_cholec.format(claim), example_image) for claim in atomic_claims]
     llm = load_model(model)
+    llm.verbose = True
     results = llm(prompts)
 
     relevant_claims = [
@@ -347,3 +351,67 @@ def items_to_examples(
         print(f"Total time taken: {time.time() - _start_time:.3f} seconds")
 
     return examples
+
+
+def run_cholec_pipeline(
+    items: list[dict],
+    explanation_model: str = default_model,
+    evaluation_model: str = default_model,
+    baseline: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+) -> list[CholecExample]:
+    """
+    Run the cholecystectomy pipeline on a list of items.
+    """
+    save_path = str(Path(__file__).parent / ".." / "results" / baseline / f"cholec_{explanation_model}.json")
+    if os.path.exists(save_path) and not overwrite_existing:
+        print(f"Results already exist at {save_path}. Set overwrite_existing=True to overwrite.")
+        return
+
+    examples = items_to_examples(items, explanation_model, evaluation_model, baseline, verbose)
+    with open(save_path, "w") as f:
+        json.dump([example.to_dict() for example in examples], f, indent=4)
+
+
+def get_yes_no_confirmation(prompt):
+    """
+    Prompts the user with a yes/no question and returns True for yes, False for no.
+    Keeps asking until a valid response is given.
+    """
+    while True:
+        response = input(prompt + " (Y/n): ").lower().strip()
+        if response == 'y':
+            return True
+        elif response == 'n':
+            return False
+        else:
+            print("Invalid input. Please enter 'y' for yes or 'n' for no.")
+
+
+if __name__ == "__main__":
+    # Take a few random, unique samples from the dataset
+    num_samples = 2
+    dataset = CholecDataset(split="test", image_size=(180, 320))
+    random_indices = random.sample(range(len(dataset)), num_samples)
+    items = [dataset[i] for i in random_indices]
+
+    # Can be very expensive!
+    if get_yes_no_confirmation("You are about to spend a lot of money"):
+        # Run the models and baselines
+        for model in ["gpt-4o", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]:
+            _model_time = time.time()
+            for baseline in ["vanilla", "cot", "socratic", "subq"]:
+                print(f"\nRunning {model} with {baseline} baseline...")
+                run_cholec_pipeline(
+                    items=items,
+                    explanation_model=model,
+                    evaluation_model="gpt-4o",
+                    baseline=baseline,
+                    verbose=True,
+                )
+            print(f"Time taken for {model}: {time.time() - _model_time:.3f} seconds")
+
+    else:
+        print("Your bank account is safe!")
+
