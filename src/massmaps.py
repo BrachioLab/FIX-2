@@ -278,11 +278,11 @@ def get_llm_generated_answer(
 
     try:
         response_split = [r.strip() for r in response.split("\n") if r.strip() != ""]
-        answer = response_split[0].split("Prediction: ")[1].strip()
+        answer = response_split[1].split("Prediction: ")[1].strip()
         # split the answer into Omega_m and sigma_8
         answer = answer.split(", ")
         answer = {answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), answer[1].split(": ")[0]: float(answer[1].split(": ")[1])}
-        explanation = response_split[1].split("Explanation: ")[1].strip()
+        explanation = response_split[0].split("Explanation: ")[1].strip()
         return answer, explanation
     except:
         print(response)

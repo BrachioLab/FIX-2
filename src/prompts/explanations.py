@@ -68,8 +68,8 @@ Predict the values for Omega_m and sigma_8 based on the information from this we
 [BASELINE_PROMPT]
 
 Your response should be 2 lines, formatted as follows:
-Prediction: Omega_m: <prediction for Omega_m>, sigma_8: <prediction for sigma_8>
 Explanation: <explanation, as described above, 3-5 sentences>
+Prediction: Omega_m: <prediction for Omega_m>, sigma_8: <prediction for sigma_8>
 
 Here is the weak lensing mass map for you to predict the cosmological parameters for.
 Mass map: (provided in the image)
