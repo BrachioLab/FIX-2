@@ -2,13 +2,18 @@ import os
 import concurrent.futures
 import time
 from typing import Any, Dict, List, Optional, Union
+from abc import ABC, abstractmethod
 from openai import OpenAI
 import anthropic
+from google import genai
+from google.genai import types as genai_types
 import torch
+import torchvision.transforms.functional as tvtf
 import numpy as np
 import PIL.Image
 import io
 import base64
+
 
 def is_image(x: Any) -> bool:
     """Check if the input is an image in a supported format."""
@@ -20,136 +25,115 @@ def image_to_base64(
     image_format: str = "PNG"
 ) -> str:
     """
-    Convert an image to a base64-encoded string, optionally with a data URL prefix.
-
-    This function handles various input image formats (PyTorch tensor, NumPy array, or PIL Image)
-    and converts them to a standardized base64 string representation. The output can be used
-    for web-based image transmission or storage.
+    Convert an image to a base64-encoded string.
     
     Args:
         image: Input image in one of the following formats:
             - torch.Tensor: PyTorch tensor (C,H,W) or (H,W,C)
             - np.ndarray: NumPy array (H,W,C) or (C,H,W)
             - PIL.Image.Image: PIL Image object
-        include_url_prefix: If True, prepends "data:image/png;base64," to the output string
         image_format: The format to save the image in (default: "PNG")
 
     Returns:
-        str: Base64-encoded image string, optionally with data URL prefix
+        str: Base64-encoded image string
 
     Raises:
         ValueError: If the input image format is invalid or conversion fails
     """
     try:
-        # Convert to numpy array if tensor
         if isinstance(image, torch.Tensor):
             image = image.cpu().numpy()
 
-        # Ensure image is in uint8 format with values 0-255
         if image.dtype != np.uint8:
             image = (image * 255).astype(np.uint8)
         
-        # Handle channel-first format (C,H,W) -> (H,W,C)
         if len(image.shape) == 3 and image.shape[0] == 3:
             image = image.transpose(1, 2, 0)
         
-        # Convert to PIL Image
         pil_image = PIL.Image.fromarray(image)
         
-        # Convert to base64
         with io.BytesIO() as buffer:
             pil_image.save(buffer, format=image_format)
-            base64_str = base64.standard_b64encode(buffer.getvalue()).decode('utf-8')
-            return base64_str
+            return base64.standard_b64encode(buffer.getvalue()).decode('utf-8')
 
     except Exception as e:
         raise ValueError(f"Failed to convert image to base64: {str(e)}")
 
 
-class MyOpenAIModel:
-    """
-    A wrapper class for OpenAI's chat completion API that supports both single and batch processing.
+def to_pil_image(x: Any) -> PIL.Image.Image:
+    """Convert an image to a PIL Image object."""
+    if isinstance(x, PIL.Image.Image):
+        return x
+    elif isinstance(x, torch.Tensor):
+        return tvtf.to_pil_image(x)
+    elif isinstance(x, np.ndarray):
+        return PIL.Image.fromarray(x)
+    else:
+        raise ValueError(f"Invalid image type: {type(x)}")
 
-    Usage:
-        >>> llm = MyOpenAIModel("gpt-4o-mini")
-        >>> image = PIL.Image.open("path/to/image.png")
-        >>> out = llm([
-                "What's your name?",
-                ("Tell me what you think about this image", image)
-            ])
-        >>> print(out)
-        [
-            "I'm called Assistant. How can I help you today?",
-            "The image is a beautiful landscape."
-        ]
-    """
-    def __init__(
-        self,
-        model_name: str = "gpt-4o-mini",
-        api_key: Optional[str] = None,
-        num_tries_per_request: int = 3,
-        temperature: float = 0.1,
-        batch_size: int = 24,
-        verbose: bool = False
-    ) -> None:
-        self.model_name = model_name
-        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
-        
-        if not self.api_key:
-            raise ValueError("OPENAI_API_KEY environment variable is not set")
-            
-        self.client = OpenAI(api_key=self.api_key)
-        self.num_tries_per_request = num_tries_per_request
-        self.temperature = temperature
-        self.batch_size = batch_size
-        self.verbose = verbose
+
+class MyLLM(ABC):
+    """Abstract base class for LLM wrappers."""
 
     def __call__(
         self,
         prompts: Union[str, List[Union[str, tuple]]],
-        response_format: Optional[Dict[str, Any]] = None,
-    ) -> Union[str, List[str]]:
-        """
-        Process one or more prompts through the OpenAI API.
+        batch_size: int = 24,
+        **kwargs
+    ):
+        """Process one or more prompts through the LLM API.
         
         Args:
             prompts: Single prompt string or list of prompts
-            response_format: Optional format specification for the response
-            temperature: Controls randomness in the response (0.0 to 1.0)
-            seed: Optional seed for reproducibility
             batch_size: Number of prompts to process in parallel
-            
+            **kwargs: Additional keyword arguments to pass to the API call
         Returns:
             Single response string or list of response strings
         """
-        # Convert single prompt to list for uniform processing
-        is_single_prompt = isinstance(prompts, (str, tuple))
-        prompts = [prompts] if is_single_prompt else prompts
-        
-        # Concurrently process prompts
-        with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
-            futures = [
-                executor.submit(self.single_call_openai, prompt=p, response_format=response_format)
-                for p in prompts
-            ]
+        if isinstance(prompts, (str, tuple)):
+            return self.one_call(prompts, **kwargs)
 
-            all_responses = [f.result() for f in futures]
-        
-        return all_responses[0] if is_single_prompt else all_responses
+        with concurrent.futures.ThreadPoolExecutor(max_workers=batch_size) as executor:
+            futures = [executor.submit(self.one_call, prompt=p, **kwargs) for p in prompts]
+            return [f.result() for f in futures]
+            
+    @abstractmethod
+    def one_call(self, prompt: Union[str, tuple], **kwargs):
+        """Make a single API call to the LLM service."""
+        raise NotImplementedError("Subclasses must implement this method")
 
-    def single_call_openai(self, prompt, response_format=None) -> str:
-        """Make a single API call to OpenAI."""
+
+class MyOpenAIModel(MyLLM):
+    """OpenAI API wrapper implementation."""
+    
+    def __init__(
+        self,
+        model_name: str = "gpt-4o",
+        api_key: Optional[str] = None,
+        num_tries_per_request: int = 3,
+        temperature: float = 0.1,
+        max_tokens: int = 2048,
+        verbose: bool = False,
+    ):
+        self.model_name = model_name
+        self.num_tries_per_request = num_tries_per_request
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+        self.verbose = verbose
+        
+        api_key = api_key or os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY environment variable is not set")
+        self.client = OpenAI(api_key=api_key)
+
+    def one_call(self, prompt) -> str:
         if isinstance(prompt, str):
             content = [{"type": "text", "text": prompt}]
-    
         elif isinstance(prompt, tuple):
             content = []
             for p in prompt:
                 if isinstance(p, str):
-                    content.append({
-                        "type": "text",
-                        "text": p
-                    })
+                    content.append({"type": "text", "text": p})
                 elif is_image(p):
                     content.append({
                         "type": "image_url",
@@ -168,93 +152,50 @@ class MyOpenAIModel:
                     model=self.model_name,
                     messages=messages,
                     temperature=self.temperature,
-                    response_format=response_format,
+                    max_completion_tokens=self.max_tokens,
                 )
-
-                content = response.choices[0].message.content
-                if isinstance(content, str):
-                    return content.strip()
-
-                else:
-                    raise ValueError(f"Invalid response content: {content}")
-
+                return response.choices[0].message.content.strip()
             except Exception as e:
                 if self.verbose:
-                    print(f"Error calling OpenAI: {e}")
-
+                    print(f"Error calling OpenAI's API: {e}")
                 time.sleep(3)
 
         if self.verbose:
             print("Failed to get a valid response from OpenAI")
-
         return ""
 
 
-class MyAnthropicModel:
+class MyAnthropicModel(MyLLM):
+    """Anthropic API wrapper implementation."""
+    
     def __init__(
         self,
-        model_name: str = "claude-3-opus-20240229",
+        model_name: str = "claude-3-5-sonnet-latest",
+        api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
-        max_tokens: int = 4096,
-        batch_size: int = 24,
+        max_tokens: int = 2048,
         verbose: bool = False,
     ):
-        """Initialize the Anthropic API wrapper.
-    
-        Args:
-            model_name: Name of the Claude model to use
-            num_tries_per_request: Number of retry attempts per API call
-            verbose: Whether to print debug information
-        """
         self.model_name = model_name
-        
-        # Try to load API key from environment
-        api_key = os.getenv("ANTHROPIC_API_KEY")
-        if not api_key:
-            raise ValueError("ANTHROPIC_API_KEY environment variable not set")
-
-        # Initialize Anthropic client
-        self.client = anthropic.Anthropic(api_key=api_key)
         self.num_tries_per_request = num_tries_per_request
         self.temperature = temperature
         self.max_tokens = max_tokens
-        self.batch_size = batch_size
         self.verbose = verbose
-
-    def __call__(self, prompts: Union[str, List[Union[str, tuple]]]) -> Union[str, List[str]]:
-        """Call Anthropic API with one or more prompts.
         
-        Args:
-            prompts: Single prompt string or list of prompt strings
-            temperature: Sampling temperature (0-1)
-            batch_size: Maximum number of concurrent API calls
-            
-        Returns:
-            Single response string or list of response strings
-        """
-        is_single_prompt = isinstance(prompts, (str, tuple))
-        prompts = [prompts] if is_single_prompt else prompts
+        api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise ValueError("ANTHROPIC_API_KEY environment variable not set")
+        self.client = anthropic.Anthropic(api_key=api_key)
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
-            futures = [executor.submit(self.single_call_anthropic, prompt=p) for p in prompts]
-            all_responses = [f.result() for f in futures]
-        
-        return all_responses[0] if is_single_prompt else all_responses
-
-    def single_call_anthropic(self, prompt) -> str:
-        """Make a single API call to Anthropic."""
+    def one_call(self, prompt) -> str:
         if isinstance(prompt, str):
             content = [{"type": "text", "text": prompt}]
-        
         elif isinstance(prompt, tuple):
             content = []
             for p in prompt:
                 if isinstance(p, str):
-                    content.append({
-                        "type": "text",
-                        "text": p
-                    })
+                    content.append({"type": "text", "text": p})
                 elif is_image(p):
                     content.append({
                         "type": "image",
@@ -266,7 +207,6 @@ class MyAnthropicModel:
                     })
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")
-
         else:
             raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
@@ -280,20 +220,73 @@ class MyAnthropicModel:
                     temperature=self.temperature,
                     max_tokens=self.max_tokens,
                 )
-
-                content = response.content[0].text
-                if isinstance(content, str):
-                    return content.strip()
-                else:
-                    raise ValueError(f"Invalid response content: {content}")
-
+                return response.content[0].text.strip()
             except Exception as e:
                 if self.verbose:
-                    print(f"Error calling Anthropic: {e}")
-
+                    print(f"Error calling Anthropic's API: {e}")
                 time.sleep(3)
 
         if self.verbose:
             print("Failed to get a valid response from Anthropic")
+        return ""
+
+
+class MyGoogleModel(MyLLM):
+    """Google API wrapper implementation."""
+    
+    def __init__(
+        self,
+        model_name: str = "gemini-2.0-flash",
+        api_key: Optional[str] = None,
+        num_tries_per_request: int = 3,
+        temperature: float = 0.1,
+        max_tokens: int = 2048,
+        verbose: bool = False,
+    ):
+        self.model_name = model_name
+        self.num_tries_per_request = num_tries_per_request
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+        self.verbose = verbose
+        
+        api_key = api_key or os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            raise ValueError("GOOGLE_API_KEY environment variable not set")
+        self.client = genai.Client(api_key=api_key)
+
+    def one_call(self, prompt) -> str:
+        if isinstance(prompt, str):
+            content = [prompt]
+        elif isinstance(prompt, tuple):
+            content = []
+            for p in prompt:
+                if isinstance(p, str):
+                    content.append(p)
+                elif is_image(p):
+                    content.append(to_pil_image(p))
+                else:
+                    raise ValueError(f"Invalid prompt type: {type(p)}")
+        else:
+            raise ValueError(f"Invalid prompt type: {type(prompt)}")
+
+        for _ in range(self.num_tries_per_request):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=content,
+                    config=genai_types.GenerateContentConfig(
+                        temperature=self.temperature,
+                        max_output_tokens=self.max_tokens,
+                    )
+                )
+                return response.text.strip()
+
+            except Exception as e:
+                if self.verbose:
+                    print(f"Error calling Google's API: {e}")
+                time.sleep(3)
+
+        if self.verbose:
+            print("Failed to get a valid response from Google")
 
         return ""
