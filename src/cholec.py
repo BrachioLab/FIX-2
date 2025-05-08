@@ -19,8 +19,8 @@ from prompts.explanations import cholec_prompt, vanilla_baseline, cot_baseline, 
 
 cache = Cache(".cholec_cache")
 
-default_model_name = "gpt-4o"
-# default_model_name = "gpt-4.1-mini"
+default_model = "gpt-4o"
+# default_model = "gpt-4.1-mini"
 
 
 class CholecExample:
@@ -136,7 +136,7 @@ class CholecDataset(Dataset):
 
 def get_llm_generated_answer(
     image: torch.Tensor | np.ndarray | PIL.Image.Image | list[Any],
-    model_name: str = default_model_name,
+    model: str = default_model,
     baseline: str = "vanilla",
 ) -> dict[str, Any]:
     """
@@ -158,7 +158,7 @@ def get_llm_generated_answer(
             - "Explanation": Detailed text analysis of safe/unsafe regions
     """
 
-    llm = load_model(model_name)
+    llm = load_model(model)
 
     if baseline.lower() == "vanilla":
         prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", vanilla_baseline)
@@ -183,7 +183,7 @@ def get_llm_generated_answer(
 
 def isolate_individual_features(
     explanation: str | list[str],
-    model_name: str = default_model_name,
+    model: str = default_model,
 ) -> list[str]:
     """
     Isolate individual features from the explanation by breaking it down into atomic claims.
@@ -196,7 +196,7 @@ def isolate_individual_features(
         list[str]: A list of atomic claims extracted from the explanation
     """
 
-    llm = load_model(model_name=model_name)
+    llm = load_model(model)
 
     if isinstance(explanation, list):
         prompts = [decomposition_cholec.format(e) for e in explanation]
@@ -215,14 +215,14 @@ def isolate_individual_features(
 def distill_relevant_features(
     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
     atomic_claims: list[str],
-    model_name: str = default_model_name,
+    model: str = default_model,
 ) -> list[str]:
     """
     Distill the relevant features from the atomic claims.
     """
 
     prompts = [(relevance_cholec.format(claim), example_image) for claim in atomic_claims]
-    llm = load_model(model_name=model_name)
+    llm = load_model(model)
     results = llm(prompts)
 
     relevant_claims = [
@@ -235,14 +235,14 @@ def distill_relevant_features(
 
 def calculate_expert_alignment_scores(
     claims: list[str],
-    model_name: str = default_model_name,
+    model: str = default_model,
 ) -> list[dict]:
     """
     Computes the individual (and overall) alignment score of all the relevant claims.
 
     Args:
         claims (list[str]): A list of strings where each string is a relevant claim.
-        model_name (str): The model to use for evaluation.
+        model (str): The model to use for evaluation.
 
     Returns:
         dict: A dictionary containing:
@@ -250,7 +250,7 @@ def calculate_expert_alignment_scores(
             - total_score: Overall alignment score across all claims
     """
 
-    llm = load_model(model_name=model_name)
+    llm = load_model(model)
     prompts = [alignment_cholec.replace("[[CLAIM]]", claim) for claim in claims]
     responses = llm(prompts)
 
@@ -280,17 +280,19 @@ def calculate_expert_alignment_scores(
 
 def items_to_examples(
     items: list[dict],
-    model_name: str = default_model_name,
+    explanation_model: str = default_model,
+    evaluation_model: str = default_model,
     baseline: str = "vanilla",
     verbose: bool = False,
 ) -> list[CholecExample]:
     """
     Convert an image to a CholecExample by running the entire LLM pipeline.
     """
+    _start_time = time.time()
 
     # Step 0: Get the LLM answers
     _t = time.time()
-    llm_answers = [get_llm_generated_answer(item["image"], model_name, baseline) for item in items]
+    llm_answers = [get_llm_generated_answer(item["image"], explanation_model, baseline) for item in items]
     if verbose:
         print(f"Time taken to get LLM answers: {time.time() - _t:.3f} seconds")
 
@@ -308,7 +310,7 @@ def items_to_examples(
 
     # Step 1: Decompose the LLM explanation into atomic claims
     _t = time.time()
-    all_all_claims = isolate_individual_features([example.llm_explanation for example in examples])
+    all_all_claims = isolate_individual_features([example.llm_explanation for example in examples], evaluation_model)
     if verbose:
         print(f"Time taken to decompose into atomic claims: {time.time() - _t:.3f} seconds")
 
@@ -318,14 +320,14 @@ def items_to_examples(
     # Step 2: Distill the relevant features from the atomic claims
     _t = time.time()
     for example in examples:
-        example.relevant_claims = distill_relevant_features(example.image, example.all_claims, model_name=model_name)
+        example.relevant_claims = distill_relevant_features(example.image, example.all_claims, evaluation_model)
     if verbose:
         print(f"Time taken to distill relevant features: {time.time() - _t:.3f} seconds")
 
     # Step 3: Calculate the expert alignment scores
     _t = time.time()
     for example in examples:
-        align_infos = calculate_expert_alignment_scores(example.relevant_claims, model_name=model_name)
+        align_infos = calculate_expert_alignment_scores(example.relevant_claims, evaluation_model)
 
         example.alignable_claims = [info["Claim"] for info in align_infos]
         example.aligned_category_ids = [info["Category ID"] for info in align_infos]
@@ -340,5 +342,8 @@ def items_to_examples(
 
     if verbose:
         print(f"Time taken to calculate expert alignment scores: {time.time() - _t:.3f} seconds")
+
+    if verbose:
+        print(f"Total time taken: {time.time() - _start_time:.3f} seconds")
 
     return examples
