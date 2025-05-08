@@ -41,17 +41,22 @@ def image_to_base64(
         ValueError: If the input image format is invalid or conversion fails
     """
     try:
+        # Step 1: Convert the image to a numpy array
         if isinstance(image, torch.Tensor):
             image = image.cpu().numpy()
 
+        # Step 2: Convert the numpy image to uint8 if necessary
         if image.dtype != np.uint8:
             image = (image * 255).astype(np.uint8)
         
+        # Step 3: Transpose the image if necessary
         if len(image.shape) == 3 and image.shape[0] == 3:
             image = image.transpose(1, 2, 0)
         
+        # Step 4: Convert the image to a PIL Image
         pil_image = PIL.Image.fromarray(image)
-        
+
+        # Step 5: Save the image to a buffer
         with io.BytesIO() as buffer:
             pil_image.save(buffer, format=image_format)
             return base64.standard_b64encode(buffer.getvalue()).decode('utf-8')
@@ -72,38 +77,20 @@ def to_pil_image(x: Any) -> PIL.Image.Image:
         raise ValueError(f"Invalid image type: {type(x)}")
 
 
-class MyLLM(ABC):
-    """Abstract base class for LLM wrappers."""
-
-    def __call__(
-        self,
-        prompts: Union[str, List[Union[str, tuple]]],
-        batch_size: int = 24,
-        **kwargs
-    ):
-        """Process one or more prompts through the LLM API.
-        
-        Args:
-            prompts: Single prompt string or list of prompts
-            batch_size: Number of prompts to process in parallel
-            **kwargs: Additional keyword arguments to pass to the API call
-        Returns:
-            Single response string or list of response strings
-        """
-        if isinstance(prompts, (str, tuple)):
-            return self.one_call(prompts, **kwargs)
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=batch_size) as executor:
-            futures = [executor.submit(self.one_call, prompt=p, **kwargs) for p in prompts]
-            return [f.result() for f in futures]
-            
-    @abstractmethod
-    def one_call(self, prompt: Union[str, tuple], **kwargs):
-        """Make a single API call to the LLM service."""
-        raise NotImplementedError("Subclasses must implement this method")
+def load_model(model_name: str):
+    """Attempt to load the model based on the name"""
+    # OpenAI model names
+    if "gpt" in model_name or "o1" in model_name or "o3" in model_name or "o4" in model_name:
+        return MyOpenAIModel(model_name=model_name)
+    elif "claude" in model_name:
+        return MyAnthropicModel(model_name=model_name)
+    elif "gemini" in model_name:
+        return MyGoogleModel(model_name=model_name)
+    else:
+        raise ValueError(f"Invalid model name: {model_name}")
 
 
-class MyOpenAIModel(MyLLM):
+class MyOpenAIModel:
     """OpenAI API wrapper implementation."""
     
     def __init__(
@@ -113,18 +100,29 @@ class MyOpenAIModel(MyLLM):
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
         max_tokens: int = 2048,
+        batch_size: int = 24,
         verbose: bool = False,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
         self.temperature = temperature
         self.max_tokens = max_tokens
+        self.batch_size = batch_size
         self.verbose = verbose
         
-        api_key = api_key or os.getenv("OPENAI_API_KEY")
-        if not api_key:
+        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        if not self.api_key:
             raise ValueError("OPENAI_API_KEY environment variable is not set")
-        self.client = OpenAI(api_key=api_key)
+        self.client = OpenAI(api_key=self.api_key)
+
+    def __call__(self, prompts: Union[str, List[Union[str, tuple]]]):
+        """Process one or more prompts through the LLM API."""
+        if isinstance(prompts, (str, tuple)):
+            return self.one_call(prompts)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
+            futures = [executor.submit(self.one_call, prompt=p) for p in prompts]
+            return [f.result() for f in futures]
 
     def one_call(self, prompt) -> str:
         if isinstance(prompt, str):
@@ -165,7 +163,7 @@ class MyOpenAIModel(MyLLM):
         return ""
 
 
-class MyAnthropicModel(MyLLM):
+class MyAnthropicModel:
     """Anthropic API wrapper implementation."""
     
     def __init__(
@@ -175,18 +173,29 @@ class MyAnthropicModel(MyLLM):
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
         max_tokens: int = 2048,
+        batch_size: int = 24,
         verbose: bool = False,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
         self.temperature = temperature
         self.max_tokens = max_tokens
+        self.batch_size = batch_size
         self.verbose = verbose
         
-        api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
-        if not api_key:
+        self.api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
+        if not self.api_key:
             raise ValueError("ANTHROPIC_API_KEY environment variable not set")
-        self.client = anthropic.Anthropic(api_key=api_key)
+        self.client = anthropic.Anthropic(api_key=self.api_key)
+
+    def __call__(self, prompts: Union[str, List[Union[str, tuple]]]):
+        """Process one or more prompts through the LLM API."""
+        if isinstance(prompts, (str, tuple)):
+            return self.one_call(prompts)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
+            futures = [executor.submit(self.one_call, prompt=p) for p in prompts]
+            return [f.result() for f in futures]
 
     def one_call(self, prompt) -> str:
         if isinstance(prompt, str):
@@ -231,7 +240,7 @@ class MyAnthropicModel(MyLLM):
         return ""
 
 
-class MyGoogleModel(MyLLM):
+class MyGoogleModel:
     """Google API wrapper implementation."""
     
     def __init__(
@@ -241,18 +250,29 @@ class MyGoogleModel(MyLLM):
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
         max_tokens: int = 2048,
+        batch_size: int = 24,
         verbose: bool = False,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
         self.temperature = temperature
         self.max_tokens = max_tokens
+        self.batch_size = batch_size
         self.verbose = verbose
         
-        api_key = api_key or os.getenv("GOOGLE_API_KEY")
-        if not api_key:
+        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
+        if not self.api_key:
             raise ValueError("GOOGLE_API_KEY environment variable not set")
-        self.client = genai.Client(api_key=api_key)
+        self.client = genai.Client(api_key=self.api_key)
+
+    def __call__(self, prompts: Union[str, List[Union[str, tuple]]]):
+        """Process one or more prompts through the LLM API."""
+        if isinstance(prompts, (str, tuple)):
+            return self.one_call(prompts)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
+            futures = [executor.submit(self.one_call, prompt=p) for p in prompts]
+            return [f.result() for f in futures]
 
     def one_call(self, prompt) -> str:
         if isinstance(prompt, str):

@@ -1,21 +1,16 @@
-# Standard library imports
 import os
-import io
-import base64
-import re
+import time
 from typing import Any
-# Third-party imports
 import numpy as np
 import torch
 import PIL
-import openai
 from torch.utils.data import Dataset
 from torchvision import transforms as tfs
 import datasets as hfds
 from diskcache import Cache
 
 # Local imports
-from llms import MyOpenAIModel
+from llms import load_model
 from prompts.claim_decomposition import decomposition_cholec
 from prompts.relevance_filtering import relevance_cholec
 from prompts.expert_alignment import alignment_cholec
@@ -23,10 +18,9 @@ from prompts.explanations import cholec_prompt, vanilla_baseline, cot_baseline, 
 
 
 cache = Cache(".cholec_cache")
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-default_model = "gpt-4o"
-# default_model = "gpt-4.1-mini"
+default_model_name = "gpt-4o"
+# default_model_name = "gpt-4.1-mini"
 
 
 class CholecExample:
@@ -79,6 +73,9 @@ class CholecExample:
             "alignment_reasonings": self.alignment_reasonings,
             "final_alignment_score": self.final_alignment_score,
         }
+
+    def __str__(self):
+        return self.to_dict().__str__()
 
 
 class CholecDataset(Dataset):
@@ -139,7 +136,7 @@ class CholecDataset(Dataset):
 
 def get_llm_generated_answer(
     image: torch.Tensor | np.ndarray | PIL.Image.Image | list[Any],
-    model: str = default_model,
+    model_name: str = default_model_name,
     baseline: str = "vanilla",
 ) -> dict[str, Any]:
     """
@@ -161,7 +158,7 @@ def get_llm_generated_answer(
             - "Explanation": Detailed text analysis of safe/unsafe regions
     """
 
-    llm = MyOpenAIModel(model_name=model)
+    llm = load_model(model_name)
 
     if baseline.lower() == "vanilla":
         prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", vanilla_baseline)
@@ -186,7 +183,7 @@ def get_llm_generated_answer(
 
 def isolate_individual_features(
     explanation: str | list[str],
-    model_name: str = default_model,
+    model_name: str = default_model_name,
 ) -> list[str]:
     """
     Isolate individual features from the explanation by breaking it down into atomic claims.
@@ -199,7 +196,7 @@ def isolate_individual_features(
         list[str]: A list of atomic claims extracted from the explanation
     """
 
-    llm = MyOpenAIModel(model_name=model_name)
+    llm = load_model(model_name=model_name)
 
     if isinstance(explanation, list):
         prompts = [decomposition_cholec.format(e) for e in explanation]
@@ -218,14 +215,14 @@ def isolate_individual_features(
 def distill_relevant_features(
     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
     atomic_claims: list[str],
-    model: str = default_model,
+    model_name: str = default_model_name,
 ) -> list[str]:
     """
     Distill the relevant features from the atomic claims.
     """
 
     prompts = [(relevance_cholec.format(claim), example_image) for claim in atomic_claims]
-    llm = MyOpenAIModel(model_name=model)
+    llm = load_model(model_name=model_name)
     results = llm(prompts)
 
     relevant_claims = [
@@ -238,7 +235,7 @@ def distill_relevant_features(
 
 def calculate_expert_alignment_scores(
     claims: list[str],
-    model_name: str = default_model,
+    model_name: str = default_model_name,
 ) -> list[dict]:
     """
     Computes the individual (and overall) alignment score of all the relevant claims.
@@ -253,7 +250,7 @@ def calculate_expert_alignment_scores(
             - total_score: Overall alignment score across all claims
     """
 
-    llm = MyOpenAIModel(model_name=model_name)
+    llm = load_model(model_name=model_name)
     prompts = [alignment_cholec.replace("[[CLAIM]]", claim) for claim in claims]
     responses = llm(prompts)
 
@@ -280,3 +277,68 @@ def calculate_expert_alignment_scores(
 
     return results
 
+
+def items_to_examples(
+    items: list[dict],
+    model_name: str = default_model_name,
+    baseline: str = "vanilla",
+    verbose: bool = False,
+) -> list[CholecExample]:
+    """
+    Convert an image to a CholecExample by running the entire LLM pipeline.
+    """
+
+    # Step 0: Get the LLM answers
+    _t = time.time()
+    llm_answers = [get_llm_generated_answer(item["image"], model_name, baseline) for item in items]
+    if verbose:
+        print(f"Time taken to get LLM answers: {time.time() - _t:.3f} seconds")
+
+    examples = [
+        CholecExample(
+            id=item["id"],
+            image=item["image"],
+            organ_masks=item["organs"],
+            gonogo_masks=item["gonogo"],
+            llm_explanation=llm_answer,
+        )
+        for (item, llm_answer) in zip(items, llm_answers)
+    ]
+
+
+    # Step 1: Decompose the LLM explanation into atomic claims
+    _t = time.time()
+    all_all_claims = isolate_individual_features([example.llm_explanation for example in examples])
+    if verbose:
+        print(f"Time taken to decompose into atomic claims: {time.time() - _t:.3f} seconds")
+
+    for i in range(len(all_all_claims)):
+        examples[i].all_claims = all_all_claims[i]
+
+    # Step 2: Distill the relevant features from the atomic claims
+    _t = time.time()
+    for example in examples:
+        example.relevant_claims = distill_relevant_features(example.image, example.all_claims, model_name=model_name)
+    if verbose:
+        print(f"Time taken to distill relevant features: {time.time() - _t:.3f} seconds")
+
+    # Step 3: Calculate the expert alignment scores
+    _t = time.time()
+    for example in examples:
+        align_infos = calculate_expert_alignment_scores(example.relevant_claims, model_name=model_name)
+
+        example.alignable_claims = [info["Claim"] for info in align_infos]
+        example.aligned_category_ids = [info["Category ID"] for info in align_infos]
+        example.alignment_scores = [info["Alignment"] for info in align_infos]
+        example.alignment_reasonings = [info["Reasoning"] for info in align_infos]
+
+        # Non-alignable claims are given a score of 0.0
+        if len(align_infos) > 0:
+            example.final_alignment_score = sum(info["Alignment"] for info in align_infos) / len(example.all_claims)
+        else:
+            example.final_alignment_score = 0.0
+
+    if verbose:
+        print(f"Time taken to calculate expert alignment scores: {time.time() - _t:.3f} seconds")
+
+    return examples
