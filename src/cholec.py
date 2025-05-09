@@ -515,7 +515,8 @@ if __name__ == "__main__":
     items = [dataset[i] for i in random_indices]
 
     # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.5-pro-exp-03-25"]
-    models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]
+    # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]
+    models = ["gpt-4o"]
     baselines = ["vanilla", "cot", "socratic", "subq"]
 
     # Can be very expensive!
