@@ -100,7 +100,7 @@ def load_cholec_prompt(baseline: str):
 
     # Load the data and images to make a few-shot example.
     all_examples = []
-    for i in range(1, 6):   # Examples 1-5
+    for i in range(1, 11):   # Examples 1-10
         image = PIL.Image.open(Path(__file__).parent / "data" / f"cholec_fewshot_{i}_image.png")
         image.load()
 
@@ -137,7 +137,7 @@ def load_cholec_prompt(baseline: str):
         "Unsafe Mask", unsafe_mask,
     )
 
-    prompt += ("I will now give you some few-shot examples without the safe/unsafe masks. Your job is to predict the explanation, safelist, and unsafe list for the given image.",)
+    prompt += ("I will now give you some few-shot examples without the safe/unsafe masks. Your task is to predict the Explanation, Safe List, and Unsafe List for the given image.",)
 
     for i, item in enumerate(all_examples):
         image, explanation, safe_list, unsafe_list, _, _ = item

@@ -21,10 +21,10 @@ from pathlib import Path
 cache = diskcache.Cache(Path(__file__).parent / ".llms.py.cache")
 
 
-def get_cache_key(prompt: Any)-> str:
+def get_cache_key(model_name: str, prompt: Any)-> str:
     """Convert a prompt into a hash string."""
     if isinstance(prompt, str):
-        return hashlib.sha256(pickle.dumps(prompt)).hexdigest()
+        return hashlib.sha256(pickle.dumps((model_name, prompt))).hexdigest()
 
     elif isinstance(prompt, tuple):
         objs = []
@@ -35,7 +35,7 @@ def get_cache_key(prompt: Any)-> str:
                 objs.append(image_to_base64(p, "PNG"))
             else:
                 raise ValueError(f"Invalid prompt type: {type(p)}")
-        return hashlib.sha256(pickle.dumps(objs)).hexdigest()
+        return hashlib.sha256(pickle.dumps((model_name, objs))).hexdigest()
 
     else:
         raise ValueError(f"Invalid prompt type: {type(prompt)}")
@@ -96,14 +96,14 @@ def to_pil_image(x: Any) -> PIL.Image.Image:
         raise ValueError(f"Invalid image type: {type(x)}")
 
 
-def load_model(model_name: str):
+def load_model(model_name: str, api_key: Optional[str] = None):
     """Attempt to load the model based on the name"""
-    if "gpt" in model_name or "o1" in model_name or "o3" in model_name or "o4" in model_name:
-        return MyOpenAIModel(model_name=model_name)
+    if "gpt" in model_name or model_name.startswith("o"):
+        return MyOpenAIModel(model_name=model_name, api_key=api_key)
     elif "claude" in model_name:
-        return MyAnthropicModel(model_name=model_name)
+        return MyAnthropicModel(model_name=model_name, api_key=api_key)
     elif "gemini" in model_name:
-        return MyGoogleModel(model_name=model_name, verbose=True)
+        return MyGoogleModel(model_name=model_name, api_key=api_key)
     else:
         raise ValueError(f"Invalid model name: {model_name}")
 
@@ -144,7 +144,7 @@ class MyOpenAIModel:
 
     def one_call(self, prompt) -> str:
         if self.use_cache:
-            ret = cache.get(get_cache_key(prompt))
+            ret = cache.get(get_cache_key(self.model_name, prompt))
             if ret is not None:
                 return ret
 
@@ -184,7 +184,7 @@ class MyOpenAIModel:
                 time.sleep(3)
 
         if self.use_cache:
-            cache.set(get_cache_key(prompt), response_text)
+            cache.set(get_cache_key(self.model_name, prompt), response_text)
 
         return response_text
 
@@ -227,7 +227,7 @@ class MyAnthropicModel:
 
     def one_call(self, prompt) -> str:
         if self.use_cache:
-            ret = cache.get(get_cache_key(prompt))
+            ret = cache.get(get_cache_key(self.model_name, prompt))
             if ret is not None:
                 return ret
 
@@ -271,7 +271,7 @@ class MyAnthropicModel:
                 time.sleep(3)
 
         if self.use_cache:
-            cache.set(get_cache_key(prompt), response_text)
+            cache.set(get_cache_key(self.model_name, prompt), response_text)
 
         return response_text
 
@@ -314,7 +314,7 @@ class MyGoogleModel:
 
     def one_call(self, prompt) -> str:
         if self.use_cache:
-            ret = cache.get(get_cache_key(prompt))
+            ret = cache.get(get_cache_key(self.model_name, prompt))
             if ret is not None:
                 return ret
 
@@ -353,6 +353,6 @@ class MyGoogleModel:
                 time.sleep(3)
 
         if self.use_cache:
-            cache.set(get_cache_key(prompt), response_text)
+            cache.set(get_cache_key(self.model_name, prompt), response_text)
 
         return response_text

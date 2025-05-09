@@ -186,7 +186,7 @@ INPUT: {}
 
 
 decomposition_cardiac = """
-You will be given a paragraph that explains the reasoning behind predicting whether a patient is at high risk of experiencing cardiac arrest within the next {} minutes, based on time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Your task is to decompose this explanation into individual claims that are:
+You will be given a paragraph that explains the reasoning behind predicting whether a patient is at high risk of experiencing cardiac arrest within the next {}, based on basic patient background information (age, gender, race, reason for ICU admittance) and time-series Electrocardiogram (ECG) data at {} from the first {} of an ECG monitoring period during a patient's ICU stay. Your task is to decompose this explanation into individual claims that are:
 
 Atomic: Each claim should express only one clear idea or judgment.
 Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
@@ -196,14 +196,16 @@ Format your output as a list of claims separated by new lines. Do not include an
 
 Here is an example of how to format your output:
 
-INPUT: Analyzing the time-series ECG data, I noted significant irregularities that suggest a high risk of cardiac arrest. There are frequent drops in the ECG readings into negative values, which can indicate issues such as arrhythmia or other conduction abnormalities. The sharp transitions between these fluctuating values, especially the extreme negative deviations, could denote episodes of bradycardia or other arrhythmogenic events. Additionally, there is a lack of steady rhythm, visible in the fluctuating values, which might imply an underlying instability in cardiac function. These anomalies, combined with significant dips below the baseline and a significant range of fluctuation, highlight the patient’s high risk for an immediate cardiac event. This pattern indicates that the patient requires urgent medical attention to avert possible cardiac arrest within the next five minutes.
+INPUT: The patient's ECG graph shows significant irregularities, with frequent and pronounced spikes and dips, indicating potential arrhythmic events. These patterns are concerning because they deviate from the normal consistent rhythm expected in a healthy heart. The spikes, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation. Given that the patient is young, the primary risk factor stems from trauma-induced complications from the motor vehicle collision, such as cardiac tamponade or myocardial contusion, contributing to this prediction.
 
 OUTPUT:
-Frequent negative drops suggest arrhythmia or conduction abnormalities.
-Sharp transitions and extreme negative values may signal bradycardia or arrhythmogenic events.
-Fluctuating values and lack of steady rhythm imply cardiac instability.
-Significant dips below baseline and wide fluctuations reinforce elevated risk.
+- The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
+- The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
+- The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
+- The patient is young, and the primary risk factor stems from trauma-induced complications from a motor vehicle collision.
+- Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
 
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
 """
+

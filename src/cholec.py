@@ -3,6 +3,7 @@ import random
 from pathlib import Path
 import json
 import time
+from tqdm import tqdm
 from typing import Any
 import numpy as np
 import torch
@@ -16,11 +17,9 @@ from diskcache import Cache
 # Local imports
 from llms import load_model
 from prompts.claim_decomposition import decomposition_cholec
-from prompts.relevance_filtering import relevance_cholec
+from prompts.relevance_filtering import load_relevance_cholec_prompt
 from prompts.expert_alignment import alignment_cholec
-from prompts.explanations import \
-    cholec_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, \
-    load_cholec_prompt
+from prompts.explanations import load_cholec_prompt
 
 
 cache = Cache(".cholec_cache")
@@ -308,7 +307,7 @@ def distill_relevant_features(
     Distill the relevant features from the atomic claims.
     """
 
-    prompts = [(relevance_cholec.format(claim), example_image) for claim in atomic_claims]
+    prompts = [load_relevance_cholec_prompt(example_image, claim) for claim in atomic_claims]
     llm = load_model(model)
     llm.verbose = True
     results = llm(prompts)
@@ -439,14 +438,14 @@ def items_to_examples(
 
     # Step 2: Distill the relevant features from the atomic claims
     _t = time.time()
-    for example in examples:
+    for example in tqdm(examples):
         example.relevant_claims = distill_relevant_features(example.image, example.all_claims, evaluation_model)
     if verbose:
         print(f"Time taken to distill relevant features: {time.time() - _t:.3f} seconds")
 
     # Step 3: Calculate the expert alignment scores
     _t = time.time()
-    for example in examples:
+    for example in tqdm(examples):
         align_infos = calculate_expert_alignment_scores(example.relevant_claims, evaluation_model)
 
         example.alignable_claims = [info["Claim"] for info in align_infos]
@@ -506,9 +505,11 @@ def get_yes_no_confirmation(prompt):
 
 
 if __name__ == "__main__":
+    _start_time = time.time()
+
     # Take a few random, unique samples from the dataset
     random.seed(42)
-    num_samples = 5
+    num_samples = 150
     dataset = CholecDataset(split="test", image_size=(180, 320))
     random_indices = random.sample(range(len(dataset)), num_samples)
     print(f"Random indices: {random_indices}")
@@ -538,3 +539,4 @@ if __name__ == "__main__":
     else:
         print("Your bank account is safe!")
 
+    print(f"Total time taken: {time.time() - _start_time:.3f} seconds")

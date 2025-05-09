@@ -326,29 +326,31 @@ Output: {}
 Claim: {}
 """
 
-relevance_cardiac = """You will be given time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
-You will also be given a binary prediction of whether the patient is at high risk of experiencing cardiac arrest within the next 5 minutes, and a claim that may or may not be relevant to explaining why the sepsis prediction was assigned. Your task is to decide whether the claim is relevant to explaining the patient’s sepsis prediction for the given time series data.
+relevance_cardiac = """
+You will be given basic background information about an ICU patient (age, gender, race, and primary reason for initial ICU admittance) and time-series Electrocardiogram (ECG) data plotted in a graph from the first {} of an ECG monitoring period during the patient's ICU stay. Each entry consists of a measurement value at that timestamp. The samples are taken at {} Hz, so that each consecutive measurement value is taken {} milliseconds apart. 
+You will also be given a binary prediction of whether the patient is at high risk of experiencing cardiac arrest within the next {}, and a claim that may or may not be relevant to explaining why the sepsis prediction was assigned. Your task is to decide whether the claim is relevant to explaining the patient’s cardiac arrest prediction for the given patient background information and time series data.
 
 A claim is relevant if and only if:
-(1) It is directly supported by the time-series ECG data.
+(1) It is directly supported by the patient background information and time-series ECG data.
 (2) It helps explain why the model predicted yes/no.
 
 Return your answer as:
 Relevance: <Yes/No>
 Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
 
-Here are some examples:
+Here are some examples: 
 
 [Example 1]
-Input Data: 
-Prediction: True
-Claim: Frequent negative drops suggest arrhythmia or conduction abnormalities.
+Input Data: The patient is age 28, gender M, race Other, and was admitted to the ICU for Motor vehicle collision, initial encounter. 
+(Image 1)
+Prediction: Yes
+Claim: The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
 Relevance: Yes
-Reasoning: The ECG time series shows frequent and sharp drops into negative values (e.g., values as low as -0.71529, -0.70034, -0.65049, -0.59566, etc.), which are consistent with irregular electrical activity in the heart. Such patterns may indicate arrhythmias or conduction abnormalities, which are known precursors to cardiac arrest. Therefore, the claim is directly supported by the data and helps explain the model’s “Yes” prediction.
+Reasoning: The claim suggests that pronounced spikes in the ECG graph between 60 to 120 seconds may indicate ventricular tachycardia or fibrillation, which are conditions associated with a high risk of cardiac arrest. The claim relies directly on the visual observation of the ECG data, which shows noticeable irregularities and spikes. These observations are relevant because they could explain why the model predicted a high risk of cardiac arrest for the patient.
 
 Now, determine whether the following claim is relevant to the given the time series data and the prediction label:
 Input Data: {}
+(Image 2)
 Prediction: {}
 Claim: {}
 """
-
