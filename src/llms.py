@@ -12,6 +12,33 @@ import torchvision.transforms.functional as tvtf
 import PIL.Image
 import io
 import base64
+import diskcache
+import pickle
+import hashlib
+from pathlib import Path
+
+# Create a cache in this directory
+cache = diskcache.Cache(Path(__file__).parent / ".llms.py.cache")
+
+
+def get_cache_key(model_name: str, prompt: Any)-> str:
+    """Convert a prompt into a hash string."""
+    if isinstance(prompt, str):
+        return hashlib.sha256(pickle.dumps((model_name, prompt))).hexdigest()
+
+    elif isinstance(prompt, tuple):
+        objs = []
+        for p in prompt:
+            if isinstance(p, str):
+                objs.append(p)
+            elif is_image(p):
+                objs.append(image_to_base64(p, "PNG"))
+            else:
+                raise ValueError(f"Invalid prompt type: {type(p)}")
+        return hashlib.sha256(pickle.dumps((model_name, objs))).hexdigest()
+
+    else:
+        raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
 
 def is_image(x: Any) -> bool:
@@ -49,6 +76,7 @@ def image_to_base64(
             image = tvtf.to_pil_image(image, mode=mode)
 
         assert isinstance(image, PIL.Image.Image), f"Image is not a PIL.Image.Image: {type(image)}"
+        image.load() # Force loading the image
 
         with io.BytesIO() as buffer:
             image.save(buffer, format=image_format)
@@ -68,15 +96,14 @@ def to_pil_image(x: Any) -> PIL.Image.Image:
         raise ValueError(f"Invalid image type: {type(x)}")
 
 
-def load_model(model_name: str):
+def load_model(model_name: str, api_key: Optional[str] = None):
     """Attempt to load the model based on the name"""
-    # OpenAI model names
-    if "gpt" in model_name or "o1" in model_name or "o3" in model_name or "o4" in model_name:
-        return MyOpenAIModel(model_name=model_name)
+    if "gpt" in model_name or model_name.startswith("o"):
+        return MyOpenAIModel(model_name=model_name, api_key=api_key)
     elif "claude" in model_name:
-        return MyAnthropicModel(model_name=model_name)
+        return MyAnthropicModel(model_name=model_name, api_key=api_key)
     elif "gemini" in model_name:
-        return MyGoogleModel(model_name=model_name, verbose=True)
+        return MyGoogleModel(model_name=model_name, api_key=api_key)
     else:
         raise ValueError(f"Invalid model name: {model_name}")
 
@@ -91,12 +118,14 @@ class MyOpenAIModel:
         num_tries_per_request: int = 3,
         max_tokens: int = 4096,
         batch_size: int = 24,
+        use_cache: bool = True,
         verbose: bool = False,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
         self.max_tokens = max_tokens
         self.batch_size = batch_size
+        self.use_cache = use_cache
         self.verbose = verbose
         
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
@@ -114,6 +143,11 @@ class MyOpenAIModel:
             return [f.result() for f in futures]
 
     def one_call(self, prompt) -> str:
+        if self.use_cache:
+            ret = cache.get(get_cache_key(self.model_name, prompt))
+            if ret is not None:
+                return ret
+
         if isinstance(prompt, str):
             content = [{"type": "text", "text": prompt}]
         elif isinstance(prompt, tuple):
@@ -132,7 +166,7 @@ class MyOpenAIModel:
             raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
         messages = [{"role": "user", "content": content}]
-
+        response_text = ""
         for _ in range(self.num_tries_per_request):
             try:
                 response = self.client.chat.completions.create(
@@ -140,15 +174,19 @@ class MyOpenAIModel:
                     messages=messages,
                     max_completion_tokens=self.max_tokens,
                 )
-                return response.choices[0].message.content.strip()
+
+                response_text = response.choices[0].message.content.strip()
+                break
+
             except Exception as e:
                 if self.verbose:
                     print(f"Error calling OpenAI's API: {e}")
                 time.sleep(3)
 
-        if self.verbose:
-            print("Failed to get a valid response from OpenAI")
-        return ""
+        if self.use_cache:
+            cache.set(get_cache_key(self.model_name, prompt), response_text)
+
+        return response_text
 
 
 class MyAnthropicModel:
@@ -161,6 +199,7 @@ class MyAnthropicModel:
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
         max_tokens: int = 4096,
+        use_cache: bool = True,
         batch_size: int = 24,
         verbose: bool = False,
     ):
@@ -169,6 +208,7 @@ class MyAnthropicModel:
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.batch_size = batch_size
+        self.use_cache = use_cache
         self.verbose = verbose
         
         self.api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
@@ -186,6 +226,11 @@ class MyAnthropicModel:
             return [f.result() for f in futures]
 
     def one_call(self, prompt) -> str:
+        if self.use_cache:
+            ret = cache.get(get_cache_key(self.model_name, prompt))
+            if ret is not None:
+                return ret
+
         if isinstance(prompt, str):
             content = [{"type": "text", "text": prompt}]
         elif isinstance(prompt, tuple):
@@ -208,7 +253,7 @@ class MyAnthropicModel:
             raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
         messages = [{"role": "user", "content": content}]
-
+        response_text = ""
         for _ in range(self.num_tries_per_request):
             try:
                 response = self.client.messages.create(
@@ -217,15 +262,18 @@ class MyAnthropicModel:
                     temperature=self.temperature,
                     max_tokens=self.max_tokens,
                 )
-                return response.content[0].text.strip()
+                response_text = response.content[0].text.strip()
+                break
+
             except Exception as e:
                 if self.verbose:
                     print(f"Error calling Anthropic's API: {e}")
                 time.sleep(3)
 
-        if self.verbose:
-            print("Failed to get a valid response from Anthropic")
-        return ""
+        if self.use_cache:
+            cache.set(get_cache_key(self.model_name, prompt), response_text)
+
+        return response_text
 
 
 class MyGoogleModel:
@@ -238,6 +286,7 @@ class MyGoogleModel:
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
         max_tokens: int = 4096,
+        use_cache: bool = True,
         batch_size: int = 24,
         verbose: bool = False,
     ):
@@ -246,6 +295,7 @@ class MyGoogleModel:
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.batch_size = batch_size
+        self.use_cache = use_cache
         self.verbose = verbose
         
         self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
@@ -263,6 +313,11 @@ class MyGoogleModel:
             return [f.result() for f in futures]
 
     def one_call(self, prompt) -> str:
+        if self.use_cache:
+            ret = cache.get(get_cache_key(self.model_name, prompt))
+            if ret is not None:
+                return ret
+
         if isinstance(prompt, str):
             content = [prompt]
         elif isinstance(prompt, tuple):
@@ -277,6 +332,7 @@ class MyGoogleModel:
         else:
             raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
+        response_text = ""
         for _ in range(self.num_tries_per_request):
             try:
                 response = self.client.models.generate_content(
@@ -288,14 +344,15 @@ class MyGoogleModel:
                     )
                 )
 
-                return response.text.strip()
+                response_text = response.text.strip()
+                break
 
             except Exception as e:
                 if self.verbose:
                     print(f"Error calling Google's API: {e}")
                 time.sleep(3)
 
-        if self.verbose:
-            print("Failed to get a valid response from Google")
+        if self.use_cache:
+            cache.set(get_cache_key(self.model_name, prompt), response_text)
 
-        return ""
+        return response_text
