@@ -1,3 +1,7 @@
+import PIL.Image
+from pathlib import Path
+
+
 relevance_template = """You will be given [description of input, output, and claim]
 
 A claim is relevant if and only if:
@@ -74,44 +78,75 @@ Return your answer as:
 Relevance: <Yes/No>
 Reasoning: <A brief explanation pointing to the visual feature and criterion that supports your judgment>
 
-Examples:
-
-Example 1
-Input: [input image]
-Claim: Calot's triangle is bounded by the cystic duct laterally, common hepatic duct medially, and the inferior surface of the liver superiorly.
-```
-Relevance: Yes
-Reasoning: The claim describes the anatomical landmarks that define Calot's triangle, which is a visually confirmed safety criterion for safe dissection.
-```
-
-Example 2
-Input: [input image]
-Claim: The image shows the surgeon working within Calot\u2019s triangle where careful dissection is necessary.
-```
-Relevance: No
-Reasoning: The claim is not specific to a visual feature in the image, but rather a general statement about the importance of careful dissection.
-```
-
-Example 3
-Input: [input image]
-Claim: Dissection on the gallbladder wall itself is generally safe but should be performed carefully to avoid bile spillage.
-```
-Relevance: No
-Reasoning: The claim is not specific to a visual feature in the image, but rather a general statement about the importance of careful dissection.
-```
-
-Example 4
-Input: [input image]
-Claim: The tissue being dissected appears friable with some bleeding and possible inflammation.
-```
-Relevance: Yes
-Reasoning: The claim is specific to a visual feature in the image, and pertains to identifying safe or unsafe dissection zones based on expert surgical criteria.
-```
-
-Now evaluate the following:
-Input: (see attached image)
-Claim: {}
+I will now give a few examples so you get the hang of it.
 """
+
+def load_relevance_cholec_prompt(image, claim: str):
+    image1 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_1_image.png")
+    image1.load()
+    image1_claim = "The safe region is located in the upper central portion of the surgical field, where there is clear visualization of the fatty tissue surrounding the gallbladder."
+    image1_reasoning = "This gives an accurate and specific description of the safe region in the image."
+    image1_relevance = "Yes"
+
+    image2 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_2_image.png")
+    image2.load()
+    image2_claim = "The tissue here appears pale pink to yellowish, indicating the gallbladder's serosa and underlying wall."
+    image2_reasoning = "This is an accurate and specific description of a visual feature in the image."
+    image2_relevance = "Yes"
+
+    image5 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_5_image.png")
+    image5.load()
+    image5_claim = "The surgeon should maintain dissection within the safe zone, working methodically to establish the critical view of safety before any structures are divided."
+    image5_reasoning = "This is generic advice that is not specific to the image."
+    image5_relevance = "No"
+
+    image6 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_6_image.png")
+    image6.load()
+    image6_claim = "The safe zone to dissect is above the Rouviere's sulcus, a known landmark for safe dissection."
+    image6_reasoning = "There is no Rouviere's sulcus visible in this image."
+    image6_relevance = "No"
+
+    image10 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_10_image.png")
+    image10.load()
+    image10_claim = "This area demonstrates appropriate tissue separation and appears to be free of major vascular or biliary structures."
+    image10_reasoning = "This image shows the starting phase of the surgery where the tissue is not separated yet."
+    image10_relevance = "No"
+
+    return (relevance_cholec,
+        "[Example 1]",
+        "Input:", image1,
+        "Claim:", image1_claim,
+        "Relevance:", image1_relevance,
+        "Reasoning:", image1_reasoning,
+
+        "[Example 2]",
+        "Input:", image2,
+        "Claim:", image2_claim,
+        "Relevance:", image2_relevance,
+        "Reasoning:", image2_reasoning,
+
+        "[Example 3]",
+        "Input:", image5,
+        "Claim:", image5_claim,
+        "Relevance:", image5_relevance,
+        "Reasoning:", image5_reasoning,
+
+        "[Example 4]",
+        "Input:", image6,
+        "Claim:", image6_claim,
+        "Relevance:", image6_relevance,
+        "Reasoning:", image6_reasoning,
+
+        "[Example 5]",
+        "Input:", image10,
+        "Claim:", image10_claim,
+        "Relevance:", image10_relevance,
+        "Reasoning:", image10_reasoning,
+
+        "Now evaluate the following",
+        "Input: ", image,
+        "Claim: ", claim,
+    )
 
 relevance_massmaps = """You will be given an image of a weak lensing mass map, its prediction for Omega_m and sigma_8, and a claim that may or may not be relevant to an explanation of the prediction. Your task is to decide whether the claim is relevant to explaining the prediction for this specific mass map.
 

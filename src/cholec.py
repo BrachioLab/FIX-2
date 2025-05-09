@@ -16,11 +16,9 @@ from diskcache import Cache
 # Local imports
 from llms import load_model
 from prompts.claim_decomposition import decomposition_cholec
-from prompts.relevance_filtering import relevance_cholec
+from prompts.relevance_filtering import load_relevance_cholec_prompt
 from prompts.expert_alignment import alignment_cholec
-from prompts.explanations import \
-    cholec_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, \
-    load_cholec_prompt
+from prompts.explanations import load_cholec_prompt
 
 
 cache = Cache(".cholec_cache")
@@ -308,7 +306,7 @@ def distill_relevant_features(
     Distill the relevant features from the atomic claims.
     """
 
-    prompts = [(relevance_cholec.format(claim), example_image) for claim in atomic_claims]
+    prompts = [load_relevance_cholec_prompt(example_image, claim) for claim in atomic_claims]
     llm = load_model(model)
     llm.verbose = True
     results = llm(prompts)
@@ -506,6 +504,8 @@ def get_yes_no_confirmation(prompt):
 
 
 if __name__ == "__main__":
+    _start_time = time.time()
+
     # Take a few random, unique samples from the dataset
     random.seed(42)
     num_samples = 5
@@ -517,7 +517,7 @@ if __name__ == "__main__":
     # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.5-pro-exp-03-25"]
     # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]
     models = ["gpt-4o"]
-    baselines = ["vanilla", "cot", "socratic", "subq"]
+    baselines = ["vanilla"]
 
     # Can be very expensive!
     if get_yes_no_confirmation("You are about to spend a lot of money"):
@@ -538,3 +538,4 @@ if __name__ == "__main__":
     else:
         print("Your bank account is safe!")
 
+    print(f"Total time taken: {time.time() - _start_time:.3f} seconds")
