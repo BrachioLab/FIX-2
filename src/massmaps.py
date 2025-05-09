@@ -191,9 +191,11 @@ def get_llm_output(prompt, images=None, model='gpt-4o'):
 
     llm = load_model(model)
 
-    return llm((prompt, images))
-
-    # messages = get_messages(prompt, images, system_prompt)
+    result = llm([(prompt, *images)])[0]
+    # import pdb; pdb.set_trace()
+    return result
+    # messages = get_messages(prompt, images)
+    # # try:
     # for i in range(3):
     #     try:
     #         response = client.chat.completions.create(
@@ -208,9 +210,15 @@ def get_llm_output(prompt, images=None, model='gpt-4o'):
     #             )
     #         return response.choices[0].message.content
     #     except Exception as e:
-    #         print("Try {}; Error: {}".format(str(i), str(e)))     
+    #         print("Try {}; Error: {}".format(str(i), str(e)))  
+    #         import pdb; pdb.set_trace()   
     #         time.sleep(3)
     # return "ERROR"
+    # except Exception as e:
+    #     print("Error: {}".format(str(e)))
+        
+    #     return "ERROR"
+
 
 @cache.memoize()
 def get_llm_output_from_messages(messages, model='gpt-4o'):
@@ -246,6 +254,8 @@ def get_llm_generated_answer(
           e.g., the emotion classification task.
     """
 
+    if method == 'least_to_most':
+        method = 'subq'
 
     if method == "vanilla":
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
@@ -253,7 +263,7 @@ def get_llm_generated_answer(
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
     elif method == "socratic":
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", socratic_baseline)
-    elif method == "least_to_most":
+    elif method == "subq":
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
     else:
         raise ValueError(f"Invalid method: {method}")
@@ -272,20 +282,23 @@ def get_llm_generated_answer(
 
     llm_response = get_llm_output(prompt, image_pil, model=model)
 
-    response_split = [r.strip() for r in llm_response.split("\n") if r.strip() != ""]
+    response_split = [r.strip() for r in llm_response.split("\n") if r.strip() != "" \
+        and r.strip().startswith("Explanation:") or r.strip().startswith("Prediction:")]
     try:
-        answer = response_split[1].split("Prediction: ")[1].strip()
+        
+        explanation = response_split[0].split("Explanation: ")[1].strip()
+        answer = response_split[-1].split("Prediction: ")[1].strip()
         # split the answer into Omega_m and sigma_8
         answer = answer.split(", ")
         answer = {
             answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), 
             answer[1].split(": ")[0]: float(answer[1].split(": ")[1])
         }
-        explanation = response_split[0].split("Explanation: ")[1].strip()
         
         return answer, explanation
     except Exception as e:
         print(f"Error in parsing response {llm_response}")
+        # import pdb; pdb.set_trace()
         return None, None
 
     # images_pil = []
@@ -327,27 +340,57 @@ def get_llm_generated_answer(
     #     print(response)
     #     return None, None
 
-def isolate_individual_features(
-    explanation: str,
-    model: str = "gpt-4o"
-):
-    """
-    Args:
-        explanation (str): The LLM-generated reasoning chain of why it gave a specific answer to an example.
+# def isolate_individual_features(
+#     explanation: str,
+#     model: str = "gpt-4o"
+# ):
+#     """
+#     Args:
+#         explanation (str): The LLM-generated reasoning chain of why it gave a specific answer to an example.
         
+#     Returns:
+#         raw_atomic_claims (list[str]): A list of strings where each string is an isolated claim (includes relevant and irrelevant claims).
+#     """
+
+#     prompt = decomposition_massmaps.format(explanation)
+#     response = get_llm_output(prompt, model=model)
+#     if response == "ERROR":
+#         print("Error in querying OpenAI API")
+#         return None
+#     response = response.replace("OUTPUT:", "").strip()
+#     claims = response.split("\n")
+
+#     return claims
+
+def isolate_individual_features(
+    explanation: str | list[str],
+    model: str = "gpt-4o",
+) -> list[str]:
+    """
+    Isolate individual features from the explanation by breaking it down into atomic claims.
+
+    Args:
+        explanation (str): The explanation text to break down into claims
+        model (str): The OpenAI model to use for processing
+
     Returns:
-        raw_atomic_claims (list[str]): A list of strings where each string is an isolated claim (includes relevant and irrelevant claims).
+        list[str]: A list of atomic claims extracted from the explanation
     """
 
-    prompt = decomposition_massmaps.format(explanation)
-    response = get_llm_output(prompt, model=model)
-    if response == "ERROR":
-        print("Error in querying OpenAI API")
-        return None
-    response = response.replace("OUTPUT:", "").strip()
-    claims = response.split("\n")
+    llm = load_model(model)
 
-    return claims
+    if isinstance(explanation, list):
+        prompts = [decomposition_massmaps.format(e) for e in explanation]
+        results = llm(prompts)
+        all_all_claims: list[list[str]] = [
+            [c.strip() for c in result.split("\n") if c.strip()]
+            for result in results
+        ]
+        return all_all_claims
+    else:
+        raw_output = llm(decomposition_massmaps.format(explanation))
+        all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
+        return all_claims
 
 def is_claim_relevant(
     example: str | torch.Tensor,
@@ -415,31 +458,110 @@ def is_claim_relevant(
     response = get_llm_output_from_messages(messages, model=model)
 
     response = response.replace("Relevance:", "").strip()
-    response = response.split("\n")
+    response = [item for item in response.split("\n") if item.strip() != ""]
     relevance = response[0].strip()
     reasoning = response[1].replace("Reasoning:", "").strip()
     return relevance, reasoning
 
+def get_relevance_few_shot_examples() -> list[PIL.Image.Image]:
+    # Get the images
+    # 1. Locate the *directory that this .py file lives in*
+    here = Path(__file__).resolve().parent          # .../your_script_folder
+
+    # 2. Point to the images folder *relative to* that location
+    img_dir = here / "prompts" / "data"                      # e.g. .../your_script_folder/images
+
+    # 3. Collect every PNG/JPG (adjust the glob pattern as needed)
+    few_shot_image_paths = sorted(img_dir.glob("massmaps_relevance*.png")) + \
+                sorted(img_dir.glob("massmaps_relevance*.jpg"))
+
+    # 4. Load them (returns a list of PIL Images here)
+    few_shot_images = [PIL.Image.open(p) for p in few_shot_image_paths]
+
+    return few_shot_images
+
+    # assert len(few_shot_images) > 0
+
+    # prompt = relevance_massmaps.format(f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", atomic_claim)
+    # return prompt
+
+# def distill_relevant_features(
+#     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
+#     atomic_claims: list[str],
+#     model: str = default_model,
+# ) -> list[str]:
+#     """
+#     Distill the relevant features from the atomic claims.
+#     """
+
+#     llm = load_model(model)
+#     llm.verbose = True
+
+#     few_shot_images = get_relevance_few_shot_examples()
+
+#     prompts = [(relevance_massmaps.format(
+#         f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", claim), 
+#         *few_shot_images, example_image) \
+#             for claim in atomic_claims]
+    
+#     results = llm(prompts)
+
+#     relevant_claims = [
+#         claim for claim, result in zip(atomic_claims, results)
+#         if "relevance: yes" in result.lower()
+#     ]
+
+#     return relevant_claims
+
 def distill_relevant_features(
-    example: str | torch.Tensor,
+    example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
     answer: str,
-    raw_atomic_claims: list[str],
-    threshold: float = 0.9,
-    model: str = "gpt-4o"
-):
+    atomic_claims: list[str],
+    model: str = "gpt-4o",
+) -> list[str]:
     """
-    Args:
-        example (str | Image | timeseries): The input example from a dataset from which to distill the relevant features from.
-        answer (str): The LLM-generated answer to the example.
-        raw_atomic_claims (list[str]): A list of strings where each string is an isolated claim (includes relevant and irrelevant claims).
-    Returns:
-        atomic_claims (list[str]): A list of strings where each string is a relevant claim.
+    Distill the relevant features from the atomic claims.
     """
-    atomic_claims = []
-    for raw_atomic_claim in raw_atomic_claims:
-        if is_claim_relevant(example, answer, raw_atomic_claim, model=model):
-            atomic_claims.append(raw_atomic_claim)
-    return atomic_claims
+
+    few_shot_images = get_relevance_few_shot_examples()
+
+    prompts = [(relevance_massmaps.format(
+        f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", 
+        claim
+        ), *few_shot_images, example_image) \
+        for claim in atomic_claims]
+    llm = load_model(model)
+    llm.verbose = True
+    import pdb; pdb.set_trace()
+    results = llm(prompts)
+
+    relevant_claims = [
+        claim for claim, result in zip(atomic_claims, results)
+        if "relevance: yes" in result.lower()
+    ]
+
+    return relevant_claims
+
+# def distill_relevant_features(
+#     example: str | torch.Tensor,
+#     answer: str,
+#     raw_atomic_claims: list[str],
+#     threshold: float = 0.9,
+#     model: str = "gpt-4o"
+# ):
+#     """
+#     Args:
+#         example (str | Image | timeseries): The input example from a dataset from which to distill the relevant features from.
+#         answer (str): The LLM-generated answer to the example.
+#         raw_atomic_claims (list[str]): A list of strings where each string is an isolated claim (includes relevant and irrelevant claims).
+#     Returns:
+#         atomic_claims (list[str]): A list of strings where each string is a relevant claim.
+#     """
+#     atomic_claims = []
+#     for raw_atomic_claim in raw_atomic_claims:
+#         if is_claim_relevant(example, answer, raw_atomic_claim, model=model):
+#             atomic_claims.append(raw_atomic_claim)
+#     return atomic_claims
 
 def calculate_expert_alignment_score(
     example_input: torch.Tensor, 

@@ -153,6 +153,34 @@ Claim: The weak lensing map shows a mix of blue, gray, red, and some yellow regi
 Relevance: No
 Reasoning: This claim is not wrong to the image, but it only states very naive information about the colors distributed in the map, without saying what are these blue, gray, red, and yellow regions in the eyes of cosmologists, and how the distribution is like. This is not useful to cosmologists because they are not interpretable features for them.
 
+[Example 5]
+Input: (Image 2)
+Output: Omega_m = 0.2, sigma_8 = 1.15
+Claim: In the lower right corner, there is a large concentration of yellow region which are clusters.
+Relevance: Yes
+Reasoning: This claim is correct according to the image as there are indeed a large concentration of yellow regions in the lower right corner of the image, which are clusters.
+
+[Example 6]
+Input: (Image 2)
+Output: Omega_m = 0.2, sigma_8 = 1.15
+Claim: In the lower right corner, there is a large concentration of blue and gray regions which are voids.
+Relevance: No
+Reasoning: This claim is wrong according to the image as the lower right corner of the image is actually a large concentration of yellow regions which are clusters, not blue and gray regions which are voids.
+
+[Example 7]
+Input: (Image 1)
+Output: Omega_m = 0.1041, sigma_8 = 0.9396
+Claim: There are mostly blue and gray regions spread out in the map, especially in the lower left corner.
+Relevance: Yes
+Reasoning: The image contains a large amount of blue and gray regions, which are underdense areas, and indeed in the lower left corner. Therefore, the underdense and overdense regions are not balanced. The claim is supported by the image.
+
+[Example 8]
+Input: (Image 1)
+Output: Omega_m = 0.1041, sigma_8 = 0.9396
+Claim: There is a large amount of clusters in the middle of the map.
+Relevance: Yes
+Reasoning: The image contains a large amount of yellow regions, which are clusters, and indeed in the middle of the map. Therefore, the underdense and overdense regions are not balanced. The claim is supported by the image.
+
 Now, determine whether the following claim is relevant to the given mass map and prediction:
 Input: (Image 5)
 Output: {}

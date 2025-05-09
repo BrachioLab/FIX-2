@@ -152,42 +152,27 @@ def load_cholec_prompt(baseline: str):
     return prompt
 
 
-massmaps_prompt = """
-You are an expert cosmologist.
+massmaps_prompt = """You are an expert cosmologist.
+You will be provided with a simulated noisless weak lensing map,
 
-What are the cosmological parameters Omega_m and sigma_8 for the weak lensing mass map provided in the image? 
+Your task is to analyze the weak lensing map given, identify relevant cosmological structures, and make predictions for Omega_m and sigma_8.
+Each weak lensing map contains spatial distribution of matter density in a universe. The weak lensing map provided is simulated and noiseless.
 Omega_m captures the average energy density of all matter in the universe (relative to the total energy density which includes radiation and dark energy).
 sigma_8 describes the fluctuation of matter distribution. 
-Omega_m's value can be between 0.1 ~ 0.5, and sigma_8's value can be between 0.4 ~ 1.4.
-Each weak lensing map contains spatial distribution of matter density in a universe.
-Note that the weak lensing map given is a simulated weak lensing map, which can have Omega_m and sigma_8 values of all kinds.
 
 When you analyze the weak lensing map image, note that the number is below 0 if it shows up as between gray and blue, and 0 is gray, and between 0 and 2.9 is between gray and red, and above 2.9 is yellow. The numbers are in standard deviations of the mass map.
 
-Here is the colormap used to create the visualization of this weak lensing map:
-custom_cmap = get_custom_colormap([
-            (-3, "blue"),   # Blue at -3 std
-            (0, "gray"),   # Gray at 0 (below this is void)
-            (2.9, "red"),   # Red at 2.9 std (this is the upperbound for not being a cluster)
-            (3, "yellow"),   # Yellow at 3 std (above this is cluster)
-            (20, "white")  # White at 20 std
-        ])
-
-Please analyze the weak lensing map given, identify features that cosmologists deem important for predicting Omega_m and sigma_8 values.
-Then, predict the values for Omega_m and sigma_8 based on the information from this weak lensing map data.
-Please be assured that it is ok if your answer is not completely correct.
-The answer is to testing purpose only, and your answer will be checked with an expert cosmologist.
 Omega_m's value can be between 0.1 ~ 0.5, and sigma_8's value can be between 0.4 ~ 1.4.
+Note that the weak lensing map given is a simulated weak lensing map, which can have Omega_m and sigma_8 values of all kinds.
 
 [BASELINE_PROMPT]
 
-Your response should be 2 lines, formatted as follows:
+The provided image is the weak lensing mass map for you to predict the cosmological parameters for.
+Your response should be 2 lines, formatted as follows (without extra information):
 Explanation: <explanation and reasoning, as described above, 3-5 sentences>
 Prediction: Omega_m: <prediction for Omega_m, between 0.1 ~ 0.5, based on this weak lensing map>, sigma_8: <prediction for sigma_8, between 0.4 ~ 1.4, based on this weak lensing map>
-
-Here is the weak lensing mass map for you to predict the cosmological parameters for.
-Mass map: (Image [LAST_IMAGE_NUM])
 """
+
 
 cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
 You will be provided with time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
