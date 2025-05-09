@@ -21,9 +21,24 @@ from pathlib import Path
 cache = diskcache.Cache(Path(__file__).parent / ".llms.py.cache")
 
 
-def get_cache_key(obj: Any) -> str:
-    """Convert an object to a hash string."""
-    return hashlib.sha256(pickle.dumps(obj)).hexdigest()
+def get_cache_key(prompt: Any)-> str:
+    """Convert a prompt into a hash string."""
+    if isinstance(prompt, str):
+        return hashlib.sha256(pickle.dumps(prompt)).hexdigest()
+
+    elif isinstance(prompt, tuple):
+        objs = []
+        for p in prompt:
+            if isinstance(p, str):
+                objs.append(p)
+            elif is_image(p):
+                objs.append(image_to_base64(p, "PNG"))
+            else:
+                raise ValueError(f"Invalid prompt type: {type(p)}")
+        return hashlib.sha256(pickle.dumps(objs)).hexdigest()
+
+    else:
+        raise ValueError(f"Invalid prompt type: {type(prompt)}")
 
 
 def is_image(x: Any) -> bool:
