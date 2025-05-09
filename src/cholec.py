@@ -3,6 +3,7 @@ import random
 from pathlib import Path
 import json
 import time
+from tqdm import tqdm
 from typing import Any
 import numpy as np
 import torch
@@ -437,14 +438,14 @@ def items_to_examples(
 
     # Step 2: Distill the relevant features from the atomic claims
     _t = time.time()
-    for example in examples:
+    for example in tqdm(examples):
         example.relevant_claims = distill_relevant_features(example.image, example.all_claims, evaluation_model)
     if verbose:
         print(f"Time taken to distill relevant features: {time.time() - _t:.3f} seconds")
 
     # Step 3: Calculate the expert alignment scores
     _t = time.time()
-    for example in examples:
+    for example in tqdm(examples):
         align_infos = calculate_expert_alignment_scores(example.relevant_claims, evaluation_model)
 
         example.alignable_claims = [info["Claim"] for info in align_infos]
