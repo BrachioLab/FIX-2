@@ -56,6 +56,28 @@ def query_openai(prompt, model="gpt-4o"):
             time.sleep(3)
     return "ERROR"
 
+def query_openai_mini(prompt, model="gpt-4o-mini"):
+    with open("../API_KEY.txt", "r") as file:
+        api_key = file.read()
+    client = OpenAI(api_key=api_key)
+
+    num_tries = 0
+    for i in range(3):
+        try:
+            translation = client.chat.completions.create(
+                messages=[{
+                    "role": "user",
+                    "content": prompt,
+                }],
+                model=model,
+            )
+            return translation.choices[0].message.content
+        except Exception as e:
+            num_tries += 1
+            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
+            time.sleep(3)
+    return "ERROR"
+
 def format_time_series_for_prompt(time_series_data: Dict[float, Dict[str, Union[float, str]]]) -> str:
     if not time_series_data:
         return "No time-series data provided."
@@ -96,9 +118,19 @@ def parse_measurement_string(data_string: str) -> Dict[float, Dict[str, Union[fl
         measurements_by_time[time][name] = value
     return measurements_by_time
 
-def get_llm_generated_answer(time_series_data: Dict[float, Dict[str, Union[float, str]]]):
+def get_llm_generated_answer(time_series_data: Dict[float, Dict[str, Union[float, str]]], method: str = "vanilla"):
     text = format_time_series_for_prompt(time_series_data)
-    prompt = sepsis_prompt.replace("[BASELINE_PROMPT", vanilla_baseline).format(text)
+    if method == "vanilla":
+        prompt = sepsis_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline).format(text)
+    elif method == "cot":
+        prompt = sepsis_prompt.replace("[BASELINE_PROMPT]", cot_baseline).format(text)
+    elif method == "socratic":
+        prompt = sepsis_prompt.replace("[BASELINE_PROMPT]", socratic_baseline).format(text)
+    elif method == "least_to_most":
+        prompt = sepsis_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline).format(text)
+    else:
+        raise ValueError(f"Invalid method: {method}")
+        
     response = query_openai(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
@@ -121,7 +153,7 @@ def isolate_individual_features(explanation: str):
 
 def is_claim_relevant(time_series_text, rating: str, claim: str):
     prompt = relevance_sepsis.format(time_series_text, rating, claim)
-    response = query_openai(prompt)
+    response = query_openai_mini(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
