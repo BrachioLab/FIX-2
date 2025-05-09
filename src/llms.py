@@ -1,15 +1,14 @@
 import os
 import concurrent.futures
 import time
-from typing import Any, Dict, List, Optional, Union
-from abc import ABC, abstractmethod
+from typing import Any, List, Optional, Union
 from openai import OpenAI
 import anthropic
 from google import genai
 from google.genai import types as genai_types
+import numpy as np
 import torch
 import torchvision.transforms.functional as tvtf
-import numpy as np
 import PIL.Image
 import io
 import base64
@@ -29,8 +28,8 @@ def image_to_base64(
     
     Args:
         image: Input image in one of the following formats:
-            - torch.Tensor: PyTorch tensor (C,H,W) or (H,W,C)
-            - np.ndarray: NumPy array (H,W,C) or (C,H,W)
+            - torch.Tensor: PyTorch tensor (C,H,W)
+            - np.ndarray: NumPy array (H,W,C)
             - PIL.Image.Image: PIL Image object
         image_format: The format to save the image in (default: "PNG")
 
@@ -41,24 +40,18 @@ def image_to_base64(
         ValueError: If the input image format is invalid or conversion fails
     """
     try:
-        # Step 1: Convert the image to a numpy array
+        # Convert to PIL image if needed
         if isinstance(image, torch.Tensor):
-            image = image.cpu().numpy()
+            mode = "RGB" if image.ndim == 3 and image.shape[0] == 3 else "L"
+            image = tvtf.to_pil_image(image, mode=mode)
+        elif isinstance(image, np.ndarray):
+            mode = "RGB" if image.ndim == 3 and image.shape[2] == 3 else "L"
+            image = tvtf.to_pil_image(image, mode=mode)
 
-        # Step 2: Convert the numpy image to uint8 if necessary
-        if image.dtype != np.uint8:
-            image = (image * 255).astype(np.uint8)
-        
-        # Step 3: Transpose the image if necessary
-        if len(image.shape) == 3 and image.shape[0] == 3:
-            image = image.transpose(1, 2, 0)
-        
-        # Step 4: Convert the image to a PIL Image
-        pil_image = PIL.Image.fromarray(image)
+        assert isinstance(image, PIL.Image.Image), f"Image is not a PIL.Image.Image: {type(image)}"
 
-        # Step 5: Save the image to a buffer
         with io.BytesIO() as buffer:
-            pil_image.save(buffer, format=image_format)
+            image.save(buffer, format=image_format)
             return base64.standard_b64encode(buffer.getvalue()).decode('utf-8')
 
     except Exception as e:
@@ -69,10 +62,8 @@ def to_pil_image(x: Any) -> PIL.Image.Image:
     """Convert an image to a PIL Image object."""
     if isinstance(x, PIL.Image.Image):
         return x
-    elif isinstance(x, torch.Tensor):
+    elif isinstance(x, (torch.Tensor, np.ndarray)):
         return tvtf.to_pil_image(x)
-    elif isinstance(x, np.ndarray):
-        return PIL.Image.fromarray(x)
     else:
         raise ValueError(f"Invalid image type: {type(x)}")
 
@@ -85,7 +76,7 @@ def load_model(model_name: str):
     elif "claude" in model_name:
         return MyAnthropicModel(model_name=model_name)
     elif "gemini" in model_name:
-        return MyGoogleModel(model_name=model_name)
+        return MyGoogleModel(model_name=model_name, verbose=True)
     else:
         raise ValueError(f"Invalid model name: {model_name}")
 
@@ -98,14 +89,12 @@ class MyOpenAIModel:
         model_name: str = "gpt-4o",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
-        temperature: float = 0.1,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
         batch_size: int = 24,
         verbose: bool = False,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
-        self.temperature = temperature
         self.max_tokens = max_tokens
         self.batch_size = batch_size
         self.verbose = verbose
@@ -149,7 +138,6 @@ class MyOpenAIModel:
                 response = self.client.chat.completions.create(
                     model=self.model_name,
                     messages=messages,
-                    temperature=self.temperature,
                     max_completion_tokens=self.max_tokens,
                 )
                 return response.choices[0].message.content.strip()
@@ -172,7 +160,7 @@ class MyAnthropicModel:
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
         batch_size: int = 24,
         verbose: bool = False,
     ):
@@ -249,7 +237,7 @@ class MyGoogleModel:
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
         batch_size: int = 24,
         verbose: bool = False,
     ):
@@ -299,6 +287,7 @@ class MyGoogleModel:
                         max_output_tokens=self.max_tokens,
                     )
                 )
+
                 return response.text.strip()
 
             except Exception as e:
