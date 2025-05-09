@@ -150,8 +150,8 @@ Reasoning: <A brief explanation of why you selected the chosen category and why 
 
 -----
 Expert cosmology categories:
-1. Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks (massive cluster-like spots with pixel intensity > 3 standard deviations above the mean) in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
-2. Void Size and Frequency: Extensive low-convergence void regions (large, nearly empty patches with pixel intensity < 0) suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
+1. Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
+2. Void Size and Frequency: Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
 3. Filament Thickness and Sharpness: Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
 4. Fine-Scale Clumpiness: A grainy, fine-textured pattern of small-scale lensing fluctuations (many mini-clumps) is a visual signature of high sigma_8, whereas a smoother, more homogeneous map suggests a lower sigma_8.
 5. Connectivity of the Cosmic Web: A highly interconnected filament network (with filaments linking most clusters into a continuous web) hints at a higher Omega_m, whereas a more fragmented scene of isolated clumps separated by wide gaps is expected for a lower Omega_m.
@@ -160,25 +160,25 @@ Expert cosmology categories:
 
 Here are some examples:
 [Example 1]
-Claim: The map shows many bright convergence peaks exceeding three standard deviations above the mean.
+Claim: There exist a large amount of yellow regions in the map, which indicates a relatively high sigma_8.
 Category: Lensing Peak (Cluster) Abundance
 Category ID: 1
-Category Alignment Rating: 0.9
-Reasoning: The claim refers solely to the high count of > 3 std peaks—the exact diagnostic captured by this category—so alignment is very strong, though not perfect because it does not explicitly relate the peaks to sigma_8.
+Category Alignment Rating: 1
+Reasoning: The claim directly talks about a large number of yellow regions (high-convergence peaks) in the map, and how it indicates high sigma_8. This aligns with the Lensing Peak (Cluster) Abundance category which says a large number of peaks / clusters indicates a larger sigma_8.
 
 [Example 2]
-Claim: Filaments in the field are thick and sharply defined.
-Category: Filament Thickness and Sharpness
-Category ID: 3
-Category Alignment Rating: 0.6
-Reasoning: The claim focuses on filament thickness and sharpness, matching the category's core descriptor, yet it omits how this structure links to parameter values, yielding a moderate level of alignment.
+Claim: The presence of some void regions in the map indicates a low matter density level.
+Category: Void Size and Frequency
+Category ID: 2
+Category Alignment Rating: 0.5
+Reasoning: The claim does mention that void should lead to a lower matter density level and thus Omega_m, but it does not mention how large the void is. To be completely aligned with the expert criteria, the claim should mention the size of the void and it should be large to match this category.
 
 [Example 3]
-Claim: A single diffuse bright patch appears in an otherwise smooth map.
-Category: Fine-Scale Clumpiness
-Category ID: 4
-Category Alignment Rating: 0.5
-Reasoning: While a lone diffuse patch is technically a small-scale feature, the category expects a grainy texture with many mini-clumps; the claim lacks that pattern, so alignment is minimal.
+Claim: A balanced distribution of blue, gray, red, and yellow regions in the map indicates a moderate matter density level and fluctuation levels.
+Category: Density Contrast Extremes
+Category ID: 6
+Category Alignment Rating: 0.1
+Reasoning: There is no category saying that when the distribution is balanced, whether the matter density level should be high or low or moderate. This is the closest category because it mentions both voids and peaks, but the alignment is only 0.1 because the expert criteria does not mention balanced distribution but rather the position of the peaks and voids.
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}

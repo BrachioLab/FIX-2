@@ -54,17 +54,16 @@ Format your output as a list of claims separated by new lines. Do not include an
 
 Here is an example of how to format your output:
 
-INPUT: The weak lensing map shows a distribution of matter density with varying colors indicating different density levels. The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density. These clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe. The blue areas represent voids, indicating low-density regions. The balance between these voids and clusters helps in estimating sigma_8, which measures the amplitude of matter fluctuations. The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter. This balance implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids. The presence of distinct clusters and voids also suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
+INPUT: The weak lensing map shows a mix of blue, gray, red, and some yellow regions. The presence of blue and gray indicates underdense areas, while red and yellow suggest overdense regions, with yellow indicating significant mass concentrations or clusters. The distribution and intensity of these colors suggest a universe with moderate matter density and fluctuation levels. The presence of several yellow regions indicates a relatively high sigma_8, while the mix of blue and gray suggests a moderate Omega_m.
 
 OUTPUT:
-The weak lensing map shows a distribution of matter density with varying colors indicating different density levels.
-The presence of several yellow pixels suggests the existence of clusters, indicating regions of high matter density.
-The present clusters are crucial for estimating Omega_m, as they reflect the total matter content in the universe.
-The blue areas on the map represent voids, indicating low-density regions.
-The balance between voids and clusters on the map helps in estimating sigma_8, which measures the amplitude of matter fluctuations.
-The map shows a moderate number of clusters and voids, suggesting a balanced distribution of matter.
-A balanced distribution of matter implies a moderate value for Omega_m, as there is neither an overwhelming presence of clusters nor voids.
-The presence of distinct clusters and voids suggests a moderate value for sigma_8, indicating a typical level of matter fluctuation amplitude.
+The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
+The presence of blue and gray indicates underdense areas in the map.
+The presence of red and yellow suggests overdense regions.
+Yellow indicates significant mass concentrations or clusters.
+The distribution and intensity of these colors, such that there is underdense and overdense regions present, with significant mass concentrations or clusters, suggest a universe with moderate matter density and fluctuation levels.
+The presence of several yellow regions, the significant mass concentrations or clusters, indicates a relatively high sigma_8.
+The mix of blue and gray, the underdense areas, suggests a moderate Omega_m.
 
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}

@@ -128,16 +128,16 @@ Here are some examples:
 [Example 1]
 Input: (Image 1)
 Output: Omega_m = 0.1041, sigma_8 = 0.9396
-Claim: The dataset represents the spatial distribution of matter density in the universe.
+Claim: The balance between blue and gray regions and red and yellow regions in the map indicates a moderate matter density and fluctuation levels.
 Relevance: No
-Reasoning: This is a general statement and does not justify any specific prediction.
+Reasoning: The image contains a large amount of blue and gray regions, which are underdense areas. Therefore, the underdense and overdense regions are not balanced. The claim is not supported by but contradicts the image.
 
 [Example 2]
 Input: (Image 2)
-Output: Omega_m = 0.3934, sigma_8 = 0.7018
-Claim: The weak lensing map shows several yellow pixels close to each other on the left side, suggesting the existence of high-density regions or clusters.
+Output: Omega_m = 0.2, sigma_8 = 1.15
+Claim: There exist a large amount of yellow regions in the map, which indicates a relatively high sigma_8.
 Relevance: Yes
-Reasoning: This is a specific cosmological structure observable in the data and indicative of cosmological parameters such as sigma_8.
+Reasoning: The image does contain a significant amount of yellow regions, which are overdense areas. This is relevant information for predicting the sigma_8, and the claim is supported by the image.
 
 [Example 3]
 Input: (Image 3)
@@ -149,9 +149,9 @@ Reasoning: This is background knowledge, not derived from the data.
 [Example 4]
 Input: (Image 4)
 Output: Omega_m = 0.4612, sigma_8 = 0.5614
-Claim: There is a gray pixel in the upper left corner with value 6.2992e-04 in the data.
+Claim: The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
 Relevance: No
-Reasoning: Simply listing pixel values does not explain a prediction.
+Reasoning: This claim is not wrong to the image, but it only states very naive information about the colors distributed in the map, without saying what are these blue, gray, red, and yellow regions in the eyes of cosmologists, and how the distribution is like. This is not useful to cosmologists because they are not interpretable features for them.
 
 Now, determine whether the following claim is relevant to the given mass map and prediction:
 Input: (Image 5)

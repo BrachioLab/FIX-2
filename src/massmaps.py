@@ -44,7 +44,7 @@ class MassMapsExample:
         self.claims = []
         self.relevant_claims = []
         self.alignment_scores = []
-        self.expert_criteria = []
+        self.alignment_categories = []
         self.alignment_reasonings = []
 
 def convert_pil_to_base64(pil_image):
@@ -53,6 +53,7 @@ def convert_pil_to_base64(pil_image):
     """
     if pil_image.mode == "RGBA":
         pil_image = pil_image.convert("RGB")
+    pil_image.load()
 
     buffered = io.BytesIO()
     pil_image.save(buffered, format="JPEG")
@@ -69,63 +70,53 @@ def normalize_inputs(inputs, mean_center=True):
     return inputs_normalized
 
 def get_custom_colormap(colors=None):
-    # Define color stops and corresponding colors
     if colors is None:
         colors = [
-            (-3, "#4c1c74"),   # Blue at -3
-            (0, "gray"),   # Gray at 0 (below this is void)
-            (3, "yellow"),   # Green at 3 (above this is cluster)
-            (20, "orange")  # Yellow at 20
+            (-3, "blue"),
+            (0,   "gray"),
+            (2.9, "red"),
+            (3,   "yellow"),
+            (20,  "white"),
         ]
-
-    # Extract positions and colors separately
-    positions, color_values = zip(*colors)
-
-    # Normalize positions to the range [0, 1]
-    positions = [(p - min(positions)) / (max(positions) - min(positions)) for p in positions]
-
-    # Create a custom colormap
-    custom_cmap = LinearSegmentedColormap.from_list("custom_gradient", list(zip(positions, color_values)))
-    return custom_cmap
+    positions, color_vals = zip(*colors)
+    minp, maxp = min(positions), max(positions)
+    positions = [(p-minp)/(maxp-minp) for p in positions]
+    return LinearSegmentedColormap.from_list("custom_cmap", list(zip(positions, color_vals)))
 
 
-def massmap_to_pil_norm(tensor):
+def massmap_to_pil_norm(
+    tensor: torch.Tensor,
+    mean_center: bool = False,
+    vmin: float = -3,
+    vmax: float = 20,
+    colors: list = None
+) -> Image.Image:
     """
-    Converts a PyTorch tensor to a PIL image.
-
-    Parameters:
-    tensor (torch.Tensor): A tensor representing the map with shape (1, H, W)
-
-    Returns:
-    PIL.Image: An image object.
+    Convert a (1,H,W) tensor → PIL Image (H×W), with:
+      • optional mean‐centering
+      • divide‐by‐std normalization
+      • clip to [vmin,vmax], then min–max to [0,1]
+      • apply custom colormap ⇒ RGB
     """
-    # Check if the tensor is in the range 0-1, if yes, scale to 0-255
-    input_normalized = normalize_inputs(tensor, mean_center=False)
-    vmin=-3
-    vmax=20
-    
-    custom_cmap = get_custom_colormap([
-            (-3, "blue"),   # Blue at -3
-            (0, "gray"),   # Gray at 0 (below this is void)
-            (2.9, "red"),   # Gray at 0 (below this is void)
-            (3, "yellow"),   # Green at 3 (above this is cluster)
-            (20, "white")  # Yellow at 20
-        ])
-    plt.imshow(input_normalized.cpu()[0], cmap=custom_cmap, vmin=vmin, vmax=vmax)
-    # plt.imshow(tensor[0])
-    plt.axis('off')  # remove axes if desired
+    # 1) pull out H×W array
+    arr = tensor.detach().cpu().numpy()[0]  # shape (H, W)
 
-    # Save the displayed image to a buffer
-    buf = io.BytesIO()
-    plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
-    plt.close()
+    # 2) normalize
+    if mean_center:
+        arr = arr - arr.mean()
+    arr = arr / (arr.std() + 1e-8)
 
-    # Reset buffer position
-    buf.seek(0)
+    # 3) clip & rescale to [0,1]
+    arr = np.clip(arr, vmin, vmax)
+    arr = (arr - vmin) / (vmax - vmin)
 
-    # Load the image with PIL
-    pil_image = PIL.Image.open(buf)
-    return pil_image
+    # 4) colormap
+    cmap = get_custom_colormap(colors)
+    rgba = cmap(arr)                # (H, W, 4) floats in [0,1]
+    rgb  = (rgba[..., :3] * 255).astype(np.uint8)
+
+    # 5) make PIL Image
+    return Image.fromarray(rgb)
 
 def get_messages(prompt, images=None, system_prompt=None):
     system_message = [
@@ -250,15 +241,19 @@ def get_llm_output_from_messages(messages, model='gpt-4o'):
 
 
 def get_llm_generated_answer(
-    example: str | torch.Tensor, #Image | Timeseries,
+    example: list[str] | str | torch.Tensor, #Image | Timeseries,
     method: str = "vanilla",
-    model: str = "gpt-4o"
+    model: str = "gpt-4o",
 ) -> str:
     """
     Args:
         example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
           e.g., the emotion classification task.
     """
+    
+    images_pil = []
+    images_pil.append(massmap_to_pil_norm(example))
+    
     if method == "vanilla":
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
     elif method == "cot":
@@ -269,9 +264,13 @@ def get_llm_generated_answer(
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
     else:
         raise ValueError(f"Invalid method: {method}")
+        
+    prompt = prompt.replace(
+        '[LAST_IMAGE_NUM]',
+        str(len(images_pil))
+    )
 
-    image_pil = massmap_to_pil_norm(example)
-    response = get_llm_output(prompt, [image_pil], model=model)
+    response = get_llm_output(prompt, images_pil, model=model)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None, None
@@ -281,7 +280,10 @@ def get_llm_generated_answer(
         answer = response_split[1].split("Prediction: ")[1].strip()
         # split the answer into Omega_m and sigma_8
         answer = answer.split(", ")
-        answer = {answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), answer[1].split(": ")[0]: float(answer[1].split(": ")[1])}
+        answer = {
+            answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), 
+            answer[1].split(": ")[0]: float(answer[1].split(": ")[1])
+        }
         explanation = response_split[0].split("Explanation: ")[1].strip()
         return answer, explanation
     except:
@@ -333,7 +335,7 @@ def is_claim_relevant(
     here = Path(__file__).resolve().parent          # .../your_script_folder
 
     # 2. Point to the images folder *relative to* that location
-    img_dir = here / "prompts"                       # e.g. .../your_script_folder/images
+    img_dir = here / "prompts" / "data"                      # e.g. .../your_script_folder/images
 
     # 3. Collect every PNG/JPG (adjust the glob pattern as needed)
     few_shot_image_paths = sorted(img_dir.glob("massmaps_relevance*.png")) + \
@@ -408,8 +410,6 @@ def calculate_expert_alignment_score(
     system_prompt=None,
     model: str = "gpt-4o"
 ):
-    if system_prompt is None:
-        system_prompt = alignment_massmaps
         
     prompt = alignment_massmaps.format(claim)
     response = get_llm_output(prompt, model=model)
