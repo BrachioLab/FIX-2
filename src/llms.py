@@ -1,15 +1,14 @@
 import os
 import concurrent.futures
 import time
-from typing import Any, Dict, List, Optional, Union
-from abc import ABC, abstractmethod
+from typing import Any, List, Optional, Union
 from openai import OpenAI
 import anthropic
 from google import genai
 from google.genai import types as genai_types
+import numpy as np
 import torch
 import torchvision.transforms.functional as tvtf
-import numpy as np
 import PIL.Image
 import io
 import base64
@@ -29,8 +28,8 @@ def image_to_base64(
     
     Args:
         image: Input image in one of the following formats:
-            - torch.Tensor: PyTorch tensor (C,H,W) or (H,W,C)
-            - np.ndarray: NumPy array (H,W,C) or (C,H,W)
+            - torch.Tensor: PyTorch tensor (C,H,W)
+            - np.ndarray: NumPy array (H,W,C)
             - PIL.Image.Image: PIL Image object
         image_format: The format to save the image in (default: "PNG")
 
@@ -41,24 +40,20 @@ def image_to_base64(
         ValueError: If the input image format is invalid or conversion fails
     """
     try:
-        # Step 1: Convert the image to a numpy array
-        if isinstance(image, torch.Tensor):
-            image = image.cpu().numpy()
+        # If torch.tensor, reshape from (C,H,W) to (H,W,C)
+        if isinstance(image, torch.Tensor) and image.ndim == 3 and image.shape[0] == 3:
+            image = image.permute(1, 2, 0).cpu()
+        elif isinstance(image, torch.Tensor) and image.ndim == 3 and image.shape[0] == 1:
+            image = image.squeeze(0).cpu()
+        else:
+            image = image.cpu()
 
-        # Step 2: Convert the numpy image to uint8 if necessary
-        if image.dtype != np.uint8:
-            image = (image * 255).astype(np.uint8)
-        
-        # Step 3: Transpose the image if necessary
-        if len(image.shape) == 3 and image.shape[0] == 3:
-            image = image.transpose(1, 2, 0)
-        
-        # Step 4: Convert the image to a PIL Image
-        pil_image = PIL.Image.fromarray(image)
+        # Rescale to [0, 255] and convert to PIL
+        image = (image.float() / image.max()) * 255
+        image = PIL.Image.fromarray(image.numpy().astype(np.uint8))
 
-        # Step 5: Save the image to a buffer
         with io.BytesIO() as buffer:
-            pil_image.save(buffer, format=image_format)
+            image.save(buffer, format=image_format)
             return base64.standard_b64encode(buffer.getvalue()).decode('utf-8')
 
     except Exception as e:
