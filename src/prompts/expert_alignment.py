@@ -360,5 +360,36 @@ Claim: {}
 """
 
 
+alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform cardiac arrest prediction.
+
+Your task is as follows:
+1. Determine which expert category is most aligned with the claim. 
+2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+
+Return your answer as:
+Category: <category>
+Category Alignment Rating: <rating>
+Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
+
+-----
+Expert categories:
+1. Extreme Tachyarrhythmias: Sustained ventricular tachycardia or very rapid ventricular rates (especially in a patient with left ventricular dysfunction) can precipitate hemodynamic collapse and frequently degenerate into ventricular fibrillation, resulting in sudden cardiac death if uncorrected.
+2. Ventricular Ectopy/NSVT: Runs of non-sustained ventricular tachycardia or frequent premature ventricular contractions in a critically ill patient signal electrical instability and portend a high risk of progression to a full cardiac arrest, particularly in the setting of underlying coronary disease or cardiomyopathy
+3. Bradycardia or Heart-Rate Drop: The onset of significant bradycardia or a sudden ≥30% decline in heart rate is a well-documented precursor to in-hospital cardiac arrest (often preceding pulseless electrical activity or asystole) and should be treated as an alarm sign
+4. Depressed Heart Rate Variability: An abnormally low short-term heart rate variability (minimal fluctuation in R–R intervals) reflects autonomic dysfunction and has been linked to impending cardiac arrest in ICU patients, serving as a strong predictor of near-term code events
+5. QRS Widening (Conduction Delay): New or progressive prolongation of the QRS duration on the ECG is an ominous finding in the ICU, often observed in the minutes before cardiac arrest and associated with higher mortality due to deteriorating ventricular conduction
+6. Dynamic ST-Segment Changes: Acute ischemic changes on continuous ECG (notably ST-segment elevation or depression) indicate ongoing myocardial infarction or injury and are treated as red flags for imminent ventricular fibrillation and cardiac arrest in the ICU setting
+7. Prolonged QT Interval: A markedly prolonged QTc interval (whether drug-induced or due to congenital factors) creates a substrate for polymorphic ventricular tachycardia (torsades de pointes), which can quickly degenerate into ventricular fibrillation and cause sudden cardiac arrest if not promptly addressed
+8. Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention
+emedicine.medscape.com
+9. Electrical Alternans: The presence of electrical alternans (beat-to-beat alternating QRS amplitude) on ECG is highly specific for cardiac tamponade, a critical condition that can precipitate abrupt pulseless arrest unless the pericardial effusion is emergently relieved.
+10. Advanced Age: Increasing age is a major risk factor for cardiac arrest (events are very rare in patients under 30), with older ICU patients being significantly more prone to sudden arrest
+11. Male Sex: Male gender is associated with a higher incidence of cardiac arrest, as most cardiac arrests occur in men (with women’s risk rising post-menopause).
+12. Underlying Cardiac Disease: The presence of serious cardiac conditions – such as coronary artery disease (especially a recent myocardial infarction) or severe heart failure – greatly elevates short-term cardiac arrest risk by creating an electrically and hemodynamically unstable myocardium.
+13. Critical Illness (Sepsis/Shock): Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.
+-----
 
 
+Now, determine the category and alignment rating for the following claim:
+Claim: {}
+"""
