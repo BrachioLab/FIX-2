@@ -508,7 +508,7 @@ if __name__ == "__main__":
 
     # Take a few random, unique samples from the dataset
     random.seed(42)
-    num_samples = 5
+    num_samples = 150
     dataset = CholecDataset(split="test", image_size=(180, 320))
     random_indices = random.sample(range(len(dataset)), num_samples)
     print(f"Random indices: {random_indices}")
@@ -517,7 +517,7 @@ if __name__ == "__main__":
     # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.5-pro-exp-03-25"]
     # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]
     models = ["gpt-4o"]
-    baselines = ["vanilla"]
+    baselines = ["vanilla", "cot", "socratic", "subq"]
 
     # Can be very expensive!
     if get_yes_no_confirmation("You are about to spend a lot of money"):

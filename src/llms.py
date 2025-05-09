@@ -96,14 +96,14 @@ def to_pil_image(x: Any) -> PIL.Image.Image:
         raise ValueError(f"Invalid image type: {type(x)}")
 
 
-def load_model(model_name: str):
+def load_model(model_name: str, api_key: Optional[str] = None):
     """Attempt to load the model based on the name"""
-    if "gpt" in model_name or "o1" in model_name or "o3" in model_name or "o4" in model_name:
-        return MyOpenAIModel(model_name=model_name)
+    if "gpt" in model_name or model_name.startswith("o"):
+        return MyOpenAIModel(model_name=model_name, api_key=api_key)
     elif "claude" in model_name:
-        return MyAnthropicModel(model_name=model_name)
+        return MyAnthropicModel(model_name=model_name, api_key=api_key)
     elif "gemini" in model_name:
-        return MyGoogleModel(model_name=model_name, verbose=True)
+        return MyGoogleModel(model_name=model_name, api_key=api_key)
     else:
         raise ValueError(f"Invalid model name: {model_name}")
 
