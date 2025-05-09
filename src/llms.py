@@ -40,17 +40,15 @@ def image_to_base64(
         ValueError: If the input image format is invalid or conversion fails
     """
     try:
-        # If torch.tensor, reshape from (C,H,W) to (H,W,C)
-        if isinstance(image, torch.Tensor) and image.ndim == 3 and image.shape[0] == 3:
-            image = image.permute(1, 2, 0).cpu()
-        elif isinstance(image, torch.Tensor) and image.ndim == 3 and image.shape[0] == 1:
-            image = image.squeeze(0).cpu()
-        else:
-            image = image.cpu()
+        # Convert to PIL image if needed
+        if isinstance(image, torch.Tensor):
+            mode = "RGB" if image.ndim == 3 and image.shape[0] == 3 else "L"
+            image = tvtf.to_pil_image(image, mode=mode)
+        elif isinstance(image, np.ndarray):
+            mode = "RGB" if image.ndim == 3 and image.shape[2] == 3 else "L"
+            image = tvtf.to_pil_image(image, mode=mode)
 
-        # Rescale to [0, 255] and convert to PIL
-        image = (image.float() / image.max()) * 255
-        image = PIL.Image.fromarray(image.numpy().astype(np.uint8))
+        assert isinstance(image, PIL.Image.Image), f"Image is not a PIL.Image.Image: {type(image)}"
 
         with io.BytesIO() as buffer:
             image.save(buffer, format=image_format)
@@ -64,10 +62,8 @@ def to_pil_image(x: Any) -> PIL.Image.Image:
     """Convert an image to a PIL Image object."""
     if isinstance(x, PIL.Image.Image):
         return x
-    elif isinstance(x, torch.Tensor):
+    elif isinstance(x, (torch.Tensor, np.ndarray)):
         return tvtf.to_pil_image(x)
-    elif isinstance(x, np.ndarray):
-        return PIL.Image.fromarray(x)
     else:
         raise ValueError(f"Invalid image type: {type(x)}")
 
@@ -80,7 +76,7 @@ def load_model(model_name: str):
     elif "claude" in model_name:
         return MyAnthropicModel(model_name=model_name)
     elif "gemini" in model_name:
-        return MyGoogleModel(model_name=model_name)
+        return MyGoogleModel(model_name=model_name, verbose=True)
     else:
         raise ValueError(f"Invalid model name: {model_name}")
 
@@ -93,14 +89,12 @@ class MyOpenAIModel:
         model_name: str = "gpt-4o",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
-        temperature: float = 0.1,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
         batch_size: int = 24,
         verbose: bool = False,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
-        self.temperature = temperature
         self.max_tokens = max_tokens
         self.batch_size = batch_size
         self.verbose = verbose
@@ -144,7 +138,6 @@ class MyOpenAIModel:
                 response = self.client.chat.completions.create(
                     model=self.model_name,
                     messages=messages,
-                    temperature=self.temperature,
                     max_completion_tokens=self.max_tokens,
                 )
                 return response.choices[0].message.content.strip()
@@ -167,7 +160,7 @@ class MyAnthropicModel:
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
         batch_size: int = 24,
         verbose: bool = False,
     ):
@@ -244,7 +237,7 @@ class MyGoogleModel:
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
         batch_size: int = 24,
         verbose: bool = False,
     ):
@@ -294,6 +287,7 @@ class MyGoogleModel:
                         max_output_tokens=self.max_tokens,
                     )
                 )
+
                 return response.text.strip()
 
             except Exception as e:

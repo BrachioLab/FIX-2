@@ -7,6 +7,7 @@ from typing import Any
 import numpy as np
 import torch
 import PIL
+import re
 from torch.utils.data import Dataset
 from torchvision import transforms as tfs
 import datasets as hfds
@@ -17,13 +18,14 @@ from llms import load_model
 from prompts.claim_decomposition import decomposition_cholec
 from prompts.relevance_filtering import relevance_cholec
 from prompts.expert_alignment import alignment_cholec
-from prompts.explanations import cholec_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
+from prompts.explanations import \
+    cholec_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, \
+    load_cholec_prompt
 
 
 cache = Cache(".cholec_cache")
 
 default_model = "gpt-4o"
-# default_model = "gpt-4.1-mini"
 
 
 class CholecExample:
@@ -31,24 +33,30 @@ class CholecExample:
         self,
         id: str,
         image: torch.Tensor,
-        organ_masks: list[torch.Tensor],
-        gonogo_masks: list[torch.Tensor],
+        true_safe_list: list[int],
+        true_unsafe_list: list[int],
+        llm_raw_output: str,
         llm_explanation: str,
+        llm_safe_list: list[int],
+        llm_unsafe_list: list[int],
     ):
         """
         Args:
             id: The ID of the example from the HuggingFace dataset.
             image: The image of the gallbladder surgery.
-            organ_masks: The masks of the organs.
-            gonogo_masks: The masks of the safe/unsafe regions.
+            safe_list_ground_truth: The ground truth safe regions. (length = 9x16 = 144)
+            unsafe_list_ground_truth: The ground truth unsafe regions. (length = 9x16 = 144)
             llm_explanation: The explanation of the safe/unsafe regions.
         """
         self.id = id
         self.image = image
-        self.organ_masks = organ_masks
-        self.gonogo_masks = gonogo_masks
+        self.true_safe_list = true_safe_list
+        self.true_unsafe_list = true_unsafe_list
+        self.llm_raw_output = llm_raw_output
         self.llm_explanation = llm_explanation
-        
+        self.llm_safe_list = llm_safe_list
+        self.llm_unsafe_list = llm_unsafe_list
+
         # All raw claims obtained from the LLM
         self.all_claims : list[str] = []
 
@@ -64,10 +72,19 @@ class CholecExample:
         # The final alignment score, computed as the mean of the alignment scores of the alignable claims.
         self.final_alignment_score : float = 0.0
 
+        # The LLM's prediction of the safe/unsafe regions
+        self.safe_iou : float = 0.0
+        self.unsafe_iou : float = 0.0
+
     def to_dict(self):
         return {
             "id": self.id,
+            "true_safe_list": self.true_safe_list,
+            "true_unsafe_list": self.true_unsafe_list,
+            "llm_raw_output": self.llm_raw_output,
             "llm_explanation": self.llm_explanation,
+            "llm_safe_list": self.llm_safe_list,
+            "llm_unsafe_list": self.llm_unsafe_list,
             "all_claims": self.all_claims,
             "relevant_claims": self.relevant_claims,
             "alignable_claims": self.alignable_claims,
@@ -75,6 +92,8 @@ class CholecExample:
             "alignment_scores": self.alignment_scores,
             "alignment_reasonings": self.alignment_reasonings,
             "final_alignment_score": self.final_alignment_score,
+            "safe_iou": self.safe_iou,
+            "unsafe_iou": self.unsafe_iou,
         }
 
     def __str__(self):
@@ -136,6 +155,80 @@ class CholecDataset(Dataset):
             "organs": organs,   # (H,W)
         }
 
+def extract_list_from_string(text: str, list_name: str) -> list[int]:
+    """
+    Extracts an integer list from a string based on a list name marker.
+    Handles lists enclosed in brackets or just comma-separated numbers.
+
+    Args:
+        text: The input string.
+        list_name: The name preceding the list (e.g., "Safe List").
+
+    Returns:
+        A list of integers, or an empty list if the list is not found or parsed incorrectly.
+    """
+    # Regex to find the list pattern:
+    # list_name, optional whitespace, :
+    # followed by either:
+    #   \[(.*?)\]  (content inside brackets)
+    #   |          (OR)
+    #   ([^.\n]+)  (any character except dot or newline, one or more times - captures the numbers)
+    # We use re.DOTALL so . can match newlines if the list spans lines,
+    # but the second part of the OR explicitly avoids newlines to stop capturing the list content.
+    pattern = rf"{re.escape(list_name)}:\s*(?:\[(.*?)\]|([^.\n]+))"
+    match = re.search(pattern, text, re.DOTALL)
+
+    list_str = ""
+    if match:
+        # Check which group matched: group 1 for brackets, group 2 for raw numbers
+        if match.group(1) is not None:
+            list_str = match.group(1).strip()
+        elif match.group(2) is not None:
+            list_str = match.group(2).strip()
+
+    if list_str:
+        # Split by comma, strip whitespace, convert to int, filter out empty strings
+        try:
+            # Split by comma and optional whitespace around it
+            return [int(x.strip()) for x in re.split(r',\s*', list_str) if x.strip()]
+        except ValueError:
+            # Handle cases where list content is not purely integers
+            print(f"Warning: Could not parse list content for '{list_name}'. Returning empty list.")
+            return []
+
+    return [] # Return empty list if the pattern is not found or no content was captured
+
+def extract_explanation_safe_unsafe(text: str) -> tuple[str, list[int], list[int]]:
+    """
+    Extracts explanation, safe_list, and unsafe_list from the raw string.
+    Handles lists enclosed in brackets or just comma-separated numbers.
+
+    Args:
+        text: The input raw string.
+
+    Returns:
+        A tuple containing (explanation, safe_list, unsafe_list).
+    """
+    # Extract lists first
+    safe_list = extract_list_from_string(text, "Safe List")
+    unsafe_list = extract_list_from_string(text, "Unsafe List")
+
+    # Remove the list sections from the text to get the explanation
+    # Regex to match either bracketed list or comma-separated numbers
+    list_pattern = r"{}:\s*(?:\[.*?\]|[^.\n]+)".format(re.escape("Safe List"))
+    explanation = re.sub(list_pattern, "", text, flags=re.DOTALL)
+
+    list_pattern = r"{}:\s*(?:\[.*?\]|[^.\n]+)".format(re.escape("Unsafe List"))
+    explanation = re.sub(list_pattern, "", explanation, flags=re.DOTALL)
+
+
+    # Clean up extra newlines that might result from removing the lists
+    explanation = explanation.strip()
+    # Replace multiple consecutive newlines with at most two
+    explanation = re.sub(r'\n\s*\n', '\n\n', explanation)
+
+    return explanation, safe_list, unsafe_list
+
 
 def get_llm_generated_answer(
     image: torch.Tensor | np.ndarray | PIL.Image.Image | list[Any],
@@ -163,24 +256,15 @@ def get_llm_generated_answer(
 
     llm = load_model(model)
 
-    if baseline.lower() == "vanilla":
-        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", vanilla_baseline)
-    elif baseline.lower() == "cot":
-        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", cot_baseline)
-    elif baseline.lower() == "socratic":
-        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", socratic_baseline)
-    elif baseline.lower() == "subq":
-        prompt = cholec_prompt.replace("[[BASELINE_PROMPT]]", least_to_most_baseline)
-    else:
-        raise ValueError(f"Invalid baseline: {baseline}")
+    prompt = load_cholec_prompt(baseline)
 
     if isinstance(image, list):
-        prompts = [(prompt, i) for i in image]
+        prompts = [prompt + (i,) for i in image]
         responses = llm(prompts)
         return responses
 
     else:
-        response = llm((prompt, image))
+        response = llm(prompt + (image,))
         return response
 
 
@@ -294,22 +378,54 @@ def items_to_examples(
     """
     _start_time = time.time()
 
+    # Compute the true safe/unsafe lists
+    a2d = torch.nn.AvgPool2d(kernel_size=20, stride=20)
+
+    true_safe_avgs = [(a2d((item["gonogo"] == 1).float()).squeeze() > 0.1).long() for item in items]
+    true_unsafe_avgs = [(a2d((item["gonogo"] == 2).float()).squeeze() > 0.1).long() for item in items]
+
+    true_safe_lists = [sr.view(-1).nonzero().view(-1).tolist() for sr in true_safe_avgs]
+    true_unsafe_lists = [ur.view(-1).nonzero().view(-1).tolist() for ur in true_unsafe_avgs]
+
     # Step 0: Get the LLM answers
     _t = time.time()
-    llm_answers = [get_llm_generated_answer(item["image"], explanation_model, baseline) for item in items]
+
+    llm_answers = get_llm_generated_answer([item["image"] for item in items], explanation_model, baseline)
     if verbose:
         print(f"Time taken to get LLM answers: {time.time() - _t:.3f} seconds")
 
+    llm_outs = [extract_explanation_safe_unsafe(llm_answer) for llm_answer in llm_answers]
+
     examples = [
         CholecExample(
-            id=item["id"],
-            image=item["image"],
-            organ_masks=item["organs"],
-            gonogo_masks=item["gonogo"],
-            llm_explanation=llm_answer,
+            id=items[i]["id"],
+            image=items[i]["image"],
+            true_safe_list=true_safe_lists[i],
+            true_unsafe_list=true_unsafe_lists[i],
+            llm_raw_output=llm_answers[i],
+            llm_explanation=llm_outs[i][0],
+            llm_safe_list=llm_outs[i][1],
+            llm_unsafe_list=llm_outs[i][2],
         )
-        for (item, llm_answer) in zip(items, llm_answers)
+        for i in range(len(items))
     ]
+
+    # Step 0.5: Calculate the accuracy of the LLM's prediction of the safe/unsafe regions as an IOU score
+    for i in range(len(items)):
+        true_safes = set(true_safe_lists[i])
+        true_unsafes = set(true_unsafe_lists[i])
+        llm_safes = set(examples[i].llm_safe_list)
+        llm_unsafes = set(examples[i].llm_unsafe_list)
+
+        if len(true_safes) > 0:
+            examples[i].safe_iou = len(true_safes & llm_safes) / len(true_safes | llm_safes)
+        else:
+            examples[i].safe_iou = 0.0
+
+        if len(true_unsafes) > 0:
+            examples[i].unsafe_iou = len(true_unsafes & llm_unsafes) / len(true_unsafes | llm_unsafes)
+        else:
+            examples[i].unsafe_iou = 0.0
 
 
     # Step 1: Decompose the LLM explanation into atomic claims
@@ -391,17 +507,23 @@ def get_yes_no_confirmation(prompt):
 
 if __name__ == "__main__":
     # Take a few random, unique samples from the dataset
-    num_samples = 2
+    random.seed(42)
+    num_samples = 5
     dataset = CholecDataset(split="test", image_size=(180, 320))
     random_indices = random.sample(range(len(dataset)), num_samples)
+    print(f"Random indices: {random_indices}")
     items = [dataset[i] for i in random_indices]
+
+    # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.5-pro-exp-03-25"]
+    models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]
+    baselines = ["vanilla", "cot", "socratic", "subq"]
 
     # Can be very expensive!
     if get_yes_no_confirmation("You are about to spend a lot of money"):
         # Run the models and baselines
-        for model in ["gpt-4o", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]:
+        for model in models:
             _model_time = time.time()
-            for baseline in ["vanilla", "cot", "socratic", "subq"]:
+            for baseline in baselines:
                 print(f"\nRunning {model} with {baseline} baseline...")
                 run_cholec_pipeline(
                     items=items,

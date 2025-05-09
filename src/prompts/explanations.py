@@ -100,10 +100,16 @@ def load_cholec_prompt(baseline: str):
 
     # Load the data and images to make a few-shot example.
     all_examples = []
-    for i in range(1, 11):
+    for i in range(1, 6):   # Examples 1-5
         image = PIL.Image.open(Path(__file__).parent / "data" / f"cholec_fewshot_{i}_image.png")
+        image.load()
+
         safe_mask = PIL.Image.open(Path(__file__).parent / "data" / f"cholec_fewshot_{i}_safe.png")
+        safe_mask.load()
+
         unsafe_mask = PIL.Image.open(Path(__file__).parent / "data" / f"cholec_fewshot_{i}_unsafe.png")
+        unsafe_mask.load()
+
         with open(Path(__file__).parent / "data" / f"cholec_fewshot_{i}_data.json", "r") as f:
             data = json.load(f)
             explanation = data["explanation"]
@@ -142,7 +148,7 @@ def load_cholec_prompt(baseline: str):
             "Unsafe List: ", str(unsafe_list),
         )
 
-    prompt += ("Here is the image for you to analyze.",)
+    prompt += ("Here is the image for you to analyze. You must output the explanation, Safe List, and Unsafe List.",)
     return prompt
 
 
