@@ -234,17 +234,17 @@ Here is the text for you to classify.
 """
 
 cardiac_prompt = """You are a medical expert specializing in cardiac arrest prediction. 
-You will be provided with time-series Electrocardiogram (ECG) data from the first {} of an ECG monitoring period during a patient's ICU stay. Each entry consists of a measurement value at that timestamp. The timestamps start at time {} and end at time {}. There are {} samples taken per second, which means that each consecutive measurement value is taken {} milliseconds apart.
+You will be given some basic background information about an ICU patient, including their age, gender, race, and primary reason for ICU admittance. You will also be provided with time-series Electrocardiogram (ECG) data plotted in a graph from the first {} of an ECG monitoring period during the patient's ICU stay. Each entry consists of a measurement value at that timestamp. The samples are taken at {} Hz, so that each consecutive measurement value is taken {} milliseconds apart. 
 
-Your task is to determine whether this patient is at high risk of experiencing cardiac arrest within the next {} minutes. Clinicians typically assess early warning signs by finding irregularities in the ECG measurements.
+Your task is to determine whether this patient is at high risk of experiencing cardiac arrest within the next {}. Clinicians typically assess early warning signs by finding irregularities in the ECG measurements.
 [BASELINE_PROMPT] 
 Focus on the features of the data you used to make your yes or no binary classification. 
-Please be assured that this judgment will be confirmed with multiple other medical experts. Please provide your best judgment without worrying about not providing the perfect answer.
+Your judgment will be reviewed alongside those of other medical experts, so please provide your best assessment without concern for perfection.
 
 Your response should be formatted as follows:
 Prediction: <Yes/No>
 Explanation: <explanation>
 
-Here is the ECG data for you to analyze:
+Here is the patient background information and ECG data (in graph form) for you to analyze:
 {}
 """
