@@ -22,6 +22,7 @@ from matplotlib.colors import LinearSegmentedColormap
 from pathlib import Path
 from PIL import Image
 import PIL
+from llms import load_model
 
 
 from prompts.explanations import massmaps_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
@@ -59,15 +60,6 @@ def convert_pil_to_base64(pil_image):
     pil_image.save(buffered, format="JPEG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
 
-
-def normalize_inputs(inputs, mean_center=True):
-    if mean_center:
-        mean = inputs.mean([-1, -2], keepdim=True)
-    else:
-        mean = 0
-    std = inputs.std([-1, -2], keepdim=True)
-    inputs_normalized = (inputs - mean) / std
-    return inputs_normalized
 
 def get_custom_colormap(colors=None):
     if colors is None:
@@ -189,32 +181,36 @@ def text2json(text):
         data = None
     return data
 
-
 @cache.memoize()
-def get_llm_output(prompt, images=None, system_prompt='', model='gpt-4o'):
+def get_llm_output(prompt, images=None, model='gpt-4o'):
     """
     prompt: str
     images: list of PIL images
     system_prompt: str
     """
-    messages = get_messages(prompt, images, system_prompt)
-    for i in range(3):
-        try:
-            response = client.chat.completions.create(
-                    model=model,
-                    messages=messages,
-                    response_format={'type': 'text'},
-                    temperature=0,
-                    max_tokens=500,
-                    top_p=1,
-                    frequency_penalty=0,
-                    presence_penalty=0
-                )
-            return response.choices[0].message.content
-        except Exception as e:
-            print("Try {}; Error: {}".format(str(i), str(e)))     
-            time.sleep(3)
-    return "ERROR"
+
+    llm = load_model(model)
+
+    return llm((prompt, images))
+
+    # messages = get_messages(prompt, images, system_prompt)
+    # for i in range(3):
+    #     try:
+    #         response = client.chat.completions.create(
+    #                 model=model,
+    #                 messages=messages,
+    #                 response_format={'type': 'text'},
+    #                 temperature=0,
+    #                 max_tokens=500,
+    #                 top_p=1,
+    #                 frequency_penalty=0,
+    #                 presence_penalty=0
+    #             )
+    #         return response.choices[0].message.content
+    #     except Exception as e:
+    #         print("Try {}; Error: {}".format(str(i), str(e)))     
+    #         time.sleep(3)
+    # return "ERROR"
 
 @cache.memoize()
 def get_llm_output_from_messages(messages, model='gpt-4o'):
@@ -239,7 +235,6 @@ def get_llm_output_from_messages(messages, model='gpt-4o'):
             time.sleep(3)
     return "ERROR"
 
-
 def get_llm_generated_answer(
     example: list[str] | str | torch.Tensor, #Image | Timeseries,
     method: str = "vanilla",
@@ -250,10 +245,8 @@ def get_llm_generated_answer(
         example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
           e.g., the emotion classification task.
     """
-    
-    images_pil = []
-    images_pil.append(massmap_to_pil_norm(example))
-    
+
+
     if method == "vanilla":
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
     elif method == "cot":
@@ -264,19 +257,23 @@ def get_llm_generated_answer(
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
     else:
         raise ValueError(f"Invalid method: {method}")
-        
+
     prompt = prompt.replace(
         '[LAST_IMAGE_NUM]',
-        str(len(images_pil))
+        '1'
     )
+    
 
-    response = get_llm_output(prompt, images_pil, model=model)
-    if response == "ERROR":
-        print("Error in querying OpenAI API")
-        return None, None
+    # llm_inputs = [(prompt, massmap_to_pil_norm(e)) for e in example]
 
+    # llm_responses = llm(llm_inputs)
+
+    image_pil = [massmap_to_pil_norm(example)]
+
+    llm_response = get_llm_output(prompt, image_pil, model=model)
+
+    response_split = [r.strip() for r in llm_response.split("\n") if r.strip() != ""]
     try:
-        response_split = [r.strip() for r in response.split("\n") if r.strip() != ""]
         answer = response_split[1].split("Prediction: ")[1].strip()
         # split the answer into Omega_m and sigma_8
         answer = answer.split(", ")
@@ -285,10 +282,50 @@ def get_llm_generated_answer(
             answer[1].split(": ")[0]: float(answer[1].split(": ")[1])
         }
         explanation = response_split[0].split("Explanation: ")[1].strip()
+        
         return answer, explanation
-    except:
-        print(response)
+    except Exception as e:
+        print(f"Error in parsing response {llm_response}")
         return None, None
+
+    # images_pil = []
+    # images_pil.append(massmap_to_pil_norm(example))
+    
+    # if method == "vanilla":
+    #     prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
+    # elif method == "cot":
+    #     prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
+    # elif method == "socratic":
+    #     prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", socratic_baseline)
+    # elif method == "least_to_most":
+    #     prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
+    # else:
+    #     raise ValueError(f"Invalid method: {method}")
+        
+    # prompt = prompt.replace(
+    #     '[LAST_IMAGE_NUM]',
+    #     str(len(images_pil))
+    # )
+
+    # response = get_llm_output(prompt, images_pil, model=model)
+    # if response == "ERROR":
+    #     print("Error in querying OpenAI API")
+    #     return None, None
+
+    # try:
+    #     response_split = [r.strip() for r in response.split("\n") if r.strip() != ""]
+    #     answer = response_split[1].split("Prediction: ")[1].strip()
+    #     # split the answer into Omega_m and sigma_8
+    #     answer = answer.split(", ")
+    #     answer = {
+    #         answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), 
+    #         answer[1].split(": ")[0]: float(answer[1].split(": ")[1])
+    #     }
+    #     explanation = response_split[0].split("Explanation: ")[1].strip()
+    #     return answer, explanation
+    # except:
+    #     print(response)
+    #     return None, None
 
 def isolate_individual_features(
     explanation: str,
