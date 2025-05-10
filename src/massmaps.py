@@ -27,7 +27,7 @@ from llms import load_model
 
 from prompts.explanations import massmaps_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
 from prompts.claim_decomposition import decomposition_massmaps
-from prompts.relevance_filtering import relevance_massmaps
+from prompts.relevance_filtering import relevance_massmaps, load_relevance_massmaps_prompt
 from prompts.expert_alignment import alignment_massmaps
 
 cache = Cache(os.environ.get("CACHE_DIR"))
@@ -110,76 +110,76 @@ def massmap_to_pil_norm(
     # 5) make PIL Image
     return Image.fromarray(rgb)
 
-def get_messages(prompt, images=None, system_prompt=None):
-    system_message = [
-                {'role': 'system', 'content': [{'type': 'text', 'text': system_prompt}]},
-            ]
+# def get_messages(prompt, images=None, system_prompt=None):
+#     system_message = [
+#                 {'role': 'system', 'content': [{'type': 'text', 'text': system_prompt}]},
+#             ]
 
-    image_payload = []
-    if images:
-        image_payload = [
-            {
-                "type": 'image_url',
-                'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
-            }
-            for image in images
-        ]
+#     image_payload = []
+#     if images:
+#         image_payload = [
+#             {
+#                 "type": 'image_url',
+#                 'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
+#             }
+#             for image in images
+#         ]
 
-    new_message = [
-        {'role': 'user', 'content': image_payload + [
-            {'type': 'text', 'text': prompt}
-        ]
-        }
-    ]
+#     new_message = [
+#         {'role': 'user', 'content': image_payload + [
+#             {'type': 'text', 'text': prompt}
+#         ]
+#         }
+#     ]
     
-    messages = system_message + new_message
+#     messages = system_message + new_message
     
-    return messages
+#     return messages
 
-def get_system_message(system_prompt):
-    system_message = [
-                {'role': 'system', 'content': [{'type': 'text', 'text': system_prompt}]},
-            ]
-    return system_message
+# def get_system_message(system_prompt):
+#     system_message = [
+#                 {'role': 'system', 'content': [{'type': 'text', 'text': system_prompt}]},
+#             ]
+#     return system_message
 
-def get_example_message(image, user_text, user_prompt, assistant_text=None, assistant_prompt=None):
-    if image is not None:
-        image_payload = [
-            {
-                "type": 'image_url',
-                'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
-            }
-        ]
-    else:
-        image_payload = []
+# def get_example_message(image, user_text, user_prompt, assistant_text=None, assistant_prompt=None):
+#     if image is not None:
+#         image_payload = [
+#             {
+#                 "type": 'image_url',
+#                 'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
+#             }
+#         ]
+#     else:
+#         image_payload = []
     
-    if assistant_prompt is not None and assistant_text is not None:
-        if isinstance(assistant_text, (list, tuple)) or (hasattr(assistant_text, '__iter__') and not isinstance(assistant_text, str)):
-            assistant_message = {'role': 'assistant', 'content': [{'type': 'text', 'text': assistant_prompt.format(*assistant_text)}]}
-        else:
-            assistant_message = {'role': 'assistant', 'content': [{'type': 'text', 'text': assistant_prompt.format(assistant_text)}]}
-    else:
-        assistant_message = None
-    return user_message, assistant_message
+#     if assistant_prompt is not None and assistant_text is not None:
+#         if isinstance(assistant_text, (list, tuple)) or (hasattr(assistant_text, '__iter__') and not isinstance(assistant_text, str)):
+#             assistant_message = {'role': 'assistant', 'content': [{'type': 'text', 'text': assistant_prompt.format(*assistant_text)}]}
+#         else:
+#             assistant_message = {'role': 'assistant', 'content': [{'type': 'text', 'text': assistant_prompt.format(assistant_text)}]}
+#     else:
+#         assistant_message = None
+#     return user_message, assistant_message
 
-def get_few_shot_user_assistant_messages(images_list, user_text_list, user_prompt, assistant_text_list, assistant_prompt):
-    all_messages = []
-    for image, user_text, assistant_text in zip(images_list, user_text_list, assistant_text_list):
-        user_message, assistant_message = get_example_message(image, user_text, user_prompt, assistant_text, assistant_prompt)
-        all_messages.append(user_message)
-        all_messages.append(assistant_message)
-    return all_messages
+# def get_few_shot_user_assistant_messages(images_list, user_text_list, user_prompt, assistant_text_list, assistant_prompt):
+#     all_messages = []
+#     for image, user_text, assistant_text in zip(images_list, user_text_list, assistant_text_list):
+#         user_message, assistant_message = get_example_message(image, user_text, user_prompt, assistant_text, assistant_prompt)
+#         all_messages.append(user_message)
+#         all_messages.append(assistant_message)
+#     return all_messages
 
-def text2json(text):
-    match = re.search(r'```json(.*?)```', text, re.DOTALL)
-    if match:
-        json_str = match.group(1).strip()
-        # Escape single backslashes
-        json_str = json_str.replace('\\', '\\\\')
-        data = json.loads(json_str)
-    else:
-        data = None
-    return data
+# def text2json(text):
+#     match = re.search(r'```json(.*?)```', text, re.DOTALL)
+#     if match:
+#         json_str = match.group(1).strip()
+#         # Escape single backslashes
+#         json_str = json_str.replace('\\', '\\\\')
+#         data = json.loads(json_str)
+#     else:
+#         data = None
+#     return data
 
 @cache.memoize()
 def get_llm_output(prompt, images=None, model='gpt-4o'):
@@ -392,93 +392,131 @@ def isolate_individual_features(
         all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
         return all_claims
 
-def is_claim_relevant(
-    example: str | torch.Tensor,
+# def is_claim_relevant(
+#     example: str | torch.Tensor,
+#     answer: str,
+#     atomic_claim: str,
+#     threshold: float = 0.9,
+#     model: str = "gpt-4o"
+# ) -> bool:
+#     """
+#     For a claim to be relevant, it must be:
+#         (1) Supported by the example.
+#         (2) Answers the question of why the LLM gave the answer it did for this specific example.
+
+#     Args:
+#         example (str | Image | timeseries): The input example from a dataset from which to distill the relevant features from.
+#         answer (str): The LLM-generated answer to the example.
+#         atomic_claim (str): A claim to check if it is relevant to the example.
+#     """
+
+#     # Get the images
+#     # 1. Locate the *directory that this .py file lives in*
+#     here = Path(__file__).resolve().parent          # .../your_script_folder
+
+#     # 2. Point to the images folder *relative to* that location
+#     img_dir = here / "prompts" / "data"                      # e.g. .../your_script_folder/images
+
+#     # 3. Collect every PNG/JPG (adjust the glob pattern as needed)
+#     few_shot_image_paths = sorted(img_dir.glob("massmaps_relevance*.png")) + \
+#                 sorted(img_dir.glob("massmaps_relevance*.jpg"))
+
+#     # 4. Load them (returns a list of PIL Images here)
+#     few_shot_images = [PIL.Image.open(p) for p in few_shot_image_paths]
+
+#     assert len(few_shot_images) > 0
+
+#     prompt = relevance_massmaps.format(f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", atomic_claim)
+
+#     current_image_pil = massmap_to_pil_norm(example)
+
+#     image_payloads = []
+#     for image in few_shot_images:
+#         image_payloads.append(
+#             {
+#                 "type": 'image_url',
+#                 'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
+#             }
+#     )
+
+#     image_payloads.append(
+#             {
+#                 "type": 'image_url',
+#                 'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(current_image_pil)}"}
+#             }
+#         )
+
+#     user_message = {
+#         'role': 'user',
+#         'content': image_payloads + [
+#             {'type': 'text', 'text': prompt}
+#         ]
+#     }
+
+#     messages = [user_message]
+
+#     response = get_llm_output_from_messages(messages, model=model)
+
+#     response = response.replace("Relevance:", "").strip()
+#     response = [item for item in response.split("\n") if item.strip() != ""]
+#     relevance = response[0].strip()
+#     reasoning = response[1].replace("Reasoning:", "").strip()
+#     return relevance, reasoning
+
+# def get_relevance_few_shot_examples() -> list[PIL.Image.Image]:
+#     # Get the images
+#     # 1. Locate the *directory that this .py file lives in*
+#     here = Path(__file__).resolve().parent          # .../your_script_folder
+
+#     # 2. Point to the images folder *relative to* that location
+#     img_dir = here / "prompts" / "data"                      # e.g. .../your_script_folder/images
+
+#     # 3. Collect every PNG/JPG (adjust the glob pattern as needed)
+#     few_shot_image_paths = sorted(img_dir.glob("massmaps_relevance*.png")) + \
+#                 sorted(img_dir.glob("massmaps_relevance*.jpg"))
+
+#     # 4. Load them (returns a list of PIL Images here)
+#     few_shot_images = [PIL.Image.open(p) for p in few_shot_image_paths]
+
+#     return few_shot_images
+
+def distill_relevant_features(
+    example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
     answer: str,
-    atomic_claim: str,
-    threshold: float = 0.9,
-    model: str = "gpt-4o"
-) -> bool:
+    atomic_claims: list[str],
+    model: str = "gpt-4o",
+    verbose: bool = False
+) -> list[str]:
     """
-    For a claim to be relevant, it must be:
-        (1) Supported by the example.
-        (2) Answers the question of why the LLM gave the answer it did for this specific example.
-
-    Args:
-        example (str | Image | timeseries): The input example from a dataset from which to distill the relevant features from.
-        answer (str): The LLM-generated answer to the example.
-        atomic_claim (str): A claim to check if it is relevant to the example.
+    Distill the relevant features from the atomic claims.
     """
 
-    # Get the images
-    # 1. Locate the *directory that this .py file lives in*
-    here = Path(__file__).resolve().parent          # .../your_script_folder
+    prompts = [load_relevance_massmaps_prompt(
+        massmap_to_pil_norm(example_image), 
+        f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}",
+        claim
+    ) for claim in atomic_claims]
+    llm = load_model(model)
+    llm.verbose = True
+    results = llm(prompts)
 
-    # 2. Point to the images folder *relative to* that location
-    img_dir = here / "prompts" / "data"                      # e.g. .../your_script_folder/images
+    if verbose:
+        import matplotlib.pyplot as plt
+        plt.figure()
+        plt.imshow(massmap_to_pil_norm(example_image))
+        plt.show()
+        import pprint
+        print('atomic_claims')
+        pprint.pprint(atomic_claims)
+        print('results')
+        pprint.pprint(results)
 
-    # 3. Collect every PNG/JPG (adjust the glob pattern as needed)
-    few_shot_image_paths = sorted(img_dir.glob("massmaps_relevance*.png")) + \
-                sorted(img_dir.glob("massmaps_relevance*.jpg"))
+    relevant_claims = [
+        claim for claim, result in zip(atomic_claims, results)
+        if "relevance: yes" in result.lower()
+    ]
 
-    # 4. Load them (returns a list of PIL Images here)
-    few_shot_images = [PIL.Image.open(p) for p in few_shot_image_paths]
-
-    assert len(few_shot_images) > 0
-
-    prompt = relevance_massmaps.format(f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", atomic_claim)
-
-    current_image_pil = massmap_to_pil_norm(example)
-
-    image_payloads = []
-    for image in few_shot_images:
-        image_payloads.append(
-            {
-                "type": 'image_url',
-                'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(image)}"}
-            }
-    )
-
-    image_payloads.append(
-            {
-                "type": 'image_url',
-                'image_url': {'url': f"data:image/jpeg;base64,{convert_pil_to_base64(current_image_pil)}"}
-            }
-        )
-
-    user_message = {
-        'role': 'user',
-        'content': image_payloads + [
-            {'type': 'text', 'text': prompt}
-        ]
-    }
-
-    messages = [user_message]
-
-    response = get_llm_output_from_messages(messages, model=model)
-
-    response = response.replace("Relevance:", "").strip()
-    response = [item for item in response.split("\n") if item.strip() != ""]
-    relevance = response[0].strip()
-    reasoning = response[1].replace("Reasoning:", "").strip()
-    return relevance, reasoning
-
-def get_relevance_few_shot_examples() -> list[PIL.Image.Image]:
-    # Get the images
-    # 1. Locate the *directory that this .py file lives in*
-    here = Path(__file__).resolve().parent          # .../your_script_folder
-
-    # 2. Point to the images folder *relative to* that location
-    img_dir = here / "prompts" / "data"                      # e.g. .../your_script_folder/images
-
-    # 3. Collect every PNG/JPG (adjust the glob pattern as needed)
-    few_shot_image_paths = sorted(img_dir.glob("massmaps_relevance*.png")) + \
-                sorted(img_dir.glob("massmaps_relevance*.jpg"))
-
-    # 4. Load them (returns a list of PIL Images here)
-    few_shot_images = [PIL.Image.open(p) for p in few_shot_image_paths]
-
-    return few_shot_images
+    return relevant_claims
 
     # assert len(few_shot_images) > 0
 
@@ -513,34 +551,34 @@ def get_relevance_few_shot_examples() -> list[PIL.Image.Image]:
 
 #     return relevant_claims
 
-def distill_relevant_features(
-    example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
-    answer: str,
-    atomic_claims: list[str],
-    model: str = "gpt-4o",
-) -> list[str]:
-    """
-    Distill the relevant features from the atomic claims.
-    """
+# def distill_relevant_features(
+#     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
+#     answer: str,
+#     atomic_claims: list[str],
+#     model: str = "gpt-4o",
+# ) -> list[str]:
+#     """
+#     Distill the relevant features from the atomic claims.
+#     """
 
-    few_shot_images = get_relevance_few_shot_examples()
+#     few_shot_images = get_relevance_few_shot_examples()
 
-    prompts = [(relevance_massmaps.format(
-        f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", 
-        claim
-        ), *few_shot_images, example_image) \
-        for claim in atomic_claims]
-    llm = load_model(model)
-    llm.verbose = True
-    import pdb; pdb.set_trace()
-    results = llm(prompts)
+#     prompts = [(relevance_massmaps.format(
+#         f"Omega_m = {answer['Omega_m']}, sigma_8 = {answer['sigma_8']}", 
+#         claim
+#         ), *few_shot_images, example_image) \
+#         for claim in atomic_claims]
+#     llm = load_model(model)
+#     llm.verbose = True
+#     import pdb; pdb.set_trace()
+#     results = llm(prompts)
 
-    relevant_claims = [
-        claim for claim, result in zip(atomic_claims, results)
-        if "relevance: yes" in result.lower()
-    ]
+#     relevant_claims = [
+#         claim for claim, result in zip(atomic_claims, results)
+#         if "relevance: yes" in result.lower()
+#     ]
 
-    return relevant_claims
+#     return relevant_claims
 
 # def distill_relevant_features(
 #     example: str | torch.Tensor,
@@ -563,33 +601,77 @@ def distill_relevant_features(
 #             atomic_claims.append(raw_atomic_claim)
 #     return atomic_claims
 
-def calculate_expert_alignment_score(
-    example_input: torch.Tensor, 
-    llm_prediction: str, claim: str,
-    system_prompt=None,
-    model: str = "gpt-4o"
-):
+def calculate_expert_alignment_scores(
+    claims: list[str],
+    model: str = 'gpt-4o',
+) -> list[dict]:
+    """
+    Computes the individual (and overall) alignment score of all the relevant claims.
+
+    Args:
+        claims (list[str]): A list of strings where each string is a relevant claim.
+        model (str): The model to use for evaluation.
+
+    Returns:
+        dict: A dictionary containing:
+            - alignment_scores: Mapping of each claim to its alignment score (1-5)
+            - total_score: Overall alignment score across all claims
+    """
+
+    llm = load_model(model)
+    prompts = [alignment_massmaps.replace("[[CLAIM]]", claim) for claim in claims]
+    responses = llm(prompts)
+
+    results = []
+    for i, response in enumerate(responses):
+        clean_response = [s.strip() for s in response.split("\n") if s.strip()]
+        try:
+            if len(clean_response) == 4:
+                category = clean_response[0].split(": ")[1]
+                category_id = int(clean_response[1].split(": ")[1])
+                alignment = float(clean_response[2].split(": ")[1])
+                reasoning = clean_response[3].split(": ")[1]
+
+                results.append({
+                    "Claim": claims[i],
+                    "Category": category,
+                    "Category ID": category_id,
+                    "Alignment": alignment,
+                    "Reasoning": reasoning,
+                })
+
+        except Exception as e:
+            continue
+
+    return results
+
+# def calculate_expert_alignment_score(
+#     example_input: torch.Tensor, 
+#     llm_prediction: str, claim: str,
+#     system_prompt=None,
+#     model: str = "gpt-4o"
+# ):
         
-    prompt = alignment_massmaps.format(claim)
-    response = get_llm_output(prompt, model=model)
-    response_old = response
-    # print(response)
-    if response == "ERROR":
-        print("Error in querying OpenAI API")
-        return None
-    response = response.replace("Category:", "").strip()
-    response = response.split("\n")
-    response = [r for r in response if r.strip() != ""]
-    category = response[0].strip()
-    category_id = response[1].replace("Category ID:", "").strip()
-    alignment_score = response[2].replace("Category Alignment Rating:", "").strip()
-    try:
-        alignment_score = float(alignment_score)
-    except:
-        print("ERROR: Could not convert alignment score to float")
-        print(response)
-        import pdb; pdb.set_trace()
-        alignment_score = 0.0
-    reasoning = response[3].replace("Reasoning:", "").strip()
-    return category, category_id, alignment_score, reasoning
+#     prompt = alignment_massmaps.format(claim)
+#     response = get_llm_output(prompt, model=model)
+#     response_old = response
+#     # print(response)
+#     if response == "ERROR":
+#         print("Error in querying OpenAI API")
+#         return None
+#     response = response.replace("Category:", "").strip()
+#     response = response.split("\n")
+#     response = [r for r in response if r.strip() != ""]
+#     category = response[0].strip()
+#     category_id = response[1].replace("Category ID:", "").strip()
+#     alignment_score = response[2].replace("Category Alignment Rating:", "").strip()
+#     try:
+#         alignment_score = float(alignment_score)
+#     except:
+#         print("ERROR: Could not convert alignment score to float")
+#         print(response)
+#         import pdb; pdb.set_trace()
+#         alignment_score = 0.0
+#     reasoning = response[3].replace("Reasoning:", "").strip()
+#     return category, category_id, alignment_score, reasoning
     

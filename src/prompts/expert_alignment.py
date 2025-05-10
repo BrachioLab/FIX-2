@@ -159,29 +159,35 @@ Expert cosmology categories:
 -----
 
 Here are some examples:
-[Example 1]
-Claim: There exist a large amount of yellow regions in the map, which indicates a relatively high sigma_8.
+Example 1
+Claim: "There exist a large amount of yellow regions in the map, which indicates a relatively high sigma_8."
+
+Output 1:
 Category: Lensing Peak (Cluster) Abundance
 Category ID: 1
-Category Alignment Rating: 1
+Alignment: 1.0
 Reasoning: The claim directly talks about a large number of yellow regions (high-convergence peaks) in the map, and how it indicates high sigma_8. This aligns with the Lensing Peak (Cluster) Abundance category which says a large number of peaks / clusters indicates a larger sigma_8.
 
-[Example 2]
-Claim: The presence of some void regions in the map indicates a low matter density level.
+Example 2
+Claim: "The presence of some void regions in the map indicates a low matter density level."
+
+Output 2:
 Category: Void Size and Frequency
 Category ID: 2
-Category Alignment Rating: 0.5
+Alignment: 0.5
 Reasoning: The claim does mention that void should lead to a lower matter density level and thus Omega_m, but it does not mention how large the void is. To be completely aligned with the expert criteria, the claim should mention the size of the void and it should be large to match this category.
 
-[Example 3]
-Claim: A balanced distribution of blue, gray, red, and yellow regions in the map indicates a moderate matter density level and fluctuation levels.
+Example 3
+Claim: "A balanced distribution of blue, gray, red, and yellow regions in the map indicates a moderate matter density level and fluctuation levels."
+
+Output 3:
 Category: Density Contrast Extremes
 Category ID: 6
-Category Alignment Rating: 0.1
+Alignment: 0.1
 Reasoning: There is no category saying that when the distribution is balanced, whether the matter density level should be high or low or moderate. This is the closest category because it mentions both voids and peaks, but the alignment is only 0.1 because the expert criteria does not mention balanced distribution but rather the position of the peaks and voids.
 
 Now, determine the category and alignment rating for the following claim:
-Claim: {}
+Claim: [[CLAIM]]
 """
 
 alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.

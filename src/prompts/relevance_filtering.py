@@ -1,3 +1,6 @@
+import PIL.Image
+from pathlib import Path
+
 relevance_template = """You will be given [description of input, output, and claim]
 
 A claim is relevant if and only if:
@@ -74,118 +77,260 @@ Return your answer as:
 Relevance: <Yes/No>
 Reasoning: <A brief explanation pointing to the visual feature and criterion that supports your judgment>
 
-Examples:
-
-Example 1
-Input: [input image]
-Claim: Calot's triangle is bounded by the cystic duct laterally, common hepatic duct medially, and the inferior surface of the liver superiorly.
-```
-Relevance: Yes
-Reasoning: The claim describes the anatomical landmarks that define Calot's triangle, which is a visually confirmed safety criterion for safe dissection.
-```
-
-Example 2
-Input: [input image]
-Claim: The image shows the surgeon working within Calot\u2019s triangle where careful dissection is necessary.
-```
-Relevance: No
-Reasoning: The claim is not specific to a visual feature in the image, but rather a general statement about the importance of careful dissection.
-```
-
-Example 3
-Input: [input image]
-Claim: Dissection on the gallbladder wall itself is generally safe but should be performed carefully to avoid bile spillage.
-```
-Relevance: No
-Reasoning: The claim is not specific to a visual feature in the image, but rather a general statement about the importance of careful dissection.
-```
-
-Example 4
-Input: [input image]
-Claim: The tissue being dissected appears friable with some bleeding and possible inflammation.
-```
-Relevance: Yes
-Reasoning: The claim is specific to a visual feature in the image, and pertains to identifying safe or unsafe dissection zones based on expert surgical criteria.
-```
-
-Now evaluate the following:
-Input: (see attached image)
-Claim: {}
+I will now give a few examples so you get the hang of it.
 """
 
-relevance_massmaps = """You will be given an image of a weak lensing mass map, its prediction for Omega_m and sigma_8, and a claim that may or may not be relevant to an explanation of the prediction. Your task is to decide whether the claim is relevant to explaining the prediction for this specific mass map.
+def load_relevance_cholec_prompt(image, claim: str):
+    image1 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_1_image.png")
+    image1.load()
+    image1_claim = "The safe region is located in the upper central portion of the surgical field, where there is clear visualization of the fatty tissue surrounding the gallbladder."
+    image1_reasoning = "This gives an accurate and specific description of the safe region in the image."
+    image1_relevance = "Yes"
+
+    image2 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_2_image.png")
+    image2.load()
+    image2_claim = "The tissue here appears pale pink to yellowish, indicating the gallbladder's serosa and underlying wall."
+    image2_reasoning = "This is an accurate and specific description of a visual feature in the image."
+    image2_relevance = "Yes"
+
+    image5 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_5_image.png")
+    image5.load()
+    image5_claim = "The surgeon should maintain dissection within the safe zone, working methodically to establish the critical view of safety before any structures are divided."
+    image5_reasoning = "This is generic advice that is not specific to the image."
+    image5_relevance = "No"
+
+    image6 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_6_image.png")
+    image6.load()
+    image6_claim = "The safe zone to dissect is above the Rouviere's sulcus, a known landmark for safe dissection."
+    image6_reasoning = "There is no Rouviere's sulcus visible in this image."
+    image6_relevance = "No"
+
+    image10 = PIL.Image.open(Path(__file__).parent / "data" / "cholec_fewshot_10_image.png")
+    image10.load()
+    image10_claim = "This area demonstrates appropriate tissue separation and appears to be free of major vascular or biliary structures."
+    image10_reasoning = "This image shows the starting phase of the surgery where the tissue is not separated yet."
+    image10_relevance = "No"
+
+    return (relevance_cholec,
+        "[Example 1]",
+        "Input:", image1,
+        "Claim:", image1_claim,
+        "Relevance:", image1_relevance,
+        "Reasoning:", image1_reasoning,
+
+        "[Example 2]",
+        "Input:", image2,
+        "Claim:", image2_claim,
+        "Relevance:", image2_relevance,
+        "Reasoning:", image2_reasoning,
+
+        "[Example 3]",
+        "Input:", image5,
+        "Claim:", image5_claim,
+        "Relevance:", image5_relevance,
+        "Reasoning:", image5_reasoning,
+
+        "[Example 4]",
+        "Input:", image6,
+        "Claim:", image6_claim,
+        "Relevance:", image6_relevance,
+        "Reasoning:", image6_reasoning,
+
+        "[Example 5]",
+        "Input:", image10,
+        "Claim:", image10_claim,
+        "Relevance:", image10_relevance,
+        "Reasoning:", image10_reasoning,
+
+        "Now evaluate the following",
+        "Input: ", image,
+        "Claim: ", claim,
+    )
+
+relevance_massmaps = """
+You will be given:
+- An image of a weak lensing mass map (the "Input").
+- Its prediction for Omega_m and sigma_8 (the "Output").
+- A textual Claim describing visual information in that image potentially related to its prediction of Omega_m and sigma_8 (the "Claim").
 
 A claim is relevant if and only if:
-(1) It is supported by the content of the mass map (i.e., it does not hallucinate or speculate beyond what is said).
-(2) It helps explain why the mass map received the given prediction (i.e., it directly relates to the mass map's features, such as the distribution of mass, the presence of voids or clusters, or the overall structure of the map).
+1. It refers to a visually detectable feature in the image.
+2. It pertains to predicting Omega_m and sigma_8 based on the visual information in the image.
+3. Is not a general statement about weak lensing mass maps, but rather a specific claim about a feature in the image.
+4. When unsure, lean towards "Yes" if the claim is not wrong to the image to be more inclusive.
 
 Return your answer as:
 Relevance: <Yes/No>
-Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
+Reasoning: <A brief explanation pointing to the visual feature and criterion that supports your judgment>
 
-Here are some examples:
-
-[Example 1]
-Input: (Image 1)
-Output: Omega_m = 0.1041, sigma_8 = 0.9396
-Claim: The balance between blue and gray regions and red and yellow regions in the map indicates a moderate matter density and fluctuation levels.
-Relevance: No
-Reasoning: The image contains a large amount of blue and gray regions, which are underdense areas. Therefore, the underdense and overdense regions are not balanced. The claim is not supported by but contradicts the image.
-
-[Example 2]
-Input: (Image 2)
-Output: Omega_m = 0.2, sigma_8 = 1.15
-Claim: There exist a large amount of yellow regions in the map, which indicates a relatively high sigma_8.
-Relevance: Yes
-Reasoning: The image does contain a significant amount of yellow regions, which are overdense areas. This is relevant information for predicting the sigma_8, and the claim is supported by the image.
-
-[Example 3]
-Input: (Image 3)
-Output: Omega_m = 0.3586, sigma_8 = 0.9762
-Claim: Voids are large low density regions in space.
-Relevance: No
-Reasoning: This is background knowledge, not derived from the data.
-
-[Example 4]
-Input: (Image 4)
-Output: Omega_m = 0.4612, sigma_8 = 0.5614
-Claim: The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
-Relevance: No
-Reasoning: This claim is not wrong to the image, but it only states very naive information about the colors distributed in the map, without saying what are these blue, gray, red, and yellow regions in the eyes of cosmologists, and how the distribution is like. This is not useful to cosmologists because they are not interpretable features for them.
-
-[Example 5]
-Input: (Image 2)
-Output: Omega_m = 0.2, sigma_8 = 1.15
-Claim: In the lower right corner, there is a large concentration of yellow region which are clusters.
-Relevance: Yes
-Reasoning: This claim is correct according to the image as there are indeed a large concentration of yellow regions in the lower right corner of the image, which are clusters.
-
-[Example 6]
-Input: (Image 2)
-Output: Omega_m = 0.2, sigma_8 = 1.15
-Claim: In the lower right corner, there is a large concentration of blue and gray regions which are voids.
-Relevance: No
-Reasoning: This claim is wrong according to the image as the lower right corner of the image is actually a large concentration of yellow regions which are clusters, not blue and gray regions which are voids.
-
-[Example 7]
-Input: (Image 1)
-Output: Omega_m = 0.1041, sigma_8 = 0.9396
-Claim: There are mostly blue and gray regions spread out in the map, especially in the lower left corner.
-Relevance: Yes
-Reasoning: The image contains a large amount of blue and gray regions, which are underdense areas, and indeed in the lower left corner. Therefore, the underdense and overdense regions are not balanced. The claim is supported by the image.
-
-[Example 8]
-Input: (Image 1)
-Output: Omega_m = 0.1041, sigma_8 = 0.9396
-Claim: There is a large amount of clusters in the middle of the map.
-Relevance: Yes
-Reasoning: The image contains a large amount of yellow regions, which are clusters, and indeed in the middle of the map. Therefore, the underdense and overdense regions are not balanced. The claim is supported by the image.
-
-Now, determine whether the following claim is relevant to the given mass map and prediction:
-Input: (Image 5)
-Output: {}
-Claim: {}
+I will now give a few examples so you get the hang of it.
 """
+
+def load_relevance_massmaps_prompt(image, output, claim: str):
+    image1 = PIL.Image.open(Path(__file__).parent / "data" / "massmaps_relevance_few_shot_examples.0.Omega0.1041.sigma0.9396.png")
+    image1.load()
+    image1_output = "Omega_m = 0.1041, sigma_8 = 0.9396"
+    image1_claim = "The balance between blue and gray regions and red and yellow regions in the map indicates a moderate matter density and fluctuation levels."
+    image1_reasoning = "The image contains a large amount of blue and gray regions, which are underdense areas. Therefore, the underdense and overdense regions are not balanced. The claim is not supported by but contradicts the image."
+    image1_relevance = "No"
+
+    image2 = PIL.Image.open(Path(__file__).parent / "data" / "massmaps_relevance_few_shot_examples.1.Omega0.2.sigma1.15.png")
+    image2.load()
+    image2_output = "Omega_m = 0.2, sigma_8 = 1.15"
+    image2_claim = "There exist a large amount of yellow regions in the map, indicating clustering."
+    image2_reasoning = "The image does contain a significant amount of yellow regions, which are overdense areas. This is relevant information for predicting sigma_8, and the claim is supported by the image."
+    image2_relevance = "Yes"
+
+    image3 = PIL.Image.open(Path(__file__).parent / "data" / "massmaps_relevance_few_shot_examples.2.Omega0.3586.sigma0.9762.png")
+    image3.load()
+    image3_output = "Omega_m = 0.3586, sigma_8 = 0.9762"
+    image3_claim = "Voids are generally large low density regions in space."
+    image3_reasoning = "This is background knowledge, not derived from the data."
+    image3_relevance = "No"
+
+    image4 = PIL.Image.open(Path(__file__).parent / "data" / "massmaps_relevance_few_shot_examples.3.Omega0.4612.sigma0.5614.png")
+    image4.load()
+    image4_output = "Omega_m = 0.4612, sigma_8 = 0.5614"
+    image4_claim = "The weak lensing map shows a mix of blue, gray, red, and some yellow regions."
+    image4_reasoning = "This claim is not wrong to the image, but it only states very naive information about the colors distributed in the map, without saying what the specificdistribution is like. This is not useful to cosmologists because they are not interpretable features for them."
+    image4_relevance = "No"
+
+    image5 = image1
+    image5.load()
+    image5_output = image1_output
+    image5_claim = "There are mostly blue and gray regions spread out in the map, especially in the lower left corner."
+    image5_reasoning = "The image contains a large amount of blue and gray regions, which are underdense areas, and indeed in the lower left corner. Therefore, the underdense and overdense regions are not balanced. The claim is supported by the image."
+    image5_relevance = "Yes"
+
+    image6 = image2
+    image6.load()
+    image6_output = image2_output
+    image6_claim = "The presence of highly concentrated peaks or clusters in the map indicates a relatively high sigma_8."
+    image6_reasoning = "This claim is talking about peaks and clusters which are interpretable information to cosmologists. Also, the peaks/clusters actually present in the image."
+    image6_relevance = "Yes"
+    
+    return (relevance_massmaps,
+        "[Example 1]",
+        "Input:", image1,
+        "Output:", image1_output,
+        "Claim:", image1_claim,
+        "Relevance:", image1_relevance,
+        "Reasoning:", image1_reasoning,
+
+        "[Example 2]",
+        "Input:", image2,
+        "Output:", image2_output,
+        "Claim:", image2_claim,
+        "Relevance:", image2_relevance,
+        "Reasoning:", image2_reasoning,
+
+        "[Example 3]",
+        "Input:", image3,
+        "Output:", image3_output,
+        "Claim:", image3_claim,
+        "Relevance:", image3_relevance,
+        "Reasoning:", image3_reasoning,
+
+        "[Example 4]",
+        "Input:", image4,
+        "Output:", image4_output,
+        "Claim:", image4_claim,
+        "Relevance:", image4_relevance,
+        "Reasoning:", image4_reasoning,
+
+        "[Example 5]",
+        "Input:", image5,
+        "Output:", image5_output,
+        "Claim:", image5_claim,
+        "Relevance:", image5_relevance,
+        "Reasoning:", image5_reasoning,
+
+        "[Example 6]",
+        "Input:", image6,
+        "Output:", image6_output,
+        "Claim:", image6_claim,
+        "Relevance:", image6_relevance,
+        "Reasoning:", image6_reasoning,
+
+        "Now evaluate the following",
+        "Input: ", image,
+        "Output: ", output,
+        "Claim: ", claim,
+    )
+
+# relevance_massmaps = """You will be given an image of a weak lensing mass map, its prediction for Omega_m and sigma_8, and a claim that may or may not be relevant to an explanation of the prediction. Your task is to decide whether the claim is relevant to explaining the prediction for this specific mass map.
+
+# A claim is relevant if and only if:
+# (1) It is supported by the content of the mass map (i.e., it does not hallucinate or speculate beyond what is said).
+# (2) It helps explain why the mass map received the given prediction (i.e., it directly relates to the mass map's features, such as the distribution of mass, the presence of voids or clusters, or the overall structure of the map).
+
+# Return your answer as:
+# Relevance: <Yes/No>
+# Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
+
+# Here are some examples:
+
+# [Example 1]
+# Input: (Image 1)
+# Output: Omega_m = 0.1041, sigma_8 = 0.9396
+# Claim: The balance between blue and gray regions and red and yellow regions in the map indicates a moderate matter density and fluctuation levels.
+# Relevance: No
+# Reasoning: The image contains a large amount of blue and gray regions, which are underdense areas. Therefore, the underdense and overdense regions are not balanced. The claim is not supported by but contradicts the image.
+
+# [Example 2]
+# Input: (Image 2)
+# Output: Omega_m = 0.2, sigma_8 = 1.15
+# Claim: There exist a large amount of yellow regions in the map, which indicates a relatively high sigma_8.
+# Relevance: Yes
+# Reasoning: The image does contain a significant amount of yellow regions, which are overdense areas. This is relevant information for predicting the sigma_8, and the claim is supported by the image.
+
+# [Example 3]
+# Input: (Image 3)
+# Output: Omega_m = 0.3586, sigma_8 = 0.9762
+# Claim: Voids are large low density regions in space.
+# Relevance: No
+# Reasoning: This is background knowledge, not derived from the data.
+
+# [Example 4]
+# Input: (Image 4)
+# Output: Omega_m = 0.4612, sigma_8 = 0.5614
+# Claim: The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
+# Relevance: No
+# Reasoning: This claim is not wrong to the image, but it only states very naive information about the colors distributed in the map, without saying what are these blue, gray, red, and yellow regions in the eyes of cosmologists, and how the distribution is like. This is not useful to cosmologists because they are not interpretable features for them.
+
+# [Example 5]
+# Input: (Image 2)
+# Output: Omega_m = 0.2, sigma_8 = 1.15
+# Claim: In the lower right corner, there is a large concentration of yellow region which are clusters.
+# Relevance: Yes
+# Reasoning: This claim is correct according to the image as there are indeed a large concentration of yellow regions in the lower right corner of the image, which are clusters.
+
+# [Example 6]
+# Input: (Image 2)
+# Output: Omega_m = 0.2, sigma_8 = 1.15
+# Claim: In the lower right corner, there is a large concentration of blue and gray regions which are voids.
+# Relevance: No
+# Reasoning: This claim is wrong according to the image as the lower right corner of the image is actually a large concentration of yellow regions which are clusters, not blue and gray regions which are voids.
+
+# [Example 7]
+# Input: (Image 1)
+# Output: Omega_m = 0.1041, sigma_8 = 0.9396
+# Claim: There are mostly blue and gray regions spread out in the map, especially in the lower left corner.
+# Relevance: Yes
+# Reasoning: The image contains a large amount of blue and gray regions, which are underdense areas, and indeed in the lower left corner. Therefore, the underdense and overdense regions are not balanced. The claim is supported by the image.
+
+# [Example 8]
+# Input: (Image 1)
+# Output: Omega_m = 0.1041, sigma_8 = 0.9396
+# Claim: There is a large amount of clusters in the middle of the map.
+# Relevance: Yes
+# Reasoning: The image contains a large amount of yellow regions, which are clusters, and indeed in the middle of the map. Therefore, the underdense and overdense regions are not balanced. The claim is supported by the image.
+
+# Now, determine whether the following claim is relevant to the given mass map and prediction:
+# Input: (Image 5)
+# Output: {}
+# Claim: {}
+# """
 
 relevance_emotion = """You will be given a Reddit comment, its emotion label, and a claim that may or may not be relevant to an explanation of the emotion label. Your task is to decide whether the claim is relevant to explaining the emotion label for the specific text comment.
 

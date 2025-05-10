@@ -47,7 +47,7 @@ decomposition_massmaps = """
 You will be given a paragraph that explains why certain Omega_m and sigma_8 values were attributed to a weak lensing mass map. Your task is to decompose this explanation into individual claims that are:
 
 Atomic: Each claim should express only one clear idea or judgment.
-Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
+Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph. When a claim talks about how there is a significant part of blue region, it should be rewritten to include the information that blue regions are underdense areas so that it can be understood outside the context. When a claim talks about "the level of contrast indicates ..." with a sentence preceding it saying "the contrast is high", it should be rewritten to include the information: "the level of contrast being high indicates ...". On the other hand, if "the contrast is high" is not indicated in the previous sentence, then it should not be included in the claim as we want to include only the information that is directly indicated in the paragraph.
 Faithful: The claims must preserve the original meaning, nuance, and tone. Do not omit hedging language (e.g., "seems to," "somewhat," "lacks overt markers") or subjective phrasing if present.
 
 Format your output as a list of claims separated by new lines. Do not include any additional text or explanations.
@@ -61,7 +61,7 @@ The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
 The presence of blue and gray indicates underdense areas in the map.
 The presence of red and yellow suggests overdense regions.
 Yellow indicates significant mass concentrations or clusters.
-The distribution and intensity of these colors, such that there is underdense and overdense regions present, with significant mass concentrations or clusters, suggest a universe with moderate matter density and fluctuation levels.
+The distribution and intensity of underdense and overdense regions being present and there are significant mass concentrations or clusters suggests a universe with moderate matter density and fluctuation levels.
 The presence of several yellow regions, the significant mass concentrations or clusters, indicates a relatively high sigma_8.
 The mix of blue and gray, the underdense areas, suggests a moderate Omega_m.
 
