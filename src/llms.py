@@ -183,7 +183,7 @@ class MyOpenAIModel:
                     print(f"Error calling OpenAI's API: {e}")
                 time.sleep(3)
 
-        if self.use_cache:
+        if self.use_cache and response_text != "":
             cache.set(get_cache_key(self.model_name, prompt), response_text)
 
         return response_text
@@ -270,7 +270,7 @@ class MyAnthropicModel:
                     print(f"Error calling Anthropic's API: {e}")
                 time.sleep(3)
 
-        if self.use_cache:
+        if self.use_cache and response_text != "":
             cache.set(get_cache_key(self.model_name, prompt), response_text)
 
         return response_text
@@ -352,7 +352,7 @@ class MyGoogleModel:
                     print(f"Error calling Google's API: {e}")
                 time.sleep(3)
 
-        if self.use_cache:
+        if self.use_cache and response_text != "":
             cache.set(get_cache_key(self.model_name, prompt), response_text)
 
         return response_text
