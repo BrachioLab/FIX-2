@@ -24,6 +24,7 @@ from PIL import Image
 import PIL
 from llms import load_model
 
+from typing import Callable
 
 from prompts.explanations import massmaps_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
 from prompts.claim_decomposition import decomposition_massmaps
@@ -76,19 +77,56 @@ def get_custom_colormap(colors=None):
     return LinearSegmentedColormap.from_list("custom_cmap", list(zip(positions, color_vals)))
 
 
+# def massmap_to_pil_norm(
+#     tensor: torch.Tensor,
+#     mean_center: bool = False,
+#     vmin: float = -3,
+#     vmax: float = 20,
+#     colors: list = None
+# ) -> Image.Image:
+#     """
+#     Convert a (1,H,W) tensor → PIL Image (H×W), with:
+#       • optional mean‐centering
+#       • divide‐by‐std normalization
+#       • clip to [vmin,vmax], then min–max to [0,1]
+#       • apply custom colormap ⇒ RGB
+#     """
+#     # 1) pull out H×W array
+#     arr = tensor.detach().cpu().numpy()[0]  # shape (H, W)
+
+#     # 2) normalize
+#     if mean_center:
+#         arr = arr - arr.mean()
+#     arr = arr / (arr.std() + 1e-8)
+
+#     # 3) clip & rescale to [0,1]
+#     arr = np.clip(arr, vmin, vmax)
+#     arr = (arr - vmin) / (vmax - vmin)
+
+#     # 4) colormap
+#     cmap = get_custom_colormap(colors)
+#     rgba = cmap(arr)                # (H, W, 4) floats in [0,1]
+#     rgb  = (rgba[..., :3] * 255).astype(np.uint8)
+
+#     # 5) make PIL Image
+#     return Image.fromarray(rgb)
+
+
 def massmap_to_pil_norm(
     tensor: torch.Tensor,
     mean_center: bool = False,
     vmin: float = -3,
     vmax: float = 20,
-    colors: list = None
+    colors: list = None,
+    scale: int = 11          # ← new: integer zoom factor
 ) -> Image.Image:
     """
     Convert a (1,H,W) tensor → PIL Image (H×W), with:
-      • optional mean‐centering
-      • divide‐by‐std normalization
+      • optional mean-centering
+      • divide-by-std normalization
       • clip to [vmin,vmax], then min–max to [0,1]
       • apply custom colormap ⇒ RGB
+      • optional nearest-neighbor up-scaling by integer *scale*
     """
     # 1) pull out H×W array
     arr = tensor.detach().cpu().numpy()[0]  # shape (H, W)
@@ -108,7 +146,15 @@ def massmap_to_pil_norm(
     rgb  = (rgba[..., :3] * 255).astype(np.uint8)
 
     # 5) make PIL Image
-    return Image.fromarray(rgb)
+    img = Image.fromarray(rgb)
+
+    # 6) optional nearest-neighbor enlargement
+    if scale > 1:
+        new_size = (img.width * scale, img.height * scale)
+        img = img.resize(new_size, resample=Image.NEAREST)
+
+    return img
+
 
 # def get_messages(prompt, images=None, system_prompt=None):
 #     system_message = [
@@ -243,10 +289,26 @@ def get_llm_output_from_messages(messages, model='gpt-4o'):
             time.sleep(3)
     return "ERROR"
 
+_number_pat = re.compile(r"[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?")
+
+def parse_float(s: str) -> float:
+    """
+    Extract the first numeric token from *s* and return it as a float.
+    Examples
+    --------
+    >>> parse_float("0.8.")      # → 0.8
+    >>> parse_float("  1.23e-4") # → 1.23e-4
+    """
+    m = _number_pat.search(s)
+    if not m:
+        raise ValueError(f"No numeric value found in {s!r}")
+    return float(m.group())
+
 def get_llm_generated_answer(
     example: list[str] | str | torch.Tensor, #Image | Timeseries,
     method: str = "vanilla",
     model: str = "gpt-4o",
+    massmap_to_pil_norm: Callable = massmap_to_pil_norm,
 ) -> str:
     """
     Args:
@@ -291,8 +353,8 @@ def get_llm_generated_answer(
         # split the answer into Omega_m and sigma_8
         answer = answer.split(", ")
         answer = {
-            answer[0].split(": ")[0]: float(answer[0].split(": ")[1]), 
-            answer[1].split(": ")[0]: float(answer[1].split(": ")[1])
+            answer[0].split(": ")[0]: parse_float(answer[0].split(": ")[1]), 
+            answer[1].split(": ")[0]: parse_float(answer[1].split(": ")[1])
         }
         
         return answer, explanation
@@ -485,7 +547,8 @@ def distill_relevant_features(
     answer: str,
     atomic_claims: list[str],
     model: str = "gpt-4o",
-    verbose: bool = False
+    verbose: bool = False,
+    massmap_to_pil_norm: Callable = massmap_to_pil_norm,
 ) -> list[str]:
     """
     Distill the relevant features from the atomic claims.
