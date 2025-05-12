@@ -22,10 +22,7 @@ from prompts.expert_alignment import alignment_cholec
 from prompts.explanations import load_cholec_prompt
 
 
-cache = Cache(".cholec_cache")
-
 default_model = "gpt-4o"
-
 
 class CholecExample:
     def __init__(
@@ -378,7 +375,8 @@ def items_to_examples(
     _start_time = time.time()
 
     # Compute the true safe/unsafe lists
-    a2d = torch.nn.AvgPool2d(kernel_size=20, stride=20)
+    grid_size = 40
+    a2d = torch.nn.AvgPool2d(kernel_size=grid_size, stride=grid_size)
 
     true_safe_avgs = [(a2d((item["gonogo"] == 1).float()).squeeze() > 0.1).long() for item in items]
     true_unsafe_avgs = [(a2d((item["gonogo"] == 2).float()).squeeze() > 0.1).long() for item in items]
@@ -510,7 +508,7 @@ if __name__ == "__main__":
     # Take a few random, unique samples from the dataset
     random.seed(42)
     num_samples = 150
-    dataset = CholecDataset(split="test", image_size=(180, 320))
+    dataset = CholecDataset(split="test", image_size=(360, 640))
     random_indices = random.sample(range(len(dataset)), num_samples)
     print(f"Random indices: {random_indices}")
     items = [dataset[i] for i in random_indices]

@@ -145,7 +145,7 @@ class MyOpenAIModel:
     def one_call(self, prompt) -> str:
         if self.use_cache:
             ret = cache.get(get_cache_key(self.model_name, prompt))
-            if ret is not None:
+            if ret is not None and ret != "":
                 return ret
 
         if isinstance(prompt, str):
@@ -228,7 +228,7 @@ class MyAnthropicModel:
     def one_call(self, prompt) -> str:
         if self.use_cache:
             ret = cache.get(get_cache_key(self.model_name, prompt))
-            if ret is not None:
+            if ret is not None and ret != "":
                 return ret
 
         if isinstance(prompt, str):
@@ -315,7 +315,7 @@ class MyGoogleModel:
     def one_call(self, prompt) -> str:
         if self.use_cache:
             ret = cache.get(get_cache_key(self.model_name, prompt))
-            if ret is not None:
+            if ret is not None and ret != "":
                 return ret
 
         if isinstance(prompt, str):
