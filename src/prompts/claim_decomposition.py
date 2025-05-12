@@ -116,7 +116,7 @@ INPUT: {}
 """
 
 decomposition_supernova = """
-You will be given a paragraph that explains the reasoning behind classifying astrophysical time series data into one of the following categories: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). Your task is to decompose this explanation into individual claims that are:
+You will be given a paragraph that explains the reasoning behind classifying astrophysical time series data into one of the following categories: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, and active galactic nuclei (AGN). Your task is to decompose this explanation into individual claims that are:
 
 Atomic: Each claim should express only one clear idea or judgment.
 Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
