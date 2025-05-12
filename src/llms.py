@@ -176,7 +176,8 @@ class MyOpenAIModel:
                 )
 
                 response_text = response.choices[0].message.content.strip()
-                break
+                if response_text != "":
+                    break
 
             except Exception as e:
                 if self.verbose:
@@ -263,7 +264,8 @@ class MyAnthropicModel:
                     max_tokens=self.max_tokens,
                 )
                 response_text = response.content[0].text.strip()
-                break
+                if response_text != "":
+                    break
 
             except Exception as e:
                 if self.verbose:
@@ -345,7 +347,8 @@ class MyGoogleModel:
                 )
 
                 response_text = response.text.strip()
-                break
+                if response_text != "":
+                    break
 
             except Exception as e:
                 if self.verbose:
