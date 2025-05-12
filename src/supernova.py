@@ -6,6 +6,9 @@ from openai import OpenAI
 import time
 from tqdm import tqdm
 from typing import Dict, List, Tuple, Any, Union
+from PIL import Image
+import PIL
+import torch
 
 from prompts.claim_decomposition import decomposition_supernova
 from prompts.relevance_filtering import relevance_supernova, load_relevance_supernova_prompt
@@ -19,10 +22,12 @@ cache = Cache("/shared_data0/chaenyk/llm_cache")
 
 class SupernovaExample:
     def __init__(self,
+                 file,
                  time_series_data,
                  ground_truth: Any,
                  llm_label: Any,
                  llm_explanation: str):
+        self.file = file
         self.time_series_data = time_series_data
         self.ground_truth = ground_truth
         self.llm_label = llm_label
@@ -119,7 +124,9 @@ def get_llm_generated_answer(time_series_data, method: str = "vanilla"):
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
-    response_split = [e for e in response.split("\n") if (e != '' and e.split()[0] in ['Label:', 'Explanation:'])]
+
+    response_split = [r.strip() for r in response.split("\n") if r.strip() != "" \
+        and r.strip().startswith("Explanation:") or r.strip().startswith("Label:")]
     llm_label = response_split[0].split("Label: ")[1].strip()
     explanation = response_split[1].split("Explanation: ")[1].strip()
     return llm_label, explanation
@@ -145,16 +152,6 @@ def is_claim_relevant(time_series_text, rating: str, claim: str):
     relevance = response[0].strip()
     reasoning = response[1].replace("Reasoning:", "").strip()
     return relevance, reasoning
-
-def distill_relevant_features(example: SupernovaExample):
-    relevant_claims = []
-    for claim in tqdm(example.claims):
-        relevance, reasoning = is_claim_relevant(example.time_series_text, example.llm_label, claim)
-        if relevance is None:
-            continue
-        if relevance == "Yes":
-            relevant_claims.append(claim)
-    return relevant_claims
 
 def distill_relevant_features(
     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
