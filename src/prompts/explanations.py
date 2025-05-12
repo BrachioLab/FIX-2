@@ -139,6 +139,9 @@ def load_cholec_prompt(baseline: str):
 
     prompt += ("I will now give you some few-shot examples without the safe/unsafe masks. Your task is to predict the Explanation, Safe List, and Unsafe List for the given image.",)
 
+    # Reverse the things to just to spice things up
+    all_examples = all_examples[::-1]
+
     for i, item in enumerate(all_examples):
         image, explanation, safe_list, unsafe_list, _, _ = item
         prompt += (
