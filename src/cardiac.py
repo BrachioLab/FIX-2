@@ -98,15 +98,19 @@ class CardiacExample:
         # The final alignment score, computed as the mean of the alignment scores of the alignable claims.
         self.final_alignment_score : float = 0.0
 
+        self.accuracy = int(self.ground_truth == self.llm_label)
+
+
     def to_dict(self):
         return {
-            "data": self.data,
+            # "data": self.data,
             # "selected_data": {'record_name': self.data['record_name'], 
             #                   'n_sig': self.data['n_sig'],
             #                   'fs': self.data['fs'],
             #                   'age': self.data['age'],
             #                   'p_signal': self.
             #                  }
+            "record_name": self.data['record_name'],
             "background": self.background,
             "duration_sec": self.duration_sec,
             "pred_window_sec": self.pred_window_sec,
@@ -120,6 +124,7 @@ class CardiacExample:
             "alignment_scores": self.alignment_scores,
             "alignment_reasonings": self.alignment_reasonings,
             "final_alignment_score": self.final_alignment_score,
+            "accuracy": self.accuracy
         }
 
 
