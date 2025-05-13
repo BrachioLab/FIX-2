@@ -507,7 +507,7 @@ if __name__ == "__main__":
 
     # Take a few random, unique samples from the dataset
     random.seed(42)
-    num_samples = 150
+    num_samples = 120
     dataset = CholecDataset(split="test", image_size=(360, 640))
     random_indices = random.sample(range(len(dataset)), num_samples)
     print(f"Random indices: {random_indices}")
