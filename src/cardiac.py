@@ -248,6 +248,7 @@ def isolate_individual_features(
     else:
         raw_output = llm(decomposition_cardiac.format(pred_window_str, fs, duration_str, explanation))
         all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
+        all_claims = [c[2:] if c.startswith("- ") else c for c in all_claims]
         return all_claims
 
 

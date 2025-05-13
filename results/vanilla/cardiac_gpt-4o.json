@@ -60100,37 +60100,37 @@
         "llm_label": "Yes",
         "llm_explanation": "The ECG graph shows a significant irregularity around the 40-second mark, with a notable spike and subsequent drop in the waveform's amplitude. This could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation, which are potential precursors to cardiac arrest. While the patient's age and primary reason for ICU admission (dizziness) alone do not strongly suggest imminent cardiac arrest, the presence of such pronounced irregularities in the ECG should raise concerns about a high risk of cardiac arrest within the next 5 minutes. Prompt clinical evaluation and intervention are advised.",
         "all_claims": [
-            "- The ECG graph shows a significant irregularity around the 40-second mark, with a notable spike and subsequent drop in the waveform's amplitude.",
-            "- The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.",
-            "- Ventricular tachycardia or fibrillation are potential precursors to cardiac arrest.",
-            "- The patient's age and primary reason for ICU admission (dizziness) alone do not strongly suggest imminent cardiac arrest.",
-            "- The presence of pronounced irregularities in the ECG should raise concerns about a high risk of cardiac arrest within the next 5 minutes.",
-            "- Prompt clinical evaluation and intervention are advised."
+            "The ECG graph shows a significant irregularity around the 40-second mark, with a notable spike and subsequent drop in the waveform's amplitude.",
+            "This irregularity could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.",
+            "Ventricular tachycardia and fibrillation are potential precursors to cardiac arrest.",
+            "The patient's age and primary reason for ICU admission (dizziness) alone do not strongly suggest imminent cardiac arrest.",
+            "The pronounced irregularities in the ECG should raise concerns about a high risk of cardiac arrest within the next 5 minutes.",
+            "Prompt clinical evaluation and intervention are advised."
         ],
         "relevant_claims": [
-            "- The ECG graph shows a significant irregularity around the 40-second mark, with a notable spike and subsequent drop in the waveform's amplitude.",
-            "- The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.",
-            "- The patient's age and primary reason for ICU admission (dizziness) alone do not strongly suggest imminent cardiac arrest.",
-            "- The presence of pronounced irregularities in the ECG should raise concerns about a high risk of cardiac arrest within the next 5 minutes."
+            "The ECG graph shows a significant irregularity around the 40-second mark, with a notable spike and subsequent drop in the waveform's amplitude.",
+            "This irregularity could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.",
+            "The patient's age and primary reason for ICU admission (dizziness) alone do not strongly suggest imminent cardiac arrest.",
+            "The pronounced irregularities in the ECG should raise concerns about a high risk of cardiac arrest within the next 5 minutes."
         ],
         "alignable_claims": [
-            "- The ECG graph shows a significant irregularity around the 40-second mark, with a notable spike and subsequent drop in the waveform's amplitude.",
-            "- The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.",
-            "- The patient's age and primary reason for ICU admission (dizziness) alone do not strongly suggest imminent cardiac arrest.",
-            "- The presence of pronounced irregularities in the ECG should raise concerns about a high risk of cardiac arrest within the next 5 minutes."
+            "The ECG graph shows a significant irregularity around the 40-second mark, with a notable spike and subsequent drop in the waveform's amplitude.",
+            "This irregularity could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.",
+            "The patient's age and primary reason for ICU admission (dizziness) alone do not strongly suggest imminent cardiac arrest.",
+            "The pronounced irregularities in the ECG should raise concerns about a high risk of cardiac arrest within the next 5 minutes."
         ],
         "alignment_scores": [
-            0.8,
-            0.9,
             0.6,
+            0.9,
+            0.5,
             0.8
         ],
         "alignment_reasonings": [
-            "The claim describes a \"significant irregularity\" with a \"notable spike and subsequent drop in the waveform's amplitude,\" which suggests electrical instability that could align with serious arrhythmic events such as ventricular tachycardia or fibrillation. These conditions are associated with sudden spikes and irregular cardiac activity. While the claim does not explicitly mention ventricular rates or specifics like ventricular dysfunction, the described pattern is indicative of severe arrhythmic events, hence the strong alignment with the Extreme Tachyarrhythmias category. However, the absence of more specific details about the arrhythmia type or patient context prevents a perfect alignment.",
-            "The claim directly references potential arrhythmias like ventricular tachycardia and fibrillation, which are well-known triggers for sudden cardiac arrest, fitting squarely within the \"Extreme Tachyarrhythmias\" category. Although the claim doesn't specify the context, such as sustained ventricular tachycardia or presence of left ventricular dysfunction, the mention of these specific arrhythmias strongly aligns with the identified category, warranting a high alignment rating.",
-            "The claim references the patient's age, which is pertinent to the Advanced Age category noted for its significant correlation with cardiac arrest risk. However, it mentions that age alone, alongside the symptom of dizziness, does not strongly suggest an imminent cardiac arrest. While age itself is a mentioned risk factor, the claim explicitly downplays its significance in this context. The alignment is moderate given the clear mention of age but with a caveat that it's not a strong predictor in this particular case. Therefore, the relation is recognized but not emphasized strongly, hence the moderate rating.",
-            "The claim refers to pronounced irregularities in the ECG, which is typically associated with dangerous arrhythmias, such as ventricular tachycardia or fibrillation, direct indicators of the Extreme Tachyarrhythmias category. These arrhythmias are immediate precursors to sudden cardiac arrest. However, the claim does not explicitly specify the type of arrhythmias or their context (such as rapid ventricular rates or left ventricular dysfunction), which leaves some ambiguity. This results in a strong, but not perfect, alignment with the category."
+            "The claim describes a significant irregularity in the ECG with a spike and subsequent drop in amplitude around the 40-second mark. This description aligns with the concept of sudden irregular electrical activity often seen in non-sustained ventricular tachycardia (NSVT) or frequent premature ventricular contractions, which are characterized by abrupt changes in ECG waveforms. While the claim lacks specificity about the context or underlying cardiac condition, the described ECG changes suggest electrical instability, moderately aligning with the Ventricular Ectopy/NSVT category. Thus, the alignment is moderate.",
+            "The claim mentions irregularity indicating a \"dangerous arrhythmia\" such as \"ventricular tachycardia or fibrillation,\" which are classic markers of the Extreme Tachyarrhythmias category. These arrhythmias are specific indicators and predictors of sudden cardiac arrest, directly aligning with the category's description. Though the claim does not specify additional factors like sustained duration or left ventricular dysfunction, the inclusion of the exact arrhythmias solidifies a very strong alignment.",
+            "The claim mentions the patient's age and a non-specific primary reason for ICU admission (dizziness) as factors not strongly suggesting imminent cardiac arrest. Advanced age is indeed recognized as a risk factor for cardiac arrest, which makes it somewhat relevant to this expert category. However, the claim specifically downplays the significance of these factors in predicting cardiac arrest, reducing the strength of the alignment. Thus, the alignment is moderate, as it acknowledges age as a partial factor but suggests that it's not a strong predictor in this particular context without other risk indicators.",
+            "The claim mentions \"pronounced irregularities in the ECG,\" which suggests that there may be significant arrhythmias occurring. These irregularities are likely referring to dangerous arrhythmias such as ventricular tachycardia or fibrillation, which are directly linked to the Extreme Tachyarrhythmias category. Such arrhythmias are known precursors to sudden cardiac arrest, aligning strongly with this category. However, the claim does not specify the exact type of irregularity or confirm ventricular dysfunction context, so the alignment is not perfect but still strong."
         ],
-        "final_alignment_score": 0.5166666666666667
+        "final_alignment_score": 0.4666666666666666
     }
 ]

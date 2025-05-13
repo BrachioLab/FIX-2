@@ -199,11 +199,11 @@ Here is an example of how to format your output:
 INPUT: The patient's ECG graph shows significant irregularities, with frequent and pronounced spikes and dips, indicating potential arrhythmic events. These patterns are concerning because they deviate from the normal consistent rhythm expected in a healthy heart. The spikes, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation. Given that the patient is young, the primary risk factor stems from trauma-induced complications from the motor vehicle collision, such as cardiac tamponade or myocardial contusion, contributing to this prediction.
 
 OUTPUT:
-- The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
-- The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
-- The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
-- The patient is young, and the primary risk factor stems from trauma-induced complications from a motor vehicle collision.
-- Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
+The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
+The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
+The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
+The patient is young, and the primary risk factor stems from trauma-induced complications from a motor vehicle collision.
+Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
 
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
