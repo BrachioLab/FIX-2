@@ -171,7 +171,7 @@ def extract_list_from_string(text: str, list_name: str) -> list[int]:
     #   ([^.\n]+)  (any character except dot or newline, one or more times - captures the numbers)
     # We use re.DOTALL so . can match newlines if the list spans lines,
     # but the second part of the OR explicitly avoids newlines to stop capturing the list content.
-    pattern = rf"{re.escape(list_name)}:\s*(?:\[(.*?)\]|([^.\n]+))"
+    pattern = rf"(?i){re.escape(list_name)}[^:]*:\s*(?:\[(.*?)\]|([^.\n]+))"
     match = re.search(pattern, text, re.DOTALL)
 
     list_str = ""
