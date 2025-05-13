@@ -36,6 +36,15 @@
             "Brain injuries without consciousness loss generally have less direct cardiac risk.",
             "The stable ECG data and nature of the brain injury indicate a low immediate risk of cardiac arrest within the next five minutes."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Dynamic ST-Segment Changes",
+            "Depressed Heart Rate Variability",
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)"
+        ],
         "alignment_scores": [
             0.4,
             0.1,
@@ -87,6 +96,13 @@
             "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident.",
             "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.4,
             0.3,
@@ -134,6 +150,13 @@
             "The ECG features suggest a potential risk of cardiac arrest in the near term.",
             "The combination of the patient's age and the observed ECG anomalies contribute to a prediction of high cardiac arrest risk."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             1.0,
             0.6,
@@ -177,6 +200,12 @@
             "The ECG graph shows significant abnormalities, including a large spike and fluctuations.",
             "The abnormalities on the ECG could indicate arrhythmias or ischemic events.",
             "The ECG irregularities, combined with the patient's advanced age, suggest a high risk of imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age"
         ],
         "alignment_scores": [
             1.0,
@@ -224,6 +253,14 @@
             "Irregularities in the ECG data are especially evident around the 20 to 60-second marks and at the 70-second mark.",
             "These ECG patterns suggest electrical instability in the heart.",
             "Electrical instability in the heart heightens the risk of imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT",
+            "Ventricular Ectopy/NSVT"
         ],
         "alignment_scores": [
             1.0,
@@ -276,6 +313,14 @@
             "The ECG shows normal fluctuations in rate and amplitude.",
             "Given the intractability of symptoms and lack of acute cardiac indicators, the risk of cardiac arrest within the next five minutes seems low."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.6,
             0.8,
@@ -325,6 +370,12 @@
             "There are no pronounced abnormal patterns like prolonged QT intervals or severe ST segment deviations on the ECG graph.",
             "The immediate ECG data does not indicate an elevated risk of cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Extreme Tachyarrhythmias"
+        ],
         "alignment_scores": [
             0.3,
             0.4,
@@ -368,6 +419,13 @@
             "The irregular ECG patterns include inconsistent R-R intervals and variable amplitudes.",
             "Inconsistent R-R intervals and variable amplitudes may indicate an unstable cardiac rhythm.",
             "The features observed in the ECG, combined with the patient's age, contribute to a higher risk of imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Advanced Age"
         ],
         "alignment_scores": [
             1.0,
@@ -427,6 +485,16 @@
             "Based on the specific reason for ICU admission, the risk of cardiac arrest within the next five minutes seems low.",
             "Based on the absence of critical patterns in the ECG data, the risk of cardiac arrest within the next five minutes seems low."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.6,
             0.6,
@@ -478,6 +546,13 @@
             "The ECG graph shows irregularities, including multiple high-amplitude spikes and variability in baseline rhythm.",
             "The ECG irregularities are suggestive of possible arrhythmias or ectopic beats.",
             "The ECG features are concerning for an impending cardiac arrest, especially in combination with the patient's background and clinical context."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Ventricular Ectopy/NSVT",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.9,
@@ -533,6 +608,16 @@
             "The patterns in the ECG, especially around the 40-second mark, indicate significant arrhythmic activity.",
             "The arrhythmic activity could escalate to a cardiac arrest within the next few minutes.",
             "Both the patient's medical condition and specific alarming features in the ECG data contribute to a high-risk assessment."
+        ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Prolonged QT Interval",
+            "Bradycardia or Heart-Rate Drop",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.8,
@@ -591,6 +676,14 @@
             "There are no ECG indicators of an imminent risk of cardiac arrest.",
             "Based on the provided information and visual assessment, the patient is not at high risk of experiencing cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Bradycardia or Heart-Rate Drop",
+            "Extreme Tachyarrhythmias",
+            "Prolonged QT Interval",
+            "Depressed Heart Rate Variability",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.2,
             0.3,
@@ -646,6 +739,15 @@
             "The patient's age and absence of classic risk factors do not rule out acute cardiac events.",
             "Pronounced irregularities on the ECG suggest the possibility of acute cardiac events despite the lack of classic risk factors."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "QRS Widening (Conduction Delay)",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)",
+            "Advanced Age",
+            "Dynamic ST-Segment Changes"
+        ],
         "alignment_scores": [
             0.8,
             0.6,
@@ -696,6 +798,13 @@
             "The large, abrupt changes in voltage on the ECG could signify arrhythmias or ischemic episodes.",
             "The combination of ECG features and clinical background suggests a high risk of cardiac arrest within the next few minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             1.0,
             0.6,
@@ -744,6 +853,14 @@
             "There is a notable drop in voltage in the ECG data between 90 and 100 seconds.",
             "The drop in voltage is potentially indicative of arrhythmic episodes.",
             "The ECG irregularities, combined with the patient\u2019s age and critical condition, indicate a high risk of cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Electrical Alternans",
+            "Ventricular Ectopy/NSVT",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             1.0,
@@ -796,6 +913,13 @@
             "The spike is not a sustained pathological condition indicating high risk of cardiac arrest in the next 5 minutes.",
             "Based on the provided ECG, there's no immediate high risk."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.2,
             0.3,
@@ -844,6 +968,14 @@
             "The ECG graph shows irregularities that may indicate possible arrhythmic patterns or electrical instability.",
             "There is noticeable variability in the waveform amplitude and frequency on the ECG graph.",
             "These ECG irregularities, combined with the patient's advanced age and underlying condition, suggest a higher risk of cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Bradycardia or Heart-Rate Drop",
+            "Ventricular Ectopy/NSVT",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             1.0,
@@ -898,6 +1030,15 @@
             "The ECG irregularities suggest potential arrhythmias.",
             "These ECG patterns often correlate with an increased risk of cardiac events.",
             "The combination of age, underlying condition, and ECG irregularities raises the likelihood of cardiac arrest within the next few minutes."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Dynamic ST-Segment Changes",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.8,
@@ -955,6 +1096,14 @@
             "The ECG waveform lacks acute concerning patterns suggesting a high risk of cardiac arrest in the next 5 minutes.",
             "The immediate risk of cardiac arrest based on this data alone does not appear to be critically high."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Ventricular Ectopy/NSVT",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)"
+        ],
         "alignment_scores": [
             0.6,
             0.6,
@@ -1010,6 +1159,15 @@
             "Potential ventricular arrhythmias or other electrical disturbances are warning signs for imminent cardiac arrest.",
             "The ECG features combined with the patient's recent cardiac event indicate a high risk of experiencing another cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.8,
             0.8,
@@ -1064,6 +1222,14 @@
             "The ECG data includes fluctuating amplitudes and potential signs of electrical instability.",
             "The combined factors indicate a high risk of cardiac arrest within the next five minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Ventricular Ectopy/NSVT",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.9,
             0.8,
@@ -1117,6 +1283,14 @@
             "These ECG patterns may suggest arrhythmias such as ventricular tachycardia or fibrillation.",
             "Based on the patient's age and the irregular ECG patterns, there is a high risk of experiencing a cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Electrical Alternans",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             1.0,
             0.6,
@@ -1169,6 +1343,14 @@
             "Such irregularities in the ECG can be precursors to cardiac arrest.",
             "Irregularities in the ECG are especially concerning in an elderly patient with recent major surgery."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             1.0,
             0.8,
@@ -1219,6 +1401,13 @@
             "The patient does not show immediate cardiac distress based on the available ECG data.",
             "The absence of concerning ECG changes suggests a low immediate risk of cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Dynamic ST-Segment Changes"
+        ],
         "alignment_scores": [
             0.3,
             0.3,
@@ -1268,6 +1457,14 @@
             "Significant deviations from a typical sinus rhythm in the ECG patterns could indicate an increased risk for cardiac arrest.",
             "There is a high risk of the patient experiencing cardiac arrest in the near term given the patient's symptoms and the abnormalities in the ECG."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias"
+        ],
         "alignment_scores": [
             0.5,
             0.8,
@@ -1313,6 +1510,12 @@
             "There are no drastic variations in the ECG data that typically precede cardiac arrest.",
             "The patient is admitted due to COVID-19, which can increase cardiovascular risk.",
             "There is no immediate ECG evidence suggesting high risk of cardiac arrest within the next 5 minutes based on the observed data."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Critical Illness (Sepsis/Shock)",
+            "None of the Above"
         ],
         "alignment_scores": [
             0.3,
@@ -1360,6 +1563,14 @@
             "The patient\u2019s age and admission for diabetic ketoacidosis exacerbate the risk of arrhythmias.",
             "Diabetic ketoacidosis can induce electrolyte imbalance and subsequent arrhythmias.",
             "The erratic heart rhythm coupled with the underlying metabolic complication places the individual at heightened risk for cardiac arrest in the near term."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Critical Illness (Sepsis/Shock)",
+            "Severe Hyperkalemia Signs",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             0.7,
@@ -1414,6 +1625,14 @@
             "Chronic hypertension alone might not pose an immediate risk of cardiac arrest given the absence of acute ECG abnormalities.",
             "Based on the available data, this patient is not at high risk of experiencing cardiac arrest imminently."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Bradycardia or Heart-Rate Drop",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease",
+            "Underlying Cardiac Disease",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.6,
             0.6,
@@ -1465,6 +1684,14 @@
             "The patient has a recent history of NSTEMI.",
             "The advanced age and recent NSTEMI history contribute significantly to the risk assessment.",
             "The combination of severe ECG changes and the patient's background elevates the likelihood of imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Underlying Cardiac Disease",
+            "Dynamic ST-Segment Changes"
         ],
         "alignment_scores": [
             0.8,
@@ -1525,6 +1752,17 @@
             "The ECG irregularities suggest potential arrhythmic events or ischemic changes.",
             "Potential arrhythmic events or ischemic changes further indicate the likelihood of imminent cardiac arrest.",
             "Combining these factors, the patient is at high risk of cardiac arrest within the next five minutes."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Dynamic ST-Segment Changes",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             1.0,
@@ -1589,6 +1827,15 @@
             "The ECG data does not show bradycardia or irregular heart rhythms indicative of imminent cardiac arrest.",
             "Based on the provided ECG data, there is not a high risk of cardiac arrest within the next five minutes."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias",
+            "Dynamic ST-Segment Changes",
+            "Dynamic ST-Segment Changes",
+            "Extreme Tachyarrhythmias",
+            "Bradycardia or Heart-Rate Drop",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.1,
             0.4,
@@ -1638,6 +1885,12 @@
             "The ECG rhythm does not exhibit severe abnormalities like sustained ventricular tachycardia, asystole, or pronounced ST segment elevation or depression over the observed period.",
             "The generally regular ECG pattern, despite some fluctuations, suggests that an immediate high risk of cardiac arrest within the next 5 minutes is unlikely."
         ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.4,
             0.7,
@@ -1685,6 +1938,13 @@
             "These fluctuations in the ECG could indicate arrhythmic events such as ventricular tachycardia or fibrillation.",
             "The severe irregularities in the ECG override background considerations.",
             "The severe irregularities in the ECG suggest urgent attention is needed."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias"
         ],
         "alignment_scores": [
             0.8,
@@ -1734,6 +1994,14 @@
             "In the ECG data, there is a noticeable irregularity and a large spike around the 50-second mark.",
             "The large spike in the ECG data indicates potential arrhythmias or ischemic events.",
             "The ECG abnormalities, combined with the patient's age and reason for ICU admission, suggest a heightened risk of imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Dynamic ST-Segment Changes",
+            "Advanced Age"
         ],
         "alignment_scores": [
             0.9,
@@ -1787,6 +2055,12 @@
             "Artifacts on the ECG may not represent actual cardiac activity.",
             "The ECG anomalies are concerning and warrant close monitoring."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.8,
             0.6,
@@ -1826,6 +2100,11 @@
             "The patient's background information, such as age and primary reason for ICU admission (scrotal abscess), does not typically suggest an elevated risk for imminent cardiac arrest.",
             "In this ECG, there are no visible patterns indicating irregularities such as arrhythmias, extreme bradycardia or tachycardia, ST segment changes, or prolonged QT intervals.",
             "The signal appears relatively stable with typical variations that might not indicate imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability"
         ],
         "alignment_scores": [
             0.3,
@@ -1868,6 +2147,13 @@
             "The ECG does not show obvious signs of acute arrhythmias like ventricular tachycardia or fibrillation.",
             "Critical ECG features indicating high cardiac arrest risk, such as irregular or chaotic rhythms, pronounced ST segment deviations, or significant QRS widening, are not evident.",
             "Based on both the patient\u2019s background and the ECG findings, the immediate risk for cardiac arrest appears low."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Dynamic ST-Segment Changes",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.6,
@@ -1918,6 +2204,14 @@
             "There is a sudden large spike followed by a significant drop at around 60 and 80 seconds on the ECG graph.",
             "The ECG irregularities indicate potential arrhythmia or electrical instability in the heart.",
             "The combination of the patient's advanced age and symptoms suggests a heightened risk of cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Bradycardia or Heart-Rate Drop",
+            "Ventricular Ectopy/NSVT",
+            "Advanced Age"
         ],
         "alignment_scores": [
             0.6,
@@ -1974,6 +2268,15 @@
             "The ECG graph does not show concerning patterns such as prolonged QT intervals, ventricular tachycardia, or fibrillation.",
             "The observations from the ECG indicate that the patient is at a low risk of experiencing cardiac arrest within the next five minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.4,
             0.5,
@@ -2021,6 +2324,11 @@
             "The patient's ECG waveform shows relatively uniform amplitude and consistent R-R intervals.",
             "The ECG does not show significant arrhythmic patterns such as ventricular tachycardia or fibrillation.",
             "The absence of obvious electrical instability in the first two minutes of the ECG reduces the immediate risk of cardiac arrest within the next five minutes."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Ventricular Ectopy/NSVT"
         ],
         "alignment_scores": [
             0.8,
@@ -2070,6 +2378,15 @@
             "The patient is in the ICU for COVID-19.",
             "COVID-19 can exacerbate cardiac issues.",
             "The highly irregular ECG pattern elevates the risk of imminent cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias"
         ],
         "alignment_scores": [
             0.8,
@@ -2122,6 +2439,13 @@
             "The ECG suggests regular heart activity without evident abnormalities such as arrhythmias or significant irregularities.",
             "The combined factors suggest a low immediate risk of cardiac arrest within the next five minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.2,
             0.1,
@@ -2166,6 +2490,11 @@
             "The patient is a 62-year-old female with septic shock.",
             "The patient is at an elevated risk for cardiac complications due to her age and critical condition.",
             "Septic shock can exacerbate compromised cardiac function and impact heart rate and rhythm."
+        ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             1.0,
@@ -2215,6 +2544,15 @@
             "The ECG data shows a significant irregularity around the 40-second mark.",
             "The ECG irregularity suggests a possible arrhythmic event, contributing to the increased risk.",
             "This combination of demographic risk factors and a notable ECG irregularity supports the prediction of high cardiac arrest risk."
+        ],
+        "alignment_categories": [
+            "Unable to Determine",
+            "Advanced Age",
+            "Dynamic ST-Segment Changes",
+            "Dynamic ST-Segment Changes",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias"
         ],
         "alignment_scores": [
             0.0,
@@ -2268,6 +2606,13 @@
             "An initial variation in the ECG appears to normalize, resulting in a relatively regular rhythm.",
             "Based on the ECG data and the reason for ICU admission, there are no acute signs suggesting a high risk of cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias",
+            "Ventricular Ectopy/NSVT",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.3,
             0.4,
@@ -2311,6 +2656,12 @@
             "The ECG graph shows irregularities, including potential arrhythmias or fluctuations in the baseline.",
             "Irregularities in the ECG graph could indicate instability.",
             "Irregular ECG patterns in an elderly patient with underlying medical concerns suggest a high risk of cardiac arrest in the immediate future."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.8,
@@ -2358,6 +2709,14 @@
             "The irregularities in the ECG trace may suggest arrhythmias or conduction abnormalities.",
             "The patient was admitted to the ICU for acute abdominal pain, which can sometimes mask underlying cardiac issues.",
             "The combination of ECG irregularities and ICU admission for acute abdominal pain indicates a high risk of imminent cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "QRS Widening (Conduction Delay)",
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             1.0,
@@ -2419,6 +2778,16 @@
             "There is an absence of concerning patterns in the ECG.",
             "The risk of cardiac arrest within the next five minutes seems low."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Underlying Cardiac Disease",
+            "Bradycardia or Heart-Rate Drop",
+            "Extreme Tachyarrhythmias",
+            "Dynamic ST-Segment Changes",
+            "Dynamic ST-Segment Changes",
+            "None"
+        ],
         "alignment_scores": [
             0.1,
             0.4,
@@ -2472,6 +2841,13 @@
             "The waveform remains relatively stable throughout the 2-minute monitoring period.",
             "The patient does not appear to be at high risk of experiencing cardiac arrest within the next 5 minutes based on the available background and ECG information."
         ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.5,
             0.3,
@@ -2519,6 +2895,13 @@
             "Abrupt irregularities in the ECG may precede cardiac arrest.",
             "Enterocolitis due to Clostridium difficile can lead to severe dehydration and electrolyte imbalance.",
             "Severe dehydration and electrolyte imbalance can further complicate cardiac function."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Ventricular Ectopy/NSVT",
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             1.0,
@@ -2575,6 +2958,16 @@
             "The ECG irregularities could signify that the heart is struggling to maintain a stable rhythm.",
             "The heart struggling to maintain a stable rhythm increases the risk of cardiac arrest.",
             "The combined factors of tachycardia and ECG fluctuations indicate a high-risk profile for this patient."
+        ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Electrical Alternans",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias"
         ],
         "alignment_scores": [
             0.7,
@@ -2633,6 +3026,14 @@
             "The mild fluctuations do not indicate severe concerns like ventricular fibrillation or tachycardia.",
             "The mild fluctuations do not suggest a high risk of cardiac arrest in the next few minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Prolonged QT Interval",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.3,
             0.6,
@@ -2679,6 +3080,12 @@
             "There is no direct evidence in the ECG data indicating an imminent cardiac arrest.",
             "The primary reason for ICU admission, epigastric pain, is not strongly linked to cardiac arrest without supporting symptoms in the ECG data."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.6,
             0.3,
@@ -2722,6 +3129,13 @@
             "The ECG graph indicates significant irregularities, including erratic heartbeats and possible signs of arrhythmia.",
             "The ECG patterns combined with the underlying pulmonary condition suggest a high risk of cardiac arrest within the next 5 minutes.",
             "The variability in the R-R intervals and deviations from a stable baseline are particularly concerning."
+        ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Underlying Cardiac Disease",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability"
         ],
         "alignment_scores": [
             0.7,
@@ -2768,6 +3182,13 @@
             "The ECG graph shows irregularities such as significant variability in amplitude.",
             "The ECG graph shows potential spikes around 30 seconds, which could indicate arrhythmias.",
             "The ECG irregularities combined with the underlying condition suggest a heightened risk of cardiac arrest within the next few minutes."
+        ],
+        "alignment_categories": [
+            "Severe Hyperkalemia Signs",
+            "Severe Hyperkalemia Signs",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Ventricular Ectopy/NSVT"
         ],
         "alignment_scores": [
             0.9,
@@ -2817,6 +3238,13 @@
             "There are no acute signs in this short period of ECG data to indicate an imminent cardiac arrest within the next 5 minutes.",
             "The reason for ICU admittance was a fall, which does not inherently suggest an elevated cardiac arrest risk based on the provided ECG."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Dynamic ST-Segment Changes",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.4,
             0.3,
@@ -2862,6 +3290,12 @@
             "The ECG data shows a generally stable rhythm.",
             "The ECG data shows no significant irregularities that typically indicate an imminent cardiac arrest risk.",
             "The overall ECG does not show patterns acutely alarming enough to predict a high risk of cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "None of the categories directly align"
         ],
         "alignment_scores": [
             0.9,
@@ -2911,6 +3345,14 @@
             "The irregularities in the ECG data are indicative of potential hemodynamic instability.",
             "The irregularities could suggest a possible worsening of her condition.",
             "The possibility of her condition worsening increases the likelihood of cardiac arrest within the next five minutes."
+        ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT",
+            "Depressed Heart Rate Variability",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             0.8,
@@ -2962,6 +3404,13 @@
             "There are some fluctuations in the ECG data, but they do not appear to indicate severe instability.",
             "The patient's reason for ICU admission is not directly related to cardiac issues."
         ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.4,
             0.3,
@@ -3007,6 +3456,13 @@
             "The ECG graph shows potential irregularities, especially at the beginning with sharp voltage drops and subsequent instability.",
             "The ECG irregularities may indicate arrhythmia or other cardiac dysfunctions.",
             "The combination of these factors suggests a heightened risk of cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             1.0,
@@ -3056,6 +3512,13 @@
             "Drastic deviations in the ECG readings may indicate significant cardiac instability.",
             "Immediate clinical evaluation is recommended to address the ECG irregularities."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Electrical Alternans",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.9,
             0.8,
@@ -3101,6 +3564,12 @@
             "The ECG data presents a notable irregularity around the 60-second mark.",
             "There is a sudden deep drop in amplitude in the ECG data around the 60-second mark.",
             "The sudden deep drop in amplitude suggests an episode that could indicate a cardiac arrhythmia or electrical instability."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Electrical Alternans",
+            "Depressed Heart Rate Variability"
         ],
         "alignment_scores": [
             1.0,
@@ -3149,6 +3618,14 @@
             "The peak might indicate a significant arrhythmic event or severe hyperkalemia effect on cardiac function.",
             "The abnormal ECG pattern, particularly with a pronounced peak, suggests life-threatening cardiac disturbances.",
             "The combination of abnormal ECG patterns and hyperkalemia elevates the risk of cardiac arrest within the upcoming minutes."
+        ],
+        "alignment_categories": [
+            "Severe Hyperkalemia Signs",
+            "Severe Hyperkalemia Signs",
+            "Severe Hyperkalemia Signs",
+            "Severe Hyperkalemia Signs",
+            "Severe Hyperkalemia Signs",
+            "Severe Hyperkalemia Signs"
         ],
         "alignment_scores": [
             0.8,
@@ -3199,6 +3676,13 @@
             "There are significant fluctuations in amplitude and baseline wandering observed throughout the recording period in the ECG data.",
             "The irregular patterns in the ECG can be indicative of unstable heart activity.",
             "Unstable heart activity increases the risk of cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Bradycardia or Heart-Rate Drop",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT"
         ],
         "alignment_scores": [
             0.6,
@@ -3252,6 +3736,15 @@
             "The arrhythmia indicated by the abnormality on the ECG graph could be indicative of an unstable condition.",
             "Given the age, underlying condition, and ECG irregularities, the patient is at high risk for cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Bradycardia or Heart-Rate Drop",
+            "Advanced Age",
+            "Dynamic ST-Segment Changes",
+            "Bradycardia or Heart-Rate Drop",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             1.0,
             0.9,
@@ -3302,6 +3795,13 @@
             "The patient's ICU admission for hemoperitoneum further increases the risk of cardiac complications.",
             "Hemoperitoneum is a critical condition often leading to hemodynamic instability.",
             "The combination of ECG irregularities, patient age, and hemoperitoneum suggests a high risk of cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)",
+            "Advanced Age"
         ],
         "alignment_scores": [
             0.6,
@@ -3356,6 +3856,15 @@
             "The ECG data shows fluctuating amplitude and frequent changes in baseline levels, especially noticeable after the 60-second mark.",
             "The ECG patterns suggest underlying cardiac instability, further supporting the high-risk assessment."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT"
+        ],
         "alignment_scores": [
             0.7,
             1.0,
@@ -3406,6 +3915,13 @@
             "The ECG pattern quickly stabilizes after the deviation.",
             "Transient disturbances in the ECG are not uncommon and may not indicate imminent cardiac arrest.",
             "Given the patient's age, lack of a cardiac-related admittance reason, and dominant rhythm stability, the risk of cardiac arrest within the next 5 minutes appears low."
+        ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Advanced Age"
         ],
         "alignment_scores": [
             0.3,
@@ -3460,6 +3976,15 @@
             "The irregularities in the ECG waveform suggest an elevated risk of cardiac arrest within the next five minutes.",
             "The critical background information combined with ECG irregularities indicates a high risk of cardiac arrest."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Electrical Alternans",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             1.0,
             0.6,
@@ -3507,6 +4032,12 @@
             "COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events.",
             "The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.",
             "Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Severe Hyperkalemia Signs",
+            "QRS Widening (Conduction Delay)"
         ],
         "alignment_scores": [
             1.0,
@@ -3561,6 +4092,16 @@
             "There is a pronounced dip in the ECG data around 30 to 50 seconds.",
             "The pronounced dip may indicate a severe arrhythmia or bradycardia episode.",
             "A severe arrhythmia or bradycardia episode is concerning for imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Male Sex",
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes",
+            "Bradycardia or Heart-Rate Drop",
+            "Bradycardia or Heart-Rate Drop"
         ],
         "alignment_scores": [
             0.9,
@@ -3617,6 +4158,13 @@
             "The presence of sharp peaks and inconsistent intervals between peaks suggests risks of ventricular fibrillation or tachycardia.",
             "The patient's reason for ICU admission is unspecified chest pain, which can be associated with underlying cardiovascular issues."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Electrical Alternans",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.6,
             0.8,
@@ -3668,6 +4216,14 @@
             "The ECG waveform is relatively stable without abrupt patterns or irregularities.",
             "Based solely on the current ECG data and background information, the immediate risk of cardiac arrest seems low."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "QRS Widening (Conduction Delay)",
+            "Extreme Tachyarrhythmias",
+            "Dynamic ST-Segment Changes",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.9,
             0.8,
@@ -3715,6 +4271,12 @@
             "The patient's background, including age and unspecified cellulitis, does not strongly indicate a predisposition to cardiac arrest.",
             "Based on the information provided, the risk of cardiac arrest within the next 5 minutes appears low."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Advanced Age",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.8,
             0.5,
@@ -3756,6 +4318,11 @@
             "The ECG data over the first two minutes shows a consistent rhythm without apparent irregularities.",
             "There are no apparent arrhythmias, persistent bradycardia, or significant ST segment deviations in the ECG data.",
             "Despite sepsis being a concerning factor, the absence of critical ECG abnormalities suggests that an immediate cardiac arrest is unlikely within the next five minutes."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             0.5,
@@ -3816,6 +4383,19 @@
             "The ECG data has variability in the baseline and amplitude.",
             "The variability in baseline and amplitude suggests potential instability in cardiac function.",
             "The patient's age and condition contribute to the high-risk prediction."
+        ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Advanced Age"
         ],
         "alignment_scores": [
             0.6,
@@ -3878,6 +4458,13 @@
             "There are no significant risk factors or high-risk indicators in the patient's background.",
             "The prediction would lean towards a low risk of cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.2,
             0.2,
@@ -3920,6 +4507,11 @@
             "In the ECG data, there are noticeable irregularities and fluctuations in the waveform near the 120-second mark.",
             "The irregularities and fluctuations in the ECG waveform could indicate arrhythmias or other cardiac disturbances."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias"
+        ],
         "alignment_scores": [
             1.0,
             0.6,
@@ -3959,6 +4551,12 @@
             "The large downward deflection on the ECG graph could suggest an occurrence like a heart block or arrhythmia.",
             "The patient's admission for chest pain, combined with the ECG irregularity, raises concern for potential cardiac arrest.",
             "The patient is relatively young, but the specific ECG irregularities are a more critical factor indicating high risk."
+        ],
+        "alignment_categories": [
+            "Dynamic ST-Segment Changes",
+            "Bradycardia or Heart-Rate Drop",
+            "Dynamic ST-Segment Changes",
+            "Extreme Tachyarrhythmias"
         ],
         "alignment_scores": [
             0.4,
@@ -4007,6 +4605,13 @@
             "The ECG data shows regular rhythmic patterns.",
             "The ECG data does not display significant arrhythmias, such as prolonged pauses or irregular QRS complexes.",
             "Musculoskeletal neck pain is not directly related to cardiac health."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Bradycardia or Heart-Rate Drop",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.5,
@@ -4057,6 +4662,14 @@
             "The abnormal spike and fluctuations on the ECG graph suggest potential arrhythmias or other electrical disturbances in the heart.",
             "The patient's age is 61 years, which is an additional risk factor for cardiac arrest.",
             "Together, these observations indicate a high risk of cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)",
+            "Dynamic ST-Segment Changes",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             0.8,
@@ -4109,6 +4722,14 @@
             "The waveform stability after the drop supports the possibility of noise or an artifact rather than a pathological issue.",
             "Since the patient is young and without any critical cardiac complaints, the risk of cardiac arrest in the near term appears low based on the provided information."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias",
+            "Bradycardia or Heart-Rate Drop",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.1,
             0.2,
@@ -4156,6 +4777,12 @@
             "Metabolic or neurological disturbances may have cardiovascular implications.",
             "The ECG irregularities may indicate instability in the patient's condition."
         ],
+        "alignment_categories": [
+            "Electrical Alternans",
+            "Ventricular Ectopy/NSVT",
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.6,
             0.6,
@@ -4193,6 +4820,11 @@
             "The patient is 88 years old and was admitted for bradycardia, both of which are risk factors for cardiac arrest.",
             "The ECG graph shows an abnormal pattern at the beginning, possibly indicating early conduction issues or arrhythmia.",
             "The combination of patient age, bradycardia, and abnormal ECG pattern suggests a high risk for cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Bradycardia or Heart-Rate Drop",
+            "QRS Widening (Conduction Delay)",
+            "Bradycardia or Heart-Rate Drop"
         ],
         "alignment_scores": [
             0.9,
@@ -4238,6 +4870,13 @@
             "The key concern is the lack of electrical heart activity on the ECG.",
             "Immediate clinical assessment and intervention are necessary to confirm the ECG signal's validity."
         ],
+        "alignment_categories": [
+            "Bradycardia or Heart-Rate Drop",
+            "Bradycardia or Heart-Rate Drop",
+            "Bradycardia or Heart-Rate Drop",
+            "Bradycardia or Heart-Rate Drop",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.4,
             0.8,
@@ -4280,6 +4919,11 @@
             "The ECG data does not show significant irregularities such as concerning arrhythmias or evident signs of ischemia.",
             "The reason for ICU admission, paresthesias, is not directly indicative of imminent cardiac arrest.",
             "Based on the ECG pattern and clinical context provided, the patient does not appear to be at high risk of cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Dynamic ST-Segment Changes",
+            "Critical Illness (Sepsis/Shock)",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.5,
@@ -4329,6 +4973,14 @@
             "There are no irregular heartbeat patterns such as prolonged QT intervals in the ECG data.",
             "There are no signs of ST segment elevation in the ECG data.",
             "There are no frequent irregularities in the ECG data that typically indicate imminent cardiac arrest."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias",
+            "Prolonged QT Interval",
+            "Dynamic ST-Segment Changes",
+            "Depressed Heart Rate Variability"
         ],
         "alignment_scores": [
             0.5,
@@ -4385,6 +5037,15 @@
             "Electrical instability in the heart increases the risk of cardiac arrest.",
             "The combination of advanced age and abnormal ECG patterns raises concerns for imminent cardiac complications."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT",
+            "Bradycardia or Heart-Rate Drop",
+            "Ventricular Ectopy/NSVT",
+            "Ventricular Ectopy/NSVT",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             1.0,
             0.6,
@@ -4439,6 +5100,14 @@
             "The primary consideration is the ECG data, which does not exhibit critical patterns.",
             "The ECG data does not suggest an increased risk of cardiac instability."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.6,
             0.2,
@@ -4492,6 +5161,14 @@
             "The rhythm on the ECG graph appears mostly consistent.",
             "The amplitude fluctuations on the ECG graph do not suggest severe arrhythmias."
         ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability"
+        ],
         "alignment_scores": [
             0.5,
             0.3,
@@ -4539,6 +5216,12 @@
             "No irregular cardiac events commonly associated with imminent cardiac arrest are observed in the ECG data.",
             "Based on the ECG patterns and reason for ICU admission, the patient is likely not at high risk of experiencing cardiac arrest within the next five minutes."
         ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.3,
             0.6,
@@ -4579,6 +5262,11 @@
             "The patient is a 52-year-old male admitted for melena, which does not directly suggest an immediate high risk for cardiac arrest.",
             "The ECG waveform appears relatively stable without any apparent irregular patterns like significant arrhythmias, prolonged QT intervals, or abnormal ST segments.",
             "Given the absence of critical signs on the ECG, the patient's risk of experiencing cardiac arrest in the next five minutes seems low."
+        ],
+        "alignment_categories": [
+            "Male Sex",
+            "Depressed Heart Rate Variability",
+            "Dynamic ST-Segment Changes"
         ],
         "alignment_scores": [
             0.4,
@@ -4629,6 +5317,15 @@
             "The fluctuations and irregular patterns on the ECG graph could indicate arrhythmias.",
             "The ECG signal stabilizes after initial irregularities.",
             "The initial irregularities might suggest underlying cardiac instability."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Advanced Age",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.7,
@@ -4683,6 +5380,14 @@
             "The ECG abnormalities are indicative of possible tachyarrhythmia or other serious conduction disturbances.",
             "The combination of the patient's age and current sepsis condition suggests a high risk of imminent cardiac arrest."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Critical Illness (Sepsis/Shock)",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)"
+        ],
         "alignment_scores": [
             0.9,
             0.8,
@@ -4731,6 +5436,12 @@
             "The ECG data shows variable waveforms around the 80-second mark.",
             "The ECG irregularities resemble arrhythmic patterns often associated with cardiac distress."
         ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Electrical Alternans",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias"
+        ],
         "alignment_scores": [
             0.4,
             0.8,
@@ -4775,6 +5486,13 @@
             "The ECG graph shows signs of irregular heart rhythms.",
             "There are particularly notable fluctuations and spikes in the R-R intervals on the ECG graph.",
             "The fluctuations and spikes in the R-R intervals indicate possible ventricular arrhythmias."
+        ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT"
         ],
         "alignment_scores": [
             0.8,
@@ -4826,6 +5544,14 @@
             "The patient's demographic factors, being male and aged 54, do not inherently increase the immediate cardiac arrest risk.",
             "There are no additional context or signs of distress in the ECG data that suggest an increased risk.",
             "Based on the ECG data and patient information, the patient is not at high risk of experiencing cardiac arrest in the next five minutes."
+        ],
+        "alignment_categories": [
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Ventricular Ectopy/NSVT",
+            "Male Sex",
+            "Depressed Heart Rate Variability",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.6,
@@ -4882,6 +5608,15 @@
             "The irregular patterns in the ECG indicate a high risk of imminent cardiac arrest.",
             "The ECG patterns, coupled with the patient's history of NSTEMI, indicate a high risk of cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             1.0,
             0.6,
@@ -4926,6 +5661,11 @@
             "The patient is 72 years old with COPD, which can increase the risk of cardiac complications.",
             "The ECG data shows significant irregularities, particularly noticeable sharp spikes and fluctuations around the 60-second mark.",
             "The sharp spikes and fluctuations in the ECG data could indicate arrhythmias or other cardiac issues."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias"
         ],
         "alignment_scores": [
             0.8,
@@ -4977,6 +5717,16 @@
             "Arrhythmias and myocardial stress are risk factors for cardiac arrest.",
             "The risk factors for cardiac arrest are especially concerning in the immediate post-operative period for transplant patients.",
             "Warning signs in the ECG data, coupled with the high-risk nature of the patient's condition, suggest an elevated risk of experiencing cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Critical Illness (Sepsis/Shock)",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)",
+            "Underlying Cardiac Disease"
         ],
         "alignment_scores": [
             0.7,
@@ -5033,6 +5783,13 @@
             "A closed fracture of multiple ribs does not inherently predispose to an immediate high risk of cardiac arrest.",
             "There are no concurrent signs of cardiac complications in the ECG data presented."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "Underlying Cardiac Disease"
+        ],
         "alignment_scores": [
             0.6,
             0.6,
@@ -5086,6 +5843,15 @@
             "The dramatic increase in ECG waveform amplitude suggests potential arrhythmias or other abnormalities.",
             "The combined factors of patient's age, methamphetamine use, and ECG irregularities indicate a high risk of cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Electrical Alternans",
+            "Extreme Tachyarrhythmias",
+            "Advanced Age"
+        ],
         "alignment_scores": [
             0.8,
             0.8,
@@ -5134,6 +5900,12 @@
             "No significant arrhythmias or alarming irregularities, such as sustained ventricular tachycardia or fibrillation, are evident.",
             "Although seizures can sometimes lead to cardiac issues, the presented data does not indicate an immediate high risk of cardiac arrest within the next 5 minutes."
         ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Depressed Heart Rate Variability",
+            "Extreme Tachyarrhythmias",
+            "Critical Illness (Sepsis/Shock)"
+        ],
         "alignment_scores": [
             0.6,
             0.4,
@@ -5180,6 +5952,14 @@
             "The ECG data shows significant irregularities and variations in the waveform.",
             "The ECG data shows fluctuating amplitude and possible arrhythmias, suggesting electrical instability in the heart.",
             "These factors combined point to a high risk of experiencing cardiac arrest within the next 5 minutes."
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Ventricular Ectopy/NSVT",
+            "Extreme Tachyarrhythmias",
+            "Depressed Heart Rate Variability",
+            "Ventricular Ectopy/NSVT",
+            "Critical Illness (Sepsis/Shock)"
         ],
         "alignment_scores": [
             1.0,
