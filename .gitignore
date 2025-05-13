@@ -2,3 +2,6 @@
 __pycache__
 API_KEY.txt
 data/
+notebooks/_dump
+cache_dir
+src/.llms.py.cache

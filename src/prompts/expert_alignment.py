@@ -366,7 +366,7 @@ Claim: {}
 """
 
 
-alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform cardiac arrest prediction.
+alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform determine if there is high risk of imminent cardiac arrest.
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
@@ -387,13 +387,44 @@ Expert categories:
 6. Dynamic ST-Segment Changes: Acute ischemic changes on continuous ECG (notably ST-segment elevation or depression) indicate ongoing myocardial infarction or injury and are treated as red flags for imminent ventricular fibrillation and cardiac arrest in the ICU setting
 7. Prolonged QT Interval: A markedly prolonged QTc interval (whether drug-induced or due to congenital factors) creates a substrate for polymorphic ventricular tachycardia (torsades de pointes), which can quickly degenerate into ventricular fibrillation and cause sudden cardiac arrest if not promptly addressed
 8. Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention
-emedicine.medscape.com
 9. Electrical Alternans: The presence of electrical alternans (beat-to-beat alternating QRS amplitude) on ECG is highly specific for cardiac tamponade, a critical condition that can precipitate abrupt pulseless arrest unless the pericardial effusion is emergently relieved.
 10. Advanced Age: Increasing age is a major risk factor for cardiac arrest (events are very rare in patients under 30), with older ICU patients being significantly more prone to sudden arrest
 11. Male Sex: Male gender is associated with a higher incidence of cardiac arrest, as most cardiac arrests occur in men (with women’s risk rising post-menopause).
 12. Underlying Cardiac Disease: The presence of serious cardiac conditions – such as coronary artery disease (especially a recent myocardial infarction) or severe heart failure – greatly elevates short-term cardiac arrest risk by creating an electrically and hemodynamically unstable myocardium.
 13. Critical Illness (Sepsis/Shock): Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.
 -----
+
+Here are some examples:
+[Example 1]
+Claim:  A skin lesion of the scalp is a condition not directly related to cardiac function.
+Category: Critical Illness (Sepsis/Shock)
+Category Alignment Rating: 0.2
+Reasoning: While a scalp lesion is not directly cardiac-related, if interpreted as a possible sign of infection or systemic compromise (e.g., an infected wound in a septic patient), it could weakly align with the critical illness category. However, without explicit signs of sepsis or shock, the connection remains speculative, hence the low alignment rating.
+
+[Example 2]
+Claim: The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.
+Category: Extreme Tachyarrhythmias
+Category Alignment Rating: 0.9
+Reasoning: The claim directly references dangerous arrhythmias such as ventricular tachycardia and fibrillation, which are hallmark indicators of the Extreme Tachyarrhythmias category. These arrhythmias are known precursors to sudden cardiac arrest. While the claim does not specify the duration or ventricular dysfunction context, the alignment is still very strong due to the mention of the precise arrhythmias characteristic of this category.
+
+[Example 3]
+Claim: The ECG irregularities are suggested by inconsistent waveform intervals and amplitudes.
+Category: Depressed Heart Rate Variability
+Category Alignment Rating: 0.7
+Reasoning: The claim emphasizes "inconsistent waveform intervals and amplitudes," which most closely aligns with irregular R–R intervals, a hallmark of heart rate variability analysis. Although the claim lacks specificity (e.g., it doesn’t explicitly mention low variability or autonomic dysfunction), it implies irregular timing, which is a key aspect of depressed HRV as a precursor to cardiac arrest. Thus, the match is moderate to strong but not perfect due to the vagueness of the description.
+
+[Example 4]
+Claim: The patient is 86 years old. 
+Category: Advanced Age
+Category Alignment Rating: 1.0
+Reasoning: The claim directly references advanced age, which this category identifies as a major risk factor for cardiac arrest.
+
+
+[Example 5]
+Claim: The admission wasn't due to cardiac issues.
+Category: Underlying Cardiac Disease
+Category Alignment Rating: 0.5
+Reasoning: The claim highlights the absence of underlying cardiac disease, which is the inverse of a known risk factor for cardiac arrest. While the expert category focuses on increased risk due to the presence of cardiac disease, this claim indirectly relates to it by implying a potentially lower risk. The alignment is moderate because the claim addresses the category by exclusion rather than direct evidence of risk.
 
 
 Now, determine the category and alignment rating for the following claim:

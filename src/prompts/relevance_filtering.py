@@ -471,31 +471,107 @@ Output: {}
 Claim: {}
 """
 
+
 relevance_cardiac = """
-You will be given basic background information about an ICU patient (age, gender, race, and primary reason for initial ICU admittance) and time-series Electrocardiogram (ECG) data plotted in a graph from the first {} of an ECG monitoring period during the patient's ICU stay. Each entry consists of a measurement value at that timestamp. The samples are taken at {} Hz, so that each consecutive measurement value is taken {} milliseconds apart. 
-You will also be given a binary prediction of whether the patient is at high risk of experiencing cardiac arrest within the next {}, and a claim that may or may not be relevant to explaining why the sepsis prediction was assigned. Your task is to decide whether the claim is relevant to explaining the patient’s cardiac arrest prediction for the given patient background information and time series data.
+You will be given:
+- Basic background information about an ICU patient (age, gender, race, and primary reason for initial ICU admittance), and time-series Electrocardiogram (ECG) data plotted in a graph from the first {} of an ECG monitoring period during the patient's ICU stay, where the samples are taken at {} Hz (the "Input").
+- A binary prediction of whether the patient is at high risk of experiencing cardiac arrest within the next {} (the "Prediction").
+- A textual claim that may or may not be relevant to explaining why the cardiac arrest prediction was assigned (the "Claim"). 
+
+Your task is to decide whether the claim is relevant to explaining the patient’s cardiac arrest prediction for the given patient background information and time series data.
 
 A claim is relevant if and only if:
-(1) It is directly supported by the patient background information and time-series ECG data.
-(2) It helps explain why the model predicted yes/no.
+1. It is directly supported by the patient background information and time-series ECG data.
+2. It helps explain why the model predicted yes/no.
 
 Return your answer as:
 Relevance: <Yes/No>
 Reasoning: <A brief explanation of your judgment, pointing to specific support or lack thereof>
 
-Here are some examples: 
-
-[Example 1]
-Input Data: The patient is age 28, gender M, race Other, and was admitted to the ICU for Motor vehicle collision, initial encounter. 
-(Image 1)
-Prediction: Yes
-Claim: The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
-Relevance: Yes
-Reasoning: The claim suggests that pronounced spikes in the ECG graph between 60 to 120 seconds may indicate ventricular tachycardia or fibrillation, which are conditions associated with a high risk of cardiac arrest. The claim relies directly on the visual observation of the ECG data, which shows noticeable irregularities and spikes. These observations are relevant because they could explain why the model predicted a high risk of cardiac arrest for the patient.
-
-Now, determine whether the following claim is relevant to the given the time series data and the prediction label:
-Input Data: {}
-(Image 2)
-Prediction: {}
-Claim: {}
+Here are a few examples so you can get the hang of it.
 """
+
+
+def load_relevance_cardiac_prompt(background, image, llm_label, claim: str):
+    example1_background = "The patient is age 79, gender F, race White, and was admitted to the ICU for Closed fracture of right femur, unspecified fracture morphology, unspecified portion of femur, initial encounter (CMS-HCC)."
+    image1 = PIL.Image.open(Path(__file__).parent / "data" / "cardiac_relevance_fewshot_1_image_99593648_1.png")
+    image1.load()
+    example1_prediction = "Yes"
+    example1_claim = "The ECG data shows noticeable irregularity with a prominent spike and abrupt shifts in the waveform around 60 seconds."
+    example1_relevance = "Yes"
+    example1_reasoning = "The claim highlights a sharp spike and abrupt waveform changes around 60 seconds, which are visible in the ECG and likely indicative of cardiac instability relevant to the high-risk prediction."
+
+    example2_background = "The patient is age 39, gender F, race Other, and was admitted to the ICU for Strep pharyngitis."
+    image2 = PIL.Image.open(Path(__file__).parent / "data" / "cardiac_relevance_fewshot_2_image_99877003_1.png")
+    image2.load()
+    example2_prediction = "No"
+    example2_claim = "Ventricular fibrillation or sustained tachycardia are typical warning signs for an imminent cardiac arrest."
+    example2_relevance = "No"
+    example2_reasoning = "The claim describes general warning signs for cardiac arrest, but there is no evidence of ventricular fibrillation or sustained tachycardia in the provided ECG plot or background information, so it does not help explain the model's prediction for this specific patient."
+    
+    example3_background = "The patient is age 68, gender M, race Asian, and was admitted to the ICU for Acute hypoxemic respiratory failure (CMS-HCC)."
+    image3 = PIL.Image.open(Path(__file__).parent / "data" / "cardiac_relevance_fewshot_3_image_99579278_1.png")
+    image3.load()
+    example3_prediction = "Yes"
+    example3_claim = "Compromised respiratory function can potentially indicate compromised cardiac function."
+    example3_relevance = "Yes"
+    example3_reasoning = "The claim links compromised respiratory function—explicitly stated in the patient's ICU admission reason—to potential cardiac dysfunction, which is a medically supported relationship and helps contextualize the model’s positive prediction."
+
+    example4_background = "The patient is age 47, gender M, race Other, and was admitted to the ICU for Alcoholic intoxication without complication (CMS-HCC)."
+    image4 = PIL.Image.open(Path(__file__).parent / "data" / "cardiac_relevance_fewshot_4_image_99318009_1.png")
+    image4.load()
+    example4_prediction = "No"
+    example4_claim = "The ECG data shows regular rhythm and amplitude patterns."
+    example4_relevance = "Yes"
+    example4_reasoning = "The claim is relevant because the ECG waveform in the later part of the 2-minute window appears stable with regular amplitude and rhythmic peaks, suggesting no acute arrhythmia or instability, which supports the model's prediction that the patient is not at high risk of cardiac arrest in the next 5 minutes."
+
+    example5_background = "The patient is age 87, gender M, race White, and was admitted to the ICU for COVID-19."
+    image5 = PIL.Image.open(Path(__file__).parent / "data" / "cardiac_relevance_fewshot_5_image_99972446_1.png")
+    image5.load()
+    example5_prediction = "Yes"
+    example5_claim = "Being 87 years old places the patient in a higher risk category for cardiac events."
+    example5_relevance = "Yes"
+    example5_reasoning = "The patient’s advanced age of 87 is directly supported by the background information and is a medically recognized factor that advanced age contributes to increased vulnerability to cardiac arrest, making it relevant for explaining the model’s positive prediction."
+    
+    
+    return (relevance_cardiac,
+        "[Example 1]",
+        "Input:", example1_background, image1,
+        "Prediction:", example1_prediction,
+        "Claim:", example1_claim,
+        "Relevance:", example1_relevance,
+        "Reasoning:", example1_reasoning,
+
+        "[Example 2]",
+        "Input:", example2_background, image2,
+        "Prediction:", example2_prediction,
+        "Claim:", example2_claim,
+        "Relevance:", example2_relevance,
+        "Reasoning:", example2_reasoning,
+            
+        "[Example 3]",
+        "Input:", example3_background, image3,
+        "Prediction:", example3_prediction,
+        "Claim:", example3_claim,
+        "Relevance:", example3_relevance,
+        "Reasoning:", example3_reasoning,
+
+        "[Example 4]",
+        "Input:", example4_background, image4,
+        "Prediction:", example4_prediction,
+        "Claim:", example4_claim,
+        "Relevance:", example4_relevance,
+        "Reasoning:", example4_reasoning,
+
+        "[Example 5]",
+        "Input:", example5_background, image5,
+        "Prediction:", example5_prediction,
+        "Claim:", example5_claim,
+        "Relevance:", example5_relevance,
+        "Reasoning:", example5_reasoning,
+
+        "Now evaluate the following",
+        "Input:", background, image,
+        "Prediction:", llm_label,
+        "Claim: ", claim
+    )
