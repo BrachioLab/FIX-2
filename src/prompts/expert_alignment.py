@@ -418,13 +418,11 @@ Category: Advanced Age
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age, which this category identifies as a major risk factor for cardiac arrest.
 
-
 [Example 5]
 Claim: The admission wasn't due to cardiac issues.
 Category: Underlying Cardiac Disease
 Category Alignment Rating: 0.5
 Reasoning: The claim highlights the absence of underlying cardiac disease, which is the inverse of a known risk factor for cardiac arrest. While the expert category focuses on increased risk due to the presence of cardiac disease, this claim indirectly relates to it by implying a potentially lower risk. The alignment is moderate because the claim addresses the category by exclusion rather than direct evidence of risk.
-
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
