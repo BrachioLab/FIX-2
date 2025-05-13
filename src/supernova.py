@@ -6,24 +6,29 @@ from openai import OpenAI
 import time
 from tqdm import tqdm
 from typing import Dict, List, Tuple, Any, Union
+from PIL import Image
+import PIL
+import torch
 
 from prompts.claim_decomposition import decomposition_supernova
-from prompts.relevance_filtering import relevance_supernova
+from prompts.relevance_filtering import relevance_supernova, load_relevance_supernova_prompt
 from prompts.expert_alignment import alignment_supernova
 from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, supernova_prompt
+
+from llms import load_model, MyOpenAIModel
 
 from diskcache import Cache
 cache = Cache("/shared_data0/chaenyk/llm_cache")
 
 class SupernovaExample:
     def __init__(self,
-                 time_series_text,
-                 time_series_data: Dict[float, Dict[str, Union[float, str]]],
+                 file,
+                 time_series_data,
                  ground_truth: Any,
                  llm_label: Any,
                  llm_explanation: str):
-        self.time_series_text = time_series_text
-        self.time_series_data: Dict[float, Dict[str, Union[float, str]]] = time_series_data
+        self.file = file
+        self.time_series_data = time_series_data
         self.ground_truth = ground_truth
         self.llm_label = llm_label
         self.llm_explanation = llm_explanation
@@ -55,6 +60,13 @@ def query_openai(prompt, model="gpt-4o"):
             print("Try {}; Error: {}".format(str(num_tries), str(e)))     
             time.sleep(3)
     return "ERROR"
+
+def get_llm_output(prompt, images=None, model='gpt-4o'):
+    with open("../API_KEY.txt", "r") as file:
+        api_key = file.read()
+    llm = load_model(model, api_key)
+    result = llm([(prompt, images)])[0]
+    return result
 
 def format_time_series_for_prompt(time_series_data: Dict[float, Dict[str, Union[float, str]]]) -> str:
     if not time_series_data:
@@ -96,18 +108,28 @@ def parse_measurement_string(data_string: str) -> Dict[float, Dict[str, Union[fl
         measurements_by_time[time][name] = value
     return measurements_by_time
 
-def get_llm_generated_answer(time_series_data: Dict[float, Dict[str, Union[float, str]]]):
-    text = format_time_series_for_prompt(time_series_data)
-    prompt = supernova_prompt.replace("[BASELINE_PROMPT", vanilla_baseline).format(text)
-    response = query_openai(prompt)
+def get_llm_generated_answer(time_series_data, method: str = "vanilla"):
+    if method == "vanilla":
+        prompt = supernova_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline)
+    elif method == "cot":
+        prompt = supernova_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
+    elif method == "socratic":
+        prompt = supernova_prompt.replace("[BASELINE_PROMPT]", socratic_baseline)
+    elif method == "subq" or method == "least_to_most":
+        prompt = supernova_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
+    else:
+        raise ValueError(f"Invalid method: {method}")
+    img = time_series_data
+    response = get_llm_output(prompt, img, model="gpt-4o")
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
-    response_split = [e for e in response.split("\n") if (e != '' and e.split()[0] in ['Label:', 'Explanation:'])]
+
+    response_split = [r.strip() for r in response.split("\n") if r.strip() != "" \
+        and r.strip().startswith("Explanation:") or r.strip().startswith("Label:")]
     llm_label = response_split[0].split("Label: ")[1].strip()
     explanation = response_split[1].split("Explanation: ")[1].strip()
     return llm_label, explanation
-
 
 def isolate_individual_features(explanation: str):
     prompt = decomposition_supernova.format(explanation)
@@ -131,14 +153,27 @@ def is_claim_relevant(time_series_text, rating: str, claim: str):
     reasoning = response[1].replace("Reasoning:", "").strip()
     return relevance, reasoning
 
-def distill_relevant_features(example: SupernovaExample):
-    relevant_claims = []
-    for claim in tqdm(example.claims):
-        relevance, reasoning = is_claim_relevant(example.time_series_text, example.llm_label, claim)
-        if relevance is None:
-            continue
-        if relevance == "Yes":
-            relevant_claims.append(claim)
+def distill_relevant_features(
+    example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
+    answer: str,
+    atomic_claims: list[str],
+    model: str = "gpt-4o",
+    verbose: bool = False
+) -> list[str]:
+    """
+    Distill the relevant features from the atomic claims.
+    """
+
+    prompts = [load_relevance_supernova_prompt(example_image, answer, claim) for claim in atomic_claims]
+    llm = load_model(model)
+    llm.verbose = True
+    results = llm(prompts)
+
+    relevant_claims = [
+        claim for claim, result in zip(atomic_claims, results)
+        if "relevance: yes" in result.lower()
+    ]
+
     return relevant_claims
 
 def calculate_expert_alignment_score(claim: str):

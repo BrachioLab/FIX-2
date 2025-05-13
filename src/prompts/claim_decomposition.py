@@ -116,7 +116,7 @@ INPUT: {}
 """
 
 decomposition_supernova = """
-You will be given a paragraph that explains the reasoning behind classifying astrophysical time series data into one of the following categories: type Ia supernova (SNIa), type II supernova (SNII), M-dwarf, eclipsing binary (EB), tidal disruption event (TDE), type Ibc supernova (SNIbc), active galactic nuclei (AGN). Your task is to decompose this explanation into individual claims that are:
+You will be given a paragraph that explains the reasoning behind classifying astrophysical time series data into one of the following categories: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, and active galactic nuclei (AGN). Your task is to decompose this explanation into individual claims that are:
 
 Atomic: Each claim should express only one clear idea or judgment.
 Standalone: Each claim should be self-contained and understandable without needing to refer back to the paragraph.
@@ -199,11 +199,11 @@ Here is an example of how to format your output:
 INPUT: The patient's ECG graph shows significant irregularities, with frequent and pronounced spikes and dips, indicating potential arrhythmic events. These patterns are concerning because they deviate from the normal consistent rhythm expected in a healthy heart. The spikes, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation. Given that the patient is young, the primary risk factor stems from trauma-induced complications from the motor vehicle collision, such as cardiac tamponade or myocardial contusion, contributing to this prediction.
 
 OUTPUT:
-- The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
-- The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
-- The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
-- The patient is young, and the primary risk factor stems from trauma-induced complications from a motor vehicle collision.
-- Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
+The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
+The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
+The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
+The patient is young, and the primary risk factor stems from trauma-induced complications from a motor vehicle collision.
+Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
 
 Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}

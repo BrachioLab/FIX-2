@@ -6,6 +6,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset
 from datasets import load_dataset
 
+## needs TO-DO /CLEANUP!
 
 class CardiacDataset(Dataset):
     def __init__(self, data_dir = "BrachioLab/cardiac-timeseries", config_path = "BrachioLab/cardiac-prediction", split: str = "test"):

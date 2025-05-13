@@ -3,6 +3,7 @@
 # import pandas as pd
 # import wfdb
 from datetime import datetime, timedelta
+import math
 
 
 ## helper functions
@@ -42,3 +43,62 @@ def get_measurements(record, alarm_ts=None, cutoff_minutes=1, new_fs=50):
         # formatted.append(f"{current_time.time()}, {signal[i]:.6f}")
         formatted.append(signal[i])
     return np.array(formatted), start_time, cutoff_time, new_fs
+
+
+
+import random
+import c
+
+# Pipeline:
+# 1. get the alarm time
+# 2. subtract r = 1- 300 sec from it
+# 3. this is your new cutoff time
+# 4. then take the preceding 120 seconds from that
+
+# in terms of p_signal data:
+# 1. get new cutoff time data = orig_alarm_time_data_index - r * fs
+# 2. get new start time data = new_cutoff_time_data_index - 120 * fs
+
+
+def extract_segment_before_alarm(record, alarm_dt=None, duration_sec=120, max_pred_window_sec=300):
+    fs = record.fs
+    start_dt = datetime.combine(record.base_date, record.base_time)
+    total_duration_sec = record.sig_len / fs
+    end_dt = start_dt + timedelta(seconds=total_duration_sec)
+
+    # pick a random cutoff time
+    pred_window_sec = random.randint(1, max_pred_window_sec)
+    print(pred_window_sec)
+
+    if alarm_dt is not None:
+        cutoff_dt = alarm_dt - timedelta(seconds=pred_window_sec) # alarm_dt is guaranteed 
+        new_start_dt = cutoff_dt - timedelta(seconds=duration_sec)
+        print(start_dt, end_dt)
+        print(alarm_dt)
+        print(new_start_dt, cutoff_dt)
+        assert new_start_dt >= start_dt and cutoff_dt > new_start_dt
+    else:
+        new_start_dt = start_dt
+        cutoff_dt = new_start_dt + timedelta(seconds=duration_sec)
+
+    # get new p_signal
+    # print(start_dt, end_dt)
+    # print(alarm_dt)
+    # print(new_start_dt, cutoff_dt)
+    print((new_start_dt - start_dt).total_seconds())
+    print((cutoff_dt - new_start_dt).total_seconds())
+
+    start_idx = int((new_start_dt - start_dt).total_seconds()) * fs
+    cutoff_idx = math.ceil((cutoff_dt - start_dt).total_seconds()) * fs
+    # print(start_idx, cutoff_idx)    
+    segment = record.p_signal[start_idx:cutoff_idx]
+
+    # Create new record object with the same metadata
+    segment_record = copy.deepcopy(record)
+    segment_record.p_signal = segment
+    segment_record.sig_len = len(segment)
+    segment_record.base_date = new_start_dt.date()
+    segment_record.base_time = new_start_dt.time()
+    
+    return segment_record
+
