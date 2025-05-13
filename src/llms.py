@@ -129,10 +129,6 @@ class MyOpenAIModel:
         self.verbose = verbose
         
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
-        if api_key is None:
-            with open("../API_KEY.txt", "r") as file:
-                api_key = file.read().strip()
-        self.api_key = api_key
         if not self.api_key:
             raise ValueError("OPENAI_API_KEY environment variable is not set")
         self.client = OpenAI(api_key=self.api_key)
