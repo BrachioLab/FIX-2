@@ -119,7 +119,7 @@ def query_openai(prompt, model="gpt-4o"):
 
 def get_llm_generated_answer(text: str, baseline: str = "vanilla"):
     prompt = emotion_prompt.replace("[BASELINE_PROMPT", prompt_dict[baseline]).format(text)
-    response = query_openai(prompt)
+    response = query_openai(prompt).replace("\n\n", "\n")
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -127,13 +127,12 @@ def get_llm_generated_answer(text: str, baseline: str = "vanilla"):
     llm_label = response_split[0].split("Label: ")[1].strip().lower()
     explanation = response_split[1].split("Explanation: ")[1].strip()
     try:
-        assert(llm_label in emotion_labels.values())
         assert(len(explanation) > 10)
         return llm_label, explanation
     except:
         print("ERROR: LLM generated answer is not valid")
         print(response)
-        return None
+        return None, None
 
 
 def isolate_individual_features(explanation: str):
@@ -201,7 +200,16 @@ def calculate_expert_alignment_score(claim: str):
 def load_emotion_data():
     emotion_data =  load_dataset("BrachioLab/emotion")
     emotion_data = emotion_data['train'].to_pandas()
-    emotion_data = emotion_data.sample(2, random_state=11).reset_index(drop=True)
+    emotion_data['labels'] = emotion_data['labels'].apply(lambda x: [int(i) for i in x])
+    emotion_data = emotion_data[emotion_data['text'].apply(lambda x: len(x) > 20)]
+    
+    #sample 4 examples from each label
+    labels = [[x] for x in range(28)]
+    emotion_data_sampled = pd.DataFrame()
+    for l in labels:
+        label_sample = emotion_data[emotion_data['labels'].apply(lambda x: x == l)].sample(4, random_state=11)
+        emotion_data_sampled = pd.concat([emotion_data_sampled, label_sample])
+    emotion_data = emotion_data_sampled.reset_index(drop=True)
     return emotion_data
 
 
