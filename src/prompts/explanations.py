@@ -20,7 +20,7 @@ Your response should be 2 lines, formatted as follows:
 Label: <emotion label>
 Explanation: <explanation, as described above>
 
-Here is the text for you to classify.
+Here is the text for you to classify. Please ensure the emotion label is in the given list.
 Text: {}
 """
 
