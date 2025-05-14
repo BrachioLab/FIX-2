@@ -116,7 +116,7 @@ class MyOpenAIModel:
         model_name: str = "gpt-4o",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
-        max_tokens: int = 4096,
+        max_tokens: int = 2048,
         batch_size: int = 24,
         use_cache: bool = True,
         verbose: bool = False,
@@ -129,10 +129,6 @@ class MyOpenAIModel:
         self.verbose = verbose
         
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
-        if api_key is None:
-            with open("../API_KEY.txt", "r") as file:
-                api_key = file.read().strip()
-        self.api_key = api_key
         if not self.api_key:
             raise ValueError("OPENAI_API_KEY environment variable is not set")
         self.client = OpenAI(api_key=self.api_key)
@@ -203,7 +199,7 @@ class MyAnthropicModel:
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
-        max_tokens: int = 4096,
+        max_tokens: int = 2048,
         use_cache: bool = True,
         batch_size: int = 24,
         verbose: bool = False,
@@ -291,7 +287,7 @@ class MyGoogleModel:
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
         temperature: float = 0.1,
-        max_tokens: int = 4096,
+        max_tokens: int = 2048,
         use_cache: bool = True,
         batch_size: int = 24,
         verbose: bool = False,
