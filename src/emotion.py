@@ -151,17 +151,17 @@ def is_claim_relevant(text: str, rating: str, claim: str):
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
-    response = response.replace("Relevance:", "").strip()
-    response = response.split("\n")
-    relevance = response[0].strip()
-    reasoning = response[1].replace("Reasoning:", "").strip()
     try:
+        response = response.replace("Relevance:", "").strip()
+        response = response.split("\n")
+        relevance = response[0].strip()
+        reasoning = response[1].replace("Reasoning:", "").strip()
         assert(relevance in ["Yes", "No"])
         assert(len(reasoning) > 10)
     except:
         print("ERROR: Could not determine relevance")
         print(response)
-        return None
+        return None, None
     return relevance, reasoning
 
 
