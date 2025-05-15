@@ -6,6 +6,7 @@ from openai import OpenAI
 import json
 import time
 from tqdm import tqdm
+from fuzzywuzzy import fuzz
 
 from prompts.claim_decomposition import decomposition_politeness
 from prompts.relevance_filtering import relevance_politeness
@@ -20,12 +21,35 @@ prompt_dict = {"vanilla": vanilla_baseline,
                "socratic": socratic_baseline,
                "subq": least_to_most_baseline}
 
+categories_list = [
+    "Honorifics and Formal Address",
+    "Courteous Politeness Markers",
+    "Gratitude Expressions",
+    "Apologies and Acknowledgment of Fault",
+    "Indirect and Modal Requests",
+    "Hedging and Tentative Language",
+    "Inclusive Pronouns and Group-Oriented Phrasing",
+    "Greeting and Interaction Initiation",
+    "Compliments and Praise",
+    "Softened Disagreement or Face-Saving Critique",
+    "Urgency or Immediacy of Language",
+    "Avoidance of Profanity or Negative Emotion",
+    "Bluntness and Direct Commands",
+    "Empathy or Emotional Support",
+    "First-Person Subjectivity Markers",
+    "Second Person Responsibility or Engagement",
+    "Questions as Indirect Strategies",
+    "Discourse Management with Markers",
+    "Ingroup Language and Informality"
+]
+
 class PolitenessExample:
     def __init__(self, utterance, ground_truth, llm_score, llm_explanation):
         self.utterance = utterance
         self.ground_truth = ground_truth
         self.llm_score = llm_score
         self.llm_explanation = llm_explanation
+        self.mse = 0.0
         self.claims = []
         self.relevant_claims = []
         self.alignment_scores = []
@@ -53,6 +77,7 @@ class PolitenessExample:
             'ground_truth': self.ground_truth,
             'llm_score': self.llm_score,
             'llm_explanation': self.llm_explanation,
+            'mse': self.mse,
             'claims': self.claims,
             'relevant_claims': self.relevant_claims,
             'alignment_scores': self.alignment_scores,
@@ -117,14 +142,17 @@ def get_llm_generated_answer(utterance: str, baseline: str = "vanilla"):
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
-    rating = response.split("\n")[0].split("Rating: ")[1].strip()
+    rating = response.split("\n")[0].split("Rating: ")[1].split(":")[0].strip()
     explanation = response.split("\n")[1].split("Explanation: ")[1].strip()
-    try:
+    try:        
         rating = float(rating)
         assert(len(explanation) > 10)
         return rating, explanation
     except:
-        return None
+        print("ERROR: LLM generated answer is not valid")
+        print(response)
+        return None, None
+        
     
 
 def isolate_individual_features(explanation: str):
@@ -166,15 +194,16 @@ def is_claim_relevant(utterance: str, rating: str, claim: str):
         return None
     response = response.replace("Relevance:", "").strip()
     response = response.split("\n")
-    relevance = response[0].strip()
-    reasoning = response[1].replace("Reasoning:", "").strip()
     try:
+        relevance = response[0].strip()
+        reasoning = response[1].replace("Reasoning:", "").strip()
         assert(relevance in ["Yes", "No"])
         assert(len(reasoning) > 10)
     except:
         print("ERROR: Could not determine relevance")
         print(response)
-        return None
+        relevance = "No"
+        reasoning = "ERROR"
     return relevance, reasoning
 
 
@@ -218,15 +247,20 @@ def calculate_expert_alignment_score(claim: str):
         return None
     response = response.replace("Category:", "").strip()
     response = response.split("\n")
-    category = response[0].strip()
+    category = response[0].strip().replace("‑", "-")
     alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
     reasoning = response[2].replace("Reasoning:", "").strip()
     try:
         alignment_score = float(alignment_score)
         assert(len(category) > 5)
+        for c in categories_list:
+            if fuzz.ratio(c.lower(), category.lower()) > 90:
+                category = c
+                break
+        if(category not in categories_list): category = None
         assert(len(reasoning) > 10)
     except:
-        print("ERROR: Could not convert alignment score to float")
+        print("ERROR: Issue with alignment score parsing")
         print(response)
         alignment_score = 0.0
     return category, alignment_score, reasoning
@@ -289,6 +323,9 @@ def run_pipeline(politeness_data, baseline="vanilla"):
             llm_score=rating,
             llm_explanation=explanation
         ))
+    
+    for example in politeness_examples:
+        example.mse = (example.ground_truth - example.llm_score) ** 2
 
     for example in politeness_examples:
         claims = isolate_individual_features(example.llm_explanation)
@@ -318,12 +355,11 @@ def run_pipeline(politeness_data, baseline="vanilla"):
 
         
     data_to_save = [example.to_dict() for example in politeness_examples]
-    with open("../results/{}/politeness.json".format(baseline), 'w') as f:
+    with open("../results/{}/politeness_gpt-4o.json".format(baseline), 'w') as f:
         json.dump(data_to_save, f, indent=4)
 
 if __name__ == "__main__":
     politeness_data = load_politeness_data()
-    politeness_data = politeness_data.sample(1, random_state=11).reset_index(drop=True)
     run_pipeline(politeness_data, baseline="vanilla")
     run_pipeline(politeness_data, baseline="cot")
     run_pipeline(politeness_data, baseline="socratic")

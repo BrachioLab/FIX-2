@@ -91,22 +91,27 @@ class CardiacExample:
 
         # Relevant claims for which the LLM successfully managed to make an alignment judgment.
         self.alignable_claims : list[str] = []
-        # self.aligned_category_ids : list[int] = [] # Same length as alignable claims
+        self.alignment_categories : list[int] = [] # Same length as alignable claims
+        # self.alignment_category_ids : list[int] = [] # Same length as alignable claims
         self.alignment_scores : list[float] = [] # Same length as alignable claims
         self.alignment_reasonings : list[str] = [] # Same length as alignable claims
 
         # The final alignment score, computed as the mean of the alignment scores of the alignable claims.
         self.final_alignment_score : float = 0.0
 
+        self.accuracy = int(self.ground_truth == self.llm_label)
+
+
     def to_dict(self):
         return {
-            "data": self.data,
+            # "data": self.data,
             # "selected_data": {'record_name': self.data['record_name'], 
             #                   'n_sig': self.data['n_sig'],
             #                   'fs': self.data['fs'],
             #                   'age': self.data['age'],
             #                   'p_signal': self.
             #                  }
+            "record_name": self.data['record_name'],
             "background": self.background,
             "duration_sec": self.duration_sec,
             "pred_window_sec": self.pred_window_sec,
@@ -116,10 +121,12 @@ class CardiacExample:
             "all_claims": self.all_claims,
             "relevant_claims": self.relevant_claims,
             "alignable_claims": self.alignable_claims,
-            # "aligned_category_ids": self.aligned_category_ids,
+            # "alignment_category_ids": self.alignment_category_ids,
+            "alignment_categories": self.alignment_categories,
             "alignment_scores": self.alignment_scores,
             "alignment_reasonings": self.alignment_reasonings,
             "final_alignment_score": self.final_alignment_score,
+            "accuracy": self.accuracy
         }
 
 
@@ -326,18 +333,25 @@ def calculate_expert_alignment_scores(
                 alignment = float(clean_response[1].split(": ")[1])
                 reasoning = clean_response[2].split(": ")[1]
                 
-                # category_id = int(clean_response[1].split(": ")[1])
-                # alignment = float(clean_response[2].split(": ")[1])
-                # reasoning = clean_response[3].split(": ")[1]
-                
-
                 results.append({
                     "Claim": claims[i],
                     "Category": category,
-                    # "Category ID": category_id,
                     "Alignment": alignment,
                     "Reasoning": reasoning,
                 })
+            # if len(clean_response) == 4:
+            #     category = clean_response[0].split(": ")[1]
+            #     category_id = int(clean_response[1].split(": ")[1])
+            #     alignment = float(clean_response[2].split(": ")[1])
+            #     reasoning = clean_response[3].split(": ")[1]
+                
+            #     results.append({
+            #         "Claim": claims[i],
+            #         "Category": category,
+            #         "Category ID": category_id,
+            #         "Alignment": alignment,
+            #         "Reasoning": reasoning,
+            #     })
 
         except Exception as e:
             continue
@@ -406,7 +420,7 @@ def cardiac_data_to_examples(
     
         example.alignable_claims = [info["Claim"] for info in align_infos]
         example.alignment_categories = [info["Category"] for info in align_infos]
-        # example.aligned_category_ids = [info["Category ID"] for info in align_infos]
+        # example.alignment_category_ids = [info["Category ID"] for info in align_infos]
         example.alignment_scores = [info["Alignment"] for info in align_infos]
         example.alignment_reasonings = [info["Reasoning"] for info in align_infos]
         example.final_alignment_score = np.mean(example.alignment_scores)

@@ -336,46 +336,46 @@ Reasoning: <A brief explanation of why you selected the chosen category and why 
 
 -----
 Expert sepsis categories:
-1. Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
-2. Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
-3. A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
-4. A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.
-5. Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.
-6. Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.
-7. Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
-8. An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
-9. Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
+1. Elderly Susceptibility (Age ≥65 years): Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+2. SIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+3. High qSOFA Score (≥2): A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
+4. Elevated NEWS Score (≥5 points): A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.
+5. Elevated Serum Lactate (≥2 mmol/L): Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.
+6. Elevated Shock Index (≥1.0): Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.
+7. Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop): Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
+8. SOFA Score Increase (≥2 points): An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
+9. Early Antibiotic/Culture Orders (within 2 hours): Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
 
 -----
 
 Here are some examples:
 [Example 1]
 Claim: The patient is 86 years old. 
-Category: Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+Category: Elderly Susceptibility (Age ≥65 years)
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age (≥ 65), which this category identifies as a strong sepsis risk factor—perfect alignment.
 
 [Example 2]
 Claim: The patient's temperature is 99.6°F, close to the fever threshold.
-Category: Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+Category: SIRS Positivity (≥2 Criteria)
 Category Alignment Rating: 0.4
 Reasoning: The temperature is close to the SIRS threshold (>38°C), which makes it marginally relevant. It hints at possible early sepsis, but does not meet the SIRS criterion.
 
 [Example 3]
 Claim: The patient's pulse oximetry is 92%, indicating possible hypoxia.
-Category: An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
+Category: SOFA Score Increase (≥2 points)
 Category Alignment Rating: 0.6
 Reasoning: Pulse oximetry isn’t directly a SOFA measure, but hypoxia relates conceptually to impaired oxygenation (PaO₂/FiO₂). The alignment is indirect but meaningful.
 
 [Example 4]
 Claim: An elevated white blood cell count suggests an inflammatory or infectious process.
-Category: Presence of ≥ 2 SIRS criteria
+Category: SIRS Positivity (≥2 Criteria)
 Category Alignment Rating: 1.0
 Reasoning: Elevated WBC is explicitly listed under SIRS criteria, which are used to identify systemic inflammation in early sepsis.
 
 [Example 5]
 Claim: The patient's condition warrants close monitoring and further investigation for infection.
-Category: Administration of broad‑spectrum antibiotics or drawing of blood cultures…
+Category: Early Antibiotic/Culture Orders (within 2 hours)
 Category Alignment Rating: 0.5
 Reasoning: While this reflects suspicion of infection, it lacks concrete clinical action (like antibiotic administration or culture draws). 
 
@@ -397,39 +397,36 @@ Reasoning: <A brief explanation of why you selected the chosen category and why 
 
 -----
 Expert categories:
-1. Extreme Tachyarrhythmias: Sustained ventricular tachycardia or very rapid ventricular rates (especially in a patient with left ventricular dysfunction) can precipitate hemodynamic collapse and frequently degenerate into ventricular fibrillation, resulting in sudden cardiac death if uncorrected.
-2. Ventricular Ectopy/NSVT: Runs of non-sustained ventricular tachycardia or frequent premature ventricular contractions in a critically ill patient signal electrical instability and portend a high risk of progression to a full cardiac arrest, particularly in the setting of underlying coronary disease or cardiomyopathy
+1. Ventricular Tachyarrhythmias: Ventricular tachyarrhythmias refer to abnormally rapid heart beats originating from the lower chambers (ventricles) of the heart. A common type is ventricular tachycardia, which can either be tolerated by the patient (i.e. patient is not arresting) or lead to hemodynamic collapse (i.e. state of low blood pressure, unconsciousness, and cardiac arrest).
+2. Ventricular Ectopy / NSVT: Runs of non-sustained ventricular tachycardia (NSVT) or frequent premature ventricular contractions may indicate electrical instability in critically ill patients, particularly those with underlying coronary disease or cardiomyopathy. While NSVT is generally considered a more benign form of ventricular tachyarrhythmia, its presence reflects transient abnormal rhythms originating from the lower chambers and does not necessarily always signal impending cardiac arrest.
 3. Bradycardia or Heart-Rate Drop: The onset of significant bradycardia or a sudden ≥30% decline in heart rate is a well-documented precursor to in-hospital cardiac arrest (often preceding pulseless electrical activity or asystole) and should be treated as an alarm sign
-4. Depressed Heart Rate Variability: An abnormally low short-term heart rate variability (minimal fluctuation in R–R intervals) reflects autonomic dysfunction and has been linked to impending cardiac arrest in ICU patients, serving as a strong predictor of near-term code events
-5. QRS Widening (Conduction Delay): New or progressive prolongation of the QRS duration on the ECG is an ominous finding in the ICU, often observed in the minutes before cardiac arrest and associated with higher mortality due to deteriorating ventricular conduction
-6. Dynamic ST-Segment Changes: Acute ischemic changes on continuous ECG (notably ST-segment elevation or depression) indicate ongoing myocardial infarction or injury and are treated as red flags for imminent ventricular fibrillation and cardiac arrest in the ICU setting
-7. Prolonged QT Interval: A markedly prolonged QTc interval (whether drug-induced or due to congenital factors) creates a substrate for polymorphic ventricular tachycardia (torsades de pointes), which can quickly degenerate into ventricular fibrillation and cause sudden cardiac arrest if not promptly addressed
-8. Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention
-9. Electrical Alternans: The presence of electrical alternans (beat-to-beat alternating QRS amplitude) on ECG is highly specific for cardiac tamponade, a critical condition that can precipitate abrupt pulseless arrest unless the pericardial effusion is emergently relieved.
-10. Advanced Age: Increasing age is a major risk factor for cardiac arrest (events are very rare in patients under 30), with older ICU patients being significantly more prone to sudden arrest
-11. Male Sex: Male gender is associated with a higher incidence of cardiac arrest, as most cardiac arrests occur in men (with women’s risk rising post-menopause).
-12. Underlying Cardiac Disease: The presence of serious cardiac conditions – such as coronary artery disease (especially a recent myocardial infarction) or severe heart failure – greatly elevates short-term cardiac arrest risk by creating an electrically and hemodynamically unstable myocardium.
-13. Critical Illness (Sepsis/Shock): Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.
+4. QRS Widening (Conduction Delay): New or progressive prolongation of the QRS duration on the ECG is an ominous finding in the ICU, often observed in the minutes before cardiac arrest and associated with higher mortality due to deteriorating ventricular conduction
+5. Dynamic ST-Segment Changes: Acute ischemic changes on continuous ECG (notably ST-segment elevation or depression) signal low blood flow in the coronary arteries, indicating myocardial infarction or injury, and may precede imminent ventricular fibrillation or cardiac arrest. As blood flow continues to decrease, the ischemic heart can fibrillate or go into VT/VF (i.e. cardiac arrest). Although ST segment changes are common, the link to cardiac arrest is rare but possible.
+6. Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention. Hyperkalemia is a frequent cause of in-hospital cardiac arrest especially among patients on dialysis / end stage renal disease. Looking for signs of hyperkalemia can be important to understand risk of cardiac arrest, especially in selected populations.
+7. Advanced Age: Increasing age is a major risk factor for cardiac arrest (events are very rare in patients under 30), with older ICU patients being significantly more prone to sudden arrest
+8. Male Sex: Male gender is associated with a higher incidence of cardiac arrest, as most cardiac arrests occur in men (with women’s risk rising post-menopause).
+9. Underlying Cardiac Disease: The presence of serious cardiac conditions – such as coronary artery disease (especially a recent myocardial infarction) or severe heart failure – greatly elevates short-term cardiac arrest risk by creating an electrically and hemodynamically unstable myocardium.
+10. Critical Illness (Sepsis/Shock): Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.
 -----
 
 Here are some examples:
 [Example 1]
-Claim:  A skin lesion of the scalp is a condition not directly related to cardiac function.
+Claim: A skin lesion of the scalp is a condition not directly related to cardiac function.
 Category: Critical Illness (Sepsis/Shock)
 Category Alignment Rating: 0.2
 Reasoning: While a scalp lesion is not directly cardiac-related, if interpreted as a possible sign of infection or systemic compromise (e.g., an infected wound in a septic patient), it could weakly align with the critical illness category. However, without explicit signs of sepsis or shock, the connection remains speculative, hence the low alignment rating.
 
 [Example 2]
 Claim: The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.
-Category: Extreme Tachyarrhythmias
+Category: Ventricular Tachyarrhythmias
 Category Alignment Rating: 0.9
 Reasoning: The claim directly references dangerous arrhythmias such as ventricular tachycardia and fibrillation, which are hallmark indicators of the Extreme Tachyarrhythmias category. These arrhythmias are known precursors to sudden cardiac arrest. While the claim does not specify the duration or ventricular dysfunction context, the alignment is still very strong due to the mention of the precise arrhythmias characteristic of this category.
 
 [Example 3]
 Claim: The ECG irregularities are suggested by inconsistent waveform intervals and amplitudes.
-Category: Depressed Heart Rate Variability
-Category Alignment Rating: 0.7
-Reasoning: The claim emphasizes "inconsistent waveform intervals and amplitudes," which most closely aligns with irregular R–R intervals, a hallmark of heart rate variability analysis. Although the claim lacks specificity (e.g., it doesn’t explicitly mention low variability or autonomic dysfunction), it implies irregular timing, which is a key aspect of depressed HRV as a precursor to cardiac arrest. Thus, the match is moderate to strong but not perfect due to the vagueness of the description.
+Category: Ventricular Ectopy / NSVT
+Category Alignment Rating: 0.6
+Reasoning: The claim points to ECG irregularities—specifically inconsistent waveform intervals and amplitudes—which can reflect transient abnormal ventricular rhythms such as NSVT or frequent PVCs. These patterns often manifest with variable intervals and amplitudes but are nonspecific. While the claim lacks precision, it aligns moderately with ventricular ectopy as a potential explanation for instability.
 
 [Example 4]
 Claim: The patient is 86 years old. 
