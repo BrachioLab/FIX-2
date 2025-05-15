@@ -369,8 +369,8 @@
         ],
         "alignment_categories": [
             "Valence",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
+            "Other-Blame Statements",
             "Other-Blame Statements"
         ],
         "alignment_reasonings": [
@@ -406,7 +406,7 @@
         ],
         "alignment_categories": [
             "Emotion Words & Emojis",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence"
         ],
         "alignment_reasonings": [
@@ -482,7 +482,7 @@
             "Valence",
             "Aversion Terms",
             "Valence",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim identifies the language \"Don't do this\" and \"Unless you\u2019re a total prick,\" indicating a negative sentiment. This aligns with the Valence category, which assesses whether the tone is pleasant or unpleasant. The terms used here suggest disapproval or negativity, which indicates an unpleasant or negative valence. The alignment rating is not a full 1.0 because there is not an explicit mention of any specific emotional reaction (like anger), and the presence of directive language (\"Don't do this\") might hint at other categories like Other-Blame Statements if more context were provided, but in the absence of such context, a negative valence is the clearest fit.",
@@ -604,9 +604,9 @@
             0.8
         ],
         "alignment_categories": [
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Other-Blame Statements"
         ],
         "alignment_reasonings": [
@@ -747,9 +747,9 @@
             1.0
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The phrase \"whatever the opposite of a roll is\" suggests a performance contrary to being 'on a roll,' which typically implies success and positive outcomes. This is indicative of a negative result or performance, aligning with the concept of loss or disappointment. While the phrasing implies negativity and let-down, it is somewhat indirect. However, the category of Loss or Let-Down Words captures the core sentiment of the claim, warranting a strong alignment rating. The slight reduction from a perfect 1.0 rating is due to the indirect nature of the phrase, which does not use direct expressions of disappointment but rather an implication of it.",
@@ -786,7 +786,7 @@
         "alignment_categories": [
             "Other-Blame Statements",
             "Other-Blame Statements",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence"
         ],
         "alignment_reasonings": [
@@ -989,7 +989,7 @@
             0.8
         ],
         "alignment_categories": [
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence",
             "Valence",
             "Valence"
@@ -1189,8 +1189,8 @@
         "alignment_categories": [
             "Valence",
             "Valence",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements",
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim directly concerns itself with discerning whether the sentiment of the text is positive or negative, which aligns closely with the Valence category. Valence is specifically about evaluating the overall tone as pleasant or unpleasant. Since the claim is centered around this assessment, the alignment is strong. However, the reason the alignment rating is 0.9 instead of 1.0 is that the claim is more about analyzing potential sentiment rather than explicitly stating an emotional tone. There is a slight level of interpretative analysis involved rather than direct expression.",
@@ -1305,7 +1305,7 @@
         "alignment_categories": [
             "Valence",
             "Curiosity Questions",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
             "Valence",
             "Valence"
         ],
@@ -1415,7 +1415,7 @@
             0.6
         ],
         "alignment_categories": [
-            "Affection &\u202fCare Words",
+            "Affection & Care Words",
             "Affection & Care Words",
             "Loss or Let-Down Words"
         ],
@@ -1595,8 +1595,8 @@
         ],
         "alignment_categories": [
             "Valence",
-            "Loss or Let\u2011Down Words",
-            "Other\u2011Blame Statements"
+            "Loss or Let-Down Words",
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The phrase \"unpopular hire\" carries a negative judgment about the hiring decision, suggesting an unpleasant or negative tone. This aligns well with the Valence category, which assesses whether the overall tone is pleasant or unpleasant. The presence of a negative judgment directly aligns with negative valence. While the claim doesn't explicitly involve intense phrasing or direct emotion words, the evaluation of the hiring decision as \"unpopular\" implies disapproval or dissatisfaction, which corresponds with negative valence. Therefore, the alignment with Valence is strong, albeit not perfectly explicit, justifying a rating of 0.9.",
@@ -1833,8 +1833,8 @@
         ],
         "alignment_categories": [
             "Emotion Words & Emojis",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements",
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim focuses on the explicit use of the word \"hate,\" which is a direct emotion term signifying a negative feeling. The Emotion Words & Emojis category is specifically designed to identify and classify language that explicitly names or describes emotions. Since the claim centers on a clear example of an emotion word, the alignment with this category is very strong, thus warranting a rating of 1.0. No other categories are suggested or relevant based on the claim provided.",
@@ -1916,10 +1916,10 @@
             "Self-Blame & Apologies",
             "Self-Blame & Apologies",
             "Other-Blame Statements",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
             "Other-Blame Statements",
             "Other-Blame Statements",
-            "Self\u2011Blame & Apologies"
+            "Self-Blame & Apologies"
         ],
         "alignment_reasonings": [
             "The claim refers to a response to an \"unintentional action or mistake,\" which suggests the possibility of an apology or admission of fault, aligning it with the Self-Blame & Apologies category. However, the claim does not explicitly mention whether the speaker is taking responsibility or apologizing, which makes the alignment less than perfect. It could also involve other emotional responses (e.g., confusion if the mistake is surprising or frustration if the mistake is problematic), but based on the limited information provided, Self-Blame & Apologies is the most relevant category. The uncertainty about the specifics of the response and lack of explicit self-blame or apology leads to a moderate rating.",
@@ -1969,7 +1969,7 @@
             "Valence",
             "Self-Credit Statements",
             "Loss or Let-Down Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim directly identifies the emotional tone as negative, which aligns perfectly with the Valence category. Valence is concerned with whether the overall tone of the text is pleasant or unpleasant, and the expression of negative sentiment is a classic example of low valence. There are no additional details provided in the claim that suggest other categories, making Valence the most relevant and strongly aligned category.",
@@ -2004,8 +2004,8 @@
         ],
         "alignment_categories": [
             "Emotion Words & Emojis",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements",
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim highlights specific words\u2014\"punished\" and \"disgrace\"\u2014as indicators of negative emotions. This closely aligns with the Emotion Words & Emojis category, which focuses on direct emotion terms that explicitly convey feelings. The negative tone of these words fits well into this category. The alignment rating is 0.9 because while the words themselves are directly indicative of negative emotions, there\u2019s a slight possibility that the Valence category might play a role since these words suggest an unpleasant tone. However, the explicit mention of emotion-laden words justifies a strong fit for the Emotion Words & Emojis category.",
@@ -2588,14 +2588,14 @@
             0.9
         ],
         "alignment_categories": [
-            "Self\u2011Blame &\u202fApologies",
-            "Loss or Let\u2011Down Words",
+            "Self-Blame & Apologies",
+            "Loss or Let-Down Words",
             "Affection & Care Words",
             "Loss or Let-Down Words",
             "Affection & Care Words",
             "Emotion Words & Emojis",
             "Affection & Care Words",
-            "Affection &\u202fCare Words"
+            "Affection & Care Words"
         ],
         "alignment_reasonings": [
             "The phrase \"I\u2019m sorry for your loss\" contains the word \"sorry,\" which typically aligns with the Self-Blame & Apologies category, as it consists of an apology. However, in this context, it serves more as an expression of sympathy rather than self-blame or a conventional apology, making it partially misaligned. It also has a component of expressing empathy, which isn\u2019t fully captured by any of the listed categories. Since it aligns somewhat with Self-Blame & Apologies due to the use of \u201csorry,\u201d but not completely, the alignment rating is moderate.",
@@ -2630,7 +2630,7 @@
             1.0
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim explicitly involves \"loss\" and \"grief,\" which directly aligns with the Loss or Let\u2011Down Words category. This category encompasses mentions of loss or disappointment, and grief is a key emotional response to loss. The claim clearly identifies that the emotional response is tied to a context of loss, justifying a full alignment to this category with a perfect rating of 1.0. There is no ambiguity or competing categories suggested in the claim."
@@ -2664,7 +2664,7 @@
         "alignment_categories": [
             "Loss or Let-Down Words",
             "Valence",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim involves an expression of condolences, which is commonly associated with responding to loss or supporting those who have experienced a let-down. This aligns closely with the Loss or Let-Down Words category, which includes mentions of loss, disappointment, or grief. The alignment rating is 0.9 because while the primary focus is on addressing someone's loss, the term \"condolences\" could also imply concern or care for the person's wellbeing, somewhat touching on Affection & Care Words. Nonetheless, Loss or Let-Down Words is the most dominant and appropriate category.",
@@ -3027,7 +3027,7 @@
             0.9
         ],
         "alignment_categories": [
-            "Self\u2011Credit Statements"
+            "Self-Credit Statements"
         ],
         "alignment_reasonings": [
             "The claim highlights a sense of self-satisfaction, which aligns closely with the Self-Credit Statements category. This category involves boasting or pride about one's own success, which inherently includes feelings of satisfaction with oneself. While the claim does not explicitly mention boasting, self-satisfaction implies a personal acknowledgment of achievement or competence, supporting its strong alignment with the selected category. The rating is 0.9 because while self-satisfaction strongly suggests self-credit, without explicit language of boasting, there\u2019s a slight room for interpretation."
@@ -3183,7 +3183,7 @@
         ],
         "alignment_categories": [
             "Humor/Laughter Markers",
-            "Emotion Words &\u202fEmojis"
+            "Emotion Words & Emojis"
         ],
         "alignment_reasonings": [
             "The claim's reference to the phrase \"these people\" as invoking humor does not directly align with typical humor markers such as \u201chaha,\u201d \u201clol,\u201d or laughing emojis. While humor might be implied through context or tone when saying \"these people,\" the specific indicators for humor (like laughter markers) are not explicitly mentioned. Therefore, the alignment is low, as the claim does not provide concrete linguistic markers directly associated with humor.",
@@ -3343,7 +3343,7 @@
             0.9
         ],
         "alignment_categories": [
-            "Self\u2011Credit Statements",
+            "Self-Credit Statements",
             "Self-Credit Statements",
             "Self-Credit Statements",
             "Self-Credit Statements"
@@ -3392,9 +3392,9 @@
             "Valence",
             "Valence",
             "Self-Credit Statements",
-            "Self\u2011Credit Statements",
             "Self-Credit Statements",
-            "Self\u2011Credit Statements"
+            "Self-Credit Statements",
+            "Self-Credit Statements"
         ],
         "alignment_reasonings": [
             "The claim mentions a \"strong personal principle tied to professionalism,\" which implies an assertion of positive or high-level standards associated with professionalism. Valence pertains to the pleasantness or positivity of a tone, and a commitment to professionalism generally carries a positive connotation, aligning with a pleasant valence. However, the claim does not explicitly describe an emotional state nor include details like emotion words or emotional intensity indicators; therefore, the alignment with Valence is present but not robust. Other categories like Emotion Words & Emojis or Expressive Punctuation don't fit as the claim lacks specific emotional language or punctuation that would clearly identify those categories. Hence, the alignment rating is moderate.",
@@ -3475,8 +3475,8 @@
             "Valence",
             "Valence",
             "Self-Credit Statements",
-            "Self\u2011Credit Statements",
-            "Self\u2011Credit Statements"
+            "Self-Credit Statements",
+            "Self-Credit Statements"
         ],
         "alignment_reasonings": [
             "The phrase \u201chero inside my head\u201d implies a positive self-reflective view, potentially indicating pleasant emotions associated with self-perception, which aligns with the Valence category. However, the phrase does not explicitly express or evoke a distinct emotional tone, such as happiness or pride, nor does it use direct emotion words or exclamations. This makes the alignment moderate. It suggests positive self-evaluation but lacks strong indicators of emotional intensity or explicit emotion language, resulting in an alignment rating of 0.5 rather than higher.",
@@ -3859,7 +3859,7 @@
             0.8
         ],
         "alignment_categories": [
-            "Self\u2011Blame & Apologies",
+            "Self-Blame & Apologies",
             "Affection & Care Words",
             "Affection & Care Words",
             "Affection & Care Words",
@@ -3908,7 +3908,7 @@
         "alignment_categories": [
             "Threat/Worry Language",
             "Arousal",
-            "Self\u2011Blame & Apologies",
+            "Self-Blame & Apologies",
             "Threat/Worry Language",
             "Threat/Worry Language",
             "Threat/Worry Language"
@@ -4026,7 +4026,7 @@
         "alignment_categories": [
             "Valence",
             "Valence",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Other-Blame Statements"
         ],
         "alignment_reasonings": [
@@ -4061,8 +4061,8 @@
             1.0
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words",
-            "Other\u2011Blame Statements",
+            "Loss or Let-Down Words",
+            "Other-Blame Statements",
             "Valence"
         ],
         "alignment_reasonings": [
@@ -4103,9 +4103,9 @@
         "alignment_categories": [
             "Valence",
             "Valence",
-            "Loss or Let\u2011Down Words",
             "Loss or Let-Down Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim directly identifies the emotional tone as negative, which aligns perfectly with the Valence category. Valence is concerned with whether the overall tone of the text is pleasant or unpleasant, and the expression of negative sentiment is a classic example of low valence. There are no additional details provided in the claim that suggest other categories, making Valence the most relevant and strongly aligned category.",
@@ -4140,9 +4140,9 @@
             1.0
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The phrase \"that was painful to read\" implies a negative emotional reaction, likely falling under dissatisfaction, which closely aligns with feelings of loss or let-down. This category includes emotions like sadness, disappointment, or disapproval, which align well with the sense of dissatisfaction indicated in the claim. Although the claim could also slightly suggest aversion, the emphasis on the feeling of \"pain\" stems more from disappointment or let-down than from outright disgust. Hence, the alignment rating is fairly strong at 0.8 as it strongly reflects loss or let-down but does not perfectly encapsulate the entirety of the possible dissatisfaction spectrum.",
@@ -4382,8 +4382,8 @@
             0.3
         ],
         "alignment_categories": [
-            "Self\u2011Credit Statements",
-            "Self\u2011Credit Statements",
+            "Self-Credit Statements",
+            "Self-Credit Statements",
             "Arousal",
             "Valence"
         ],
@@ -4423,7 +4423,7 @@
             0.5
         ],
         "alignment_categories": [
-            "Affection &\u202fCare Words",
+            "Affection & Care Words",
             "Emotion Words & Emojis",
             "Affection & Care Words",
             "Curiosity Questions",
@@ -4473,12 +4473,12 @@
         ],
         "alignment_categories": [
             "Valence",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
             "Valence",
             "Valence",
             "Other-Blame Statements",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements",
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim highlights that the word \"dated\" carries a negative sentiment. This aligns with the Valence category, which assesses whether the tone is pleasant or unpleasant. Here, the use of \"dated\" implies an unfavorable evaluation, representing a negative valence. The term is not directly an emotion word, and there is no emphasis on other elements such as emotion words or expressive punctuation. Therefore, Valence is the primary category, though it lacks extreme specificity on pleasantness or unpleasantness alone, hence the rating is 0.9 instead of a full 1.0.",

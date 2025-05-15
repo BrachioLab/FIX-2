@@ -383,7 +383,7 @@
             0.8
         ],
         "alignment_categories": [
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence",
             "Valence",
             "Valence"
@@ -420,7 +420,7 @@
         ],
         "alignment_categories": [
             "Emotion Words & Emojis",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence"
         ],
         "alignment_reasonings": [
@@ -456,7 +456,7 @@
         "alignment_categories": [
             "Other-Blame Statements",
             "Valence",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim mentions \"high standards\" as a \"point of contention,\" which suggests a conflict or disagreement that might involve assigning blame or feeling resentful about the standards being too high or unfair. This implies that there could be an element of blaming others for setting such high standards, aligning with the Other-Blame Statements category. However, the text does not explicitly state blame, nor does it provide clear indications of emotional intensity, making the alignment uncertain and not very strong. The ambiguous nature of the reference to \"contention\" suggests only a modest degree of fit with this category.",
@@ -502,7 +502,7 @@
             "Other-Blame Statements",
             "Other-Blame Statements",
             "Other-Blame Statements",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence"
         ],
         "alignment_reasonings": [
@@ -547,8 +547,8 @@
         ],
         "alignment_categories": [
             "Valence",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
+            "Other-Blame Statements",
             "Other-Blame Statements",
             "Other-Blame Statements",
             "Valence"
@@ -626,10 +626,10 @@
             0.8
         ],
         "alignment_categories": [
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements",
             "Other-Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements",
+            "Other-Blame Statements",
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim highlights the expression of criticism towards others' behavior, which aligns with the Other-Blame Statements category. This category involves attributing fault or negative outcomes to someone else, which is essential to the act of criticizing others. The alignment rating is 0.9 because while the focus is clearly on blaming or criticizing others, the exact nature of the language used could influence if other emotional expressions are present (such as anger or disapproval). However, the primary cue in the claim relates to blaming, justifying a high alignment score in this category.",
@@ -762,8 +762,8 @@
         "alignment_categories": [
             "Loss or Let-Down Words",
             "Valence",
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The phrase \"they're on whatever the opposite of a roll is today\" implies underperformance, which is connected to feelings of disappointment or let-down, thus aligning with the Loss or Let-Down Words category. The wording reflects an expectation of failure, incorporating a negative assessment of the situation. The reason for the 0.8 rating, rather than a 1.0, is that while the implication of disappointment is clear, the phrase is abstract and lacks explicit use of canonical loss or let-down words (like \"failure\" or \"disappointed\"), limiting its direct alignment with this category.",
@@ -852,7 +852,7 @@
             "Threat/Worry Language",
             "Valence",
             "Other-Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim indicates a negative evaluation of someone's actions, which implies fault-finding or disapproval. This aligns most directly with the Other-Blame Statements category, as it involves attributing a negative aspect to someone else's behavior. The alignment rating is 0.8 because while the claim strongly suggests disapproval and potentially blame, it does not explicitly mention assigning fault or direct blame, but it is strongly suggested through the negative evaluation mentioned.",
@@ -1185,8 +1185,8 @@
         ],
         "alignment_categories": [
             "Threat/Worry Language",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements",
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim identifies \"concern\" about \"legal implications,\" which often involves apprehension or anxiety about possible negative outcomes, aligning it with the Threat/Worry Language category. However, the mention of \"criticism\" does not necessarily align with worry or fear and may imply a component of Other-Blame Statements, which is about disapproval or anger. Given that the primary emotion expressed in the claim is concern about legal matters, the alignment with Threat/Worry Language is moderate. The presence of additional emotional nuances that are not purely related to worry reduces the alignment rating.",
@@ -1299,7 +1299,7 @@
         ],
         "alignment_categories": [
             "Loss or Let-Down Words",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Valence",
             "Valence"
         ],
@@ -1419,7 +1419,7 @@
         "alignment_categories": [
             "Affection & Care Words",
             "Affection & Care Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The phrase \"Would love to see her back\" contains the word \"love,\" which commonly signals affection or care. The expression of wanting to see someone back suggests a positive emotional state associated with longing or wishing for someone's presence, which aligns well with Affection & Care Words. However, the indication of a strong wish or longing could also partly suggest an element of Loss or Let-Down Words if there is an implied absence or separation. Despite this nuance, the primary message leans more towards affection than loss, justifying a strong alignment rating of 0.8, but not a perfect score due to the subtle inclusion of longing.",
@@ -1485,7 +1485,7 @@
         "alignment_categories": [
             "Emotion Words & Emojis",
             "Emotion Words & Emojis",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim specifically highlights the word \"despondency,\" which is a direct emotion term indicating deep sadness. This aligns perfectly with the Emotion Words & Emojis category, as the category involves identifying explicit emotion language within a text. The term in question is a clear marker of emotion, leaving no ambiguity about the alignment. There are no other elements in the claim to suggest alignment with any other category, resulting in a full alignment rating.",
@@ -1519,8 +1519,8 @@
         ],
         "alignment_categories": [
             "Valence",
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim indicates that the text conveys frustration, which falls under the category of Valence. Frustration is an emotional state that is generally associated with an unpleasant or negative tone, aligning with the negative side of Valence. While frustration could potentially touch on other categories if further specifics were given (such as Other-Blame Statements or Expressive Punctuation), based solely on the provided claim, the primary and most direct category is Valence. The alignment rating is 0.8 as there is a clear indication of a negative emotional tone, but without additional context or specific emotional intensity indicators, it doesn't reach the maximum rating.",
@@ -1558,7 +1558,7 @@
         ],
         "alignment_categories": [
             "Threat/Worry Language",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
             "Threat/Worry Language",
             "Threat/Worry Language",
             "Valence"
@@ -1603,12 +1603,12 @@
             0.8
         ],
         "alignment_categories": [
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Other-Blame Statements",
             "Other-Blame Statements",
             "Valence",
             "Valence",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim involves a critique of a decision, specifically a hiring decision, by drawing a negative comparison to another unpopular hire. This suggests an attribution of fault or poor judgment to someone else, which aligns with the Other\u2011Blame Statements category. The alignment is rated at 0.8 because the focus is on criticizing a decision, which inherently implies some level of blame or disapproval. However, since the claim does not explicitly mention an emotion like anger or disapproval and lacks expressive cues like punctuation or capitalization that might reinforce the emotional intensity, it doesn't reach a perfect alignment rating.",
@@ -1649,10 +1649,10 @@
         ],
         "alignment_categories": [
             "Loss or Let-Down Words",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
             "Loss or Let-Down Words",
             "Other-Blame Statements",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim indicates a feeling of dissatisfaction, which suggests a sense of disappointment with the wage. This corresponds closely to the Loss or Let\u2011Down Words category, which involves mentions of disappointment or dissatisfaction. While the claim lacks explicit mention of loss or let-down words, the overall sentiment of dissatisfaction aligns well with this category. The alignment is not rated higher because the claim doesn't provide explicit markers like disappointment or let-down terms that would unequivocally support this category. However, the context of dissatisfaction suggests a significant connection to this category over others.",
@@ -1809,7 +1809,7 @@
             "Loss or Let-Down Words",
             "Loss or Let-Down Words",
             "Valence",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim mentions the \"worst feeling\" associated with an event, which suggests a strong element of disappointment or dissatisfaction about the Tommy Gun being a crate weapon. This aligns closely with the Loss or Let-Down Words category, as these emotions pertain to feelings of disappointment or an undesirable situation. While the description of weapon availability might contain elements of other emotional reactions, such as frustration linked to Other-Blame Statements, the primary emotional cue given is that of a let-down or disappointment. Hence, the Loss or Let-Down Words category is most relevant and strongly aligned, although not exclusive, hence the rating less than a full 1.0.",
@@ -1926,7 +1926,7 @@
             0.9
         ],
         "alignment_categories": [
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim indicates a situation where a mistake is being explained, yet it's emphasized that the mistake was not made by the speaker. This typically suggests that blame is being assigned to someone else for the error, aligning closely with the Other-Blame Statements category. The emphasis on the mistake not being the speaker's responsibility inherently involves a degree of assigning fault elsewhere, which is central to this category. The alignment rating of 0.9 is assigned because the claim does not explicitly mention anger or disapproval, which are commonly associated with blame, but the primary aspect of assigning responsibility indeed suggests other-blame."
@@ -1960,7 +1960,7 @@
         "alignment_categories": [
             "Loss or Let-Down Words",
             "Curiosity Questions",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
             "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
@@ -2000,11 +2000,11 @@
             0.6
         ],
         "alignment_categories": [
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
             "Aversion Terms",
             "Aversion Terms",
             "Other-Blame Statements",
-            "Other\u2011Blame Statements"
+            "Other-Blame Statements"
         ],
         "alignment_reasonings": [
             "The claim indicates a strong disapproval of actions taken by others, which aligns closely with Other-Blame Statements. This category specifically addresses the attribution of fault or negative judgment toward others for a perceived wrongdoing or unfavorable outcome. While the claim clearly indicates disapproval of certain individuals' actions, it doesn't provide direct quotes or expressions. Nonetheless, the alignment is strong given the claim's focus on disapproval and attribution of blame, which is the core aspect of this category.",
@@ -2239,9 +2239,9 @@
             1.0
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
             "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
@@ -2441,10 +2441,10 @@
             1.0
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words",
             "Loss or Let-Down Words",
             "Loss or Let-Down Words",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
             "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
@@ -2577,7 +2577,7 @@
         "alignment_categories": [
             "Affection & Care Words",
             "Affection & Care Words",
-            "Self\u2011Blame &\u202fApologies",
+            "Self-Blame & Apologies",
             "Loss or Let-Down Words",
             "Emotion Words & Emojis",
             "Emotion Words & Emojis"
@@ -2613,7 +2613,7 @@
             0.9
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The phrase \"Very sorry for your loss\" directly addresses mourning and expresses condolences, which are closely associated with loss, sadness, or grief. This aligns well with the Loss or Let\u2011Down Words category, as it signifies acknowledgment of someone experiencing a negative life event. The alignment rating is 0.9 because the primary focus relates to the recognition of a loss. However, there is also a subtle implication of concern, which could hint at Affection & Care Words, but it is not the dominant emotional signal. Therefore, Loss or Let\u2011Down Words is the most pertinent category."
@@ -2646,8 +2646,8 @@
         ],
         "alignment_categories": [
             "Aversion Terms",
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
             "Valence"
         ],
         "alignment_reasonings": [
@@ -3305,8 +3305,8 @@
         ],
         "alignment_categories": [
             "Self-Credit Statements",
-            "Self\u2011Credit Statements",
-            "Self\u2011Credit Statements"
+            "Self-Credit Statements",
+            "Self-Credit Statements"
         ],
         "alignment_reasonings": [
             "The claim centers on the speaker expressing a sense of self-satisfaction about understanding something, despite suggesting they come from an ordinary background (\u201cjust a guy who went to a normal school\u201d). This aligns closely with the Self-Credit Statements category, where the focus is on personal achievement or pride in one\u2019s abilities. The alignment rating is 0.9 because the claim clearly indicates self-satisfaction and personal pride, however, it lacks explicit boastfulness that might be seen in a higher rated statement. There are no additional cues in the claim suggesting other categories, emphasizing the strong alignment with Self-Credit Statements.",
@@ -3343,7 +3343,7 @@
             "Valence",
             "Self-Credit Statements",
             "Affection & Care Words",
-            "Self\u2011Credit Statements"
+            "Self-Credit Statements"
         ],
         "alignment_reasonings": [
             "The claim revolves around a positive self-assessment related to ethical behavior, which aligns mildly with the Valence category that concerns pleasant (positive) tones. The phrase \"Gotta keep my journalistic integrity\" suggests a positive commitment to ethics, creating a generally favorable or aspirational tone. However, the emotional tone is subtle, oriented more towards ethical commitment rather than explicitly expressing a strong emotion like happiness or admiration. Thus, the alignment with Valence exists but is not particularly strong, hence the rating of 0.3.",
@@ -3407,10 +3407,10 @@
         ],
         "alignment_categories": [
             "Self-Credit Statements",
-            "Self\u2011Credit Statements",
-            "Self\u2011Credit Statements",
             "Self-Credit Statements",
-            "Self\u2011Credit Statements"
+            "Self-Credit Statements",
+            "Self-Credit Statements",
+            "Self-Credit Statements"
         ],
         "alignment_reasonings": [
             "The claim indicates that the speaker views themselves positively by envisioning themselves as a hero. This directly aligns with the Self-Credit Statements category, which includes expressions where individuals boast or take pride in themselves. While the concept of self-heroism strongly suggests pride in oneself, the claim does not explicitly state boastful language or success, which slightly lowers the alignment rating from a perfect score. However, the association with self-perception as heroic is still a strong indicator of self-credit.",
@@ -3565,8 +3565,8 @@
         ],
         "alignment_categories": [
             "Other-Blame Statements",
-            "Other\u2011Blame Statements",
-            "Other\u2011Blame Statements",
+            "Other-Blame Statements",
+            "Other-Blame Statements",
             "Other-Blame Statements"
         ],
         "alignment_reasonings": [
@@ -3751,7 +3751,7 @@
             0.6
         ],
         "alignment_categories": [
-            "Self\u2011Blame &\u202fApologies",
+            "Self-Blame & Apologies",
             "Affection & Care Words",
             "Affection & Care Words",
             "Curiosity Questions",
@@ -3840,9 +3840,9 @@
             0.8
         ],
         "alignment_categories": [
-            "Self\u2011Blame &\u202fApologies",
             "Self-Blame & Apologies",
-            "Self\u2011Blame & Apologies",
+            "Self-Blame & Apologies",
+            "Self-Blame & Apologies",
             "Self-Blame & Apologies"
         ],
         "alignment_reasonings": [
@@ -4002,11 +4002,11 @@
             0.9
         ],
         "alignment_categories": [
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words",
-            "Loss or Let\u2011Down Words",
             "Loss or Let-Down Words",
-            "Loss or Let\u2011Down Words"
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words"
         ],
         "alignment_reasonings": [
             "The claim explicitly mentions \"a sense of loss\" regarding not being able to see the deleted content. This directly corresponds to the Loss or Let\u2011Down Words category, which deals with mentions of loss or disappointment. Since the claim precisely describes an emotional reaction centered around loss, the alignment is strong and clear, resulting in a perfect rating of 1.0.",
@@ -4048,7 +4048,7 @@
             "Aversion Terms",
             "Loss or Let-Down Words",
             "Loss or Let-Down Words",
-            "Self\u2011Blame & Apologies"
+            "Self-Blame & Apologies"
         ],
         "alignment_reasonings": [
             "The use of the word \"painful\" clearly indicates an emotional reaction of aversion or dislike, which directly aligns with the Aversion Terms category. This category focuses on words or expressions that suggest disgust or repulsion, and \"painful\" fits this criterion perfectly. Since there is a very clear and direct use of an aversion term in the claim, the alignment is rated a full 1.0, as it strongly fits without indicating any additional categories.",
@@ -4285,7 +4285,7 @@
         ],
         "alignment_categories": [
             "Self-Credit Statements",
-            "Self\u2011Credit Statements",
+            "Self-Credit Statements",
             "Valence",
             "Curiosity Questions"
         ],

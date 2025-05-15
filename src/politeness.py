@@ -6,6 +6,7 @@ from openai import OpenAI
 import json
 import time
 from tqdm import tqdm
+from fuzzywuzzy import fuzz
 
 from prompts.claim_decomposition import decomposition_politeness
 from prompts.relevance_filtering import relevance_politeness
@@ -19,6 +20,28 @@ prompt_dict = {"vanilla": vanilla_baseline,
                "cot": cot_baseline,
                "socratic": socratic_baseline,
                "subq": least_to_most_baseline}
+
+categories_list = [
+    "Honorifics and Formal Address",
+    "Courteous Politeness Markers",
+    "Gratitude Expressions",
+    "Apologies and Acknowledgment of Fault",
+    "Indirect and Modal Requests",
+    "Hedging and Tentative Language",
+    "Inclusive Pronouns and Group-Oriented Phrasing",
+    "Greeting and Interaction Initiation",
+    "Compliments and Praise",
+    "Softened Disagreement or Face-Saving Critique",
+    "Urgency or Immediacy of Language",
+    "Avoidance of Profanity or Negative Emotion",
+    "Bluntness and Direct Commands",
+    "Empathy or Emotional Support",
+    "First-Person Subjectivity Markers",
+    "Second Person Responsibility or Engagement",
+    "Questions as Indirect Strategies",
+    "Discourse Management with Markers",
+    "Ingroup Language and Informality"
+]
 
 class PolitenessExample:
     def __init__(self, utterance, ground_truth, llm_score, llm_explanation):
@@ -224,15 +247,20 @@ def calculate_expert_alignment_score(claim: str):
         return None
     response = response.replace("Category:", "").strip()
     response = response.split("\n")
-    category = response[0].strip()
+    category = response[0].strip().replace("‑", "-")
     alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
     reasoning = response[2].replace("Reasoning:", "").strip()
     try:
         alignment_score = float(alignment_score)
         assert(len(category) > 5)
+        for c in categories_list:
+            if fuzz.ratio(c.lower(), category.lower()) > 90:
+                category = c
+                break
+        if(category not in categories_list): category = None
         assert(len(reasoning) > 10)
     except:
-        print("ERROR: Could not convert alignment score to float")
+        print("ERROR: Issue with alignment score parsing")
         print(response)
         alignment_score = 0.0
     return category, alignment_score, reasoning
