@@ -290,38 +290,58 @@ Expert astrophysical categories:
 Here are some examples:
 [Example 1]
 Claim: Observations are recorded at various wavelength overtime.
-Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category ID: 7
 Category Alignment Rating: 
 Score: 0
 Reasoning: This is a general data format description rather than a discriminative feature. While it relates tangentially to Multi-wavelength Observability, it lacks any mention of spectral variation or joint analysis, and doesn't aid in distinguishing classes.
 
 [Example 2]
 Claim: Consistent and distinct peaks are observed in value data at specific wavelength.
-Category: Periodic light curves with stable periods and distinctive Fourier amplitude‑ and phase‑ratios (e.g., φ21, φ31) flag pulsators and eclipsing binaries rather than one‑off transients.
+Category ID: 5
 Category Alignment Rating: 0.6
 Reasoning: The mention of consistent and distinct peaks hints at periodic behavior, potentially corresponding to pulsators or binaries. However, the claim doesn’t mention periods or Fourier components explicitly, so the match is partial.
 
 [Example 3]
 Claim: Variations in intensity over time are typical of the lightcurve evolution of a supernova.
-Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category ID: 7
 Category Alignment Rating: 0.7
 Reasoning: The claim refers to general light curve behavior, which aligns with the concept of smooth, evolving flux. It supports class differentiation but is too vague to tie to a specific morphological trend or SN type, hence not a perfect match.
 
 [Example 4]
 Claim: The flux value has a rapid increase and gradual decrease.
-Category: Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.
+Category ID: 2
 Category Alignment Rating: 1.0
 Reasoning: This is a direct description of the fast-rise/slow-decline morphology mentioned in the expert criteria. It is a classic feature of many supernovae and maps perfectly to this category.
 
 [Example 5]
 Claim: Significant fluctuations and peaks in the data can be inferred as part of the light curve of a Type II supernova.
-Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category ID: 7
 Category Alignment Rating: 0.8
 Reasoning: Type II SNe, especially SN II-P and SN II-L, are characterized by distinct plateau or linear decline phases. The claim’s wording aligns with the idea of significant, structured flux evolution but lacks specifics (e.g., plateau shape), so the alignment is strong but not perfect.
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
+supernova_characteristics_mapping = {
+    'name2id': {
+        'Contiguous non-zero flux': 1,
+        'Rise–decline rates': 2,
+        'Photometric amplitude': 3,
+        'Event duration': 4,
+        'Periodic light curves': 5,
+        'Secondary maxima': 6,
+        'Monotonic flux trends': 7,
+    },
+    'id2name': {
+        1: 'Contiguous non-zero flux',
+        2: 'Rise–decline rates',
+        3: 'Photometric amplitude',
+        4: 'Event duration',
+        5: 'Periodic light curves',
+        6: 'Secondary maxima',
+        7: 'Monotonic flux trends',
+    }
+}
 
 alignment_sepsis = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of sepsis within the next 12 hours (Yes/No). You will also be given a series of categories that an expert clinician would use to perform this type of sepsis prediction.
 
@@ -351,31 +371,31 @@ Expert sepsis categories:
 Here are some examples:
 [Example 1]
 Claim: The patient is 86 years old. 
-Category: Elderly Susceptibility (Age ≥65 years)
+Category ID: 1
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age (≥ 65), which this category identifies as a strong sepsis risk factor—perfect alignment.
 
 [Example 2]
 Claim: The patient's temperature is 99.6°F, close to the fever threshold.
-Category: SIRS Positivity (≥2 Criteria)
+Category ID: 2
 Category Alignment Rating: 0.4
 Reasoning: The temperature is close to the SIRS threshold (>38°C), which makes it marginally relevant. It hints at possible early sepsis, but does not meet the SIRS criterion.
 
 [Example 3]
 Claim: The patient's pulse oximetry is 92%, indicating possible hypoxia.
-Category: SOFA Score Increase (≥2 points)
+Category ID: 8
 Category Alignment Rating: 0.6
 Reasoning: Pulse oximetry isn’t directly a SOFA measure, but hypoxia relates conceptually to impaired oxygenation (PaO₂/FiO₂). The alignment is indirect but meaningful.
 
 [Example 4]
 Claim: An elevated white blood cell count suggests an inflammatory or infectious process.
-Category: SIRS Positivity (≥2 Criteria)
+Category ID: 2
 Category Alignment Rating: 1.0
 Reasoning: Elevated WBC is explicitly listed under SIRS criteria, which are used to identify systemic inflammation in early sepsis.
 
 [Example 5]
 Claim: The patient's condition warrants close monitoring and further investigation for infection.
-Category: Early Antibiotic/Culture Orders (within 2 hours)
+Category ID: 9
 Category Alignment Rating: 0.5
 Reasoning: While this reflects suspicion of infection, it lacks concrete clinical action (like antibiotic administration or culture draws). 
 
@@ -383,6 +403,30 @@ Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
 
+alignment_sepsis_mapping = {
+    'name2id': {
+        'Elderly Susceptibility (Age ≥65 years)': 1,
+        'SIRS Positivity (≥2 Criteria)': 2,
+        'High qSOFA Score (≥2)': 3,
+        'Elevated NEWS Score (≥5 points)': 4,
+        'Elevated Serum Lactate (≥2 mmol/L)': 5,
+        'Elevated Shock Index (≥1.0)': 6,
+        'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)': 7,
+        'SOFA Score Increase (≥2 points)': 8,
+        'Early Antibiotic/Culture Orders (within 2 hours)': 9,
+    },
+    'id2name': {
+        1: 'Elderly Susceptibility (Age ≥65 years)',
+        2: 'SIRS Positivity (≥2 Criteria)',
+        3: 'High qSOFA Score (≥2)',
+        4: 'Elevated NEWS Score (≥5 points)',
+        5: 'Elevated Serum Lactate (≥2 mmol/L)',
+        6: 'Elevated Shock Index (≥1.0)',
+        7: 'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)',
+        8: 'SOFA Score Increase (≥2 points)',
+        9: 'Early Antibiotic/Culture Orders (within 2 hours)',
+    }
+}
 
 alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform determine if there is high risk of imminent cardiac arrest.
 
