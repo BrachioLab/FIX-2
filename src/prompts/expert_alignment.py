@@ -317,46 +317,46 @@ Reasoning: <A brief explanation of why you selected the chosen category and why 
 
 -----
 Expert sepsis categories:
-1. Elderly Susceptibility (Age ≥65 years): Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
-2. SIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
-3. High qSOFA Score (≥2): A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
-4. Elevated NEWS Score (≥5 points): A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.
-5. Elevated Serum Lactate (≥2 mmol/L): Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.
-6. Elevated Shock Index (≥1.0): Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.
-7. Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop): Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
-8. SOFA Score Increase (≥2 points): An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
-9. Early Antibiotic/Culture Orders (within 2 hours): Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
+1. Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+2. Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+3. A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
+4. A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.
+5. Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.
+6. Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.
+7. Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
+8. An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
+9. Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
 
 -----
 
 Here are some examples:
 [Example 1]
 Claim: The patient is 86 years old. 
-Category: Elderly Susceptibility (Age ≥65 years)
+Category: Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age (≥ 65), which this category identifies as a strong sepsis risk factor—perfect alignment.
 
 [Example 2]
 Claim: The patient's temperature is 99.6°F, close to the fever threshold.
-Category: SIRS Positivity (≥2 Criteria)
+Category: Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
 Category Alignment Rating: 0.4
 Reasoning: The temperature is close to the SIRS threshold (>38°C), which makes it marginally relevant. It hints at possible early sepsis, but does not meet the SIRS criterion.
 
 [Example 3]
 Claim: The patient's pulse oximetry is 92%, indicating possible hypoxia.
-Category: SOFA Score Increase (≥2 points)
+Category: An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
 Category Alignment Rating: 0.6
 Reasoning: Pulse oximetry isn’t directly a SOFA measure, but hypoxia relates conceptually to impaired oxygenation (PaO₂/FiO₂). The alignment is indirect but meaningful.
 
 [Example 4]
 Claim: An elevated white blood cell count suggests an inflammatory or infectious process.
-Category: SIRS Positivity (≥2 Criteria)
+Category: Presence of ≥ 2 SIRS criteria
 Category Alignment Rating: 1.0
 Reasoning: Elevated WBC is explicitly listed under SIRS criteria, which are used to identify systemic inflammation in early sepsis.
 
 [Example 5]
 Claim: The patient's condition warrants close monitoring and further investigation for infection.
-Category: Early Antibiotic/Culture Orders (within 2 hours)
+Category: Administration of broad‑spectrum antibiotics or drawing of blood cultures…
 Category Alignment Rating: 0.5
 Reasoning: While this reflects suspicion of infection, it lacks concrete clinical action (like antibiotic administration or culture draws). 
 
@@ -372,7 +372,7 @@ Your task is as follows:
 2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
 
 Return your answer as:
-Category: <category>
+Category ID: <category ID>
 Category Alignment Rating: <rating>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
@@ -393,31 +393,31 @@ Expert categories:
 Here are some examples:
 [Example 1]
 Claim: A skin lesion of the scalp is a condition not directly related to cardiac function.
-Category: Critical Illness (Sepsis/Shock)
+Category ID: 10
 Category Alignment Rating: 0.2
 Reasoning: While a scalp lesion is not directly cardiac-related, if interpreted as a possible sign of infection or systemic compromise (e.g., an infected wound in a septic patient), it could weakly align with the critical illness category. However, without explicit signs of sepsis or shock, the connection remains speculative, hence the low alignment rating.
 
 [Example 2]
 Claim: The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.
-Category: Ventricular Tachyarrhythmias
+Category ID: 1
 Category Alignment Rating: 0.9
 Reasoning: The claim directly references dangerous arrhythmias such as ventricular tachycardia and fibrillation, which are hallmark indicators of the Extreme Tachyarrhythmias category. These arrhythmias are known precursors to sudden cardiac arrest. While the claim does not specify the duration or ventricular dysfunction context, the alignment is still very strong due to the mention of the precise arrhythmias characteristic of this category.
 
 [Example 3]
 Claim: The ECG irregularities are suggested by inconsistent waveform intervals and amplitudes.
-Category: Ventricular Ectopy / NSVT
+Category ID: 2
 Category Alignment Rating: 0.6
 Reasoning: The claim points to ECG irregularities—specifically inconsistent waveform intervals and amplitudes—which can reflect transient abnormal ventricular rhythms such as NSVT or frequent PVCs. These patterns often manifest with variable intervals and amplitudes but are nonspecific. While the claim lacks precision, it aligns moderately with ventricular ectopy as a potential explanation for instability.
 
 [Example 4]
 Claim: The patient is 86 years old. 
-Category: Advanced Age
+Category ID: 7
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age, which this category identifies as a major risk factor for cardiac arrest.
 
 [Example 5]
 Claim: The admission wasn't due to cardiac issues.
-Category: Underlying Cardiac Disease
+Category ID: 9
 Category Alignment Rating: 0.5
 Reasoning: The claim highlights the absence of underlying cardiac disease, which is the inverse of a known risk factor for cardiac arrest. While the expert category focuses on increased risk due to the presence of cardiac disease, this claim indirectly relates to it by implying a potentially lower risk. The alignment is moderate because the claim addresses the category by exclusion rather than direct evidence of risk.
 
