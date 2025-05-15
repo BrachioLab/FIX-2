@@ -136,6 +136,35 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
+alignment_cholec_mapping = {
+    'name2id': {
+        "Calot's triangle cleared": 1,
+        'Cystic plate exposed': 2,
+        'Only two structures visible': 3,
+        'Above the R4U line': 4,
+        'Safe distance from common bile duct': 5,
+        'Infundibulum start point': 6,
+        'Subserosal plane stay': 7,
+        'Cystic lymph node guide': 8,
+        'No division without ID': 9,
+        'Inflammation bailout': 10,
+        'Aberrant artery caution': 11,
+    },
+    'id2name': {
+        1: "Calot's triangle cleared",
+        2: 'Cystic plate exposed',
+        3: 'Only two structures visible',
+        4: 'Above the R4U line',
+        5: 'Safe distance from common bile duct',
+        6: 'Infundibulum start point',
+        7: 'Subserosal plane stay',
+        8: 'Cystic lymph node guide',
+        9: 'No division without ID',
+        10: 'Inflammation bailout',
+        11: 'Aberrant artery caution',
+    }
+}
+
 alignment_massmaps = """You will be given a single claim that relates to why a prediction was given to a mass map. You will also be given a series of categories that an expert cosmologist would use to perform this type of cosmological parameter prediction.
 
 Your task is as follows:
