@@ -47,7 +47,7 @@ def get_measurements(record, alarm_ts=None, cutoff_minutes=1, new_fs=50):
 
 
 import random
-import c
+import copy
 
 # Pipeline:
 # 1. get the alarm time
