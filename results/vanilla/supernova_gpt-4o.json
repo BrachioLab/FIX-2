@@ -46,7 +46,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9375
+        "final_alignment_score": 0.9375,
+        "accuracy": 0
     },
     {
         "input": "supernova_0_1.png",
@@ -94,7 +95,8 @@
             "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.85
+        "final_alignment_score": 0.85,
+        "accuracy": 0
     },
     {
         "input": "supernova_0_2.png",
@@ -144,7 +146,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7375
+        "final_alignment_score": 0.7375,
+        "accuracy": 0
     },
     {
         "input": "supernova_0_3.png",
@@ -189,7 +192,8 @@
             "Total event duration, measured from first detection to return to baseline, distinguishes short-lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7857142857142856
+        "final_alignment_score": 0.7857142857142856,
+        "accuracy": 0
     },
     {
         "input": "supernova_0_4.png",
@@ -232,7 +236,8 @@
             "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.85
+        "final_alignment_score": 0.85,
+        "accuracy": 0
     },
     {
         "input": "supernova_0_5.png",
@@ -278,7 +283,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8142857142857143
+        "final_alignment_score": 0.8142857142857143,
+        "accuracy": 0
     },
     {
         "input": "supernova_0_6.png",
@@ -320,7 +326,8 @@
             "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6833333333333332
+        "final_alignment_score": 0.6833333333333332,
+        "accuracy": 0
     },
     {
         "input": "supernova_0_7.png",
@@ -361,7 +368,8 @@
             "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8166666666666665
+        "final_alignment_score": 0.8166666666666665,
+        "accuracy": 0
     },
     {
         "input": "supernova_1_0.png",
@@ -405,7 +413,8 @@
             "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8571428571428573
+        "final_alignment_score": 0.8571428571428573,
+        "accuracy": 0
     },
     {
         "input": "supernova_1_1.png",
@@ -433,7 +442,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9333333333333332
+        "final_alignment_score": 0.9333333333333332,
+        "accuracy": 0
     },
     {
         "input": "supernova_1_2.png",
@@ -475,7 +485,8 @@
             "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8999999999999999
+        "final_alignment_score": 0.8999999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_1_3.png",
@@ -513,7 +524,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9199999999999999
+        "final_alignment_score": 0.9199999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_1_4.png",
@@ -562,7 +574,8 @@
             "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.575
+        "final_alignment_score": 0.575,
+        "accuracy": 0
     },
     {
         "input": "supernova_1_5.png",
@@ -610,7 +623,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.95
+        "final_alignment_score": 0.95,
+        "accuracy": 0
     },
     {
         "input": "supernova_1_6.png",
@@ -654,7 +668,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9000000000000001
+        "final_alignment_score": 0.9000000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_2_0.png",
@@ -694,7 +709,8 @@
             "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6599999999999999
+        "final_alignment_score": 0.6599999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_2_1.png",
@@ -732,7 +748,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.86
+        "final_alignment_score": 0.86,
+        "accuracy": 1
     },
     {
         "input": "supernova_2_2.png",
@@ -774,7 +791,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8833333333333333
+        "final_alignment_score": 0.8833333333333333,
+        "accuracy": 1
     },
     {
         "input": "supernova_2_3.png",
@@ -807,7 +825,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.95
+        "final_alignment_score": 0.95,
+        "accuracy": 0
     },
     {
         "input": "supernova_2_4.png",
@@ -852,7 +871,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8714285714285716
+        "final_alignment_score": 0.8714285714285716,
+        "accuracy": 1
     },
     {
         "input": "supernova_2_5.png",
@@ -894,7 +914,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.85
+        "final_alignment_score": 0.85,
+        "accuracy": 0
     },
     {
         "input": "supernova_2_6.png",
@@ -941,7 +962,8 @@
             "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7857142857142857
+        "final_alignment_score": 0.7857142857142857,
+        "accuracy": 0
     },
     {
         "input": "supernova_2_7.png",
@@ -981,7 +1003,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9166666666666669
+        "final_alignment_score": 0.9166666666666669,
+        "accuracy": 1
     },
     {
         "input": "supernova_3_0.png",
@@ -1031,7 +1054,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8875
+        "final_alignment_score": 0.8875,
+        "accuracy": 0
     },
     {
         "input": "supernova_3_1.png",
@@ -1072,7 +1096,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.85
+        "final_alignment_score": 0.85,
+        "accuracy": 0
     },
     {
         "input": "supernova_3_2.png",
@@ -1109,7 +1134,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_3_3.png",
@@ -1154,7 +1180,8 @@
             "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7571428571428571
+        "final_alignment_score": 0.7571428571428571,
+        "accuracy": 0
     },
     {
         "input": "supernova_3_4.png",
@@ -1206,7 +1233,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7222222222222222
+        "final_alignment_score": 0.7222222222222222,
+        "accuracy": 0
     },
     {
         "input": "supernova_3_5.png",
@@ -1243,7 +1271,8 @@
             "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.76
+        "final_alignment_score": 0.76,
+        "accuracy": 0
     },
     {
         "input": "supernova_3_6.png",
@@ -1281,7 +1310,8 @@
             "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.96
+        "final_alignment_score": 0.96,
+        "accuracy": 0
     },
     {
         "input": "supernova_3_7.png",
@@ -1323,7 +1353,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8333333333333335
+        "final_alignment_score": 0.8333333333333335,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_0.png",
@@ -1360,7 +1391,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6749999999999999
+        "final_alignment_score": 0.6749999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_1.png",
@@ -1410,7 +1442,8 @@
             "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9125000000000001
+        "final_alignment_score": 0.9125000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_2.png",
@@ -1453,7 +1486,8 @@
             "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6833333333333332
+        "final_alignment_score": 0.6833333333333332,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_3.png",
@@ -1491,7 +1525,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7999999999999999
+        "final_alignment_score": 0.7999999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_4.png",
@@ -1534,7 +1569,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5666666666666667
+        "final_alignment_score": 0.5666666666666667,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_5.png",
@@ -1572,7 +1608,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.78
+        "final_alignment_score": 0.78,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_6.png",
@@ -1620,7 +1657,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9375
+        "final_alignment_score": 0.9375,
+        "accuracy": 0
     },
     {
         "input": "supernova_4_7.png",
@@ -1663,7 +1701,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_5_0.png",
@@ -1701,7 +1740,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8800000000000001
+        "final_alignment_score": 0.8800000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_5_1.png",
@@ -1749,7 +1789,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9125
+        "final_alignment_score": 0.9125,
+        "accuracy": 0
     },
     {
         "input": "supernova_5_3.png",
@@ -1794,7 +1835,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8571428571428573
+        "final_alignment_score": 0.8571428571428573,
+        "accuracy": 0
     },
     {
         "input": "supernova_5_4.png",
@@ -1831,7 +1873,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.96
+        "final_alignment_score": 0.96,
+        "accuracy": 0
     },
     {
         "input": "supernova_5_5.png",
@@ -1873,7 +1916,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8833333333333334
+        "final_alignment_score": 0.8833333333333334,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_0.png",
@@ -1912,7 +1956,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8399999999999999
+        "final_alignment_score": 0.8399999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_1.png",
@@ -1952,7 +1997,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_2.png",
@@ -1985,7 +2031,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9249999999999999
+        "final_alignment_score": 0.9249999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_3.png",
@@ -2039,7 +2086,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6777777777777777
+        "final_alignment_score": 0.6777777777777777,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_4.png",
@@ -2084,7 +2132,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8857142857142858
+        "final_alignment_score": 0.8857142857142858,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_5.png",
@@ -2115,7 +2164,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9333333333333332
+        "final_alignment_score": 0.9333333333333332,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_6.png",
@@ -2156,7 +2206,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8833333333333333
+        "final_alignment_score": 0.8833333333333333,
+        "accuracy": 0
     },
     {
         "input": "supernova_6_7.png",
@@ -2200,7 +2251,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7571428571428572
+        "final_alignment_score": 0.7571428571428572,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_0.png",
@@ -2248,7 +2300,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9125000000000001
+        "final_alignment_score": 0.9125000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_1.png",
@@ -2286,7 +2339,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8400000000000001
+        "final_alignment_score": 0.8400000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_2.png",
@@ -2323,7 +2377,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9199999999999999
+        "final_alignment_score": 0.9199999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_3.png",
@@ -2365,7 +2420,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7666666666666666
+        "final_alignment_score": 0.7666666666666666,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_4.png",
@@ -2407,7 +2463,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5833333333333334
+        "final_alignment_score": 0.5833333333333334,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_5.png",
@@ -2442,7 +2499,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_6.png",
@@ -2484,7 +2542,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6166666666666666
+        "final_alignment_score": 0.6166666666666666,
+        "accuracy": 0
     },
     {
         "input": "supernova_7_7.png",
@@ -2520,7 +2579,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8800000000000001
+        "final_alignment_score": 0.8800000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_0.png",
@@ -2562,7 +2622,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7333333333333333
+        "final_alignment_score": 0.7333333333333333,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_1.png",
@@ -2599,7 +2660,8 @@
             "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6
+        "final_alignment_score": 0.6,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_2.png",
@@ -2652,7 +2714,8 @@
             "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6333333333333334
+        "final_alignment_score": 0.6333333333333334,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_3.png",
@@ -2691,7 +2754,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9199999999999999
+        "final_alignment_score": 0.9199999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_4.png",
@@ -2731,7 +2795,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.75
+        "final_alignment_score": 0.75,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_5.png",
@@ -2766,7 +2831,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9249999999999999
+        "final_alignment_score": 0.9249999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_6.png",
@@ -2799,7 +2865,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.49999999999999994
+        "final_alignment_score": 0.49999999999999994,
+        "accuracy": 0
     },
     {
         "input": "supernova_8_7.png",
@@ -2845,7 +2912,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8285714285714286
+        "final_alignment_score": 0.8285714285714286,
+        "accuracy": 0
     },
     {
         "input": "supernova_9_0.png",
@@ -2879,7 +2947,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.95
+        "final_alignment_score": 0.95,
+        "accuracy": 0
     },
     {
         "input": "supernova_9_1.png",
@@ -2922,7 +2991,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8666666666666667
+        "final_alignment_score": 0.8666666666666667,
+        "accuracy": 0
     },
     {
         "input": "supernova_9_2.png",
@@ -2968,7 +3038,8 @@
             "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7285714285714286
+        "final_alignment_score": 0.7285714285714286,
+        "accuracy": 0
     },
     {
         "input": "supernova_9_3.png",
@@ -3011,7 +3082,8 @@
             "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.75
+        "final_alignment_score": 0.75,
+        "accuracy": 0
     },
     {
         "input": "supernova_9_5.png",
@@ -3055,7 +3127,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8571428571428573
+        "final_alignment_score": 0.8571428571428573,
+        "accuracy": 0
     },
     {
         "input": "supernova_9_6.png",
@@ -3094,7 +3167,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8
+        "final_alignment_score": 0.8,
+        "accuracy": 0
     },
     {
         "input": "supernova_9_7.png",
@@ -3125,7 +3199,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9333333333333332
+        "final_alignment_score": 0.9333333333333332,
+        "accuracy": 0
     },
     {
         "input": "supernova_10_0.png",
@@ -3164,7 +3239,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9400000000000001
+        "final_alignment_score": 0.9400000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_10_1.png",
@@ -3210,7 +3286,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7857142857142857
+        "final_alignment_score": 0.7857142857142857,
+        "accuracy": 0
     },
     {
         "input": "supernova_10_2.png",
@@ -3251,7 +3328,8 @@
             "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_10_3.png",
@@ -3292,7 +3370,8 @@
             "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8333333333333334
+        "final_alignment_score": 0.8333333333333334,
+        "accuracy": 0
     },
     {
         "input": "supernova_10_4.png",
@@ -3341,7 +3420,8 @@
             "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7625000000000001
+        "final_alignment_score": 0.7625000000000001,
+        "accuracy": 1
     },
     {
         "input": "supernova_10_5.png",
@@ -3386,7 +3466,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6857142857142857
+        "final_alignment_score": 0.6857142857142857,
+        "accuracy": 1
     },
     {
         "input": "supernova_10_6.png",
@@ -3419,7 +3500,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8333333333333334
+        "final_alignment_score": 0.8333333333333334,
+        "accuracy": 0
     },
     {
         "input": "supernova_10_7.png",
@@ -3464,7 +3546,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8428571428571429
+        "final_alignment_score": 0.8428571428571429,
+        "accuracy": 0
     },
     {
         "input": "supernova_11_0.png",
@@ -3497,7 +3580,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_11_1.png",
@@ -3535,7 +3619,8 @@
             "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8399999999999999
+        "final_alignment_score": 0.8399999999999999,
+        "accuracy": 0
     },
     {
         "input": "supernova_11_2.png",
@@ -3569,7 +3654,8 @@
             "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.925
+        "final_alignment_score": 0.925,
+        "accuracy": 1
     },
     {
         "input": "supernova_11_3.png",
@@ -3605,7 +3691,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8200000000000001
+        "final_alignment_score": 0.8200000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_11_4.png",
@@ -3643,7 +3730,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.76
+        "final_alignment_score": 0.76,
+        "accuracy": 0
     },
     {
         "input": "supernova_11_5.png",
@@ -3681,7 +3769,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.76
+        "final_alignment_score": 0.76,
+        "accuracy": 0
     },
     {
         "input": "supernova_11_6.png",
@@ -3729,7 +3818,8 @@
             "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8
+        "final_alignment_score": 0.8,
+        "accuracy": 1
     },
     {
         "input": "supernova_11_7.png",
@@ -3771,7 +3861,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9166666666666666
+        "final_alignment_score": 0.9166666666666666,
+        "accuracy": 0
     },
     {
         "input": "supernova_12_0.png",
@@ -3810,7 +3901,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_12_1.png",
@@ -3850,7 +3942,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9399999999999998
+        "final_alignment_score": 0.9399999999999998,
+        "accuracy": 0
     },
     {
         "input": "supernova_12_2.png",
@@ -3891,7 +3984,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7833333333333333
+        "final_alignment_score": 0.7833333333333333,
+        "accuracy": 1
     },
     {
         "input": "supernova_12_3.png",
@@ -3926,7 +4020,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.95
+        "final_alignment_score": 0.95,
+        "accuracy": 0
     },
     {
         "input": "supernova_12_4.png",
@@ -3969,7 +4064,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8500000000000001
+        "final_alignment_score": 0.8500000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_12_5.png",
@@ -4022,7 +4118,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7944444444444445
+        "final_alignment_score": 0.7944444444444445,
+        "accuracy": 1
     },
     {
         "input": "supernova_12_6.png",
@@ -4054,7 +4151,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8666666666666667
+        "final_alignment_score": 0.8666666666666667,
+        "accuracy": 1
     },
     {
         "input": "supernova_12_7.png",
@@ -4095,7 +4193,8 @@
             "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7333333333333334
+        "final_alignment_score": 0.7333333333333334,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_0.png",
@@ -4132,7 +4231,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.825
+        "final_alignment_score": 0.825,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_1.png",
@@ -4184,7 +4284,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7555555555555555
+        "final_alignment_score": 0.7555555555555555,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_2.png",
@@ -4232,7 +4333,8 @@
             "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9125000000000001
+        "final_alignment_score": 0.9125000000000001,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_3.png",
@@ -4277,7 +4379,8 @@
             "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8357142857142856
+        "final_alignment_score": 0.8357142857142856,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_4.png",
@@ -4321,7 +4424,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8571428571428571
+        "final_alignment_score": 0.8571428571428571,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_5.png",
@@ -4351,7 +4455,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9
+        "final_alignment_score": 0.9,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_6.png",
@@ -4397,7 +4502,8 @@
             "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.9142857142857144
+        "final_alignment_score": 0.9142857142857144,
+        "accuracy": 0
     },
     {
         "input": "supernova_13_7.png",
@@ -4441,6 +4547,7 @@
             "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
         ],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8833333333333334
+        "final_alignment_score": 0.8833333333333334,
+        "accuracy": 0
     }
 ]

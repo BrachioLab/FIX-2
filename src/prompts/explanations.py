@@ -181,11 +181,7 @@ supernova_prompt = """What is the astrophysical classification of the following 
 
 Each input is a multivariate time series visualized as a scatter plot image. The x-axis represents time, and the y-axis represents the flux measurement value. Each point corresponds to an observation at a specific timestamp and wavelength. Different wavelengths are color-coded, and observational uncertainty is shown using vertical error bars.
 
-What is the astrophysical classification of the following time series? Here are the possible labels you can use: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, and active galactic nuclei (AGN).
-
-Each input is a multivariate time series visualized as a scatter plot image. The x-axis represents time, and the y-axis represents the flux measurement value. Each point corresponds to an observation at a specific timestamp and wavelength. Different wavelengths are color-coded, and observational uncertainty is shown using vertical error bars.
-
-Even if the classification is uncertain or ambiguous, select the **most likely label** based on the observed visual patterns and provide a brief explanation that justifies your choice.
+Even if the classification is uncertain or ambiguous, select the most likely label based on the observed visual patterns and provide a brief explanation that justifies your choice.
 
 
 [BASELINE_PROMPT]
@@ -204,7 +200,7 @@ The time series consists of Electronic Health Record (EHR) data collected during
 [BASELINE_PROMPT]
 
 Your response should be 2 lines, formatted as follows:
-Label: <emotion label>
+Label: <prediction label>
 Explanation: <explanation, as described above>
 
 Here is the text for you to classify.
