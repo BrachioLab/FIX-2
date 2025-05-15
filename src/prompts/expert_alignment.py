@@ -322,7 +322,7 @@ Reasoning: Type II SNe, especially SN II-P and SN II-L, are characterized by dis
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
-supernova_characteristics_mapping = {
+alignment_supernova_mapping = {
     'name2id': {
         'Contiguous non-zero flux': 1,
         'Rise–decline rates': 2,
