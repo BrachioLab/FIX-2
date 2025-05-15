@@ -26,6 +26,7 @@ class PolitenessExample:
         self.ground_truth = ground_truth
         self.llm_score = llm_score
         self.llm_explanation = llm_explanation
+        self.mse = 0.0
         self.claims = []
         self.relevant_claims = []
         self.alignment_scores = []
@@ -53,6 +54,7 @@ class PolitenessExample:
             'ground_truth': self.ground_truth,
             'llm_score': self.llm_score,
             'llm_explanation': self.llm_explanation,
+            'mse': self.mse,
             'claims': self.claims,
             'relevant_claims': self.relevant_claims,
             'alignment_scores': self.alignment_scores,
@@ -117,14 +119,17 @@ def get_llm_generated_answer(utterance: str, baseline: str = "vanilla"):
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
-    rating = response.split("\n")[0].split("Rating: ")[1].strip()
+    rating = response.split("\n")[0].split("Rating: ")[1].split(":")[0].strip()
     explanation = response.split("\n")[1].split("Explanation: ")[1].strip()
-    try:
+    try:        
         rating = float(rating)
         assert(len(explanation) > 10)
         return rating, explanation
     except:
-        return None
+        print("ERROR: LLM generated answer is not valid")
+        print(response)
+        return None, None
+        
     
 
 def isolate_individual_features(explanation: str):
@@ -166,15 +171,16 @@ def is_claim_relevant(utterance: str, rating: str, claim: str):
         return None
     response = response.replace("Relevance:", "").strip()
     response = response.split("\n")
-    relevance = response[0].strip()
-    reasoning = response[1].replace("Reasoning:", "").strip()
     try:
+        relevance = response[0].strip()
+        reasoning = response[1].replace("Reasoning:", "").strip()
         assert(relevance in ["Yes", "No"])
         assert(len(reasoning) > 10)
     except:
         print("ERROR: Could not determine relevance")
         print(response)
-        return None
+        relevance = "No"
+        reasoning = "ERROR"
     return relevance, reasoning
 
 
@@ -289,6 +295,9 @@ def run_pipeline(politeness_data, baseline="vanilla"):
             llm_score=rating,
             llm_explanation=explanation
         ))
+    
+    for example in politeness_examples:
+        example.mse = (example.ground_truth - example.llm_score) ** 2
 
     for example in politeness_examples:
         claims = isolate_individual_features(example.llm_explanation)
@@ -318,12 +327,11 @@ def run_pipeline(politeness_data, baseline="vanilla"):
 
         
     data_to_save = [example.to_dict() for example in politeness_examples]
-    with open("../results/{}/politeness.json".format(baseline), 'w') as f:
+    with open("../results/{}/politeness_gpt-4o.json".format(baseline), 'w') as f:
         json.dump(data_to_save, f, indent=4)
 
 if __name__ == "__main__":
     politeness_data = load_politeness_data()
-    politeness_data = politeness_data.sample(1, random_state=11).reset_index(drop=True)
     run_pipeline(politeness_data, baseline="vanilla")
     run_pipeline(politeness_data, baseline="cot")
     run_pipeline(politeness_data, baseline="socratic")
