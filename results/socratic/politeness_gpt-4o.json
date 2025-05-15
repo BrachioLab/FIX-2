@@ -765,19 +765,16 @@
         ],
         "alignment_scores": [
             0.8,
-            0.0,
             0.8,
             0.7
         ],
         "alignment_categories": [
             "Avoidance of Profanity or Negative Emotion",
-            "Absence of Category-Specific Markers",
             "Bluntness and Direct Commands",
             "Bluntness and Direct Commands"
         ],
         "alignment_reasonings": [
             "The claim highlights the lack of terms conveying rudeness, which directly relates to the Avoidance of Profanity or Negative Emotion category. This category focuses on the presence or absence of negative or profane language as an indicator of politeness or rudeness. The alignment rating is high because the absence of such language aligns well with a politeness strategy, but not perfect since the claim emphasizes what is not present rather than what is.",
-            "The claim indicates a lack of specific politeness terms, which suggests that none of the defined expert categories are explicitly present in the description. As there is no category listed that addresses the absence of politeness markers, the claim doesn't align with any particular existing category. This results in an alignment rating of 0.0 because it doesn't fit under any of the described politeness strategies.",
             "The claim describes the utterance as a \"straightforward request,\" which suggests directness without additional politeness strategies such as softening or hedging. This aligns with the Bluntness and Direct Commands category, which is characterized by direct requests or commands that are perceived as less polite due to their lack of mitigation or modal verbs. The straightforward explanation aspect indicates directness in communication, further aligning with this category. The alignment rating is high because the focus on straightforwardness inherently suggests a lack of politeness strategies meant to soften or mitigate the request.",
             "The claim emphasizes the straightforward nature of the request and explanation, suggesting a simple and direct manner of communication. Although there is no mention of imperatives or harshness, the use of \"straightforward\" hints at a lack of additional polite softeners, which typically aligns with the Bluntness and Direct Commands category. However, the mention of a \"neutral tone\" suggests it is not overtly blunt or demanding, leading to a moderate alignment. Thus, while the claim doesn't fully align with bluntness, it conforms enough to merit a rating of 0.7."
         ],
@@ -1960,7 +1957,6 @@
             "The suggestions about what could be included reflect respect towards the topic."
         ],
         "alignment_scores": [
-            0.8,
             1.0,
             0.3,
             0.5,
@@ -1969,7 +1965,6 @@
             0.7
         ],
         "alignment_categories": [
-            "Acknowledgment of Fault or Agreement",
             "Softened Disagreement or Face-Saving Critique",
             "Discourse Management with Markers",
             "Hedging and Tentative Language",
@@ -1978,7 +1973,6 @@
             "Indirect and Modal Requests"
         ],
         "alignment_reasonings": [
-            "The claim focuses on an utterance that acknowledges a point made by someone else, ManuelGR in this case. This act of recognition can align with acknowledging a fault or agreement, as it involves admitting that another's point is valid. However, this specific category isn't directly listed as \"Acknowledgment,\" so I selected \"Acknowledgment of Fault or Agreement,\" which captures a similar essence of recognizing and validating another's input, albeit more broadly. The alignment isn't perfect, hence the rating of 0.8, since the act of recognition itself doesn't always indicate humility or rectification, which are associated with acknowledgement of fault.",
             "The claim explicitly mentions that the utterance expresses disagreement in a respectful manner. This closely aligns with the Softened Disagreement or Face-Saving Critique category, which involves using softeners or strategies that preserve the hearer's dignity when disagreeing. The purpose of this category is precisely to facilitate respectful disagreement, just as the claim specifies, resulting in a perfect alignment rating.",
             "The claim involves acknowledgment of disorganization, which weakly aligns with the use of discourse markers that help organize conversation flow. However, since the focus here is on acknowledging disorganization rather than actively using discourse management to improve coherence or politeness, the alignment is low. No other category fits well, as this claim is more about acknowledging a lack of organization rather than addressing face needs directly.",
             "The claim about adding another perspective of scarcity of information suggests that the speaker may be introducing uncertainty or lack of completeness regarding the information provided. This can relate to hedging or tentative language, which lowers assertion strength and makes the statement more negotiable. The category ties into how information scarcity might prompt a speaker to soften their claims or express them in a less assertive manner. However, the alignment is moderate rather than strong since the claim doesn't explicitly mention language or expressions typical of hedging, but rather implies a perspective shift that aligns with the broader concept of managing assertion strength and completeness.",
@@ -1986,7 +1980,7 @@
             "This claim indicates that the suggestions are made with consideration, implying an understanding or acknowledgement of the other person's needs or circumstances. This aligns somewhat with Empathy or Emotional Support, which involves recognizing and valuing the hearer's context. However, without additional context emphasizing emotional concern or support, the alignment is only moderate. The act of suggesting considerate inclusions hints at empathy but doesn't fully capture the depth of emotional support the category implies.",
             "The claim mentions \"suggestions about what could be included,\" which implies the use of modals like \"could\" to introduce ideas, aligning with strategies that offer input without imposing. This respects both the topic and the listener's autonomy in decision-making. While not a request, using modals in suggestions reflects indirectness and respect, key elements of this category. The alignment rating is moderate because the claim focuses on expressing respect through suggestion, highlighting indirectness, which is a core aspect of this category. However, since suggestions may not always involve modals or strong indirectness, the alignment is not perfect."
         ],
-        "final_alignment_score": 0.6571428571428573
+        "final_alignment_score": 0.5428571428571428
     },
     {
         "utterance": "Dened tambi\u00e9n son el nombre en clave de los nuevos nucleos de AMD para la nueva serie Phenom FX. Se espera q integren un sistema de tratamiento de la memoria y rindan sobre un 40% o 50% m\u00e1s q sus predecesores. Seguramente AMD vuelva a sus a\u00f1os de bonanza y supere a Intel, como ha hecho recientemente ATI son sus nuevas tarjetas.",

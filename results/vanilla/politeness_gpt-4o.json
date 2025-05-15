@@ -3945,7 +3945,6 @@
             0.4,
             0.4,
             0.8,
-            0.6,
             0.7,
             0.8,
             0.8,
@@ -3954,11 +3953,10 @@
             0.8
         ],
         "alignment_categories": [
-            "Hedging and Tentive Language",
+            "Hedging and Tentative Language",
             "Indirect and Modal Requests",
             "Second Person Responsibility or Engagement",
             "Avoidance of Profanity or Negative Emotion",
-            "Avoidance of Politeness Markers",
             "Avoidance of Profanity or Negative Emotion",
             "Questions as Indirect Strategies",
             "Questions as Indirect Strategies",
@@ -3971,7 +3969,6 @@
             "The claim focuses on addressing concern over the provision of an add-on link and its potential repercussions. Although this touches on decision-making and consideration of consequences, which can relate to indirectness or cautious communication strategies (often expressed through modal verbs or indirect requests), the alignment is not strong. This is because the claim does not explicitly mention the use of indirect or modal language as a politeness strategy but implies a careful approach that aligns partially with the Indirect and Modal Requests category. The link with this category is therefore present but weak, prompting a lower alignment rating.",
             "The claim implies that the utterance might cause a negative reaction from the listener, possibly due to a perceived attempt at persuasion or self-promotion, which could lead to backlash or suspicion. Although the claim involves interpreting the listener's reaction (backlash and suspicion of advertising), and these are often provoked by the speaker's engagement or perceived intentions, the direct link to Second Person Responsibility or Engagement is not strong. This category generally involves direct address or assigning responsibility, neither of which is explicitly mentioned in the claim. However, the essence of how the utterance may affect the listener's emotional or psychological response shares some relevance with this category, justifying a moderate but not strong alignment rating.",
             "The claim focuses on the absence of explicitly rude language, which aligns well with the category of Avoidance of Profanity or Negative Emotion. This category specifically concerns the presence of strong negative words or swearing, and their absence suggests a lack of rudeness or face threat. The alignment is strong because this category directly addresses the presence or absence of such language, which is central to the claim. However, the alignment is not absolute because not all politeness is dictated solely by the absence of rude language.",
-            "The claim highlights the absence of explicitly polite language, suggesting that the utterance lacks common markers of politeness such as courteous language, expressions of gratitude, or formal address. Although no specific category directly targets the lack of polite language, the claim is somewhat aligned with an implied absence of Courteous Politeness Markers, Honorifics, or similar strategies that signal politeness. The alignment rating is moderate because while the absence of these elements relates to politeness, no single category is designed explicitly to address their absence, resulting in only partial alignment.",
             "The claim focuses on the absence of explicitly rude (e.g., profanity or negative emotion) or polite language, resulting in a neutral statement. The category \"Avoidance of Profanity or Negative Emotion\" directly relates to identifying indicators of rudeness, such as strong negative words or swearing. While the claim encompasses both the absence of rude and polite language, it is more strongly tied to the avoidance of rudeness since a lack of negative emotion is more clearly committed to indicating a neutral tone. The high alignment rating reflects the relevance of this category due to the focus on the absence of negative constructs as a factor for a neutral disposition.",
             "The claim suggests that the use of \u201c\u55ce\u201d (a question particle in Chinese) indicates a rhetorical question, which aligns with the Questions as Indirect Strategies category. This category encompasses how asking questions, instead of making direct statements or demands, reduces imposition and invites rather than demands input. Although a rhetorical question may not always invite actual input like a typical question, its structure still utilizes the question format. This indirectness aligns well with the category, though the rhetorical nature of the question slightly reduces the potential for engagement, as rhetorical questions often imply the answer, leading to a strong but not perfect alignment.",
             "The claim focuses on the use of a rhetorical question, which aligns with the \"Questions as Indirect Strategies\" category. Rhetorical questions are often used to present concerns or points indirectly, reducing imposition by inviting the listener to consider the issue rather than making a direct statement. This strategy typically softens the impact of the utterance, which directly relates to the politeness aspect of addressing a concern gently. The alignment is strong, as rhetorical questions are quite effective for indirect communication, but not perfect because rhetorical questions can sometimes also imply sarcasm or criticism, depending on context.",
@@ -3979,7 +3976,7 @@
             "The claim states that the statement lacks polite expressions. This shows a deficiency in markers that are usually present to maintain or enhance politeness. The category \"Avoidance of Profanity or Negative Emotion\" relates to how the absence of offensive language or negativity is crucial for maintaining politeness, though the claim doesn't imply the presence of rudeness or profanity itself. The alignment is moderate because while the absence of negative expressions is one aspect of politeness, the lack of positive politeness expressions in this case suggests an overall neutral tone rather than overt rudeness. Therefore, the category partially overlaps with the lack of positive polite expressions, warranting a moderate alignment.",
             "The claim focuses on the lack of pleasantries or polite expressions, which are typically characterized by words such as \u201cplease\u201d or \u201ckindly.\u201d These markers are central to the Courteous Politeness Markers category, as they soften requests and indicate polite intent. The absence of such language is assessed in terms of how it impacts perceived politeness, thus aligning well with this category. The alignment rating is high but not perfect since other categories, like Greeting and Interaction Initiation or Gratitude Expressions, could also relate to politeness through different types of polite expressions, though they are less directly relevant here."
         ],
-        "final_alignment_score": 0.6545454545454545
+        "final_alignment_score": 0.6000000000000001
     },
     {
         "utterance": "\u8bfa\u4f2f\u7279\u00b7\u7ef4\u7eb3\u5bf9\u4fe1\u606f\u7684\u8457\u540d\u5b9a\u4e49\uff1a\u201c\u4fe1\u606f\u5c31\u662f\u4fe1\u606f\uff0c\u4e0d\u662f\u7269\u8d28\u4e5f\u4e0d\u662f\u80fd\u91cf\u3002 \u4e0d\u627f\u8ba4\u8fd9\u4e00\u70b9\u7684\u552f\u7269\u8bba\uff0c\u5728\u4eca\u5929\u5c31\u4e0d\u80fd\u5b58\u5728\u4e0b\u53bb\u3002",

@@ -6,6 +6,7 @@ from openai import OpenAI
 import time
 from tqdm import tqdm
 import json
+from fuzzywuzzy import fuzz
 
 from prompts.claim_decomposition import decomposition_emotion
 from prompts.relevance_filtering import relevance_emotion
@@ -19,6 +20,26 @@ prompt_dict = {"vanilla": vanilla_baseline,
                "cot": cot_baseline,
                "socratic": socratic_baseline,
                "subq": least_to_most_baseline}
+categories_list = [
+    "Valence",
+    "Arousal",
+    "Emotion Words & Emojis",
+    "Expressive Punctuation",
+    "Humor/Laughter Markers",
+    "Confusion Phrases",
+    "Curiosity Questions",
+    "Surprise Exclamations",
+    "Threat/Worry Language",
+    "Loss or Let-Down Words",
+    "Other-Blame Statements",
+    "Self-Blame & Apologies",
+    "Aversion Terms",
+    "Praise & Compliments",
+    "Gratitude Expressions",
+    "Affection & Care Words",
+    "Self-Credit Statements",
+    "Relief Indicators"
+]
 
 emotion_labels = {
     0: "admiration",
@@ -184,15 +205,20 @@ def calculate_expert_alignment_score(claim: str):
     response = response.replace("Category:", "").strip()
     response = response.split("\n")
     response = [r for r in response if r.strip() != ""]
-    category = response[0].strip()
+    category = response[0].strip().replace("‑", "-")
     alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
     reasoning = response[2].replace("Reasoning:", "").strip()
     try:
         alignment_score = float(alignment_score)
         assert(len(category) > 5)
+        for c in categories_list:
+            if fuzz.ratio(c.lower(), category.lower()) > 90:
+                category = c
+                break
+        if(category not in categories_list): category = None
         assert(len(reasoning) > 10)
     except:
-        print("ERROR: Could not convert alignment score to float")
+        print("ERROR: Issue with alignment score parsing")
         print(response)
         alignment_score = 0.0
     return category, alignment_score, reasoning

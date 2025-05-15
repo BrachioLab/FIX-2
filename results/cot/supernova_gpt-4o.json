@@ -32,13 +32,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            3,
+            3,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9000000000000001,
@@ -76,12 +76,12 @@
             0.5
         ],
         "alignment_category": [
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            4,
+            4,
+            2,
+            4,
+            7,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.75,
@@ -122,13 +122,13 @@
             0.7
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
+            3,
+            2,
+            7,
+            2,
+            6,
+            6,
+            6
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8142857142857144,
@@ -174,15 +174,15 @@
             1.0
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
+            3,
+            2,
+            2,
+            2,
+            2,
+            4,
+            7,
+            7,
+            4
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7555555555555556,
@@ -225,14 +225,14 @@
             0.7
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
+            2,
+            7,
+            2,
+            7,
+            7,
+            2,
+            2,
+            3
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9125,
@@ -280,16 +280,16 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            7,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8600000000000001,
@@ -328,13 +328,13 @@
             0.5
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Contiguous non-zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
+            3,
+            6,
+            1,
+            3,
+            6,
+            4,
+            1
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6428571428571429,
@@ -377,14 +377,14 @@
             0.9
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise-and-decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            2,
+            3,
+            2,
+            2,
+            7,
+            6,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.775,
@@ -421,12 +421,12 @@
             0.9
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            2,
+            2,
+            3,
+            7,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8166666666666668,
@@ -467,13 +467,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8571428571428573,
@@ -512,12 +512,12 @@
             0.7
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short-lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
+            3,
+            2,
+            4,
+            7,
+            3,
+            4
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7166666666666667,
@@ -552,10 +552,10 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
+            5,
+            5,
+            3,
+            4
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.875,
@@ -601,15 +601,15 @@
             0.7
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
+            2,
+            2,
+            2,
+            1,
+            6,
+            3,
+            3,
+            5,
+            3
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7555555555555555,
@@ -650,13 +650,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8857142857142858,
@@ -693,12 +693,12 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9,
@@ -740,14 +740,14 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            7,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8,
@@ -785,12 +785,12 @@
             0.7
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            1,
+            3,
+            1,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.75,
@@ -820,9 +820,9 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9333333333333332,
@@ -857,11 +857,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9200000000000002,
@@ -898,12 +898,12 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            4,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9333333333333332,
@@ -945,14 +945,14 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude- and phase-ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one-off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            7,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.875,
@@ -989,12 +989,12 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9333333333333335,
@@ -1030,11 +1030,11 @@
             0.4
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            5,
+            5,
+            5,
+            5,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7599999999999999,
@@ -1072,12 +1072,12 @@
             1.0
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise-and-decline rates\u2014such as the fast-rise/slow-fade morphology of many supernovae\u2014encode energy-release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            3,
+            2,
+            2,
+            2,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9666666666666667,
@@ -1115,12 +1115,12 @@
             0.9
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
+            3,
+            2,
+            7,
+            2,
+            6,
+            6
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8666666666666668,
@@ -1160,13 +1160,13 @@
             0.8
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            7,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8285714285714285,
@@ -1208,14 +1208,14 @@
             0.9
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            3,
+            2,
+            2,
+            3,
+            6,
+            6,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7875,
@@ -1247,10 +1247,10 @@
             1.0
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            2,
+            2,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 1.0,
@@ -1288,12 +1288,12 @@
             0.7
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
+            1,
+            1,
+            3,
+            1,
+            5,
+            3
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6833333333333335,
@@ -1334,13 +1334,13 @@
             0.9
         ],
         "alignment_category": [
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            7,
+            2,
+            3,
+            6,
+            3,
+            7,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8,
@@ -1379,12 +1379,12 @@
             0.5
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            2,
+            7,
+            2,
+            3,
+            2,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8333333333333334,
@@ -1423,13 +1423,13 @@
             0.9
         ],
         "alignment_category": [
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak-to-trough photometric amplitude separates high-energy explosive events (multi-magnitude outbursts) from low-amplitude periodic or stochastic variables.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            7,
+            3,
+            null,
+            6,
+            1,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6571428571428571,
@@ -1465,11 +1465,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8400000000000001,
@@ -1502,11 +1502,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            7,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.74,
@@ -1545,13 +1545,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8,
@@ -1601,16 +1601,16 @@
             0.8
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            7,
+            5,
+            6,
+            6,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.78,
@@ -1645,11 +1645,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one-off transients."
+            5,
+            7,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8400000000000001,
@@ -1694,14 +1694,14 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            7,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8500000000000001,
@@ -1738,12 +1738,12 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            7,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8500000000000001,
@@ -1779,12 +1779,12 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9333333333333332,
@@ -1817,10 +1817,10 @@
             0.9
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
+            2,
+            2,
+            2,
+            6
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.95,
@@ -1855,11 +1855,11 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9199999999999999,
@@ -1898,12 +1898,12 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            7,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8833333333333333,
@@ -1938,11 +1938,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8600000000000001,
@@ -1979,12 +1979,12 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            7,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8166666666666665,
@@ -2030,15 +2030,15 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            3,
+            5,
+            7,
+            7,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.788888888888889,
@@ -2078,13 +2078,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            7,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8571428571428573,
@@ -2120,11 +2120,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8800000000000001,
@@ -2167,13 +2167,13 @@
             0.6
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
+            2,
+            3,
+            6,
+            5,
+            2,
+            7,
+            1
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7,
@@ -2207,11 +2207,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9,
@@ -2245,11 +2245,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.86,
@@ -2287,12 +2287,12 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            2,
+            5,
+            5,
+            3,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8000000000000002,
@@ -2334,13 +2334,13 @@
             0.9
         ],
         "alignment_category": [
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            7,
+            3,
+            1,
+            3,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6714285714285715,
@@ -2381,13 +2381,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            7,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7714285714285715,
@@ -2425,11 +2425,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II-P, SN II-L, and related classes.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
+            5,
+            5,
+            7,
+            3,
+            4
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7999999999999999,
@@ -2466,12 +2466,12 @@
             0.9
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            1,
+            1,
+            4,
+            7,
+            7,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6666666666666666,
@@ -2502,9 +2502,9 @@
             0.5
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
+            3,
+            7,
+            1
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6333333333333333,
@@ -2544,13 +2544,13 @@
             0.9
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Contiguous non-zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
+            1,
+            1,
+            5,
+            3,
+            1,
+            7,
+            3
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7000000000000001,
@@ -2588,12 +2588,12 @@
             0.5
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            3,
+            3,
+            1,
+            2,
+            3,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6166666666666667,
@@ -2634,13 +2634,13 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8714285714285713,
@@ -2677,12 +2677,12 @@
             0.9
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            2,
+            2,
+            3,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9333333333333335,
@@ -2727,14 +2727,14 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            7,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.825,
@@ -2770,12 +2770,12 @@
             0.5
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
+            3,
+            3,
+            1,
+            7,
+            4,
+            1
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6666666666666666,
@@ -2811,11 +2811,11 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9199999999999999,
@@ -2852,12 +2852,12 @@
             0.5
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short-lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            1,
+            5,
+            7,
+            4,
+            4,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6999999999999998,
@@ -2899,13 +2899,13 @@
             0.2
         ],
         "alignment_category": [
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            4,
+            2,
+            4,
+            1,
+            3,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.5571428571428572,
@@ -2940,11 +2940,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8800000000000001,
@@ -2981,12 +2981,12 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            7,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8500000000000001,
@@ -3032,15 +3032,15 @@
             0.5
         ],
         "alignment_category": [
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            4,
+            3,
+            3,
+            4,
+            4,
+            4,
+            1,
+            3,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7666666666666667,
@@ -3082,14 +3082,14 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8,
@@ -3129,12 +3129,12 @@
             0.7
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
+            1,
+            5,
+            7,
+            3,
+            3,
+            3
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6,
@@ -3165,10 +3165,10 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.95,
@@ -3207,13 +3207,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            7,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9,
@@ -3223,7 +3223,7 @@
         "input": "supernova_9_6.png",
         "answer": 9,
         "llm_answer": "Eclipsing binary (EB)",
-        "llm_explanation": "The time series shows periodic dips in flux, which are characteristic of an eclipsing binary system. These systems feature two stars orbiting each other, causing regular decreases in brightness when one star passes in front of the other. The multiple observations at different wavelengths, shown by the varied colors, indicate consistent behavior across the spectrum\u2014common in such binaries. The overall pattern of symmetric, periodic changes supports this classification.",
+        "llm_explanation": "The time series shows periodic dips in flux, which are characteristic of an eclipsing binary system. These systems feature two stars orbiting each other, causing regular decreases in brightness when one star passes in front of the other. The multiple observations at different wavelengths, shown by the varied colors, indicate consistent behavior across the spectrum—common in such binaries. The overall pattern of symmetric, periodic changes supports this classification.",
         "claims": [
             "The time series shows periodic dips in flux.",
             "Periodic dips in flux are characteristic of an eclipsing binary system.",
@@ -3251,12 +3251,12 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            7,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8833333333333333,
@@ -3303,15 +3303,15 @@
             0.4
         ],
         "alignment_category": [
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak-to-trough photometric amplitude separates high-energy explosive events (multi-magnitude outbursts) from low-amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            7,
+            7,
+            3,
+            null,
+            5,
+            5,
+            5,
+            4,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6666666666666666,
@@ -3345,11 +3345,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9400000000000001,
@@ -3387,11 +3387,11 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9199999999999999,
@@ -3433,14 +3433,14 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            7,
+            5,
+            5,
+            5,
+            5,
+            7,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8374999999999999,
@@ -3480,12 +3480,12 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8833333333333334,
@@ -3526,13 +3526,13 @@
             0.7
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Peak-to-trough photometric amplitude separates high-energy explosive events (multi-magnitude outbursts) from low-amplitude periodic or stochastic variables.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
+            1,
+            3,
+            4,
+            4,
+            null,
+            1,
+            4
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.5999999999999999,
@@ -3569,12 +3569,12 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2013 and phase\u2013ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8166666666666668,
@@ -3608,11 +3608,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            3,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8400000000000001,
@@ -3647,11 +3647,11 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
+            5,
+            5,
+            5,
+            5,
+            4
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8399999999999999,
@@ -3686,10 +3686,10 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.85,
@@ -3722,11 +3722,11 @@
             0.9
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            2,
+            7,
+            7,
+            7,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7999999999999999,
@@ -3764,12 +3764,12 @@
             0.7
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Filter-specific secondary maxima or shoulders in red/near-IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core-collapse SNe.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
+            3,
+            3,
+            3,
+            null,
+            4,
+            1
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7333333333333333,
@@ -3810,13 +3810,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables."
+            5,
+            2,
+            5,
+            5,
+            1,
+            5,
+            3
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8142857142857144,
@@ -3857,13 +3857,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            5,
+            5,
+            5,
+            5,
+            2,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8428571428571429,
@@ -3904,13 +3904,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            5,
+            5,
+            5,
+            5,
+            2,
+            2,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8428571428571429,
@@ -3946,11 +3946,11 @@
             1.0
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Filter-specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core-collapse SNe.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators."
+            2,
+            3,
+            7,
+            null,
+            2
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8399999999999999,
@@ -3997,15 +3997,15 @@
             0.5
         ],
         "alignment_category": [
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted."
+            1,
+            5,
+            5,
+            1,
+            5,
+            5,
+            6,
+            2,
+            1
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6000000000000001,
@@ -4045,13 +4045,13 @@
             1.0
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases."
+            5,
+            5,
+            6,
+            1,
+            5,
+            5,
+            4
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6285714285714287,
@@ -4091,13 +4091,13 @@
             0.5
         ],
         "alignment_category": [
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            4,
+            4,
+            5,
+            5,
+            1,
+            6,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.6857142857142858,
@@ -4133,11 +4133,11 @@
             0.7
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            3,
+            3,
+            3,
+            4,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.72,
@@ -4177,13 +4177,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8571428571428573,
@@ -4224,13 +4224,13 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8857142857142859,
@@ -4278,16 +4278,16 @@
             0.6
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8,
@@ -4324,12 +4324,12 @@
             0.8
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            2,
+            2,
+            2,
+            7,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8333333333333331,
@@ -4361,9 +4361,9 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9333333333333332,
@@ -4398,11 +4398,11 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.9400000000000001,
@@ -4441,13 +4441,13 @@
             0.9
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
+            2,
+            7,
+            2,
+            3,
+            6,
+            2,
+            6
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8714285714285716,
@@ -4483,12 +4483,12 @@
             0.9
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            7,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7666666666666666,
@@ -4527,13 +4527,13 @@
             0.5
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
+            2,
+            2,
+            2,
+            7,
+            6,
+            2,
+            6
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8571428571428571,
@@ -4573,13 +4573,13 @@
             0.7
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients."
+            5,
+            5,
+            5,
+            5,
+            5,
+            7,
+            5
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8285714285714286,
@@ -4621,14 +4621,14 @@
             0.7
         ],
         "alignment_category": [
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Contiguous non\u2011zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
+            3,
+            7,
+            2,
+            6,
+            1,
+            6,
+            2,
+            6
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.75,
@@ -4663,11 +4663,11 @@
             0.5
         ],
         "alignment_category": [
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Periodic light curves with stable periods and distinctive Fourier amplitude\u2011 and phase\u2011ratios (e.g., \u03c621, \u03c631) flag pulsators and eclipsing binaries rather than one\u2011off transients.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN\u202fII\u2011P, SN\u202fII\u2011L, and related classes."
+            5,
+            5,
+            5,
+            5,
+            7
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.8400000000000001,
@@ -4709,14 +4709,14 @@
             0.9
         ],
         "alignment_category": [
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Characteristic rise\u2011and\u2011decline rates\u2014such as the fast\u2011rise/slow\u2011fade morphology of many supernovae\u2014encode energy\u2011release physics and serve as strong class discriminators.",
-            "Peak\u2011to\u2011trough photometric amplitude separates high\u2011energy explosive events (multi\u2011magnitude outbursts) from low\u2011amplitude periodic or stochastic variables.",
-            "Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II-P, SN II-L, and related classes.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe Ia\u2014are morphological features absent in most core\u2011collapse SNe.",
-            "Total event duration, measured from first detection to return to baseline, distinguishes short\u2011lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.",
-            "Filter\u2011specific secondary maxima or shoulders in red/near\u2011IR bands\u2014prominent in SNe\u202fIa\u2014are morphological features absent in most core\u2011collapse SNe."
+            2,
+            2,
+            2,
+            3,
+            7,
+            6,
+            4,
+            6
         ],
         "alignment_reasonings": [],
         "final_alignment_score": 0.7875,

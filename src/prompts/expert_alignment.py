@@ -136,6 +136,35 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
+alignment_cholec_mapping = {
+    'name2id': {
+        "Calot's triangle cleared": 1,
+        'Cystic plate exposed': 2,
+        'Only two structures visible': 3,
+        'Above the R4U line': 4,
+        'Safe distance from common bile duct': 5,
+        'Infundibulum start point': 6,
+        'Subserosal plane stay': 7,
+        'Cystic lymph node guide': 8,
+        'No division without ID': 9,
+        'Inflammation bailout': 10,
+        'Aberrant artery caution': 11,
+    },
+    'id2name': {
+        1: "Calot's triangle cleared",
+        2: 'Cystic plate exposed',
+        3: 'Only two structures visible',
+        4: 'Above the R4U line',
+        5: 'Safe distance from common bile duct',
+        6: 'Infundibulum start point',
+        7: 'Subserosal plane stay',
+        8: 'Cystic lymph node guide',
+        9: 'No division without ID',
+        10: 'Inflammation bailout',
+        11: 'Aberrant artery caution',
+    }
+}
+
 alignment_massmaps = """You will be given a single claim that relates to why a prediction was given to a mass map. You will also be given a series of categories that an expert cosmologist would use to perform this type of cosmological parameter prediction.
 
 Your task is as follows:
@@ -189,6 +218,25 @@ Reasoning: There is no category saying that when the distribution is balanced, w
 Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
+
+alignment_massmaps_mapping = {
+    'name2id': {
+        'Lensing Peak (Cluster) Abundance': 1,
+        'Void Size and Frequency': 2,
+        'Filament Thickness and Sharpness': 3,
+        'Fine-Scale Clumpiness': 4,
+        'Connectivity of the Cosmic Web': 5,
+        'Density Contrast Extremes': 6,
+    },
+    'id2name': {
+        1: 'Lensing Peak (Cluster) Abundance',
+        2: 'Void Size and Frequency',
+        3: 'Filament Thickness and Sharpness',
+        4: 'Fine-Scale Clumpiness',
+        5: 'Connectivity of the Cosmic Web',
+        6: 'Density Contrast Extremes',
+    }
+}
 
 alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.
 
@@ -271,38 +319,58 @@ Expert astrophysical categories:
 Here are some examples:
 [Example 1]
 Claim: Observations are recorded at various wavelength overtime.
-Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category ID: 7
 Category Alignment Rating: 
 Score: 0
 Reasoning: This is a general data format description rather than a discriminative feature. While it relates tangentially to Multi-wavelength Observability, it lacks any mention of spectral variation or joint analysis, and doesn't aid in distinguishing classes.
 
 [Example 2]
 Claim: Consistent and distinct peaks are observed in value data at specific wavelength.
-Category: Periodic light curves with stable periods and distinctive Fourier amplitude‑ and phase‑ratios (e.g., φ21, φ31) flag pulsators and eclipsing binaries rather than one‑off transients.
+Category ID: 5
 Category Alignment Rating: 0.6
 Reasoning: The mention of consistent and distinct peaks hints at periodic behavior, potentially corresponding to pulsators or binaries. However, the claim doesn’t mention periods or Fourier components explicitly, so the match is partial.
 
 [Example 3]
 Claim: Variations in intensity over time are typical of the lightcurve evolution of a supernova.
-Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category ID: 7
 Category Alignment Rating: 0.7
 Reasoning: The claim refers to general light curve behavior, which aligns with the concept of smooth, evolving flux. It supports class differentiation but is too vague to tie to a specific morphological trend or SN type, hence not a perfect match.
 
 [Example 4]
 Claim: The flux value has a rapid increase and gradual decrease.
-Category: Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.
+Category ID: 2
 Category Alignment Rating: 1.0
 Reasoning: This is a direct description of the fast-rise/slow-decline morphology mentioned in the expert criteria. It is a classic feature of many supernovae and maps perfectly to this category.
 
 [Example 5]
 Claim: Significant fluctuations and peaks in the data can be inferred as part of the light curve of a Type II supernova.
-Category: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Category ID: 7
 Category Alignment Rating: 0.8
 Reasoning: Type II SNe, especially SN II-P and SN II-L, are characterized by distinct plateau or linear decline phases. The claim’s wording aligns with the idea of significant, structured flux evolution but lacks specifics (e.g., plateau shape), so the alignment is strong but not perfect.
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
+alignment_supernova_mapping = {
+    'name2id': {
+        'Contiguous non-zero flux': 1,
+        'Rise–decline rates': 2,
+        'Photometric amplitude': 3,
+        'Event duration': 4,
+        'Periodic light curves': 5,
+        'Secondary maxima': 6,
+        'Monotonic flux trends': 7,
+    },
+    'id2name': {
+        1: 'Contiguous non-zero flux',
+        2: 'Rise–decline rates',
+        3: 'Photometric amplitude',
+        4: 'Event duration',
+        5: 'Periodic light curves',
+        6: 'Secondary maxima',
+        7: 'Monotonic flux trends',
+    }
+}
 
 alignment_sepsis = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of sepsis within the next 12 hours (Yes/No). You will also be given a series of categories that an expert clinician would use to perform this type of sepsis prediction.
 
@@ -317,52 +385,77 @@ Reasoning: <A brief explanation of why you selected the chosen category and why 
 
 -----
 Expert sepsis categories:
-1. Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
-2. Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
-3. A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
-4. A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.
-5. Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.
-6. Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.
-7. Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
-8. An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
-9. Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
+1. Elderly Susceptibility (Age ≥65 years): Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+2. SIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+3. High qSOFA Score (≥2): A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
+4. Elevated NEWS Score (≥5 points): A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.
+5. Elevated Serum Lactate (≥2 mmol/L): Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.
+6. Elevated Shock Index (≥1.0): Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.
+7. Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop): Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
+8. SOFA Score Increase (≥2 points): An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
+9. Early Antibiotic/Culture Orders (within 2 hours): Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
 
 -----
 
 Here are some examples:
 [Example 1]
 Claim: The patient is 86 years old. 
-Category: Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+Category ID: 1
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age (≥ 65), which this category identifies as a strong sepsis risk factor—perfect alignment.
 
 [Example 2]
 Claim: The patient's temperature is 99.6°F, close to the fever threshold.
-Category: Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+Category ID: 2
 Category Alignment Rating: 0.4
 Reasoning: The temperature is close to the SIRS threshold (>38°C), which makes it marginally relevant. It hints at possible early sepsis, but does not meet the SIRS criterion.
 
 [Example 3]
 Claim: The patient's pulse oximetry is 92%, indicating possible hypoxia.
-Category: An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.
+Category ID: 8
 Category Alignment Rating: 0.6
 Reasoning: Pulse oximetry isn’t directly a SOFA measure, but hypoxia relates conceptually to impaired oxygenation (PaO₂/FiO₂). The alignment is indirect but meaningful.
 
 [Example 4]
 Claim: An elevated white blood cell count suggests an inflammatory or infectious process.
-Category: Presence of ≥ 2 SIRS criteria
+Category ID: 2
 Category Alignment Rating: 1.0
 Reasoning: Elevated WBC is explicitly listed under SIRS criteria, which are used to identify systemic inflammation in early sepsis.
 
 [Example 5]
 Claim: The patient's condition warrants close monitoring and further investigation for infection.
-Category: Administration of broad‑spectrum antibiotics or drawing of blood cultures…
+Category ID: 9
 Category Alignment Rating: 0.5
 Reasoning: While this reflects suspicion of infection, it lacks concrete clinical action (like antibiotic administration or culture draws). 
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
+
+alignment_sepsis_mapping = {
+    'name2id': {
+        'Elderly Susceptibility (Age ≥65 years)': 1,
+        'SIRS Positivity (≥2 Criteria)': 2,
+        'High qSOFA Score (≥2)': 3,
+        'Elevated NEWS Score (≥5 points)': 4,
+        'Elevated Serum Lactate (≥2 mmol/L)': 5,
+        'Elevated Shock Index (≥1.0)': 6,
+        'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)': 7,
+        'SOFA Score Increase (≥2 points)': 8,
+        'Early Antibiotic/Culture Orders (within 2 hours)': 9,
+    },
+    'id2name': {
+        1: 'Elderly Susceptibility (Age ≥65 years)',
+        2: 'SIRS Positivity (≥2 Criteria)',
+        3: 'High qSOFA Score (≥2)',
+        4: 'Elevated NEWS Score (≥5 points)',
+        5: 'Elevated Serum Lactate (≥2 mmol/L)',
+        6: 'Elevated Shock Index (≥1.0)',
+        7: 'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)',
+        8: 'SOFA Score Increase (≥2 points)',
+        9: 'Early Antibiotic/Culture Orders (within 2 hours)',
+    }
+}
 
 
 alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform determine if there is high risk of imminent cardiac arrest.
@@ -424,3 +517,30 @@ Reasoning: The claim highlights the absence of underlying cardiac disease, which
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
+
+alignment_cardiac_mapping = {
+    'name2id': {
+        'Ventricular Tachyarrhythmias': 1,
+        'Ventricular Ectopy / NSVT': 2,
+        'Bradycardia or Heart-Rate Drop': 3,
+        'QRS Widening (Conduction Delay)': 4,
+        'Dynamic ST-Segment Changes': 5,
+        'Severe Hyperkalemia Signs': 6,
+        'Advanced Age': 7,
+        'Male Sex': 8,
+        'Underlying Cardiac Disease': 9,
+        'Critical Illness (Sepsis/Shock)': 10    
+    },
+    'id2name': {
+        1: 'Ventricular Tachyarrhythmias',
+        2: 'Ventricular Ectopy / NSVT',
+        3: 'Bradycardia or Heart-Rate Drop',
+        4: 'QRS Widening (Conduction Delay))',
+        5: 'Dynamic ST-Segment Changes',
+        6: 'Severe Hyperkalemia Signs',
+        7: 'Advanced Age',
+        8: 'Male Sex',
+        9: 'Underlying Cardiac Disease',
+        10: 'Critical Illness (Sepsis/Shock)'
+    }
+}
