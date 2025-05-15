@@ -190,6 +190,25 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
+alignment_massmaps_mapping = {
+    'name2id': {
+        'Lensing Peak (Cluster) Abundance': 1,
+        'Void Size and Frequency': 2,
+        'Filament Thickness and Sharpness': 3,
+        'Fine-Scale Clumpiness': 4,
+        'Connectivity of the Cosmic Web': 5,
+        'Density Contrast Extremes': 6,
+    },
+    'id2name': {
+        1: 'Lensing Peak (Cluster) Abundance',
+        2: 'Void Size and Frequency',
+        3: 'Filament Thickness and Sharpness',
+        4: 'Fine-Scale Clumpiness',
+        5: 'Connectivity of the Cosmic Web',
+        6: 'Density Contrast Extremes',
+    }
+}
+
 alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.
 
 Your task is as follows:
