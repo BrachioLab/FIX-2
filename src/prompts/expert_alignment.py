@@ -457,6 +457,7 @@ alignment_sepsis_mapping = {
     }
 }
 
+
 alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform determine if there is high risk of imminent cardiac arrest.
 
 Your task is as follows:
@@ -464,7 +465,7 @@ Your task is as follows:
 2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
 
 Return your answer as:
-Category: <category>
+Category ID: <category ID>
 Category Alignment Rating: <rating>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
@@ -485,34 +486,61 @@ Expert categories:
 Here are some examples:
 [Example 1]
 Claim: A skin lesion of the scalp is a condition not directly related to cardiac function.
-Category: Critical Illness (Sepsis/Shock)
+Category ID: 10
 Category Alignment Rating: 0.2
 Reasoning: While a scalp lesion is not directly cardiac-related, if interpreted as a possible sign of infection or systemic compromise (e.g., an infected wound in a septic patient), it could weakly align with the critical illness category. However, without explicit signs of sepsis or shock, the connection remains speculative, hence the low alignment rating.
 
 [Example 2]
 Claim: The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.
-Category: Ventricular Tachyarrhythmias
+Category ID: 1
 Category Alignment Rating: 0.9
 Reasoning: The claim directly references dangerous arrhythmias such as ventricular tachycardia and fibrillation, which are hallmark indicators of the Extreme Tachyarrhythmias category. These arrhythmias are known precursors to sudden cardiac arrest. While the claim does not specify the duration or ventricular dysfunction context, the alignment is still very strong due to the mention of the precise arrhythmias characteristic of this category.
 
 [Example 3]
 Claim: The ECG irregularities are suggested by inconsistent waveform intervals and amplitudes.
-Category: Ventricular Ectopy / NSVT
+Category ID: 2
 Category Alignment Rating: 0.6
 Reasoning: The claim points to ECG irregularities—specifically inconsistent waveform intervals and amplitudes—which can reflect transient abnormal ventricular rhythms such as NSVT or frequent PVCs. These patterns often manifest with variable intervals and amplitudes but are nonspecific. While the claim lacks precision, it aligns moderately with ventricular ectopy as a potential explanation for instability.
 
 [Example 4]
 Claim: The patient is 86 years old. 
-Category: Advanced Age
+Category ID: 7
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age, which this category identifies as a major risk factor for cardiac arrest.
 
 [Example 5]
 Claim: The admission wasn't due to cardiac issues.
-Category: Underlying Cardiac Disease
+Category ID: 9
 Category Alignment Rating: 0.5
 Reasoning: The claim highlights the absence of underlying cardiac disease, which is the inverse of a known risk factor for cardiac arrest. While the expert category focuses on increased risk due to the presence of cardiac disease, this claim indirectly relates to it by implying a potentially lower risk. The alignment is moderate because the claim addresses the category by exclusion rather than direct evidence of risk.
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
+
+alignment_cardiac_mapping = {
+    'name2id': {
+        'Ventricular Tachyarrhythmias': 1,
+        'Ventricular Ectopy / NSVT': 2,
+        'Bradycardia or Heart-Rate Drop': 3,
+        'QRS Widening (Conduction Delay)': 4,
+        'Dynamic ST-Segment Changes': 5,
+        'Severe Hyperkalemia Signs': 6,
+        'Advanced Age': 7,
+        'Male Sex': 8,
+        'Underlying Cardiac Disease': 9,
+        'Critical Illness (Sepsis/Shock)': 10    
+    },
+    'id2name': {
+        1: 'Ventricular Tachyarrhythmias',
+        2: 'Ventricular Ectopy / NSVT',
+        3: 'Bradycardia or Heart-Rate Drop',
+        4: 'QRS Widening (Conduction Delay))',
+        5: 'Dynamic ST-Segment Changes',
+        6: 'Severe Hyperkalemia Signs',
+        7: 'Advanced Age',
+        8: 'Male Sex',
+        9: 'Underlying Cardiac Disease',
+        10: 'Critical Illness (Sepsis/Shock)'
+    }
+}
