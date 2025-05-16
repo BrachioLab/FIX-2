@@ -1,0 +1,61 @@
+Three bits of information (lean on conservative)
+* Included / Excluded
+* Input-specific / General (IS/IG). IG: Gallbladder is usually safe to cut.
+* Task-specific / Genral (TS/TG). TG: You should not cut in the gallbladder.
+* Factually true / factually false / Factually maybe (T/F/M)
+
+
+NOTE: some combinations are borderline, or may be impossible to exist in our datasets.
+SOme examples may appear absurd (... because they are!)
+
+
+## Included:
+
+Input-specific / Task-specific / Factually true: 1.0    // "The gallbladder is in the upper right region"
+Input-specific / Task-specific / Factually false: 0.0   // "Omega-m is low here" (actually high)
+Input-specific / Task-specific / Factually maybe: 0.5   // "Omega-m is moderate here" (actually high)
+
+Input-specific / Task-general / Factually true: 0.0     // "You should cut in the safe region"
+Input-specific / Task-general / Factually false: 0.0    // "You should cut in the unsafe region"
+Input-specific / Task-general / Factually maybe: 0.0    // "The AMBIGIOUS AREA is safe to cut in" (sometimes true, sometimes false)
+
+Input-general / Task-specific / Factually true: 0.0     // "Massmap images are typically shown in blue/gray/red/yellow"
+Input-general / Task-specific / Factually false: 0.0    // "Massmap images typically have a lot of brown"
+Input-general / Task-specific / Factually maybe: 0.0    // "Massmap images tend to have darker shades of color"
+
+Input-general / Task-general / Factually true: 0.0      // "Cholec dissection images fed to ML models usually have gallbaldders present"
+Input-general / Task-general / Factually false: 0.0     // "Cholec dissection images fed to ML models usually have heart visible"
+Input-general / Task-general / Factually maybe: 0.0     // "Massmap images contain voids" (this might not be true sometimes)
+
+
+## Excluded (these are flipped from the Included block)
+
+Input-specific / Task-specific / Factually true: 0.0    // ... same as above
+Input-specific / Task-specific / Factually false: 1.0
+Input-specific / Task-specific / Factually maybe: 0.5
+
+Input-specific / Task-general / Factually true: 1.0
+Input-specific / Task-general / Factually false: 1.0
+Input-specific / Task-general / Factually maybe: 1.0
+
+Input-general / Task-specific / Factually true: 1.0
+Input-general / Task-specific / Factually false: 1.0
+Input-general / Task-specific / Factually maybe: 1.0
+
+Input-general / Task-general / Factually true: 1.0
+Input-general / Task-general / Factually false: 1.0
+Input-general / Task-general / Factually maybe: 1.0
+
+
+
+
+Exact cases: 0.0 / 1.0
+Included + Factually True + Expert-relevant: 1.0    ("The gallbaldder is in the upper-left corner")
+Included + Factually True + General knowledge: 0.0  ("You should cut in the safe region")
+Included + Factuall False + Expert-relevant: 0.0    ("The gallbaldder [which isn't visible] is in the upper-right")
+Included + Factually False + General knowledge: 0.0  (hallucination + incorrect filtering, "The ")
+Excluded + 
+
+
+Vague cases (things that make you go hmm for >5 seconds; primarily have to do with factuality):
+Included + Factually half-true + Expert-relevant: 0.5 ("The XXX value is moderate-to-high", [true answer: high]). ("This region is safe for dissection", actual answer: not very clear, but not untrue)
