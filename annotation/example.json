@@ -27,7 +27,7 @@
             "Stable flux levels between eclipses support the classification as an eclipsing binary.",
             "Variable light output is consistent with an eclipsing binary system."
         ],
-        "relevance_filtering_accuracy": [1, 1, 1, 1, 1, 1, 1, 1]
+        "expert_alignment_accuracy": [1, 1, 1, 1, 1, 1, 1, 1]
         "alignment_scores": [
             1.0,
             0.8,
