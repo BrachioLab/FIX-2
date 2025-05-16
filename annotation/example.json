@@ -15,8 +15,8 @@
             "Multi-wavelength coverage indicates variable light output.",
             "Variable light output is consistent with an eclipsing binary system."
         ],
-        "claim_decomposition_accuracy": 1
-        "relevance_filtering_accuracy": [1, 1, 1, 1, 1, 1, 1, 1, 1]
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [1, 1, 1, 1, 1, 1, 1, 1, 1],
         "relevant_claims": [
             "The observed pattern shows periodic variations in flux.",
             "The periodic variations occur across multiple wavelengths.",
@@ -27,7 +27,7 @@
             "Stable flux levels between eclipses support the classification as an eclipsing binary.",
             "Variable light output is consistent with an eclipsing binary system."
         ],
-        "expert_alignment_accuracy": [1, 1, 1, 1, 1, 1, 1, 1]
+        "expert_alignment_accuracy": [1, 1, 1, 1, 1, 1, 1, 1],
         "alignment_scores": [
             1.0,
             0.8,
