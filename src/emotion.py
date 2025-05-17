@@ -7,6 +7,9 @@ import time
 from tqdm import tqdm
 import json
 from fuzzywuzzy import fuzz
+import anthropic
+import google.generativeai as genai
+
 
 from prompts.claim_decomposition import decomposition_emotion
 from prompts.relevance_filtering import relevance_emotion
@@ -114,6 +117,48 @@ class EmotionExample:
             'alignment_reasonings': self.alignment_reasonings,
             'final_alignment_score': self.final_alignment_score
         }
+    
+@cache.memoize()
+def query_anthropic(prompt, model="claude-3-5-sonnet-latest"):
+    with open("../Anthropic_API_KEY.txt", "r") as file:
+        api_key = file.read()
+    client = anthropic.Anthropic(api_key=api_key)
+
+    num_tries = 0
+    for i in range(3):
+        try:
+            response = client.messages.create(
+            model=model,
+            max_tokens=2048,
+            temperature=0.1,
+            messages=[
+                {"role": "user", "content": prompt}
+            ])
+            return response.content[0].text
+        except Exception as e:
+            num_tries += 1
+            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
+            time.sleep(5)
+
+
+@cache.memoize()
+def query_gemini(prompt, model="gemini-2.0-flash"):
+    with open("../Google_API_KEY.txt", "r") as file:
+        api_key = file.read()
+    genai.configure(api_key=api_key)
+    
+    num_tries = 0
+    for i in range(3):
+        try:
+            model_obj = genai.GenerativeModel(model)
+            response = model_obj.generate_content(prompt)
+            return response.text
+        except Exception as e:
+            num_tries += 1
+            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
+            time.sleep(5)
+    return "ERROR"
+    
 
 @cache.memoize()
 def query_openai(prompt, model="gpt-4o"):
@@ -124,23 +169,33 @@ def query_openai(prompt, model="gpt-4o"):
     num_tries = 0
     for i in range(3):
         try:
-            translation = client.chat.completions.create(
+            response = client.chat.completions.create(
                 messages=[{
                     "role": "user",
                     "content": prompt,
                 }],
                 model=model,
             )
-            return translation.choices[0].message.content
+            return response.choices[0].message.content
         except Exception as e:
             num_tries += 1
             print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(3)
+            time.sleep(5)
     return "ERROR"
 
-def get_llm_generated_answer(text: str, baseline: str = "vanilla"):
+def get_llm_generated_answer(text: str, baseline: str = "vanilla", model = "gpt-4o"):
     prompt = emotion_prompt.replace("[BASELINE_PROMPT", prompt_dict[baseline]).format(text)
-    response = query_openai(prompt).replace("\n\n", "\n")
+
+    if("gpt" in model or "o1" in model):
+        response = query_openai(prompt, model=model).replace("\n\n", "\n")
+    elif("claude" in model):
+        response = query_anthropic(prompt, model=model).replace("\n\n", "\n")
+    elif("gemini" in model):
+        response = query_gemini(prompt, model=model).replace("\n\n", "\n")
+    else:
+        print("ERROR: Model not supported")
+        return None
+
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -239,10 +294,10 @@ def load_emotion_data():
     return emotion_data
 
 
-def run_pipeline(emotion_data, baseline="vanilla"):
+def run_pipeline(emotion_data, baseline="vanilla", model="gpt-4o"):
     emotion_examples = []
     for idx,row in tqdm(emotion_data.iterrows()):
-        label, explanation = get_llm_generated_answer(row['text'], baseline)
+        label, explanation = get_llm_generated_answer(row['text'], baseline, model)
         if label is None:
             continue
         emotion_examples.append(EmotionExample(
@@ -283,12 +338,26 @@ def run_pipeline(emotion_data, baseline="vanilla"):
 
         
     data_to_save = [example.to_dict() for example in emotion_examples]
-    with open("../results/{}/emotion_gpt-4o.json".format(baseline), 'w') as f:
+    with open("../results/{}/emotion_{}.json".format(baseline, model), 'w') as f:
         json.dump(data_to_save, f, indent=4)
 
 if __name__ == "__main__":
     emotion_data = load_emotion_data()
-    run_pipeline(emotion_data, baseline="vanilla")
-    run_pipeline(emotion_data, baseline="cot")
-    run_pipeline(emotion_data, baseline="socratic")
-    run_pipeline(emotion_data, baseline="subq")
+
+    #model = "gemini-2.0-flash"
+    run_pipeline(emotion_data, baseline="vanilla", model="gemini-2.0-flash")
+    run_pipeline(emotion_data, baseline="cot", model="gemini-2.0-flash")
+    run_pipeline(emotion_data, baseline="socratic", model="gemini-2.0-flash")
+    run_pipeline(emotion_data, baseline="subq", model="gemini-2.0-flash")
+
+    #model = "o1"
+    run_pipeline(emotion_data, baseline="vanilla", model="gpt-4o")
+    run_pipeline(emotion_data, baseline="cot", model="gpt-4o")
+    run_pipeline(emotion_data, baseline="socratic", model="gpt-4o")
+    run_pipeline(emotion_data, baseline="subq", model="gpt-4o")
+
+    #model = "claude-3-5-sonnet-latest"
+    run_pipeline(emotion_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
+    run_pipeline(emotion_data, baseline="cot", model="claude-3-5-sonnet-latest")
+    run_pipeline(emotion_data, baseline="socratic", model="claude-3-5-sonnet-latest")
+    run_pipeline(emotion_data, baseline="subq", model="claude-3-5-sonnet-latest")
