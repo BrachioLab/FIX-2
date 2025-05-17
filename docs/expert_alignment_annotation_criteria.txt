@@ -1,0 +1,3 @@
+1: both the direction and magnitude are correct (both positive/both negative AND |magnitude_diff| <= 0.2) (e.g. if the predicted score is 1.0 and you think it should be 0.9, it should belong to this)
+0.5: Direction correct but magnitude wrong (both positive/both negative AND |magnitude_diff| > 0.2) 
+0: Direction wrong
