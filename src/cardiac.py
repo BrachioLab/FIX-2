@@ -25,11 +25,18 @@ from prompts.claim_decomposition import decomposition_cardiac
 from prompts.relevance_filtering import relevance_cardiac, load_relevance_cardiac_prompt
 from prompts.expert_alignment import alignment_cardiac
 
-with open("../API_KEY.txt", "r") as file:
-    api_key = file.read()
+with open("../OPENAI_API_KEY.txt", "r") as file:
+    openai_api_key = file.read()
+with open("../ANTHROPIC_API_KEY.txt", "r") as file:
+    anthropic_api_key = file.read()
+with open("../GOOGLE_API_KEY.txt", "r") as file:
+    google_api_key = file.read()
+
 
 ROOT_DIR = '..'
-os.environ['OPENAI_API_KEY'] = api_key
+os.environ['OPENAI_API_KEY'] = openai_api_key
+os.environ['ANTHROPIC_API_KEY'] = anthropic_api_key
+os.environ['GOOGLE_API_KEY'] = google_api_key
 os.environ['CACHE_DIR'] = os.path.join(ROOT_DIR, 'cache_dir')
 
 client = openai.OpenAI(api_key=openai.api_key)
