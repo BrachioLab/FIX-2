@@ -1,6 +1,6 @@
 .ipynb_checkpoints
 __pycache__
-API_KEY.txt
+*API_KEY.txt
 data/
 notebooks/_dump
 cache_dir
