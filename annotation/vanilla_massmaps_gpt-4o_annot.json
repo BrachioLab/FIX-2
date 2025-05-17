@@ -345,6 +345,7 @@
             "This combination of blue, gray, red clustering, and yellow spots implies a lower to moderate matter density.",
             "This combination of blue, gray, red clustering, and yellow spots implies noticeable fluctuations in structure."
         ],
+        "claim_decomposition_accuracy": 1,
         "relevance_filtering_accuracy": [
             [0.5, "The map displays a noticeable amount of blue and gray with significant red clustering."],
             [1, "The blue and gray indicate negative and moderate mass fluctuations."],
