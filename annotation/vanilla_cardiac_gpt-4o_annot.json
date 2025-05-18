@@ -1,0 +1,381 @@
+{
+    "99582725_1": {
+        "answer": "Yes",
+        "llm_answer": "No",
+        "llm_explanation": "The patient is relatively young and was admitted due to a motor vehicle collision, which doesn't inherently increase cardiac arrest risk in the absence of severe cardiac or traumatic complications. The ECG graph shows no evident irregular patterns such as ventricular fibrillation, marked ST-segment changes, or extreme tachycardia/bradycardia that are typically associated with imminent cardiac arrest risk. The rhythm appears mostly consistent, and the amplitude fluctuations don't suggest severe arrhythmias. However, continuous monitoring is advisable given the ICU setting.",
+        "claims": [
+            "The patient is relatively young.",
+            "The patient was admitted due to a motor vehicle collision.",
+            "A motor vehicle collision does not inherently increase cardiac arrest risk in the absence of severe cardiac or traumatic complications.",
+            "The ECG graph shows no evident irregular patterns such as ventricular fibrillation, marked ST-segment changes, or extreme tachycardia/bradycardia.",
+            "The absence of irregular patterns typically associated with imminent cardiac arrest risk is noted on the ECG graph.",
+            "The rhythm on the ECG graph appears mostly consistent.",
+            "The amplitude fluctuations on the ECG graph do not suggest severe arrhythmias.",
+            "Continuous monitoring is advisable given the ICU setting."
+        ],
+        "claim_decomposition_accuracy": 0.83,
+        "relevance_filtering_accuracy": [
+            [1, "The patient is relatively young."],
+            [0, "The patient was admitted due to a motor vehicle collision."],
+            [1, "A motor vehicle collision does not inherently increase cardiac arrest risk in the absence of severe cardiac or traumatic complications."],
+            [1, "The ECG graph shows no evident irregular patterns such as ventricular fibrillation, marked ST-segment changes, or extreme tachycardia/bradycardia."],
+            [1, "The absence of irregular patterns typically associated with imminent cardiac arrest risk is noted on the ECG graph."],
+            [1, "The rhythm on the ECG graph appears mostly consistent."],
+            [1, "The amplitude fluctuations on the ECG graph do not suggest severe arrhythmias."]
+            [1, "Continuous monitoring is advisable given the ICU setting."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The patient is relatively young."],
+            [1, "A motor vehicle collision does not inherently increase cardiac arrest risk in the absence of severe cardiac or traumatic complications."],
+            [1, "The ECG graph shows no evident irregular patterns such as ventricular fibrillation, marked ST-segment changes, or extreme tachycardia/bradycardia."],
+            [1, "The absence of irregular patterns typically associated with imminent cardiac arrest risk is noted on the ECG graph."],
+            [1, "The rhythm on the ECG graph appears mostly consistent."],
+            [1, "The amplitude fluctuations on the ECG graph do not suggest severe arrhythmias."]
+        ],
+        "relevant_claims": [
+            "The patient is relatively young.",
+            "A motor vehicle collision does not inherently increase cardiac arrest risk in the absence of severe cardiac or traumatic complications.",
+            "The ECG graph shows no evident irregular patterns such as ventricular fibrillation, marked ST-segment changes, or extreme tachycardia/bradycardia.",
+            "The absence of irregular patterns typically associated with imminent cardiac arrest risk is noted on the ECG graph.",
+            "The rhythm on the ECG graph appears mostly consistent.",
+            "The amplitude fluctuations on the ECG graph do not suggest severe arrhythmias."
+        ],
+        "alignment_scores": [
+            0.4,
+            0.4,
+            0.4,
+            0.6,
+            0.3,
+            0.5
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Dynamic ST-Segment Changes",
+            "Ventricular Ectopy / NSVT",
+            "Ventricular Ectopy / NSVT",
+            "Ventricular Ectopy / NSVT"
+        ],
+        "alignment_reasonings": [
+            "The claim mentions that the patient is relatively young, which indirectly relates to the category of \"Advanced Age.\" This category states that advanced age is a major risk factor for cardiac arrest, implying that younger age may present a lower risk. However, since the focus of the category is on the risks associated with older age, the alignment is weak but present, justifying the relatively low alignment rating.",
+            "This claim discusses the absence of increased cardiac arrest risk related to a motor vehicle collision unless severe cardiac or traumatic complications are present. The category pertaining to underlying cardiac disease is relevant because it implies that without existing serious cardiac conditions, there is less immediate risk. The alignment rating is moderate because while the claim indirectly references cardiac risks, it suggests that the absence of those specific conditions means lower risk rather than directly pointing to a cardiac disease as a risk factor.",
+            "The claim mentions the absence of specific irregular patterns on the ECG, including marked ST-segment changes. This relates to the \"Dynamic ST-Segment Changes\" category, as these changes signal low blood flow in the coronary arteries and potential cardiac risk. While other categories like ventricular tachyarrhythmias or bradycardia are indirectly referenced by their absence, the claim most directly aligns with the absence of ST-segment changes, albeit weakly since it states what is not observed rather than what is. Consequently, the alignment rating is low.",
+            "The claim mentions the absence of irregular patterns on the ECG, which suggests a lack of transient abnormal rhythms such as NSVT or frequent PVCs. These are commonly associated with ventricular ectopy, a known factor for instability, though not necessarily imminent cardiac arrest. The alignment is moderate because the claim indirectly relates to the absence of such ventricular activity without explicitly identifying the patterns typical for higher risk arrhythmias.",
+            "The claim indicates that the rhythm on the ECG graph appears mostly consistent, which suggests a stable rhythm rather than abnormal rhythms that signal risk of cardiac arrest. However, the reference to consistency in ECG rhythm could weakly relate to the absence of signs like irregular intervals or amplitudes associated with ventricular ectopy or NSVT. This potential inverse linkage to ventricular ectopy due to the presence of a consistent rhythm provides a weak alignment, leading to a low alignment rating.",
+            "The claim mentions amplitude fluctuations on the ECG, which can be associated with transient abnormal rhythms like non-sustained ventricular tachycardia (NSVT) or frequent premature ventricular contractions (PVCs)\u2014elements of the Ventricular Ectopy category. However, the claim specifically notes that these fluctuations do not suggest severe arrhythmias, thus the condition is more aligned with NSVT, which is considered more benign and less likely to herald an imminent cardiac arrest. This moderate alignment reflects the presence of non-severe rhythms related to this category."
+        ],
+        "alignable_claims": [
+            "The patient is relatively young.",
+            "A motor vehicle collision does not inherently increase cardiac arrest risk in the absence of severe cardiac or traumatic complications.",
+            "The ECG graph shows no evident irregular patterns such as ventricular fibrillation, marked ST-segment changes, or extreme tachycardia/bradycardia.",
+            "The absence of irregular patterns typically associated with imminent cardiac arrest risk is noted on the ECG graph.",
+            "The rhythm on the ECG graph appears mostly consistent.",
+            "The amplitude fluctuations on the ECG graph do not suggest severe arrhythmias."
+        ],
+        "aligned_category_ids": [
+            7,
+            9,
+            5,
+            2,
+            2,
+            2
+        ],
+        "final_alignment_score": 0.325,
+        "accuracy": 0
+    },
+    "99441004_1": {
+        "answer": "No",
+        "llm_answer": "No",
+        "llm_explanation": "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest. The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns, such as pronounced arrhythmias or notable ST segment changes, which are indicators often associated with imminent cardiac events. The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident. Thus, based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes.",
+        "claims": [
+             "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest.",
+            "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns.",
+            "There are no pronounced arrhythmias or notable ST segment changes on the ECG graph.",
+            "Pronounced arrhythmias or notable ST segment changes are indicators often associated with imminent cardiac events.",
+            "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident.",
+            "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."
+        ],
+        "claim_decomposition_accuracy": 0.5,
+        "relevance_filtering_accuracy": [
+            [1, "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest."],
+            [1, "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns."],
+            [1, "There are no pronounced arrhythmias or notable ST segment changes on the ECG graph."],
+            [0, "Pronounced arrhythmias or notable ST segment changes are indicators often associated with imminent cardiac events."],
+            [1, "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident."],
+            [0, "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest."],
+            [1, "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns."],
+            [1, "There are no pronounced arrhythmias or notable ST segment changes on the ECG graph."],
+            [1, "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident."],
+            [1, "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."]
+        ],
+        "relevant_claims": [
+            "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest.",
+            "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns.",
+            "There are no pronounced arrhythmias or notable ST segment changes on the ECG graph.",
+            "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident.",
+            "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."
+        ],
+        "alignment_scores": [
+            0.4,
+            0.3,
+            0.5,
+            0.8,
+            0.7
+        ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Ventricular Ectopy / NSVT",
+            "Dynamic ST-Segment Changes",
+            "Ventricular Tachyarrhythmias",
+            "Underlying Cardiac Disease"
+        ],
+        "alignment_reasonings": [
+            "The claim discusses a relatively young age and admission for a non-cardiac reason, suggesting a lower baseline risk of cardiac arrest. This aligns with the absence of underlying cardiac disease, a condition listed in the expert categories as a significant risk factor for cardiac arrest. Although the claim does not directly address an existing cardiac condition, it touches on the opposite scenario, implying reduced risk. The alignment rating is moderate because the claim relates to the category by suggesting a reduced risk rather than directly addressing a risk factor.",
+            "The claim describes an ECG with a consistent rhythm and no significant irregularities or alarming patterns, which suggests stability rather than any transient abnormal rhythms indicative of ventricular ectopy or NSVT. While the presence of a consistent rhythm without irregularities leans towards excluding abnormalities associated with ventricular ectopy, the alignment is weak because the claim emphasizes absence of risk factors rather than the presence of potential precursors to cardiac arrest. Hence, the alignment with ventricular ectopy (Category 2) is low.",
+            "The claim mentions the absence of pronounced arrhythmias and notable ST segment changes on the ECG. While it suggests a current lack of evidence for Dynamic ST-Segment Changes, which are indicative of ischemic events possibly leading to cardiac arrest, the alignment is moderate because it indirectly addresses the category by noting the absence of such risk factors. This doesn\u2019t indicate a high risk of cardiac arrest but does relate to the category of ST-Segment Changes by confirming their non-presence.",
+            "The claim explicitly mentions the absence of evidence for ventricular fibrillation or other critical arrhythmias. These types of arrhythmias directly relate to the ventricular tachyarrhythmias category. The mention provides a strong, albeit negative, connection to this category, as it addresses the potential presence\u2014or in this case, absence\u2014of indicators that would align with this category. The alignment rating is high because the claim specifically references critical arrhythmias relevant to the category, despite noting their absence.",
+            "The claim references the absence of critical ECG anomalies and mentions the patient's age and admission reason; however, it highlights that the patient is not at high risk. This aligns with the category of underlying cardiac disease, as the absence of significant cardiac issues suggests a reduced risk. The alignment is moderately strong because the claim directly considers factors that would typically increase risk (age, admission reasons) as well as the absence of ECG issues, but implies stability due to low-risk indicators rather than explicitly citing specific conditions from the category."
+        ],
+        "alignable_claims": [
+            "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest.",
+            "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns.",
+            "There are no pronounced arrhythmias or notable ST segment changes on the ECG graph.",
+            "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident.",
+            "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."
+
+        ],
+        "aligned_category_ids": [
+            9,
+            2,
+            5,
+            1,
+            9
+        ],
+        "final_alignment_score": 0.45,
+        "accuracy": 1
+    },
+    "99060008_1": {
+        "answer": "No",
+        "llm_answer": "Yes",
+        "llm_explanation": "The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks, which may indicate potential ventricular arrhythmias or signal artifacts that could represent an underlying risk. Given the patient's admission for altered mental status, which may suggest underlying metabolic or neurological disturbances that could also have cardiovascular implications, these ECG irregularities may further indicate instability. These factors combined suggest that the patient could be at high risk of cardiac arrest within the next 5 minutes.",
+        "claims": [
+            "The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks.",
+            "The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts.",
+            "The patient was admitted for altered mental status, suggesting underlying metabolic or neurological disturbances.",
+            "Metabolic or neurological disturbances may have cardiovascular implications.",
+            "The ECG irregularities may indicate instability in the patient's condition.",
+            "These factors combined suggest the patient could be at high risk of cardiac arrest within the next 5 minutes."
+        ],
+        "relevant_claims": [
+            "The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks.",
+            "The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts.",
+            "Metabolic or neurological disturbances may have cardiovascular implications.",
+            "The ECG irregularities may indicate instability in the patient's condition."
+        ],
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [
+            [1, "The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks."],
+            [1, "The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts."],
+            [0, "The patient was admitted for altered mental status, suggesting underlying metabolic or neurological disturbances."],
+            [1, "Metabolic or neurological disturbances may have cardiovascular implications."],
+            [1, "The ECG irregularities may indicate instability in the patient's condition."],
+            [1, "These factors combined suggest the patient could be at high risk of cardiac arrest within the next 5 minutes."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks."],
+            [1, "The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts."],
+            [1, "Metabolic or neurological disturbances may have cardiovascular implications."],
+            [1, "The ECG irregularities may indicate instability in the patient's condition."]
+        ],
+        "alignment_scores": [
+            0.5,
+            0.7,
+            0.7,
+            0.6
+        ],
+        "alignment_categories": [
+            "Ventricular Ectopy / NSVT",
+            "Ventricular Ectopy / NSVT",
+            "Critical Illness (Sepsis/Shock)",
+            "Ventricular Ectopy / NSVT"
+        ],
+        "alignment_reasonings": [
+            "The claim mentions significant drops in amplitude in the ECG graph, which can indicate transient abnormal rhythms such as non-sustained ventricular tachycardia (NSVT) or premature ventricular contractions (PVCs). These patterns can manifest with variable intervals and amplitudes, similar to what the claim describes. However, the claim lacks specificity regarding whether these changes are linked directly to ventricular ectopy. As such, while there is a moderate connection, the overall strength of alignment is not very high, resulting in a rating of 0.5.",
+            "The claim refers to drops in amplitude on the ECG, which could indicate potential ventricular arrhythmias. This aligns with the category of Ventricular Ectopy / NSVT, as these can manifest through variations in waveform amplitude and may indicate electrical instability. However, the claim also mentions the possibility of signal artifacts, which are not related to arrhythmias. The alignment rating is moderate to strong due to the mention of potential ventricular arrhythmias, but it is not perfect because of the ambiguity with signal artifacts.",
+            "The claim suggests that metabolic or neurological disturbances could affect cardiovascular function. This aligns moderately with the Critical Illness (Sepsis/Shock) category because severe metabolic derangements can lead to hemodynamic instability and potentially cardiac arrest. While the claim doesn't explicitly mention sepsis or shock, metabolic disturbances are common integrally to critical illnesses that increase cardiac arrest risk. Therefore, the alignment is moderate, reflecting the indirect implications outlined in the claim.",
+            "The claim mentions ECG irregularities indicative of instability, which can be attributed to transient abnormal ventricular rhythms like NSVT or frequent PVCs, associated with irregular ECG patterns. While the claim lacks specificity in identifying particular arrhythmias, it moderately aligns with the category of Ventricular Ectopy or NSVT, as these irregularities can suggest transient instability in critically ill patients."
+        ],
+        "alignable_claims": [
+            "The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks.",
+            "The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts.",
+            "Metabolic or neurological disturbances may have cardiovascular implications.",
+            "The ECG irregularities may indicate instability in the patient's condition."
+        ],
+        "aligned_category_ids": [
+            2,
+            2,
+            10,
+            2
+        ],
+        "final_alignment_score": 0.4166666666666667,
+        "accuracy": 0
+    },
+    "99907876_1": {
+        "answer": "Yes",
+        "llm_answer": "Yes",
+        "llm_explanation": "The patient is at high risk of experiencing cardiac arrest. Key factors include their age (73), gender (male), and the primary reason for ICU admission—ST elevation myocardial infarction (STEMI), which significantly elevates cardiac arrest risk. The ECG data shows a significant irregularity around the 40-second mark, which suggests a possible arrhythmic event, contributing to the increased risk. This combination of demographic risk factors and a notable ECG irregularity supports the prediction.",
+        "claims": [
+            "The patient is at high risk of experiencing cardiac arrest.",
+            "The patient's age is 73.",
+            "The patient is male.",
+            "The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI).",
+            "ST elevation myocardial infarction (STEMI) significantly elevates cardiac arrest risk.",
+            "The ECG data shows a significant irregularity around the 40-second mark.",
+            "The ECG irregularity suggests a possible arrhythmic event, contributing to the increased risk.",
+            "This combination of demographic risk factors and a notable ECG irregularity supports the prediction of high cardiac arrest risk."
+        ],
+        "relevant_claims": [
+            "The patient is at high risk of experiencing cardiac arrest.",
+            "The patient's age is 73.",
+            "The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI).",
+            "ST elevation myocardial infarction (STEMI) significantly elevates cardiac arrest risk.",
+            "The ECG data shows a significant irregularity around the 40-second mark.",
+            "The ECG irregularity suggests a possible arrhythmic event, contributing to the increased risk.",
+            "This combination of demographic risk factors and a notable ECG irregularity supports the prediction of high cardiac arrest risk."
+        ],
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [
+            [0.5, "The patient is at high risk of experiencing cardiac arrest."],
+            [1, "The patient's age is 73."],
+            [0, "The patient is male."],
+            [1, "The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI)."],
+            [1, "ST elevation myocardial infarction (STEMI) significantly elevates cardiac arrest risk."],
+            [1, "The ECG data shows a significant irregularity around the 40-second mark."],
+            [1, "The ECG irregularity suggests a possible arrhythmic event, contributing to the increased risk."],
+            [1, "This combination of demographic risk factors and a notable ECG irregularity supports the prediction of high cardiac arrest risk."]
+      ],
+        "expert_alignment_accuracy": [
+            [1, "The patient is at high risk of experiencing cardiac arrest."],
+            [1, "The patient's age is 73."],
+            "The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI).",
+            "ST elevation myocardial infarction (STEMI) significantly elevates cardiac arrest risk.",
+            "The ECG data shows a significant irregularity around the 40-second mark.",
+            "The ECG irregularity suggests a possible arrhythmic event, contributing to the increased risk.",
+            "This combination of demographic risk factors and a notable ECG irregularity supports the prediction of high cardiac arrest risk."
+        ],
+        "alignment_scores": [
+            0.3,
+            1.0,
+            1.0,
+            0.9,
+            0.5,
+            0.7,
+            0.7
+        ],
+        "alignment_categories": [
+            "Underlying Cardiac Disease",
+            "Advanced Age",
+            "Underlying Cardiac Disease",
+            "Dynamic ST-Segment Changes",
+            "Ventricular Ectopy / NSVT",
+            "Ventricular Ectopy / NSVT",
+            "Underlying Cardiac Disease"
+        ],
+        "alignment_reasonings": [
+            "The claim is very general and does not provide specific information related to any particular expert category that may indicate imminent cardiac arrest. The category of \"Underlying Cardiac Disease\" is a common reason patients could be considered at high risk for cardiac arrest, but the claim lacks direct evidence or symptoms that align closely with this or any other specific category. The alignment rating is hence low due to the nonspecific nature of the claim.",
+            "The claim directly references the age of the patient, which is relevant to the advanced age category. Older age is a significant risk factor for cardiac arrest, particularly in ICU settings, aligning perfectly with this category. Therefore, the alignment rating is the highest possible, as the claim fits entirely within the description of the category.",
+            "The claim directly indicates that the patient was admitted to the ICU due to an ST elevation myocardial infarction (STEMI), which is a serious form of myocardial infarction (heart attack). This condition falls under the category of underlying cardiac disease. STEMI significantly elevates short-term cardiac arrest risk due to its impact on myocardial stability. The alignment rating is a 1.0 because the claim explicitly identifies a specific cardiac condition that is a major risk factor for cardiac arrest according to the expertise categories provided.",
+            "The claim directly references ST elevation myocardial infarction (STEMI), which is a condition characterized by dynamic ST-segment changes on an ECG. This aligns strongly with the Dynamic ST-Segment Changes category, as STEMI indicates acute ischemic changes and increases the risk of ventricular fibrillation or cardiac arrest. The alignment rating is very strong due to the direct association between STEMI and acute ischemic changes described in the category.",
+            "The claim mentions an ECG irregularity, which might suggest transient abnormal ventricular rhythms, aligning it with the Ventricular Ectopy/NSVT category. However, since the claim does not specify the type of irregularity or its potential to reflect NSVT or frequent PVCs, the alignment is moderate. The claim is nonspecific and could relate to several cardiac issues, but the general reference to irregularity aligns moderately with this category.",
+            "The claim mentions an ECG irregularity that could indicate a possible arrhythmic event, which aligns with either transient arrhythmias or ventricular ectopy. The description fits well with the Ventricular Ectopy / NSVT category, as these describe non-sustained tachycardia and irregular ventricular rhythms, which can be precursors to more serious events. The alignment rating is 0.7 because the claim doesn't specify the nature or recurrence of the irregularity, preventing stronger alignment with more severe forms like ventricular tachyarrhythmias.",
+            "The claim mentions a combination of demographic risk factors and notable ECG irregularities. This could imply underlying cardiac disease, which is linked to ECG irregularities and a high risk of cardiac arrest, aligning it with the category for underlying cardiac conditions. The alignment is moderate to strong, as while some specifics are implied, there's no explicit mention of particular cardiac conditions or diseases. Demographic factors could include age or sex, but without specification, it doesn't point to a precise category and instead indirectly aligns with known cardiac instability factors through the interpretation of significant ECG changes."
+        ],
+        "alignable_claims": [
+            "The patient is at high risk of experiencing cardiac arrest.",
+            "The patient's age is 73.",
+            "The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI).",
+            "ST elevation myocardial infarction (STEMI) significantly elevates cardiac arrest risk.",
+            "The ECG data shows a significant irregularity around the 40-second mark.",
+            "The ECG irregularity suggests a possible arrhythmic event, contributing to the increased risk.",
+            "This combination of demographic risk factors and a notable ECG irregularity supports the prediction of high cardiac arrest risk."
+        ],
+        "aligned_category_ids": [
+            9,
+            7,
+            9,
+            5,
+            2,
+            2,
+            9
+        ],
+        "final_alignment_score": 0.6375,
+        "accuracy": 1
+    },
+    "99339192_1": {
+        "answer": "Yes",
+        "llm_answer": "Yes",
+        "llm_explanation": "The patient is 83 years old, which is a significant risk factor for cardiac complications. Additionally, COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events. The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence, which may suggest arrhythmias or conduction issues. These factors combined suggest a high risk of cardiac arrest within the next 5 minutes.",
+        "claims": [
+            "The patient is 83 years old, which is a significant risk factor for cardiac complications.",
+            "COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events.",
+            "The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.",
+            "Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues.",
+            "The combined factors suggest a high risk of cardiac arrest within the next 5 minutes."
+        ],
+        "relevant_claims": [
+            "The patient is 83 years old, which is a significant risk factor for cardiac complications.",
+            "COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events.",
+            "The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.",
+            "Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues."
+        ],
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [
+            [1, "The patient is 83 years old, which is a significant risk factor for cardiac complications."],
+            [1, "COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events."],
+            [1, "The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence."],
+            [1, "Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues."],
+            [1, "The combined factors suggest a high risk of cardiac arrest within the next 5 minutes."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The patient is 83 years old, which is a significant risk factor for cardiac complications."],
+            [1, "COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events."],
+            [1, "The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence."],
+            [1, "Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues."]
+        ],
+        "alignment_scores": [
+            1.0,
+            0.8,
+            0.8,
+            0.8
+        ],
+        "alignment_categories": [
+            "Advanced Age",
+            "Critical Illness (Sepsis/Shock)",
+            "QRS Widening (Conduction Delay))",
+            "QRS Widening (Conduction Delay))"
+        ],
+        "alignment_reasonings": [
+            "The claim directly mentions the patient's advanced age (83 years old), explicitly stating that it is a significant risk factor for cardiac complications. This aligns perfectly with category 7, which identifies increasing age as a major risk factor for cardiac arrest. The alignment is considered perfect, resulting in the highest rating of 1.0.",
+            "The claim suggests that COVID-19 can lead to cardiac stress and complications, potentially increasing the risk of cardiac events. This aligns closely with the critical illness category, as severe infections like COVID-19, particularly when they lead to severe complications such as sepsis or respiratory distress, can cause hypoxia, hypotension, and metabolic derangements. These are factors that can increase the likelihood of cardiac arrest in the near term. Although COVID-19 is not explicitly mentioned in the expert categories, its severe manifestations align strongly with the conditions described under the critical illness category. Hence, the alignment rating is high.",
+            "The claim mentions \"potentially abnormal QRS complexes,\" which aligns well with the QRS Widening (Conduction Delay) category. Abnormal QRS complexes can indicate a conduction delay, which is an ominous sign related to cardiac arrest. The mention of \"P-wave absence\" could suggest hyperkalemia-related changes, which falls under Category 6, but since the focus is primarily on QRS irregularities, Category 4 is more applicable. The alignment is strong due to the direct reference to QRS abnormalities, which are a critical indicator of conduction delays linked to imminent cardiac arrest.",
+            "The claim mentions \"potentially abnormal QRS complexes\" and \"P-wave absence,\" which aligns with the QRS Widening (Conduction Delay) category. QRS widening or the absence of P-waves can indicate severe conduction delays or arrhythmic events that may precede cardiac arrest. While the claim includes general terms like \"arrhythmias or conduction issues,\" the specific mention of QRS complex abnormalities suggests a significant alignment with this category, warranting a high alignment rating."
+        ],
+        "alignable_claims": [
+            "The patient is 83 years old, which is a significant risk factor for cardiac complications.",
+            "COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events.",
+            "The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.",
+            "Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues."
+        ],
+        "aligned_category_ids": [
+            7,
+            10,
+            4,
+            4
+        ],
+        "final_alignment_score": 0.68,
+        "accuracy": 1
+    }
+}
