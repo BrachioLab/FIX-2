@@ -1,0 +1,390 @@
+{
+    "5": {
+        "input": "2: HR, 130.0; 2: RR, 18.0; 2: SpO2, 99.0; 2: SBP, 150.0; 2: DBP, 80.0; 2: MAP, 103.333; 2: Temp, 100.8; 49: POC PH (V) ISTAT, 7.43; 49: POC TCO2 (V) ISTAT, 28 mmol/L; 49: POC PO2 (V) ISTAT, 32 mmHg; 49: POC BASE EXCESS ISTAT, 2 mmol/L; 49: POC LACTATE ISTAT, 1.79 mmol/L; 49: POC O2 SATURATION ISTAT VENOUS, 63 %; 49: POC HCO3 (V) ISTAT, 26.6 mmol/L; 49: POC PCO2 (V) ISTAT, 40.5 mmHg; 57: SpO2, 98.706; 58: HR, 115.429; 58: RR, 34.846; 58: SpO2, 98.917; 58: Perf, 0.15; 58: 1min HRV, 7.583; 59: HR, 114.293; 59: RR, 21.190; 59: SpO2, 98.792; 59: Perf, 0.15; 59: 1min HRV, 10.194; 60: HR, 111.712; 60: RR, 19.220; 60: SpO2, 98.419; 60: 1min HRV, 7.770; 60: 5min HRV, 10.260; 60: Temp, 99.8; 61: HR, 113.948; 61: RR, 20.172; 61: SpO2, 97.979; 61: 1min HRV, 12.083; 62: HR, 111.25; 62: RR, 19.85; 62: SpO2, 99.909; 62: Perf, 0.12; 62: 1min HRV, 8.237; 63: HR, 112.828; 63: RR, 19.5; 63: SpO2, 100.0; 63: Perf, 0.08; 63: 1min HRV, 9.478; 64: HR, 115.017; 64: RR, 21.339; 64: SpO2, 99.333; 64: Perf, 0.087; 64: 1min HRV, 9.341; 65: HR, 113.879; 65: RR, 18.155; 65: SpO2, 98.75; 65: Perf, 0.1; 65: 1min HRV, 9.050; 65: 5min HRV, 11.233; 66: HR, 112.610; 66: RR, 19.169; 66: SpO2, 93.7; 66: 1min HRV, 7.226; 67: HR, 109.241; 67: RR, 20.914; 67: SpO2, 97.846; 67: 1min HRV, 16.590; 68: HR, 109.780; 68: RR, 25.322; 68: SpO2, 100.0; 68: 1min HRV, 6.405; 69: HR, 115.678; 69: RR, 21.390; 69: SpO2, 97.6; 69: 1min HRV, 13.991; 70: HR, 119.172; 70: RR, 24.172; 70: 1min HRV, 12.028; 70: 5min HRV, 20.794; 71: HR, 114.431; 71: RR, 19.983; 71: SpO2, 99.190; 71: 1min HRV, 6.842; 72: WAM DIFTYP, AUTO; 72: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 31.5 g/dL; 72: EOSINOPHIL % (AUTO DIFF), 0.4 %; 72: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 21.7 pg; 72: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.03 K/uL; 72: HEMOGLOBIN (HGB), 11.2 g/dL; 72: BASOPHIL % (AUTO DIFF), 0.4 %; 72: MEAN CORPUSCULAR VOLUME (MCV), 69.1 fL; 72: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 1.16 K/uL; 72: RED CELL DISTRIBUTION WIDTH (RDW), 14.6 %; 72: PLATELET COUNT (PLT), 284 K/uL; 72: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 0.3 %; 72: HEMATOCRIT (HCT), 35.6 %; 72: NRBC PERCENT (HEMATOLOGY), 0.0 %; 72: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.04 K/uL; 72: NEUTROPHIL % (AUTO DIFF), 81.5 %; 72: RED BLOOD CELLS (RBC), 5.15 MIL/uL; 72: MONOCYTE ABSOLUTE (AUTO DIFF), 0.76 K/uL; 72: BASOPHIL ABSOLUTE (AUTO DIFF), 0.04 K/uL; 72: MONOCYTE % (AUTO DIFF), 6.9 %; 72: WHITE BLOOD CELLS (WBC), 11.1 K/uL; 72: NRBC ABSOLUTE (HEMATOLOGY), 0.00 K/uL; 72: NEUTROPHIL ABSOLUTE (AUTO DIFF), 9.02 K/uL; 72: LYMPHOCYTE % (AUTO DIFF), 10.5 %; 72: HR, 114.797; 72: RR, 16.220; 72: SpO2, 99.0; 72: 1min HRV, 12.736; 73: HR, 116.593; 73: RR, 22.322; 73: SpO2, 99.667; 73: 1min HRV, 10.852; 74: INR, 1.1; 74: PROTHROMBIN TIME, 13.7 seconds; 74: HR, 114.271; 74: RR, 15.136; 74: SpO2, 99.158; 74: 1min HRV, 13.033; 75: PART. THROMBOPLASTIN TIME, 26.9 seconds; 75: HR, 115.983; 75: RR, 18.569; 75: SpO2, 99.172; 75: Perf, 0.335; 75: 1min HRV, 9.179; 75: 5min HRV, 11.055; 76: HR, 117.833; 76: RR, 20.333; 76: SpO2, 98.857; 76: Perf, 0.339; 76: 1min HRV, 20.298; 77: HR, 119.635; 77: RR, 18.315; 77: SpO2, 97.810; 77: 1min HRV, 11.138; 78: HR, 118.458; 78: RR, 15.915; 78: SpO2, 98.906; 78: 1min HRV, 7.851; 78: SBP, 136.0; 78: DBP, 86.0; 78: MAP, 102.667; 79: HR, 118.390; 79: RR, 21.864; 79: SpO2, 97.0; 79: 1min HRV, 10.976; 80: HR, 116.345; 80: RR, 19.190; 80: SpO2, 92.25; 80: 1min HRV, 6.229; 80: 5min HRV, 12.280; 81: HR, 117.068; 81: RR, 16.475; 81: SpO2, 100.0; 81: 1min HRV, 9.360; 82: HR, 114.948; 82: RR, 13.672; 82: SpO2, 99.0; 82: 1min HRV, 8.781; 83: HR, 113.831; 83: RR, 17.407; 83: SpO2, 98.0; 83: 1min HRV, 9.350; 84: SPECIFIC GRAVITY, URINE (UA): 1.014; 84: PROTEIN, URINE (UA): Negative; 84: GLUCOSE, URINE (UA): Negative; 84: PH, URINE (UA): 7.0; 84: NITRITE, URINE (UA): Negative; 84: LEUKOCYTE ESTERASE, URINE (UA): Negative; 84: KETONE, URINE (UA): Negative; 84: BLOOD, URINE (UA): Negative; 84: HR, 114.525; 84: RR, 19.186; 84: SpO2, 99.111; 84: 1min HRV, 12.467; 85: HR, 112.828; 85: RR, 16.103; 85: SpO2, 98.0; 85: 1min HRV, 8.069; 85: 5min HRV, 11.248; 85: SBP, 141.0; 85: DBP, 83.0; 85: MAP, 102.333; 85: Temp, 102.6; 86: HR, 119.357; 86: RR, 19.462; 86: SpO2, 87.762; 86: 1min HRV, 11.205; 87: HR, 114.0; 87: 1min HRV, 2.966; 90: POTASSIUM, 3.7 mmol/L; 90: EGFR REFIT WITHOUT RACE (2021), 89 mL/min/1.73 m2; 90: PROTEIN TOTAL, 7.5 g/dL; 90: ALKALINE PHOSPHATASE, 167 U/L; 90: BILIRUBIN TOTAL, 0.7 mg/dL; 90: CO2, 23 mmol/L; 90: SODIUM, 138 mmol/L; 90: CREATININE, 0.82 mg/dL; 90: ALBUMIN, 4.7 g/dL; 90: CORRECTED CALCIUM, 9.0 mg/dL; 90: ALT (SGPT), 25 U/L; 90: AST (SGOT), 14 U/L; 90: CHLORIDE, 101 mmol/L; 90: GLOBULIN, 2.8 g/dL; 90: BLOOD UREA NITROGEN (BUN), 14 mg/dL; 90: ANION GAP, 14 mmol/L; 90: GLUCOSE, 111 mg/dL; 90: CALCIUM, 9.6 mg/dL; 90: 5min HRV, 15.033; 92: RSV, Not Detected; 92: INFLUENZA B, Not Detected; 92: INFLUENZA A, Not Detected; 92: SARS-COV-2 RNA, Not Detected; 95: LR IV BOLUS -, 1000 ML; 96: KETOROLAC, 30 MG/ML (1 ML) INJ SOLN; 100: HR, 103.0; 100: RR, 25.0; 100: SpO2, 97.0; 100: SBP, 126.0; 100: DBP, 80.0; 100: MAP, 95.333; 0: Age, 44; 0: Gender, F; 0: Race, Black or African American; 0: Means of arrival, Self; 0: Triage Temp, 38.2; 0: Triage HR, 130.0; 0: Triage RR, 18.0; 0: Triage SBP, 150.0; 0: Triage DBP, 80.0; 0: Triage acuity, 2-Emergent; 0: CC, HIP PAIN",
+        "answer": "No",
+        "llm_answer": "No",
+        "llm_explanation": "The patient shows some elevated vital signs (e.g., heart rate, respiratory rate) and a fever, which can be concerning for potential sepsis, but there's no significant indication of organ dysfunction or severe infection markers in the data provided. Lactate levels are within normal range, and there's no evidence of leukocytosis or decreased SPO2 persistently below normal. Furthermore, the patient received interventions like fluid and medication, which seem to have stabilized vital signs without any signs of deterioration suggestive of high sepsis risk.",
+        "claims": [
+            "The patient shows some elevated vital signs, such as heart rate and respiratory rate.",
+            "The patient has a fever.",
+            "Elevated vital signs and a fever can be concerning for potential sepsis.",
+            "There is no significant indication of organ dysfunction in the data provided.",
+            "There are no severe infection markers in the data provided.",
+            "Lactate levels are within the normal range.",
+            "There is no evidence of leukocytosis.",
+            "There is no evidence of decreased SPO2 persistently below normal.",
+            "The patient received interventions like fluid and medication.",
+            "The interventions seemed to have stabilized the patient's vital signs.",
+            "There are no signs of deterioration suggestive of high sepsis risk."
+        ],
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [
+            [1, "The patient shows some elevated vital signs, such as heart rate and respiratory rate."],
+            [1, "The patient has a fever."],
+            [1, "Elevated vital signs and a fever can be concerning for potential sepsis."],
+            [1, "There is no significant indication of organ dysfunction in the data provided."],
+            [1, "There are no severe infection markers in the data provided."],
+            [1, "Lactate levels are within the normal range."],
+            [1, "There is no evidence of leukocytosis."],
+            [1, "There is no evidence of decreased SPO2 persistently below normal."],
+            [0, "The patient received interventions like fluid and medication."],
+            [1, "The interventions seemed to have stabilized the patient's vital signs."],
+            [1, "There are no signs of deterioration suggestive of high sepsis risk."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The patient shows some elevated vital signs, such as heart rate and respiratory rate."],
+            [1, "The patient has a fever."],
+            [1, "Elevated vital signs and a fever can be concerning for potential sepsis."],
+            [1, "There is no significant indication of organ dysfunction in the data provided."],
+            [1, "There is no evidence of decreased SPO2 persistently below normal."]
+        ],
+        "relevant_claims": [
+            "The patient shows some elevated vital signs, such as heart rate and respiratory rate.",
+            "The patient has a fever.",
+            "Elevated vital signs and a fever can be concerning for potential sepsis.",
+            "There is no significant indication of organ dysfunction in the data provided.",
+            "There is no evidence of decreased SPO2 persistently below normal."
+        ],
+        "alignment_scores": [
+            0.8,
+            0.6,
+            0.8,
+            0.8,
+            0.3
+        ],
+        "alignment_category": [
+            2,
+            2,
+            2,
+            8,
+            8
+        ],
+        "alignment_reasonings": [
+            "The claim mentions elevated heart rate and respiratory rate, which are two of the criteria used to identify SIRS positivity (heart\u202frate\u202f>\u202f90\u202fbpm, respiratory\u202frate\u202f>\u202f20\u202f/min). Although it doesn't specify if both criteria are met or the exact values, it strongly suggests systemic inflammation consistent with early sepsis.",
+            "The claim of having a fever aligns with the SIRS criteria, specifically \"temperature >38\u00b0C,\" which is used to identify systemic inflammation indicative of early sepsis. However, the claim does not specify the fever's exact temperature to confirm meeting the SIRS threshold (>38\u00b0C), so the alignment is partial rather than full.",
+            "The claim mentions \"elevated vital signs and a fever,\" which aligns well with the SIRS criteria, such as increased heart rate and elevated temperature. However, the claim doesn't specify exactly which vital signs are elevated or if they meet the precise criteria, thus it doesn't achieve perfect alignment but is still strongly relevant.",
+            "The claim mentions the absence of organ dysfunction, which aligns most closely with the SOFA Score criteria that assess organ dysfunction by an increase of\u202f\u2265\u202f2 points. Although the claim does not mention a specific SOFA score increase or specific metrics, it strongly resonates with the core principle of this category\u2014organ dysfunction, thus warranting a high alignment rating.",
+            "The claim mentions SPO2, which is related to oxygenation\u2014a key component in the SOFA score assessment (PaO\u2082/FiO\u2082). However, the claim indicates the absence of decreased SPO2, which makes it indirectly relevant and weakly aligned with SOFA criteria that assess oxygenation status. The alignment with sepsis risk is weak as the absence does not support a worsening condition necessitating SOFA score increase."
+        ],
+        "final_alignment_score": 0.6599999999999999,
+        "accuracy": 1
+    },
+    "18": {
+        "input": "5: HR, 88.0; 5: RR, 18.0; 5: SpO2, 96.0; 5: SBP, 95.0; 5: DBP, 67.0; 5: MAP, 76.333; 5: LPM O2, 2.0; 5: Temp, 98.2; 30: SpO2, 84.833; 31: SpO2, 88.586; 31: Perf, 0.691; 32: SpO2, 94.914; 32: Perf, 0.687; 33: SpO2, 95.567; 33: Perf, 0.734; 35: SpO2, 93.0; 36: SpO2, 90.449; 36: Perf, 0.51; 37: SpO2, 94.882; 37: SBP, 117.0; 37: DBP, 73.0; 37: MAP, 87.667; 38: HR, 88.9; 38: RR, 17.3; 38: SpO2, 92.897; 38: Perf, 0.577; 38: 1min HRV, 14.986; 39: HR, 89.780; 39: RR, 17.169; 39: SpO2, 93.712; 39: Perf, 0.677; 39: 1min HRV, 30.180; 40: HR, 88.407; 40: RR, 17.305; 40: SpO2, 92.434; 40: Perf, 0.698; 40: 1min HRV, 22.725; 40: 5min HRV, 24.935; 41: HR, 92.552; 41: RR, 19.276; 41: Perf, 0.7; 41: 1min HRV, 8.933; 42: HR, 88.102; 42: RR, 19.932; 42: SpO2, 96.0; 42: Perf, 0.702; 42: 1min HRV, 7.636; 43: HR, 86.175; 43: RR, 14.579; 43: SpO2, 96.807; 43: Perf, 0.838; 43: 1min HRV, 57.636; 44: HR, 86.881; 44: RR, 14.203; 44: SpO2, 95.898; 44: Perf, 0.925; 44: 1min HRV, 10.901; 45: HR, 86.288; 45: RR, 14.610; 45: SpO2, 96.373; 45: Perf, 0.903; 45: 1min HRV, 10.896; 45: 5min HRV, 31.860; 46: HR, 83.931; 46: RR, 9.255; 46: SpO2, 97.190; 46: Perf, 0.938; 46: 1min HRV, 10.150; 46: SBP, 105.0; 46: DBP, 72.0; 46: MAP, 83.0; 47: HR, 82.220; 47: RR, 7.271; 47: SpO2, 97.915; 47: Perf, 1.276; 47: 1min HRV, 9.098; 48: HR, 82.862; 48: RR, 11.793; 48: SpO2, 97.776; 48: Perf, 1.498; 48: 1min HRV, 7.660; 49: HR, 80.763; 49: RR, 13.102; 49: SpO2, 98.0; 49: Perf, 1.572; 49: 1min HRV, 8.148; 50: HR, 80.017; 50: RR, 10.203; 50: SpO2, 98.0; 50: Perf, 1.647; 50: 1min HRV, 7.351; 50: 5min HRV, 16.456; 51: HR, 80.586; 51: RR, 10.862; 51: SpO2, 98.0; 51: Perf, 1.438; 51: 1min HRV, 12.821; 52: HR, 82.186; 52: RR, 16.898; 52: SpO2, 97.780; 52: Perf, 1.173; 52: 1min HRV, 11.858; 53: HR, 83.534; 53: RR, 16.379; 53: SpO2, 97.776; 53: Perf, 1.011; 53: 1min HRV, 7.071; 54: HR, 84.121; 54: RR, 15.586; 54: SpO2, 97.586; 54: Perf, 1.138; 54: 1min HRV, 59.900; 55: HR, 83.305; 55: RR, 15.153; 55: SpO2, 97.576; 55: Perf, 1.345; 55: 1min HRV, 6.728; 55: 5min HRV, 30.099; 56: HR, 84.672; 56: RR, 17.534; 56: SpO2, 98.017; 56: Perf, 1.370; 56: 1min HRV, 8.407; 57: HR, 84.712; 57: RR, 16.559; 57: SpO2, 98.085; 57: Perf, 1.307; 57: 1min HRV, 10.786; 58: HR, 84.328; 58: RR, 14.776; 58: SpO2, 97.621; 58: Perf, 1.295; 58: 1min HRV, 8.478; 59: HR, 82.644; 59: RR, 14.407; 59: SpO2, 98.881; 59: Perf, 1.187; 59: 1min HRV, 10.463; 60: HR, 82.220; 60: RR, 14.458; 60: SpO2, 98.644; 60: Perf, 1.084; 60: 1min HRV, 8.076; 60: 5min HRV, 12.758; 60: SBP, 106.0; 60: DBP, 69.0; 60: MAP, 81.333; 60: LPM O2, 2.0; 61: POC PH (V) ISTAT, 7.44; 61: POC PO2 (V) ISTAT, 37 mmHg; 61: POC HCO3 (V) ISTAT, 29.5 mmol/L; 61: POC TCO2 (V) ISTAT, 31 mmol/L; 61: POC O2 SATURATION ISTAT VENOUS, 73 %; 61: POC BASE EXCESS ISTAT, 5 mmol/L; 61: POC PCO2 (V) ISTAT, 43.5 mmHg; 61: POC LACTATE ISTAT, 1.26 mmol/L; 61: HR, 83.241; 61: RR, 15.448; 61: SpO2, 98.086; 61: Perf, 1.09; 61: 1min HRV, 9.775; 61: SBP, 106.0; 61: DBP, nan; 61: MAP, nan; 62: HR, 82.898; 62: RR, 16.661; 62: SpO2, 98.068; 62: Perf, 1.344; 62: 1min HRV, 7.296; 63: HR, 83.569; 63: RR, 17.052; 63: SpO2, 97.897; 63: Perf, 1.436; 63: 1min HRV, 27.513; 64: HR, 81.627; 64: RR, 17.576; 64: SpO2, 98.102; 64: Perf, 1.201; 64: 1min HRV, 11.323; 65: HR, 82.053; 65: RR, 17.877; 65: SpO2, 98.754; 65: Perf, 1.020; 65: 1min HRV, 60.692; 65: 5min HRV, 31.430; 66: HR, 82.0; 66: RR, 13.407; 66: SpO2, 97.424; 66: Perf, 0.810; 66: 1min HRV, 10.620; 67: HR, 82.136; 67: RR, 11.407; 67: SpO2, 98.0; 67: Perf, 0.766; 67: 1min HRV, 8.232; 68: HR, 81.776; 68: RR, 10.862; 68: SpO2, 97.759; 68: Perf, 1.136; 68: 1min HRV, 9.964; 69: HR, 80.814; 69: RR, 10.542; 69: SpO2, 97.153; 69: Perf, 1.262; 69: 1min HRV, 12.166; 70: HR, 81.914; 70: RR, 10.534; 70: SpO2, 97.172; 70: Perf, 1.313; 70: 1min HRV, 11.149; 70: 5min HRV, 11.017; 84: HYDROMORPHONE, 1 MG/ML INJ SYRG; 85: ONDANSETRON, 4 MG PO TBDL; 89: WAM DIFTYP, AUTO; 89: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.04 K/uL; 89: BASOPHIL % (AUTO DIFF), 0.4 %; 89: LYMPHOCYTE % (AUTO DIFF), 16.8 %; 89: NEUTROPHIL ABSOLUTE (AUTO DIFF), 8.82 K/uL; 89: RED CELL DISTRIBUTION WIDTH (RDW), 18.1 %; 89: HEMOGLOBIN (HGB), 9.7 g/dL; 89: HEMATOCRIT (HCT), 30.2 %; 89: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 2.27 K/uL; 89: RED BLOOD CELLS (RBC), 3.17 MIL/uL; 89: WHITE BLOOD CELLS (WBC), 13.5 K/uL; 89: MEAN CORPUSCULAR VOLUME (MCV), 95.3 fL; 89: NRBC ABSOLUTE (HEMATOLOGY), 0.05 K/uL; 89: BASOPHIL ABSOLUTE (AUTO DIFF), 0.06 K/uL; 89: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.60 K/uL; 89: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 4.5 %; 89: NEUTROPHIL % (AUTO DIFF), 65.5 %; 89: MONOCYTE ABSOLUTE (AUTO DIFF), 1.69 K/uL; 89: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 30.6 pg; 89: PLATELET COUNT (PLT), 153 K/uL; 89: MONOCYTE % (AUTO DIFF), 12.5 %; 89: NRBC PERCENT (HEMATOLOGY), 0.4 %; 89: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 32.1 g/dL; 89: EOSINOPHIL % (AUTO DIFF), 0.3 %; 111: TROPONIN I, <.017 ng/mL; 118: BNP NT-PRO, 204 pg/mL; 0: Age, 61; 0: Gender, F; 0: Race, White; 0: Means of arrival, Self; 0: Triage Temp, 36.8; 0: Triage HR, 88.0; 0: Triage RR, 18.0; 0: Triage SBP, 95.0; 0: Triage DBP, 67.0; 0: Triage acuity, 2-Emergent; 0: CC, BREAST PAIN",
+        "answer": "No",
+        "llm_answer": "No",
+        "llm_explanation": "The patient's vital signs, including heart rate (HR), respiratory rate (RR), blood pressure (BP), and oxygen saturation (SpO2), remain relatively stable throughout the recorded time. While there is a low SpO2 reading at time 30, it quickly recovers. Laboratory results do not indicate significant abnormalities or lactate levels indicative of sepsis. Although the white blood cell count is elevated, other typical sepsis markers are not present, suggesting the patient is not at high risk for sepsis within 12 hours.",
+        "claims": [
+            "The patient's vital signs include heart rate, respiratory rate, blood pressure, and oxygen saturation.",
+            "The patient's vital signs remain relatively stable throughout the recorded time.",
+            "There is a low SpO2 reading at time 30.",
+            "The low SpO2 reading quickly recovers.",
+            "Laboratory results do not indicate significant abnormalities.",
+            "Laboratory results do not show lactate levels indicative of sepsis.",
+            "The white blood cell count is elevated.",
+            "Other typical sepsis markers are not present.",
+            "The absence of typical sepsis markers suggests the patient is not at high risk for sepsis within 12 hours."
+        ],
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [
+            [1, "The patient's vital signs include heart rate, respiratory rate, blood pressure, and oxygen saturation."],
+            [1, "The patient's vital signs remain relatively stable throughout the recorded time."],
+            [1, "There is a low SpO2 reading at time 30."],
+            [1, "The low SpO2 reading quickly recovers."],
+            [1, "Laboratory results do not indicate significant abnormalities."],
+            [1, "Laboratory results do not show lactate levels indicative of sepsis."],
+            [1, "The white blood cell count is elevated."],
+            [1, "Other typical sepsis markers are not present."],
+            [1, "The absence of typical sepsis markers suggests the patient is not at high risk for sepsis within 12 hours."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "There is a low SpO2 reading at time 30."],
+            [1, "Laboratory results do not show lactate levels indicative of sepsis."],
+            [1, "The white blood cell count is elevated."],
+            [1, "The absence of typical sepsis markers suggests the patient is not at high risk for sepsis within 12 hours."]
+        ],
+        "relevant_claims": [
+            "There is a low SpO2 reading at time 30.",
+            "Laboratory results do not show lactate levels indicative of sepsis.",
+            "The white blood cell count is elevated.",
+            "The absence of typical sepsis markers suggests the patient is not at high risk for sepsis within 12 hours."
+        ],
+        "alignment_scores": [
+            0.5,
+            0.8,
+            1.0,
+            0.3
+        ],
+        "alignment_category": [
+            8,
+            5,
+            2,
+            2
+        ],
+        "alignment_reasonings": [
+            "The claim of a low SpO2 reading suggests potential hypoxemia, which aligns conceptually with impaired oxygenation captured in the SOFA score (through the PaO\u2082/FiO\u2082 ratio). While SpO2 itself isn't a direct SOFA measure, it can reflect underlying issues relevant to the SOFA criteria, warranting a moderate alignment rating.",
+            "The claim explicitly discusses lactate levels, mentioning that they are not indicative of sepsis. This category specifically addresses serum lactate levels, making it the most relevant. The alignment is strong because the claim refers directly to the specific lab value, although it notes the absence rather than the presence of an elevated level, slightly reducing the alignment strength.",
+            "The elevated white blood cell count is one of the criteria explicitly listed under SIRS criteria. The presence of an elevated WBC count is a direct indicator of systemic inflammation consistent with early sepsis, which perfectly aligns with this expert category.",
+            "The claim suggests the absence of typical sepsis markers. SIRS criteria are commonly used markers for identifying early signs of systemic inflammation consistent with sepsis. Although the claim implies a lack of these markers, which aligns with SIRS criteria, it does not provide specific details to gauge alignment regarding each criterion's presence or absence. The alignment is therefore weak and indirect."
+        ],
+        "final_alignment_score": 0.6499999999999999,
+        "accuracy": 1
+    },
+    "30": {
+        "input": "5: HR, 116.0; 5: RR, 18.0; 5: SpO2, 99.0; 5: SBP, 100.0; 5: DBP, 53.0; 5: MAP, 68.667; 5: Temp, 98.8; 10: Pain, 0.0; 51: SpO2, 97.0; 51: Perf, 4.984; 52: SpO2, 97.089; 52: Perf, 4.915; 53: SpO2, 98.595; 54: SpO2, 96.5; 54: Perf, 4.248; 55: SpO2, 96.102; 55: Perf, 4.384; 55: SBP, 131.0; 55: DBP, 110.0; 55: MAP, 117.0; 56: HR, 131.0; 56: RR, 18.0; 56: SpO2, 94.517; 56: Perf, 4.223; 57: SpO2, 97.086; 57: Perf, 4.379; 58: SpO2, 96.390; 58: Perf, 5.404; 58: SBP, 136.0; 58: DBP, 73.0; 58: MAP, 94.0; 59: SpO2, 96.397; 59: Perf, 5.06; 60: SpO2, 95.729; 60: Perf, 5.474; 61: SpO2, 95.542; 61: Perf, 5.584; 62: SpO2, 94.190; 62: Perf, 6.141; 63: SpO2, 93.339; 63: Perf, 6.243; 64: SpO2, 92.707; 64: Perf, 6.196; 65: SpO2, 92.831; 65: Perf, 5.624; 66: SpO2, 93.655; 66: Perf, 5.275; 67: SpO2, 93.466; 67: Perf, 5.632; 68: SpO2, 92.0; 68: Perf, 5.250; 69: SpO2, 94.483; 69: Perf, 5.079; 70: SpO2, 95.644; 70: Perf, 4.544; 71: WAM DIFTYP, AUTO; 71: MONOCYTE % (AUTO DIFF), 12.4 %; 71: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.17 K/uL; 71: HEMATOCRIT (HCT), 29.4 %; 71: NEUTROPHIL ABSOLUTE (AUTO DIFF), 13.60 K/uL; 71: EOSINOPHIL % (AUTO DIFF), 0.7 %; 71: PLATELET COUNT (PLT), 194 K/uL; 71: MEAN CORPUSCULAR VOLUME (MCV), 90.2 fL; 71: BASOPHIL % (AUTO DIFF), 0.2 %; 71: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 1.0 %; 71: LYMPHOCYTE % (AUTO DIFF), 7.3 %; 71: BASOPHIL ABSOLUTE (AUTO DIFF), 0.03 K/uL; 71: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.13 K/uL; 71: RED CELL DISTRIBUTION WIDTH (RDW), 19.4 %; 71: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 35.0 g/dL; 71: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 1.27 K/uL; 71: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 31.6 pg; 71: NRBC PERCENT (HEMATOLOGY), 0.0 %; 71: HEMOGLOBIN (HGB), 10.3 g/dL; 71: MONOCYTE ABSOLUTE (AUTO DIFF), 2.16 K/uL; 71: WHITE BLOOD CELLS (WBC), 17.4 K/uL; 71: RED BLOOD CELLS (RBC), 3.26 MIL/uL; 71: NEUTROPHIL % (AUTO DIFF), 78.4 %; 71: NRBC ABSOLUTE (HEMATOLOGY), 0.00 K/uL; 71: SpO2, 96.627; 71: Perf, 3.934; 72: HR, 128.0; 72: RR, 15.0; 72: SpO2, 96.948; 72: Perf, 3.796; 72: SBP, 111.0; 72: DBP, 58.0; 72: MAP, 75.667; 73: SpO2, 95.169; 73: Perf, 3.323; 74: SpO2, 95.862; 74: Perf, 3.46; 75: SpO2, 95.949; 75: Perf, 4.404; 76: SpO2, 96.424; 76: Perf, 4.125; 77: SpO2, 95.386; 77: Perf, 4.499; 78: SpO2, 95.847; 78: Perf, 4.029; 79: SpO2, 93.931; 79: Perf, 5.616; 80: SpO2, 93.712; 80: Perf, 5.950; 81: SpO2, 92.576; 81: Perf, 6.079; 82: SpO2, 91.5; 82: Perf, 6.108; 83: SpO2, 91.288; 83: Perf, 5.687; 84: SpO2, 92.759; 84: Perf, 4.941; 85: SpO2, 91.695; 85: Perf, 4.881; 86: SpO2, 94.155; 86: Perf, 4.166; 87: SpO2, 92.356; 87: Perf, 5.018; 88: SpO2, 92.017; 88: Perf, 4.251; 89: SARS-COV-2 RNA, Not Detected; 89: SpO2, 92.678; 89: Perf, 4.758; 90: SpO2, 93.431; 90: Perf, 4.360; 91: SpO2, 93.085; 91: Perf, 4.184; 92: SpO2, 92.138; 92: Perf, 4.353; 93: SpO2, 93.15; 93: Perf, 3.918; 94: SpO2, 92.982; 94: Perf, 4.616; 95: SpO2, 91.458; 95: Perf, 4.198; 96: SpO2, 92.508; 96: Perf, 3.947; 97: SpO2, 95.017; 97: Perf, 2.862; 98: SpO2, 95.172; 98: Perf, 3.838; 99: SpO2, 95.103; 99: Perf, 4.120; 100: SpO2, 95.155; 100: Perf, 3.586; 101: SpO2, 95.847; 101: Perf, 3.316; 102: SpO2, 96.483; 102: Perf, 3.631; 103: SpO2, 96.525; 103: Perf, 4.056; 104: SpO2, 95.339; 104: Perf, 4.778; 105: SpO2, 95.741; 105: Perf, 4.193; 106: SpO2, 95.305; 106: Perf, 4.879; 107: SpO2, 95.390; 107: Perf, 4.927; 108: HIGH SENSITIVITY TROPONIN, 12 ng/L; 108: SpO2, 94.627; 108: Perf, 5.704; 117: HR, 129.0; 117: RR, 17.0; 117: SpO2, 98.0; 117: SBP, 131.0; 117: DBP, 69.0; 117: MAP, 89.667; 119: ALKALINE PHOSPHATASE, 557 U/L; 119: ALBUMIN, 1.9 g/dL; 119: CALCIUM, 7.5 mg/dL; 119: EGFR REFIT WITHOUT RACE (2021), 92 mL/min/1.73 m2; 119: ANION GAP, 13 mmol/L; 119: ALT (SGPT), 63 U/L; 119: BLOOD UREA NITROGEN (BUN), 15 mg/dL; 119: CHLORIDE, 92 mmol/L; 119: POTASSIUM, 4.0 mmol/L; 119: PROTEIN TOTAL, 4.6 g/dL; 119: GLUCOSE, 110 mg/dL; 119: CORRECTED CALCIUM, 9.2 mg/dL; 119: SODIUM, 128 mmol/L; 119: GLOBULIN, 2.7 g/dL; 119: AST (SGOT), 64 U/L; 119: CO2, 23 mmol/L; 119: BILIRUBIN TOTAL, 5.7 mg/dL; 119: CREATININE, 0.72 mg/dL; 119: LIPASE, 48 U/L; 0: Age, 66; 0: Gender, F; 0: Race, Asian; 0: Means of arrival, Self; 0: Triage Temp, 37.1; 0: Triage HR, 116.0; 0: Triage RR, 18.0; 0: Triage SBP, 100.0; 0: Triage DBP, 53.0; 0: Triage acuity, 2-Emergent; 0: CC, SHORTNESS OF BREATH",
+        "answer": "Yes",
+        "llm_answer": "Yes",
+        "llm_explanation": "The patient exhibits several clinical markers associated with a high risk for sepsis, such as hypotension (low diastolic blood pressure), tachycardia (high heart rate), elevated white blood cell count, and low hemoglobin and hematocrit levels. Additionally, the presence of jaundice (elevated bilirubin) and hypoalbuminemia (low albumin level) further suggest potential organ dysfunction, reinforcing the risk of sepsis within 12 hours.",
+        "claims": [
+            "The patient exhibits several clinical markers associated with a high risk for sepsis.",
+            "The patient has hypotension, which is indicated by low diastolic blood pressure.",
+            "The patient has tachycardia, which is indicated by a high heart rate.",
+            "The patient has an elevated white blood cell count.",
+            "The patient has low hemoglobin levels.",
+            "The patient has low hematocrit levels.",
+            "The patient has jaundice, indicated by elevated bilirubin levels.",
+            "The presence of jaundice suggests potential organ dysfunction.",
+            "The patient has hypoalbuminemia, indicated by a low albumin level.",
+            "Hypoalbuminemia suggests potential organ dysfunction.",
+            "The combination of these markers reinforces the risk of sepsis within 12 hours."
+        ],
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [
+            [1, "The patient exhibits several clinical markers associated with a high risk for sepsis."],
+            [1, "The patient has hypotension, which is indicated by low diastolic blood pressure."],
+            [1, "The patient has tachycardia, which is indicated by a high heart rate."],
+            [1, "The patient has an elevated white blood cell count."],
+            [1, "The patient has low hemoglobin levels."],
+            [1, "The patient has low hematocrit levels."],
+            [1, "The patient has jaundice, indicated by elevated bilirubin levels."],
+            [1, "The presence of jaundice suggests potential organ dysfunction."],
+            [1, "The patient has hypoalbuminemia, indicated by a low albumin level."],
+            [1, "Hypoalbuminemia suggests potential organ dysfunction."],
+            [1, "The combination of these markers reinforces the risk of sepsis within 12 hours."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The patient exhibits several clinical markers associated with a high risk for sepsis."],
+            [1, "The patient has hypotension, which is indicated by low diastolic blood pressure."],
+            [1, "The patient has tachycardia, which is indicated by a high heart rate."],
+            [1, "The patient has an elevated white blood cell count."],
+            [1, "The patient has low hemoglobin levels."],
+            [1, "The patient has low hematocrit levels."],
+            [1, "The patient has jaundice, indicated by elevated bilirubin levels."],
+            [1, "The presence of jaundice suggests potential organ dysfunction."],
+            [1, "The patient has hypoalbuminemia, indicated by a low albumin level."],
+            [1, "Hypoalbuminemia suggests potential organ dysfunction."]
+        ],
+        "relevant_claims": [
+            "The patient exhibits several clinical markers associated with a high risk for sepsis.",
+            "The patient has hypotension, which is indicated by low diastolic blood pressure.",
+            "The patient has tachycardia, which is indicated by a high heart rate.",
+            "The patient has an elevated white blood cell count.",
+            "The patient has low hemoglobin levels.",
+            "The patient has low hematocrit levels.",
+            "The patient has jaundice, indicated by elevated bilirubin levels.",
+            "The presence of jaundice suggests potential organ dysfunction.",
+            "The patient has hypoalbuminemia, indicated by a low albumin level.",
+            "Hypoalbuminemia suggests potential organ dysfunction."
+        ],
+        "alignment_scores": [
+            0.3,
+            0.7,
+            0.8,
+            1.0,
+            0.3,
+            0.3,
+            1.0,
+            0.7,
+            0.3,
+            0.3
+        ],
+        "alignment_category": [
+            4,
+            7,
+            2,
+            2,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+        ],
+        "alignment_reasonings": [
+            "The claim mentions \"several clinical markers associated with a high risk for sepsis\" but lacks specificity about the markers. The category of Elevated NEWS Score broadly captures the idea of using multiple vital sign deviations to predict sepsis risk, but without specific details, the alignment is weak. It suggests a general assessment based on various clinical indicators, like the NEWS, but does not provide enough information to strongly connect it to any single category.",
+            "The claim mentions hypotension, an element of sepsis-associated hypotension. While it specifies low diastolic blood pressure without clear figures or mention of SBP or MAP, hypotension generally aligns with this category. The alignment is fairly strong but not perfect due to lack of specific numbers relating to SBP or MAP criteria.",
+            "Tachycardia, or a high heart rate (>90 bpm), is explicitly part of the criteria for SIRS positivity, indicating systemic inflammation consistent with early sepsis. However, the claim mentions just one SIRS criterion, so while it strongly aligns with the category, it does not fully encapsulate the criterion of having \u22652 SIRS criteria.",
+            "An elevated white blood cell (WBC) count is explicitly mentioned as one of the SIRS criteria used to identify systemic inflammation consistent with early sepsis. This claim directly aligns with the SIRS Positivity category, hence the perfect alignment rating.",
+            "While low hemoglobin is not directly part of the SOFA score criteria, it could indicate or contribute to organ dysfunction, which the SOFA score measures. The correlation is indirect, considering low hemoglobin isn't explicitly measured in the SOFA components, leading to a weak alignment.",
+            "Low hematocrit levels are indicative of potential anemia, which doesn't directly align with any specific sepsis criteria listed. While low hematocrit is not a direct measure within the SOFA score, it can indirectly relate to organ dysfunction (as it implies impaired oxygen delivery). This connection to organ dysfunction/laboratory derangement gives it a partial but weak alignment with the SOFA category.",
+            "The claim of jaundice due to elevated bilirubin levels explicitly aligns with the SOFA score criteria, which include bilirubin >2 mg/dL. An increase in bilirubin is a direct indicator used in the SOFA score to identify organ dysfunction and heightened sepsis risk, leading to perfect alignment with this category.",
+            "Jaundice can be indicative of elevated bilirubin levels, which is a component considered in the SOFA score. An increase in bilirubin levels can contribute to a SOFA score increase, suggesting organ dysfunction and a higher risk of sepsis. Although the claim does not provide specific bilirubin measurements or an explicit SOFA score increase, the mention of jaundice suggests potential liver dysfunction, which aligns with the SOFA score criteria for organ dysfunction. Therefore, the alignment is substantial but not direct, earning a rating of 0.7.",
+            "Hypoalbuminemia itself is not directly a part of the SOFA scoring system; however, it could be indicative of liver dysfunction or general poor health status, which might contribute to the factors affecting the SOFA score, such as bilirubin levels. The alignment is weak and indirect, as it does not specifically match any distinct SOFA criterion.",
+            "Hypoalbuminemia itself is not directly mentioned in the SOFA score components. However, it can suggest potential organ dysfunction, which in some contexts might relate to conditions like liver dysfunction that are part of SOFA criteria (e.g., bilirubin levels). The alignment is weak since hypoalbuminemia indirectly hints at dysfunction but is not directly measured by SOFA components."
+        ],
+        "final_alignment_score": 0.57,
+        "accuracy": 1
+    },
+    "36": {
+        "input": "3: HR, 121.0; 3: RR, 22.0; 3: SpO2, 97.0; 3: SBP, 129.0; 3: DBP, 87.0; 3: MAP, 101.0; 3: Temp, 99.3; 16: SpO2, 96.45; 16: Perf, 0.6; 17: HR, 133.538; 17: RR, 22.158; 17: SpO2, 97.130; 17: Perf, 0.471; 17: 1min HRV, 16.532; 18: HR, 133.305; 18: RR, 21.966; 18: SpO2, 96.625; 18: Perf, 0.406; 18: 1min HRV, 19.165; 18: SBP, 114.0; 18: DBP, 76.0; 18: MAP, 88.667; 19: HR, 139.339; 19: RR, 18.746; 19: SpO2, 97.186; 19: Perf, 0.443; 19: 1min HRV, 20.527; 19: 5min HRV, 20.534; 20: HR, 131.103; 20: RR, 23.862; 20: SpO2, 96.793; 20: Perf, 0.505; 20: 1min HRV, 16.418; 21: HR, 130.086; 21: RR, 22.190; 21: SpO2, 97.138; 21: Perf, 0.542; 21: 1min HRV, 12.962; 22: HR, 129.103; 22: RR, 20.5; 22: SpO2, 96.931; 22: Perf, 0.499; 22: 1min HRV, 9.228; 23: HR, 131.356; 23: RR, 21.898; 23: SpO2, 97.356; 23: Perf, 0.426; 23: 1min HRV, 11.118; 24: HR, 131.390; 24: RR, 21.932; 24: SpO2, 97.441; 24: Perf, 0.427; 24: 1min HRV, 12.103; 24: 5min HRV, 13.005; 25: HR, 131.948; 25: RR, 21.914; 25: SpO2, 97.276; 25: Perf, 0.387; 25: 1min HRV, 10.485; 26: HR, 133.322; 26: RR, 22.390; 26: SpO2, 97.695; 26: Perf, 0.369; 26: 1min HRV, 13.968; 27: HR, 133.121; 27: RR, 22.517; 27: SpO2, 98.034; 27: Perf, 0.367; 27: 1min HRV, 16.834; 28: HR, 130.119; 28: RR, 22.068; 28: SpO2, 97.279; 28: Perf, 0.408; 28: 1min HRV, 10.430; 29: HR, 129.169; 29: RR, 20.814; 29: SpO2, 97.424; 29: Perf, 0.623; 29: 1min HRV, 5.235; 29: 5min HRV, 13.384; 29: SBP, 113.0; 29: DBP, 72.0; 29: MAP, 85.667; 30: HR, 129.017; 30: RR, 21.931; 30: SpO2, 98.023; 30: Perf, 0.61; 30: 1min HRV, 8.060; 30: SBP, 113.0; 30: DBP, 72.0; 30: MAP, 85.667; 31: HR, 130.0; 31: RR, 22.655; 31: SpO2, 98.0; 31: Perf, 0.628; 31: 1min HRV, 7.261; 32: HR, 130.810; 32: RR, 21.621; 32: SpO2, 98.0; 32: Perf, 0.555; 32: 1min HRV, 5.514; 33: HR, 130.661; 33: RR, 25.169; 33: SpO2, 98.0; 33: Perf, 0.507; 33: 1min HRV, 10.328; 34: 5min HRV, 8.431; 61: POC PH (V) ISTAT, 7.41; 61: POC LACTATE ISTAT, 1.49 mmol/L; 61: POC O2 SATURATION ISTAT VENOUS, 77 %; 61: POC PO2 (V) ISTAT, 41 mmHg; 61: POC TCO2 (V) ISTAT, 24 mmol/L; 61: POC BASE EXCESS ISTAT, -2 mmol/L; 61: POC PCO2 (V) ISTAT, 36.8 mmHg; 61: POC HCO3 (V) ISTAT, 23.1 mmol/L; 66: POC CREATININE ISTAT, 0.2 mg/dL; 66: POC EGFR REFIT WITHOUT RACE (2021), 169 mL/min/1.73 m2; 78: RSV, Not Detected; 78: INFLUENZA B, Not Detected; 78: SARS-COV-2 RNA, Not Detected; 78: INFLUENZA A, Not Detected; 84: WAM DIFTYP, AUTO; 84: NEUTROPHIL % (AUTO DIFF), 70.3 %; 84: PLATELET COUNT (PLT), 275 K/uL; 84: WHITE BLOOD CELLS (WBC), 7.6 K/uL; 84: EOSINOPHIL % (AUTO DIFF), 1.1 %; 84: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 31.3 g/dL; 84: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.02 K/uL; 84: BASOPHIL % (AUTO DIFF), 0.4 %; 84: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 0.3 %; 84: NRBC PERCENT (HEMATOLOGY), 0.0 %; 84: MONOCYTE ABSOLUTE (AUTO DIFF), 0.52 K/uL; 84: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 1.60 K/uL; 84: BASOPHIL ABSOLUTE (AUTO DIFF), 0.03 K/uL; 84: HEMATOCRIT (HCT), 47.6 %; 84: NEUTROPHIL ABSOLUTE (AUTO DIFF), 5.35 K/uL; 84: NRBC ABSOLUTE (HEMATOLOGY), 0.00 K/uL; 84: LYMPHOCYTE % (AUTO DIFF), 21.1 %; 84: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.08 K/uL; 84: RED BLOOD CELLS (RBC), 5.91 MIL/uL; 84: MONOCYTE % (AUTO DIFF), 6.8 %; 84: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 25.2 pg; 84: RED CELL DISTRIBUTION WIDTH (RDW), 17.4 %; 84: HEMOGLOBIN (HGB), 14.9 g/dL; 84: MEAN CORPUSCULAR VOLUME (MCV), 80.5 fL; 97: INR, 1.0; 97: PROTHROMBIN TIME, 13.8 seconds; 98: PART. THROMBOPLASTIN TIME, 32.9 seconds; 111: HIGH SENSITIVITY TROPONIN, <4 ng/L; 112: SODIUM, 137 mmol/L; 112: AST (SGOT), 57 U/L; 112: PROTEIN TOTAL, 8.1 g/dL; 112: BILIRUBIN TOTAL, 0.5 mg/dL; 112: BLOOD UREA NITROGEN (BUN), 16 mg/dL; 112: ALKALINE PHOSPHATASE, 165 U/L; 112: GLUCOSE, 146 mg/dL; 112: CHLORIDE, 107 mmol/L; 112: GLOBULIN, 4.1 g/dL; 112: ANION GAP, 10 mmol/L; 112: POTASSIUM, 4.1 mmol/L; 112: EGFR REFIT WITHOUT RACE (2021), 181 mL/min/1.73 m2; 112: CREATININE, 0.16 mg/dL; 112: CALCIUM, 9.4 mg/dL; 112: CORRECTED CALCIUM, 9.4 mg/dL; 112: ALBUMIN, 4.0 g/dL; 112: ALT (SGPT), 122 U/L; 112: C-REACTIVE PROTEIN (CRP), 2.1 mg/dL; 112: CO2, 20 mmol/L; 119: HR, 120.0; 119: RR, 20.0; 119: SpO2, 96.0; 119: SBP, 120.0; 119: DBP, 90.0; 119: MAP, 100.0; 119: Pain, 0.0; 0: Age, 47; 0: Gender, M; 0: Race, White; 0: Means of arrival, Self; 0: Triage Temp, 37.4; 0: Triage HR, 121.0; 0: Triage RR, 22.0; 0: Triage SBP, 129.0; 0: Triage DBP, 87.0; 0: Triage acuity, 3-Urgent; 0: CC, VASCULAR ACCESS PROBLEM",
+        "answer": "Yes",
+        "llm_answer": "No",
+        "llm_explanation": "The patient's vital signs, such as heart rate, respiratory rate, and blood pressure, are elevated but not critically so, and the SpO2 levels remain stable. The lab results, including lactate levels and white blood cell count, are within normal ranges, and there are no significant indicators of organ dysfunction or systemic infection typically associated with a high sepsis risk. Therefore, the data does not strongly suggest a high risk of developing sepsis within 12 hours.",
+        "claims": [
+            "The patient's heart rate is elevated.",
+            "The patient's respiratory rate is elevated.",
+            "The patient's blood pressure is elevated.",
+            "The patient's elevated vital signs are not critically so.",
+            "The patient's SpO2 levels remain stable.",
+            "The patient's lactate levels are within normal ranges.",
+            "The patient's white blood cell count is within normal ranges.",
+            "There are no significant indicators of organ dysfunction in the patient.",
+            "There are no significant indicators of systemic infection in the patient.",
+            "The absence of significant indicators of organ dysfunction or systemic infection is typically associated with a low sepsis risk.",
+            "The data does not strongly suggest a high risk of the patient developing sepsis within 12 hours."
+        ],
+        "claim_decomposition_accuracy": 0.5,
+        "relevance_filtering_accuracy": [
+            [1, "The patient's heart rate is elevated."],
+            [1, "The patient's respiratory rate is elevated."],
+            [0, "The patient's blood pressure is elevated."],
+            [1, "The patient's elevated vital signs are not critically so."],
+            [1, "The patient's SpO2 levels remain stable."],
+            [1, "The patient's lactate levels are within normal ranges."],
+            [0, "The patient's white blood cell count is within normal ranges."],
+            [1, "There are no significant indicators of organ dysfunction in the patient."],
+            [1, "There are no significant indicators of systemic infection in the patient."],
+            [1, "The absence of significant indicators of organ dysfunction or systemic infection is typically associated with a low sepsis risk."],
+            [1, "The data does not strongly suggest a high risk of the patient developing sepsis within 12 hours."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The patient's heart rate is elevated."],
+            [1, "The patient's respiratory rate is elevated."],
+            [1, "The absence of significant indicators of organ dysfunction or systemic infection is typically associated with a low sepsis risk."]
+        ],
+        "relevant_claims": [
+            "The patient's heart rate is elevated.",
+            "The patient's respiratory rate is elevated.",
+            "The absence of significant indicators of organ dysfunction or systemic infection is typically associated with a low sepsis risk."
+        ],
+        "alignment_scores": [
+            0.8,
+            0.7,
+            0.7
+        ],
+        "alignment_category": [
+            2,
+            3,
+            8
+        ],
+        "alignment_reasonings": [
+            "An elevated heart rate is explicitly mentioned in the criteria for systemic inflammatory response syndrome (SIRS), which can be indicative of early sepsis. However, for definitive SIRS positivity, at least two criteria must be met, so the alignment is strong but not perfect without additional information.",
+            "The claim about an elevated respiratory rate aligns most closely with the High qSOFA Score. An elevated respiratory rate is a specific component (\u226522/min) of the qSOFA score used to assess the risk of sepsis-related organ dysfunction. Although the claim doesn't specify whether the respiratory rate is \u226522, the fact that it is elevated suggests potential relevance to qSOFA criteria. Thus, the alignment is significant but not complete without exact values.",
+            "The claim discusses the absence of significant organ dysfunction, which is the focus of the SOFA score. If there is no organ dysfunction, the likelihood of sepsis is lower, aligning moderately with a low SOFA score. However, it doesn\u2019t specify an increase of \u22652 SOFA points, hence not a direct match."
+        ],
+        "final_alignment_score": 0.7333333333333334,
+        "accuracy": 0
+    },
+    "76": {
+        "input": "7: HR, 91.596; 7: RR, 24.462; 7: SpO2, 96.562; 7: Perf, 0.259; 7: 1min HRV, 72.990; 8: POC PH (V) ISTAT, 7.25; 8: POC GLUCOSE ISTAT, 100 mg/dL; 8: POC SODIUM ISTAT, 141 mmol/L; 8: POC HGB (CALC) ISTAT, 11.6 g/dL; 8: POC POTASSIUM ISTAT, 4.1 mmol/L; 8: POC HCT ISTAT, 34 %; 8: POC HCO3 (V) ISTAT, 30.1 mmol/L; 8: POC BASE EXCESS ISTAT, 3 mmol/L; 8: POC TCO2 (V) ISTAT, 32 mmol/L; 8: POC LACTATE ISTAT, 0.83 mmol/L; 8: POC O2 SATURATION ISTAT VENOUS, 21 %; 8: POC PO2 (V) ISTAT, 19 mmHg; 8: POC PCO2 (V) ISTAT, 68.9 mmHg; 8: HR, 92.434; 8: RR, 24.623; 8: SpO2, 96.519; 8: Perf, 0.241; 8: 1min HRV, 51.204; 8: 5min HRV, 63.099; 9: HR, 93.135; 9: RR, 19.731; 9: SpO2, 95.95; 9: Perf, 0.217; 9: 1min HRV, 56.604; 10: HR, 91.208; 10: RR, 21.585; 10: SpO2, 96.679; 10: Perf, 0.21; 10: 1min HRV, 41.598; 11: HR, 92.302; 11: RR, 21.321; 11: Perf, 0.21; 11: 1min HRV, 56.135; 12: HR, 92.481; 12: RR, 20.827; 12: SpO2, 97.778; 12: Perf, 0.21; 12: 1min HRV, 33.525; 13: HR, 97.585; 13: RR, 25.849; 13: SpO2, 96.811; 13: Perf, 0.21; 13: 1min HRV, 41.248; 13: 5min HRV, 50.267; 14: HR, 105.887; 14: RR, 21.642; 14: SpO2, 95.947; 14: 1min HRV, 52.404; 15: HR, 104.755; 15: RR, 16.019; 15: SpO2, 97.0; 15: 1min HRV, 15.021; 16: HR, 99.509; 16: RR, 22.623; 16: SpO2, 97.868; 16: Perf, 0.806; 16: 1min HRV, 6.890; 17: HR, 99.327; 17: RR, 19.538; 17: SpO2, 98.462; 17: Perf, 1.002; 17: 1min HRV, 45.299; 18: HR, 98.204; 18: RR, 25.833; 18: SpO2, 98.5; 18: Perf, 0.96; 18: 1min HRV, 7.606; 18: 5min HRV, 37.717; 19: HR, 98.538; 19: RR, 26.731; 19: SpO2, 98.0; 19: Perf, 0.96; 19: 1min HRV, 21.760; 19: SBP, 171.0; 19: DBP, 137.0; 19: MAP, 148.333; 20: HR, 97.667; 20: RR, 20.407; 20: SpO2, 97.824; 20: Perf, 0.96; 20: 1min HRV, 38.205; 21: HR, 97.887; 21: RR, 21.245; 21: SpO2, 98.302; 21: Perf, 0.96; 21: 1min HRV, 38.711; 22: HR, 96.212; 22: RR, 21.673; 22: SpO2, 99.0; 22: Perf, 0.96; 22: 1min HRV, 15.498; 23: HR, 95.679; 23: RR, 23.340; 23: SpO2, 98.041; 23: Perf, 0.959; 23: 1min HRV, 12.652; 23: 5min HRV, 29.080; 23: SBP, 171.0; 23: DBP, 137.0; 23: MAP, 148.333; 23: LPM O2, 2.0; 23: Pain, 1.0; 23: Temp, 101.3; 24: HR, 95.058; 24: RR, 23.654; 24: SpO2, 97.385; 24: Perf, 0.820; 24: 1min HRV, 17.024; 25: HR, 94.755; 25: RR, 22.038; 25: SpO2, 96.925; 25: Perf, 0.358; 25: 1min HRV, 13.002; 26: HR, 93.923; 26: RR, 20.442; 26: SpO2, 96.981; 26: Perf, 0.331; 26: 1min HRV, 17.608; 27: HR, 93.5; 27: RR, 22.519; 27: SpO2, 96.704; 27: Perf, 0.344; 27: 1min HRV, 10.366; 27: SBP, 125.0; 27: DBP, 33.0; 27: MAP, 63.667; 27: LPM O2, 2.0; 28: HR, 93.887; 28: RR, 23.151; 28: SpO2, 96.302; 28: Perf, 0.353; 28: 1min HRV, 4.850; 28: 5min HRV, 13.955; 29: HR, 94.5; 29: RR, 25.077; 29: SpO2, 96.077; 29: Perf, 0.371; 29: 1min HRV, 42.092; 30: HR, 92.208; 30: RR, 29.113; 30: SpO2, 95.660; 30: Perf, 0.388; 30: 1min HRV, 19.633; 31: HR, 93.0; 31: RR, 22.519; 31: SpO2, 94.808; 31: Perf, 0.391; 31: 1min HRV, 28.109; 32: HR, 92.593; 32: RR, 20.204; 32: SpO2, 95.185; 32: Perf, 0.455; 32: 1min HRV, 18.466; 33: 5min HRV, 29.373; 38: ABO/RH, B Positive; 39: ANTIBODY SCREEN 3, NEG; 44: PH.SER/PLAS, 7.22; 44: CALCIUM IONIZED, 1.14 mmol/L; 45: WAM DIFTYP, AUTO; 45: RED CELL DISTRIBUTION WIDTH (RDW), 15.3 %; 45: WHITE BLOOD CELLS (WBC), 11.9 K/uL; 45: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 31.3 g/dL; 45: NRBC PERCENT (HEMATOLOGY), 0.0 %; 45: NEUTROPHIL ABSOLUTE (AUTO DIFF), 10.07 K/uL; 45: HEMOGLOBIN (HGB), 10.0 g/dL; 45: LYMPHOCYTE % (AUTO DIFF), 8.1 %; 45: BASOPHIL ABSOLUTE (AUTO DIFF), 0.01 K/uL; 45: MEAN CORPUSCULAR VOLUME (MCV), 110.3 fL; 45: HEMATOCRIT (HCT), 32.0 %; 45: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 0.96 K/uL; 45: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.05 K/uL; 45: NRBC ABSOLUTE (HEMATOLOGY), 0.00 K/uL; 45: PLATELET COUNT (PLT), 185 K/uL; 45: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 34.5 pg; 45: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.08 K/uL; 45: EOSINOPHIL % (AUTO DIFF), 0.4 %; 45: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 0.7 %; 45: NEUTROPHIL % (AUTO DIFF), 84.7 %; 45: MONOCYTE % (AUTO DIFF), 6.0 %; 45: RED BLOOD CELLS (RBC), 2.90 MIL/uL; 45: BASOPHIL % (AUTO DIFF), 0.1 %; 45: MONOCYTE ABSOLUTE (AUTO DIFF), 0.71 K/uL; 46: ACETAMINOPHEN, 1 000 MG/100 ML (10 MG/ML) IV SOLN; 58: CEFTRIAXONE, 1 GRAM/10 ML IV PUSH (VIAL ONLY); 63: HR, 91.0; 63: SpO2, 100.0; 63: SBP, 109.0; 63: DBP, 44.0; 63: MAP, 65.667; 63: LPM O2, 2.0; 63: VANCOMYCIN-WATER INJECT (PEG), 2 GRAM/400 ML IV PGBK; 69: INR:, 1.1; 69: THROMBIN TIME, 20.9 seconds; 69: PART. THROMBOPLASTIN TIME, 40.8 seconds; 69: FIBRINOGEN, 654 mg/dL; 69: D-DIMER, 1.40 ug/mL FEU; 69: PROTHROMBIN TIME, 13.4 seconds; 70: SARS-COV-2 RNA, Detected; 70: INFLUENZA B, Not Detected; 70: INFLUENZA A, Not Detected; 70: SARS-COV-2 RNA, Detected; 70: INFLUENZA B, Not Detected; 70: INFLUENZA A, Not Detected; 71: BLOOD TYPE VERIFICATION-MANUAL, B Positive; 75: MAGNESIUM, 2.1 mg/dL; 75: PHOSPHORUS, 2.6 mg/dL; 75: BNP NT-PRO, 2986 pg/mL; 88: TROPONIN I, 0.020 ng/mL; 116: KETONE, URINE (UA): Negative; 116: NITRITE, URINE (UA): Negative; 116: SPECIFIC GRAVITY, URINE (UA): 1.020; 116: PH, URINE (UA): 5.0; 116: GLUCOSE, URINE (UA): Negative; 116: LEUKOCYTE ESTERASE, URINE (UA): Negative; 0: Age, 81; 0: Gender, F; 0: Race, Native Hawaiian or Other Pacific Islander; 0: Means of arrival, EMS; 0: Triage Temp, 38.5; 0: Triage HR, 94.0; 0: Triage RR, 23.0; 0: Triage SBP, 171.0; 0: Triage DBP, 137.0; 0: Triage acuity, 2-Emergent; 0: CC, ALTERED MENTAL STATUS",
+        "answer": "Yes",
+        "llm_answer": "Yes",
+        "llm_explanation": "The patient exhibits several risk factors for sepsis: advanced age, high triage temperature indicating fever, elevated respiratory rate, and altered mental status upon arrival. Additionally, blood gas measurements show acidosis (low venous pH) and elevated PCO2, which can be concerning in the context of an infection. Lastly, the high BNP NT-probably suggests cardiac stress, potentially related to systemic infection.",
+        "claims": [
+            "The patient exhibits several risk factors for sepsis.",
+            "One risk factor for sepsis is advanced age.",
+            "Another risk factor for sepsis is a high triage temperature.",
+            "A high triage temperature indicates fever.",
+            "Another risk factor for sepsis is an elevated respiratory rate.",
+            "Another risk factor for sepsis is altered mental status upon arrival.",
+            "Blood gas measurements show acidosis.",
+            "Acidosis is indicated by low venous pH.",
+            "The blood gas measurements show elevated PCO2.",
+            "Elevated PCO2 can be concerning in the context of an infection.",
+            "The high BNP NT-probably suggests cardiac stress.",
+            "Cardiac stress suggested by high BNP NT-probably is potentially related to systemic infection."
+        ],
+        "claim_decomposition_accuracy": 1,
+        "relevance_filtering_accuracy": [
+            [1, "The patient exhibits several risk factors for sepsis."],
+            [1, "One risk factor for sepsis is advanced age."],
+            [1, "Another risk factor for sepsis is a high triage temperature."],
+            [1, "A high triage temperature indicates fever."],
+            [1, "Another risk factor for sepsis is an elevated respiratory rate."],
+            [1, "Another risk factor for sepsis is altered mental status upon arrival."],
+            [1, "Blood gas measurements show acidosis."],
+            [1, "Acidosis is indicated by low venous pH."],
+            [1, "The blood gas measurements show elevated PCO2."],
+            [1, "Elevated PCO2 can be concerning in the context of an infection."],
+            [1, "The high BNP NT-probably suggests cardiac stress."],
+            [1, "Cardiac stress suggested by high BNP NT-probably is potentially related to systemic infection."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The patient exhibits several risk factors for sepsis."],
+            [1, "One risk factor for sepsis is advanced age."],
+            [1, "Another risk factor for sepsis is a high triage temperature."],
+            [1, "A high triage temperature indicates fever."],
+            [1, "Another risk factor for sepsis is an elevated respiratory rate."],
+            [1, "Another risk factor for sepsis is altered mental status upon arrival."],
+            [1, "Blood gas measurements show acidosis."],
+            [1, "Acidosis is indicated by low venous pH."],
+            [1, "The blood gas measurements show elevated PCO2."],
+            [0, "Elevated PCO2 can be concerning in the context of an infection."],
+            [1, "Cardiac stress suggested by high BNP NT-probably is potentially related to systemic infection."]
+        ],
+        "relevant_claims": [
+            "The patient exhibits several risk factors for sepsis.",
+            "One risk factor for sepsis is advanced age.",
+            "Another risk factor for sepsis is a high triage temperature.",
+            "A high triage temperature indicates fever.",
+            "Another risk factor for sepsis is an elevated respiratory rate.",
+            "Another risk factor for sepsis is altered mental status upon arrival.",
+            "Blood gas measurements show acidosis.",
+            "Acidosis is indicated by low venous pH.",
+            "The blood gas measurements show elevated PCO2.",
+            "Elevated PCO2 can be concerning in the context of an infection.",
+            "Cardiac stress suggested by high BNP NT-probably is potentially related to systemic infection."
+        ],
+        "alignment_scores": [
+            0.3,
+            0.9,
+            0.5,
+            0.7,
+            0.8,
+            0.9,
+            0.7,
+            0.7,
+            0.5,
+            0.3,
+            0.3
+        ],
+        "alignment_category": [
+            4,
+            1,
+            2,
+            2,
+            2,
+            3,
+            5,
+            8,
+            2,
+            8,
+            6
+        ],
+        "alignment_reasonings": [
+            "The claim vaguely references \"several risk factors,\" which could potentially include various criteria evaluated in a NEWS assessment that suggests risk of sepsis. However, the claim lacks specificity about which risk factors or clinical findings are present. Since NEWS considers multiple vitals and risk indicators, it may somewhat align with the mention of \"several risk factors\" but lacks the specificity needed for a strong alignment.",
+            "The claim identifies advanced age as a risk factor, which directly aligns with the \"Elderly Susceptibility\" category. However, it lacks specificity (does not mention the threshold age of \u226565 years). Therefore, the alignment is very strong, but not perfect, leading to a rating of 0.9.",
+            "The claim about a high triage temperature relates to SIRS criteria since one of the SIRS identifiers is a temperature >38\u00b0C, signaling potential early sepsis. However, without a specific temperature value, it is unclear if it meets the exact SIRS threshold. Therefore, the claim partially aligns with SIRS criteria, warranting a moderate alignment rating.",
+            "The claim mentions a high triage temperature indicating fever, which aligns with the SIRS criteria that include a temperature >38\u00b0C as an indicator of systemic inflammation consistent with early sepsis. However, the claim does not specify whether the temperature exceeds the SIRS threshold, leading to a partial, but not full, alignment with the category.",
+            "The claim mentions an elevated respiratory rate, which is part of the SIRS criteria (respiratory rate >\u202f20/min). It aligns well, indicating a significant risk factor for sepsis through systemic inflammation, though it does not single out the exact threshold specified in the SIRS criteria.",
+            "Altered mentation is explicitly one of the criteria for the qSOFA score, which is used to identify high risk of sepsis-related organ dysfunction and mortality. The claim directly references this factor, making the alignment very strong, though not entirely exhaustive on other qSOFA criteria.",
+            "Blood gas measurements indicating acidosis can suggest tissue hypoperfusion, which relates conceptually to elevated serum lactate, a marker for sepsis. However, acidosis itself is not exclusively indicative of elevated lactate levels, which is why the alignment is moderate but not complete.",
+            "Acidosis, indicated by a low venous pH, suggests potential organ dysfunction, which is conceptually related to a SOFA score increase. A low pH can indicate respiratory or metabolic dysfunctions akin to those assessed by SOFA components, such as impaired respiratory function (PaO\u2082/FiO\u2082 ratio) or renal dysfunction (creatinine levels). While low pH itself is not directly a parameter of SOFA scoring, it signals systemic derangement relevant to SOFA's core principle of organ dysfunction, justifying a moderate alignment rating.",
+            "Elevated PCO2 isn't directly listed under the SIRS criteria, which specifically includes a low PaCO2 (<32 mmHg) as a sign of systemic inflammation. However, blood gas measurements are relevant in the context of assessing respiratory function, which is part of SIRS. The alignment is moderate, as elevated PCO2 indicates potential respiratory compromise but doesn't directly meet the SIRS criterion for low PaCO2.",
+            "The claim about elevated PCO2 is not directly linked to any category, as none of the expert categories specifically references elevated PCO2. However, PCO2 is related to respiratory function, and while not directly mentioned as a component of the SOFA score, respiratory dysfunction may cause changes relevant to a SOFA score increase, such as impaired oxygenation (PaO\u2082/FiO\u2082). The alignment is indirect and weak, but there\u2019s a conceptual overlap with organ dysfunction.",
+            "Brain Natriuretic Peptide (BNP) levels are not directly linked to the criteria listed in any expert category. However, elevated BNP can suggest cardiac stress or failure, which may be indirectly related to hemodynamic instability referenced in the Elevated Shock Index category. Therefore, there's a tenuous link due to potential hemodynamic implications, though BNP itself is not a direct measure in these categories."
+        ],
+        "final_alignment_score": 0.6,
+        "accuracy": 1
+    }
+}

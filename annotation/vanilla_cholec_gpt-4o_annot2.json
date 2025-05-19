@@ -56,9 +56,9 @@
             [1, "The upper portion of the image shows clear exposure of lighter, less vascular tissue."],
             [1, "The lighter, less vascular tissue appears as a yellowish zone."],
             [1, "The yellowish zone indicates the connective tissue plane between the gallbladder and liver."],
-            [0, "The distinctly visible tissue planes in this area provide an optimal site for dissection."],
+            [1, "The distinctly visible tissue planes in this area provide an optimal site for dissection."],
             [1, "Dissection in this area minimizes the risk of damage to critical structures."],
-            [0, "This safer zone allows the surgeon to begin separating the gallbladder from its bed."],
+            [1, "This safer zone allows the surgeon to begin separating the gallbladder from its bed."],
             [1, "The unsafe region occupies the lower to center-right portion of the image."],
             [1, "The lower to center-right portion of the image shows darker, more vascular tissue."],
             [1, "Darker, more vascular tissue suggests proximity to critical structures such as the cystic duct and cystic artery."],
@@ -180,9 +180,9 @@
             [1, "- Dissection in the safe zone should maintain a distance from critical structures."],
             [1, "- The unsafe region is primarily in the lower half of the image."],
             [1, "- The unsafe region contains more extensive adipose and vascular tissues."],
-            [0, "- The unsafe region likely includes parts of the hepatocystic triangle."],
+            [1, "- The unsafe region likely includes parts of the hepatocystic triangle."],
             [1, "- The hepatocystic triangle contains essential vascular and biliary structures like the cystic artery and common bile duct."],
-            [0, "- The increased vascularity of the unsafe region suggests it should be approached with caution."],
+            [1, "- The increased vascularity of the unsafe region suggests it should be approached with caution."],
             [1, "- The transition from the safe to the unsafe region is marked by a change in anatomical clarity."],
             [0, "- The safe region provides a clear path for dissection."],
             [1, "- The unsafe region's complex anatomical relationships require meticulous dissection to avoid complications."]
@@ -194,10 +194,10 @@
             [1, "Dissection can proceed carefully around and just distal to the cystic duct in the safe zone."],
             [1, "The unsafe region is primarily in the lower half of the image."],
             [1, "The unsafe region contains more extensive adipose and vascular tissues."],
-            [0.5, "The unsafe region likely includes parts of the hepatocystic triangle."],
+            [1, "The unsafe region likely includes parts of the hepatocystic triangle."],
             [1, "The increased vascularity of the unsafe region suggests it should be approached with caution."],
-            [0.5, "The transition from the safe to the unsafe region is marked by a change in anatomical clarity."],
-            [0, "The safe region provides a clear path for dissection."]
+            [1, "The transition from the safe to the unsafe region is marked by a change in anatomical clarity."],
+            [1, "The safe region provides a clear path for dissection."]
         ],
         "aligned_category_ids": [
             4,
@@ -287,15 +287,15 @@
             [1, "The safe region is located in the upper portion of the laparoscopic image."],
             [1, "The upper portion of the image shows clearer tissue planes and less vascularized areas."],
             [1, "The central-upper area offers better visualization of the peritoneal tissue."],
-            [0, "The lighter coloration in the upper region indicates a reduced risk of encountering significant vessels or ducts."],
-            [0.5, "The lower portion of the image is considered an unsafe region for dissection."],
-            [0.5, "The unsafe region is especially pronounced in the center and right side of the lower image."],
+            [1, "The lighter coloration in the upper region indicates a reduced risk of encountering significant vessels or ducts."],
+            [1, "The lower portion of the image is considered an unsafe region for dissection."],
+            [1, "The unsafe region is especially pronounced in the center and right side of the lower image."],
             [1, "Darker, more vascular-appearing tissue in the lower region suggests critical structures are present."],
             [0.5, "The unsafe region may contain structures like the cystic duct, cystic artery, or parts of the hepatocystic triangle."],
             [0, "Increased complexity and density of tissues in the lower region indicate critical anatomical features."],
             [1, "Careful identification and protection of critical structures are required to avoid complications."],
-            [0, "The boundary between safe and unsafe regions is marked by a transition in tissue characteristics."],
-            [0, "Transition occurs from a well-defined, less vascular area in the upper portion to more vascular regions below."],
+            [1, "The boundary between safe and unsafe regions is marked by a transition in tissue characteristics."],
+            [1, "Transition occurs from a well-defined, less vascular area in the upper portion to more vascular regions below."],
             [1, "Recognizing the boundary between safe and unsafe regions is essential for safe surgical practice."]
         ],
         "expert_alignment_accuracy": [
@@ -305,7 +305,7 @@
             [1, "The unsafe region is especially pronounced in the center and right side of the lower image."],
             [1, "Darker, more vascular-appearing tissue in the lower region suggests critical structures are present."],
             [0.5, "The unsafe region may contain structures like the cystic duct, cystic artery, or parts of the hepatocystic triangle."],
-            [0.5, "Increased complexity and density of tissues in the lower region indicate critical anatomical features."],
+            [1, "Increased complexity and density of tissues in the lower region indicate critical anatomical features."],
             [1, "Transition occurs from a well-defined, less vascular area in the upper portion to more vascular regions below."]
         ],
         "aligned_category_ids": [
@@ -388,13 +388,13 @@
             "The boundary between zones is marked by the distinction between clearer tissue planes and densely vascular structures."
         ],
         "relevance_filtering_accuracy": [
-            [0, "The safe region for dissection is in the upper right portion of the image."],
+            [1, "The safe region for dissection is in the upper right portion of the image."],
             [1, "The gallbladder is being dissected away from the liver bed in the safe region."],
             [1, "The safe region reveals well-defined tissue planes."],
-            [0.5, "The safe region has a yellowish hue representing the subserosal layer."],
+            [1, "The safe region has a yellowish hue representing the subserosal layer."],
             [1, "Dissection in the safe region avoids major vascular structures."],
-            [0, "The safe region is clear of the critical hepatocystic triangle."],
-            [0, "The unsafe region occupies the lower left portion of the image."],
+            [1, "The safe region is clear of the critical hepatocystic triangle."],
+            [1, "The unsafe region occupies the lower left portion of the image."],
             [1, "The unsafe region shows visible liver and darker vascular structures."],
             [1, "The unsafe region likely harbors critical anatomical structures such as the common bile duct and larger blood vessels."],
             [1, "Dissection in the unsafe region poses a risk for complications."],
@@ -406,7 +406,7 @@
         "expert_alignment_accuracy": [
             [1, "The safe region for dissection is in the upper right portion of the image."],
             [1, "The gallbladder is being dissected away from the liver bed in the safe region."],
-            [0.5, "The safe region reveals well-defined tissue planes."],
+            [1, "The safe region reveals well-defined tissue planes."],
             [1, "The safe region has a yellowish hue representing the subserosal layer."],
             [1, "The safe region is clear of the critical hepatocystic triangle."],
             [1, "The unsafe region shows visible liver and darker vascular structures."],
@@ -493,29 +493,29 @@
             "Safe areas appear lighter and less vascular; unsafe areas are darker and more complex anatomically."
         ],
         "relevance_filtering_accuracy": [
-            [0.5, "The safe region for dissection is located predominantly in the upper-left portion of the image."],
+            [0, "The safe region for dissection is located predominantly in the upper-left portion of the image."],
             [1, "The safe region shows lighter and less vascular tissue."],
             [1, "The safe region contains fibrofatty tissue that can be dissected safely without risking major structures."],
             [1, "The safe zone is characterized by clearer tissue planes."],
-            [0, "Safe dissection involves separating fatty tissue and fibrotic adhesions from the gallbladder in the safe zone."],
+            [1, "Safe dissection involves separating fatty tissue and fibrotic adhesions from the gallbladder in the safe zone."],
             [1, "The unsafe region is in the lower-right portion of the image and appears darker and more vascularized."],
             [1, "The unsafe region likely contains critical structures such as the hepatic ducts, cystic artery, and cystic duct."],
             [1, "Caution is required in the unsafe region to avoid injury to vital structures."],
             [1, "The unsafe region is near the hepatocystic triangle."],
-            [0.5, "The boundary between safe and unsafe regions is marked by changes in tissue color and vascularity."],
-            [0.5, "Safe areas appear lighter and less vascular; unsafe areas are darker and more complex anatomically."],
+            [1, "The boundary between safe and unsafe regions is marked by changes in tissue color and vascularity."],
+            [1, "Safe areas appear lighter and less vascular; unsafe areas are darker and more complex anatomically."],
             [1, "Dissection should focus within safe regions until critical structures are clearly identified and preserved."]
         ],
         "expert_alignment_accuracy": [
             [1, "The safe region shows lighter and less vascular tissue."],
             [1, "The safe region contains fibrofatty tissue that can be dissected safely without risking major structures."],
             [1, "The safe zone is characterized by clearer tissue planes."],
-            [0, "Safe dissection involves separating fatty tissue and fibrotic adhesions from the gallbladder in the safe zone."],
+            [1, "Safe dissection involves separating fatty tissue and fibrotic adhesions from the gallbladder in the safe zone."],
             [1, "The unsafe region is in the lower-right portion of the image and appears darker and more vascularized."],
-            [0.5, "The unsafe region likely contains critical structures such as the hepatic ducts, cystic artery, and cystic duct."],
+            [1, "The unsafe region likely contains critical structures such as the hepatic ducts, cystic artery, and cystic duct."],
             [1, "The unsafe region is near the hepatocystic triangle."],
             [0.5, "The boundary between safe and unsafe regions is marked by changes in tissue color and vascularity."],
-            [0.5, "Safe areas appear lighter and less vascular; unsafe areas are darker and more complex anatomically."]
+            [1, "Safe areas appear lighter and less vascular; unsafe areas are darker and more complex anatomically."]
         ],
         "aligned_category_ids": [
             7,

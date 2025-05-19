@@ -345,19 +345,19 @@ if __name__ == "__main__":
     emotion_data = load_emotion_data()
 
     #model = "gemini-2.0-flash"
-    run_pipeline(emotion_data, baseline="vanilla", model="gemini-2.0-flash")
-    run_pipeline(emotion_data, baseline="cot", model="gemini-2.0-flash")
-    run_pipeline(emotion_data, baseline="socratic", model="gemini-2.0-flash")
-    run_pipeline(emotion_data, baseline="subq", model="gemini-2.0-flash")
+    # run_pipeline(emotion_data, baseline="vanilla", model="gemini-2.0-flash")
+    # run_pipeline(emotion_data, baseline="cot", model="gemini-2.0-flash")
+    # run_pipeline(emotion_data, baseline="socratic", model="gemini-2.0-flash")
+    # run_pipeline(emotion_data, baseline="subq", model="gemini-2.0-flash")
 
     #model = "o1"
-    run_pipeline(emotion_data, baseline="vanilla", model="gpt-4o")
-    run_pipeline(emotion_data, baseline="cot", model="gpt-4o")
-    run_pipeline(emotion_data, baseline="socratic", model="gpt-4o")
-    run_pipeline(emotion_data, baseline="subq", model="gpt-4o")
+    run_pipeline(emotion_data, baseline="vanilla", model="o1")
+    run_pipeline(emotion_data, baseline="cot", model="o1")
+    run_pipeline(emotion_data, baseline="socratic", model="o1")
+    run_pipeline(emotion_data, baseline="subq", model="o1")
 
     #model = "claude-3-5-sonnet-latest"
-    run_pipeline(emotion_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
-    run_pipeline(emotion_data, baseline="cot", model="claude-3-5-sonnet-latest")
-    run_pipeline(emotion_data, baseline="socratic", model="claude-3-5-sonnet-latest")
-    run_pipeline(emotion_data, baseline="subq", model="claude-3-5-sonnet-latest")
+    # run_pipeline(emotion_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
+    # run_pipeline(emotion_data, baseline="cot", model="claude-3-5-sonnet-latest")
+    # run_pipeline(emotion_data, baseline="socratic", model="claude-3-5-sonnet-latest")
+    # run_pipeline(emotion_data, baseline="subq", model="claude-3-5-sonnet-latest")

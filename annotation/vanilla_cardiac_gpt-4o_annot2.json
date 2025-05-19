@@ -13,7 +13,7 @@
             "The amplitude fluctuations on the ECG graph do not suggest severe arrhythmias.",
             "Continuous monitoring is advisable given the ICU setting."
         ],
-        "claim_decomposition_accuracy": 0.5,
+        "claim_decomposition_accuracy": 1,
         "relevance_filtering_accuracy": [
             [1, "The patient is relatively young."],
             [0, "The patient was admitted due to a motor vehicle collision."],
@@ -95,18 +95,18 @@
             "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident.",
             "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."
         ],
-        "claim_decomposition_accuracy": 0.5,
+        "claim_decomposition_accuracy": 1,
         "relevance_filtering_accuracy": [
             [1, "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest."],
             [1, "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns."],
             [1, "There are no pronounced arrhythmias or notable ST segment changes on the ECG graph."],
             [0, "Pronounced arrhythmias or notable ST segment changes are indicators often associated with imminent cardiac events."],
             [1, "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident."],
-            [0, "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."]
+            [1, "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."]
         ],
         "expert_alignment_accuracy": [
             [1, "The patient is relatively young and has been admitted for a non-cardiac primary reason, which typically reduces the baseline risk of cardiac arrest."],
-            [1, "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns."],
+            [0, "The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns."],
             [1, "There are no pronounced arrhythmias or notable ST segment changes on the ECG graph."],
             [1, "The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident."],
             [1, "Based on the age, admission reason, and the absence of critical ECG anomalies, the prediction is that the patient is not at high risk of experiencing cardiac arrest in the next 5 minutes."]
@@ -188,7 +188,7 @@
             [1, "The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks."],
             [1, "The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts."],
             [1, "Metabolic or neurological disturbances may have cardiovascular implications."],
-            [1, "The ECG irregularities may indicate instability in the patient's condition."]
+            [0, "The ECG irregularities may indicate instability in the patient's condition."]
         ],
         "alignment_scores": [
             0.5,
@@ -248,7 +248,7 @@
         ],
         "claim_decomposition_accuracy": 1,
         "relevance_filtering_accuracy": [
-            [0.5, "The patient is at high risk of experiencing cardiac arrest."],
+            [1, "The patient is at high risk of experiencing cardiac arrest."],
             [1, "The patient's age is 73."],
             [0, "The patient is male."],
             [1, "The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI)."],
@@ -337,7 +337,7 @@
             [1, "COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events."],
             [1, "The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence."],
             [1, "Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues."],
-            [1, "The combined factors suggest a high risk of cardiac arrest within the next 5 minutes."]
+            [0, "The combined factors suggest a high risk of cardiac arrest within the next 5 minutes."]
         ],
         "expert_alignment_accuracy": [
             [1, "The patient is 83 years old, which is a significant risk factor for cardiac complications."],

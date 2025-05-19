@@ -9,6 +9,7 @@ from tqdm import tqdm
 from fuzzywuzzy import fuzz
 import anthropic
 import google.generativeai as genai
+import re
 
 from prompts.claim_decomposition import decomposition_politeness
 from prompts.relevance_filtering import relevance_politeness
@@ -194,9 +195,16 @@ def get_llm_generated_answer(utterance: str, baseline: str = "vanilla", model: s
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
+    
+    match = re.search(r"Rating: (.*)\nExplanation: (.*)", response)
+    if not match:
+        print("ERROR: LLM generated answer is not valid")
+        print(response)
+        return None, None
+    response = match.group(0)
     rating = response.split("\n")[0].split("Rating: ")[1].split(":")[0].strip()
-    explanation = response.split("\n")[1].split("Explanation: ")[1].strip()
-    try:        
+    explanation = response.split("\n")[1].split("Explanation: ")[1].strip()  
+    try:      
         rating = float(rating)
         assert(len(explanation) > 10)
         return rating, explanation
@@ -300,9 +308,9 @@ def calculate_expert_alignment_score(claim: str):
     response = response.replace("Category:", "").strip()
     response = response.split("\n")
     category = response[0].strip().replace("‑", "-")
-    alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
-    reasoning = response[2].replace("Reasoning:", "").strip()
     try:
+        alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
+        reasoning = response[2].replace("Reasoning:", "").strip()
         alignment_score = float(alignment_score)
         assert(len(category) > 5)
         for c in categories_list:
@@ -314,7 +322,9 @@ def calculate_expert_alignment_score(claim: str):
     except:
         print("ERROR: Issue with alignment score parsing")
         print(response)
-        alignment_score = 0.0
+        alignment_score = None
+        category = None
+        reasoning = None
     return category, alignment_score, reasoning
 
 def load_politeness_data():
@@ -414,10 +424,10 @@ if __name__ == "__main__":
     politeness_data = load_politeness_data()
     
     #model = "claude-3-5-sonnet-latest"
-    run_pipeline(politeness_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
-    run_pipeline(politeness_data, baseline="cot", model="claude-3-5-sonnet-latest")
-    run_pipeline(politeness_data, baseline="socratic", model="claude-3-5-sonnet-latest")
-    run_pipeline(politeness_data, baseline="subq", model="claude-3-5-sonnet-latest")
+    # run_pipeline(politeness_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
+    # run_pipeline(politeness_data, baseline="cot", model="claude-3-5-sonnet-latest")
+    # run_pipeline(politeness_data, baseline="socratic", model="claude-3-5-sonnet-latest")
+    # run_pipeline(politeness_data, baseline="subq", model="claude-3-5-sonnet-latest")
 
     #model = "gemini-2.0-flash"
     run_pipeline(politeness_data, baseline="vanilla", model="gemini-2.0-flash")

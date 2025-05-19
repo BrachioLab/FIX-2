@@ -1,0 +1,297 @@
+{
+    "1":{
+        "text": "aha American Sniper, movie genuinely moved me.",
+        "ground_truth": "admiration",
+        "llm_label": "admiration",
+        "llm_explanation": "The text indicates a positive reaction towards the movie \"American Sniper,\" suggesting an impact that goes beyond mere enjoyment, which is indicative of admiration. The word \"genuinely moved\" highlights a deep respect and emotional investment, typical of admiration. The use of the word \"aha\" suggests a realization or acknowledgment of the film's impact. The text lacks any negative connotations or elements that would suggest another emotion such as anger or disappointment.",
+        "accuracy": 1,
+        "claim_decomposition_accuracy": 1.0,
+        "relevance_filtering_accuracy": [
+            [1, "The text indicates a positive reaction towards the movie \"American Sniper.\""],
+            [1, "The positive reaction suggests an impact that goes beyond mere enjoyment."],
+            [1, "The reaction is indicative of admiration."],
+            [1, "The phrase \"genuinely moved\" highlights a deep respect and emotional investment."],
+            [1, "The phrase \"genuinely moved\" is typical of admiration."],
+            [0, "The use of the word \"aha\" suggests a realization or acknowledgment of the film's impact."],
+            [1, "The text lacks any negative connotations."],
+            [1, "The text lacks elements that would suggest another emotion such as anger."],
+            [1, "The text lacks elements that would suggest another emotion such as disappointment."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The text indicates a positive reaction towards the movie \"American Sniper.\""],
+            [1, "The positive reaction suggests an impact that goes beyond mere enjoyment."],
+            [1, "The reaction is indicative of admiration."],
+            [1, "The phrase \"genuinely moved\" highlights a deep respect and emotional investment."],
+            [1, "The phrase \"genuinely moved\" is typical of admiration."]
+        ],
+        "claims": [
+            "The text indicates a positive reaction towards the movie \"American Sniper.\"",
+            "The positive reaction suggests an impact that goes beyond mere enjoyment.",
+            "The reaction is indicative of admiration.",
+            "The phrase \"genuinely moved\" highlights a deep respect and emotional investment.",
+            "The phrase \"genuinely moved\" is typical of admiration.",
+            "The use of the word \"aha\" suggests a realization or acknowledgment of the film's impact.",
+            "The text lacks any negative connotations.",
+            "The text lacks elements that would suggest another emotion such as anger.",
+            "The text lacks elements that would suggest another emotion such as disappointment."
+        ],
+        "relevant_claims": [
+            "The text indicates a positive reaction towards the movie \"American Sniper.\"",
+            "The positive reaction suggests an impact that goes beyond mere enjoyment.",
+            "The reaction is indicative of admiration.",
+            "The phrase \"genuinely moved\" highlights a deep respect and emotional investment.",
+            "The phrase \"genuinely moved\" is typical of admiration."
+        ],
+        "alignment_scores": [
+            1.0,
+            0.8,
+            1.0,
+            0.8,
+            0.8
+        ],
+        "alignment_categories": [
+            "Valence",
+            "Valence",
+            "Valence",
+            "Affection & Care Words",
+            "Emotion Words & Emojis"
+        ],
+        "alignment_reasonings": [
+            "The claim describes a positive reaction towards the movie \"American Sniper,\" which aligns directly with the Valence category. Valence assesses whether the tone of the text is pleasant or unpleasant, and a positive reaction falls squarely into the pleasant (positive) side of this spectrum. The claim identifies this pleasant tone without reference to any other emotion categories, making Valence the most relevant category with full alignment.",
+            "The claim indicates a \"positive reaction,\" which aligns with the Valence category as it suggests a pleasant or positive tone. While the phrase \"beyond mere enjoyment\" implies that there might be additional nuanced emotions involved, the primary focus is on the positive emotional tone of the reaction. Therefore, Valence is the most aligned category. The alignment rating is 0.8 because, while the reaction is clearly positive, the claim hints at a complexity that might extend beyond just valence, leaving room for other emotional interpretations not fully captured within a single category like Valence.",
+            "The claim explicitly describes the reaction as \"indicative of admiration,\" which directly corresponds to a positive emotional tone. Valence is the category concerned with identifying whether the tone is pleasant or unpleasant, and admiration is a quintessential example of a positive or pleasant emotion. There are no other cues or context provided in the claim that would suggest alignment with a different category, making Valence the most and only relevant classification here.",
+            "The term \"genuinely moved\" suggests an emotional response that involves warmth and a heartfelt reaction, which aligns with the Affection & Care Words category. This category captures emotions that involve love, nurturing, or deep concern, which is suggested by being \"genuinely moved.\" The alignment rating is 0.8 because while the phrase indicates a deep emotional investment that resonates with feelings of affection or care, it doesn't fully encompass expressions usually associated explicitly with affection, such as \"love\" or \"hugs.\" There is a strong alignment, but slightly less than perfect due to the potential overlap with other emotional responses like admiration or respect, which might fall under Praise & Compliments.",
+            "The claim centers around the phrase \"genuinely moved,\" which is a direct emotional descriptor, indicating an experience often associated with powerful positive emotions like admiration. This falls squarely into the Emotion Words & Emojis category, which looks for explicit emotion terms. Although the phrase does imply a positive valence, the primary focus here is the specific emotional identification provided by the words themselves. Therefore, the alignment with Emotion Words & Emojis is strong, but not absolute, since the term could also be considered relevant to Valence due to its inherent positive emotional tone."
+        ],
+        "final_alignment_score": 0.4888888888888888
+    },
+    "2":{
+        "text": "Dude, whenever I'm bored I either masturbate play games or browse reddit. Not sure how anyone can be bored with such fantastic opportunities.",
+        "ground_truth": "confusion",
+        "llm_label": "amusement",
+        "llm_explanation": "The text conveys a light-hearted and playful tone, suggesting that the speaker finds humor in their own activities as a remedy for boredom. The use of the word \"fantastic\" sarcastically emphasizes amusement rather than sincerity. There is no underlying tone of frustration or negativity, indicating an amused perspective on mundane activities.",
+        "accuracy": 0,
+        "claim_decomposition_accuracy": 1.0,
+        "relevance_filtering_accuracy": [
+            [1, "The text conveys a light-hearted and playful tone."],
+            [1, "The speaker finds humor in their own activities as a remedy for boredom."],
+            [1, "The use of the word \"fantastic\" sarcastically emphasizes amusement rather than sincerity."],
+            [1, "There is no underlying tone of frustration or negativity."],
+            [1, "The text indicates an amused perspective on mundane activities."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The text conveys a light-hearted and playful tone."],
+            [0.5, "The speaker finds humor in their own activities as a remedy for boredom."],
+            [1, "The use of the word \"fantastic\" sarcastically emphasizes amusement rather than sincerity."],
+            [1, "The text indicates an amused perspective on mundane activities."]
+        ],
+        "claims": [
+            "The text conveys a light-hearted and playful tone.",
+            "The speaker finds humor in their own activities as a remedy for boredom.",
+            "The use of the word \"fantastic\" sarcastically emphasizes amusement rather than sincerity.",
+            "There is no underlying tone of frustration or negativity.",
+            "The text indicates an amused perspective on mundane activities."
+        ],
+        "relevant_claims": [
+            "The text conveys a light-hearted and playful tone.",
+            "The speaker finds humor in their own activities as a remedy for boredom.",
+            "The use of the word \"fantastic\" sarcastically emphasizes amusement rather than sincerity.",
+            "The text indicates an amused perspective on mundane activities."
+        ],
+        "alignment_scores": [
+            1.0,
+            0.9,
+            0.8,
+            0.8
+        ],
+        "alignment_categories": [
+            "Valence",
+            "Humor/Laughter Markers",
+            "Humor/Laughter Markers",
+            "Humor/Laughter Markers"
+        ],
+        "alignment_reasonings": [
+            "The claim describes the text as having a \"light-hearted and playful tone,\" which directly corresponds to a positive and pleasant emotional tone, aligning perfectly with the Valence category. Valence focuses on whether a tone is positive or negative, and terms like \"light-hearted\" and \"playful\" unequivocally indicate a positive valence. No specific emotion words, punctuation, or other category markers are mentioned in the claim, so Valence is the most appropriate and strongly aligned category in this context.",
+            "The claim indicates that the speaker finds humor, specifically in their own activities, which directly aligns with the Humor/Laughter Markers category. Humor serves as a remedy for boredom, suggesting the speaker is engaging in or perceiving something amusing to counteract or alleviate their boredom. The alignment rating is 0.9 because while the claim strongly implies amusement or humor, it doesn't include specific tokens or phrases like \"haha\" or \"lol,\" which would typically fortify the connection to Humor/Laughter Markers even further. Nonetheless, the core indicator of humor is clearly present, making this category highly relevant.",
+            "The claim identifies that the word \"fantastic\" is used sarcastically, which often implies a humorous undertone. While the word \"fantastic\" is positive, the sarcastic use indicates a shift towards amusement rather than genuine praise or sincerity. Sarcasm and irony frequently align with humor as they are used to convey amusement through contrast or contradiction. Although no explicit humor markers like \u201chaha\u201d or \u201clol\u201d are stated, the tone described is one of amusement, suggesting a strong but not exclusive alignment with the category. The inclusion of sarcasm implies a distinct layer of humor, indicating an alignment rating of 0.8.",
+            "The claim describes an amused perspective, which aligns with the Humor/Laughter Markers category. Amusement often involves finding things humorous or entertaining, which is central to this category. The reason for not rating it a full 1.0 is that the claim does not explicitly mention humor markers such as \"haha\" or \"lol,\" but the general sense of amusement is quite aligned with this category. Thus, while closely related, the claim relies more on an interpretation of tone rather than explicit humor markers."
+        ],
+        "final_alignment_score": 0.7
+    },
+    "3":{
+        "text": "The Tommy Gun as a crate weapon! Just the worst feeling.",
+        "ground_truth": "disgust",
+        "llm_label": "disappointment",
+        "llm_explanation": "The text expresses an unfavorable reaction toward the Tommy Gun being a crate weapon, which implies that the speaker expected something better or different, leading to a feeling of letdown. Phrases like \"just the worst feeling\" suggest a strong negative judgment, which aligns with disappointment. There is a lack of anger or intense dislike, focusing more on unmet expectations.",
+        "accuracy": 0,
+        "claim_decomposition_accuracy": 1.0,
+        "relevance_filtering_accuracy": [
+            [1, "The text expresses an unfavorable reaction toward the Tommy Gun being a crate weapon."],
+            [1, "The unfavorable reaction implies that the speaker expected something better or different."],
+            [1, "The speaker's expectation of something better or different leads to a feeling of letdown."],
+            [1, "Phrases like \"just the worst feeling\" suggest a strong negative judgment."],
+            [1, "The strong negative judgment aligns with disappointment."],
+            [1, "There is a lack of anger or intense dislike in the text."],
+            [1, "The text focuses more on unmet expectations than anger."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The text expresses an unfavorable reaction toward the Tommy Gun being a crate weapon."],
+            [1, "The unfavorable reaction implies that the speaker expected something better or different."],
+            [1, "The speaker's expectation of something better or different leads to a feeling of letdown."],
+            [1, "Phrases like \"just the worst feeling\" suggest a strong negative judgment."],
+            [1, "The strong negative judgment aligns with disappointment."],
+            [0.5, "The text focuses more on unmet expectations than anger."]
+        ],
+        "claims": [
+            "The text expresses an unfavorable reaction toward the Tommy Gun being a crate weapon.",
+            "The unfavorable reaction implies that the speaker expected something better or different.",
+            "The speaker's expectation of something better or different leads to a feeling of letdown.",
+            "Phrases like \"just the worst feeling\" suggest a strong negative judgment.",
+            "The strong negative judgment aligns with disappointment.",
+            "There is a lack of anger or intense dislike in the text.",
+            "The text focuses more on unmet expectations than anger."
+        ],
+        "relevant_claims": [
+            "The text expresses an unfavorable reaction toward the Tommy Gun being a crate weapon.",
+            "The unfavorable reaction implies that the speaker expected something better or different.",
+            "The speaker's expectation of something better or different leads to a feeling of letdown.",
+            "Phrases like \"just the worst feeling\" suggest a strong negative judgment.",
+            "The strong negative judgment aligns with disappointment.",
+            "The text focuses more on unmet expectations than anger."
+        ],
+        "alignment_scores": [
+            0.8,
+            0.8,
+            0.9,
+            0.8,
+            0.9,
+            0.8
+        ],
+        "alignment_categories": [
+            "Aversion Terms",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words",
+            "Loss or Let-Down Words"
+        ],
+        "alignment_reasonings": [
+            "An \"unfavorable reaction\" suggests a negative emotional response, potentially aligning with the Aversion Terms category, which relates to expressions of disgust or dissatisfaction. The disapproval of the Tommy Gun being a crate weapon implies aversion or dislike towards this decision. While the claim does not use explicit aversion terms like \"gross\" or \"disgusting,\" it communicates a sentiment that aligns with the aversion concept. The presence of a specific valence (unfavorable) also ties it slightly to Valence, but since the claim doesn't explicitly involve positive or negative tones beyond dislike, Aversion Terms is the more fitting category, though not with the maximum alignment due to the lack of explicit aversion language.",
+            "The claim centers on an \"unfavorable reaction\" and the expectation of something \"better or different.\" This strongly suggests disappointment or let-down, characteristic of the Loss or Let-Down Words category. The reaction implies unmet expectations, aligning well with emotions of sadness or disappointment. The alignment rating is 0.8 because while the primary emotion inferred is disappointment, the claim could slightly suggest elements of surprise due to the unexpected nature of the outcome. However, the primary emotional category remains firmly rooted in disappointment.",
+            "The claim highlights a feeling of letdown due to unmet expectations. This aligns well with the Loss or Let\u2011Down Words category, which includes the emotional experiences of disappointment or sadness when outcomes fall short. The phrase \"expectation of something better or different\" directly ties into why the speaker feels let down, making this category the most fitting. The reason the rating is 0.9 rather than 1.0 is because while the main element is letdown, which fits the category well, the lack of specific words or markers explicitly denoting loss or disappointment slightly nuances the perfect alignment.",
+            "The phrase \"just the worst feeling\" implies an experience of disappointment or sadness, aligning well with the Loss or Let\u2011Down Words category, which includes expressions relating to sadness, letdown, or grief. The word \"worst\" suggests a negative judgment, enhancing the alignment with a high level of emotional negativity. Although this claim is mostly about the negative feeling conveyed, it doesn't explicitly reference a specific loss or let-down event, which prevents the alignment from being rated as completely strong. Thus, the rating is 0.8, indicating significant alignment but with some room for other possible interpretations.",
+            "The claim states \"strong negative judgment aligns with disappointment,\" which directly suggests the sentiment of disappointment. The Loss or Let\u2011Down Words category is appropriate for identifying mentions of loss or disappointment, aligning well with this claim. The reason the alignment rating is 0.9 and not higher is that while disappointment is closely associated with let-down or loss, \"strong negative judgment\" could also potentially suggest some aspects of Negative Valence or Other-Blame Statements. Despite this, the primary emotion indicated is disappointment, closely fitting the Loss or Let\u2011Down Words category.",
+            "The claim highlights \"unmet expectations,\" which typically align with feelings of sadness or disappointment and is directly related to the Loss or Let\u2011Down Words category. Although there is the mention of anger potentially being involved, the claim clearly prioritizes unmet expectations, implying a sense of disappointment rather than direct anger. This clarity results in a high but not absolute alignment rating, acknowledging the potential minor involvement of other emotions like anger."
+        ],
+        "final_alignment_score": 0.7142857142857143
+    },
+    "4":{
+        "text": "Sometimes i think i am cringe, but then i see these people and feel a little better",
+        "ground_truth": "optimism",
+        "llm_label": "amusement",
+        "llm_explanation": "The text expresses a lighthearted comparison between the speaker's self-perceived \"cringe\" nature and the behavior of others, highlighting a shift to feeling \"a little better.\" The use of \"cringe\" suggests self-awareness, while the relief from seeing others implies humor or amusement in the observation, without strong judgment or negativity. The phrase \"feel a little better\" suggests a subtle lifting of spirits, often associated with amusement.",
+        "accuracy": 0,
+        "claim_decomposition_accuracy": 1.0,
+        "relevance_filtering_accuracy": [
+            [1, "The text expresses a lighthearted comparison between the speaker's self-perceived \"cringe\" nature and the behavior of others."],
+            [1, "The comparison highlights a shift to feeling \"a little better.\""],
+            [1, "The use of \"cringe\" suggests self-awareness."],
+            [1, "The relief from seeing others implies humor or amusement in the observation."],
+            [1, "There is no strong judgment or negativity in the observation."],
+            [0, "The phrase \"feel a little better\" suggests a subtle lifting of spirits."],
+            [0, "The feeling of a subtle lifting of spirits is often associated with amusement."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The text expresses a lighthearted comparison between the speaker's self-perceived \"cringe\" nature and the behavior of others."],          
+            [0.5, "The relief from seeing others implies humor or amusement in the observation."]
+        ],
+        "claims": [
+            "The text expresses a lighthearted comparison between the speaker's self-perceived \"cringe\" nature and the behavior of others.",
+            "The comparison highlights a shift to feeling \"a little better.\"",
+            "The use of \"cringe\" suggests self-awareness.",
+            "The relief from seeing others implies humor or amusement in the observation.",
+            "There is no strong judgment or negativity in the observation.",
+            "The phrase \"feel a little better\" suggests a subtle lifting of spirits.",
+            "The feeling of a subtle lifting of spirits is often associated with amusement."
+        ],
+        "relevant_claims": [
+            "The text expresses a lighthearted comparison between the speaker's self-perceived \"cringe\" nature and the behavior of others.",
+            "The relief from seeing others implies humor or amusement in the observation."
+        ],
+        "alignment_scores": [
+            0.6,
+            0.4
+        ],
+        "alignment_categories": [
+            "Humor/Laughter Markers",
+            "Relief Indicators"
+        ],
+        "alignment_reasonings": [
+            "The claim describes a \"lighthearted comparison,\" which suggests a humorous or playful tone, aligning with Humor/Laughter Markers. The use of \"cringe\" in a self-referential way often carries a humorous or self-deprecating undertone, aligning partially with markers of amusement or humor. However, the word \"cringe\" can also imply discomfort or mild disgust, slightly diluting the humor interpretation. Thus, while Humor/Laughter Markers is the most aligned category, the mixed implications prevent a stronger rating of alignment.",
+            "The claim describes \"relief\" from observing others, which primarily aligns with the Relief Indicators category, as relief often implies a release of stress or tension. However, the claim also mentions \"humor or amusement,\" suggesting a secondary alignment with the Humor/Laughter Markers category. The Relief Indicators category is the more dominant alignment, as the term \"relief\" is explicitly mentioned, but the incorporation of \"humor or amusement\" diverts some alignment away from a stronger rating solely towards relief. Thus, while relief is the primary emotional focus, the presence of amusement elements reduces the category alignment strength."
+        ],
+        "final_alignment_score": 0.14285714285714285
+    },
+    "5":{
+        "text": "I\u2019m sorry to hear that. When do you graduate?",
+        "ground_truth": "remorse",
+        "llm_label": "caring",
+        "llm_explanation": "The text expresses sympathy with the phrase \"I'm sorry to hear that,\" indicating concern for the other person's situation, suggesting the emotion of caring. Additionally, the question about graduation shows a willingness to engage and potentially offer further support or understanding. It doesn't convey negative emotions such as anger or disgust, nor does it express any positive emotions like joy or excitement, reinforcing the idea of empathy and concern.",
+        "accuracy": 0,
+        "claim_decomposition_accuracy": 1.0,
+        "relevance_filtering_accuracy": [
+            [1, "The text expresses sympathy with the phrase \"I'm sorry to hear that,\" indicating concern for the other person's situation."],
+            [1, "The phrase \"I'm sorry to hear that\" suggests the emotion of caring."],
+            [1, "The question about graduation shows a willingness to engage."],
+            [1, "The question about graduation potentially offers further support or understanding."],
+            [1, "The text does not convey negative emotions such as anger or disgust."],
+            [1, "The text does not express any positive emotions like joy or excitement."],
+            [1, "The absence of negative or overly positive emotions reinforces the idea of empathy and concern."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The text expresses sympathy with the phrase \"I'm sorry to hear that,\" indicating concern for the other person's situation."],
+            [1, "The phrase \"I'm sorry to hear that\" suggests the emotion of caring."],
+            [1, "The question about graduation shows a willingness to engage."],
+            [1, "The question about graduation potentially offers further support or understanding."],
+            [1, "The absence of negative or overly positive emotions reinforces the idea of empathy and concern."]
+        ],
+        "claims": [
+            "The text expresses sympathy with the phrase \"I'm sorry to hear that,\" indicating concern for the other person's situation.",
+            "The phrase \"I'm sorry to hear that\" suggests the emotion of caring.",
+            "The question about graduation shows a willingness to engage.",
+            "The question about graduation potentially offers further support or understanding.",
+            "The text does not convey negative emotions such as anger or disgust.",
+            "The text does not express any positive emotions like joy or excitement.",
+            "The absence of negative or overly positive emotions reinforces the idea of empathy and concern."
+        ],
+        "relevant_claims": [
+            "The text expresses sympathy with the phrase \"I'm sorry to hear that,\" indicating concern for the other person's situation.",
+            "The phrase \"I'm sorry to hear that\" suggests the emotion of caring.",
+            "The question about graduation shows a willingness to engage.",
+            "The question about graduation potentially offers further support or understanding.",
+            "The absence of negative or overly positive emotions reinforces the idea of empathy and concern."
+        ],
+        "alignment_scores": [
+            0.8,
+            0.9,
+            0.6,
+            0.6,
+            0.6
+        ],
+        "alignment_categories": [
+            "Affection & Care Words",
+            "Affection & Care Words",
+            "Curiosity Questions",
+            "Curiosity Questions",
+            "Affection & Care Words"
+        ],
+        "alignment_reasonings": [
+            "The phrase \"I'm sorry to hear that\" is an expression of sympathy and concern, which aligns closely with the Affection & Care Words category. This category includes language that shows love, sympathy, or caring, fitting the context where the speaker is expressing concern for another person. While \"I'm sorry\" could also be associated with Self-Blame & Apologies, in this context, it does not imply fault or regret but rather empathy and care, making Affection & Care Words the more aligned category. The alignment rating is 0.8 because it strongly fits the use of the expression for showing concern, though the phrase could slightly overlap with elements of polite apologies.",
+            "The phrase \"I'm sorry to hear that\" is typically used when someone is expressing sympathy or empathy, which falls under the notion of caring and concern for another person's situation. This aligns closely with the Affection & Care Words category, which encompasses language that signals love, empathy, or nurturing behavior. The alignment rating is 0.9 because the phrase indeed suggests caring, though it is not as explicitly loving or nurturing as phrases like \"sending hugs\" might be. It borders on expressing sympathy, which could also be seen as a different type of emotional support, but still strongly indicates care.",
+            "The claim mentions \"The question about graduation shows a willingness to engage,\" which suggests an interest or engagement in learning more or getting involved in a conversation, potentially aligning with the Curiosity Questions category. However, while the claim indicates engagement, it does not make explicit use of phrasing that distinctly characterizes curiosity, such as \"I wonder\" or \"why is...?\" Therefore, though it fits partially, it doesn't strongly align with the typical markers of curiosity-focused questions, leading to a moderate alignment rating.",
+            "The claim refers to a \"question about graduation,\" which suggests a form of inquiry that aligns with the Curiosity Questions category. This category covers genuine information-seeking phrases, often indicated through questions or wondering about specific topics. However, the alignment is not very strong because the claim also hints at wanting support or understanding, which may relate to other emotional contexts not entirely captured by simple curiosity. Thus, while the presence of a \"question\" aligns it with curiosity, the potential aim of gaining support introduces complexity beyond mere curiosity, leading to a moderate alignment rating.",
+            "The claim points towards the presence of empathy and concern, which are elements of affectionate and caring emotions. The mention of the absence of extreme emotions implies a balance and mindfulness toward others' feelings, commonly associated with empathy and concern. While empathy and concern suggest care, the claim doesn\u2019t provide direct linguistic markers of affection (like \"love\" or \"hugs\"), which lowers the alignment rating. Therefore, Affection & Care Words is the most relevant category, but the alignment is not as strong due to the subtlety in phrasing."
+        ],
+        "final_alignment_score": 0.5000000000000001
+    }
+}
