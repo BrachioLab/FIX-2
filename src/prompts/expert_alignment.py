@@ -2,7 +2,12 @@ alignment_template = """You will be given [description of claim and expert categ
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
+
+Category explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning
 
 Return your answer as:
 Category: <category>
@@ -141,35 +146,6 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
-alignment_cholec_mapping = {
-    'name2id': {
-        "Calot's triangle cleared": 1,
-        'Cystic plate exposed': 2,
-        'Only two structures visible': 3,
-        'Above the R4U line': 4,
-        'Safe distance from common bile duct': 5,
-        'Infundibulum start point': 6,
-        'Subserosal plane stay': 7,
-        'Cystic lymph node guide': 8,
-        'No division without ID': 9,
-        'Inflammation bailout': 10,
-        'Aberrant artery caution': 11,
-    },
-    'id2name': {
-        1: "Calot's triangle cleared",
-        2: 'Cystic plate exposed',
-        3: 'Only two structures visible',
-        4: 'Above the R4U line',
-        5: 'Safe distance from common bile duct',
-        6: 'Infundibulum start point',
-        7: 'Subserosal plane stay',
-        8: 'Cystic lymph node guide',
-        9: 'No division without ID',
-        10: 'Inflammation bailout',
-        11: 'Aberrant artery caution',
-    }
-}
-
 alignment_massmaps = """You will be given a single claim that relates to why a prediction was given to a mass map. You will also be given a series of categories that an expert cosmologist would use to perform this type of cosmological parameter prediction.
 
 Your task is as follows:
@@ -307,7 +283,7 @@ Claim: {}
 alignment_supernova = """You will be given a single claim that relates to why time-series data from a supernova was classified as a certain supernova class. The classes are as follows: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, and active galactic nuclei (AGN). You will also be given a series of categories that an expert astrophysicist would use to perform this type of supernova classification from time-series data.
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest). 
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
 
 Return your answer as:
 Category: <name of selected criterion>
@@ -332,36 +308,35 @@ Here are some examples:
 Claim: Observations are recorded at various wavelength overtime.
 Category: Monotonic flux trends
 Category ID: 7
-Category Alignment Rating: 
-Score: 0
+Category Alignment Rating: none
 Reasoning: This is a general data format description rather than a discriminative feature. While it relates tangentially to Multi-wavelength Observability, it lacks any mention of spectral variation or joint analysis, and doesn't aid in distinguishing classes.
 
 [Example 2]
 Claim: Consistent and distinct peaks are observed in value data at specific wavelength.
 Category: Periodic light curves
 Category ID: 5
-Category Alignment Rating: 0.6
+Category Alignment Rating: partial
 Reasoning: The mention of consistent and distinct peaks hints at periodic behavior, potentially corresponding to pulsators or binaries. However, the claim doesn’t mention periods or Fourier components explicitly, so the match is partial.
 
 [Example 3]
 Claim: Variations in intensity over time are typical of the lightcurve evolution of a supernova.
 Category: Monotonic flux trends
 Category ID: 7
-Category Alignment Rating: 0.7
+Category Alignment Rating: partial
 Reasoning: The claim refers to general light curve behavior, which aligns with the concept of smooth, evolving flux. It supports class differentiation but is too vague to tie to a specific morphological trend or SN type, hence not a perfect match.
 
 [Example 4]
 Claim: The flux value has a rapid increase and gradual decrease.
 Category: Rise–decline rates
 Category ID: 2
-Category Alignment Rating: 1.0
+Category Alignment Rating: complete
 Reasoning: This is a direct description of the fast-rise/slow-decline morphology mentioned in the expert criteria. It is a classic feature of many supernovae and maps perfectly to this category.
 
 [Example 5]
 Claim: Significant fluctuations and peaks in the data can be inferred as part of the light curve of a Type II supernova.
 Category: Monotonic flux trends
 Category ID: 7
-Category Alignment Rating: 0.8
+Category Alignment Rating: partial
 Reasoning: Type II SNe, especially SN II-P and SN II-L, are characterized by distinct plateau or linear decline phases. The claim’s wording aligns with the idea of significant, structured flux evolution but lacks specifics (e.g., plateau shape), so the alignment is strong but not perfect.
 
 Now, determine the category and alignment rating for the following claim:
@@ -392,7 +367,7 @@ alignment_sepsis = """You will be given a single claim explaining why a patient 
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
 
 Return your answer as:
 Category: <name of selected criterion>,
@@ -419,35 +394,35 @@ Here are some examples:
 Claim: The patient is 86 years old. 
 Category: Elderly Susceptibility (Age ≥65 years)
 Category ID: 1
-Category Alignment Rating: 1.0
+Category Alignment Rating: complete
 Reasoning: The claim directly references advanced age (≥ 65), which this category identifies as a strong sepsis risk factor—perfect alignment.
 
 [Example 2]
 Claim: The patient's temperature is 99.6°F, close to the fever threshold.
 Category: SIRS Positivity (≥2 Criteria)
 Category ID: 2
-Category Alignment Rating: 0.4
+Category Alignment Rating: partial
 Reasoning: The temperature is close to the SIRS threshold (>38°C), which makes it marginally relevant. It hints at possible early sepsis, but does not meet the SIRS criterion.
 
 [Example 3]
 Claim: The patient's pulse oximetry is 92%, indicating possible hypoxia.
 Category: SOFA Score Increase (≥2 points)
 Category ID: 8
-Category Alignment Rating: 0.6
+Category Alignment Rating: partial
 Reasoning: Pulse oximetry isn’t directly a SOFA measure, but hypoxia relates conceptually to impaired oxygenation (PaO₂/FiO₂). The alignment is indirect but meaningful.
 
 [Example 4]
 Claim: An elevated white blood cell count suggests an inflammatory or infectious process.
 Category: SIRS Positivity (≥2 Criteria)'
 Category ID: 2
-Category Alignment Rating: 1.0
+Category Alignment Rating: full
 Reasoning: Elevated WBC is explicitly listed under SIRS criteria, which are used to identify systemic inflammation in early sepsis.
 
 [Example 5]
 Claim: The patient's condition warrants close monitoring and further investigation for infection.
 Category: Early Antibiotic/Culture Orders (within 2 hours)
 Category ID: 9
-Category Alignment Rating: 0.5
+Category Alignment Rating: partial
 Reasoning: While this reflects suspicion of infection, it lacks concrete clinical action (like antibiotic administration or culture draws). 
 
 Now, determine the category and alignment rating for the following claim:
@@ -479,7 +454,6 @@ alignment_sepsis_mapping = {
     }
 }
 
-
 alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform determine if there is high risk of imminent cardiac arrest.
 
 Your task is as follows:
@@ -487,7 +461,7 @@ Your task is as follows:
 2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
 
 Return your answer as:
-Category ID: <category ID>
+Category: <category>
 Category Alignment Rating: <rating>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
@@ -508,61 +482,34 @@ Expert categories:
 Here are some examples:
 [Example 1]
 Claim: A skin lesion of the scalp is a condition not directly related to cardiac function.
-Category ID: 10
+Category: Critical Illness (Sepsis/Shock)
 Category Alignment Rating: 0.2
 Reasoning: While a scalp lesion is not directly cardiac-related, if interpreted as a possible sign of infection or systemic compromise (e.g., an infected wound in a septic patient), it could weakly align with the critical illness category. However, without explicit signs of sepsis or shock, the connection remains speculative, hence the low alignment rating.
 
 [Example 2]
 Claim: The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.
-Category ID: 1
+Category: Ventricular Tachyarrhythmias
 Category Alignment Rating: 0.9
 Reasoning: The claim directly references dangerous arrhythmias such as ventricular tachycardia and fibrillation, which are hallmark indicators of the Extreme Tachyarrhythmias category. These arrhythmias are known precursors to sudden cardiac arrest. While the claim does not specify the duration or ventricular dysfunction context, the alignment is still very strong due to the mention of the precise arrhythmias characteristic of this category.
 
 [Example 3]
 Claim: The ECG irregularities are suggested by inconsistent waveform intervals and amplitudes.
-Category ID: 2
+Category: Ventricular Ectopy / NSVT
 Category Alignment Rating: 0.6
 Reasoning: The claim points to ECG irregularities—specifically inconsistent waveform intervals and amplitudes—which can reflect transient abnormal ventricular rhythms such as NSVT or frequent PVCs. These patterns often manifest with variable intervals and amplitudes but are nonspecific. While the claim lacks precision, it aligns moderately with ventricular ectopy as a potential explanation for instability.
 
 [Example 4]
 Claim: The patient is 86 years old. 
-Category ID: 7
+Category: Advanced Age
 Category Alignment Rating: 1.0
 Reasoning: The claim directly references advanced age, which this category identifies as a major risk factor for cardiac arrest.
 
 [Example 5]
 Claim: The admission wasn't due to cardiac issues.
-Category ID: 9
+Category: Underlying Cardiac Disease
 Category Alignment Rating: 0.5
 Reasoning: The claim highlights the absence of underlying cardiac disease, which is the inverse of a known risk factor for cardiac arrest. While the expert category focuses on increased risk due to the presence of cardiac disease, this claim indirectly relates to it by implying a potentially lower risk. The alignment is moderate because the claim addresses the category by exclusion rather than direct evidence of risk.
 
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
-
-alignment_cardiac_mapping = {
-    'name2id': {
-        'Ventricular Tachyarrhythmias': 1,
-        'Ventricular Ectopy / NSVT': 2,
-        'Bradycardia or Heart-Rate Drop': 3,
-        'QRS Widening (Conduction Delay)': 4,
-        'Dynamic ST-Segment Changes': 5,
-        'Severe Hyperkalemia Signs': 6,
-        'Advanced Age': 7,
-        'Male Sex': 8,
-        'Underlying Cardiac Disease': 9,
-        'Critical Illness (Sepsis/Shock)': 10    
-    },
-    'id2name': {
-        1: 'Ventricular Tachyarrhythmias',
-        2: 'Ventricular Ectopy / NSVT',
-        3: 'Bradycardia or Heart-Rate Drop',
-        4: 'QRS Widening (Conduction Delay))',
-        5: 'Dynamic ST-Segment Changes',
-        6: 'Severe Hyperkalemia Signs',
-        7: 'Advanced Age',
-        8: 'Male Sex',
-        9: 'Underlying Cardiac Disease',
-        10: 'Critical Illness (Sepsis/Shock)'
-    }
-}
