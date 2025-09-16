@@ -34,7 +34,7 @@
         "expert_alignment_accuracy": [
             [0, "The patient shows some elevated vital signs, such as heart rate and respiratory rate."],
             [0, "The patient has a fever."],
-            [0, "Elevated vital signs and a fever can be concerning for potential sepsis."],
+            [1, "Elevated vital signs and a fever can be concerning for potential sepsis."],
             [1, "There is no significant indication of organ dysfunction in the data provided."],
             [1, "There is no evidence of decreased SPO2 persistently below normal."]
         ],
@@ -46,11 +46,11 @@
             "There is no evidence of decreased SPO2 persistently below normal."
         ],
         "alignment_scores": [
-            0.8,
-            0.6,
-            0.8,
-            0.8,
-            0.3
+            "partial",
+            "partial",
+            "partial",
+            "partial",
+            "partial"
         ],
         "alignment_category": [
             2,
@@ -60,13 +60,13 @@
             8
         ],
         "alignment_reasonings": [
-            "The claim mentions elevated heart rate and respiratory rate, which are two of the criteria used to identify SIRS positivity (heart\u202frate\u202f>\u202f90\u202fbpm, respiratory\u202frate\u202f>\u202f20\u202f/min). Although it doesn't specify if both criteria are met or the exact values, it strongly suggests systemic inflammation consistent with early sepsis.",
-            "The claim of having a fever aligns with the SIRS criteria, specifically \"temperature >38\u00b0C,\" which is used to identify systemic inflammation indicative of early sepsis. However, the claim does not specify the fever's exact temperature to confirm meeting the SIRS threshold (>38\u00b0C), so the alignment is partial rather than full.",
+            "The claim mentions elevated heart rate and respiratory rate, which are two of the criteria used to identify SIRS positivity (heart rate > 90 bpm, respiratory rate > 20 /min). Although it doesn't specify if both criteria are met or the exact values, it strongly suggests systemic inflammation consistent with early sepsis.",
+            "The claim of having a fever aligns with the SIRS criteria, specifically \"temperature >38°C,\" which is used to identify systemic inflammation indicative of early sepsis. However, the claim does not specify the fever's exact temperature to confirm meeting the SIRS threshold (>38°C), so the alignment is partial rather than full.",
             "The claim mentions \"elevated vital signs and a fever,\" which aligns well with the SIRS criteria, such as increased heart rate and elevated temperature. However, the claim doesn't specify exactly which vital signs are elevated or if they meet the precise criteria, thus it doesn't achieve perfect alignment but is still strongly relevant.",
-            "The claim mentions the absence of organ dysfunction, which aligns most closely with the SOFA Score criteria that assess organ dysfunction by an increase of\u202f\u2265\u202f2 points. Although the claim does not mention a specific SOFA score increase or specific metrics, it strongly resonates with the core principle of this category\u2014organ dysfunction, thus warranting a high alignment rating.",
-            "The claim mentions SPO2, which is related to oxygenation\u2014a key component in the SOFA score assessment (PaO\u2082/FiO\u2082). However, the claim indicates the absence of decreased SPO2, which makes it indirectly relevant and weakly aligned with SOFA criteria that assess oxygenation status. The alignment with sepsis risk is weak as the absence does not support a worsening condition necessitating SOFA score increase."
+            "The claim mentions the absence of organ dysfunction, which aligns most closely with the SOFA Score criteria that assess organ dysfunction by an increase of ≥ 2 points. Although the claim does not mention a specific SOFA score increase or specific metrics, it strongly resonates with the core principle of this category—organ dysfunction, thus warranting a high alignment rating.",
+            "The claim mentions SPO2, which is related to oxygenation—a key component in the SOFA score assessment (PaO₂/FiO₂). However, the claim indicates the absence of decreased SPO2, which makes it indirectly relevant and weakly aligned with SOFA criteria that assess oxygenation status. The alignment with sepsis risk is weak as the absence does not support a worsening condition necessitating SOFA score increase."
         ],
-        "final_alignment_score": 0.6599999999999999,
+        "final_alignment_score": 0.5,
         "accuracy": 1
     },
     "18": {
@@ -110,24 +110,24 @@
             "The absence of typical sepsis markers suggests the patient is not at high risk for sepsis within 12 hours."
         ],
         "alignment_scores": [
-            0.5,
-            0.8,
-            1.0,
-            0.3
+            "partial",
+            "partial",
+            "complete",
+            "partial"
         ],
         "alignment_category": [
-            8,
-            5,
-            2,
-            2
+        8,
+        5,
+        2,
+        2
         ],
         "alignment_reasonings": [
-            "The claim of a low SpO2 reading suggests potential hypoxemia, which aligns conceptually with impaired oxygenation captured in the SOFA score (through the PaO\u2082/FiO\u2082 ratio). While SpO2 itself isn't a direct SOFA measure, it can reflect underlying issues relevant to the SOFA criteria, warranting a moderate alignment rating.",
+            "The claim of a low SpO2 reading suggests potential hypoxemia, which aligns conceptually with impaired oxygenation captured in the SOFA score (through the PaO₂/FiO₂ ratio). While SpO2 itself isn't a direct SOFA measure, it can reflect underlying issues relevant to the SOFA criteria, warranting a moderate alignment rating.",
             "The claim explicitly discusses lactate levels, mentioning that they are not indicative of sepsis. This category specifically addresses serum lactate levels, making it the most relevant. The alignment is strong because the claim refers directly to the specific lab value, although it notes the absence rather than the presence of an elevated level, slightly reducing the alignment strength.",
             "The elevated white blood cell count is one of the criteria explicitly listed under SIRS criteria. The presence of an elevated WBC count is a direct indicator of systemic inflammation consistent with early sepsis, which perfectly aligns with this expert category.",
             "The claim suggests the absence of typical sepsis markers. SIRS criteria are commonly used markers for identifying early signs of systemic inflammation consistent with sepsis. Although the claim implies a lack of these markers, which aligns with SIRS criteria, it does not provide specific details to gauge alignment regarding each criterion's presence or absence. The alignment is therefore weak and indirect."
         ],
-        "final_alignment_score": 0.6499999999999999,
+        "final_alignment_score": 0.625,
         "accuracy": 1
     },
     "30": {
@@ -153,7 +153,7 @@
             [1, "The patient exhibits several clinical markers associated with a high risk for sepsis."],
             [1, "The patient has hypotension, which is indicated by low diastolic blood pressure."],
             [1, "The patient has tachycardia, which is indicated by a high heart rate."],
-            [1, "The patient has an elevated white blood cell count."],
+            [0, "The patient has an elevated white blood cell count."],
             [1, "The patient has low hemoglobin levels."],
             [1, "The patient has low hematocrit levels."],
             [1, "The patient has jaundice, indicated by elevated bilirubin levels."],
@@ -187,16 +187,16 @@
             "Hypoalbuminemia suggests potential organ dysfunction."
         ],
         "alignment_scores": [
-            0.3,
-            0.7,
-            0.8,
-            1.0,
-            0.3,
-            0.3,
-            1.0,
-            0.7,
-            0.3,
-            0.3
+            "partial",
+            "partial",
+            "partial",
+            "complete",
+            "partial",
+            "partial",
+            "complete",
+            "partial",
+            "partial",
+            "partial"
         ],
         "alignment_category": [
             4,
@@ -213,16 +213,16 @@
         "alignment_reasonings": [
             "The claim mentions \"several clinical markers associated with a high risk for sepsis\" but lacks specificity about the markers. The category of Elevated NEWS Score broadly captures the idea of using multiple vital sign deviations to predict sepsis risk, but without specific details, the alignment is weak. It suggests a general assessment based on various clinical indicators, like the NEWS, but does not provide enough information to strongly connect it to any single category.",
             "The claim mentions hypotension, an element of sepsis-associated hypotension. While it specifies low diastolic blood pressure without clear figures or mention of SBP or MAP, hypotension generally aligns with this category. The alignment is fairly strong but not perfect due to lack of specific numbers relating to SBP or MAP criteria.",
-            "Tachycardia, or a high heart rate (>90 bpm), is explicitly part of the criteria for SIRS positivity, indicating systemic inflammation consistent with early sepsis. However, the claim mentions just one SIRS criterion, so while it strongly aligns with the category, it does not fully encapsulate the criterion of having \u22652 SIRS criteria.",
+            "Tachycardia, or a high heart rate (>90 bpm), is explicitly part of the criteria for SIRS positivity, indicating systemic inflammation consistent with early sepsis. However, the claim mentions just one SIRS criterion, so while it strongly aligns with the category, it does not fully encapsulate the criterion of having ≥2 SIRS criteria.",
             "An elevated white blood cell (WBC) count is explicitly mentioned as one of the SIRS criteria used to identify systemic inflammation consistent with early sepsis. This claim directly aligns with the SIRS Positivity category, hence the perfect alignment rating.",
             "While low hemoglobin is not directly part of the SOFA score criteria, it could indicate or contribute to organ dysfunction, which the SOFA score measures. The correlation is indirect, considering low hemoglobin isn't explicitly measured in the SOFA components, leading to a weak alignment.",
             "Low hematocrit levels are indicative of potential anemia, which doesn't directly align with any specific sepsis criteria listed. While low hematocrit is not a direct measure within the SOFA score, it can indirectly relate to organ dysfunction (as it implies impaired oxygen delivery). This connection to organ dysfunction/laboratory derangement gives it a partial but weak alignment with the SOFA category.",
             "The claim of jaundice due to elevated bilirubin levels explicitly aligns with the SOFA score criteria, which include bilirubin >2 mg/dL. An increase in bilirubin is a direct indicator used in the SOFA score to identify organ dysfunction and heightened sepsis risk, leading to perfect alignment with this category.",
-            "Jaundice can be indicative of elevated bilirubin levels, which is a component considered in the SOFA score. An increase in bilirubin levels can contribute to a SOFA score increase, suggesting organ dysfunction and a higher risk of sepsis. Although the claim does not provide specific bilirubin measurements or an explicit SOFA score increase, the mention of jaundice suggests potential liver dysfunction, which aligns with the SOFA score criteria for organ dysfunction. Therefore, the alignment is substantial but not direct, earning a rating of 0.7.",
+            "Jaundice can be indicative of elevated bilirubin levels, which is a component considered in the SOFA score. An increase in bilirubin levels can contribute to a SOFA score increase, suggesting organ dysfunction and a higher risk of sepsis. Although the claim does not provide specific bilirubin measurements or an explicit SOFA score increase, the mention of jaundice suggests potential liver dysfunction, which aligns with the SOFA score criteria for organ dysfunction.",
             "Hypoalbuminemia itself is not directly a part of the SOFA scoring system; however, it could be indicative of liver dysfunction or general poor health status, which might contribute to the factors affecting the SOFA score, such as bilirubin levels. The alignment is weak and indirect, as it does not specifically match any distinct SOFA criterion.",
             "Hypoalbuminemia itself is not directly mentioned in the SOFA score components. However, it can suggest potential organ dysfunction, which in some contexts might relate to conditions like liver dysfunction that are part of SOFA criteria (e.g., bilirubin levels). The alignment is weak since hypoalbuminemia indirectly hints at dysfunction but is not directly measured by SOFA components."
         ],
-        "final_alignment_score": 0.57,
+        "final_alignment_score": 0.6,
         "accuracy": 1
     },
     "36": {
@@ -268,21 +268,21 @@
             "The absence of significant indicators of organ dysfunction or systemic infection is typically associated with a low sepsis risk."
         ],
         "alignment_scores": [
-            0.8,
-            0.7,
-            0.7
+            "partial",
+            "partial",
+            "partial"
         ],
         "alignment_category": [
-            2,
-            3,
-            8
+        2,
+        3,
+        8
         ],
         "alignment_reasonings": [
             "An elevated heart rate is explicitly mentioned in the criteria for systemic inflammatory response syndrome (SIRS), which can be indicative of early sepsis. However, for definitive SIRS positivity, at least two criteria must be met, so the alignment is strong but not perfect without additional information.",
-            "The claim about an elevated respiratory rate aligns most closely with the High qSOFA Score. An elevated respiratory rate is a specific component (\u226522/min) of the qSOFA score used to assess the risk of sepsis-related organ dysfunction. Although the claim doesn't specify whether the respiratory rate is \u226522, the fact that it is elevated suggests potential relevance to qSOFA criteria. Thus, the alignment is significant but not complete without exact values.",
-            "The claim discusses the absence of significant organ dysfunction, which is the focus of the SOFA score. If there is no organ dysfunction, the likelihood of sepsis is lower, aligning moderately with a low SOFA score. However, it doesn\u2019t specify an increase of \u22652 SOFA points, hence not a direct match."
-        ],
-        "final_alignment_score": 0.7333333333333334,
+            "The claim about an elevated respiratory rate aligns most closely with the High qSOFA Score. An elevated respiratory rate is a specific component (≥22/min) of the qSOFA score used to assess the risk of sepsis-related organ dysfunction. Although the claim doesn't specify whether the respiratory rate is ≥22, the fact that it is elevated suggests potential relevance to qSOFA criteria. Thus, the alignment is significant but not complete without exact values.",
+            "The claim discusses the absence of significant organ dysfunction, which is the focus of the SOFA score. If there is no organ dysfunction, the likelihood of sepsis is lower, aligning moderately with a low SOFA score. However, it doesn’t specify an increase of ≥2 SOFA points, hence not a direct match."
+            ],
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     "76": {
@@ -322,7 +322,7 @@
         "expert_alignment_accuracy": [
             [1, "The patient exhibits several risk factors for sepsis."],
             [1, "One risk factor for sepsis is advanced age."],
-            [0, "Another risk factor for sepsis is a high triage temperature."],
+            [1, "Another risk factor for sepsis is a high triage temperature."],
             [1, "A high triage temperature indicates fever."],
             [1, "Another risk factor for sepsis is an elevated respiratory rate."],
             [1, "Another risk factor for sepsis is altered mental status upon arrival."],
@@ -346,17 +346,17 @@
             "Cardiac stress suggested by high BNP NT-probably is potentially related to systemic infection."
         ],
         "alignment_scores": [
-            0.3,
-            0.9,
-            0.5,
-            0.7,
-            0.8,
-            0.9,
-            0.7,
-            0.7,
-            0.5,
-            0.3,
-            0.3
+        "partial",
+        "partial",
+        "partial",
+        "partial",
+        "partial",
+        "complete",
+        "partial",
+        "partial",
+        "partial",
+        "partial",
+        "partial"
         ],
         "alignment_category": [
             4,
@@ -372,19 +372,19 @@
             6
         ],
         "alignment_reasonings": [
-            "The claim vaguely references \"several risk factors,\" which could potentially include various criteria evaluated in a NEWS assessment that suggests risk of sepsis. However, the claim lacks specificity about which risk factors or clinical findings are present. Since NEWS considers multiple vitals and risk indicators, it may somewhat align with the mention of \"several risk factors\" but lacks the specificity needed for a strong alignment.",
-            "The claim identifies advanced age as a risk factor, which directly aligns with the \"Elderly Susceptibility\" category. However, it lacks specificity (does not mention the threshold age of \u226565 years). Therefore, the alignment is very strong, but not perfect, leading to a rating of 0.9.",
-            "The claim about a high triage temperature relates to SIRS criteria since one of the SIRS identifiers is a temperature >38\u00b0C, signaling potential early sepsis. However, without a specific temperature value, it is unclear if it meets the exact SIRS threshold. Therefore, the claim partially aligns with SIRS criteria, warranting a moderate alignment rating.",
-            "The claim mentions a high triage temperature indicating fever, which aligns with the SIRS criteria that include a temperature >38\u00b0C as an indicator of systemic inflammation consistent with early sepsis. However, the claim does not specify whether the temperature exceeds the SIRS threshold, leading to a partial, but not full, alignment with the category.",
-            "The claim mentions an elevated respiratory rate, which is part of the SIRS criteria (respiratory rate >\u202f20/min). It aligns well, indicating a significant risk factor for sepsis through systemic inflammation, though it does not single out the exact threshold specified in the SIRS criteria.",
-            "Altered mentation is explicitly one of the criteria for the qSOFA score, which is used to identify high risk of sepsis-related organ dysfunction and mortality. The claim directly references this factor, making the alignment very strong, though not entirely exhaustive on other qSOFA criteria.",
-            "Blood gas measurements indicating acidosis can suggest tissue hypoperfusion, which relates conceptually to elevated serum lactate, a marker for sepsis. However, acidosis itself is not exclusively indicative of elevated lactate levels, which is why the alignment is moderate but not complete.",
-            "Acidosis, indicated by a low venous pH, suggests potential organ dysfunction, which is conceptually related to a SOFA score increase. A low pH can indicate respiratory or metabolic dysfunctions akin to those assessed by SOFA components, such as impaired respiratory function (PaO\u2082/FiO\u2082 ratio) or renal dysfunction (creatinine levels). While low pH itself is not directly a parameter of SOFA scoring, it signals systemic derangement relevant to SOFA's core principle of organ dysfunction, justifying a moderate alignment rating.",
-            "Elevated PCO2 isn't directly listed under the SIRS criteria, which specifically includes a low PaCO2 (<32 mmHg) as a sign of systemic inflammation. However, blood gas measurements are relevant in the context of assessing respiratory function, which is part of SIRS. The alignment is moderate, as elevated PCO2 indicates potential respiratory compromise but doesn't directly meet the SIRS criterion for low PaCO2.",
-            "The claim about elevated PCO2 is not directly linked to any category, as none of the expert categories specifically references elevated PCO2. However, PCO2 is related to respiratory function, and while not directly mentioned as a component of the SOFA score, respiratory dysfunction may cause changes relevant to a SOFA score increase, such as impaired oxygenation (PaO\u2082/FiO\u2082). The alignment is indirect and weak, but there\u2019s a conceptual overlap with organ dysfunction.",
-            "Brain Natriuretic Peptide (BNP) levels are not directly linked to the criteria listed in any expert category. However, elevated BNP can suggest cardiac stress or failure, which may be indirectly related to hemodynamic instability referenced in the Elevated Shock Index category. Therefore, there's a tenuous link due to potential hemodynamic implications, though BNP itself is not a direct measure in these categories."
+        "The claim vaguely references \"several risk factors,\" which could potentially include various criteria evaluated in a NEWS assessment that suggests risk of sepsis. However, the claim lacks specificity about which risk factors or clinical findings are present. Since NEWS considers multiple vitals and risk indicators, it may somewhat align with the mention of \"several risk factors\" but lacks the specificity needed for a strong alignment.",
+        "The claim identifies advanced age as a risk factor, which directly aligns with the \"Elderly Susceptibility\" category. However, it lacks specificity (does not mention the threshold age of ≥65 years).",
+        "The claim about a high triage temperature relates to SIRS criteria since one of the SIRS identifiers is a temperature >38°C, signaling potential early sepsis. However, without a specific temperature value, it is unclear if it meets the exact SIRS threshold. Therefore, the claim partially aligns with SIRS criteria, warranting a moderate alignment rating.",
+        "The claim mentions a high triage temperature indicating fever, which aligns with the SIRS criteria that include a temperature >38°C as an indicator of systemic inflammation consistent with early sepsis. However, the claim does not specify whether the temperature exceeds the SIRS threshold, leading to a partial, but not full, alignment with the category.",
+        "The claim mentions an elevated respiratory rate, which is part of the SIRS criteria (respiratory rate > 20/min). It aligns well, indicating a significant risk factor for sepsis through systemic inflammation, though it does not single out the exact threshold specified in the SIRS criteria.",
+        "Altered mentation is explicitly one of the criteria for the qSOFA score, which is used to identify high risk of sepsis-related organ dysfunction and mortality. The claim directly references this factor, making the alignment very strong, though not entirely exhaustive on other qSOFA criteria.",
+        "Blood gas measurements indicating acidosis can suggest tissue hypoperfusion, which relates conceptually to elevated serum lactate, a marker for sepsis. However, acidosis itself is not exclusively indicative of elevated lactate levels, which is why the alignment is moderate but not complete.",
+        "Acidosis, indicated by a low venous pH, suggests potential organ dysfunction, which is conceptually related to a SOFA score increase. A low pH can indicate respiratory or metabolic dysfunctions akin to those assessed by SOFA components, such as impaired respiratory function (PaO₂/FiO₂ ratio) or renal dysfunction (creatinine levels). While low pH itself is not directly a parameter of SOFA scoring, it signals systemic derangement relevant to SOFA's core principle of organ dysfunction, justifying a moderate alignment rating.",
+        "Elevated PCO2 isn't directly listed under the SIRS criteria, which specifically includes a low PaCO2 (<32 mmHg) as a sign of systemic inflammation. However, blood gas measurements are relevant in the context of assessing respiratory function, which is part of SIRS. The alignment is moderate, as elevated PCO2 indicates potential respiratory compromise but doesn't directly meet the SIRS criterion for low PaCO2.",
+        "The claim about elevated PCO2 is not directly linked to any category, as none of the expert categories specifically references elevated PCO2. However, PCO2 is related to respiratory function, and while not directly mentioned as a component of the SOFA score, respiratory dysfunction may cause changes relevant to a SOFA score increase, such as impaired oxygenation (PaO₂/FiO₂). The alignment is indirect and weak, but there’s a conceptual overlap with organ dysfunction.",
+        "Brain Natriuretic Peptide (BNP) levels are not directly linked to the criteria listed in any expert category. However, elevated BNP can suggest cardiac stress or failure, which may be indirectly related to hemodynamic instability referenced in the Elevated Shock Index category. Therefore, there's a tenuous link due to potential hemodynamic implications, though BNP itself is not a direct measure in these categories."
         ],
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.54545454545,
         "accuracy": 1
     }
 }
