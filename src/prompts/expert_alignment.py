@@ -92,7 +92,7 @@ alignment_cholec = """You will be given:
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim. Choose from Complete, Partial, or None.
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
 
 Category explanations:
 Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
@@ -102,7 +102,7 @@ None: The claim references something unrelated to the expert category, or misint
 Return your answer as:
 Category: <category>
 Category ID: <category ID>
-Category Alignment Rating: <Complete/Partial/None>
+Category Alignment Rating: <complete/partial/none>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
@@ -128,7 +128,7 @@ Claim: "The fat and fibrous tissue overlying Calot's triangle has been fully exc
 Output 1:
 Category: Calot's triangle cleared
 Category ID: 1
-Alignment: 1.0
+Category Alignment Rating: complete
 Reasoning: The claim precisely describes complete clearance of Calot's triangle, matching this criterion perfectly.
 
 
@@ -138,7 +138,7 @@ Claim: "The cystic plate is not visible due to dense adhesions, making the gallb
 Output 2:
 Category: Cystic plate exposed
 Category ID: 2
-Alignment: 0.2
+Category Alignment Rating: partial
 Reasoning: The claim refers to difficulty visualizing the cystic plate because of adhesions, which relates to this criterion but indicates failure, hence a low score.
 
 
@@ -146,11 +146,40 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
+alignment_cholec_mapping = {
+    'name2id': {
+        "Calot's triangle cleared": 1,
+        'Cystic plate exposed': 2,
+        'Only two structures visible': 3,
+        'Above the R4U line': 4,
+        'Safe distance from common bile duct': 5,
+        'Infundibulum start point': 6,
+        'Subserosal plane stay': 7,
+        'Cystic lymph node guide': 8,
+        'No division without ID': 9,
+        'Inflammation bailout': 10,
+        'Aberrant artery caution': 11,
+    },
+    'id2name': {
+        1: "Calot's triangle cleared",
+        2: 'Cystic plate exposed',
+        3: 'Only two structures visible',
+        4: 'Above the R4U line',
+        5: 'Safe distance from common bile duct',
+        6: 'Infundibulum start point',
+        7: 'Subserosal plane stay',
+        8: 'Cystic lymph node guide',
+        9: 'No division without ID',
+        10: 'Inflammation bailout',
+        11: 'Aberrant artery caution',
+    }
+}
+
 alignment_massmaps = """You will be given a single claim that relates to why a prediction was given to a mass map. You will also be given a series of categories that an expert cosmologist would use to perform this type of cosmological parameter prediction.
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim. Choose from Complete, Partial, or None.
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
 
 Category explanations:
 Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
@@ -160,7 +189,7 @@ None: The claim references something unrelated to the expert category, or misint
 Return your answer as:
 Category: <category>
 Category ID: <category ID>
-Category Alignment Rating: <Complete/Partial/None>
+Category Alignment Rating: <complete/partial/none>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
@@ -180,7 +209,7 @@ Claim: "There exist a large amount of yellow regions in the map, which indicates
 Output 1:
 Category: Lensing Peak (Cluster) Abundance
 Category ID: 1
-Alignment: 1.0
+Category Alignment Rating: complete
 Reasoning: The claim directly talks about a large number of yellow regions (high-convergence peaks) in the map, and how it indicates high sigma_8. This aligns with the Lensing Peak (Cluster) Abundance category which says a large number of peaks / clusters indicates a larger sigma_8.
 
 Example 2
@@ -189,7 +218,7 @@ Claim: "The presence of some void regions in the map indicates a low matter dens
 Output 2:
 Category: Void Size and Frequency
 Category ID: 2
-Alignment: 0.5
+Category Alignment Rating: partial
 Reasoning: The claim does mention that void should lead to a lower matter density level and thus Omega_m, but it does not mention how large the void is. To be completely aligned with the expert criteria, the claim should mention the size of the void and it should be large to match this category.
 
 Example 3
@@ -198,7 +227,7 @@ Claim: "A balanced distribution of blue, gray, red, and yellow regions in the ma
 Output 3:
 Category: Density Contrast Extremes
 Category ID: 6
-Alignment: 0.1
+Category Alignment Rating: none
 Reasoning: There is no category saying that when the distribution is balanced, whether the matter density level should be high or low or moderate. This is the closest category because it mentions both voids and peaks, but the alignment is only 0.1 because the expert criteria does not mention balanced distribution but rather the position of the peaks and voids.
 
 Now, determine the category and alignment rating for the following claim:
@@ -513,3 +542,30 @@ Reasoning: The claim highlights the absence of underlying cardiac disease, which
 Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
+
+alignment_cardiac_mapping = {
+    'name2id': {
+        'Ventricular Tachyarrhythmias': 1,
+        'Ventricular Ectopy / NSVT': 2,
+        'Bradycardia or Heart-Rate Drop': 3,
+        'QRS Widening (Conduction Delay)': 4,
+        'Dynamic ST-Segment Changes': 5,
+        'Severe Hyperkalemia Signs': 6,
+        'Advanced Age': 7,
+        'Male Sex': 8,
+        'Underlying Cardiac Disease': 9,
+        'Critical Illness (Sepsis/Shock)': 10    
+    },
+    'id2name': {
+        1: 'Ventricular Tachyarrhythmias',
+        2: 'Ventricular Ectopy / NSVT',
+        3: 'Bradycardia or Heart-Rate Drop',
+        4: 'QRS Widening (Conduction Delay))',
+        5: 'Dynamic ST-Segment Changes',
+        6: 'Severe Hyperkalemia Signs',
+        7: 'Advanced Age',
+        8: 'Male Sex',
+        9: 'Underlying Cardiac Disease',
+        10: 'Critical Illness (Sepsis/Shock)'
+    }
+}

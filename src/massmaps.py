@@ -292,9 +292,9 @@ def calculate_expert_alignment_scores(
     prompts = [alignment_massmaps.replace("[[CLAIM]]", claim) for claim in claims]
     responses = llm(prompts)
     alignment_mapping = {
-        "Complete": 1,
-        "Partial": 0.5,
-        "None": 0,
+        "complete": 1,
+        "partial": 0.5,
+        "none": 0,
     }
 
     results = []
@@ -305,7 +305,7 @@ def calculate_expert_alignment_scores(
                 category = clean_response[0].split(": ")[1]
                 category_id = int(clean_response[1].split(": ")[1])
                 alignment_raw = clean_response[2].split(": ")[1]
-                alignment = alignment_mapping.get(alignment_raw, 0)
+                alignment = alignment_mapping.get(alignment_raw.lower(), 0)
                 reasoning = clean_response[3].split(": ")[1]
 
                 results.append({
