@@ -86,14 +86,19 @@ alignment_cholec = """You will be given:
 - A textual Claim describing a proposed "safe" or "unsafe" zone in laparoscopic cholecystectomy (the "Claim").
 
 Your task is as follows:
-1. Determine which expert safety criterion is most aligned with the Claim.
-2. Rate how strongly the criterion aligns with the Claim on a scale of 0.0-1.0 (in increments of 0.1), where 0.0 means "not at all" and 1.0 means "perfectly."
+1. Determine which expert category is most aligned with the claim. 
+2. Rate how strongly the category aligns with the claim. Choose from Complete, Partial, or None.
 
-Return your answer exactly in this format:
-Category: <name of selected criterion>,
-Category ID: <the ID of the selected criterion>
-Alignment: <the alignment rating for this category>
-Reasoning: <A brief explanation of why you selected the criterion and how you judged the alignment rating>
+Category explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning.
+
+Return your answer as:
+Category: <category>
+Category ID: <category ID>
+Category Alignment Rating: <Complete/Partial/None>
+Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
 Expert Safety Criteria:
@@ -169,12 +174,17 @@ alignment_massmaps = """You will be given a single claim that relates to why a p
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+2. Rate how strongly the category aligns with the claim. Choose from Complete, Partial, or None.
+
+Category explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning.
 
 Return your answer as:
 Category: <category>
 Category ID: <category ID>
-Category Alignment Rating: <rating>
+Category Alignment Rating: <Complete/Partial/None>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
