@@ -399,7 +399,7 @@ Your task is as follows:
 2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
 
 Return your answer as:
-Category: <name of selected criterion>,
+Category: <name of selected criterion>
 Category ID: <the ID of the selected criterion>
 Category Alignment Rating: <rating>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
@@ -487,7 +487,7 @@ alignment_cardiac = """You will be given a single claim explaining why a patient
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
 
 Category explanations:
 Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
@@ -496,7 +496,8 @@ None: The claim references something unrelated to the expert category, or misint
 
 Return your answer as:
 Category: <category>
-Category Alignment Rating: <rating>
+Category ID: <category ID>
+Category Alignment Rating: <complete/partial/none>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
@@ -517,31 +518,36 @@ Here are some examples:
 [Example 1]
 Claim: A skin lesion of the scalp is a condition not directly related to cardiac function.
 Category: Critical Illness (Sepsis/Shock)
-Category Alignment Rating: None
+Category ID: 10
+Category Alignment Rating: none
 Reasoning: While a scalp lesion is not directly cardiac-related, if interpreted as a possible sign of infection or systemic compromise (e.g., an infected wound in a septic patient), it could weakly align with the critical illness category. However, without explicit signs of sepsis or shock, the connection remains speculative, hence the low alignment rating.
 
 [Example 2]
 Claim: The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.
 Category: Ventricular Tachyarrhythmias
-Category Alignment Rating: Complete
+Category ID: 1
+Category Alignment Rating: complete
 Reasoning: The claim directly references dangerous arrhythmias such as ventricular tachycardia and fibrillation, which are hallmark indicators of the Extreme Tachyarrhythmias category. These arrhythmias are known precursors to sudden cardiac arrest. While the claim does not specify the duration or ventricular dysfunction context, the alignment is still very strong due to the mention of the precise arrhythmias characteristic of this category.
 
 [Example 3]
 Claim: The ECG irregularities are suggested by inconsistent waveform intervals and amplitudes.
 Category: Ventricular Ectopy / NSVT
-Category Alignment Rating: Partial
+Category ID: 2
+Category Alignment Rating: partial
 Reasoning: The claim points to ECG irregularities—specifically inconsistent waveform intervals and amplitudes—which can reflect transient abnormal ventricular rhythms such as NSVT or frequent PVCs. These patterns often manifest with variable intervals and amplitudes but are nonspecific. While the claim lacks precision, it aligns moderately with ventricular ectopy as a potential explanation for instability.
 
 [Example 4]
 Claim: The patient is 86 years old. 
 Category: Advanced Age
-Category Alignment Rating: Complete
+Category ID: 7
+Category Alignment Rating: complete
 Reasoning: The claim directly references advanced age, which this category identifies as a major risk factor for cardiac arrest.
 
 [Example 5]
 Claim: The admission wasn't due to cardiac issues.
 Category: Underlying Cardiac Disease
-Category Alignment Rating: Partial
+Category ID: 9
+Category Alignment Rating: partial
 Reasoning: The claim highlights the absence of underlying cardiac disease, which is the inverse of a known risk factor for cardiac arrest. While the expert category focuses on increased risk due to the presence of cardiac disease, this claim indirectly relates to it by implying a potentially lower risk. The alignment is moderate because the claim addresses the category by exclusion rather than direct evidence of risk.
 
 Now, determine the category and alignment rating for the following claim:
