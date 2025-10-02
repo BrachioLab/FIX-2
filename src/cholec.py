@@ -317,9 +317,54 @@ def distill_relevant_features(
     return relevant_claims
 
 
+# def calculate_expert_alignment_scores(
+#     claims: list[str],
+#     model: str = default_model,
+# ) -> list[dict]:
+#     """
+#     Computes the individual (and overall) alignment score of all the relevant claims.
+
+#     Args:
+#         claims (list[str]): A list of strings where each string is a relevant claim.
+#         model (str): The model to use for evaluation.
+
+#     Returns:
+#         dict: A dictionary containing:
+#             - alignment_scores: Mapping of each claim to its alignment score (1-5)
+#             - total_score: Overall alignment score across all claims
+#     """
+
+#     llm = load_model(model)
+#     prompts = [alignment_cholec.replace("[[CLAIM]]", claim) for claim in claims]
+#     responses = llm(prompts)
+
+#     results = []
+#     for i, response in enumerate(responses):
+#         clean_response = [s.strip() for s in response.split("\n") if s.strip()]
+#         try:
+#             if len(clean_response) == 4:
+#                 category = clean_response[0].split(": ")[1]
+#                 category_id = int(clean_response[1].split(": ")[1])
+#                 alignment = float(clean_response[2].split(": ")[1])
+#                 reasoning = clean_response[3].split(": ")[1]
+
+#                 results.append({
+#                     "Claim": claims[i],
+#                     "Category": category,
+#                     "Category ID": category_id,
+#                     "Alignment": alignment,
+#                     "Reasoning": reasoning,
+#                 })
+
+#         except Exception as e:
+#             continue
+
+#     return results
+
+
 def calculate_expert_alignment_scores(
     claims: list[str],
-    model: str = default_model,
+    model: str = 'gpt-4o',
 ) -> list[dict]:
     """
     Computes the individual (and overall) alignment score of all the relevant claims.
@@ -337,6 +382,11 @@ def calculate_expert_alignment_scores(
     llm = load_model(model)
     prompts = [alignment_cholec.replace("[[CLAIM]]", claim) for claim in claims]
     responses = llm(prompts)
+    alignment_mapping = {
+        "complete": 1,
+        "partial": 0.5,
+        "none": 0,
+    }
 
     results = []
     for i, response in enumerate(responses):
@@ -345,7 +395,8 @@ def calculate_expert_alignment_scores(
             if len(clean_response) == 4:
                 category = clean_response[0].split(": ")[1]
                 category_id = int(clean_response[1].split(": ")[1])
-                alignment = float(clean_response[2].split(": ")[1])
+                alignment_raw = clean_response[2].split(": ")[1]
+                alignment = alignment_mapping.get(alignment_raw.lower(), 0)
                 reasoning = clean_response[3].split(": ")[1]
 
                 results.append({
@@ -353,6 +404,7 @@ def calculate_expert_alignment_scores(
                     "Category": category,
                     "Category ID": category_id,
                     "Alignment": alignment,
+                    "Alignment Raw": alignment_raw,
                     "Reasoning": reasoning,
                 })
 
@@ -360,6 +412,7 @@ def calculate_expert_alignment_scores(
             continue
 
     return results
+
 
 
 def items_to_examples(
