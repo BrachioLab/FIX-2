@@ -317,102 +317,124 @@ def distill_relevant_features(
     return relevant_claims
 
 
-# def calculate_expert_alignment_scores(
-#     claims: list[str],
-#     model: str = default_model,
-# ) -> list[dict]:
-#     """
-#     Computes the individual (and overall) alignment score of all the relevant claims.
-
-#     Args:
-#         claims (list[str]): A list of strings where each string is a relevant claim.
-#         model (str): The model to use for evaluation.
-
-#     Returns:
-#         dict: A dictionary containing:
-#             - alignment_scores: Mapping of each claim to its alignment score (1-5)
-#             - total_score: Overall alignment score across all claims
-#     """
-
-#     llm = load_model(model)
-#     prompts = [alignment_cholec.replace("[[CLAIM]]", claim) for claim in claims]
-#     responses = llm(prompts)
-
-#     results = []
-#     for i, response in enumerate(responses):
-#         clean_response = [s.strip() for s in response.split("\n") if s.strip()]
-#         try:
-#             if len(clean_response) == 4:
-#                 category = clean_response[0].split(": ")[1]
-#                 category_id = int(clean_response[1].split(": ")[1])
-#                 alignment = float(clean_response[2].split(": ")[1])
-#                 reasoning = clean_response[3].split(": ")[1]
-
-#                 results.append({
-#                     "Claim": claims[i],
-#                     "Category": category,
-#                     "Category ID": category_id,
-#                     "Alignment": alignment,
-#                     "Reasoning": reasoning,
-#                 })
-
-#         except Exception as e:
-#             continue
-
-#     return results
-
-
 def calculate_expert_alignment_scores(
     claims: list[str],
     model: str = 'gpt-4o',
 ) -> list[dict]:
     """
-    Computes the individual (and overall) alignment score of all the relevant claims.
-
-    Args:
-        claims (list[str]): A list of strings where each string is a relevant claim.
-        model (str): The model to use for evaluation.
-
-    Returns:
-        dict: A dictionary containing:
-            - alignment_scores: Mapping of each claim to its alignment score (1-5)
-            - total_score: Overall alignment score across all claims
+    Parses LLM responses to extract:
+      - Category
+      - Category ID
+      - Alignment (mapped from complete/partial/none)
+      - Reasoning
+    while ignoring any extra/noisy lines (e.g., "Output 4:").
     """
 
     llm = load_model(model)
     prompts = [alignment_cholec.replace("[[CLAIM]]", claim) for claim in claims]
     responses = llm(prompts)
+
+    # Accept a few reasonable label variants
+    KEY_ALIASES = {
+        "category": {"category"},
+        "category_id": {"category id", "categoryID", "category_id"},
+        "alignment": {"alignment", "category alignment", "category alignment rating", "alignment rating"},
+        "reasoning": {"reasoning", "rationale", "explanation"},
+    }
+
     alignment_mapping = {
         "complete": 1,
         "partial": 0.5,
         "none": 0,
     }
 
+    # Helper: normalize keys and see which field it maps to
+    def _which_field(k: str) -> str | None:
+        k_norm = k.strip().lower()
+        for field, aliases in KEY_ALIASES.items():
+            if k_norm in aliases:
+                return field
+        return None
+
+    # Regex to split "Key: Value" OR "Key - Value" (first separator only)
+    kv_re = re.compile(r"^\s*([^:\-]+)\s*[:\-]\s*(.+?)\s*$")
+
     results = []
     for i, response in enumerate(responses):
-        clean_response = [s.strip() for s in response.split("\n") if s.strip()]
-        try:
-            if len(clean_response) == 4:
-                category = clean_response[0].split(": ")[1]
-                category_id = int(clean_response[1].split(": ")[1])
-                alignment_raw = clean_response[2].split(": ")[1]
-                alignment = alignment_mapping.get(alignment_raw.lower(), 0)
-                reasoning = clean_response[3].split(": ")[1]
+        text = "" if response is None else str(response)
+        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
 
-                results.append({
-                    "Claim": claims[i],
-                    "Category": category,
-                    "Category ID": category_id,
-                    "Alignment": alignment,
-                    "Alignment Raw": alignment_raw,
-                    "Reasoning": reasoning,
-                })
+        category = None
+        category_id = -1
+        alignment_raw = None
+        reasoning = None
 
-        except Exception as e:
-            continue
+        for ln in lines:
+            m = kv_re.match(ln)
+            if not m:
+                # ignore lines that don't look like "Key: Value"
+                continue
+            key, value = m.group(1), m.group(2)
+
+            field = _which_field(key)
+            if field is None:
+                # unrecognized key -> ignore
+                continue
+
+            if field == "category":
+                category = value.strip()
+
+            elif field == "category_id":
+                # extract first integer if present; else leave -1
+                m_id = re.search(r"-?\d+", value)
+                if m_id:
+                    try:
+                        category_id = int(m_id.group(0))
+                    except Exception:
+                        category_id = -1
+
+            elif field == "alignment":
+                alignment_raw = value.strip()
+
+            elif field == "reasoning":
+                reasoning = value.strip()
+
+        # Only add an entry if we at least got an alignment string
+        if alignment_raw is not None:
+            align_score = alignment_mapping.get(alignment_raw.lower(), 0)
+            results.append({
+                "Claim": claims[i],
+                "Category": category if category is not None else "",
+                "Category ID": category_id,
+                "Alignment": align_score,
+                "Alignment Raw": alignment_raw,
+                "Reasoning": reasoning if reasoning is not None else "",
+            })
+        # else: ignore this response entirely (no alignment parsed)
 
     return results
 
+
+
+def _avg_pool_mask(mask, a2d):
+    """
+    Accepts mask of shape (H,W) or (C,H,W) or (N,C,H,W) (any dtype, incl. bool),
+    pools it with AvgPool2d, and returns a 2D tensor (H', W').
+    """
+    t = torch.as_tensor(mask)
+    # Normalize to (N, C, H, W)
+    if t.ndim == 2:            # (H, W)
+        t = t.unsqueeze(0).unsqueeze(0)
+    elif t.ndim == 3:          # (C, H, W)
+        t = t.unsqueeze(0)
+    elif t.ndim == 4:          # (N, C, H, W)
+        pass
+    else:
+        raise ValueError(f"Unsupported mask ndim: {t.ndim} (expected 2, 3, or 4)")
+
+    out = a2d(t.float())
+    # Squeeze back to (H', W')
+    return out.squeeze(0).squeeze(0)
 
 
 def items_to_examples(
@@ -431,8 +453,8 @@ def items_to_examples(
     grid_size = 40
     a2d = torch.nn.AvgPool2d(kernel_size=grid_size, stride=grid_size)
 
-    true_safe_avgs = [(a2d((item["gonogo"] == 1).float()).squeeze() > 0.1).long() for item in items]
-    true_unsafe_avgs = [(a2d((item["gonogo"] == 2).float()).squeeze() > 0.1).long() for item in items]
+    true_safe_avgs = [(_avg_pool_mask((item["gonogo"] == 1).float(), a2d).squeeze() > 0.1).long() for item in items]
+    true_unsafe_avgs = [(_avg_pool_mask((item["gonogo"] == 2).float(), a2d).squeeze() > 0.1).long() for item in items]
 
     true_safe_lists = [sr.view(-1).nonzero().view(-1).tolist() for sr in true_safe_avgs]
     true_unsafe_lists = [ur.view(-1).nonzero().view(-1).tolist() for ur in true_unsafe_avgs]
