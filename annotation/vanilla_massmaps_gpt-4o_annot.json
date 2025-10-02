@@ -1,87 +1,4 @@
 {
-    "92": {
-        "answer": {
-            "Omega_m": 0.2906250059604645,
-            "sigma_8": 1.095312476158142
-        },
-        "llm_answer": {
-            "Omega_m": 0.3,
-            "sigma_8": 1.0
-        },
-        "llm_explanation": "The weak lensing map shows a mixture of colors indicating different mass density fluctuations. Gray represents areas around average density, red signifies above-average density up to 2.9 standard deviations, and yellow indicates areas above 2.9. The presence of numerous red and yellow patches suggests significant matter fluctuations, implying higher values for Omega_m and sigma_8. The blue areas are less prominent, indicating that the density is not predominantly low.",
-        "claims": [
-            "The weak lensing map shows a mixture of colors indicating different mass density fluctuations.",
-            "Gray represents areas around average density in the map.",
-            "Red signifies above-average density up to 2.9 standard deviations.",
-            "Yellow indicates areas above 2.9 standard deviations.",
-            "The presence of numerous red and yellow patches suggests significant matter fluctuations.",
-            "Significant matter fluctuations imply higher values for Omega_m and sigma_8.",
-            "The blue areas are less prominent, indicating that the density is not predominantly low."
-        ],
-        "relevant_claims": [
-            "Yellow indicates areas above 2.9 standard deviations.",
-            "The presence of numerous red and yellow patches suggests significant matter fluctuations.",
-            "Significant matter fluctuations imply higher values for Omega_m and sigma_8.",
-            "The blue areas are less prominent, indicating that the density is not predominantly low."
-        ],
-        "alignment_scores": [
-            0,
-            0.5,
-            0.5,
-            0.5
-        ],
-        "alignment_categories": [
-            "Density Contrast Extremes",
-            "Density Contrast Extremes",
-            "Density Contrast Extremes",
-            "Void Size and Frequency"
-        ],
-        "alignment_reasonings": [
-            "The claim focuses on the color yellow, indicating areas above 2.9 standard deviations, but it does not directly relate to any specific properties outlined in the expert categories like abundance or connectivity. Density Contrast Extremes considers the contrast between dense and void regions and how it relates to sigma_8, but the claim doesn't discuss this contrast or relate it to cosmic parameters. The standard deviation context is not sufficient for alignment with the presented categories.",
-            "The claim mentions \"numerous red and yellow patches\" which could refer to pronounced contrast between dense regions (yellow) and potentially less dense ones (red), hinting at significant matter fluctuations and an enhanced variance of the density field (high sigma_8). This aligns with the \"Density Contrast Extremes\" category. However, since the claim doesn't explicitly mention extremes in contrast but rather focuses on the presence of colored patches suggesting fluctuations, the alignment is deemed partial.",
-            "The claim suggests that significant matter fluctuations imply higher values for Omega_m and sigma_8. This aligns somewhat with the Density Contrast Extremes category, which refers to pronounced contrast between dense regions and voids as an indicator for high sigma_8. However, the claim mentions both Omega_m and sigma_8, and does not specifically talk about the visual extremes of the density field (e.g., bright peaks and dark voids), which is the focus of this category. Therefore, the alignment is partial as the claim is related but not directly aligned with the expert criteria.",
-            "The claim refers to the less prominent blue areas, suggesting that regions of low density (voids) are minimal. This somewhat matches the Void Size and Frequency category, which deals with the characteristics of void regions as indicators of Omega_m. However, the claim does not specifically mention the size or frequency of voids which is crucial for a complete alignment."
-        ],
-        "alignable_claims": [
-            "Yellow indicates areas above 2.9 standard deviations.",
-            "The presence of numerous red and yellow patches suggests significant matter fluctuations.",
-            "Significant matter fluctuations imply higher values for Omega_m and sigma_8.",
-            "The blue areas are less prominent, indicating that the density is not predominantly low."
-        ],
-        "aligned_category_ids": [
-            6,
-            6,
-            6,
-            2
-        ],
-        "final_alignment_score": 0.21428571428571427,
-        "mse_loss": {
-            "Omega_m": 8.789051324132637e-05,
-            "sigma_8": 0.009084468111396404
-        },
-        "alignment_raws": [
-            "none",
-            "partial",
-            "partial",
-            "partial"
-        ],
-        "claim_decomposition_accuracy": 1.0,
-        "relevance_filtering_accuracy": [
-            [1, "The weak lensing map shows a mixture of colors indicating different mass density fluctuations."],
-            [1, "Gray represents areas around average density in the map."],
-            [1, "Red signifies above-average density up to 2.9 standard deviations."],
-            [0, "Yellow indicates areas above 2.9 standard deviations."],
-            [1, "The presence of numerous red and yellow patches suggests significant matter fluctuations."],
-            [1, "Significant matter fluctuations imply higher values for Omega_m and sigma_8."],
-            [1, "The blue areas are less prominent, indicating that the density is not predominantly low."]
-        ],
-        "expert_alignment_accuracy": [
-            [0, "Yellow indicates areas above 2.9 standard deviations."],
-            [1, "The presence of numerous red and yellow patches suggests significant matter fluctuations."],
-            [1, "Significant matter fluctuations imply higher values for Omega_m and sigma_8."],
-            [1, "The blue areas are less prominent, indicating that the density is not predominantly low."]
-        ]
-    },
     "2": {
         "answer": {
             "Omega_m": 0.4073242247104645,
@@ -412,6 +329,105 @@
             "partial",
             "none",
             "partial"
+        ],
+        "claim_decomposition_accuracy": 1.0,
+        "relevance_filtering_accuracy": [
+            [1, "The weak lensing map shows a balance of blue, gray, red, and occasional yellow patches."]      ,
+            [1, "The presence of yellow suggests some high-density regions."],
+            [1, "The prevalence of gray and blue regions points to a less concentrated matter distribution."],
+            [1, "The prevalence of gray and blue regions, indicating a less concentrated matter distribution, suggests a moderate to low Omega_m."],
+            [1, "The noticeable red areas indicate moderate fluctuations."],
+            [1, "The noticeable red areas, indicating moderate fluctuations, point to a mid-range sigma_8."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "The presence of yellow suggests some high-density regions."],
+            [0, "The prevalence of gray and blue regions points to a less concentrated matter distribution."],
+            [1, "The prevalence of gray and blue regions, indicating a less concentrated matter distribution, suggests a moderate to low Omega_m."],
+            [1, "The noticeable red areas indicate moderate fluctuations."],
+            [0.5, "The noticeable red areas, indicating moderate fluctuations, point to a mid-range sigma_8."]
+        ]
+    },
+    "92": {
+        "answer": {
+            "Omega_m": 0.2906250059604645,
+            "sigma_8": 1.095312476158142
+        },
+        "llm_answer": {
+            "Omega_m": 0.3,
+            "sigma_8": 1.0
+        },
+        "llm_explanation": "The weak lensing map shows a mixture of colors indicating different mass density fluctuations. Gray represents areas around average density, red signifies above-average density up to 2.9 standard deviations, and yellow indicates areas above 2.9. The presence of numerous red and yellow patches suggests significant matter fluctuations, implying higher values for Omega_m and sigma_8. The blue areas are less prominent, indicating that the density is not predominantly low.",
+        "claims": [
+            "The weak lensing map shows a mixture of colors indicating different mass density fluctuations.",
+            "Gray represents areas around average density in the map.",
+            "Red signifies above-average density up to 2.9 standard deviations.",
+            "Yellow indicates areas above 2.9 standard deviations.",
+            "The presence of numerous red and yellow patches suggests significant matter fluctuations.",
+            "Significant matter fluctuations imply higher values for Omega_m and sigma_8.",
+            "The blue areas are less prominent, indicating that the density is not predominantly low."
+        ],
+        "relevant_claims": [
+            "Yellow indicates areas above 2.9 standard deviations.",
+            "The presence of numerous red and yellow patches suggests significant matter fluctuations.",
+            "Significant matter fluctuations imply higher values for Omega_m and sigma_8.",
+            "The blue areas are less prominent, indicating that the density is not predominantly low."
+        ],
+        "alignment_scores": [
+            0,
+            0.5,
+            0.5,
+            0.5
+        ],
+        "alignment_categories": [
+            "Density Contrast Extremes",
+            "Density Contrast Extremes",
+            "Density Contrast Extremes",
+            "Void Size and Frequency"
+        ],
+        "alignment_reasonings": [
+            "The claim focuses on the color yellow, indicating areas above 2.9 standard deviations, but it does not directly relate to any specific properties outlined in the expert categories like abundance or connectivity. Density Contrast Extremes considers the contrast between dense and void regions and how it relates to sigma_8, but the claim doesn't discuss this contrast or relate it to cosmic parameters. The standard deviation context is not sufficient for alignment with the presented categories.",
+            "The claim mentions \"numerous red and yellow patches\" which could refer to pronounced contrast between dense regions (yellow) and potentially less dense ones (red), hinting at significant matter fluctuations and an enhanced variance of the density field (high sigma_8). This aligns with the \"Density Contrast Extremes\" category. However, since the claim doesn't explicitly mention extremes in contrast but rather focuses on the presence of colored patches suggesting fluctuations, the alignment is deemed partial.",
+            "The claim suggests that significant matter fluctuations imply higher values for Omega_m and sigma_8. This aligns somewhat with the Density Contrast Extremes category, which refers to pronounced contrast between dense regions and voids as an indicator for high sigma_8. However, the claim mentions both Omega_m and sigma_8, and does not specifically talk about the visual extremes of the density field (e.g., bright peaks and dark voids), which is the focus of this category. Therefore, the alignment is partial as the claim is related but not directly aligned with the expert criteria.",
+            "The claim refers to the less prominent blue areas, suggesting that regions of low density (voids) are minimal. This somewhat matches the Void Size and Frequency category, which deals with the characteristics of void regions as indicators of Omega_m. However, the claim does not specifically mention the size or frequency of voids which is crucial for a complete alignment."
+        ],
+        "alignable_claims": [
+            "Yellow indicates areas above 2.9 standard deviations.",
+            "The presence of numerous red and yellow patches suggests significant matter fluctuations.",
+            "Significant matter fluctuations imply higher values for Omega_m and sigma_8.",
+            "The blue areas are less prominent, indicating that the density is not predominantly low."
+        ],
+        "aligned_category_ids": [
+            6,
+            6,
+            6,
+            2
+        ],
+        "final_alignment_score": 0.21428571428571427,
+        "mse_loss": {
+            "Omega_m": 8.789051324132637e-05,
+            "sigma_8": 0.009084468111396404
+        },
+        "alignment_raws": [
+            "none",
+            "partial",
+            "partial",
+            "partial"
+        ],
+        "claim_decomposition_accuracy": 1.0,
+        "relevance_filtering_accuracy": [
+            [1, "The weak lensing map shows a mixture of colors indicating different mass density fluctuations."],
+            [1, "Gray represents areas around average density in the map."],
+            [1, "Red signifies above-average density up to 2.9 standard deviations."],
+            [0, "Yellow indicates areas above 2.9 standard deviations."],
+            [1, "The presence of numerous red and yellow patches suggests significant matter fluctuations."],
+            [1, "Significant matter fluctuations imply higher values for Omega_m and sigma_8."],
+            [1, "The blue areas are less prominent, indicating that the density is not predominantly low."]
+        ],
+        "expert_alignment_accuracy": [
+            [1, "Yellow indicates areas above 2.9 standard deviations."],
+            [1, "The presence of numerous red and yellow patches suggests significant matter fluctuations."],
+            [0, "Significant matter fluctuations imply higher values for Omega_m and sigma_8."],
+            [1, "The blue areas are less prominent, indicating that the density is not predominantly low."]
         ]
     }
 }
