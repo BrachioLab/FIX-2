@@ -264,7 +264,7 @@ def calculate_expert_alignment_score(claim: str):
     alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
     reasoning = response[2].replace("Reasoning:", "").strip()
     try:
-        alignment_score = float(alignment_score)
+        assert alignment_score in ["none", "partial", "complete"]
         assert(len(category) > 5)
         for c in categories_list:
             if fuzz.ratio(c.lower(), category.lower()) > 90:
@@ -275,7 +275,7 @@ def calculate_expert_alignment_score(claim: str):
     except:
         print("ERROR: Issue with alignment score parsing")
         print(response)
-        alignment_score = 0.0
+        alignment_score = "none"
     return category, alignment_score, reasoning
 
 def load_emotion_data():
@@ -335,29 +335,87 @@ def run_pipeline(emotion_data, baseline="vanilla", model="gpt-4o"):
         example.alignment_categories = alignment_categories
         example.final_alignment_score = np.sum(alignment_scores)/len(example.claims)
         example.alignment_reasonings = alignment_reasonings
-
         
     data_to_save = [example.to_dict() for example in emotion_examples]
     with open("../results/{}/emotion_{}.json".format(baseline, model), 'w') as f:
         json.dump(data_to_save, f, indent=4)
 
+
+def aggregate_alignment_scores(alignment_scores, total_claims):
+    score_map = {
+        "none": 0.0,
+        "partial": 0.5,
+        "complete": 1.0
+    }
+    if total_claims == 0:
+        return 0.0
+    total_score = sum([score_map[score] for score in alignment_scores])
+    return total_score / total_claims
+
+def recalculate_alignment(emotion_data, baseline="vanilla", model="gpt-4o"):
+    results_dict = {}
+    with open("../results/{}/emotion_{}.json".format(baseline, model), 'r') as f:
+        results_dict = json.load(f)
+    
+    emotion_examples = []
+    for res in results_dict:
+        example = EmotionExample(
+            text=res['text'],
+            ground_truth=res['ground_truth'],
+            llm_label=res['llm_label'],
+            llm_explanation=res['llm_explanation']
+        )
+        example.accuracy = res['accuracy']
+        example.claims = res['claims']
+        example.relevant_claims = res['relevant_claims']
+        emotion_examples.append(example)
+    
+    print("Recalculating alignment scores for {} examples: {}, {}".format(len(emotion_examples), baseline, model))
+
+    for example in emotion_examples:
+        alignment_scores = []
+        alignment_categories = []
+        alignment_reasonings = []
+        for claim in tqdm(example.relevant_claims):
+            category, alignment_score, reasoning = calculate_expert_alignment_score(claim)
+            if category is None:
+                continue
+            alignment_scores.append(alignment_score)
+            alignment_categories.append(category)
+            alignment_reasonings.append(reasoning)
+        example.alignment_scores = alignment_scores
+        example.alignment_categories = alignment_categories
+        example.alignment_reasonings = alignment_reasonings
+        example.final_alignment_score = aggregate_alignment_scores(alignment_scores, len(example.claims))
+
+    data_to_save = [example.to_dict() for example in emotion_examples]
+    with open("../results/{}/emotion_{}.json".format(baseline, model), 'w') as f:
+        json.dump(data_to_save, f, indent=4)
+
+
 if __name__ == "__main__":
     emotion_data = load_emotion_data()
 
     #model = "gemini-2.0-flash"
-    # run_pipeline(emotion_data, baseline="vanilla", model="gemini-2.0-flash")
-    # run_pipeline(emotion_data, baseline="cot", model="gemini-2.0-flash")
-    # run_pipeline(emotion_data, baseline="socratic", model="gemini-2.0-flash")
-    # run_pipeline(emotion_data, baseline="subq", model="gemini-2.0-flash")
+    recalculate_alignment(emotion_data, baseline="vanilla", model="gemini-2.0-flash")
+    recalculate_alignment(emotion_data, baseline="cot", model="gemini-2.0-flash")
+    recalculate_alignment(emotion_data, baseline="socratic", model="gemini-2.0-flash")
+    recalculate_alignment(emotion_data, baseline="subq", model="gemini-2.0-flash")
 
-    #model = "o1"
-    run_pipeline(emotion_data, baseline="vanilla", model="o1")
-    run_pipeline(emotion_data, baseline="cot", model="o1")
-    run_pipeline(emotion_data, baseline="socratic", model="o1")
-    run_pipeline(emotion_data, baseline="subq", model="o1")
+    # #model = "o1"
+    recalculate_alignment(emotion_data, baseline="vanilla", model="o1")
+    recalculate_alignment(emotion_data, baseline="cot", model="o1")
+    recalculate_alignment(emotion_data, baseline="socratic", model="o1")
+    recalculate_alignment(emotion_data, baseline="subq", model="o1")
 
-    #model = "claude-3-5-sonnet-latest"
-    # run_pipeline(emotion_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
-    # run_pipeline(emotion_data, baseline="cot", model="claude-3-5-sonnet-latest")
-    # run_pipeline(emotion_data, baseline="socratic", model="claude-3-5-sonnet-latest")
-    # run_pipeline(emotion_data, baseline="subq", model="claude-3-5-sonnet-latest")
+    # #model = "claude-3-5-sonnet-latest"
+    recalculate_alignment(emotion_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
+    recalculate_alignment(emotion_data, baseline="cot", model="claude-3-5-sonnet-latest")
+    recalculate_alignment(emotion_data, baseline="socratic", model="claude-3-5-sonnet-latest")
+    recalculate_alignment(emotion_data, baseline="subq", model="claude-3-5-sonnet-latest")
+
+    # #model = "gpt-4o"
+    recalculate_alignment(emotion_data, baseline="vanilla", model="gpt-4o")
+    recalculate_alignment(emotion_data, baseline="cot", model="gpt-4o")
+    recalculate_alignment(emotion_data, baseline="socratic", model="gpt-4o")
+    recalculate_alignment(emotion_data, baseline="subq", model="gpt-4o")

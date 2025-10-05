@@ -33,11 +33,16 @@ alignment_politeness = """You will be given a single claim that relates to why a
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest. Use increments of 0.1). 
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
+
+Category explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning.
 
 Return your answer as:
 Category: <category>
-Category Alignment Rating: <rating>
+Category Alignment Rating: <complete/partial/none>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
@@ -67,19 +72,19 @@ Here are some examples:
 [Example 1]
 Claim: The utterance accuses the other person of fabricating information.
 Category: Second Person Responsibility or Engagement
-Category Alignment Rating: 0.9
+Category Alignment Rating: complete
 Reasoning: The claim centers on the utterance accusing the other person of fabricating information, which aligns strongly with the use of direct second-person language (“you are just making things up”). This construction directly targets the listener and assigns blame, which is a key aspect of the Second Person Responsibility or Engagement category. 
 
 [Example 2]
 Claim: The sentence structure is overly complex and difficult to follow.
 Category: Discourse Management with Markers
-Category Alignment Rating: 0.1
-Reasoning: The claim concerns sentence complexity and readability, which is weakly aligned with how Discourse Management with Markers functions—lack of these markers impact information organization or textual flow. However, this category has low alignment because the claim is more about syntactic complexity than interpersonal politeness strategies. No other category more directly addresses sentence structure, so this is the closest fit, but with very low alignment.
+Category Alignment Rating: none
+Reasoning: The claim concerns sentence complexity and readability, which is not aligned with how Discourse Management with Markers functions—lack of these markers impact information organization or textual flow. However, this category has low alignment because the claim is more about syntactic complexity than interpersonal politeness strategies. No other category more directly addresses sentence structure, so this is the closest fit, but with little to no alignment.
 
 [Example 3]
 Claim: The use of "obviously" might suggest a slight assumption of common knowledge.
 Category: Hedging and Tentative Language
-Category Alignment Rating: 0.6
+Category Alignment Rating: partial
 Reasoning: The word "obviously" implies a presumption that the information should be universally known or accepted, which can reduce the speaker's humility and increase the assertiveness of the statement. This contrasts with hedging strategies that usually aim to soften claims and maintain interpersonal sensitivity. While "obviously" itself is not a hedge, its use relates to the degree of assertiveness in an utterance—making this category moderately relevant. The alignment is not perfect because “obviously” actually opposes hedging, but the connection lies in the shared focus on epistemic stance and assertion strength.
 
 Now, determine the category and alignment rating for the following claim:
@@ -255,11 +260,16 @@ alignment_emotion = """You will be given a single claim that relates to why an e
 
 Your task is as follows:
 1. Determine which expert category is most aligned with the claim. 
-2. Rate how strongly the category aligns with the claim on a scale of 0-1 (0 being lowest, 1 being highest). 
+2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
+
+Category explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning.
 
 Return your answer as:
 Category: <category>
-Category Alignment Rating: <rating>
+Category Alignment Rating: <complete/partial/none>
 Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
 
 -----
@@ -288,19 +298,19 @@ Here are some examples:
 [Example 1]
 Claim: The exclamations (“seriously wtf… sickest soulread ever”) show astonished praise for an impressive play.
 Category: Surprise Exclamations
-Category Alignment Rating: 0.7
-Reasoning: The phrase “seriously wtf… sickest soulread ever” indicates a strong emotional reaction of astonishment. The use of “seriously” as an intensifier and the informal hyperbolic phrasing align closely with surprise. The reason the rating is 0.7 and not higher is that while there is a strong element of astonishment, the claim also suggests admiration or praise, which is more related to Praise & Compliments. Though surprise is the more dominant signal, the claim does not fully relate to surprise.
+Category Alignment Rating: partial
+Reasoning: The phrase “seriously wtf… sickest soulread ever” indicates a strong emotional reaction of astonishment. The use of “seriously” as an intensifier and the informal hyperbolic phrasing align closely with surprise. The reason the rating is partial and not higher is that while there is a strong element of astonishment, the claim also suggests admiration or praise, which is more related to Praise & Compliments. Though surprise is the more dominant signal, the claim does not fully relate to surprise.
 
 [Example 2]
 Claim: The text discusses economic inflation trends over the past decade.
 Category: Emotion Words & Emojis
-Category Alignment Rating: 0.0
+Category Alignment Rating: none
 Reasoning: This claim describes factual, analytical content about economic trends and contains no reference to emotional language, emojis, or affective tone. Since the Emotion Words & Emoji category looks for direct markers of emotion (like “happy,” “sad,” “😭”), and none are present or implied in the claim, the alignment is essentially nonexistent. 
 
 [Example 3]
 Claim: The speaker is expressing happiness at a positive outcome.
 Category: Valence
-Category Alignment Rating: 1.0
+Category Alignment Rating: complete
 Reasoning: The claim directly identifies the emotional tone as happiness and attributes it to a positive outcome, which maps precisely onto the Valence category. Valence is concerned with whether the emotional tone is pleasant or unpleasant, and happiness due to a good result is a prototypical example of high positive valence. There are no additional cues in the claim suggesting other categories (like specific emotion words or punctuation), so Valence is both the most relevant and strongly aligned.
 
 Now, determine the category and alignment rating for the following claim:
