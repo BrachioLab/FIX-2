@@ -5,6 +5,8 @@ import openai
 from openai import OpenAI
 import time
 from tqdm import tqdm
+
+import re
 import json
 from fuzzywuzzy import fuzz
 import anthropic
@@ -273,37 +275,176 @@ def distill_relevant_features(example: EmotionExample, model: str = default_mode
             relevant_claims.append(claim)
     return relevant_claims
 
+
 def calculate_expert_alignment_score(claim: str, model: str = default_model):
+    """
+    Returns: (category: Optional[str], alignment_score: {'none','partial','complete'}, reasoning: str)
+    Robust parsing that tolerates extra text, variant keys, and JSON-like outputs.
+    """
+    # Build + query
     prompt = alignment_emotion.format(claim)
     if model == default_model:
-        response = query_openai(prompt).replace("\n\n", "\n")
+        response = query_openai(prompt)
     else:
         llm = load_model(model)
         response = llm([prompt])[0]
-        
-    if response == "ERROR":
+
+    if not response or response == "ERROR":
         print("Error in querying OpenAI API")
+        return None, "none", ""
+
+    text = str(response).strip()
+
+    # -------------------------------------------------------
+    # 1) Try JSON(-ish) first (including code fences)
+    # -------------------------------------------------------
+    def _maybe_parse_json(s: str):
+        # Strip common code fences
+        s = s.strip()
+        fence = "```"
+        if s.startswith(fence) and s.endswith(fence):
+            s = s.strip("`")
+        # Try to locate a JSON object/array substring
+        m = re.search(r"(\{.*\}|\[.*\])", s, flags=re.DOTALL)
+        if m:
+            try:
+                return json.loads(m.group(1))
+            except Exception:
+                return None
+        # Try raw full string as JSON
+        try:
+            return json.loads(s)
+        except Exception:
+            return None
+
+    parsed_json = _maybe_parse_json(text)
+
+    # Accept a few reasonable label variants
+    KEY_ALIASES = {
+        "category": {"category"},
+        "alignment": {"alignment", "category alignment", "category alignment rating", "alignment rating"},
+        "reasoning": {"reasoning", "rationale", "explanation"},
+    }
+
+    # Normalize to one of allowed alignments
+    def _norm_align(a: str) -> str:
+        if not a:
+            return "none"
+        a = a.strip().lower()
+        if "complete" in a:
+            return "complete"
+        if "partial" in a:
+            return "partial"
+        if "none" in a:
+            return "none"
+        # map a few common variants
+        if a in {"full", "fully", "yes", "aligned", "high"}:
+            return "complete"
+        if a in {"some", "part", "medium"}:
+            return "partial"
+        if a in {"no", "low", "not aligned"}:
+            return "none"
+        return "none"
+
+    def _which_field(k: str) -> str | None:
+        k_norm = k.strip().lower()
+        for field, aliases in KEY_ALIASES.items():
+            if k_norm in aliases:
+                return field
         return None
-    response = response.replace("Category:", "").strip()
-    response = response.split("\n")
-    response = [r for r in response if r.strip() != ""]
-    category = response[0].strip().replace("‑", "-")
-    alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
-    reasoning = response[2].replace("Reasoning:", "").strip()
-    try:
-        assert alignment_score in ["none", "partial", "complete"]
-        assert(len(category) > 5)
-        for c in categories_list:
-            if fuzz.ratio(c.lower(), category.lower()) > 90:
-                category = c
-                break
-        if(category not in categories_list): category = None
-        assert(len(reasoning) > 10)
-    except:
-        print("ERROR: Issue with alignment score parsing")
-        print(response)
+
+    category = None
+    alignment_score = "none"
+    reasoning = ""
+
+    # -------------------------------------------------------
+    # 2) If we got JSON, try to read fields from it
+    # -------------------------------------------------------
+    if isinstance(parsed_json, dict):
+        # Flatten one level of dict if the model wrapped the result
+        cand = parsed_json
+        # Find potential keys by alias
+        for k, v in list(cand.items()):
+            field = _which_field(str(k))
+            if field == "category":
+                category = str(v).strip()
+            elif field == "alignment":
+                alignment_score = _norm_align(str(v))
+            elif field == "reasoning":
+                reasoning = str(v).strip()
+
+    elif isinstance(parsed_json, list) and parsed_json and isinstance(parsed_json[0], dict):
+        # Take the first dict-like item
+        cand = parsed_json[0]
+        for k, v in list(cand.items()):
+            field = _which_field(str(k))
+            if field == "category":
+                category = str(v).strip()
+            elif field == "alignment":
+                alignment_score = _norm_align(str(v))
+            elif field == "reasoning":
+                reasoning = str(v).strip()
+
+    # -------------------------------------------------------
+    # 3) If still missing, parse "Key: Value" / "Key - Value" lines
+    # -------------------------------------------------------
+    if category is None or reasoning == "" or alignment_score == "none":
+        # Split into non-empty lines and normalize
+        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+        # Regex to split "Key: Value" OR "Key - Value" (first separator only)
+        kv_re = re.compile(r"^\s*([^:\-]+)\s*[:\-]\s*(.+?)\s*$")
+
+        for ln in lines:
+            m = kv_re.match(ln)
+            if not m:
+                continue
+            key, value = m.group(1), m.group(2)
+            field = _which_field(key)
+            if field is None:
+                continue
+
+            if field == "category" and not category:
+                category = value.strip()
+            elif field == "alignment":
+                alignment_score = _norm_align(value)
+            elif field == "reasoning" and not reasoning:
+                reasoning = value.strip()
+
+    # -------------------------------------------------------
+    # 4) Final cleanup + fuzzy category mapping
+    # -------------------------------------------------------
+    # Replace odd hyphen
+    if category:
+        category = category.replace("-", "-").strip()
+
+    # Fuzzy map to your canonical list (keep your existing logic)
+    if category:
+        try:
+            for c in categories_list:
+                if fuzz.ratio(c.lower(), category.lower()) > 90:
+                    category = c
+                    break
+            if category not in categories_list:
+                category = None
+        except Exception:
+            category = None
+
+    # Reasoning sanity: ensure it's not trivially short
+    if not reasoning or len(reasoning.strip()) < 5:
+        # Try to salvage something sensible (e.g., the first non-key line)
+        # Fallback to empty string if nothing reasonable
+        reasoning = reasoning.strip()
+
+    # Ensure alignment is one of the allowed strings
+    if alignment_score not in {"none", "partial", "complete"}:
+        alignment_score = _norm_align(alignment_score)
+
+    # Safety guard (match your original try/except intent, but non-fatal)
+    if alignment_score not in {"none", "partial", "complete"}:
         alignment_score = "none"
+
     return category, alignment_score, reasoning
+
 
 def load_emotion_data():
     emotion_data =  load_dataset("BrachioLab/emotion")
