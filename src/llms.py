@@ -669,7 +669,7 @@ class QwenVLModel:
         temperature: float = 0.1,
         max_tokens: int = 2048,
         use_cache: bool = True,
-        batch_size: int = 8,
+        batch_size: int = 1,
         verbose: bool = True,
         use_vllm: bool = True,
         device: str = "cuda",
