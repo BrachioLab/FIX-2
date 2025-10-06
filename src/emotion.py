@@ -17,7 +17,17 @@ from prompts.expert_alignment import alignment_emotion
 from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, emotion_prompt
 
 from diskcache import Cache
-cache = Cache("/shared_data0/shreyah/llm_cache")
+# cache = Cache("/shared_data0/shreyah/llm_cache")
+from pathlib import Path
+
+from llms import load_model
+
+base_dir = Path(__file__).parent
+cache_path = base_dir / ".." / ".." / "llm_cache"
+cache = Cache(cache_path)
+
+default_model = "gpt-4o"
+
 
 prompt_dict = {"vanilla": vanilla_baseline,
                "cot": cot_baseline,
@@ -211,9 +221,15 @@ def get_llm_generated_answer(text: str, baseline: str = "vanilla", model = "gpt-
         return None, None
 
 
-def isolate_individual_features(explanation: str):
+def isolate_individual_features(explanation: str, model: str = default_model):
+    
     prompt = decomposition_emotion.format(explanation)
-    response = query_openai(prompt).replace("\n\n", "\n")
+    
+    if model == default_model:
+        response = query_openai(prompt).replace("\n\n", "\n")
+    else:
+        llm = load_model(model)
+        response = llm([prompt])[0]
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -221,9 +237,15 @@ def isolate_individual_features(explanation: str):
     claims = response.split("\n")
     return claims
 
-def is_claim_relevant(text: str, rating: str, claim: str):
+def is_claim_relevant(text: str, rating: str, claim: str, model: str = default_model):
+    
     prompt = relevance_emotion.format(text, rating, claim)
-    response = query_openai(prompt).replace("\n\n", "\n")
+    if model == default_model:
+        response = query_openai(prompt).replace("\n\n", "\n")
+    else:
+        llm = load_model(model)
+        response = llm([prompt])[0]
+        
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -241,19 +263,24 @@ def is_claim_relevant(text: str, rating: str, claim: str):
     return relevance, reasoning
 
 
-def distill_relevant_features(example: EmotionExample):
+def distill_relevant_features(example: EmotionExample, model: str = default_model):
     relevant_claims = []
     for claim in tqdm(example.claims):
-        relevance, reasoning = is_claim_relevant(example.text, example.llm_label, claim)
+        relevance, reasoning = is_claim_relevant(example.text, example.llm_label, claim, model=model)
         if relevance is None:
             continue
         if relevance == "Yes":
             relevant_claims.append(claim)
     return relevant_claims
 
-def calculate_expert_alignment_score(claim: str):
+def calculate_expert_alignment_score(claim: str, model: str = default_model):
     prompt = alignment_emotion.format(claim)
-    response = query_openai(prompt).replace("\n\n", "\n")
+    if model == default_model:
+        response = query_openai(prompt).replace("\n\n", "\n")
+    else:
+        llm = load_model(model)
+        response = llm([prompt])[0]
+        
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
