@@ -1,1 +1,1 @@
-# FIX 2.0: LLM-Generated Features Interpretable to Experts
+# T-FIX: Text-Based Explanations with Features Interpretable to eXperts
