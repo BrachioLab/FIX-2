@@ -1,3 +1,5 @@
+from .category_mapping import category_mapping_cholec, category_mapping_massmaps, category_mapping_supernova, category_mapping_sepsis, category_mapping_cardiac
+
 alignment_template = """You will be given [description of claim and expert category]
 
 Your task is as follows:
@@ -149,34 +151,7 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
-alignment_cholec_mapping = {
-    'name2id': {
-        "Calot's triangle cleared": 1,
-        'Cystic plate exposed': 2,
-        'Only two structures visible': 3,
-        'Above the R4U line': 4,
-        'Safe distance from common bile duct': 5,
-        'Infundibulum start point': 6,
-        'Subserosal plane stay': 7,
-        'Cystic lymph node guide': 8,
-        'No division without ID': 9,
-        'Inflammation bailout': 10,
-        'Aberrant artery caution': 11,
-    },
-    'id2name': {
-        1: "Calot's triangle cleared",
-        2: 'Cystic plate exposed',
-        3: 'Only two structures visible',
-        4: 'Above the R4U line',
-        5: 'Safe distance from common bile duct',
-        6: 'Infundibulum start point',
-        7: 'Subserosal plane stay',
-        8: 'Cystic lymph node guide',
-        9: 'No division without ID',
-        10: 'Inflammation bailout',
-        11: 'Aberrant artery caution',
-    }
-}
+alignment_cholec_mapping = category_mapping_cholec
 
 alignment_massmaps = """You will be given a single claim that relates to why a prediction was given to a mass map. You will also be given a series of categories that an expert cosmologist would use to perform this type of cosmological parameter prediction.
 
@@ -237,24 +212,7 @@ Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
 
-alignment_massmaps_mapping = {
-    'name2id': {
-        'Lensing Peak (Cluster) Abundance': 1,
-        'Void Size and Frequency': 2,
-        'Filament Thickness and Sharpness': 3,
-        'Fine-Scale Clumpiness': 4,
-        'Connectivity of the Cosmic Web': 5,
-        'Density Contrast Extremes': 6,
-    },
-    'id2name': {
-        1: 'Lensing Peak (Cluster) Abundance',
-        2: 'Void Size and Frequency',
-        3: 'Filament Thickness and Sharpness',
-        4: 'Fine-Scale Clumpiness',
-        5: 'Connectivity of the Cosmic Web',
-        6: 'Density Contrast Extremes',
-    }
-}
+alignment_massmaps_mapping = category_mapping_massmaps
 
 alignment_emotion = """You will be given a single claim that relates to why an emotion label was assigned to a piece of text. You will also be given a series of categories that an expert emotion psychologist would use to perform this type of emotion classification.
 
@@ -379,26 +337,7 @@ Reasoning: Type II SNe, especially SN II-P and SN II-L, are characterized by dis
 Now, determine the category and alignment rating for the following claim:
 Claim: [[CLAIM]]
 """
-alignment_supernova_mapping = {
-    'name2id': {
-        'Contiguous non-zero flux': 1,
-        'Rise–decline rates': 2,
-        'Photometric amplitude': 3,
-        'Event duration': 4,
-        'Periodic light curves': 5,
-        'Secondary maxima': 6,
-        'Monotonic flux trends': 7,
-    },
-    'id2name': {
-        1: 'Contiguous non-zero flux',
-        2: 'Rise–decline rates',
-        3: 'Photometric amplitude',
-        4: 'Event duration',
-        5: 'Periodic light curves',
-        6: 'Secondary maxima',
-        7: 'Monotonic flux trends',
-    }
-}
+alignment_supernova_mapping = category_mapping_supernova
 
 alignment_sepsis = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of sepsis within the next 12 hours (Yes/No). You will also be given a series of categories that an expert clinician would use to perform this type of sepsis prediction.
 
@@ -466,30 +405,7 @@ Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
 
-alignment_sepsis_mapping = {
-    'name2id': {
-        'Elderly Susceptibility (Age ≥65 years)': 1,
-        'SIRS Positivity (≥2 Criteria)': 2,
-        'High qSOFA Score (≥2)': 3,
-        'Elevated NEWS Score (≥5 points)': 4,
-        'Elevated Serum Lactate (≥2 mmol/L)': 5,
-        'Elevated Shock Index (≥1.0)': 6,
-        'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)': 7,
-        'SOFA Score Increase (≥2 points)': 8,
-        'Early Antibiotic/Culture Orders (within 2 hours)': 9,
-    },
-    'id2name': {
-        1: 'Elderly Susceptibility (Age ≥65 years)',
-        2: 'SIRS Positivity (≥2 Criteria)',
-        3: 'High qSOFA Score (≥2)',
-        4: 'Elevated NEWS Score (≥5 points)',
-        5: 'Elevated Serum Lactate (≥2 mmol/L)',
-        6: 'Elevated Shock Index (≥1.0)',
-        7: 'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)',
-        8: 'SOFA Score Increase (≥2 points)',
-        9: 'Early Antibiotic/Culture Orders (within 2 hours)',
-    }
-}
+alignment_sepsis_mapping = category_mapping_sepsis
 
 alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform determine if there is high risk of imminent cardiac arrest.
 
@@ -562,29 +478,4 @@ Now, determine the category and alignment rating for the following claim:
 Claim: {}
 """
 
-alignment_cardiac_mapping = {
-    'name2id': {
-        'Ventricular Tachyarrhythmias': 1,
-        'Ventricular Ectopy / NSVT': 2,
-        'Bradycardia or Heart-Rate Drop': 3,
-        'QRS Widening (Conduction Delay)': 4,
-        'Dynamic ST-Segment Changes': 5,
-        'Severe Hyperkalemia Signs': 6,
-        'Advanced Age': 7,
-        'Male Sex': 8,
-        'Underlying Cardiac Disease': 9,
-        'Critical Illness (Sepsis/Shock)': 10    
-    },
-    'id2name': {
-        1: 'Ventricular Tachyarrhythmias',
-        2: 'Ventricular Ectopy / NSVT',
-        3: 'Bradycardia or Heart-Rate Drop',
-        4: 'QRS Widening (Conduction Delay))',
-        5: 'Dynamic ST-Segment Changes',
-        6: 'Severe Hyperkalemia Signs',
-        7: 'Advanced Age',
-        8: 'Male Sex',
-        9: 'Underlying Cardiac Disease',
-        10: 'Critical Illness (Sepsis/Shock)'
-    }
-}
+alignment_cardiac_mapping = category_mapping_cardiac
