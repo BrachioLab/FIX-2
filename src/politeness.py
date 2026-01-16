@@ -14,6 +14,8 @@ import re
 from prompts.claim_decomposition import decomposition_politeness
 from prompts.relevance_filtering import relevance_politeness
 from prompts.expert_alignment import alignment_politeness
+from prompts.claim_grouping import claim_grouping_politeness
+from prompts.expert_category_alignment import category_alignment_politeness
 from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, politeness_prompt
 
 from diskcache import Cache
@@ -212,8 +214,7 @@ def get_llm_generated_answer(utterance: str, baseline: str = "vanilla", model: s
         print("ERROR: LLM generated answer is not valid")
         print(response)
         return None, None
-        
-    
+          
 
 def isolate_individual_features(explanation: str):
     """
@@ -288,7 +289,88 @@ def distill_relevant_features(example: PolitenessExample):
             relevant_claims.append(claim)
     return relevant_claims
 
-def calculate_expert_alignment_score(claim: str):
+def get_claims_by_category(category: str, claims: list[str]):
+    """
+    Args:
+        category (str): The category to find claims for.
+        claims (list[str]): A list of relevant claims.
+    Returns:
+        list[str]: A list of relevant claims that are related to the category.
+    """
+    prompt = claim_grouping_politeness.format(category, claims)
+    response = query_openai(prompt).replace("\n\n", "\n")
+    if response == "ERROR":
+        print("Error in querying OpenAI API")
+        return None
+    response = response.replace("ATOMIC CLAIMS:", "").strip()
+    response = response.split("\n")
+    response = [r for r in response if r.strip() != ""]
+    return response
+
+def group_claims_by_category(relevant_claims: list[str]):
+    """
+    Args:
+        relevant_claims (list[str]): A list of strings where each string is a relevant claim.
+    Returns:
+        dict[str, list[str]]: A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+    """
+    claims_by_category = {}
+    for category in categories_list:
+        related_claims = get_claims_by_category(category, relevant_claims)
+        if related_claims is None:
+            continue
+        claims_by_category[category] = related_claims
+    return claims_by_category
+
+
+def calculate_expert_alignment_score_for_category(category: str, claims: list[str]):
+    """
+    Args:
+        category (str): The category to calculate the alignment score for.
+        claims (list[str]): A list of strings where each string is a relevant claim.
+    Returns:
+        float: The alignment score for the claims in the category.
+    """
+    prompt = category_alignment_politeness.format(category, claims)
+    response = query_openai(prompt).replace("\n\n", "\n")
+    if response == "ERROR":
+        print("Error in querying OpenAI API")
+        return None
+    response = response.replace("Category:", "").strip()
+    response = response.split("\n")
+    response = [r for r in response if r.strip() != ""]
+    return response
+
+def calculate_expert_alignment_score(claims: list[str]):
+    claims_by_category = group_claims_by_category(claims)
+    category_alignment_scores = {}
+
+    for category in claims_by_category.keys():
+        category_alignment_score = calculate_expert_alignment_score_for_category(category, claims_by_category[category])
+        if category_alignment_score is None:
+            raise Exception("Error in calculating expert alignment score for category: {}".format(category))
+        category_alignment_scores[category] = category_alignment_score
+    return claims_by_category, category_alignment_scores
+
+
+def make_alignment_matrix(categories, claims, claims_by_category, category_alignment_scores):
+    """
+    Args:
+        categories (list[str]): A list of all expertcategories.
+        claims (list[str]): A list of all atomic claims.
+        claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+        category_alignment_scores (dict[str, float]): A dictionary where the keys are the categories and the values are the alignment scores.
+    Returns:
+        list[list[float]]: A matrix of alignment scores for the claims in the categories.
+    """
+    matrix = np.zeros((len(claims), len(categories)))
+    for i, claim in enumerate(claims):
+        for j, category in enumerate(categories):
+            if claim in claims_by_category[category]:
+                matrix[i, j] = category_alignment_scores[category]
+    return matrix
+
+def calculate_expert_alignment_score_old(claim: str):
     """
     Assesses a claim's alignment with expert criteria using the alignment prompt.
 

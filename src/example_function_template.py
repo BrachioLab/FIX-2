@@ -62,6 +62,17 @@ def distill_relevant_features(
     """
     raise NotImplementedError()
 
+def group_claims_by_category(
+    atomic_claims: list[str],
+) -> dict[str, list[str]]:
+    """
+    Args:
+        atomic_claims (list[str]): A list of strings where each string is a relevant claim.
+    Returns:
+        dict[str, list[str]]: A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+    """
+    raise NotImplementedError()
+
 
 def calculate_expert_alignment_score(
     atomic_claims: list[str],
@@ -78,4 +89,29 @@ def calculate_expert_alignment_score(
     """
     raise NotImplementedError()
 
+def calculate_expert_alignment_score_for_category(
+    atomic_claims: list[str],
+    category: str,
+) -> AlignmentScores:
+    """
+    Args:
+        atomic_claims (list[str]): A list of strings where each string is a relevant claim.
+        category (str): The category to calculate the alignment score for.
+    Returns:
+        AlignmentScores: The alignment scores for the claims in the category.
+    """
+    raise NotImplementedError()
 
+def make_alignment_matrix(
+    scores_by_claim_category: dict[str, dict[str, float]]
+) -> list[list[float]]:
+    """
+    Args:
+        scores_by_claim_category (dict[str, dict[str, float]]): 
+            A dictionary where each key is the claim (str) and the value is a dictionary mapping category (str) to alignment score (float).
+    Returns:
+        matrix (list[list[float]]): 
+            A c x k matrix, where c is the number of claims, k is the number of categories, and the value in row i, column j is 
+            the alignment score for claim i for category j. Rows are ordered as the sorted list of claims, columns as the sorted list of categories.
+    """
+    raise NotImplementedError()
