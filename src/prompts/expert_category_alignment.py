@@ -109,3 +109,29 @@ Now, determine the alignment rating for the following expert category and set of
 Category: {}
 Claims: {}
 """
+
+category_alignment_sepsis = """You will be given a set of claims explaining why a patient was predicted to be at high or low risk of sepsis within the next 12 hours (Yes/No). You will also be given a series of categories that an expert clinician would use to perform this type of sepsis prediction.
+
+Your task is as follows:
+Rate how strongly the set of claims align with the category. Choose from complete, partial, or none.
+
+Alignment explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning
+
+Return your answer as:
+Reasoning: <A brief explanation of why you judged the alignment rating as you did.>
+Category Alignment Rating: <rating>
+
+Here are some examples:
+Example 1:
+INPUT:
+Category: Elderly Susceptibility (Age ≥65 years): Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+Claims:
+The patient is 71 years old.
+
+OUTPUT:
+Reasoning: The claim directly states that the patient is 71 years old, which satisfies the category’s defining criterion (age ≥ 65) and is therefore specifically and fully aligned with “Elderly Susceptibility.”
+Category Alignment Rating: complete
+"""
