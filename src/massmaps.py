@@ -27,7 +27,7 @@ from llms import load_model
 from typing import Callable
 
 from prompts.explanations import massmaps_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
-from prompts.claim_decomposition import decomposition_massmaps, decomposition_massmaps_expert
+from prompts.claim_decomposition import decomposition_massmaps
 from prompts.relevance_filtering import relevance_massmaps, load_relevance_massmaps_prompt
 from prompts.expert_alignment import alignment_massmaps
 from prompts.category_mapping import category_mapping_massmaps
@@ -232,56 +232,7 @@ def isolate_individual_features(
         raw_output = llm(decomposition_massmaps.format(explanation))
         all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
         return all_claims
-
-def isolate_individual_features_expert(
-    explanation: str | list[str],
-    model: str = "gpt-4o",
-) -> list[str]:
-    """
-    Isolate individual features from the explanation by breaking it down into atomic claims.
-    """
-
-    llm = load_model(model)
-    def process_claims(result: str) -> list[str]:
-        claims = []
-        for claim in result.split("\n"):
-            claim = claim.strip()
-            if not claim:
-                continue
-                
-            # Split by : to get category name and feature
-            parts = claim.split(":")
-            if len(parts) != 2:
-                claim_id, category_name = [item.strip() for item in parts[0].strip().split(".")]
-                feature = ""
-                # claims.append(claim)
-                # continue
-            else:
-                claim_id, category_name = [item.strip() for item in parts[0].strip().split(".")]
-                feature = parts[1].strip()
-            
-            # Check if category name exists in mapping
-            found = False
-            cat_id = category_mapping_massmaps['name2id'].get(category_name, -1)
-            if cat_id != -1:
-                claims.append(f"{cat_id}. {category_name}: {feature}")
-                found = True
-            
-            if not found:
-                # Default to "other" category
-                claims.append(f"0. Other: {feature}")
-                
-        return claims
-
-    if isinstance(explanation, list):
-        prompts = [decomposition_massmaps_expert.format(e) for e in explanation]
-        results = llm(prompts)
-        all_all_claims = [process_claims(result) for result in results]
-        return all_all_claims
-    else:
-        raw_output = llm(decomposition_massmaps_expert.format(explanation))
-        claims = process_claims(raw_output)
-        return claims
+        
 
 def distill_relevant_features(
     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,

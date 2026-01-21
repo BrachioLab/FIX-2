@@ -69,44 +69,6 @@ Now decompose the following paragraph into atomic, standalone claims:
 INPUT: {}
 """
 
-decomposition_massmaps_expert = """
-You will be given a paragraph that explains why certain Omega_m and sigma_8 values were attributed to a weak lensing mass map. Your task is to extract information related to each expert category such that the information is:
-
-Complete: The piece of text contains all the information in the input explanation related to the expert category. If the expert category is not present in the input explanation, then the piece of text should be "N/A". There should also be an other category that contains the information that is not related to any of the expert categories. If there is no information that is not related to any of the expert categories, then the other category should be "N/A".
-Faithful: The piece of text must preserve the original meaning, nuance, and tone. Do not omit hedging language (e.g., "seems to," "somewhat," "lacks overt markers") or subjective phrasing if present.
-Standalone: The piece of text should be self-contained and understandable without needing to refer back to the paragraph.  When a claim talks about how there is a significant part of blue region, it should be rewritten to include the information that blue regions are underdense areas so that it can be understood outside the context. When a claim talks about "the level of contrast indicates ..." with a sentence preceding it saying "the contrast is high", it should be rewritten to include the information: "the level of contrast being high indicates ...". On the other hand, if "the contrast is high" is not indicated in the previous sentence, then it should not be included in the claim as we want to include only the information that is directly indicated in the paragraph.
-
-Format your output as a list of textual information related to each expert category separated by new lines, where each piece of text corresponds to a single expert category. Do not include any additional text or explanations.
-
------
-Expert cosmology categories:
-1. Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
-2. Void Size and Frequency: Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
-3. Filament Thickness and Sharpness: Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
-4. Fine-Scale Clumpiness: A grainy, fine-textured pattern of small-scale lensing fluctuations (many mini-clumps) is a visual signature of high sigma_8, whereas a smoother, more homogeneous map suggests a lower sigma_8.
-5. Connectivity of the Cosmic Web: A highly interconnected filament network (with filaments linking most clusters into a continuous web) hints at a higher Omega_m, whereas a more fragmented scene of isolated clumps separated by wide gaps is expected for a lower Omega_m.
-6. Density Contrast Extremes: Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
------
-
-Here is an example of how to format your output:
-
-INPUT: The weak lensing map shows a mix of blue, gray, red, and some yellow regions. The presence of blue and gray indicates underdense areas, while red and yellow suggest overdense regions, with yellow indicating significant mass concentrations or clusters. The distribution and intensity of these colors suggest a universe with moderate matter density and fluctuation levels. The presence of several yellow regions indicates a relatively high sigma_8, while the mix of blue and gray suggests a moderate Omega_m. The overall appearance of the map is consistent with standard Lambda-CDM cosmology predictions.
-
-OUTPUT:
-
-1. Lensing Peak (Cluster) Abundance: The presence of several yellow regions, which indicate significant mass concentrations or clusters, indicates a relatively high sigma_8.
-2. Void Size and Frequency: The presence of blue and gray regions, which indicate underdense areas, and the mix of blue and gray suggests a moderate Omega_m.
-3. Filament Thickness and Sharpness: N/A.
-4. Fine-Scale Clumpiness: The distribution and intensity of colors, including blue, gray, red, and yellow regions, suggest a universe with moderate matter density and fluctuation levels.
-5. Connectivity of the Cosmic Web: The weak lensing map shows a mix of blue, gray, red, and some yellow regions, with blue and gray indicating underdense areas and red and yellow suggesting overdense regions.
-6. Density Contrast Extremes: The presence of underdense areas (blue and gray regions) alongside overdense regions (red and yellow, with yellow indicating significant mass concentrations or clusters) is present in the map.
-7. Other: The overall appearance of the map is consistent with standard Lambda-CDM cosmology predictions.
-
-Now decompose the following paragraph into textual information related to each expert category:
-
-INPUT: {}
-"""
-
 decomposition_cholec = """
 You will be given a paragraph that provides a detailed explanation of a specific step, observation, or concept in laparoscopic cholecystectomy.
 
