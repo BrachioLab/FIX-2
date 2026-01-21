@@ -14,6 +14,14 @@ category_mapping_massmaps = {
         4: 'Fine-Scale Clumpiness',
         5: 'Connectivity of the Cosmic Web',
         6: 'Density Contrast Extremes',
+    },
+    'name2description': {
+        'Lensing Peak (Cluster) Abundance': 'A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.',
+        'Void Size and Frequency': 'Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.',
+        'Filament Thickness and Sharpness': 'Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.',
+        'Fine-Scale Clumpiness': 'A grainy, fine-textured pattern of small-scale lensing fluctuations (many mini-clumps) is a visual signature of high sigma_8, whereas a smoother, more homogeneous map suggests a lower sigma_8.',
+        'Connectivity of the Cosmic Web': 'A highly interconnected filament network (with filaments linking most clusters into a continuous web) hints at a higher Omega_m, whereas a more fragmented scene of isolated clumps separated by wide gaps is expected for a lower Omega_m.',
+        'Density Contrast Extremes': 'Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.',
     }
 }
 

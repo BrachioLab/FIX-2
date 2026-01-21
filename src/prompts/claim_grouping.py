@@ -33,6 +33,10 @@ claim_grouping_massmaps = """
 You are an expert in weak lensing mass maps understanding. You have a deep understanding of this subject. 
 Your task is to behave like an expert cosmologist and identify which atomic claims are related to the given expert category.
 We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+For the weak lensing map we are analyzing, note that the number is below 0 if it shows up as between gray and blue, and 0 is gray, and between 0 and 2.9 is between gray and red, and above 2.9 is yellow. The numbers are in standard deviations of the mass map. Therefore, when you see a claim talking about "the presence of blue and gray", it means the presence of underdense areas in the map, and should therefore be included in the list of claims that are related to the given expert category that is related to underdense areas. On the other hand, if a claim talks about "the presence of red and yellow", it means the presence of overdense areas in the map, and should not be included in the list of claims that are related to the given expert category that is related to underdense areas.
+Omega_m's value can be between 0.1 ~ 0.5, and sigma_8's value can be between 0.4 ~ 1.4.
+We are using simulated weak lensing maps, which can have Omega_m and sigma_8 values of all kinds.
+
 
 Task description:
 Input: An expert cosmologist's explanation of why certain Omega_m and sigma_8 values were attributed to a weak lensing mass map, and a list of atomic claims.
