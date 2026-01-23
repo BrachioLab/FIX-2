@@ -50,7 +50,7 @@ Category Alignment Rating: <rating>
 Here are some examples:
 Example 1:
 INPUT:
-Category: Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
+Category: Lensing Peak (Cluster) Abundance - A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
 Claims:
 Yellow indicates significant mass concentrations or clusters.
 The presence of several yellow regions, the significant mass concentrations or clusters, indicates a relatively high sigma_8.
@@ -61,7 +61,7 @@ Category Alignment Rating: complete
 
 Example 2:
 INPUT:
-Category: Void Size and Frequency: Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
+Category: Void Size and Frequency - Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
 Claims:
 The presence of blue and gray indicates underdense areas in the map.
 The mix of blue and gray, the underdense areas, suggests a moderate Omega_m.
@@ -72,7 +72,7 @@ Category Alignment Rating: partial
 
 Example 3:
 INPUT:
-Category: Density Contrast Extremes: Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
+Category: Density Contrast Extremes - Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
 Claims:
 N/A
 
@@ -82,7 +82,7 @@ Category Alignment Rating: none
 
 Example 4:
 INPUT:
-Category: Connectivity of the Cosmic Web: A highly interconnected filament network … hints at a higher Omega_m …
+Category: Connectivity of the Cosmic Web - A highly interconnected filament network … hints at a higher Omega_m …
 Claims:
 There is a highly interconnected filament network in the map.
 A highly interconnected filament network strongly indicates a lower Omega_m.
@@ -93,8 +93,7 @@ Category Alignment Rating: none
 
 Example 5:
 INPUT:
-Category: Filament Thickness and Sharpness: Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
-
+Category: Filament Thickness and Sharpness - Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
 Claims:
 The map shows several filaments connecting dense regions, some of which appear well defined.
 Some filaments appear relatively thick and well defined, while others are faint and diffuse.
@@ -104,6 +103,94 @@ The map also contains multiple underdense void regions.
 OUTPUT:
 Reasoning: The claims refer to filament thickness and sharpness, which are directly relevant to the expert category. However, the description mixes thick and diffuse filaments and concludes only moderate clustering strength, rather than clearly linking bold, sharply defined filaments to high sigma_8. The inclusion of unrelated void information further adds noise. As a result, the claims partially reflect the expert mechanism but do not cleanly or strongly support it.
 Category Alignment Rating: partial
+
+Now, determine the alignment rating for the following expert category and set of claims:
+Category: {}
+Claims: {}
+"""
+
+category_alignment_cholec = """You will be given a set of claims that relate to why a proposed "safe" or "unsafe" zone was identified in laparoscopic cholecystectomy. You will also be given a series of categories that an expert surgeon would use to assess surgical safety.
+
+Your task is as follows:
+Rate how strongly the set of claims align with the category. Choose from complete, partial, or none.
+
+Alignment explanations:
+Complete: The claims are specific, directly relevant, and fully capture the meaning and intent of the expert category.
+Partial: The claims partially refer to the expert category but lack key details, use vague language, are overly general, or contain noise.
+None: The claims reference something unrelated to the expert category, misinterpret the category’s meaning, or explicitly conclude the opposite of what the category implies.
+
+Return your answer as:
+Reasoning: <A brief explanation of why you judged the alignment rating as you did.>
+Category Alignment Rating: <complete/partial/none>
+
+Here are some examples:
+
+Example 1:
+INPUT:
+Category: Calot's triangle cleared - Hepatocystic triangle must be fully cleared of fat/fibrosis so that its boundaries are unmistakable.
+Claims:
+Inflamed Calot's triangle tissue appears to be centrally located.
+There is evidence of scarring and possible adhesions.
+The tissue in the central area looks thickened and fibrotic, obscuring normal anatomic planes.
+The inflammation and scarring obscure key landmarks in Calot's triangle.
+
+OUTPUT:
+Reasoning: The claims directly describe inflammation, scarring, and obscured landmarks within Calot's triangle, indicating that the triangle is not clearly cleared and that its boundaries are not unmistakable. These observations precisely reflect the expert concern addressed by this category.
+Category Alignment Rating: complete
+
+--------------------------------------------------
+
+Example 2:
+INPUT:
+Category: Inflammation bailout - If dense scarring or distorted anatomy obscures Calot's triangle, convert to open surgery or a fenestrated subtotal approach rather than blind cutting.
+Claims:
+The tissue types visible include inflamed fibrous tissue, likely from chronic or acute cholecystitis.
+There is evidence of scarring and possible adhesions.
+The tissue in the central area looks thickened and fibrotic, obscuring normal anatomic planes.
+The obscured landmarks increase the risk of injuring the common bile duct and hepatic artery during laparoscopic cholecystectomy.
+
+OUTPUT:
+Reasoning: The claims describe dense inflammation, scarring, distorted planes, and increased injury risk, which directly correspond to the expert rationale for abandoning standard dissection and performing a bailout procedure. The claims fully capture the intent of this category.
+Category Alignment Rating: complete
+
+--------------------------------------------------
+
+Example 3:
+INPUT:
+Category: Only two structures visible - Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
+Claims:
+The Calot's triangle is bordered by the cystic duct inferiorly, common hepatic duct medially, and liver edge superiorly.
+Inflamed Calot's triangle tissue appears to be centrally located.
+The gallbladder remnant is visible on the right side of the image.
+
+OUTPUT:
+Reasoning: The claims describe general anatomy, tissue condition, and gallbladder presence but do not mention any structures entering the gallbladder, their number, or their identity. Since the claims provide no evidence relevant to the two-structure visibility requirement, there is no alignment with this category.
+Category Alignment Rating: none
+
+--------------------------------------------------
+
+Example 4:
+INPUT:
+Category: Above the R4U line - Dissection must remain cephalad to an imaginary line from Rouviere's sulcus to liver segment IV umbilical fissure to avoid the common bile duct.
+Claims:
+Key unsafe zones include the area directly adjacent to the common bile duct and hepatic artery, as aberrant anatomy or inflammation here increases the risk of vascular or biliary injury.
+The obscured landmarks increase the risk of injuring the common bile duct and hepatic artery during laparoscopic cholecystectomy.
+
+OUTPUT:
+Reasoning: The claims correctly identify injury risk near the common bile duct, but they do not mention Rouviere's sulcus, the R4U line, or the requirement to remain cephalad to this landmark. The claims are related to biliary injury risk but do not capture the specific spatial safety rule of this category.
+Category Alignment Rating: partial
+
+--------------------------------------------------
+
+Example 5:
+INPUT:
+Category: Cystic lymph node (calot's node) guide - Identify the cystic lymph node and clip the artery on the gallbladder side of the node to avoid injuring the hepatic artery.
+Claims:
+N/A
+
+OUTPUT:
+Reasoning: There are no claims provided and therefore no information that could align with the expert category.
+Category Alignment Rating: none
 
 Now, determine the alignment rating for the following expert category and set of claims:
 Category: {}

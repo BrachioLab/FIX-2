@@ -52,6 +52,19 @@ category_mapping_cholec = {
         9: 'No division without ID',
         10: 'Inflammation bailout',
         11: 'Aberrant artery caution',
+    },
+    'name2description': {
+        "Calot's triangle cleared": "Hepatocystic triangle must be fully cleared of fat/fibrosis so that its boundaries are unmistakable.",
+        "Cystic plate exposed": "The lower third of the gallbladder must be dissected off the liver to reveal the shiny cystic plate and ensure the correct dissection plane.",
+        "Only two structures visible": "Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.",
+        "Above the R4U line": "Dissection must remain cephalad to an imaginary line from Rouviere's sulcus to liver segment IV umbilical fissure to avoid the common bile duct. Dissection should be carried out along the inferior edge of the gallbladder (well above the line of safety).",
+        "Safe distance from common bile duct": "Dissection must maintain a safe distance from the common bile duct to prevent injury.",
+        "Infundibulum start point": "Dissection can begin at the gallbladder infundibulum-cystic duct junction to stay in safe tissue planes, or at the lateral or medial edges of the gallbladder above Rouviere’s sulcus or along the cystic plate to get mobility of the gallbladder first.",
+        "Subserosal plane stay": "When separating the gallbladder from the liver, stay in the avascular peritoneal cleavage plane.",
+        "Cystic lymph node guide": "Identify the cystic lymph node and clip the artery on the gallbladder side of the node to avoid injuring the hepatic artery.",
+        "No division without ID": "Never divide any duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.",
+        "Inflammation bailout": "If dense scarring or distorted anatomy obscures Calot's triangle, convert to open surgery or a fenestrated subtotal approach rather than blind cutting.",
+        "Aberrant artery caution": "Exercise caution when aberrant arteries are present to avoid vascular injury.",
     }
 }
 

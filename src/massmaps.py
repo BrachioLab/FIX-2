@@ -284,20 +284,65 @@ def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-4
         category (str): The category to find claims for.
         claims (list[str]): A list of relevant claims.
     Returns:
-        list[str]: A list of relevant claims that are related to the category.
+        dict: {"related_claims": list[str], "reasoning": str}
     """
-    prompt = claim_grouping_massmaps.format(category, '\n'.join(claims))
+    prompt = claim_grouping_massmaps.format(
+        f'{category} - {category_mapping_massmaps["name2description"][category]}',
+        '\n'.join(claims)
+    )
     llm = load_model(model)
     response = llm([(prompt,)])[0].replace("\n\n", "\n")
     if response == "ERROR" or response is None or response == "":
         print("Error in querying OpenAI API")
         return None
     if verbose:
-        print('response: ', response)
-    response = response.replace("ATOMIC CLAIMS:", "").strip()
-    response = response.split("\n")
-    response = [r for r in response if r.strip() != "" and r.strip() != "N/A"]
-    return response
+        print('===============================================')
+        print("GETTING CLAIMS BY CATEGORY")
+        print('category: ', category)
+        print('claims: ', claims)
+        print('response:', response)
+        print('===============================================')
+    # Extract GROUPED CLAIMS and REASONING sections using split on markers
+    related_claims = []
+    reasoning = ""
+
+    # Normalize response for splitting
+    response_sections = response
+    if isinstance(response_sections, str):
+        response_sections = response_sections.strip()
+
+        # Split using markers "RELATED CLAIMS:" and "REASONING:"
+        parts = response_sections.split("RELATED CLAIMS:")
+        if len(parts) > 1:
+            relevant_part = parts[1]
+        else:
+            relevant_part = parts[0]
+
+        rel_claims, reasoning_raw = "", ""
+        if "REASONING:" in relevant_part:
+            rel_claims, reasoning_raw = relevant_part.split("REASONING:", 1)
+        else:
+            rel_claims = relevant_part
+            reasoning_raw = ""
+
+        # Related claims split by line, strip, ignore "n/a" & empty
+        related_claims = [
+            line.strip() for line in rel_claims.splitlines()
+            if line.strip() and line.strip().lower() != "n/a"
+        ]
+        # If after split by lines the only thing left is a single empty string, convert to empty list
+        if related_claims == [""]:
+            related_claims = []
+
+        reasoning = reasoning_raw.strip() if reasoning_raw else ""
+    else:
+        related_claims = []
+        reasoning = ""
+
+    return {
+        "related_claims": related_claims,
+        "reasoning": reasoning
+    }
 
 def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", verbose: bool = False):
     """
@@ -308,12 +353,17 @@ def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", 
     """
     claims_by_category = {}
     for category in categories_list:
-        related_claims = get_claims_by_category(category, relevant_claims, model, verbose)
-        if related_claims is None:
+        claim_grouping_info = get_claims_by_category(category, relevant_claims, model, verbose)
+        
+        if claim_grouping_info is None or claim_grouping_info["related_claims"] is None:
             continue
+
+        related_claims = claim_grouping_info["related_claims"]
+        reasoning = claim_grouping_info["reasoning"]
         if verbose:
             print('category: ', category)
             print('related_claims: ', related_claims)
+            print('reasoning: ', reasoning)
         claims_by_category[category] = related_claims
     return claims_by_category
 
@@ -325,7 +375,10 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
     Returns:
         float: The alignment score for the claims in the category.
     """
-    prompt = category_alignment_massmaps.format(f'{category}: {category_mapping_massmaps["name2description"][category]}', '\n'.join(claims))
+    prompt = category_alignment_massmaps.format(
+        f'{category} - {category_mapping_massmaps["name2description"][category]}', 
+        '\n'.join(claims) if isinstance(claims, list) and len(claims) > 0 else 'N/A'
+        )
     llm = load_model(model)
     response = llm([(prompt,)])[0].replace("\n\n", "\n")
     if response == "ERROR" or response is None or response == "":
@@ -381,7 +434,7 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
 
 
 def calculate_expert_alignment_score(claims: list[str], model: str = "gpt-4o", verbose: bool = False):
-    claims_by_category = group_claims_by_category(claims, model)
+    claims_by_category = group_claims_by_category(claims, model, verbose)
     category_alignment_scores = {}
     category_alignment_reasonings = {}
 
