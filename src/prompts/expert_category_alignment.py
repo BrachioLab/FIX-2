@@ -221,4 +221,30 @@ The patient is 71 years old.
 OUTPUT:
 Reasoning: The claim directly states that the patient is 71 years old, which satisfies the category’s defining criterion (age ≥ 65) and is therefore specifically and fully aligned with “Elderly Susceptibility.”
 Category Alignment Rating: complete
+
+Example 2:
+INPUT:
+Category: Early Antibiotic/Culture Orders (within 2 hours): Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
+Claims:
+The patient exhibits several risk factors for sepsis.
+
+OUTPUT:
+Reasoning: The claim is a general statement about sepsis risk and provides no evidence of antibiotic administration, blood culture orders, or early clinical intervention. As such, it does not support this category, resulting in no alignment.
+Category Alignment Rating: none
+
+Example 3:
+INPUT:
+Category: ESIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+Claims:
+Another risk factor for sepsis is a high triage temperature.
+A high triage temperature indicates fever.
+Another risk factor for sepsis is an elevated respiratory rate.
+
+OUTPUT:
+Reasoning: The claims indicate fever through a high triage temperature, satisfying the SIRS temperature criterion, and an elevated respiratory rate, satisfying the SIRS respiratory rate criterion. Together, these establish the presence of ≥ 2 SIRS criteria, supporting ESIRS positivity. Therefore, the category alignment is complete.
+Category Alignment Rating: complete
+
+Now, determine the alignment rating for the following expert category and set of claims:
+Category: {}
+Claims: {}
 """
