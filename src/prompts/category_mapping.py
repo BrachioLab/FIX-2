@@ -86,6 +86,15 @@ category_mapping_supernova = {
         5: 'Periodic light curves',
         6: 'Secondary maxima',
         7: 'Monotonic flux trends',
+    },
+    'name2description': {
+        'Contiguous non-zero flux': 'Contiguous non‑zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.',
+        'Rise–decline rates': 'Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.',
+        'Photometric amplitude': 'Peak‑to‑trough photometric amplitude separates high‑energy explosive events (multi‑magnitude outbursts) from low‑amplitude periodic or stochastic variables.',
+        'Event duration': 'Total event duration, measured from first detection to return to baseline, distinguishes short‑lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.',
+        'Periodic light curves': 'Periodic light curves with stable periods and distinctive Fourier amplitude‑ and phase‑ratios (e.g., φ21, φ31) flag pulsators and eclipsing binaries rather than one‑off transients.',
+        'Secondary maxima': 'Filter‑specific secondary maxima or shoulders in red/near‑IR bands—prominent in SNe Ia—are morphological features absent in most core‑collapse SNe.',
+        'Monotonic flux trends': 'Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.',
     }
 }
 
@@ -111,6 +120,17 @@ category_mapping_sepsis = {
         7: 'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)',
         8: 'SOFA Score Increase (≥2 points)',
         9: 'Early Antibiotic/Culture Orders (within 2 hours)',
+    },
+    'name2description': {
+        'Elderly Susceptibility (Age ≥65 years)': 'Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.',
+        'SIRS Positivity (≥2 Criteria)': 'Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.',
+        'High qSOFA Score (≥2)': 'A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.',
+        'Elevated NEWS Score (≥5 points)': 'A National Early Warning Score (NEWS) of ≥ 5–7 derived from deranged vitals predicts imminent clinical deterioration compatible with sepsis.',
+        'Elevated Serum Lactate (≥2 mmol/L)': 'Serum lactate ≥ 2 mmol/L within the first 2 hours signals tissue hypoperfusion and markedly elevates sepsis mortality risk.',
+        'Elevated Shock Index (≥1.0)': 'Shock index (heart rate ÷ systolic BP) ≥ 1.0—or a rise ≥ 0.3 from baseline—denotes haemodynamic instability and a high probability of severe sepsis.',
+        'Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop)': 'Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.',
+        'SOFA Score Increase (≥2 points)': 'An increase of ≥ 2 points in any SOFA component—e.g., PaO₂/FiO₂ < 300, platelets < 100 × 10⁹/L, bilirubin > 2 mg/dL, creatinine > 2 mg/dL, or GCS < 12—confirms new organ dysfunction and high sepsis risk.',
+        'Early Antibiotic/Culture Orders (within 2 hours)': 'Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.',
     }
 }
 

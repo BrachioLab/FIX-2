@@ -127,7 +127,6 @@ CATEGORY: {}
 CLAIMS: {}
 """
 
-
 claim_grouping_cholec = """
 You are an expert in laparoscopic cholecystectomy. You have a deep understanding of this subject.
 Your task is to behave like an expert surgeon and identify which atomic claims are related to the given expert category.
@@ -147,7 +146,6 @@ Important guidelines:
 - If a claim is purely general context (e.g., “the liver is on the left”) and does not support the category, exclude it.
 - Include “risk/unsafe” claims only if they directly follow from (or explicitly reference) the category-specific deficiency (e.g., obscured Calot’s landmarks for “triangle cleared” / “inflammation bailout”).
 
-====================================================
 Here are some examples:
 
 Example 1:
@@ -176,8 +174,6 @@ The inflammation and scarring obscure key landmarks in Calot's triangle.
 REASONING:
 These claims describe the condition and visibility of the hepatocystic (Calot’s) triangle—its anatomical boundaries and the presence of inflammation/scarring/fibrosis that can prevent full clearance—directly supporting whether the triangle is “cleared” and its boundaries are unmistakable. Claims about the liver or gallbladder position are excluded because they provide general scene context but do not establish clearance. Claims about “unsafe zones” or injury risk are excluded unless they specifically hinge on inadequate triangle clearance; here the more direct evidence is the obscured landmarks and thickened fibrotic tissue.
 
----------------------------------------------------
-
 Example 2:
 CATEGORY: Inflammation bailout: If dense scarring or distorted anatomy obscures Calot's triangle, convert to open surgery or a fenestrated subtotal approach rather than blind cutting.
 CLAIMS:
@@ -204,8 +200,6 @@ The obscured landmarks increase the risk of injuring the common bile duct and he
 REASONING:
 These claims collectively indicate severe inflammation/scarring and distorted planes that obscure Calot’s triangle landmarks, which is the key trigger for a bailout decision (avoid blind dissection and consider conversion or subtotal approach). Claims about simple anatomic location (liver/gallbladder position) are excluded because they do not establish obscured anatomy. Claims defining the triangle boundaries are excluded here because the bailout decision depends primarily on whether those boundaries are not safely identifiable due to scarring, rather than on reciting the standard anatomy.
 
-----------------------------------------------------
-
 Example 3:
 CATEGORY: Only two structures visible: Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
 CLAIMS:
@@ -227,9 +221,51 @@ N/A
 REASONING:
 None of the claims state that exactly two tubular structures (cystic duct and cystic artery) are visible entering the gallbladder, nor do they describe identification of these two structures prior to clipping/cutting. The claims focus on inflammation, scarring, triangle boundaries, and general risk zones rather than explicit confirmation of “two structures only,” so they do not provide evidence for this category.
 
-====================================================
 Now identify which atomic claims are related to the given expert category:
 CATEGORY: {}
 CLAIMS: {}
 """
 
+claim_grouping_sepsis = """
+You are a medical expert specializing in sepsis risk prediction. You have a deep understanding of this subject. 
+Your task is to behave like an expert clinician and identify which atomic claims are related to the given expert category.
+We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+
+Task description:
+Input: An expert sepsis clinician's explanation of why the patient is at high risk of developing sepsis within the next 12 hours, based on electronic health record (EHR) data collected during the first 2 hours of their emergency department (ED) admission, and a list of atomic claims.
+Output: A list of atomic claims that are related to the given expert category. If there are no claims that are related to the given expert category, then the output should be "N/A".
+
+Here are some examples:
+Example 1:
+CATEGORY: Elderly Susceptibility (Age ≥65 years): Advanced age (≥ 65 years) markedly increases susceptibility to rapid sepsis progression and higher mortality after infection.
+CLAIMS:
+The patient exhibits several risk factors for sepsis.
+The patient is 71 years old.
+A high triage temperature indicates fever.
+OUTPUT:
+The patient is 71 years old.
+
+Example 2:
+CATEGORY: SIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+CLAIMS:
+Another risk factor for sepsis is a high triage temperature.
+A high triage temperature indicates fever.
+Another risk factor for sepsis is an elevated respiratory rate.
+OUTPUT:
+Another risk factor for sepsis is a high triage temperature.
+A high triage temperature indicates fever.
+Another risk factor for sepsis is an elevated respiratory rate.
+
+Example 3:
+CATEGORY: Early Antibiotic/Culture Orders (within 2 hours): Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
+CLAIMS:
+The patient exhibits several risk factors for sepsis.
+The respiratory rate is 22.
+The pulse oximetry is 92%.
+OUTPUT:
+N/A
+
+Now identify which atomic claims are related to the given expert category:
+CATEGORY: {}
+CLAIMS: {}
+"""
