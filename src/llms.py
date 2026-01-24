@@ -407,10 +407,28 @@ class MyGoogleModel:
         self.use_cache = use_cache
         self.verbose = verbose
 
-        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
-        if not self.api_key:
-            raise ValueError("GOOGLE_API_KEY environment variable not set")
-        self.client = genai.Client(api_key=self.api_key)
+        self.use_vertex = bool(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+        if self.use_vertex:
+            try:
+                from vertexai import init as vertex_init
+                from vertexai.generative_models import GenerativeModel, Image as VertexImage
+            except Exception as e:
+                raise ValueError(f"Vertex AI SDK not available: {e}")
+
+            project_id = (
+                os.getenv("VERTEX_PROJECT_ID")
+                or os.getenv("GOOGLE_CLOUD_PROJECT")
+                or "surgery-483823"
+            )
+            location = os.getenv("VERTEX_LOCATION") or "us-central1"
+            vertex_init(project=project_id, location=location)
+            self.vertex_model = GenerativeModel(self.model_name)
+            self.vertex_image_cls = VertexImage
+        else:
+            self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
+            if not self.api_key:
+                raise ValueError("GOOGLE_API_KEY environment variable not set")
+            self.client = genai.Client(api_key=self.api_key)
 
     def __call__(self, prompts: Union[str, List[Union[str, tuple]]]):
         if isinstance(prompts, (str, tuple)):
@@ -426,6 +444,15 @@ class MyGoogleModel:
             if ret is not None and ret != "":
                 return ret
 
+        def _to_vertex_image(pil_img: PIL.Image.Image):
+            if hasattr(self.vertex_image_cls, "from_bytes"):
+                with io.BytesIO() as buffer:
+                    pil_img.save(buffer, format="PNG")
+                    return self.vertex_image_cls.from_bytes(buffer.getvalue())
+            if hasattr(self.vertex_image_cls, "from_pil_image"):
+                return self.vertex_image_cls.from_pil_image(pil_img)
+            return pil_img
+
         if isinstance(prompt, str):
             content = [prompt]
         elif isinstance(prompt, tuple):
@@ -434,7 +461,8 @@ class MyGoogleModel:
                 if isinstance(p, str):
                     content.append(p)
                 elif is_image(p):
-                    content.append(to_pil_image(p))
+                    pil_img = to_pil_image(p)
+                    content.append(_to_vertex_image(pil_img) if self.use_vertex else pil_img)
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")
         else:
@@ -443,14 +471,17 @@ class MyGoogleModel:
         response_text = ""
         for _ in range(self.num_tries_per_request):
             try:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
-                    contents=content,
-                    config=genai_types.GenerateContentConfig(
-                        temperature=self.temperature,
-                        max_output_tokens=self.max_tokens,
+                if self.use_vertex:
+                    response = self.vertex_model.generate_content(content)
+                else:
+                    response = self.client.models.generate_content(
+                        model=self.model_name,
+                        contents=content,
+                        config=genai_types.GenerateContentConfig(
+                            temperature=self.temperature,
+                            max_output_tokens=self.max_tokens,
+                        )
                     )
-                )
                 response_text = response.text.strip()
                 if response_text != "":
                     break
