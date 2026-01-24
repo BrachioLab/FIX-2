@@ -236,7 +236,7 @@ Task description:
 Input: An expert sepsis clinician's explanation of why the patient is at high risk of developing sepsis within the next 12 hours, based on electronic health record (EHR) data collected during the first 2 hours of their emergency department (ED) admission, and a list of atomic claims.
 Output: 
 RELATED CLAIMS: A list of atomic claims that are related to the given expert category that are copied verbatim from the input claims following the format in the examples. If there are no claims that are related to the given expert category, then the output should be "N/A". 
-REASONING: REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
+REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
 
 Here are some examples:
 Example 1:
