@@ -2,6 +2,7 @@
 Minimal multimodal call using the llms interface with interleaved images/text.
 """
 
+import json
 import os
 from pathlib import Path
 
@@ -13,25 +14,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
 from llms import load_model
 
 
-def main() -> None:
-    repo_root = Path(__file__).resolve().parents[1]
-    adc_path = repo_root / "application_default_credentials.json"
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(adc_path)
-    os.environ.setdefault("VERTEX_PROJECT_ID", "surgery-483823")
-    os.environ.setdefault("VERTEX_LOCATION", "us-central1")
-
-    image_paths = [
-        repo_root / "src" / "prompts" / "data" / "cholec_fewshot_1_image.png",
-        repo_root / "src" / "prompts" / "data" / "cholec_fewshot_1_safe.png",
-        repo_root / "src" / "prompts" / "data" / "cholec_fewshot_1_unsafe.png",
-    ]
-    for path in image_paths:
-        if not path.exists():
-            raise FileNotFoundError(f"Missing image file: {path}")
-
-    images = [PILImage.open(p) for p in image_paths]
-
-    model = load_model("gemini-2.0-flash")
+def run_test(model, images) -> None:
     prompt = (
         "You will see three images, interleaved with text labels.",
         "Image 1:",
@@ -52,6 +35,47 @@ def main() -> None:
     responses = model(prompts)
     for idx, text in enumerate(responses, start=1):
         print(f"\n--- Batch response {idx} ---\n{text}")
+
+
+def main() -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    keys_path = repo_root / "API_KEYS2.json"
+    with keys_path.open("r") as file:
+        api_keys = json.load(file)
+
+    os.environ["OPENAI_API_KEY"] = api_keys["OPENAI_API_KEY"]
+    os.environ["ANTHROPIC_API_KEY"] = api_keys["ANTHROPIC_API_KEY"]
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(
+        repo_root / api_keys["GOOGLE_APPLICATION_CREDENTIALS"]
+    )
+    os.environ["CACHE_DIR"] = str(repo_root / "cache_dir3")
+    os.environ.setdefault("VERTEX_PROJECT_ID", "surgery-483823")
+    os.environ.setdefault("VERTEX_LOCATION", "us-central1")
+
+    image_paths = [
+        repo_root / "src" / "prompts" / "data" / "cholec_fewshot_1_image.png",
+        repo_root / "src" / "prompts" / "data" / "cholec_fewshot_1_safe.png",
+        repo_root / "src" / "prompts" / "data" / "cholec_fewshot_1_unsafe.png",
+    ]
+    for path in image_paths:
+        if not path.exists():
+            raise FileNotFoundError(f"Missing image file: {path}")
+
+    images = [PILImage.open(p) for p in image_paths]
+
+    models = [
+        #"gpt-5.2-pro-2025-12-11",
+        #"gpt-5-mini-2025-08-07",
+        "gpt-5-nano",
+        # "claude-opus-4-5-20251101",
+        "claude-haiku-4-5-20251001",
+        # "gemini-2.5-pro",
+        "gemini-2.5-flash",
+    ]
+    for model_name in models:
+        print(f"\n=== Testing {model_name} ===")
+        model = load_model(model_name)
+        run_test(model, images)
 
 
 if __name__ == "__main__":
