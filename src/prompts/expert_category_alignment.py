@@ -234,14 +234,115 @@ Category Alignment Rating: none
 
 Example 3:
 INPUT:
-Category: ESIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
+Category: SIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
 Claims:
 Another risk factor for sepsis is a high triage temperature.
 A high triage temperature indicates fever.
+The respiratory rate is 26.
 Another risk factor for sepsis is an elevated respiratory rate.
 
 OUTPUT:
-Reasoning: The claims indicate fever through a high triage temperature, satisfying the SIRS temperature criterion, and an elevated respiratory rate, satisfying the SIRS respiratory rate criterion. Together, these establish the presence of ≥ 2 SIRS criteria, supporting ESIRS positivity. Therefore, the category alignment is complete.
+Reasoning: The claims collectively establish the presence of two SIRS criteria. A high triage temperature is explicitly identified and interpreted as fever, satisfying the SIRS temperature criterion (> 38 °C). In addition, the respiratory rate of 26/min exceeds the SIRS threshold (> 20/min), and is explicitly noted as an elevated respiratory rate. Together, these findings meet ≥ 2 SIRS criteria, indicating systemic inflammation consistent with early sepsis.
+Category Alignment Rating: complete
+
+Example 4:
+INPUT:
+Category: High qSOFA Score (≥2): A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
+Claims:
+The respiratory rate is 26.
+A respiratory rate of 26 is concerning for sepsis.
+
+OUTPUT:
+Reasoning: The claims support only one qSOFA criterion: a respiratory rate of 26/min, which exceeds the qSOFA threshold (≥ 22/min). However, there is no evidence provided for the other qSOFA components—systolic blood pressure ≤ 100 mmHg or altered mentation. Since a qSOFA score of ≥ 2 is required and only one criterion is satisfied, the alignment with the category is partial.
+Category Alignment Rating: partial
+
+Example 5:
+INPUT:
+Category: Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop): Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
+Claims:
+The patient’s systolic blood pressure is 85 mmHg.
+Mean arterial pressure is 65 mmHg.
+Vasopressor support was initiated due to low blood pressure.
+
+OUTPUT:
+Reasoning: The claims directly satisfy the definition of sepsis-associated hypotension. A systolic blood pressure of 85 mmHg is below the SBP threshold (< 90 mmHg), and a mean arterial pressure of 65 mmHg is below the MAP threshold (< 70 mmHg). The initiation of vasopressor support due to low blood pressure further corroborates clinically significant hypotension consistent with progression toward septic shock. Together, these findings strongly and unambiguously align with the category.
+Category Alignment Rating: complete
+
+Now, determine the alignment rating for the following expert category and set of claims:
+Category: {}
+Claims: {}
+"""
+
+category_alignment_supernova = """You will be given a set of claims explaining why a this time series dataset is classified as such astroph ysical class.
+multivariate time series visualized as a scatter plot image. The x-axis represents time, and the y-axis represents the flux measurement value. Each point corresponds to an observation at a specific timestamp and wavelength. Different wavelengths are color-coded, and observational uncertainty is shown using vertical error bars.
+patient was predicted to be at high or low risk of sepsis within the next 12 hours (Yes/No). You will also be given a series of categories that an expert clinician would use to perform this type of sepsis prediction.
+
+Your task is as follows:
+Rate how strongly the set of claims align with the category. Choose from complete, partial, or none.
+
+Alignment explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning
+
+Return your answer as:
+Reasoning: <A brief explanation of why you judged the alignment rating as you did.>
+Category Alignment Rating: <rating>
+
+Here are some examples:
+
+Example 1:
+INPUT:
+Category: Contiguous non-zero flux: Contiguous non‑zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.
+Claims:
+The time series shows a rapid rise to a peak with subsequent decline.
+A rapid rise to a peak with subsequent decline is characteristic of a Type Ia supernova light curve.
+
+OUTPUT:
+Reasoning: The claims directly describe a continuous, coherent flux evolution with a clear rise and decline, which indicates sustained non-zero flux over a contiguous time window. This exactly matches the intent of the category, which focuses on identifying genuine astrophysical activity and defining valid transient segments.
+Category Alignment Rating: complete
+
+Example 2:
+INPUT:
+Category: Rise–decline rates: Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.
+Claims:
+The time series shows a rapid increase in brightness followed by a gradual decline.
+The time series includes an initial flat phase followed by a sharp increase and consistent decline.
+This rise and decline pattern is characteristic of type Ia supernovae.
+
+OUTPUT:
+Reasoning: The claims explicitly describe the speed and shape of the brightness evolution, including a rapid rise and a slower, consistent decline, which are the defining elements of rise–decline rates. They also connect this morphology to a specific supernova class, fully capturing both the physical interpretation and discriminative purpose of the category.
+Category Alignment Rating: complete
+
+Example 3:
+INPUT:
+Category: Monotonic flux trends: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+Claims:
+An initial flat phase followed by a sharp increase and decline.
+
+OUTPUT:
+Reasoning: The claim mentions an initial flat phase, which aligns with the idea of a monotonic plateau capturing a physical evolution stage. However, the subsequent sharp increase and decline introduce non-monotonic behavior and do not clearly describe a smooth, monotonic trend across a band, nor do they distinguish between SN II-P and SN II-L. As a result, the claim only partially captures the intent of the category.
+Category Alignment Rating: partial
+
+Example 4:
+INPUT:
+Category: Secondary maxima: Filter‑specific secondary maxima or shoulders in red/near‑IR bands—prominent in SNe Ia—are morphological features absent in most core‑collapse SNe.
+Claims:
+N/A
+
+OUTPUT:
+Reasoning: There are no claims provided and therefore no information that could align with the expert category.
+Category Alignment Rating: none
+
+Example 5:
+INPUT:
+Category: Event duration: Total event duration, measured from first detection to return to baseline, distinguishes short‑lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.
+Claims:
+The flux variability pattern is persistent over a long duration.
+Irregular and persistent flux variability is characteristic of active galactic nuclei (AGN).
+
+OUTPUT:
+Reasoning: Both claims directly address long-lasting variability, which is the core concept of event duration. The first explicitly states that the activity persists over a long time, and the second links this long-duration, irregular behavior to AGN, a class distinguished from short-lived transients precisely by extended event duration.
 Category Alignment Rating: complete
 
 Now, determine the alignment rating for the following expert category and set of claims:

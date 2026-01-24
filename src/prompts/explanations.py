@@ -177,12 +177,11 @@ Prediction: Omega_m: <prediction for Omega_m, between 0.1 ~ 0.5, based on this w
 """
 
 
-supernova_prompt = """What is the astrophysical classification of the following time series? Here are the possible labels you can use: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, and active galactic nuclei (AGN).
+supernova_prompt = """You are an astrophysics expert specializing in astrophysical classification. What is the astrophysical classification of the following time series based on characteristic temporal and spectral patterns? Here are the possible labels you can use: RR-Lyrae (RRL), peculiar type Ia supernova (SNIa-91bg), type Ia supernova (SNIa), superluminous supernova (SLSN-I), type II supernova (SNII), microlens-single (mu-Lens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar type Ia supernova (SNIax), type Ibc supernova (SNIbc), Mira variable, and active galactic nuclei (AGN).
 
 Each input is a multivariate time series visualized as a scatter plot image. The x-axis represents time, and the y-axis represents the flux measurement value. Each point corresponds to an observation at a specific timestamp and wavelength. Different wavelengths are color-coded, and observational uncertainty is shown using vertical error bars.
 
 Even if the classification is uncertain or ambiguous, select the most likely label based on the observed visual patterns and provide a brief explanation that justifies your choice.
-
 
 [BASELINE_PROMPT]
 
@@ -194,7 +193,7 @@ Here is the time series data for you to classify.
 {}
 """
 
-sepsis_prompt = """What is the sepsis risk prediction for the following time series? Here are the possible labels you can use: Yes (the patient is at high risk of developing sepsis within 12 hours) or No (the patient is not at high risk of developing sepsis within 12 hours).
+sepsis_prompt = """You are an expert clinician specializing in early sepsis risk assessment in the emergency department. What is the sepsis risk prediction for the following time series based on clinically relevant indicators of early sepsis (e.g., age, abnormal vital signs, laboratory abnormalities, evidence of infection, or clinician concern)? Here are the possible labels you can use: Yes (the patient is at high risk of developing sepsis within 12 hours) or No (the patient is not at high risk of developing sepsis within 12 hours).
 The time series consists of Electronic Health Record (EHR) data collected during the first 2 hours of the patient’s emergency department (ED) admission. Each entry includes a timestamp, the name of a measurement or medication, and its corresponding value.
 
 [BASELINE_PROMPT]

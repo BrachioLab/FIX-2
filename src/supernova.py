@@ -1,24 +1,38 @@
-import pandas as pd
-import numpy as np
-from datasets import load_dataset
-import openai
-from openai import OpenAI
-import time
-from tqdm import tqdm
-from typing import Dict, List, Tuple, Any, Union
-from PIL import Image
+import os
 import PIL
-import torch
+import re
+import io
+import json
+import time
+import base64
+from pathlib import Path
+from typing import Dict, List, Tuple, Any, Union, Callable
 
+import numpy as np
+import pandas as pd
+import torch
+import matplotlib.pyplot as plt
+
+from PIL import Image
+from tqdm import tqdm
+from datasets import load_dataset
+
+from openai import OpenAI
+
+from prompts.explanations import supernova_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
 from prompts.claim_decomposition import decomposition_supernova
 from prompts.relevance_filtering import relevance_supernova, load_relevance_supernova_prompt
 from prompts.expert_alignment import alignment_supernova
-from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, supernova_prompt
+from prompts.expert_category_alignment import category_alignment_supernova
+from prompts.category_mapping import category_mapping_supernova
+from prompts.claim_grouping import claim_grouping_supernova
 
 from llms import load_model, MyOpenAIModel
 
 from diskcache import Cache
 cache = Cache("/shared_data0/chaenyk/llm_cache")
+
+categories_list = [name for name, _ in sorted(category_mapping_supernova["name2id"].items(), key=lambda x: x[1])]
 
 class SupernovaExample:
     def __init__(self,
@@ -39,7 +53,7 @@ class SupernovaExample:
         self.alignment_reasonings = []
 
 @cache.memoize()
-def query_openai(prompt, model="gpt-4o"):
+def query_openai(prompt, model="gpt-5-nano"):
     with open("../API_KEY.txt", "r") as file:
         api_key = file.read()
     client = OpenAI(api_key=api_key)
@@ -61,7 +75,7 @@ def query_openai(prompt, model="gpt-4o"):
             time.sleep(3)
     return "ERROR"
 
-def get_llm_output(prompt, images=None, model='gpt-4o'):
+def get_llm_output(prompt, images=None, model='gpt-5-nano'):
     with open("../API_KEY.txt", "r") as file:
         api_key = file.read()
     llm = load_model(model, api_key)
@@ -133,7 +147,7 @@ def get_llm_generated_answer(time_series_data, method: str = "vanilla"):
 
 def isolate_individual_features(
     explanation: str | list[str],
-    model: str = "gpt-4o",
+    model: str = "gpt-5-nano",
 ) -> list[str]:
     """
     Isolate individual features from the explanation by breaking it down into atomic claims.
@@ -177,7 +191,7 @@ def distill_relevant_features(
     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
     answer: str,
     atomic_claims: list[str],
-    model: str = "gpt-4o",
+    model: str = "gpt-5-nano",
     verbose: bool = False
 ) -> list[str]:
     """
@@ -196,28 +210,73 @@ def distill_relevant_features(
 
     return relevant_claims
 
-def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-4o", verbose: bool = False):
+def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-5-nano", verbose: bool = False):
     """
     Args:
         category (str): The category to find claims for.
         claims (list[str]): A list of relevant claims.
     Returns:
-        list[str]: A list of relevant claims that are related to the category.
+        dict: {"related_claims": list[str], "reasoning": str}
     """
-    prompt = claim_grouping_supernova.format(category, '\n'.join(claims))
+    prompt = claim_grouping_supernova.format(
+        f'{category} - {category_mapping_supernova["name2description"][category]}',
+        '\n'.join(claims)
+    )
     llm = load_model(model)
     response = llm([(prompt,)])[0].replace("\n\n", "\n")
     if response == "ERROR" or response is None or response == "":
         print("Error in querying OpenAI API")
         return None
     if verbose:
-        print('response: ', response)
-    response = response.replace("ATOMIC CLAIMS:", "").strip()
-    response = response.split("\n")
-    response = [r for r in response if r.strip() != "" and r.strip() != "N/A"]
-    return response
+        print('===============================================')
+        print("GETTING CLAIMS BY CATEGORY")
+        print('category: ', category)
+        print('claims: ', claims)
+        print('response:', response)
+        print('===============================================')
+    # Extract GROUPED CLAIMS and REASONING sections using split on markers
+    related_claims = []
+    reasoning = ""
 
-def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", verbose: bool = False):
+    # Normalize response for splitting
+    response_sections = response
+    if isinstance(response_sections, str):
+        response_sections = response_sections.strip()
+
+        # Split using markers "RELATED CLAIMS:" and "REASONING:"
+        parts = response_sections.split("RELATED CLAIMS:")
+        if len(parts) > 1:
+            relevant_part = parts[1]
+        else:
+            relevant_part = parts[0]
+
+        rel_claims, reasoning_raw = "", ""
+        if "REASONING:" in relevant_part:
+            rel_claims, reasoning_raw = relevant_part.split("REASONING:", 1)
+        else:
+            rel_claims = relevant_part
+            reasoning_raw = ""
+
+        # Related claims split by line, strip, ignore "n/a" & empty
+        related_claims = [
+            line.strip() for line in rel_claims.splitlines()
+            if line.strip() and line.strip().lower() != "n/a"
+        ]
+        # If after split by lines the only thing left is a single empty string, convert to empty list
+        if related_claims == [""]:
+            related_claims = []
+
+        reasoning = reasoning_raw.strip() if reasoning_raw else ""
+    else:
+        related_claims = []
+        reasoning = ""
+
+    return {
+        "related_claims": related_claims,
+        "reasoning": reasoning
+    }
+
+def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-5-nano", verbose: bool = False):
     """
     Args:
         relevant_claims (list[str]): A list of strings where each string is a relevant claim.
@@ -226,16 +285,21 @@ def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", 
     """
     claims_by_category = {}
     for category in categories_list:
-        related_claims = get_claims_by_category(category, relevant_claims, model, verbose)
-        if related_claims is None:
+        claim_grouping_info = get_claims_by_category(category, relevant_claims, model, verbose)
+        
+        if claim_grouping_info is None or claim_grouping_info["related_claims"] is None:
             continue
+
+        related_claims = claim_grouping_info["related_claims"]
+        reasoning = claim_grouping_info["reasoning"]
         if verbose:
             print('category: ', category)
             print('related_claims: ', related_claims)
+            print('reasoning: ', reasoning)
         claims_by_category[category] = related_claims
     return claims_by_category
 
-def calculate_expert_alignment_score_for_category(category: str, claims: list[str], model: str = "gpt-4o", verbose: bool = False):
+def calculate_expert_alignment_score_for_category(category: str, claims: list[str], model: str = "gpt-5-nano", verbose: bool = False):
     """
     Args:
         category (str): The category to calculate the alignment score for.
@@ -243,7 +307,10 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
     Returns:
         float: The alignment score for the claims in the category.
     """
-    prompt = category_alignment_supernova.format(f'{category}: {category_mapping_supernova["name2description"][category]}', '\n'.join(claims))
+    prompt = category_alignment_supernova.format(
+        f'{category} - {category_mapping_supernova["name2description"][category]}', 
+        '\n'.join(claims) if isinstance(claims, list) and len(claims) > 0 else 'N/A'
+        )
     llm = load_model(model)
     response = llm([(prompt,)])[0].replace("\n\n", "\n")
     if response == "ERROR" or response is None or response == "":
@@ -298,8 +365,8 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
     }
 
 
-def calculate_expert_alignment_score(claims: list[str], model: str = "gpt-4o", verbose: bool = False):
-    claims_by_category = group_claims_by_category(claims, model)
+def calculate_expert_alignment_score(claims: list[str], model: str = "gpt-5-nano", verbose: bool = False):
+    claims_by_category = group_claims_by_category(claims, model, verbose)
     category_alignment_scores = {}
     category_alignment_reasonings = {}
 
@@ -331,23 +398,100 @@ def make_alignment_matrix(claims, claims_by_category, category_alignment_scores)
             if claim in claims_by_category[category]:
                 matrix[i, j] = category_alignment_scores[category]
     return matrix
+    
+def calculate_expert_alignment_scores_old(
+    claims: list[str],
+    model: str = 'gpt-4o',
+) -> list[dict]:
+    """
+    Parses LLM responses to extract:
+      - Category
+      - Category ID
+      - Alignment (mapped from complete/partial/none)
+      - Reasoning
+    while ignoring any extra/noisy lines (e.g., "Output 4:").
+    """
 
-def calculate_expert_alignment_score(claim: str):
-    prompt = alignment_supernova.format(claim)
-    response = query_openai(prompt)
-    if response == "ERROR":
-        print("Error in querying OpenAI API")
+    llm = load_model(model)
+    prompts = [alignment_supernova.replace("[[CLAIM]]", claim) for claim in claims]
+    responses = llm(prompts)
+
+    # Accept a few reasonable label variants
+    KEY_ALIASES = {
+        "category": {"category"},
+        "category_id": {"category id", "categoryID", "category_id"},
+        "alignment": {"alignment", "category alignment", "category alignment rating", "alignment rating"},
+        "reasoning": {"reasoning", "rationale", "explanation"},
+    }
+
+    alignment_mapping = {
+        "complete": 1,
+        "partial": 0.5,
+        "none": 0,
+    }
+
+    # Helper: normalize keys and see which field it maps to
+    def _which_field(k: str) -> str | None:
+        k_norm = k.strip().lower()
+        for field, aliases in KEY_ALIASES.items():
+            if k_norm in aliases:
+                return field
         return None
-    response = response.replace("Category:", "").strip()
-    response = response.split("\n")
-    response = [r for r in response if r.strip() != ""]
-    category = response[0].strip()
-    alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
-    try:
-        alignment_score = float(alignment_score)
-    except:
-        print("ERROR: Could not convert alignment score to float")
-        print(response)
-        alignment_score = 0.0
-    reasoning = response[2].replace("Reasoning:", "").strip()
-    return category, alignment_score, reasoning
+
+    # Regex to split "Key: Value" OR "Key - Value" (first separator only)
+    kv_re = re.compile(r"^\s*([^:\-]+)\s*[:\-]\s*(.+?)\s*$")
+
+    results = []
+    for i, response in enumerate(responses):
+        text = "" if response is None else str(response)
+        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+
+        category = None
+        category_id = -1
+        alignment_raw = None
+        reasoning = None
+
+        for ln in lines:
+            m = kv_re.match(ln)
+            if not m:
+                # ignore lines that don't look like "Key: Value"
+                continue
+            key, value = m.group(1), m.group(2)
+
+            field = _which_field(key)
+            if field is None:
+                # unrecognized key -> ignore
+                continue
+
+            if field == "category":
+                category = value.strip()
+
+            elif field == "category_id":
+                # extract first integer if present; else leave -1
+                m_id = re.search(r"-?\d+", value)
+                if m_id:
+                    try:
+                        category_id = int(m_id.group(0))
+                    except Exception:
+                        category_id = -1
+
+            elif field == "alignment":
+                alignment_raw = value.strip()
+
+            elif field == "reasoning":
+                reasoning = value.strip()
+
+        # Only add an entry if we at least got an alignment string
+        if alignment_raw is not None:
+            align_score = alignment_mapping.get(alignment_raw.lower(), 0)
+            results.append({
+                "Claim": claims[i],
+                "Category": category if category is not None else "",
+                "Category ID": category_id,
+                "Alignment": align_score,
+                "Alignment Raw": alignment_raw,
+                "Reasoning": reasoning if reasoning is not None else "",
+            })
+        # else: ignore this response entirely (no alignment parsed)
+
+    return results

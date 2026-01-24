@@ -488,7 +488,7 @@ Reasoning: <A brief explanation of your judgment, pointing to specific support o
 Here are some examples:
 
 [Example 1]
-Data: '36.0: ONDANSETRON HCL (PF) 4 MG/2 ML INJ SOLN_ 53.0, WAM DIFTYP: AUTO; 53.0: IMMATURE GRANULOCYTE_ ABSOLUTE (AUTO DIFF) WAM, .05 K/uL; 53.0: LYMPHOCYTE_ ABSOLUTE (AUTO DIFF), 1.23 K/uL; 53.0: EOSINOPHIL_ ABSOLUTE (AUTO DIFF), .24 K/uL; 53.0: LYMPHOCYTE % (AUTO DIFF), 9.9 %; 53.0: RED CELL DISTRIBUTION WIDTH (RDW), 14.0 %; 53.0: NRBC_ PERCENT (HEMATOLOGY), .0 %; 53.0: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 27.8 pg; 53.0: MEAN CORPUSCULAR VOLUME (MCV), 85.1 fL; 53.0: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 32.7 g/dL; 53.0: MONOCYTE_ ABSOLUTE (AUTO DIFF), .82 K/uL; 53.0: MONOCYTE % (AUTO DIFF), 6.6 %; 53.0: PLATELET COUNT (PLT), 230 K/uL; 53.0: HEMOGLOBIN (HGB), 11.6 g/dL; 53.0: BASOPHIL % (AUTO DIFF), .3 %; 53.0: NRBC_ ABSOLUTE (HEMATOLOGY), .00 K/uL; 53.0: NEUTROPHIL_ ABSOLUTE (AUTO DIFF), 10.07 K/uL; 53.0: BASOPHIL_ ABSOLUTE (AUTO DIFF), .04 K/uL; 53.0: EOSINOPHIL % (AUTO DIFF), 1.9 %; 53.0: NEUTROPHIL % (AUTO DIFF), 80.9 %; 53.0: WHITE BLOOD CELLS (WBC), 12.5 K/uL; 53.0: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, .4 %; 53.0: RED BLOOD CELLS (RBC), 4.17 MIL/uL; 53.0: HEMATOCRIT (HCT), 35.5 %; 57.0: HYDROMORPHONE 1 MG/ML INJ SYRG_ 57.0, LR IV BOLUS - 500 ML; 81.0: CO2, 22 mmol/L; 81.0: GLUCOSE, 95 mg/dL; 81.0: SODIUM, 139 mmol/L; 81.0: ANION GAP, 12 mmol/L; 81.0: BILIRUBIN_ TOTAL, .3 mg/dL; 81.0: GLOBULIN, 2.8 g/dL; 81.0: PROTEIN_ TOTAL, 6.5 g/dL; 81.0: MAGNESIUM, 2.0 mg/dL; 81.0: ALKALINE PHOSPHATASE, 92 U/L; 81.0: ALT (SGPT), 25 U/L; 81.0: POTASSIUM, 4.0 mmol/L; 81.0: AST (SGOT), 27 U/L; 81.0: ALBUMIN, 3.7 g/dL; 81.0: LIPASE, 19 U/L; 81.0: CHLORIDE, 105 mmol/L; 81.0: CALCIUM, 9.1 mg/dL; 81.0: CORRECTED CALCIUM, 9.3 mg/dL; 81.0: EGFR FOR AFRICAN AMERICAN, 95 mL/min/1.73 m2; 81.0: EGFR REFIT WITHOUT RACE (2021), 83 mL/min/1.73 m2; 81.0: CREATININE, .93 mg/dL; 81.0: BLOOD UREA NITROGEN (BUN), 16 mg/dL; 81.0: URIC ACID, 3.8 mg/dL; 108.0: GLUCOSE, URINE (UA): Negative; 108.0: PH, URINE (UA): 6.0; 108.0: NITRITE, URINE (UA): Negative; 108.0: SPECIFIC GRAVITY, URINE (UA): 1.016; 108.0: KETONE, URINE (UA): Negative; 0.0: Age, 32; 0.0: Gender, F; 0.0: Race, White; 0.0: Means_of_arrival, Self; 0.0: Triage_Temp, 36.7; 0.0: Triage_HR, 88.0; 0.0: Triage_RR, 18.0; 0.0: Triage_SBP, 136.0; 0.0: Triage_DBP, 100.0; 0.0: Triage_acuity, 3-Urgent; 0.0: CC, FLANK PAIN,NAUSEA'
+Data: '36.0: ONDANSETRON HCL (PF) 4 MG/2 ML INJ SOLN_ 53.0, WAM DIFTYP: AUTO; 53.0: IMMATURE GRANULOCYTE_ ABSOLUTE (AUTO DIFF) WAM, .05 K/uL; 53.0: LYMPHOCYTE_ ABSOLUTE (AUTO DIFF), 1.23 K/uL; 53.0: EOSINOPHIL_ ABSOLUTE (AUTO DIFF), .24 K/uL; 53.0: LYMPHOCYTE % (AUTO DIFF), 9.9 %; 53.0: RED CELL DISTRIBUTION WIDTH (RDW), 14.0 %; 53.0: NRBC_ PERCENT (HEMATOLOGY), .0 %; 53.0: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 27.8 pg; 53.0: MEAN CORPUSCULAR VOLUME (MCV), 85.1 fL; 53.0: NEUTROPHIL_ ABSOLUTE (AUTO DIFF), 10.07 K/uL; 57.0: HYDROMORPHONE 1 MG/ML INJ SYRG 57.0, LR IV BOLUS - 500 ML; 81.0: CO2, 22 mmol/L; 81.0: GLUCOSE, 95 mg/dL; 81.0: SODIUM, 139 mmol/L; 81.0: ANION GAP, 12 mmol/L; 81.0: BILIRUBIN_ TOTAL, .3 mg/dL; 81.0: GLOBULIN, 2.8 g/dL; 81.0: PROTEIN_ TOTAL, 6.5 g/dL; 81.0: MAGNESIUM, 2.0 mg/dL; 81.0: ALKALINE PHOSPHATASE, 92 U/L; 81.0: ALT (SGPT), 25 U/L; 81.0: CREATININE, .93 mg/dL; 81.0: BLOOD UREA NITROGEN (BUN), 16 mg/dL; 81.0: URIC ACID, 3.8 mg/dL; 108.0: GLUCOSE, URINE (UA): Negative; 108.0: PH, URINE (UA): 6.0; 108.0: NITRITE, URINE (UA): Negative; 108.0: SPECIFIC GRAVITY, URINE (UA): 1.016; 108.0: KETONE, URINE (UA): Negative; 0.0: Age, 32; 0.0: Gender, F; 0.0: Race, White; 0.0: Means_of_arrival, Self; 0.0: Triage_Temp, 36.7; 0.0: Triage_HR, 88.0; 0.0: Triage_RR, 18.0; 0.0: Triage_SBP, 136.0; 0.0: Triage_DBP, 100.0; 0.0: Triage_acuity, 3-Urgent; 0.0: CC, FLANK PAIN,NAUSEA'
 Prediction: No
 Claim: The dataset represents a time series of a person in ED.
 Relevance: No
@@ -511,16 +511,22 @@ Reasoning: This claim includes signs of possible infection, and infection aligns
 [Example 4]
 Data: '33.0: Pain, 10.0; 38.0: HR, 116.0; 38.0: RR, 22.0; 38.0: SpO2, 93.0; 38.0: SBP, 92.0; 38.0: DBP, 61.0; 38.0: MAP, 71.3333333333333; 38.0: LPM_O2, 55.0; 38.0: Temp, 97.5; 93.0: INFLUENZA B, Not Detected; 93.0: RSV, Not Detected; 93.0: INFLUENZA A, Not Detected; 93.0: SARS-COV-2 RNA, Not Detected; 118.0: HR, 114.666666666667; 118.0: RR, 29.5; 118.0: 1min_HRV, 43.8493126767367; 118.0: SBP, 78.0; 118.0: DBP, 57.0; 118.0: MAP, 64.0; 119.0: HR, 112.965517241379; 119.0: RR, 24.3620689655172; 119.0: 1min_HRV, 78.3210127790084; 119.0: 5min_HRV, 75.2505983451634; 0.0: Age, 82; 0.0: Gender, M; 0.0: Race, White; 0.0: Means_of_arrival, Self; 0.0: Triage_Temp, 36.4; 0.0: Triage_HR, 116.0; 0.0: Triage_RR, 22.0; 0.0: Triage_SBP, 92.0; 0.0: Triage_DBP, 61.0; 0.0: Triage_acuity, 2-Emergent; 0.0: CC, ABDOMINAL PAIN'
 Prediction: Yes
-Claim: The patient exhibits several risk factors and early warning signs for sepsis.
+Claim: Signs of potential obstetric or infectious processes support predicting high risk within 12 hours.
 Relevance: No
 Reasoning: This is too vague. It does not specify what the risk factors or warning signs are, nor does it directly reference any values or patterns from the data. 
+
+[Example 5]
+Data: '64.0: RSV, Not Detected; 64.0: INFLUENZA B, Not Detected; 64.0: SARS-COV-2 RNA, Not Detected; 64.0: INFLUENZA A, Not Detected; 100.0: IBUPROFEN 800 MG PO TABS_ 100.0, ACETAMINOPHEN 500 MG PO TABS; 0.0: Age, 62; 0.0: Gender, F; 0.0: Race, Other; 0.0: Means_of_arrival, Self; 0.0: Triage_Temp, 39.5; 0.0: Triage_HR, 135.0; 0.0: Triage_RR, 18.0; 0.0: Triage_SBP, 111.0; 0.0: Triage_DBP, 64.0; 0.0: Triage_acuity, 2-Emergent; 0.0: CC, NECK PAIN,SORE THROAT,HEADACHE,JOINT PAIN'
+Prediction: Yes
+Claim: These vitals meet SIRS criteria even in the absence of fever.
+Relevance: Yes
+Reasoning: This claim is supported by the presence of a high temperature (39.5 °C), which directly satisfies one of the SIRS criteria and indicates systemic inflammation relevant to sepsis risk.
 
 Now, determine whether the following claim is relevant to the given the time series data and the prediction label:
 Input: {}
 Output: {}
 Claim: {}
 """
-
 
 relevance_cardiac = """
 You will be given:

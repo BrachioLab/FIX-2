@@ -19,7 +19,6 @@ from datasets import load_dataset
 from tqdm import tqdm
 
 from openai import OpenAI
-
 from llms import load_model
 
 from prompts.explanations import sepsis_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
@@ -54,7 +53,7 @@ class SepsisExample:
         self.alignment_reasonings = []
 
 @cache.memoize()
-def get_llm_output(prompt, images=None, model='gpt-4o'):
+def get_llm_output(prompt, images=None, model='gpt-5-nano'):
     """
     prompt: str
     images: list of PIL images
@@ -69,7 +68,7 @@ def get_llm_output(prompt, images=None, model='gpt-4o'):
 
 _number_pat = re.compile(r"[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?")
 
-def query_openai(prompt, model="gpt-4o"):
+def query_openai(prompt, model="gpt-5-nano"):
     with open("../API_KEY.txt", "r") as file:
         api_key = file.read()
     client = OpenAI(api_key=api_key)
@@ -91,7 +90,7 @@ def query_openai(prompt, model="gpt-4o"):
             time.sleep(3)
     return "ERROR"
 
-def query_openai_mini(prompt, model="gpt-4o-mini"):
+def query_openai_mini(prompt, model="gpt-5-nano"):
     with open("../API_KEY.txt", "r") as file:
         api_key = file.read()
     client = OpenAI(api_key=api_key)
@@ -177,7 +176,7 @@ def get_llm_generated_answer(time_series_data: Dict[float, Dict[str, Union[float
 
 def isolate_individual_features(
     explanation: str | list[str],
-    model: str = "gpt-4o",
+    model: str = "gpt-5-nano",
 ) -> list[str]:
     """
     Isolate individual features from the explanation by breaking it down into atomic claims.
