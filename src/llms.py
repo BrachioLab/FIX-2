@@ -242,6 +242,17 @@ class MyOpenAIModel:
         self.verbose = verbose
 
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        # if api_key is None:
+        #     key_path = os.path.join(
+        #         os.path.dirname(__file__), "..", "API_KEY.txt"
+        #     )
+        #     key_path = os.path.abspath(key_path)
+
+        #     with open(key_path, "r") as f:
+        #         api_key = f.read().strip()
+
+        # self.api_key = api_key
+        
         if not self.api_key:
             raise ValueError("OPENAI_API_KEY environment variable is not set")
         self.client = OpenAI(api_key=self.api_key)

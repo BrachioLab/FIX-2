@@ -230,10 +230,13 @@ claim_grouping_sepsis = """
 You are a medical expert specializing in sepsis risk prediction. You have a deep understanding of this subject. 
 Your task is to behave like an expert clinician and identify which atomic claims are related to the given expert category.
 We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+If the claim explicitly states a condition, measurement, intervention, or fact that is part of the expert category definition, it must be included, even if it does not provide additional explanation or reasoning. 
 
 Task description:
 Input: An expert sepsis clinician's explanation of why the patient is at high risk of developing sepsis within the next 12 hours, based on electronic health record (EHR) data collected during the first 2 hours of their emergency department (ED) admission, and a list of atomic claims.
-Output: A list of atomic claims that are related to the given expert category. If there are no claims that are related to the given expert category, then the output should be "N/A".
+Output: 
+RELATED CLAIMS: A list of atomic claims that are related to the given expert category that are copied verbatim from the input claims following the format in the examples. If there are no claims that are related to the given expert category, then the output should be "N/A". 
+REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
 
 Here are some examples:
 Example 1:
@@ -242,8 +245,12 @@ CLAIMS:
 The patient exhibits several risk factors for sepsis.
 The patient is 71 years old.
 A high triage temperature indicates fever.
+
 OUTPUT:
+RELATED CLAIMS:
 The patient is 71 years old.
+REASONING:
+“The patient is 71 years old” is included because it directly satisfies the category definition of elderly susceptibility (age ≥ 65), providing explicit evidence that the patient belongs to a higher-risk age group for sepsis progression. “The patient exhibits several risk factors for sepsis” is excluded because it is nonspecific and does not reference age or elderly status. “A high triage temperature indicates fever” is also excluded because it relates to physiologic signs of infection rather than age-based susceptibility and therefore does not support this category.
 
 Example 2:
 CATEGORY: SIRS Positivity (≥2 Criteria): Presence of ≥ 2 SIRS criteria—temperature > 38 °C or < 36 °C, heart rate > 90 bpm, respiratory rate > 20 /min or PaCO₂ < 32 mm Hg, or WBC > 12 000/µL or < 4 000/µL—identifies systemic inflammation consistent with early sepsis.
@@ -251,19 +258,148 @@ CLAIMS:
 Another risk factor for sepsis is a high triage temperature.
 A high triage temperature indicates fever.
 Another risk factor for sepsis is an elevated respiratory rate.
+
 OUTPUT:
+RELATED CLAIMS:
 Another risk factor for sepsis is a high triage temperature.
 A high triage temperature indicates fever.
 Another risk factor for sepsis is an elevated respiratory rate.
+REASONING:
+All three claims are included because they directly reference physiologic abnormalities that correspond to SIRS criteria. A high triage temperature and the presence of fever align with the SIRS temperature criterion (> 38 °C), while an elevated respiratory rate aligns with the SIRS respiratory rate criterion (> 20 /min). Although the claims are phrased generally and do not provide exact numeric values, they describe clinical features that are part of the SIRS definition and therefore are topically relevant to identifying SIRS positivity.
 
 Example 3:
 CATEGORY: Early Antibiotic/Culture Orders (within 2 hours): Administration of broad‑spectrum antibiotics or drawing of blood cultures within the first 2 hours signifies clinician suspicion of serious infection and should anchor sepsis risk assessment.
 CLAIMS:
 The patient exhibits several risk factors for sepsis.
-The respiratory rate is 22.
+The respiratory rate is 26.
 The pulse oximetry is 92%.
+
 OUTPUT:
+RELATED CLAIMS:
 N/A
+REASONING:
+No claims are included because none reference the administration of antibiotics or the collection of blood cultures within the first two hours. “The patient exhibits several risk factors for sepsis” is a nonspecific statement that does not indicate clinician actions or treatment decisions. “The respiratory rate is 26” and “The pulse oximetry is 92%” describe physiologic measurements, which may reflect illness severity but do not provide evidence of early antibiotic administration or blood culture orders. Therefore, none of the claims support the Early Antibiotic/Culture Orders category.
+
+Example 4:
+CATEGORY: High qSOFA Score (≥2): A qSOFA score ≥ 2 (respiratory rate ≥ 22 /min, systolic BP ≤ 100 mmHg, or altered mentation) flags high risk of sepsis‑related organ dysfunction and mortality.
+CLAIMS:
+The patient's vital signs indicate tachycardia.
+The respiratory rate is 26.
+A respiratory rate of 26 is concerning for sepsis.
+
+OUTPUT:
+RELATED CLAIMS:
+The respiratory rate is 26.
+A respiratory rate of 26 is concerning for sepsis.
+REASONING:
+The claims related to a respiratory rate of 26 are included because qSOFA explicitly uses respiratory rate ≥ 22/min as a criterion, and a rate of 26 meets this threshold and supports elevated qSOFA risk. The tachycardia claim is not included because heart rate is not part of the qSOFA criteria, even though it may be relevant in other sepsis assessment frameworks.
+
+Example 5:
+CATEGORY: Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or ≥40 mmHg drop): Sepsis‑associated hypotension, defined as SBP < 90 mmHg, MAP < 70 mmHg, or a ≥ 40 mmHg drop from baseline, indicates progression toward septic shock.
+CLAIMS:
+The patient’s systolic blood pressure is 85 mmHg.
+Mean arterial pressure is 65 mmHg.
+Vasopressor support was initiated due to low blood pressure.
+
+OUTPUT:
+RELATED CLAIMS:
+The patient’s systolic blood pressure is 85 mmHg.
+Mean arterial pressure is 65 mmHg.
+Vasopressor support was initiated due to low blood pressure.
+REASONING:
+All three claims are related because they support sepsis-associated hypotension and potential progression toward septic shock. An SBP of 85 mmHg meets the criterion of SBP < 90 mmHg, and a MAP of 65 mmHg meets MAP < 70 mmHg, both directly satisfying the category definition. The initiation of vasopressor support due to low blood pressure indicates clinically significant hypotension requiring escalation of hemodynamic support, which is consistent with worsening sepsis-related circulatory failure.
+
+Now identify which atomic claims are related to the given expert category:
+CATEGORY: {}
+CLAIMS: {}
+"""
+
+claim_grouping_supernova = """
+You are an astrophysics expert specializing in astrophysical classification. The possible classification labels are: RR Lyrae (RRL), peculiar Type Ia supernova (SN Ia-91bg), Type Ia supernova (SN Ia), superluminous supernova (SLSN-I), Type II supernova (SN II), microlensing single-lens (μLens-Single), eclipsing binary (EB), M-dwarf, kilonova (KN), tidal disruption event (TDE), peculiar Type Ia supernova (SN Iax), Type Ibc supernova (SN Ibc), Mira variable, and active galactic nucleus (AGN). You have a deep understanding of this subject. Your task is to behave like an expert astrophysicist and identify which atomic claims are related to the given expert category.
+We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+
+Task description:
+Input: An astrophysics expert's explanation for why a particular multivariate time-series was classified into one of the above categories, and a list of atomic claims.
+Output:
+RELATED CLAIMS: A list of atomic claims that are related to the given expert category, copied verbatim from the input claims (one per line) following the format in the examples. If there are no claims related to the category, output "N/A".
+REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
+
+Important guidelines:
+- Only copy claims verbatim; do not rewrite claims.
+- Prefer atomic, direct evidence claims for the category (e.g., visibility/identification of duct/artery, degree of clearance, detachment plane).
+- Exclude claims that are about different categories even if they appear in the same scene (e.g., “two structures visible” vs “triangle cleared” vs “gallbladder detachment” are distinct).
+- If a claim is purely general context (e.g., “the liver is on the left”) and does not support the category, exclude it.
+- Include “risk/unsafe” claims only if they directly follow from (or explicitly reference) the category-specific deficiency (e.g., obscured Calot’s landmarks for “triangle cleared” / “inflammation bailout”).
+
+Here are some examples:
+
+Example 1:
+CATEGORY: Contiguous non-zero flux: Contiguous non‑zero flux segments confirm genuine astrophysical activity and define the time windows from which transient features should be extracted.
+CLAIMS:
+The time series shows a rapid rise to a peak with subsequent decline.
+A rapid rise to a peak with subsequent decline is characteristic of a Type Ia supernova light curve.
+The pattern of observations was made at multiple wavelengths.
+
+OUTPUT:
+RELATED CLAIMS:
+The time series shows a rapid rise to a peak with subsequent decline.
+A rapid rise to a peak with subsequent decline is characteristic of a Type Ia supernova light curve.
+REASONING:
+The first two claims are related because they describe a continuous rise and decline in flux, which indicates a contiguous non-zero signal and genuine transient activity. This temporal structure is consistent with a real astrophysical event. The third claim is not related because multi-wavelength observation is a general property of the dataset and does not provide evidence of contiguous or sustained non-zero flux.
+
+Example 2:
+CATEGORY: Rise–decline rates: Characteristic rise‑and‑decline rates—such as the fast‑rise/slow‑fade morphology of many supernovae—encode energy‑release physics and serve as strong class discriminators.
+CLAIMS:
+The time series shows a rapid increase in brightness followed by a gradual decline.
+The time series includes an initial flat phase followed by a sharp increase and consistent decline.
+This rise and decline pattern is characteristic of type Ia supernovae.
+
+OUTPUT:
+RELATED CLAIMS:
+The time series shows a rapid increase in brightness followed by a gradual decline.
+The time series includes an initial flat phase followed by a sharp increase and consistent decline.
+This rise and decline pattern is characteristic of type Ia supernovae.
+REASONING:
+All three claims are related because they directly describe the shape and rates of the light curve—fast rise, slower decline, and the presence of a plateau/flat phase before a sharp increase—which are exactly the rise–decline features the category targets. The third claim is also related because it explicitly links that rise/decline morphology to a discriminative class label (Type Ia), which is one of the main uses of rise–decline rates.
+
+Example 3:
+CATEGORY: Monotonic flux trends: Locally smooth, monotonic flux trends across one or multiple bands (plateaus, linear decays) capture physical evolution stages and help distinguish SN II‑P, SN II‑L, and related classes.
+CLAIMS:
+An initial flat phase followed by a sharp increase and decline.
+Observations across multiple wavelengths are present.
+
+OUTPUT:
+RELATED CLAIMS:
+An initial flat phase followed by a sharp increase and decline.
+REASONING:
+The first claim is related because it describes a locally smooth and monotonic phase (the initial flat plateau) followed by a coherent flux evolution, which reflects physical stages captured by monotonic flux trends. The second claim is not related because multi-wavelength observations are a general data property and do not describe monotonic behavior or flux evolution over time.
+
+Example 4:
+CATEGORY: Secondary maxima: Filter‑specific secondary maxima or shoulders in red/near‑IR bands—prominent in SNe Ia—are morphological features absent in most core‑collapse SNe.
+CLAIMS:
+The time series shows a rapid increase in brightness followed by a gradual decline.
+The dataset represents a time series of observations for a astrophysical event.
+Specific wavelengths such as 7545.98 Å, 8590.90 Å, and 9710.28 Å are present in the data.
+
+OUTPUT:
+RELATED CLAIMS:
+N/A
+REASONING:
+No claims are included because none describe the presence of a secondary maximum or shoulder in specific red or near-infrared bands. The claims either describe a generic rise–decline pattern, provide dataset-level metadata, or merely list available wavelengths without identifying filter-specific secondary features.
+
+Example 5:
+CATEGORY: Event duration: Total event duration, measured from first detection to return to baseline, distinguishes short‑lived kilonovae and superluminous SNe from longer plateau or AGN variability phases.
+CLAIMS:
+The flux variability pattern is persistent over a long duration.
+Activity across a wide range of wavelengths is typical for AGN emissions.
+Irregular and persistent flux variability is characteristic of active galactic nuclei (AGN).
+
+OUTPUT:
+RELATED CLAIMS:
+The flux variability pattern is persistent over a long duration.
+Irregular and persistent flux variability is characteristic of active galactic nuclei (AGN).
+REASONING:
+The first claim is related because it directly states the event lasts a long time, which is exactly what event duration measures and uses for discrimination. The third claim is also related because it describes persistent variability as characteristic of AGN, tying a long-duration pattern to a specific class compared to shorter-lived transients. The second claim is not included because “activity across a wide range of wavelengths” is about spectral coverage, not how long the event persists from detection to baseline.
 
 Now identify which atomic claims are related to the given expert category:
 CATEGORY: {}
