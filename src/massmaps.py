@@ -452,7 +452,7 @@ def calculate_expert_alignment_score(claims: list[str], model: str = "gpt-4o", v
 def make_alignment_matrix(claims, claims_by_category, category_alignment_scores):
     """
     Args:
-        # categories (list[str]): A list of all expertcategories.
+        # categories (list[str]): A list of all expert categories.
         claims (list[str]): A list of all atomic claims.
         claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
         category_alignment_scores (dict[str, float]): A dictionary where the keys are the categories and the values are the alignment scores.
