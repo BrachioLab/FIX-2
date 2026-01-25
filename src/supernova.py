@@ -76,9 +76,7 @@ def query_openai(prompt, model="gpt-5-nano"):
     return "ERROR"
 
 def get_llm_output(prompt, images=None, model='gpt-5-nano'):
-    with open("../API_KEY.txt", "r") as file:
-        api_key = file.read()
-    llm = load_model(model, api_key)
+    llm = load_model(model)
     result = llm([(prompt, images)])[0]
     return result
 
@@ -122,7 +120,7 @@ def parse_measurement_string(data_string: str) -> Dict[float, Dict[str, Union[fl
         measurements_by_time[time][name] = value
     return measurements_by_time
 
-def get_llm_generated_answer(time_series_data, method: str = "vanilla"):
+def get_llm_generated_answer(time_series_data, method: str = "vanilla", model="gpt-5-nano"):
     if method == "vanilla":
         prompt = supernova_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline)
     elif method == "cot":
@@ -134,7 +132,7 @@ def get_llm_generated_answer(time_series_data, method: str = "vanilla"):
     else:
         raise ValueError(f"Invalid method: {method}")
     img = time_series_data
-    response = get_llm_output(prompt, img, model="gpt-4o")
+    response = get_llm_output(prompt, img, model=model)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -175,9 +173,10 @@ def isolate_individual_features(
         all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
         return all_claims
 
-def is_claim_relevant(time_series_text, rating: str, claim: str):
+def is_claim_relevant(time_series_text, rating: str, claim: str, model: str = "gpt-5-nano"):
     prompt = relevance_supernova.format(time_series_text, rating, claim)
-    response = query_openai(prompt)
+    llm = load_model(model)
+    response = llm(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -200,7 +199,7 @@ def distill_relevant_features(
 
     prompts = [load_relevance_supernova_prompt(example_image, answer, claim) for claim in atomic_claims]
     llm = load_model(model)
-    llm.verbose = True
+    llm.verbose = False
     results = llm(prompts)
 
     relevant_claims = [

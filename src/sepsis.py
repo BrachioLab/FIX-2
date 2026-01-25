@@ -68,50 +68,6 @@ def get_llm_output(prompt, images=None, model='gpt-5-nano'):
 
 _number_pat = re.compile(r"[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?")
 
-def query_openai(prompt, model="gpt-5-nano"):
-    with open("../API_KEY.txt", "r") as file:
-        api_key = file.read()
-    client = OpenAI(api_key=api_key)
-
-    num_tries = 0
-    for i in range(3):
-        try:
-            translation = client.chat.completions.create(
-                messages=[{
-                    "role": "user",
-                    "content": prompt,
-                }],
-                model=model,
-            )
-            return translation.choices[0].message.content
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(3)
-    return "ERROR"
-
-def query_openai_mini(prompt, model="gpt-5-nano"):
-    with open("../API_KEY.txt", "r") as file:
-        api_key = file.read()
-    client = OpenAI(api_key=api_key)
-
-    num_tries = 0
-    for i in range(3):
-        try:
-            translation = client.chat.completions.create(
-                messages=[{
-                    "role": "user",
-                    "content": prompt,
-                }],
-                model=model,
-            )
-            return translation.choices[0].message.content
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(3)
-    return "ERROR"
-
 def format_time_series_for_prompt(time_series_data: Dict[float, Dict[str, Union[float, str]]]) -> str:
     if not time_series_data:
         return "No time-series data provided."
@@ -152,7 +108,7 @@ def parse_measurement_string(data_string: str) -> Dict[float, Dict[str, Union[fl
         measurements_by_time[time][name] = value
     return measurements_by_time
 
-def get_llm_generated_answer(time_series_data: Dict[float, Dict[str, Union[float, str]]], method: str = "vanilla"):
+def get_llm_generated_answer(time_series_data: Dict[float, Dict[str, Union[float, str]]], method: str = "vanilla", model="gpt-5-nano"):
     text = format_time_series_for_prompt(time_series_data)
     if method == "vanilla":
         prompt = sepsis_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline).format(text)
@@ -164,11 +120,14 @@ def get_llm_generated_answer(time_series_data: Dict[float, Dict[str, Union[float
         prompt = sepsis_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline).format(text)
     else:
         raise ValueError(f"Invalid method: {method}")
-        
-    response = query_openai(prompt)
+
+    llm = load_model(model)
+    
+    response = llm(prompt)
     if response == "ERROR":
-        print("Error in querying OpenAI API")
+        print("Error in querying LLM")
         return None
+    print(response)
     response_split = [e for e in response.split("\n") if (e != '' and e.split()[0] in ['Label:', 'Explanation:'])]
     llm_label = response_split[0].split("Label: ")[1].strip()
     explanation = response_split[1].split("Explanation: ")[1].strip()
@@ -204,9 +163,10 @@ def isolate_individual_features(
         all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
         return all_claims
 
-def is_claim_relevant(time_series_text, rating: str, claim: str):
+def is_claim_relevant(time_series_text, rating: str, claim: str, model: str = "gpt-5-nano"):
     prompt = relevance_sepsis.format(time_series_text, rating, claim)
-    response = query_openai_mini(prompt)
+    llm = load_model(model)
+    response = llm(prompt)
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -216,10 +176,10 @@ def is_claim_relevant(time_series_text, rating: str, claim: str):
     reasoning = response[1].replace("Reasoning:", "").strip()
     return relevance, reasoning
 
-def distill_relevant_features(example: SepsisExample):
+def distill_relevant_features(example: SepsisExample, model: str = "gpt-5-nano"):
     relevant_claims = []
     for claim in tqdm(example.claims):
-        relevance, reasoning = is_claim_relevant(example.time_series_text, example.llm_label, claim)
+        relevance, reasoning = is_claim_relevant(example.time_series_text, example.llm_label, claim, model=model)
         if relevance is None:
             continue
         if relevance == "Yes":

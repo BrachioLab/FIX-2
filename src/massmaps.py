@@ -26,6 +26,17 @@ from llms import load_model
 
 from typing import Callable, Any
 
+
+import argparse
+import glob
+import os
+
+import json
+import os
+from collections import defaultdict
+from tqdm.auto import tqdm
+from sklearn.metrics import mean_squared_error
+
 from prompts.explanations import massmaps_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
 from prompts.claim_decomposition import decomposition_massmaps
 from prompts.relevance_filtering import relevance_massmaps, load_relevance_massmaps_prompt
@@ -272,6 +283,7 @@ def isolate_individual_features(
     if isinstance(explanation, list):
         prompts = [decomposition_massmaps.format(e) for e in explanation]
         results = llm(prompts)
+        # print("isolate_individual_features results: ", results)
         all_all_claims: list[list[str]] = [
             [c.strip() for c in result.split("\n") if c.strip()]
             for result in results
@@ -279,6 +291,7 @@ def isolate_individual_features(
         return all_all_claims
     else:
         raw_output = llm(decomposition_massmaps.format(explanation))
+        # print("isolate_individual_features raw_output: ", raw_output)
         all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
         return all_claims
 
@@ -614,3 +627,317 @@ def calculate_expert_alignment_scores_old(
         # else: ignore this response entirely (no alignment parsed)
 
     return results
+
+
+def run_massmaps_generation(
+    model: str = "gpt-4o",
+    method: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+    num_samples: int = 100,
+    debug: bool = False,
+) -> list[MassMapsExample]:
+    """
+    Runs the massmaps generation pipeline.
+    """
+    import os
+    from pathlib import Path
+    from tqdm.auto import tqdm
+
+    import torch
+    from datasets import load_dataset
+
+    test_dataset = load_dataset("BrachioLab/massmaps-cosmogrid-100k", split='test')
+    test_dataset.set_format('torch', columns=['input', 'label'])
+    # Root dir is parent of parent of this file
+    root_dir = Path(__file__).resolve().parent.parent
+    save_dir = root_dir / "notebooks" / f"_dump/massmaps/intermediate/{model}/{method}"
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"Starting to save intermediate results to {save_dir}")
+
+    for idx in tqdm(range(num_samples)):
+        save_path = os.path.join(save_dir, f'{idx}.json')
+        if os.path.exists(save_path) and not overwrite_existing:
+            continue
+        X, y = test_dataset[idx:idx+1]['input'], test_dataset[idx:idx+1]['label']
+        image = X[0]
+        label = y[0]
+        llm_answer, llm_explanation = get_llm_generated_answer(
+            image, 
+            method=method, 
+            model=model
+        )
+        if llm_answer is None:
+            continue
+        example = MassMapsExample(
+            input=image,
+            answer={"Omega_m": label[0].item(), "sigma_8": label[1].item()},
+            llm_answer=llm_answer,
+            llm_explanation=llm_explanation
+        )
+        massmaps_examples.append(example)
+        example.idx = idx
+
+        # save intermediate
+        save_dict = {}
+        for k, v in example.__dict__.items():
+            save_dict[k] = v if not isinstance(v, torch.Tensor) else v.cpu().numpy().tolist()
+        with open(save_path, 'wt') as output_file:
+            json.dump(save_dict, output_file)
+
+def load_and_evaluate_massmaps_generation(
+    model: str = "gpt-4o",
+    method: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+    num_samples: int = 100,
+    debug: bool = False,
+) -> list[MassMapsExample]:
+    """
+    Loads and evaluates the massmaps generation pipeline.
+    """
+    import os
+    from pathlib import Path
+    from tqdm.auto import tqdm
+
+    import torch
+    from datasets import load_dataset
+
+    test_dataset = load_dataset("BrachioLab/massmaps-cosmogrid-100k", split='test')
+    test_dataset.set_format('torch', columns=['input', 'label'])
+
+    root_dir = Path(__file__).resolve().parent.parent
+    load_dir = root_dir / "notebooks" / f"_dump/massmaps/intermediate/{model}/{method}"
+    filenames = sorted([f for f in os.listdir(load_dir) if f.endswith('.json')], key=lambda x: int(x.split('.')[0]))
+    all_results = []
+    for filename in tqdm(filenames):
+        path = os.path.join(load_dir, filename)
+        with open(path, 'rt') as input_file:
+            data = json.load(input_file)
+        all_results.append(data)
+    
+    save_dir = root_dir / "notebooks" / f"_dump/massmaps/final/{model}/{method}/eval.{model}"
+    os.makedirs(save_dir, exist_ok=True)
+    for idx in tqdm(range(len(all_results))):
+        save_path = os.path.join(save_dir, filenames[idx])
+        if os.path.isfile(save_path):
+            print('save_path', save_path)
+            continue
+
+        # load
+        example_dict = all_results[idx]
+
+        if not isinstance(example_dict['input'], torch.Tensor):
+            example_dict['input'] = torch.tensor(example_dict['input'])
+
+        example = MassMapsExample(
+            input = example_dict['input'],
+            answer = example_dict['answer'],
+            llm_answer = example_dict['llm_answer'],
+            llm_explanation = example_dict['llm_explanation'],
+        )
+        example.__dict__ = example_dict
+        example.idx = example_dict['idx']
+
+        # isolate individual features
+        claims = isolate_individual_features(example.llm_explanation, model=eval_model)
+        print('claims', claims)
+        if claims is None:
+            continue
+        example.claims = [claim.strip() for claim in claims]
+
+        # distill relevant features
+        relevant_claims = distill_relevant_features(
+            example.input, 
+            example.llm_answer,
+            example.claims,
+            model=eval_model
+        )
+        example.relevant_claims = relevant_claims
+
+        # calculate expert alignment scores
+        claims_by_category, category_alignment_scores, category_alignment_reasonings = calculate_expert_alignment_score(
+            relevant_claims, 
+            eval_model,
+            # verbose=True
+        )
+
+        example.claims_by_category = claims_by_category
+        example.category_alignment_scores = category_alignment_scores
+        example.category_alignment_reasonings = category_alignment_reasonings
+
+        alignment_matrix = make_alignment_matrix(
+            example.claims,
+            claims_by_category,
+            category_alignment_scores
+        )
+        
+        final_alignment_score = alignment_matrix.max(axis=-1).mean()
+        if np.isnan(final_alignment_score):
+            print(f'example {idx} final_alignment_score is NaN')
+        example.final_alignment_score = final_alignment_score
+
+        # save
+        save_dict = {}
+        for k, v in example.__dict__.items():
+            save_dict[k] = v if not isinstance(v, torch.Tensor) else v.cpu().numpy().tolist()
+        with open(save_path, 'wt') as output_file:
+            json.dump(save_dict, output_file)
+
+def main(
+    model: str = "gpt-4o", 
+    method: str = "vanilla", 
+    verbose: bool = False, 
+    overwrite_existing: bool = False, 
+    num_samples: int = 100, 
+    debug: bool = False,
+    run_generation: bool = True,
+    run_evaluation: bool = True,
+):
+    """
+    Runs the massmaps generation pipeline.
+    """
+    if run_generation:
+        run_massmaps_generation(model, method, verbose, overwrite_existing, num_samples, debug)
+    if run_evaluation:
+        load_and_evaluate_massmaps_generation(model, method, verbose, overwrite_existing, num_samples, debug)
+
+
+def aggregate_all_results(
+    models=None,
+    eval_model="gpt-5-mini-2025-08-07",
+    num_check=100,
+    root_dir=".",
+    results_dir='_dump/massmaps/final',
+    results_out_root='results'
+):
+    """
+    Aggregate/compare results across models/methods, compute mse, and save combined outputs.
+    """
+    if models is None:
+        # If not specified, search for model directories in results_dir
+        models = [
+            d for d in os.listdir(results_dir)
+            if os.path.isdir(os.path.join(results_dir, d)) and not d.startswith(".")
+        ]
+
+    methods = [
+        'vanilla', 
+        # 'cot', 
+        # 'socratic', 
+        # 'subq'
+    ]
+
+    for model in models:
+        filenames_per_method = {}
+        for method in methods:
+            load_dir = os.path.join(results_dir, model, method, f"eval.{eval_model}")
+            if not os.path.isdir(load_dir):
+                print(f"Warning: {load_dir} does not exist, skipping.")
+                filenames_per_method[method] = set()
+                continue
+            filenames = set(os.listdir(load_dir))
+            filenames_per_method[method] = filenames
+
+        # Only keep jsons common to all methods
+        if filenames_per_method:
+            common_filenames = set.intersection(*(fns for fns in filenames_per_method.values() if fns))
+        else:
+            common_filenames = set()
+        common_filenames = [fn for fn in common_filenames if fn.endswith('.json')]
+        common_filenames = sorted(common_filenames)[:num_check]
+
+        print(f"Model '{model}': Found {len(common_filenames)} common examples among methods")
+
+        all_results = defaultdict(list)
+        for method in tqdm(methods, desc=f"Aggregate-{model}"):
+            load_dir = os.path.join(results_dir, model, method, f"eval.{eval_model}")
+            for filename in common_filenames:
+                path = os.path.join(load_dir, filename)
+                if not os.path.exists(path):
+                    print(f"Missing file {path}, skipping.")
+                    continue
+                with open(path, 'rt') as input_file:
+                    data = json.load(input_file)
+                # Compute MSE for specific fields if present
+                mse_omega_m = None
+                mse_sigma_8 = None
+                try:
+                    answer = data.get('answer', {})
+                    llm_answer = data.get('llm_answer', {})
+                    omega_true = answer.get('Omega_m')
+                    omega_pred = llm_answer.get('Omega_m')
+                    sigma_true = answer.get('sigma_8')
+                    sigma_pred = llm_answer.get('sigma_8')
+                    if omega_true is not None and omega_pred is not None:
+                        mse_omega_m = mean_squared_error([omega_true], [omega_pred])
+                    if sigma_true is not None and sigma_pred is not None:
+                        mse_sigma_8 = mean_squared_error([sigma_true], [sigma_pred])
+                    if mse_omega_m is not None or mse_sigma_8 is not None:
+                        data['mse_loss'] = {'Omega_m': mse_omega_m, 'sigma_8': mse_sigma_8}
+                except Exception as e:
+                    print(f"Error computing MSE for {path}: {e}")
+                data["_filename"] = filename
+                all_results[method].append(data)
+        
+        for method in all_results:
+            save_dir = os.path.join(root_dir, results_out_root, method)
+            os.makedirs(save_dir, exist_ok=True)
+            save_path = os.path.join(save_dir, f'massmaps_{model}_{eval_model}.json')
+            save_path2 = os.path.join(save_dir, f'massmaps_{model}.json')
+            with open(save_path, 'wt') as output_file:
+                json.dump(all_results[method], output_file, indent=4)
+            if eval_model == "gpt-5-mini-2025-08-07":
+                with open(save_path2, 'wt') as output_file:
+                    json.dump(all_results[method], output_file, indent=4)
+            print(f"Saved: {save_path}")
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Massmaps Generation and Evaluation Pipeline")
+
+    subparsers = parser.add_subparsers(dest="command", help="Mode of operation", required=True)
+
+    # Generation/evaluation parser
+    gen_eval_parser = subparsers.add_parser("run", help="Run generation/evaluation for a model/method")
+    group_run = gen_eval_parser.add_argument_group("Run Generation/Evaluation")
+    group_run.add_argument('--model', type=str, default="gpt-4o", help="Model name (e.g. gpt-4o, gpt-4, etc)")
+    group_run.add_argument('--method', type=str, default="vanilla", help="Method (e.g. vanilla, xyz)")
+    group_run.add_argument('--verbose', action="store_true", help="Verbose output")
+    group_run.add_argument('--overwrite_existing', action="store_true", help="Overwrite existing results")
+    group_run.add_argument('--num_samples', type=int, default=100, help="Number of samples to process")
+    group_run.add_argument('--debug', action="store_true", help="Debug mode (silent try/except during evaluation)")
+    group_run.add_argument('--run_generation', action="store_true", help="Run generation step")
+    group_run.add_argument('--run_evaluation', action="store_true", help="Run evaluation step")
+    group_run.set_defaults(run_generation=False, run_evaluation=False)
+
+    # Aggregate parser
+    agg_parser = subparsers.add_parser("aggregate", help="Aggregate all available result JSONs")
+    group_agg = agg_parser.add_argument_group("Aggregate Results")
+    group_agg.add_argument('--results_dir', type=str, default="results_massmaps/", help="Directory for result JSONs")
+    group_agg.add_argument('--output_file', type=str, default="aggregated_results.json", help="Output file for aggregation")
+
+    return parser.parse_args()
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    if args.command == "aggregate":
+        aggregate_all_results(results_dir=args.results_dir, output_file=args.output_file)
+
+    elif args.command == "run":
+        # Determine what to run based on CLI flags
+        if not (args.run_generation or args.run_evaluation):
+            print("No operation specified. Use --run_generation and/or --run_evaluation. See --help.")
+            exit(1)
+        main(
+            model=args.model,
+            method=args.method,
+            verbose=args.verbose,
+            overwrite_existing=args.overwrite_existing,
+            num_samples=args.num_samples,
+            debug=args.debug,
+            run_generation=args.run_generation,
+            run_evaluation=args.run_evaluation,
+        )
