@@ -422,7 +422,7 @@ REASONING: A brief explanation of why you selected the claims that are related t
 
 Here are some examples:
 
-[Example 1]
+Example 1:
 CATEGORY: Advanced Age: Increasing age is a major risk factor for cardiac arrest (events are very rare in patients under 30), with older ICU patients being significantly more prone to sudden arrest.
 CLAIMS:
 The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
@@ -438,7 +438,7 @@ The patient is young.
 REASONING:
 This claim is related because it directly comments on the patient's age as a factor for why they may or may not experience imminent cardiac arrest, whereas the other claims do not relate to age.
 
-[Example 2]
+Example 2:
 CATEGORY: Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention. Hyperkalemia is a frequent cause of in-hospital cardiac arrest especially among patients on dialysis / end stage renal disease. Looking for signs of hyperkalemia can be important to understand risk of cardiac arrest, especially in selected populations.
 CLAIMS:
 The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
@@ -454,78 +454,36 @@ N/A
 REASONING:
 None of the provided claims mention electrocardiographic features specific to severe hyperkalemia (such as peaked T-waves, loss of P-waves, widening QRS complexes, or sine-wave patterns), nor do they reference elevated potassium levels, renal failure, or dialysis. The claims describe general ECG irregularities, arrhythmias (e.g., ventricular tachycardia or fibrillation), age, and trauma-related causes, which are not specific indicators of hyperkalemia-related cardiac arrest risk. Therefore, no claim directly supports or relates to the expert category of severe hyperkalemia signs.
 
+Example 3:
+CATEGORY: QRS Widening (Conduction Delay): New or progressive prolongation of the QRS duration on the ECG reflects worsening ventricular conduction and may indicate ischemia, electrolyte abnormalities, or drug toxicity. QRS widening is frequently observed in the minutes before cardiac arrest and is associated with higher mortality due to impaired ventricular depolarization.
+CLAIMS:
+The patient is 83 years old, which is a significant risk factor for cardiac complications.
+COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events.
+The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.
+Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues.
+
+OUTPUT:
+RELATED CLAIMS:
+The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.
+Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues.
+REASONING:
+These claims directly reference abnormalities in the QRS complexes and conduction issues on the ECG, which are central to the expert category of QRS widening and conduction delay. QRS abnormalities reflect impaired ventricular depolarization and are known to precede cardiac arrest. The other claims (advanced age and COVID-19) describe general risk factors for cardiac complications but do not specifically address QRS duration or ventricular conduction abnormalities.
+
+Example 4:
+CATEGORY: Critical Illness (Sepsis/Shock): Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.
+CLAIMS:
+The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks.
+The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts.
+Metabolic or neurological disturbances may have cardiovascular implications.
+The ECG irregularities may indicate instability in the patient's condition.
+
+OUTPUT:
+RELATED CLAIMS:
+Metabolic or neurological disturbances may have cardiovascular implications.
+REASONING:
+This claim is related to the expert category of critical illness (sepsis/shock) because it refers to systemic metabolic disturbances that can affect cardiovascular function, which is a key mechanism by which severe sepsis or shock increases the risk of imminent cardiac arrest.
+
 Now identify which atomic claims are related to the given expert category:
 CATEGORY: {}
 CLAIMS: {}
 """
-
-# alignment_cardiac = """You will be given a single claim explaining why a patient was predicted to be at high or low risk of experiencing cardiac arrest within the next {} (Yes/No). You will also be given a series of categories that an expert clinician would use to perform determine if there is high risk of imminent cardiac arrest.
-
-# Your task is as follows:
-# 1. Determine which expert category is most aligned with the claim. 
-# 2. Rate how strongly the category aligns with the claim. Choose from complete, partial, or none.
-
-# Category explanations:
-# Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
-# Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
-# None: The claim references something unrelated to the expert category, or misinterprets the category's meaning.
-
-# Return your answer as:
-# Category: <category>
-# Category ID: <category ID>
-# Category Alignment Rating: <complete/partial/none>
-# Reasoning: <A brief explanation of why you selected the chosen category and why you judged the alignment rating as you did.>
-
-# -----
-# Expert categories:
-# 1. Ventricular Tachyarrhythmias: Ventricular tachyarrhythmias refer to abnormally rapid heart beats originating from the lower chambers (ventricles) of the heart. A common type is ventricular tachycardia, which can either be tolerated by the patient (i.e. patient is not arresting) or lead to hemodynamic collapse (i.e. state of low blood pressure, unconsciousness, and cardiac arrest).
-# 2. Ventricular Ectopy / NSVT: Runs of non-sustained ventricular tachycardia (NSVT) or frequent premature ventricular contractions may indicate electrical instability in critically ill patients, particularly those with underlying coronary disease or cardiomyopathy. While NSVT is generally considered a more benign form of ventricular tachyarrhythmia, its presence reflects transient abnormal rhythms originating from the lower chambers and does not necessarily always signal impending cardiac arrest.
-# 3. Bradycardia or Heart-Rate Drop: The onset of significant bradycardia or a sudden ≥30% decline in heart rate is a well-documented precursor to in-hospital cardiac arrest (often preceding pulseless electrical activity or asystole) and should be treated as an alarm sign
-# 4. QRS Widening (Conduction Delay): New or progressive prolongation of the QRS duration on the ECG is an ominous finding in the ICU, often observed in the minutes before cardiac arrest and associated with higher mortality due to deteriorating ventricular conduction
-# 5. Dynamic ST-Segment Changes: Acute ischemic changes on continuous ECG (notably ST-segment elevation or depression) signal low blood flow in the coronary arteries, indicating myocardial infarction or injury, and may precede imminent ventricular fibrillation or cardiac arrest. As blood flow continues to decrease, the ischemic heart can fibrillate or go into VT/VF (i.e. cardiac arrest). Although ST segment changes are common, the link to cardiac arrest is rare but possible.
-# 6. Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention. Hyperkalemia is a frequent cause of in-hospital cardiac arrest especially among patients on dialysis / end stage renal disease. Looking for signs of hyperkalemia can be important to understand risk of cardiac arrest, especially in selected populations.
-# 7. Advanced Age: Increasing age is a major risk factor for cardiac arrest (events are very rare in patients under 30), with older ICU patients being significantly more prone to sudden arrest
-# 8. Male Sex: Male gender is associated with a higher incidence of cardiac arrest, as most cardiac arrests occur in men (with women’s risk rising post-menopause).
-# 9. Underlying Cardiac Disease: The presence of serious cardiac conditions – such as coronary artery disease (especially a recent myocardial infarction) or severe heart failure – greatly elevates short-term cardiac arrest risk by creating an electrically and hemodynamically unstable myocardium.
-# 10. Critical Illness (Sepsis/Shock): Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.
-# -----
-
-# Here are some examples:
-# [Example 1]
-# Claim: A skin lesion of the scalp is a condition not directly related to cardiac function.
-# Category: Critical Illness (Sepsis/Shock)
-# Category ID: 10
-# Category Alignment Rating: none
-# Reasoning: While a scalp lesion is not directly cardiac-related, if interpreted as a possible sign of infection or systemic compromise (e.g., an infected wound in a septic patient), it could weakly align with the critical illness category. However, without explicit signs of sepsis or shock, the connection remains speculative, hence the low alignment rating.
-
-# [Example 2]
-# Claim: The irregularity in the ECG could indicate a dangerous arrhythmia, such as ventricular tachycardia or fibrillation.
-# Category: Ventricular Tachyarrhythmias
-# Category ID: 1
-# Category Alignment Rating: complete
-# Reasoning: The claim directly references dangerous arrhythmias such as ventricular tachycardia and fibrillation, which are hallmark indicators of the Extreme Tachyarrhythmias category. These arrhythmias are known precursors to sudden cardiac arrest. While the claim does not specify the duration or ventricular dysfunction context, the alignment is still very strong due to the mention of the precise arrhythmias characteristic of this category.
-
-# [Example 3]
-# Claim: The ECG irregularities are suggested by inconsistent waveform intervals and amplitudes.
-# Category: Ventricular Ectopy / NSVT
-# Category ID: 2
-# Category Alignment Rating: partial
-# Reasoning: The claim points to ECG irregularities—specifically inconsistent waveform intervals and amplitudes—which can reflect transient abnormal ventricular rhythms such as NSVT or frequent PVCs. These patterns often manifest with variable intervals and amplitudes but are nonspecific. While the claim lacks precision, it aligns moderately with ventricular ectopy as a potential explanation for instability.
-
-# [Example 4]
-# Claim: The patient is 86 years old. 
-# Category: Advanced Age
-# Category ID: 7
-# Category Alignment Rating: complete
-# Reasoning: The claim directly references advanced age, which this category identifies as a major risk factor for cardiac arrest.
-
-# [Example 5]
-# Claim: The admission wasn't due to cardiac issues.
-# Category: Underlying Cardiac Disease
-# Category ID: 9
-# Category Alignment Rating: partial
-# Reasoning: The claim highlights the absence of underlying cardiac disease, which is the inverse of a known risk factor for cardiac arrest. While the expert category focuses on increased risk due to the presence of cardiac disease, this claim indirectly relates to it by implying a potentially lower risk. The alignment is moderate because the claim addresses the category by exclusion rather than direct evidence of risk.
-
-# Now, determine the category and alignment rating for the following claim:
-# Claim: {}
-# """

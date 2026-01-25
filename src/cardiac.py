@@ -109,7 +109,11 @@ class CardiacExample:
         self.alignment_scores : list[float] = [] # Same length as alignable claims
         self.alignment_raws : list[float] = [] # Same length as alignable claims
         self.alignment_reasonings : list[str] = [] # Same length as alignable claims
-
+        self.claims_by_category : list[str] = []
+        self.category_alignment_scores: list[float] = []
+        self.category_alignment_reasonings: list[str] = []
+        self.alignment_matrix: np.ndarray = np.zeros((0, 0), dtype=float)
+        
         # The final alignment score, computed as the mean of the alignment scores of the alignable claims.
         self.final_alignment_score : float = 0.0
 
@@ -138,8 +142,12 @@ class CardiacExample:
             "alignment_category_ids": self.alignment_category_ids,
             "alignment_categories": self.alignment_categories,
             "alignment_scores": self.alignment_scores,
-            "alignment_raws": self.alignment_raws,
+            "alignment_raws": self.alignment_raws,            
             "alignment_reasonings": self.alignment_reasonings,
+            "claims_by_category": self.claims_by_category,
+            "category_alignment_scores": self.category_alignment_scores,
+            "category_alignment_reasonings": self.category_alignment_reasonings,
+            "alignment_matrix": self.alignment_matrix.tolist() if isinstance(self.alignment_matrix, np.ndarray) else self.alignment_matrix,
             "final_alignment_score": self.final_alignment_score,
             "accuracy": self.accuracy
         }
@@ -419,13 +427,13 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
         )
     llm = load_model(model)
     response = llm([(prompt,)])[0].replace("\n\n", "\n")
-    print("response", response)
+    # print("response", response)
     if response == "ERROR" or response is None or response == "":
         print("Error in querying OpenAI API")
         return None
     if verbose:
         print('===============================================')
-        print("expert alignment score for category: ", category)
+        print("expert alignment category: ", category)
         print('response: ', response)
     # Separate out the alignment rating and reasoning
     alignment_mapping = {
@@ -603,9 +611,11 @@ def cardiac_data_to_examples(
         print(f"Time taken to decompose into atomic claims: {time.time() - _t:.3f} seconds")
 
     # we should also save these just in case because we will use it in the latter parts
+    base_dir = f"../notebooks/_dump/cardiac/final/{explanation_model}/cardiac_examples"
+    os.makedirs(base_dir, exist_ok=True)
     for example in tqdm(cardiac_examples):
-        torch.save(example, f"../notebooks/_dump/cardiac/final/gpt-4o/cardiac_examples/{example.data['record_name']}")
-
+        save_path = os.path.join(base_dir, example.data["record_name"])
+        torch.save(example, save_path)
     
     # Step 2: Distill the relevant features from the atomic claims
     _t = time.time()
@@ -619,26 +629,49 @@ def cardiac_data_to_examples(
     _t = time.time()
 
     for example in tqdm(cardiac_examples):
-        align_infos = calculate_expert_alignment_scores(example.relevant_claims)
+        # OLD -- calculate expert alignment scores
+        # align_infos = calculate_expert_alignment_scores_old(example.relevant_claims)
     
-        example.alignable_claims = [info["Claim"] for info in align_infos]
-        example.alignment_categories = [info["Category"] for info in align_infos]
-        example.alignment_category_ids = [info["Category ID"] for info in align_infos]
-        example.alignment_scores = [info["Alignment"] for info in align_infos]
-        example.alignment_raws = [info["Alignment Raw"] for info in align_infos]
-        example.alignment_reasonings = [info["Reasoning"] for info in align_infos]
-        example.final_alignment_score = np.mean(example.alignment_scores)
+        # example.alignable_claims = [info["Claim"] for info in align_infos]
+        # example.alignment_categories = [info["Category"] for info in align_infos]
+        # # example.alignment_category_ids = [info["Category ID"] for info in align_infos]
+        # example.alignment_scores = [info["Alignment"] for info in align_infos]
+        # example.alignment_raws = [info["Alignment Raw"] for info in align_infos]
+        # example.alignment_reasonings = [info["Reasoning"] for info in align_infos]
+        # example.final_alignment_score = np.mean(example.alignment_scores)
 
-        # Non-alignable claims are given a score of 0.0
-        if len(align_infos) > 0:
-            example.final_alignment_score = sum(score for score in example.alignment_scores) / len(example.all_claims)
-        else:
-            example.final_alignment_score = 0.0
+        # # Non-alignable claims are given a score of 0.0
+        # if len(align_infos) > 0:
+        #     example.final_alignment_score = sum(score for score in example.alignment_scores) / len(example.all_claims)
+        # else:
+        #     example.final_alignment_score = 0.0
+
+        
+        # NEW -- calculate expert alignment scores by category
+        claims_by_category, category_alignment_scores, category_alignment_reasonings = calculate_expert_alignment_score(
+            example.relevant_claims, 
+            evaluation_model,
+            verbose=True
+        )
+        
+        example.claims_by_category = claims_by_category
+        example.category_alignment_scores = category_alignment_scores
+        example.category_alignment_reasonings = category_alignment_reasonings 
+        
+        alignment_matrix = make_alignment_matrix(
+            example.relevant_claims,
+            claims_by_category,
+            category_alignment_scores
+        )
+        example.alignment_matrix = alignment_matrix
+        example.final_alignment_score = alignment_matrix.max(axis=-1).mean()
+
+    # if verbose:
+    #     print(f"Time taken to calculate expert alignment scores: {time.time() - _t:.3f} seconds")
 
     if verbose:
-        print(f"Time taken to calculate expert alignment scores: {time.time() - _t:.3f} seconds")
-
-    if verbose:
+        # print(f"Skipping calculation of expert alignment scores (call this separately in notebook)")
+        print(f"Time taken to calculate expert alignment with claim grouping scores: {time.time() - _t:.3f} seconds")
         print(f"Total time taken: {time.time() - _start_time:.3f} seconds")
 
     return cardiac_examples
