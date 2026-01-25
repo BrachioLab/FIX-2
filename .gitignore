@@ -6,3 +6,4 @@ notebooks/_dump
 cache_dir
 src/.llms.py.cache
 api.txt
+results/*/*v1*

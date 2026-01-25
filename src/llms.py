@@ -311,8 +311,8 @@ class MyOpenAIModel:
         for _ in range(self.num_tries_per_request):
 
             try:
-                if self.verbose:
-                    print("self.model_name: ", self.model_name)
+                # if self.verbose:
+                #     print("self.model_name: ", self.model_name)
                     # print("--- Messages ---")
                     # print(messages)
                 if chat_mode:
@@ -322,11 +322,11 @@ class MyOpenAIModel:
                         max_completion_tokens=self.max_tokens,
                     )
                     response_text = response.choices[0].message.content.strip()
-                    if self.verbose:
-                        # print("--- Messages ---")
-                        # print(messages)
-                        print("--- Response ---")
-                        print(response_text)
+                    # if self.verbose:
+                    #     # print("--- Messages ---")
+                    #     # print(messages)
+                    #     print("--- Response ---")
+                    #     print(response_text)
                     if response_text != "":
                         break
                 else:
@@ -336,11 +336,11 @@ class MyOpenAIModel:
                         max_output_tokens=self.max_tokens,
                     )
                     response_text = response.output_text.strip()
-                    if self.verbose:
-                        # print("--- Messages ---")
-                        # print(messages)
-                        print("--- Response ---")
-                        print(response_text)
+                    # if self.verbose:
+                    #     # print("--- Messages ---")
+                    #     # print(messages)
+                    #     print("--- Response ---")
+                    #     print(response_text)
                     if response_text != "":
                         break
             except Exception as e:
