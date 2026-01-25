@@ -24,7 +24,7 @@ from PIL import Image
 import PIL
 from llms import load_model
 
-from typing import Callable
+from typing import Callable, Any
 
 from prompts.explanations import massmaps_prompt, vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline
 from prompts.claim_decomposition import decomposition_massmaps
@@ -132,6 +132,7 @@ def get_llm_output(prompt, images=None, model='gpt-4o'):
     llm = load_model(model)
 
     result = llm([(prompt, *images)])[0]
+    print('result: ', result)
     # import pdb; pdb.set_trace()
     return result
 
@@ -150,23 +151,73 @@ def parse_float(s: str) -> float:
         raise ValueError(f"No numeric value found in {s!r}")
     return float(m.group())
 
+# def get_llm_generated_answer(
+#     example: list[str] | str | torch.Tensor, #Image | Timeseries,
+#     method: str = "vanilla",
+#     model: str = "gpt-4o",
+#     massmap_to_pil_norm: Callable = massmap_to_pil_norm,
+# ) -> str:
+#     """
+#     Args:
+#         example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
+#           e.g., the emotion classification task.
+#     """
+
+#     if method == 'least_to_most':
+#         method = 'subq'
+
+#     if method == "vanilla":
+#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
+#     elif method == "cot":
+#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
+#     elif method == "socratic":
+#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", socratic_baseline)
+#     elif method == "subq":
+#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
+#     else:
+#         raise ValueError(f"Invalid method: {method}")
+
+#     prompt = prompt.replace(
+#         '[LAST_IMAGE_NUM]',
+#         '1'
+#     )
+    
+
+#     image_pil = [massmap_to_pil_norm(example)]
+
+#     llm_response = get_llm_output(prompt, image_pil, model=model)
+
+#     response_split = [r.strip() for r in llm_response.split("\n") if r.strip() != "" \
+#         and r.strip().startswith("Explanation:") or r.strip().startswith("Prediction:")]
+#     try:
+        
+#         explanation = response_split[0].split("Explanation: ")[1].strip()
+#         answer = response_split[-1].split("Prediction: ")[1].strip()
+#         # split the answer into Omega_m and sigma_8
+#         answer = answer.split(", ")
+#         answer = {
+#             answer[0].split(": ")[0]: parse_float(answer[0].split(": ")[1]), 
+#             answer[1].split(": ")[0]: parse_float(answer[1].split(": ")[1])
+#         }
+        
+#         return answer, explanation
+#     except Exception as e:
+#         print("exception: ", e)
+#         print(f"Error in parsing response {llm_response}")
+#         import pdb; pdb.set_trace()
+#         return None, None
+
 def get_llm_generated_answer(
-    example: list[str] | str | torch.Tensor, #Image | Timeseries,
+    image: torch.Tensor | np.ndarray | PIL.Image.Image | list[Any],
     method: str = "vanilla",
     model: str = "gpt-4o",
     massmap_to_pil_norm: Callable = massmap_to_pil_norm,
 ) -> str:
-    """
-    Args:
-        example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
-          e.g., the emotion classification task.
-    """
-
     if method == 'least_to_most':
         method = 'subq'
 
     if method == "vanilla":
-        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
+        prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", vanilla_baseline)
     elif method == "cot":
         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
     elif method == "socratic":
@@ -176,35 +227,29 @@ def get_llm_generated_answer(
     else:
         raise ValueError(f"Invalid method: {method}")
 
-    prompt = prompt.replace(
-        '[LAST_IMAGE_NUM]',
-        '1'
-    )
-    
+    llm = load_model(model)
 
-    image_pil = [massmap_to_pil_norm(example)]
-
-    llm_response = get_llm_output(prompt, image_pil, model=model)
-
-    response_split = [r.strip() for r in llm_response.split("\n") if r.strip() != "" \
-        and r.strip().startswith("Explanation:") or r.strip().startswith("Prediction:")]
-    try:
+    def process_response(response: str):
+        response_split = [r.strip() for r in response.split("\n") if r.strip() != "" \
+            and r.strip().startswith("Explanation:") or r.strip().startswith("Prediction:")]
         
         explanation = response_split[0].split("Explanation: ")[1].strip()
         answer = response_split[-1].split("Prediction: ")[1].strip()
-        # split the answer into Omega_m and sigma_8
         answer = answer.split(", ")
         answer = {
             answer[0].split(": ")[0]: parse_float(answer[0].split(": ")[1]), 
             answer[1].split(": ")[0]: parse_float(answer[1].split(": ")[1])
         }
+        return explanation, answer
         
-        return answer, explanation
-    except Exception as e:
-        print(f"Error in parsing response {llm_response}")
-        # import pdb; pdb.set_trace()
-        return None, None
 
+    if isinstance(image, list):
+        responses = llm([(prompt,) + (massmap_to_pil_norm(i),) for i in image])
+        return [process_response(response) for response in responses]
+
+    else:
+        response = llm([(prompt,) + (massmap_to_pil_norm(image),)])[0]
+        return process_response(response)
   
 
 def isolate_individual_features(

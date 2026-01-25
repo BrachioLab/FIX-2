@@ -236,7 +236,7 @@ Task description:
 Input: An expert sepsis clinician's explanation of why the patient is at high risk of developing sepsis within the next 12 hours, based on electronic health record (EHR) data collected during the first 2 hours of their emergency department (ED) admission, and a list of atomic claims.
 Output: 
 RELATED CLAIMS: A list of atomic claims that are related to the given expert category that are copied verbatim from the input claims following the format in the examples. If there are no claims that are related to the given expert category, then the output should be "N/A". 
-REASONING: A brief explanation of why you selected the claims that are related to the given expert category and why you judged the claims as you did.
+REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
 
 Here are some examples:
 Example 1:
@@ -319,10 +319,10 @@ You are an astrophysics expert specializing in astrophysical classification. The
 We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
 
 Task description:
-Input: An expert surgeon's explanation of why certain criteria were used to determine what is safe and unsafe in performing a laparoscopic cholecystectomy, and a list of atomic claims.
+Input: An astrophysics expert's explanation for why a particular multivariate time-series was classified into one of the above categories, and a list of atomic claims.
 Output:
 RELATED CLAIMS: A list of atomic claims that are related to the given expert category, copied verbatim from the input claims (one per line) following the format in the examples. If there are no claims related to the category, output "N/A".
-REASONING: A brief explanation of (1) why the selected claims are related to the category (i.e., why they belong in this group) and (2) why key non-selected claims were excluded (e.g., they pertain to a different CVS criterion / different anatomical structure / general context but not evidence for this category).
+REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
 
 Important guidelines:
 - Only copy claims verbatim; do not rewrite claims.

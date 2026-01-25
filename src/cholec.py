@@ -116,7 +116,7 @@ class CholecDataset(Dataset):
         self,
         split: str = "train",
         hf_data_repo: str = "BrachioLab/cholec",
-        image_size: tuple[int] = (180, 320)
+        image_size: tuple[int] = (360, 640)
     ):
         """
         Args:
@@ -141,7 +141,7 @@ class CholecDataset(Dataset):
         return len(self.dataset)
 
     def __getitem__(self, idx):
-        if self.dataset[idx]['image'].shape[:2] == self.image_size:
+        if self.dataset[idx]['image'].shape[-1] == 3: # and self.dataset[idx]['image'].shape[:2] == self.image_size:
             image = self.dataset[idx]['image'].permute(2,0,1)
         else:
             image = self.dataset[idx]['image']
