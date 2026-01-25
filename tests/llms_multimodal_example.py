@@ -72,8 +72,7 @@ def main() -> None:
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(
         repo_root / api_keys["GOOGLE_APPLICATION_CREDENTIALS"]
     )
-    # os.environ.setdefault("VERTEX_PROJECT_ID", "tfix-485319")
-    os.environ.setdefault("VERTEX_PROJECT_ID", "surgery-483823")
+    os.environ.setdefault("VERTEX_PROJECT_ID", "tfix-485319")
     os.environ.setdefault("VERTEX_LOCATION", "us-central1")
 
     image_paths = [
