@@ -132,6 +132,7 @@ def get_llm_output(prompt, images=None, model='gpt-4o'):
     llm = load_model(model)
 
     result = llm([(prompt, *images)])[0]
+    print('result: ', result)
     # import pdb; pdb.set_trace()
     return result
 
@@ -201,8 +202,9 @@ def get_llm_generated_answer(
         
         return answer, explanation
     except Exception as e:
+        print("exception: ", e)
         print(f"Error in parsing response {llm_response}")
-        # import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         return None, None
 
   

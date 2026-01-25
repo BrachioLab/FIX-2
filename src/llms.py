@@ -418,7 +418,7 @@ class MyGoogleModel:
             project_id = (
                 os.getenv("VERTEX_PROJECT_ID")
                 or os.getenv("GOOGLE_CLOUD_PROJECT")
-                or "surgery-483823"
+                or "tfix-485319"
             )
             location = os.getenv("VERTEX_LOCATION") or "us-central1"
             vertex_init(project=project_id, location=location)

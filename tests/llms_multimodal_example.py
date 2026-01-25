@@ -26,15 +26,39 @@ def run_test(model, images) -> None:
         "Describe each image at the end, labeled Image 1/2/3, in 1-2 sentences each.",
     )
     response = model(prompt)
+    print("response =================================")
     print(response)
 
     prompts = [
-        ("Image 1", images[0], "Image 2", images[1], "what are in image 1 and 2 separately?"),
-        ("Image 3", images[2], "what is in image 3?"),
+        (
+        "You will see one image, interleaved with text labels.",
+        "Image 1:",
+        images[0],
+        "Describe the image at the end, labeled Image 1, in 1-2 sentences.",
+    ),
+    (
+        "You will see two images, interleaved with text labels.",
+        "Image 1:",
+        images[0],
+        "Image 2:",
+        images[1],
+        "Describe the images at the end, labeled Image 1/2, in 1-2 sentences each.",
+    )
+        # ("Image 1", images[0], "Image 2", images[1], "what are in this image 1 and 2 separately?"),
+        # ("Image 3", images[2], "what is in this image 3?"),
     ]
     responses = model(prompts)
+    print("responses batched ", responses)
     for idx, text in enumerate(responses, start=1):
         print(f"\n--- Batch response {idx} ---\n{text}")
+
+    print("response separate =================================")
+    response = model(prompts[0])
+    print("1")
+    print(response)
+    response = model(prompts[1])
+    print("2")
+    print(response)
 
 
 def main() -> None:
@@ -48,7 +72,7 @@ def main() -> None:
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(
         repo_root / api_keys["GOOGLE_APPLICATION_CREDENTIALS"]
     )
-    os.environ["CACHE_DIR"] = str(repo_root / "cache_dir3")
+    # os.environ.setdefault("VERTEX_PROJECT_ID", "tfix-485319")
     os.environ.setdefault("VERTEX_PROJECT_ID", "surgery-483823")
     os.environ.setdefault("VERTEX_LOCATION", "us-central1")
 
