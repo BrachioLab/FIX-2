@@ -616,3 +616,181 @@ def calculate_expert_alignment_scores_old(
         # else: ignore this response entirely (no alignment parsed)
 
     return results
+
+
+def run_massmaps_generation(
+    model: str = "gpt-4o",
+    method: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+    num_samples: int = 100,
+    debug: bool = False,
+) -> list[MassMapsExample]:
+    """
+    Runs the massmaps generation pipeline.
+    """
+    import os
+    from pathlib import Path
+    from tqdm.auto import tqdm
+
+    import torch
+    from datasets import load_dataset
+
+    test_dataset = load_dataset("BrachioLab/massmaps-cosmogrid-100k", split='test')
+    test_dataset.set_format('torch', columns=['input', 'label'])
+    # Root dir is parent of parent of this file
+    root_dir = Path(__file__).resolve().parent.parent
+    save_dir = root_dir / "notebooks" / f"_dump/massmaps/intermediate/{model}/{method}"
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"Starting to save intermediate results to {save_dir}")
+
+    for idx in tqdm(range(num_samples)):
+        save_path = os.path.join(save_dir, f'{idx}.json')
+        if os.path.exists(save_path) and not overwrite_existing:
+            continue
+        X, y = test_dataset[idx:idx+1]['input'], test_dataset[idx:idx+1]['label']
+        image = X[0]
+        label = y[0]
+        llm_answer, llm_explanation = get_llm_generated_answer(
+            image, 
+            method=method, 
+            model=model
+        )
+        if llm_answer is None:
+            continue
+        example = MassMapsExample(
+            input=image,
+            answer={"Omega_m": label[0].item(), "sigma_8": label[1].item()},
+            llm_answer=llm_answer,
+            llm_explanation=llm_explanation
+        )
+        massmaps_examples.append(example)
+        example.idx = idx
+
+        # save intermediate
+        save_dict = {}
+        for k, v in example.__dict__.items():
+            save_dict[k] = v if not isinstance(v, torch.Tensor) else v.cpu().numpy().tolist()
+        with open(save_path, 'wt') as output_file:
+            json.dump(save_dict, output_file)
+
+def load_and_evaluate_massmaps_generation(
+    model: str = "gpt-4o",
+    method: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+    num_samples: int = 100,
+    debug: bool = False,
+) -> list[MassMapsExample]:
+    """
+    Loads and evaluates the massmaps generation pipeline.
+    """
+    import os
+    from pathlib import Path
+    from tqdm.auto import tqdm
+
+    import torch
+    from datasets import load_dataset
+
+    test_dataset = load_dataset("BrachioLab/massmaps-cosmogrid-100k", split='test')
+    test_dataset.set_format('torch', columns=['input', 'label'])
+
+    root_dir = Path(__file__).resolve().parent.parent
+    load_dir = root_dir / "notebooks" / f"_dump/massmaps/intermediate/{model}/{method}"
+    filenames = sorted([f for f in os.listdir(load_dir) if f.endswith('.json')], key=lambda x: int(x.split('.')[0]))
+    all_results = []
+    for filename in tqdm(filenames):
+        path = os.path.join(load_dir, filename)
+        with open(path, 'rt') as input_file:
+            data = json.load(input_file)
+        all_results.append(data)
+    
+    save_dir = root_dir / "notebooks" / f"_dump/massmaps/final/{model}/{method}/eval.{model}"
+    os.makedirs(save_dir, exist_ok=True)
+    for idx in tqdm(range(len(all_results))):
+        save_path = os.path.join(save_dir, filenames[idx])
+        if os.path.isfile(save_path):
+            print('save_path', save_path)
+            continue
+
+        # load
+        example_dict = all_results[idx]
+
+        if not isinstance(example_dict['input'], torch.Tensor):
+            example_dict['input'] = torch.tensor(example_dict['input'])
+
+        example = MassMapsExample(
+            input = example_dict['input'],
+            answer = example_dict['answer'],
+            llm_answer = example_dict['llm_answer'],
+            llm_explanation = example_dict['llm_explanation'],
+        )
+        example.__dict__ = example_dict
+        example.idx = example_dict['idx']
+
+        # isolate individual features
+        claims = isolate_individual_features(example.llm_explanation, model=eval_model)
+        print('claims', claims)
+        if claims is None:
+            continue
+        example.claims = [claim.strip() for claim in claims]
+
+        # distill relevant features
+        relevant_claims = distill_relevant_features(
+            example.input, 
+            example.llm_answer,
+            example.claims,
+            model=eval_model
+        )
+        example.relevant_claims = relevant_claims
+
+        # calculate expert alignment scores
+        claims_by_category, category_alignment_scores, category_alignment_reasonings = calculate_expert_alignment_score(
+            relevant_claims, 
+            eval_model,
+            # verbose=True
+        )
+
+        example.claims_by_category = claims_by_category
+        example.category_alignment_scores = category_alignment_scores
+        example.category_alignment_reasonings = category_alignment_reasonings
+
+        alignment_matrix = make_alignment_matrix(
+            example.claims,
+            claims_by_category,
+            category_alignment_scores
+        )
+        
+        final_alignment_score = alignment_matrix.max(axis=-1).mean()
+        if np.isnan(final_alignment_score):
+            print(f'example {idx} final_alignment_score is NaN')
+        example.final_alignment_score = final_alignment_score
+
+        # save
+        save_dict = {}
+        for k, v in example.__dict__.items():
+            save_dict[k] = v if not isinstance(v, torch.Tensor) else v.cpu().numpy().tolist()
+        with open(save_path, 'wt') as output_file:
+            json.dump(save_dict, output_file)
+
+def main(
+    model: str = "gpt-4o", 
+    method: str = "vanilla", 
+    verbose: bool = False, 
+    overwrite_existing: bool = False, 
+    num_samples: int = 100, 
+    debug: bool = False,
+    run_generation: bool = True,
+    run_evaluation: bool = True,
+):
+    """
+    Runs the massmaps generation pipeline.
+    """
+    if run_generation:
+        run_massmaps_generation(model, method, verbose, overwrite_existing, num_samples, debug)
+    if run_evaluation:
+        load_and_evaluate_massmaps_generation(model, method, verbose, overwrite_existing, num_samples, debug)
+
+if __name__ == "__main__":
+    main()
