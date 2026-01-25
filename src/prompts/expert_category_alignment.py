@@ -72,16 +72,6 @@ Category Alignment Rating: partial
 
 Example 3:
 INPUT:
-Category: Density Contrast Extremes - Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
-Claims:
-N/A
-
-OUTPUT:
-Reasoning: There is no claim and thus no alignment with the expert category.
-Category Alignment Rating: none
-
-Example 4:
-INPUT:
 Category: Connectivity of the Cosmic Web - A highly interconnected filament network … hints at a higher Omega_m …
 Claims:
 There is a highly interconnected filament network in the map.
@@ -91,7 +81,7 @@ OUTPUT:
 Reasoning: The claims correctly identify an interconnected filament network, but they explicitly infer the opposite Omega_m direction from the expert category. Because the category states interconnectedness supports higher Omega_m (not lower), the claims misinterpret the category rather than partially matching it.
 Category Alignment Rating: none
 
-Example 5:
+Example 4:
 INPUT:
 Category: Filament Thickness and Sharpness - Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
 Claims:
@@ -179,18 +169,6 @@ The obscured landmarks increase the risk of injuring the common bile duct and he
 OUTPUT:
 Reasoning: The claims correctly identify injury risk near the common bile duct, but they do not mention Rouviere's sulcus, the R4U line, or the requirement to remain cephalad to this landmark. The claims are related to biliary injury risk but do not capture the specific spatial safety rule of this category.
 Category Alignment Rating: partial
-
---------------------------------------------------
-
-Example 5:
-INPUT:
-Category: Cystic lymph node (calot's node) guide - Identify the cystic lymph node and clip the artery on the gallbladder side of the node to avoid injuring the hepatic artery.
-Claims:
-N/A
-
-OUTPUT:
-Reasoning: There are no claims provided and therefore no information that could align with the expert category.
-Category Alignment Rating: none
 
 Now, determine the alignment rating for the following expert category and set of claims:
 Category: {}

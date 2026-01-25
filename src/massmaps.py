@@ -272,6 +272,7 @@ def isolate_individual_features(
     if isinstance(explanation, list):
         prompts = [decomposition_massmaps.format(e) for e in explanation]
         results = llm(prompts)
+        # print("isolate_individual_features results: ", results)
         all_all_claims: list[list[str]] = [
             [c.strip() for c in result.split("\n") if c.strip()]
             for result in results
@@ -279,6 +280,7 @@ def isolate_individual_features(
         return all_all_claims
     else:
         raw_output = llm(decomposition_massmaps.format(explanation))
+        # print("isolate_individual_features raw_output: ", raw_output)
         all_claims = [c.strip() for c in raw_output.split("\n") if c.strip()]
         return all_claims
 
