@@ -278,7 +278,10 @@ class MyOpenAIModel:
             chat_mode = False
 
         if isinstance(prompt, str):
-            content = [{"type": "text", "text": prompt}]
+            if chat_mode:
+                content = [{"type": "text", "text": prompt}]
+            else:
+                content = [{"type": "input_text", "text": prompt}]
         elif isinstance(prompt, tuple):
             content = []
             for p in prompt:
@@ -306,6 +309,7 @@ class MyOpenAIModel:
         messages = [{"role": "user", "content": content}]
         response_text = ""
         for _ in range(self.num_tries_per_request):
+
             try:
                 if self.verbose:
                     print("self.model_name: ", self.model_name)
@@ -340,6 +344,8 @@ class MyOpenAIModel:
                     if response_text != "":
                         break
             except Exception as e:
+                print("--- Messages ---")
+                print(messages)
                 # if self.verbose:
                 print(f"Error calling OpenAI's API: {e}")
                 time.sleep(3)
