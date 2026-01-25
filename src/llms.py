@@ -233,6 +233,7 @@ class MyOpenAIModel:
         batch_size: int = 24,
         use_cache: bool = True,
         verbose: bool = False,
+        temperature: float = 0,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
@@ -271,18 +272,32 @@ class MyOpenAIModel:
             if ret is not None and ret != "":
                 return ret
 
+        if int(self.model_name.lower().replace('gpt-', '')[0]) < 5 or self.model_name.lower().startswith('o'):
+            chat_mode = True
+        else:
+            chat_mode = False
+
         if isinstance(prompt, str):
             content = [{"type": "text", "text": prompt}]
         elif isinstance(prompt, tuple):
             content = []
             for p in prompt:
                 if isinstance(p, str):
-                    content.append({"type": "text", "text": p})
+                    if chat_mode:
+                        content.append({"type": "text", "text": p})
+                    else:
+                        content.append({"type": "input_text", "text": p})
                 elif is_image(p):
-                    content.append({
-                        "type": "image_url",
-                        "image_url": {"url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"}
-                    })
+                    if chat_mode:
+                        content.append({
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"}
+                        })
+                    else:
+                        content.append({
+                            "type": "input_image", 
+                            "image_url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"
+                        })
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")
         else:
@@ -292,17 +307,41 @@ class MyOpenAIModel:
         response_text = ""
         for _ in range(self.num_tries_per_request):
             try:
-                response = self.client.chat.completions.create(
-                    model=self.model_name,
-                    messages=messages,
-                    max_completion_tokens=self.max_tokens,
-                )
-                response_text = response.choices[0].message.content.strip()
-                if response_text != "":
-                    break
-            except Exception as e:
                 if self.verbose:
-                    print(f"Error calling OpenAI's API: {e}")
+                    print("self.model_name: ", self.model_name)
+                    # print("--- Messages ---")
+                    # print(messages)
+                if chat_mode:
+                    response = self.client.chat.completions.create(
+                        model=self.model_name,
+                        messages=messages,
+                        max_completion_tokens=self.max_tokens,
+                    )
+                    response_text = response.choices[0].message.content.strip()
+                    if self.verbose:
+                        # print("--- Messages ---")
+                        # print(messages)
+                        print("--- Response ---")
+                        print(response_text)
+                    if response_text != "":
+                        break
+                else:
+                    response = self.client.responses.create(
+                        model=self.model_name,
+                        input=messages,
+                        max_output_tokens=self.max_tokens,
+                    )
+                    response_text = response.output_text.strip()
+                    if self.verbose:
+                        # print("--- Messages ---")
+                        # print(messages)
+                        print("--- Response ---")
+                        print(response_text)
+                    if response_text != "":
+                        break
+            except Exception as e:
+                # if self.verbose:
+                print(f"Error calling OpenAI's API: {e}")
                 time.sleep(3)
 
         if self.use_cache and response_text != "":
@@ -318,7 +357,7 @@ class MyAnthropicModel:
         model_name: str = "claude-3-5-sonnet-latest",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
-        temperature: float = 0.1,
+        temperature: float = 0,
         max_tokens: int = 2048,
         use_cache: bool = True,
         batch_size: int = 24,
@@ -387,8 +426,8 @@ class MyAnthropicModel:
                 if response_text != "":
                     break
             except Exception as e:
-                if self.verbose:
-                    print(f"Error calling Anthropic's API: {e}")
+                # if self.verbose:
+                print(f"Error calling Anthropic's API: {e}")
                 time.sleep(3)
 
         if self.use_cache and response_text != "":
@@ -404,7 +443,7 @@ class MyGoogleModel:
         model_name: str = "gemini-2.0-flash",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
-        temperature: float = 0.1,
+        temperature: float = 0,
         max_tokens: int = 2048,
         use_cache: bool = True,
         batch_size: int = 24,
@@ -497,8 +536,8 @@ class MyGoogleModel:
                 if response_text != "":
                     break
             except Exception as e:
-                if self.verbose:
-                    print(f"Error calling Google's API: {e}")
+                # if self.verbose:
+                print(f"Error calling Google's API: {e}")
                 time.sleep(3)
 
         if self.use_cache and response_text != "":
