@@ -141,7 +141,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.8125,
         "safe_iou": 0.0,
         "unsafe_iou": 0.0,
         "claims_by_category": {
@@ -161,15 +161,6 @@
             ],
             "Only two structures visible": [],
             "Above the R4U line": [
-                "The most hazardous anatomy\u2014cystic duct, cystic artery, and adjacent hepatic hilum\u2014lies in the central to right\u2011lower portion of the field.",
-                "The darker, vascularized tissue corresponds to hazardous anatomy that should be avoided for cutting.",
-                "Safe cutting is therefore limited to the more lateral and superior peritoneal and fatty planes away from the instrument and darker vascularized tissue.",
-                "The central column of tissue surrounding the instrument is marked unsafe to avoid bile-duct or vascular injury.",
-                "The lower\u2011right quadrant, where the liver edge and hepatocystic triangle lie, is marked unsafe to avoid bile\u2011duct or vascular injury.",
-                "The safe list contains the peripheral anterior peritoneum and fatty planes for initial dissection."
-            ],
-            "Safe distance from common bile duct": [
-                "The instrument is centered on the hepatocystic region.",
                 "The most hazardous anatomy\u2014cystic duct, cystic artery, and adjacent hepatic hilum\u2014lies in the central to right\u2011lower portion of the field.",
                 "The darker, vascularized tissue corresponds to hazardous anatomy that should be avoided for cutting.",
                 "Safe cutting is therefore limited to the more lateral and superior peritoneal and fatty planes away from the instrument and darker vascularized tissue.",
@@ -216,14 +207,6 @@
                 "The central column of tissue surrounding the instrument is marked unsafe to avoid bile-duct or vascular injury.",
                 "The lower\u2011right quadrant, where the liver edge and hepatocystic triangle lie, is marked unsafe to avoid bile\u2011duct or vascular injury.",
                 "The safe list contains the peripheral anterior peritoneum and fatty planes for initial dissection."
-            ],
-            "Aberrant artery caution": [
-                "The most hazardous anatomy\u2014cystic duct, cystic artery, and adjacent hepatic hilum\u2014lies in the central to right\u2011lower portion of the field.",
-                "The darker, vascularized tissue corresponds to hazardous anatomy that should be avoided for cutting.",
-                "Safe cutting is therefore limited to the more lateral and superior peritoneal and fatty planes away from the instrument and darker vascularized tissue.",
-                "The central column of tissue surrounding the instrument is marked unsafe to avoid bile-duct or vascular injury.",
-                "The lower\u2011right quadrant, where the liver edge and hepatocystic triangle lie, is marked unsafe to avoid bile\u2011duct or vascular injury.",
-                "The safe list contains the peripheral anterior peritoneum and fatty planes for initial dissection."
             ]
         },
         "category_alignment_scores": {
@@ -231,26 +214,22 @@
             "Cystic plate exposed": 0.5,
             "Only two structures visible": 0.0,
             "Above the R4U line": 0.5,
-            "Safe distance from common bile duct": 1.0,
             "Infundibulum start point": 0.5,
             "Subserosal plane stay": 1.0,
             "Cystic lymph node guide": 0.5,
-            "No division without ID": 0.5,
-            "Inflammation bailout": 0.5,
-            "Aberrant artery caution": 1.0
+            "No division without ID": 1.0,
+            "Inflammation bailout": 0.5
         },
         "category_alignment_reasonings": {
-            "Calot's triangle cleared": "The claims identify the hepatocystic triangle as a central/right\u2011lower hazardous area and recommend avoiding cutting there while using lateral/superior peritoneal and fatty planes for initial dissection. This aligns with the goal of protecting the triangle and approaching dissection safely, but the claims do not explicitly state the need to fully clear fat/fibrosis to make the triangle's boundaries unmistakable. They describe safe/unsafe zones rather than the specific requirement to clear the hepatocystic triangle itself.",
-            "Cystic plate exposed": "The claims discuss avoiding vascularized/hazardous tissue in the hepatocystic region and recommend starting in peripheral anterior peritoneal and fatty planes\u2014which relates to selecting a safe dissection plane\u2014but they do not mention dissecting the lower third of the gallbladder off the liver or exposing the shiny cystic plate itself. Key specifics of the category (removing gallbladder off liver to reveal the cystic plate and confirm the correct plane) are missing.",
+            "Calot's triangle cleared": "The claims identify the hepatocystic/Calot region, localize hazardous (vascular/biliary) anatomy, and specify safe lateral/superior peritoneal and fatty planes for initial dissection \u2014 all relevant to avoiding injury around the triangle. However, they do not state the key expert requirement that the hepatocystic triangle must be fully cleared of fat/fibrosis so its boundaries are unmistakable; instead they emphasize marking unsafe areas and avoiding vascularized tissue without describing active clearing of fat/fibrosis to expose landmarks. Thus the alignment is partial.",
+            "Cystic plate exposed": "The claims identify safe peripheral peritoneal and fatty planes and warn against cutting into darker vascularized tissue, which relates to choosing an initial safe dissection plane. However they do not mention dissecting the lower third of the gallbladder off the liver, revealing the shiny cystic plate, or ensuring that specific plane \u2014 the central requirement of the category \u2014 so key details are missing.",
             "Only two structures visible": "No claims provided",
-            "Above the R4U line": "The claims emphasize avoiding the central/lower\u2011right area (hepatic hilum and hepatocystic triangle) and restricting dissection to more lateral and superior peritoneal/fatty planes, which captures the practical safety intent of staying away from the biliary/vascular danger zone. However, they do not mention Rouviere's sulcus, the R4U line, or the explicit instruction to remain cephalad to that anatomical landmark\u2014so the specific spatial rule framed by the R4U line is not explicitly referenced.",
-            "Safe distance from common bile duct": "The claims explicitly identify the central/hepatocystic region (including cystic duct, cystic artery, and hepatic hilum) as hazardous and mark those areas unsafe to avoid bile-duct or vascular injury, while designating more lateral/superior peripheral peritoneal and fatty planes as safe for initial dissection. This directly and specifically captures the requirement to maintain a safe distance from the common bile duct during dissection.",
-            "Infundibulum start point": "The claims correctly mark the central/hepatocystic triangle and darker vascularized tissue as unsafe and identify peripheral anterior peritoneum and fatty planes (lateral/superior) as the appropriate safe tissues for initial dissection. This corresponds well to the option of beginning dissection at lateral/superior edges to gain gallbladder mobility. However, the claims do not explicitly mention starting at the infundibulum\u2013cystic duct junction, the medial edge options, Rouviere\u2019s sulcus, or the cystic plate \u2014 key specifics in the category definition. Therefore the alignment is partial.",
-            "Subserosal plane stay": "The claims explicitly distinguish vascular, hazardous central tissue (to avoid) from peripheral, peritoneal and fatty planes deemed safe for initial dissection. They emphasize avoiding the liver edge/hepatocystic triangle and staying in lateral/superior avascular peritoneal planes\u2014which directly reflects the instruction to remain in the avascular subserosal/peritoneal cleavage plane when separating gallbladder from liver.",
-            "Cystic lymph node guide": "The claims correctly identify hazardous central/hepatocystic anatomy and recommend staying to lateral/superior peritoneal and fatty planes for safe initial dissection\u2014principles consistent with avoiding hepatic artery/bile duct injury. However, they do not mention identifying the cystic (Calot\u2019s) lymph node or using it specifically as a landmark to clip the artery on the gallbladder side, which is the core instruction of this category.",
-            "No division without ID": "The claims clearly mark central/infrahilar vascularized areas as unsafe to cut and recommend limiting initial cutting to peripheral peritoneal and fatty planes\u2014which aligns with the intent to avoid dividing ducts/vessels in hazardous zones. However, they do not explicitly state the key rule to never divide a duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder. Therefore the match is relevant but not fully explicit.",
-            "Inflammation bailout": "The claims emphasize avoiding hazardous/darker vascularized tissue, marking the hepatocystic triangle and central column unsafe, and restricting dissection to lateral/superior peritoneal and fatty planes\u2014measures that align with the principle of not performing blind cutting in distorted anatomy. However, they do not mention the key bailout actions in the category (conversion to open surgery or performing a fenestrated subtotal cholecystectomy) nor explicitly reference dense scarring obscuring Calot's triangle. Therefore the alignment is incomplete but related.",
-            "Aberrant artery caution": "The claims explicitly identify vascular structures (cystic artery, hepatic hilum), mark vascularized/darker tissue as hazardous, and prescribe avoiding cutting there while using lateral/superior peritoneal and fatty planes for safe dissection. Although they do not explicitly use the word \"aberrant,\" they directly address the need for caution around arteries and vascular tissue to prevent vascular injury, which matches the category intent."
+            "Above the R4U line": "The claims convey the key spatial idea\u2014avoid the central/lower\u2011right hilum region and perform initial dissection in lateral/superior peripheral peritoneal and fatty planes\u2014matching the safety intent of staying away from bile\u2011duct/vascular structures. However, they do not reference the specific anatomic landmark or rule (Rouviere's sulcus / the R4U line) or explicitly state to remain cephalad to that line, so the specific guidance of this category is not fully captured.",
+            "Infundibulum start point": "The claims support starting dissection in peripheral lateral/superior peritoneal and fatty planes to avoid the central, vascularized hepatocystic triangle\u2014matching the idea of gaining early mobility by working at safer lateral/medial edges. However, they do not mention the infundibulum\u2013cystic duct junction as an explicit start point, nor reference Rouviere\u2019s sulcus or the cystic plate. Because key specific anatomical start-points named in the category are missing, the alignment is partial.",
+            "Subserosal plane stay": "The claims explicitly distinguish vascularized/hazardous central and hepatocystic areas from the peripheral anterior peritoneum and fatty planes, and recommend dissection in those peripheral peritoneal/fatty (avascular) planes. This directly reflects the instruction to stay in the avascular peritoneal cleavage (subserosal) plane when separating the gallbladder from the liver.",
+            "Cystic lymph node guide": "The claims clearly identify hazardous vascular and biliary anatomy in the hepatocystic region and recommend staying lateral/superior in peripheral peritoneal/fatty planes\u2014consistent with the goal of avoiding injury to the hepatic artery. However, they do not mention identifying the cystic (Mascagni) lymph node or the specific instruction to clip the cystic artery on the gallbladder side of that node, which is the central element of the category. Therefore the match is partial.",
+            "No division without ID": "The claims explicitly mark central/right\u2011lower vascularized tissue as unsafe to cut, recommend avoiding those areas to prevent bile-duct or vascular injury, and specify safer peripheral peritoneal/fatty planes for initial dissection. Although they don't verbatim state \"don't divide until unequivocal ID,\" they convey the same precaution and safe alternative steps, directly matching the category's intent.",
+            "Inflammation bailout": "The claims emphasize avoiding cutting into vascularized/central hepatocystic tissue and instead limiting dissection to lateral/superior peritoneal and fatty planes, which aligns with the bailout principle of not performing blind cuts in hazardous/obscured anatomy. However, they do not mention the key recommended actions of the category\u2014converting to open surgery or performing a fenestrated subtotal/bailout approach\u2014nor explicitly reference dense scarring or distorted anatomy as the trigger. Therefore the fit is partial."
         }
     },
     {
@@ -393,18 +372,6 @@
                 "Surgeons should stay on the superficial liver/peritoneal plane in the upper/central-left during dissection.",
                 "Surgeons should avoid cutting in the lower/central-right and right-sided field until the cystic structures are definitively identified."
             ],
-            "Safe distance from common bile duct": [
-                "The relatively avascular superficial liver/peritoneal surface in the upper-central and mid-left field is the safest cutting corridor in this view.",
-                "In the upper-central to mid-left area, tissue planes are smooth.",
-                "In the upper-central to mid-left area there is no obvious concentrated fat, bile duct, or vascular bundle.",
-                "The upper-central to mid-left superficial liver/peritoneal surface is appropriate for blunt and cautery dissection to develop the plane further.",
-                "An unsafe zone is the region along the gallbladder fossa.",
-                "An unsafe zone is the right/lowermid field pouch of dissection, likely the hepatocystic triangle.",
-                "The hepatocystic triangle likely contains the cystic duct and cystic artery and may lie adjacent to the common hepatic/common bile duct.",
-                "The tissue in the gallbladder fossa and right/lowermid pouch appears darker, more irregular, and more vascularized.",
-                "Surgeons should stay on the superficial liver/peritoneal plane in the upper/central-left during dissection.",
-                "Surgeons should avoid cutting in the lower/central-right and right-sided field until the cystic structures are definitively identified."
-            ],
             "Infundibulum start point": [
                 "The relatively avascular superficial liver/peritoneal surface in the upper-central and mid-left field is the safest cutting corridor in this view.",
                 "In the upper-central to mid-left area, tissue planes are smooth.",
@@ -462,45 +429,29 @@
                 "The tissue in the gallbladder fossa and right/lowermid pouch appears darker, more irregular, and more vascularized.",
                 "Surgeons should stay on the superficial liver/peritoneal plane in the upper/central-left during dissection.",
                 "Surgeons should avoid cutting in the lower/central-right and right-sided field until the cystic structures are definitively identified."
-            ],
-            "Aberrant artery caution": [
-                "The relatively avascular superficial liver/peritoneal surface in the upper-central and mid-left field is the safest cutting corridor in this view.",
-                "In the upper-central to mid-left area, tissue planes are smooth.",
-                "In the upper-central to mid-left area there is no obvious concentrated fat, bile duct, or vascular bundle.",
-                "The upper-central to mid-left superficial liver/peritoneal surface is appropriate for blunt and cautery dissection to develop the plane further.",
-                "An unsafe zone is the region along the gallbladder fossa.",
-                "An unsafe zone is the right/lowermid field pouch of dissection, likely the hepatocystic triangle.",
-                "The hepatocystic triangle likely contains the cystic duct and cystic artery and may lie adjacent to the common hepatic/common bile duct.",
-                "The tissue in the gallbladder fossa and right/lowermid pouch appears darker, more irregular, and more vascularized.",
-                "Surgeons should stay on the superficial liver/peritoneal plane in the upper/central-left during dissection.",
-                "Surgeons should avoid cutting in the lower/central-right and right-sided field until the cystic structures are definitively identified."
             ]
         },
         "category_alignment_scores": {
             "Calot's triangle cleared": 0.5,
             "Cystic plate exposed": 0.5,
             "Only two structures visible": 0.0,
-            "Above the R4U line": 0.5,
-            "Safe distance from common bile duct": 1.0,
+            "Above the R4U line": 1.0,
             "Infundibulum start point": 0.5,
             "Subserosal plane stay": 1.0,
             "Cystic lymph node guide": 0.5,
             "No division without ID": 1.0,
-            "Inflammation bailout": 0.5,
-            "Aberrant artery caution": 1.0
+            "Inflammation bailout": 0.5
         },
         "category_alignment_reasonings": {
-            "Calot's triangle cleared": "The claims identify a safe, avascular superficial plane and advise staying in that area while avoiding other fields until cystic structures are identified, which is relevant to safely exposing Calot's triangle. However they do not explicitly state that the hepatocystic (Calot's) triangle has been fully cleared of fat/fibrosis or that its boundaries are unmistakable; they focus on a preferred dissection corridor rather than confirming complete clearance of the triangle. Therefore the alignment is partial.",
-            "Cystic plate exposed": "The claims describe identifying and staying on an avascular superficial liver/peritoneal plane as the safe dissection corridor, which is consistent with the intent of exposing the correct liver\u2013gallbladder plane. However, they do not mention dissecting the lower third of the gallbladder or explicitly exposing the shiny cystic plate, and they localize the guidance to an upper-central/mid-left area rather than the lower gallbladder region specified by the category. Thus the match is only partial.",
+            "Calot's triangle cleared": "The claims describe a safe, avascular superficial plane with smooth tissue and absence of concentrated fat/ducts in the upper-central/left field and advise staying on that plane while avoiding right-sided cutting until structures are identified. That aligns with the goal of identifying safe dissection planes and avoiding injury, and suggests partial clearing. However, they do not explicitly state that the hepatocystic (Calot's) triangle has been fully cleared of fat/fibrosis or that its boundaries are unmistakable, nor do they mention clearing the entire triangle\u2014they focus on a preferred corridor rather than explicit complete clearance of Calot's triangle.",
+            "Cystic plate exposed": "The claims emphasize staying on a superficial liver/peritoneal plane and identify a safe, avascular corridor for blunt/cautery dissection\u2014concepts that align with developing the correct plane off the liver surface. However, they do not mention dissecting the lower third of the gallbladder, revealing the shiny cystic plate, or explicitly confirming exposure of the cystic plate. Thus they capture the general plane-of-dissection idea but miss the specific anatomical target and intent of the category.",
             "Only two structures visible": "No claims provided",
-            "Above the R4U line": "The claims describe a safe, cephalad superficial liver/peritoneal corridor (upper\u2011central/mid\u2011left) and warn against dissection in the lower/right hepatocystic triangle adjacent to the bile duct\u2014which aligns with the safety intent of staying above a dangerous plane. However, they do not mention Rouviere's sulcus, the R4U line, or explicitly use the specific anatomic imaginary line/landmark that defines the category. Therefore the spatial principle is present but the key landmark/rule is missing.",
-            "Safe distance from common bile duct": "The claims explicitly identify a safe superficial liver/peritoneal corridor (upper-central to mid-left) and unsafe zones (gallbladder fossa and right/lowermid hepatocystic triangle), note that the hepatocystic triangle may lie adjacent to the common hepatic/common bile duct, and advise avoiding cutting there until cystic structures are identified. These details directly reflect maintaining a safe distance from the common bile duct to prevent injury.",
-            "Infundibulum start point": "The claims identify a safe superficial liver/peritoneal corridor (upper\u2011central/mid\u2011left) to begin dissection and explicitly advise avoiding the hepatocystic triangle/right lower pouch until structures are identified\u2014which matches the intent of starting dissection on safe lateral/medial edges or cystic plate to mobilize the gallbladder. However, they do not explicitly mention the infundibulum\u2013cystic duct junction, Rouviere\u2019s sulcus, or the cystic plate by name, so some key landmark details from the category are missing.",
-            "Subserosal plane stay": "The claims explicitly identify an avascular superficial liver/peritoneal surface as the safest dissection corridor, describe smooth tissue planes and absence of ducts/vessels there, recommend blunt/cautery dissection to develop that plane, and warn against cutting in more vascularized areas (gallbladder fossa/hepatocystic triangle) until structures are identified. These statements directly capture the intent to stay in the avascular peritoneal cleavage plane when separating the gallbladder from the liver.",
-            "Cystic lymph node guide": "The claims describe safe vs unsafe dissection zones, caution about the hepatocystic triangle containing the cystic duct/artery, and advise staying on a superficial avascular plane until cystic structures are identified. These points are related to the broader goal of avoiding hepatic artery injury. However, they do not mention the cystic lymph node itself or the specific technique of using the node as a landmark and clipping the artery on the gallbladder side of the node. Because the key element of this category (identify and use the cystic node to guide clipping) is missing, the alignment is partial.",
-            "No division without ID": "The claims explicitly mark the hepatocystic triangle/right lower-mid field as unsafe because it likely contains the cystic duct and artery and advise staying on a superficial safe plane and avoiding cutting in the right/lower fields until cystic structures are definitively identified. This directly reflects the principle of not dividing any duct or vessel without unequivocal identification.",
-            "Inflammation bailout": "The claims clearly emphasize avoiding blind cutting in the hepatocystic/Calot's triangle, staying on a superficial safe plane, and deferring dissection in the risky gallbladder fossa/right-sided field until structures are identified \u2014 all of which support the core safety intent of an inflammation bailout (avoid hazardous dissection). However, they do not mention the specific bailout actions the category requires (convert to open surgery or perform a fenestrated/subtotal approach) when dense scarring/distorted anatomy prevents safe identification. Because the recommended avoidance measures are consistent with the category's goals but the explicit conversion/subtotal bailout guidance is missing, the alignment is partial.",
-            "Aberrant artery caution": "The claims identify avascular safe corridors, note vascularized/irregular unsafe zones (gallbladder fossa, hepatocystic triangle), explicitly state the hepatocystic triangle likely contains the cystic artery and may lie adjacent to major ducts, and recommend avoiding cutting until cystic structures are definitively identified. These points directly address the need to exercise caution around arteries (including variant/aberrant vessels) to prevent vascular injury."
+            "Above the R4U line": "The claims specify a cephalad/superior safe corridor (upper-central/mid-left superficial liver/peritoneal plane) and identify the lower/right hepatocystic triangle/gallbladder fossa as unsafe because of nearby cystic/common ducts and vascularity. They explicitly advise staying superficial and avoiding lower/right cutting until cystic structures are identified\u2014conveying the same spatial safety rule as remaining above the R4U line even though the landmark name (Rouviere's sulcus/R4U) is not used. This fully captures the intent of the category.",
+            "Infundibulum start point": "The claims identify a specific safe superficial plane (upper-central to mid-left liver/peritoneal surface) and advise avoiding the hepatocystic triangle/gallbladder fossa until cystic structures are identified\u2014which matches the category's intent of starting dissection in a safe plane or at lateral/medial edges to gain mobility. However, the claims do not mention the infundibulum\u2013cystic duct junction, Rouviere\u2019s sulcus, or the cystic plate explicitly, so they do not fully capture all the anatomical start-point options described by the category.",
+            "Subserosal plane stay": "The claims explicitly identify an avascular superficial liver/peritoneal surface as the safest dissection corridor, describe its smooth, low-vascular characteristics, recommend blunt/cautery dissection there, and contrast it with vascularized/unsafe zones (gallbladder fossa and hepatocystic triangle). These observations and directives directly match and fully capture the intent of remaining in the avascular peritoneal cleavage (subserosal) plane when separating the gallbladder from the liver.",
+            "Cystic lymph node guide": "The claims describe safe superficial dissection corridors, caution about the hepatocystic triangle, and the need to avoid cutting until cystic structures are identified\u2014concepts related to avoiding hepatic artery injury. However they do not mention identifying the cystic lymph node or using it as the landmark to clip the artery on the gallbladder side. Because the specific lymph-node\u2013based guidance (and clipping distal to it) is absent, the alignment is partial.",
+            "No division without ID": "The claims explicitly identify safe superficial dissection corridors and flag the hepatocystic triangle/gallbladder fossa as unsafe until anatomy is clear, advising surgeons to avoid cutting in those right/lower areas until the cystic structures are definitively identified. This directly captures the rule of not dividing ducts or vessels without unequivocal identification.",
+            "Inflammation bailout": "The claims identify distorted/vascularized tissue, unsafe zones (hepatocystic triangle, gallbladder fossa), and explicitly advise avoiding cutting and staying on a superficial safe plane \u2014 all consistent with the rationale to avoid blind dissection when anatomy is unclear. However, they do not mention the key bailout actions specified by the category (convert to open surgery or perform a fenestrated subtotal cholecystectomy). Therefore the alignment is partial."
         }
     },
     {
@@ -682,7 +633,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5555555555555556,
+        "final_alignment_score": 0.5,
         "safe_iou": 0.02564102564102564,
         "unsafe_iou": 0.5671641791044776,
         "claims_by_category": {
@@ -700,13 +651,6 @@
             ],
             "Only two structures visible": [],
             "Above the R4U line": [
-                "The safest tissue to open is the peripheral, superficial peritoneum and fat located away from the instrument and the dark central dissection plane.",
-                "Upper-left and superior peripheral areas appear as relatively avascular peritoneal surfaces and fatty planes.",
-                "The central and lower-central/right zones around the instrument trajectory and the darker tissues adjacent to the liver edge are unsafe.",
-                "Cautery smoke and adhesions in the central and lower zones can obscure critical structures."
-            ],
-            "Safe distance from common bile duct": [
-                "The operative view shows the instrument centered near the gallbladder infundibulum and the hepatocystic triangle.",
                 "The safest tissue to open is the peripheral, superficial peritoneum and fat located away from the instrument and the dark central dissection plane.",
                 "Upper-left and superior peripheral areas appear as relatively avascular peritoneal surfaces and fatty planes.",
                 "The central and lower-central/right zones around the instrument trajectory and the darker tissues adjacent to the liver edge are unsafe.",
@@ -744,40 +688,29 @@
                 "Upper-left and superior peripheral areas appear as relatively avascular peritoneal surfaces and fatty planes.",
                 "The central and lower-central/right zones around the instrument trajectory and the darker tissues adjacent to the liver edge are unsafe.",
                 "Cautery smoke and adhesions in the central and lower zones can obscure critical structures."
-            ],
-            "Aberrant artery caution": [
-                "The operative view shows the instrument centered near the gallbladder infundibulum and the hepatocystic triangle.",
-                "The safest tissue to open is the peripheral, superficial peritoneum and fat located away from the instrument and the dark central dissection plane.",
-                "Upper-left and superior peripheral areas appear as relatively avascular peritoneal surfaces and fatty planes.",
-                "The central and lower-central/right zones around the instrument trajectory and the darker tissues adjacent to the liver edge are unsafe.",
-                "Cautery smoke and adhesions in the central and lower zones can obscure critical structures."
             ]
         },
         "category_alignment_scores": {
-            "Calot's triangle cleared": 1.0,
-            "Cystic plate exposed": 0.5,
+            "Calot's triangle cleared": 0.5,
+            "Cystic plate exposed": 0.0,
             "Only two structures visible": 0.0,
             "Above the R4U line": 0.5,
-            "Safe distance from common bile duct": 0.5,
-            "Infundibulum start point": 1.0,
+            "Infundibulum start point": 0.5,
             "Subserosal plane stay": 1.0,
-            "Cystic lymph node guide": 0.0,
+            "Cystic lymph node guide": 0.5,
             "No division without ID": 0.5,
-            "Inflammation bailout": 0.5,
-            "Aberrant artery caution": 0.5
+            "Inflammation bailout": 1.0
         },
         "category_alignment_reasonings": {
-            "Calot's triangle cleared": "The claims identify peripheral peritoneum/fat as safe to open and describe central/lower zones with adhesions, darker fibrotic tissue, and obscuring cautery smoke that hide critical structures. These observations directly indicate that the hepatocystic (Calot's) triangle is not cleared centrally and that its landmarks are obscured, matching the expert requirement to fully clear fat/fibrosis so boundaries are unmistakable.",
-            "Cystic plate exposed": "The claims discuss safe vs unsafe dissection planes (peripheral superficial peritoneum/fat being safer, central and lower areas near the liver edge being unsafe) which is related to choosing the correct plane of dissection. However they do not mention exposing the cystic plate or intentionally dissecting the lower third of the gallbladder off the liver to reveal the shiny cystic plate \u2014 and in fact label tissues adjacent to the liver edge as unsafe. Thus they only partially address the category and omit its key directive.",
+            "Calot's triangle cleared": "The claims identify safe peripheral peritoneal/fatty planes versus unsafe central/darker zones and note that adhesions and smoke can obscure critical structures\u2014points that relate to the need for cautious dissection around Calot's triangle. However they do not explicitly state that the hepatocystic triangle must be fully cleared of fat/fibrosis so its boundaries are unmistakable, nor do they describe actively clearing those tissues. Therefore the claims are relevant but incomplete for this specific category.",
+            "Cystic plate exposed": "The claims emphasize staying peripheral and avoiding the central/lower liver-edge zones (labeling them unsafe) and do not mention dissecting the lower third of the gallbladder to expose the shiny cystic plate. This contradicts the category's instruction to dissect off the lower gallbladder to reveal the cystic plate, so the claims misinterpret and oppose the category's intent.",
             "Only two structures visible": "No claims provided",
-            "Above the R4U line": "The claims clearly distinguish safer superior/peripheral peritoneal/fat planes from unsafe central and lower zones near the liver edge and instrument trajectory, which captures the general intent of staying cephalad and avoiding hazardous areas. However they do not mention Rouviere's sulcus, the R4U line, or the specific instruction to remain cephalad to that anatomical landmark, so the precise spatial rule of the category is not fully represented.",
-            "Safe distance from common bile duct": "The claims advise avoiding the central/darker dissection plane near the hepatocystic triangle and favor peripheral, avascular peritoneal/fatty areas \u2014 advice that supports staying away from dangerous central biliary structures. However, the claims do not explicitly mention the common bile duct or define a safe distance or landmark relative to it, so they capture the intent but lack the specific CBD-focused detail required by the category.",
-            "Infundibulum start point": "The claims explicitly identify the instrument near the infundibulum/hepatocystic triangle and recommend opening peripheral, superficial peritoneum and fatty planes (described as relatively avascular) while avoiding the darker central/liver-adjacent zones where adhesions and smoke obscure structures. This directly corresponds to the category\u2019s advice to begin dissection at the infundibulum or at lateral/medial peripheral edges (safe avascular planes) rather than the central risky areas. Although Rouviere\u2019s sulcus and the cystic plate are not named, the claims convey the same safe-start versus unsafe-central-plane guidance.",
-            "Subserosal plane stay": "The claims explicitly recommend dissecting the peripheral, superficial peritoneum and fatty planes described as relatively avascular and warn against the darker central tissues adjacent to the liver and areas obscured by adhesions or cautery\u2014i.e., they direct staying in an avascular peritoneal cleavage plane when separating gallbladder from liver. These observations and recommendations directly capture the intent of the subserosal-plane safety principle.",
-            "Cystic lymph node guide": "The claims describe general safe vs unsafe dissection zones (peripheral avascular peritoneum vs darker central/adjacent-to-liver unsafe areas) and note obscuration by smoke/adhesions, but they do not mention identifying the cystic (Calot's) lymph node or using it as a landmark to place the artery clip on the gallbladder side. Therefore they do not address the specific guidance of the category.",
-            "No division without ID": "The claims identify safe (peripheral, avascular peritoneum/fat) versus unsafe (central/darker zones, near instrument trajectory, obscured by smoke/adhesions) areas to dissect, which supports the principle of avoiding division where critical structures may be hidden. However they do not explicitly state the core rule to never divide a duct or vessel until it has been unequivocally identified as the cystic structure, nor do they mention identifying the cystic duct/artery specifically. Thus they align with the intent but lack the explicit identification requirement.",
-            "Inflammation bailout": "The claims identify that central/lower zones are unsafe, describe peripheral superficial peritoneum and fat as safer areas to open, and note obscuration of critical structures by adhesions and smoke \u2014 all of which support avoiding blind central dissection. However, they do not explicitly state the recommended bailout actions in the category (convert to open surgery or perform a fenestrated subtotal cholecystectomy). Thus they align with the avoidance rationale but omit the explicit conversion/bailout directive.",
-            "Aberrant artery caution": "The claims advise avoiding central/darker zones near the hepatocystic triangle, favor opening peripheral avascular peritoneum/fat, and warn that smoke/adhesions can obscure critical structures\u2014measures that reduce risk of vascular injury. However they do not explicitly mention aberrant/variant arteries, identification strategies, or specific actions to prevent injury to anomalous vessels. Thus they are relevant but incomplete for the expert category."
+            "Above the R4U line": "The claims clearly distinguish safer superior/peripheral peritoneal/fatty planes from unsafe central/lower zones near the liver edge and note obscuration of landmarks\u2014which aligns with the intent to avoid areas near the common bile duct. However they do not reference Rouviere's sulcus, the R4U imaginary line, or the explicit instruction to keep dissection cephalad/along the inferior edge of the gallbladder. Thus they capture the general safety concept but miss the specific spatial landmark rule.",
+            "Infundibulum start point": "The claims identify the infundibulum region and recommend beginning dissection in peripheral, superficial peritoneal/fatty planes away from a darker central unsafe zone, which aligns with the idea of starting laterally/peripherally to find safe tissue. However, they do not explicitly state the key specific start points named in the category (the infundibulum\u2013cystic duct junction, lateral/medial edges above Rouviere\u2019s sulcus, or dissection along the cystic plate), nor do they reference Rouviere\u2019s sulcus or the cystic plate. Therefore the alignment is partial.",
+            "Subserosal plane stay": "The claims explicitly identify peripheral superficial peritoneum and fatty planes as the safest, describe them as relatively avascular, and advise avoiding the darker central tissues adjacent to the liver edge\u2014directly reflecting the instruction to remain in the avascular peritoneal cleavage (subserosal) plane. Mention of obscuration by smoke/adhesions further supports the rationale for staying in the safe plane. These observations fully capture the category\u2019s intent.",
+            "Cystic lymph node guide": "The claims describe which peripheral peritoneal/fatty areas are safer to open and warn against central/darker zones where adhesions and smoke obscure anatomy \u2014 advice relevant to choosing safer dissection planes. However, they do not mention identifying the cystic lymph node or using it as a landmark to place the arterial clip on the gallbladder side to protect the hepatic artery, which is the specific intent of the category. Therefore the alignment is partial.",
+            "No division without ID": "The claims emphasize avoiding central/darker zones where anatomy is obscured and recommend dissecting peripheral, avascular peritoneum and fat\u2014which aligns with the precautionary intent of not cutting in uncertain areas. However, they do not explicitly state the core rule\u2014never divide a duct or vessel until it has been unequivocally identified\u2014nor describe how identification should be confirmed. Thus the claims are relevant but incomplete.",
+            "Inflammation bailout": "The claims identify central scarring/obscured zones as unsafe, note adhesions and smoke that hide critical landmarks, and explicitly recommend opening peripheral, avascular peritoneal/fatty planes away from the dark central dissection \u2014 all of which support abandoning risky central dissection and using a safer peripheral/fenestrating approach. Although conversion to open is not named, the guidance to avoid blind cutting in the distorted central area and to use peripheral fenestration directly reflects the intent of an inflammation bailout strategy."
         }
     },
     {
@@ -910,15 +843,6 @@
                 "The hepatocystic triangle and liver bed (right/lower quadrant) contain darker, more vascular tissue that should be treated as unsafe until anatomy is confirmed.",
                 "Unsafe zones are designated broadly on the right and inferior parts of the image where tissue is more vascular, adherent, or represents liver parenchyma."
             ],
-            "Safe distance from common bile duct": [
-                "The instrument tip is centered on a cleared, relatively avascular plane just anterior to the gallbladder/cystic duct region.",
-                "The lighter, yellow-pink tissue around the instrument appears suitable for careful atraumatic dissection.",
-                "A compact central zone around the instrument is marked as safe for dissection.",
-                "Darker, more vascular tissue beneath the liver edge is identified as an unsafe region.",
-                "The right and lower quadrant of the field includes the expected hepatocystic triangle and liver bed where the cystic duct, cystic artery, and hepatic structures converge.",
-                "The hepatocystic triangle and liver bed (right/lower quadrant) contain darker, more vascular tissue that should be treated as unsafe until anatomy is confirmed.",
-                "Unsafe zones are designated broadly on the right and inferior parts of the image where tissue is more vascular, adherent, or represents liver parenchyma."
-            ],
             "Infundibulum start point": [
                 "The instrument tip is centered on a cleared, relatively avascular plane just anterior to the gallbladder/cystic duct region.",
                 "The lighter, yellow-pink tissue around the instrument appears suitable for careful atraumatic dissection.",
@@ -958,13 +882,6 @@
                 "Darker, more vascular tissue beneath the liver edge is identified as an unsafe region.",
                 "The hepatocystic triangle and liver bed (right/lower quadrant) contain darker, more vascular tissue that should be treated as unsafe until anatomy is confirmed.",
                 "Unsafe zones are designated broadly on the right and inferior parts of the image where tissue is more vascular, adherent, or represents liver parenchyma."
-            ],
-            "Aberrant artery caution": [
-                "The instrument tip is centered on a cleared, relatively avascular plane just anterior to the gallbladder/cystic duct region.",
-                "Darker, more vascular tissue beneath the liver edge is identified as an unsafe region.",
-                "The right and lower quadrant of the field includes the expected hepatocystic triangle and liver bed where the cystic duct, cystic artery, and hepatic structures converge.",
-                "The hepatocystic triangle and liver bed (right/lower quadrant) contain darker, more vascular tissue that should be treated as unsafe until anatomy is confirmed.",
-                "Unsafe zones are designated broadly on the right and inferior parts of the image where tissue is more vascular, adherent, or represents liver parenchyma."
             ]
         },
         "category_alignment_scores": {
@@ -972,26 +889,22 @@
             "Cystic plate exposed": 0.5,
             "Only two structures visible": 0.5,
             "Above the R4U line": 0.5,
-            "Safe distance from common bile duct": 0.5,
             "Infundibulum start point": 0.5,
             "Subserosal plane stay": 1.0,
             "Cystic lymph node guide": 0.5,
             "No division without ID": 1.0,
-            "Inflammation bailout": 0.5,
-            "Aberrant artery caution": 0.5
+            "Inflammation bailout": 0.5
         },
         "category_alignment_reasonings": {
-            "Calot's triangle cleared": "The claims explicitly describe a cleared, relatively avascular plane anterior to the gallbladder/cystic duct, suitable tissue for atraumatic dissection, and identification of the hepatocystic triangle where relevant structures converge\u2014indicating the triangle boundaries are recognizable and safe for dissection. These statements directly match the category's requirement that the hepatocystic triangle be fully cleared of fat/fibrosis with unmistakable boundaries.",
-            "Cystic plate exposed": "The claims describe a cleared, relatively avascular plane anterior to the gallbladder/cystic duct and a safe zone suitable for atraumatic dissection, which is consistent with being in the correct dissection plane. However they do not explicitly state that the lower third of the gallbladder has been dissected off the liver or that the shiny cystic plate is visualized. Therefore they partially but not fully capture the category requirement.",
-            "Only two structures visible": "The claims reference the hepatocystic triangle and mention the cystic duct and cystic artery, but they do not state that only those two structures are visualized entering the gallbladder. They also mention \"hepatic structures\" converging in the field, which implies additional anatomy is present. Overall the statements are related but lack the specific, exclusive confirmation required by the category.",
-            "Above the R4U line": "The claims describe a central, avascular safe plane and mark darker, vascular tissue beneath the liver edge and in right/inferior zones as unsafe\u2014which aligns with the practical intent of avoiding dissection low/adjacent to liver parenchyma where the bile duct lies. However, they do not mention Rouviere's sulcus, the R4U imaginary line, or the explicit instruction to remain cephalad to that line; the specific spatial landmark-based rule is missing.",
-            "Safe distance from common bile duct": "The claims identify a central avascular safe zone and mark darker, vascular areas around the hepatocystic triangle and liver bed as unsafe, which relates to avoiding dissection near critical biliary/vascular structures. However they do not explicitly mention the common bile duct or specify maintaining a measured safe distance from the CBD\u2014so they are relevant but omit the specific CBD-focused spatial guidance required by the category.",
-            "Infundibulum start point": "The claims clearly identify a cleared, relatively avascular plane anterior to the gallbladder/cystic duct region and mark a compact central safe zone for starting dissection, which directly matches the core idea of beginning at the infundibulum\u2013cystic duct junction. They also correctly designate the liver edge/hepatocystic triangle as more vascular/unsafe until anatomy is confirmed. However, the claims do not mention the alternative start sites described in the category (lateral/medial edges above Rouviere\u2019s sulcus or dissection along the cystic plate) or explicitly reference those specific landmarks, so they do not fully capture the complete set of guidance in the category.",
-            "Subserosal plane stay": "The claims explicitly identify a cleared, relatively avascular plane for dissection, describe tissue appearance suitable for atraumatic subserosal dissection, and delineate darker vascular liver/liver-bed areas as unsafe \u2014 directly reflecting the instruction to stay in the avascular peritoneal cleavage plane when separating gallbladder from liver. This fully captures the category's intent.",
-            "Cystic lymph node guide": "The claims describe safe vs. unsafe planes in the hepatocystic triangle, note an avascular dissection plane anterior to the cystic duct/gallbladder, and warn that the triangle contains vascular tissue until anatomy is confirmed\u2014points relevant to protecting the hepatic artery. However they do not mention identifying the cystic (Calot's) lymph node or the specific instruction to clip the artery on the gallbladder side of that node, which is the central element of this category. Therefore the alignment is partial.",
-            "No division without ID": "The claims explicitly distinguish a safe, avascular dissection plane from darker, vascular/adhesive areas and repeatedly state that hepatocystic triangle/liver-bed tissue should be treated as unsafe until anatomy is confirmed. This directly captures the core instruction to avoid dividing any duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.",
-            "Inflammation bailout": "The claims identify areas of dense/vascular/adherent tissue and mark them as unsafe until anatomy is confirmed, which supports the rationale for avoiding standard dissection when anatomy is obscured. However, they do not explicitly state the recommended bailout actions (conversion to open surgery or fenestrated subtotal cholecystectomy) nor clearly reference dense scarring/distorted Calot's anatomy. Therefore they only partially capture the category's intended guidance.",
-            "Aberrant artery caution": "The claims clearly flag vascular/unsafe regions around the hepatocystic triangle and liver bed and emphasize treating more vascular tissue as unsafe until anatomy is confirmed, which aligns with the general need for vascular caution. However, they do not specifically mention aberrant or variant arteries, nor provide guidance about identifying or managing aberrant arterial anatomy. Therefore the match to the specific \"aberrant artery\" caution is incomplete."
+            "Calot's triangle cleared": "The claims explicitly describe a cleared, relatively avascular plane anterior to the cystic structures, tissue suitable for atraumatic dissection, a central safe dissection zone, and identification of the hepatocystic triangle and liver bed\u2014all indicating that fat/fibrosis has been removed and the triangle boundaries are recognizable. These observations directly match the category's requirement that the hepatocystic triangle be fully cleared so its boundaries are unmistakable.",
+            "Cystic plate exposed": "The claims describe a cleared, relatively avascular plane immediately anterior to the gallbladder/cystic duct and a local safe zone for atraumatic dissection\u2014features consistent with being on the correct plane where the cystic plate would be exposed. However, they do not explicitly state that the lower third of the gallbladder has been dissected off the liver or that the shiny cystic plate is visualized, so the specific requirement of exposing the cystic plate is not fully confirmed.",
+            "Only two structures visible": "The claims reference the cystic duct/cystic artery region and a cleared, relatively avascular hepatocystic plane\u2014elements relevant to safe identification\u2014but they do not state that only the two structures entering the gallbladder are visible or confirm absence of additional structures. Thus they partially address the category but omit the key criterion that only two structures should be seen before clipping/cutting.",
+            "Above the R4U line": "The claims identify a central avascular safe plane anterior to the gallbladder and mark darker, vascular tissue beneath the liver edge and in right/inferior zones as unsafe\u2014which aligns with the general intent of avoiding inferior/liver-adjacent regions to protect the bile duct. However, they do not mention Rouviere's sulcus, the R4U (Rouviere\u2013segment IV) line, or the explicit instruction to remain cephalad to that imaginary safety line, so the specific spatial rule of the category is not captured.",
+            "Infundibulum start point": "The claims clearly identify a cleared, relatively avascular plane anterior to the gallbladder/cystic duct and mark a central safe zone for dissection while designating the liver bed/hepatocystic triangle as darker/unsafe\u2014which corresponds to beginning dissection at the infundibular/cystic duct region and avoiding hepatic parenchyma. However, they do not mention the alternative safe start points described in the category (lateral/medial edges above Rouviere\u2019s sulcus or along the cystic plate) nor explicitly reference Rouviere\u2019s sulcus, so the full scope of the category is not captured.",
+            "Subserosal plane stay": "The claims explicitly identify a cleared, relatively avascular plane for dissection, describe the lighter tissue as suitable for atraumatic subserosal dissection, and contrast this with darker, vascular liver parenchyma that should be avoided. They directly reflect the principle of staying in the avascular peritoneal cleavage plane and marking adjacent vascular/liver tissue as unsafe until anatomy is confirmed.",
+            "Cystic lymph node guide": "The claims describe identifying a cleared, relatively avascular plane anterior to the gallbladder, delineating safe vs unsafe (vascular/liver) zones in the hepatocystic triangle, and warning about vascular tissue\u2014points related to safe dissection around the cystic structures. However, they do not mention the cystic lymph node or the specific strategy of identifying the node and clipping the cystic artery on the gallbladder side of that node to avoid injuring the hepatic artery. Because the node-specific landmark and clipping guidance are missing, the alignment is partial.",
+            "No division without ID": "The claims explicitly distinguish a safe, cleared avascular dissection plane from darker, more vascular/adhesive zones (hepatocystic triangle and liver bed) and state these areas should be treated as unsafe \"until anatomy is confirmed.\" That directly reflects the rule of not dividing ducts or vessels until they are unequivocally identified as cystic structures. The statements about safe central zone versus broadly designated unsafe regions align fully with the category intent.",
+            "Inflammation bailout": "The claims identify vascular, adherent liver/hepatocystic tissue as unsafe and advise treating those regions cautiously until anatomy is confirmed, which corresponds to the core intent of avoiding blind cutting in distorted/inflamed anatomy. However, they do not mention or recommend the specific bailout actions (conversion to open surgery or fenestrated subtotal cholecystectomy) required by the category. Therefore the match is partial."
         }
     },
     {
@@ -1119,16 +1032,6 @@
                 "Tissue in the hepatocystic triangle/infundibular region is more vascular and its anatomy is critical.",
                 "The surgical instrument is working in the hepatocystic triangle/infundibular region."
             ],
-            "Safe distance from common bile duct": [
-                "Active dissection is occurring centrally to the right of center in the image.",
-                "The more lateral and superior areas over the gallbladder body are the safest zones for cutting.",
-                "The anterior fatty plane is a safe cutting zone because tissue planes are well defined and relatively avascular.",
-                "The unsafe zones are centered on the midline/right of center and extend into the lower-right quadrant.",
-                "The unsafe area corresponds to the hepatocystic triangle (infundibular region).",
-                "The hepatocystic triangle/infundibular region contains the cystic duct, cystic artery, and adjacent hepatic structures.",
-                "Tissue in the hepatocystic triangle/infundibular region is more vascular and its anatomy is critical.",
-                "The surgical instrument is working in the hepatocystic triangle/infundibular region."
-            ],
             "Infundibulum start point": [
                 "Active dissection is occurring centrally to the right of center in the image.",
                 "The more lateral and superior areas over the gallbladder body are the safest zones for cutting.",
@@ -1163,42 +1066,29 @@
                 "Tissue in the hepatocystic triangle/infundibular region is more vascular and its anatomy is critical.",
                 "The surgical instrument is working in the hepatocystic triangle/infundibular region."
             ],
-            "Inflammation bailout": [],
-            "Aberrant artery caution": [
-                "The more lateral and superior areas over the gallbladder body are the safest zones for cutting.",
-                "The anterior fatty plane is a safe cutting zone because tissue planes are well defined and relatively avascular.",
-                "The unsafe zones are centered on the midline/right of center and extend into the lower-right quadrant.",
-                "The unsafe area corresponds to the hepatocystic triangle (infundibular region).",
-                "The hepatocystic triangle/infundibular region contains the cystic duct, cystic artery, and adjacent hepatic structures.",
-                "Tissue in the hepatocystic triangle/infundibular region is more vascular and its anatomy is critical.",
-                "The surgical instrument is working in the hepatocystic triangle/infundibular region."
-            ]
+            "Inflammation bailout": []
         },
         "category_alignment_scores": {
             "Calot's triangle cleared": 0.5,
             "Cystic plate exposed": 0.5,
             "Only two structures visible": 0.5,
             "Above the R4U line": 0.5,
-            "Safe distance from common bile duct": 0.5,
-            "Infundibulum start point": 1.0,
+            "Infundibulum start point": 0.5,
             "Subserosal plane stay": 1.0,
             "Cystic lymph node guide": 0.5,
-            "No division without ID": 0.5,
-            "Inflammation bailout": 0.0,
-            "Aberrant artery caution": 0.5
+            "No division without ID": 1.0,
+            "Inflammation bailout": 0.0
         },
         "category_alignment_reasonings": {
-            "Calot's triangle cleared": "The claims correctly identify the hepatocystic (Calot's) triangle, note the critical vascular structures present, and that the instrument is operating there\u2014all directly relevant to the category. However, they do not state whether the triangle has been cleared of fat/fibrosis or that its boundaries are unmistakable (the core requirement of the category). Therefore they only partially capture the category's intent.",
-            "Cystic plate exposed": "The claims discuss grasping the fundus and identify lateral/superior and anterior fatty planes as safe cutting zones on the gallbladder body, which relates to choosing safe dissection areas. However they do not mention dissecting the lower third off the liver, revealing the shiny cystic plate, or ensuring the correct plane adjacent to the liver surface \u2014 the specific intent of the category. Thus the claims are related but omit the key requirement of exposing the cystic plate.",
-            "Only two structures visible": "The claims identify the hepatocystic (infundibular) region, note it contains the cystic duct and artery, emphasize critical vascular anatomy, and state the instrument is working there\u2014so they are relevant to the context of structure identification. However, they do not state or confirm the specific safety rule that only two structures (cystic duct and artery) should be seen entering the gallbladder before clipping/cutting; they even mention adjacent hepatic structures, which implies additional anatomy may be present. Thus the alignment is partial.",
-            "Above the R4U line": "The claims identify safe (lateral/superior gallbladder body, anterior fatty plane) versus unsafe (central/right, hepatocystic triangle/infundibular region) zones and note the instrument is working in the hepatocystic triangle \u2014 all relevant to avoiding biliary injury. However, they do not mention Rouviere's sulcus, the R4U line, or the explicit requirement to remain cephalad to that line (or dissection along the inferior gallbladder edge). Thus they address the general safe/unsafe spatial concept but omit the specific R4U landmark rule.",
-            "Safe distance from common bile duct": "The claims identify the hepatocystic/infundibular region as the unsafe zone and recommend lateral/superior and anterior fatty planes as safer areas for cutting, which is directly relevant to avoiding critical biliary structures. However, they do not explicitly mention the common bile duct or the explicit requirement to maintain a specific safe distance from it. Because the connection to protecting the CBD is implicit rather than stated, the alignment is partial.",
-            "Infundibulum start point": "The claims identify the lateral/superior gallbladder body and the anterior fatty plane as safe cutting zones, and explicitly mark the hepatocystic triangle/infundibular region as the unsafe, more vascular area where dissection is currently occurring. This directly matches the guidance to begin dissection away from the infundibulum (at lateral/medial edges or along the cystic plate) or at the infundibulum\u2013cystic duct junction to remain in safe planes.",
-            "Subserosal plane stay": "The claims explicitly identify avascular/relatively avascular safe dissection planes (lateral/superior gallbladder body and the anterior fatty plane) and contrast these with the hepatocystic/infundibular region as a more vascular, unsafe area where important structures lie \u2014 directly reflecting the instruction to stay in the avascular subserosal/peritoneal cleavage plane when separating the gallbladder from the liver. The statements are specific and on-point, even noting the instrument is in the risky zone.",
-            "Cystic lymph node guide": "The claims correctly identify the hepatocystic (infundibular) region and note its vascularity and inclusion of the cystic artery\u2014information relevant to the rationale behind using a landmark to avoid hepatic artery injury. However, they do not mention the cystic (Calot's) lymph node itself, nor the specific technique of identifying the node and clipping the artery on the gallbladder side of the node. Because the key actionable element (using the node as a clipping guide) is missing, the alignment is partial.",
-            "No division without ID": "The claims clearly localize dissection to the hepatocystic/infundibular region and note that this area contains the cystic duct and artery and is more vascular\u2014points that underscore the risk and relevance of identifying structures. However, they do not explicitly state the key procedural rule of not dividing any duct or vessel until it is unequivocally identified as the cystic structure. Therefore the claims support the category indirectly but omit the explicit identification/avoid-division directive.",
-            "Inflammation bailout": "No claims provided",
-            "Aberrant artery caution": "The claims clearly identify the hepatocystic (infundibular) region as more vascular, containing the cystic artery, and as an unsafe zone where instruments are working \u2014 all directly relevant to avoiding vascular injury. They also describe safer lateral/superior avascular planes. However, they do not mention aberrant arterial anatomy, variant arteries, or specific cautionary steps when aberrant arteries are present. Because the category specifically concerns aberrant arteries, the claims are relevant but incomplete."
+            "Calot's triangle cleared": "The claims correctly identify the hepatocystic (Calot's) triangle/infundibular region, note its critical vascular anatomy and that instruments are working there\u2014all relevant to the category's focus on that anatomical zone. However, they do not state whether the triangle has been cleared of fat/fibrosis or whether its boundaries are unmistakable, which is the core requirement of the category.",
+            "Cystic plate exposed": "The claims discuss grasping position and identify lateral/superior and anterior fatty planes as safe cutting zones, which relate to choosing safe dissection areas on the gallbladder. However, they do not mention dissecting the lower third off the liver or revealing the shiny cystic plate, and thus fail to capture the specific requirement to expose the cystic plate and ensure the correct dissection plane.",
+            "Only two structures visible": "The claims correctly identify that the instrument is in the hepatocystic (infundibular) triangle and note it contains the cystic duct and artery and other adjacent hepatic structures, and that the anatomy here is vascular and critical. However, they do not state or confirm the specific safety requirement that only the two structures (cystic duct and artery) should be seen entering the gallbladder before clipping/cutting. Thus they are relevant but do not fully capture the \"only two structures visible\" rule.",
+            "Above the R4U line": "The claims identify safe versus unsafe zones relative to the gallbladder body and hepatocystic triangle (noting the triangle/infundibular region is vascular and unsafe and that lateral/superior/anterior fatty planes are safer). That conceptually matches the intent of avoiding the hepatocystic triangle/CBD area. However, the claims do not reference the specific R4U/Rouviere's sulcus landmark or the instruction to remain cephalad to an imaginary line from Rouviere's sulcus to segment IV (the explicit \"line of safety\") \u2014 a key spatial rule in this category. Because the core safety landmark and explicit spatial rule are missing, the alignment is partial.",
+            "Infundibulum start point": "The claims correctly identify lateral/superior zones over the gallbladder body and the anterior fatty plane/cystic plate as safer dissection sites, and they note that the hepatocystic triangle contains critical vascular structures \u2014 all of which align with the category's recommendation to use lateral/medial edges or the cystic plate. However, the claims also label the hepatocystic triangle/infundibular region as unsafe and state the instrument is working there, which conflicts with the category\u2019s allowance to begin dissection at the infundibulum\u2013cystic duct junction. Because the set both supports and contradicts key elements of the category, the alignment is partial.",
+            "Subserosal plane stay": "The claims identify and distinguish avascular, well-defined safe planes over the gallbladder body (e.g., anterior fatty plane, lateral/superior areas) versus the vascular, anatomy-critical hepatocystic/infundibular region where instruments are currently working. This directly reflects the instruction to stay in the avascular peritoneal/subserosal cleavage plane when separating the gallbladder from the liver and to avoid vascular hepatocystic areas.",
+            "Cystic lymph node guide": "The claims locate the activity in the hepatocystic (infundibular) triangle and note it contains the cystic artery/duct and is highly vascular \u2014 relevant background for the cystic lymph node guide. However they do not mention identifying the cystic lymph node or the specific advice to clip the artery on the gallbladder side of that node to protect the hepatic artery. Because the key instructional element (node identification and clipping relative to it) is missing, the alignment is partial.",
+            "No division without ID": "The claims explicitly locate active dissection in the hepatocystic (infundibular) triangle, note that this region contains the cystic duct and artery and is more vascular/critical, and flag it as an unsafe zone. These observations directly justify the expert rule of not dividing any duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.",
+            "Inflammation bailout": "No claims provided"
         }
     }
 ]
