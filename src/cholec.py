@@ -417,6 +417,12 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
     Returns:
         float: The alignment score for the claims in the category.
     """
+    if len(claims) == 0:
+        return {
+            "alignment_label": "none",
+            "alignment_score": 0.0,
+            "reasoning": "No claims provided"
+        }
     prompt = category_alignment_cholec.format(
         f'{category} - {category_mapping_cholec["name2description"][category]}', 
         '\n'.join(claims) if isinstance(claims, list) and len(claims) > 0 else 'N/A'
