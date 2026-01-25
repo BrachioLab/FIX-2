@@ -1,0 +1,592 @@
+[
+    {
+        "input": "4.0: HR, 91.0; 4.0: RR, 17.0; 4.0: SpO2, 95.0; 4.0: SBP, 137.0; 4.0: DBP, 78.0; 4.0: MAP, 97.6666666666667; 4.0: Temp, 98.2; 13.0: POC, HCG, ISTAT QUALITATIVE: Negative; 13.0: POC, BHCG, ISTAT QUANTITATIVE: <5.0 IU/L; 30.0: WAM DIFTYP, AUTO; 30.0: MONOCYTE % (AUTO DIFF), 1.3 %; 30.0: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.17 K/uL; 30.0: NEUTROPHIL ABSOLUTE (AUTO DIFF), 14.46 K/uL; 30.0: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.08 K/uL; 30.0: MONOCYTE ABSOLUTE (AUTO DIFF), 0.22 K/uL; 30.0: NRBC ABSOLUTE (HEMATOLOGY), 0.00 K/uL; 30.0: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 32.2 g/dL; 30.0: BASOPHIL ABSOLUTE (AUTO DIFF), 0.02 K/uL; 30.0: HEMATOCRIT (HCT), 44.1 %; 30.0: EOSINOPHIL % (AUTO DIFF), 1.0 %; 30.0: MEAN CORPUSCULAR VOLUME (MCV), 88.7 fL; 30.0: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 1.52 K/uL; 30.0: WHITE BLOOD CELLS (WBC), 16.5 K/uL; 30.0: LYMPHOCYTE % (AUTO DIFF), 9.2 %; 30.0: BASOPHIL % (AUTO DIFF), 0.1 %; 30.0: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 28.6 pg; 30.0: RED CELL DISTRIBUTION WIDTH (RDW), 13.0 %; 30.0: NRBC PERCENT (HEMATOLOGY), 0.0 %; 30.0: PLATELET COUNT (PLT), 374 K/uL; 30.0: NEUTROPHIL % (AUTO DIFF), 87.9 %; 30.0: HEMOGLOBIN (HGB), 14.2 g/dL; 30.0: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 0.5 %; 30.0: RED BLOOD CELLS (RBC), 4.97 MIL/uL; 34.0: SpO2, 95.0571428571429; 35.0: SpO2, 94.0338983050848; 35.0: Perf, 1.61677419354839; 36.0: SpO2, 94.0689655172414; 36.0: Perf, 1.48827586206897; 36.0: SBP, 137.0; 36.0: DBP, 86.0; 36.0: MAP, 103.0; 37.0: HR, 97.1904761904762; 37.0: RR, 22.5; 37.0: SpO2, 93.3559322033898; 37.0: Perf, 1.28559322033898; 37.0: 1min HRV, 10.2236351158025; 38.0: HR, 97.6271186440678; 38.0: RR, 23.5084745762712; 38.0: SpO2, 92.4237288135593; 38.0: Perf, 1.21135593220339; 38.0: 1min HRV, 9.7981608827736; 39.0: HR, 100.568965517241; 39.0: RR, 21.2241379310345; 39.0: SpO2, 93.0; 39.0: Perf, 1.17310344827586; 39.0: 1min HRV, 11.0716460525992; 40.0: HR, 102.692307692308; 40.0: RR, 36.4038461538462; 40.0: SpO2, 93.0; 40.0: Perf, 1.16641509433962; 40.0: 1min HRV, 15.3901330004528; 40.0: 5min HRV, 19.0242900290947; 41.0: HR, 103.0; 41.0: RR, 40.0; 41.0: SpO2, 93.0; 41.0: SBP, 137.0; 41.0: DBP, 86.0; 41.0: MAP, 103.0; 50.0: CREATININE, 0.36 mg/dL; 50.0: CORRECTED CALCIUM, 9.1 mg/dL; 50.0: ANION GAP, 9 mmol/L; 50.0: CO2, 24 mmol/L; 50.0: POTASSIUM, 3.2 mmol/L; 50.0: PROTEIN TOTAL, 6.6 g/dL; 50.0: GLUCOSE, 109 mg/dL; 50.0: ALKALINE PHOSPHATASE, 70 U/L; 50.0: AST (SGOT), 18 U/L; 50.0: BILIRUBIN TOTAL, 0.3 mg/dL; 50.0: EGFR REFIT WITHOUT RACE (2021), 130 mL/min/1.73 m2; 50.0: CALCIUM, 8.6 mg/dL; 50.0: SODIUM, 138 mmol/L; 50.0: CHLORIDE, 105 mmol/L; 50.0: BLOOD UREA NITROGEN (BUN), 9 mg/dL; 50.0: ALT (SGPT), 5 U/L; 50.0: ALBUMIN, 3.4 g/dL; 50.0: GLOBULIN, 3.2 g/dL; 75.0: SARS-COV-2 RNA, Not Detected; 75.0: INFLUENZA A, Not Detected; 75.0: INFLUENZA B, Not Detected; 75.0: RSV, Not Detected; 77.0: SpO2, 93.0; 78.0: HR, 110.416666666667; 78.0: RR, 31.375; 78.0: SpO2, 93.8620689655172; 78.0: Perf, 3.44777777777778; 78.0: 1min HRV, 4.45249617879928; 79.0: HR, 112.627118644068; 79.0: RR, 33.3898305084746; 79.0: SpO2, 92.7118644067797; 79.0: Perf, 4.2; 79.0: 1min HRV, 5.32246555474149; 79.0: SBP, 153.0; 79.0: DBP, 95.0; 79.0: MAP, 114.333333333333; 80.0: HR, 113.118644067797; 80.0: RR, 31.9491525423729; 80.0: SpO2, 93.7954545454546; 80.0: Perf, 4.19915254237288; 80.0: 1min HRV, 10.0890486697817; 80.0: 5min HRV, 8.54246214597296; 80.0: SBP, 148.0; 80.0: DBP, 91.0; 80.0: MAP, 110.0; 80.0: Pain, 8.0; 80.0: Temp, 98.6; 81.0: HR, 111.396551724138; 81.0: RR, 38.3275862068966; 81.0: SpO2, 93.8620689655172; 81.0: Perf, 3.77120689655172; 81.0: 1min HRV, 5.26660850819305; 81.0: SBP, 148.0; 81.0: DBP, 91.0; 81.0: MAP, 110.0; 82.0: HR, 111.305084745763; 82.0: RR, 32.3898305084746; 82.0: SpO2, 95.0169491525424; 82.0: Perf, 2.54; 82.0: 1min HRV, 15.3981978292357; 83.0: HR, 111.431034482759; 83.0: RR, 38.5344827586207; 83.0: SpO2, 94.4137931034483; 83.0: Perf, 2.21103448275862; 83.0: 1min HRV, 4.77434016169689; 84.0: HR, 110.135593220339; 84.0: RR, 42.8813559322034; 84.0: SpO2, 94.864406779661; 84.0: Perf, 2.51050847457627; 84.0: 1min HRV, 13.714232388995; 85.0: HR, 107.440677966102; 85.0: RR, 42.3728813559322; 85.0: SpO2, 95.0; 85.0: Perf, 2.74508474576271; 85.0: 1min HRV, 7.82420419571833; 85.0: 5min HRV, 12.9488064568335; 86.0: HR, 106.827586206897; 86.0: RR, 43.1724137931035; 86.0: SpO2, 94.8965517241379; 86.0: Perf, 2.81637931034483; 86.0: 1min HRV, 6.75451439824811; 86.0: SBP, 148.0; 86.0: DBP, 91.0; 86.0: MAP, 110.0; 87.0: HR, 106.559322033898; 87.0: RR, 43.5593220338983; 87.0: SpO2, 94.4237288135593; 87.0: Perf, 2.21728813559322; 87.0: 1min HRV, 5.66544029449228; 88.0: HR, 108.810344827586; 88.0: RR, 35.6034482758621; 88.0: SpO2, 94.2931034482759; 88.0: Perf, 2.51844827586207; 88.0: 1min HRV, 12.035814397585; 89.0: HR, 107.169491525424; 89.0: RR, 32.2542372881356; 89.0: SpO2, 94.6271186440678; 89.0: Perf, 2.99627118644068; 89.0: 1min HRV, 7.41460836149399; 90.0: HR, 110.406779661017; 90.0: RR, 37.406779661017; 90.0: SpO2, 93.728813559322; 90.0: Perf, 3.13101694915254; 90.0: 1min HRV, 8.44616816524479; 90.0: 5min HRV, 11.8684533611244; 91.0: HR, 110.827586206897; 91.0: RR, 35.9137931034483; 91.0: SpO2, 93.1896551724138; 91.0: Perf, 2.91327586206897; 91.0: 1min HRV, 7.28723552884718; 92.0: HR, 111.084745762712; 92.0: RR, 31.9322033898305; 92.0: SpO2, 93.0847457627119; 92.0: Perf, 2.76779661016949; 92.0: 1min HRV, 6.45266457545769; 93.0: HR, 108.827586206897; 93.0: RR, 21.3793103448276; 93.0: SpO2, 92.1379310344828; 93.0: Perf, 2.06810344827586; 93.0: 1min HRV, 7.38850293302237; 94.0: HR, 108.271186440678; 94.0: RR, 24.2372881355932; 94.0: SpO2, 91.9152542372881; 94.0: Perf, 1.60271186440678; 94.0: 1min HRV, 6.24987482727878; 95.0: HR, 111.844827586207; 95.0: RR, 25.8793103448276; 95.0: SpO2, 92.2758620689655; 95.0: Perf, 1.52706896551724; 95.0: 1min HRV, 10.2236616792311; 95.0: 5min HRV, 10.6010066573303; 96.0: HR, 110.610169491525; 96.0: RR, 21.8983050847458; 96.0: SpO2, 91.8305084745763; 96.0: Perf, 1.56796610169492; 96.0: 1min HRV, 7.13084546636465; 96.0: SBP, 123.0; 96.0: DBP, 79.0; 96.0: MAP, 93.6666666666667; 97.0: HR, 109.474576271186; 97.0: RR, 39.9830508474576; 97.0: SpO2, 91.8135593220339; 97.0: Perf, 1.85542372881356; 97.0: 1min HRV, 6.01249645545002; 98.0: HR, 110.034482758621; 98.0: RR, 38.8275862068966; 98.0: SpO2, 91.1724137931034; 98.0: Perf, 3.0551724137931; 98.0: 1min HRV, 9.38914882736872; 99.0: HR, 112.983050847458; 99.0: RR, 24.728813559322; 99.0: SpO2, 90.8135593220339; 99.0: Perf, 2.77542372881356; 99.0: 1min HRV, 9.57348444088133; 100.0: HR, 111.0; 100.0: RR, 38.4655172413793; 100.0: SpO2, 91.448275862069; 100.0: Perf, 2.24413793103448; 100.0: 1min HRV, 9.19686997599574; 100.0: 5min HRV, 10.705128551336; 101.0: HR, 106.661016949153; 101.0: RR, 38.4237288135593; 101.0: SpO2, 91.6271186440678; 101.0: Perf, 2.05338983050847; 101.0: 1min HRV, 8.8523360077772; 101.0: SBP, 123.0; 101.0: DBP, 79.0; 101.0: MAP, 93.6666666666667; 102.0: HR, 106.881355932203; 102.0: RR, 36.9830508474576; 102.0: SpO2, 90.9322033898305; 102.0: Perf, 2.00220338983051; 102.0: 1min HRV, 9.89794636784003; 103.0: HR, 106.51724137931; 103.0: RR, 42.8793103448276; 103.0: SpO2, 89.4655172413793; 103.0: Perf, 1.79758620689655; 103.0: 1min HRV, 9.4680621920852; 104.0: HR, 105.525423728814; 104.0: RR, 42.864406779661; 104.0: SpO2, 92.135593220339; 104.0: Perf, 2.53898305084746; 104.0: 1min HRV, 5.43323542374259; 105.0: HR, 105.655172413793; 105.0: RR, 37.2068965517241; 105.0: SpO2, 91.5172413793104; 105.0: Perf, 2.07931034482759; 105.0: 1min HRV, 12.6402139578397; 105.0: 5min HRV, 9.79026639270667; 106.0: HR, 104.864406779661; 106.0: RR, 38.7457627118644; 106.0: SpO2, 91.6610169491525; 106.0: Perf, 2.16915254237288; 106.0: 1min HRV, 15.9224026415669; 107.0: HR, 102.189655172414; 107.0: RR, 39.2068965517241; 107.0: SpO2, 91.0172413793104; 107.0: Perf, 2.38327586206897; 107.0: 1min HRV, 10.1867462949115; 108.0: HR, 101.864406779661; 108.0: RR, 41.5423728813559; 108.0: SpO2, 91.2542372881356; 108.0: Perf, 3.65406779661017; 108.0: 1min HRV, 6.10582064522321; 109.0: HR, 103.881355932203; 109.0: RR, 42.864406779661; 109.0: SpO2, 89.6610169491525; 109.0: Perf, 2.66559322033898; 109.0: 1min HRV, 11.8967907745009; 110.0: HR, 103.931034482759; 110.0: RR, 44.6551724137931; 110.0: SpO2, 89.2586206896552; 110.0: Perf, 2.59586206896552; 110.0: 1min HRV, 8.56496962614262; 110.0: 5min HRV, 12.2350541682606; 111.0: HR, 104.542372881356; 111.0: RR, 49.0; 111.0: SpO2, 89.3559322033898; 111.0: Perf, 2.20118644067797; 111.0: 1min HRV, 11.2341264986589; 111.0: SBP, 140.0; 111.0: DBP, 96.0; 111.0: MAP, 110.666666666667; 112.0: HR, 102.762711864407; 112.0: RR, 46.0; 112.0: SpO2, 89.5593220338983; 112.0: Perf, 2.31338983050848; 112.0: 1min HRV, 6.9669377967738; 113.0: HR, 108.068965517241; 113.0: RR, 40.8965517241379; 113.0: SpO2, 88.6206896551724; 113.0: Perf, 1.99775862068966; 113.0: 1min HRV, 25.8005097595934; 114.0: HR, 110.28813559322; 114.0: RR, 46.2033898305085; 114.0: SpO2, 89.2033898305085; 114.0: Perf, 1.8164406779661; 114.0: 1min HRV, 7.33697333278174; 115.0: HR, 107.637931034483; 115.0: RR, 48.8620689655172; 115.0: SpO2, 90.3965517241379; 115.0: Perf, 2.42103448275862; 115.0: 1min HRV, 8.59836956190344; 115.0: 5min HRV, 19.8955302596701; 116.0: HR, 106.389830508475; 116.0: RR, 43.0847457627119; 116.0: SpO2, 90.6101694915254; 116.0: Perf, 2.7464406779661; 116.0: 1min HRV, 8.41193278667556; 116.0: SBP, 140.0; 116.0: DBP, 96.0; 116.0: MAP, 110.666666666667; 117.0: HR, 105.64406779661; 117.0: RR, 39.4745762711864; 117.0: SpO2, 91.0338983050848; 117.0: Perf, 2.39728813559322; 117.0: 1min HRV, 12.8836298572385; 118.0: HR, 107.120689655172; 118.0: RR, 35.2413793103448; 118.0: SpO2, 91.6034482758621; 118.0: Perf, 2.86103448275862; 118.0: 1min HRV, 9.44046212289921; 119.0: HR, 106.310344827586; 119.0: RR, 35.948275862069; 119.0: SpO2, 91.8448275862069; 119.0: Perf, 2.92862068965517; 119.0: 1min HRV, 13.3844162995478; 0.0: Age, 42; 0.0: Gender, F; 0.0: Race, Asian; 0.0: Means of arrival, Self; 0.0: Triage Temp, 36.8; 0.0: Triage HR, 91.0; 0.0: Triage RR, 17.0; 0.0: Triage SBP, 137.0; 0.0: Triage DBP, 78.0; 0.0: Triage acuity, 3-Urgent; 0.0: CC, SHORTNESS OF BREATH,CHILLS",
+        "answer": 1,
+        "llm_answer": "Yes",
+        "llm_explanation": "This 42-year-old female presents with shortness of breath and chills (classic infection symptoms) and demonstrates multiple concerning findings: significant leukocytosis (WBC 16.5 K/uL) with neutrophilia (87.9%, absolute 14.46 K/uL) indicating a likely bacterial infection, persistent tachycardia (HR consistently 100-113 bpm), tachypnea (RR frequently 35-49 breaths/min), and progressive hypoxemia (SpO2 declining from 95% to 88-91% range despite being in the ED). The combination of suspected infection (chills, elevated WBC with left shift), along with two or more SIRS criteria (tachycardia >90, tachypnea >20, leukocytosis >12K) and evidence of respiratory compromise suggests early sepsis, likely from a pulmonary source given the respiratory symptoms and declining oxygen saturation.",
+        "claims": [
+            "The patient is a 42-year-old female.",
+            "She presents with shortness of breath.",
+            "She presents with chills.",
+            "Shortness of breath and chills are classic infection symptoms.",
+            "Her white blood cell count is 16.5 K/uL.",
+            "A WBC of 16.5 K/uL represents significant leukocytosis.",
+            "Her neutrophil percentage is 87.9%.",
+            "Her absolute neutrophil count is 14.46 K/uL.",
+            "Neutrophilia indicates a likely bacterial infection.",
+            "Her heart rate is persistently between 100 and 113 beats per minute.",
+            "A heart rate consistently above 90 bpm constitutes tachycardia.",
+            "Her respiratory rate is frequently between 35 and 49 breaths per minute.",
+            "A respiratory rate above 20 breaths per minute constitutes tachypnea.",
+            "Her oxygen saturation declined from 95% to a range of 88\u201391% while in the ED.",
+            "A decline in SpO2 to 88\u201391% indicates progressive hypoxemia and respiratory compromise.",
+            "The presence of chills and an elevated WBC with a left shift supports a suspected infection.",
+            "Tachycardia (>90 bpm) is one SIRS criterion present in this patient.",
+            "Tachypnea (>20 breaths/min) is another SIRS criterion present in this patient.",
+            "Leukocytosis (>12 K/uL) is another SIRS criterion present in this patient.",
+            "The combination of suspected infection and two or more SIRS criteria suggests early sepsis.",
+            "Respiratory compromise and respiratory symptoms suggest the source of sepsis is likely pulmonary."
+        ],
+        "relevant_claims": [
+            "She presents with shortness of breath.",
+            "She presents with chills.",
+            "Shortness of breath and chills are classic infection symptoms.",
+            "Her white blood cell count is 16.5 K/uL.",
+            "A WBC of 16.5 K/uL represents significant leukocytosis.",
+            "Her neutrophil percentage is 87.9%.",
+            "Her absolute neutrophil count is 14.46 K/uL.",
+            "Neutrophilia indicates a likely bacterial infection.",
+            "Her heart rate is persistently between 100 and 113 beats per minute.",
+            "A heart rate consistently above 90 bpm constitutes tachycardia.",
+            "Her respiratory rate is frequently between 35 and 49 breaths per minute.",
+            "Her oxygen saturation declined from 95% to a range of 88\u201391% while in the ED.",
+            "A decline in SpO2 to 88\u201391% indicates progressive hypoxemia and respiratory compromise.",
+            "The presence of chills and an elevated WBC with a left shift supports a suspected infection.",
+            "Tachycardia (>90 bpm) is one SIRS criterion present in this patient.",
+            "Tachypnea (>20 breaths/min) is another SIRS criterion present in this patient.",
+            "Leukocytosis (>12 K/uL) is another SIRS criterion present in this patient.",
+            "The combination of suspected infection and two or more SIRS criteria suggests early sepsis.",
+            "Respiratory compromise and respiratory symptoms suggest the source of sepsis is likely pulmonary."
+        ],
+        "claims_by_category": {
+            "Elderly Susceptibility (Age \u226565 years)": [],
+            "SIRS Positivity (\u22652 Criteria)": [
+                "Her white blood cell count is 16.5 K/uL.",
+                "A WBC of 16.5 K/uL represents significant leukocytosis.",
+                "Her neutrophil percentage is 87.9%.",
+                "Her absolute neutrophil count is 14.46 K/uL.",
+                "Neutrophilia indicates a likely bacterial infection.",
+                "Her heart rate is persistently between 100 and 113 beats per minute.",
+                "A heart rate consistently above 90 bpm constitutes tachycardia.",
+                "Tachycardia (>90 bpm) is one SIRS criterion present in this patient.",
+                "Her respiratory rate is frequently between 35 and 49 breaths per minute.",
+                "Tachypnea (>20 breaths/min) is another SIRS criterion present in this patient.",
+                "Leukocytosis (>12 K/uL) is another SIRS criterion present in this patient.",
+                "The presence of chills and an elevated WBC with a left shift supports a suspected infection.",
+                "The combination of suspected infection and two or more SIRS criteria suggests early sepsis."
+            ],
+            "High qSOFA Score (\u22652)": [
+                "Her respiratory rate is frequently between 35 and 49 breaths per minute.",
+                "Tachypnea (>20 breaths/min) is another SIRS criterion present in this patient."
+            ],
+            "Elevated NEWS Score (\u22655 points)": [
+                "Her heart rate is persistently between 100 and 113 beats per minute.",
+                "A heart rate consistently above 90 bpm constitutes tachycardia.",
+                "Tachycardia (>90 bpm) is one SIRS criterion present in this patient.",
+                "Her respiratory rate is frequently between 35 and 49 breaths per minute.",
+                "Tachypnea (>20 breaths/min) is another SIRS criterion present in this patient.",
+                "Her oxygen saturation declined from 95% to a range of 88\u201391% while in the ED.",
+                "A decline in SpO2 to 88\u201391% indicates progressive hypoxemia and respiratory compromise."
+            ],
+            "Elevated Serum Lactate (\u22652 mmol/L)": [
+                "Her heart rate is persistently between 100 and 113 beats per minute.",
+                "A heart rate consistently above 90 bpm constitutes tachycardia.",
+                "Tachycardia (>90 bpm) is one SIRS criterion present in this patient.",
+                "Her respiratory rate is frequently between 35 and 49 breaths per minute.",
+                "Tachypnea (>20 breaths/min) is another SIRS criterion present in this patient.",
+                "Her oxygen saturation declined from 95% to a range of 88\u201391% while in the ED.",
+                "A decline in SpO2 to 88\u201391% indicates progressive hypoxemia and respiratory compromise.",
+                "The combination of suspected infection and two or more SIRS criteria suggests early sepsis."
+            ],
+            "Elevated Shock Index (\u22651.0)": [
+                "Her heart rate is persistently between 100 and 113 beats per minute.",
+                "A heart rate consistently above 90 bpm constitutes tachycardia.",
+                "Tachycardia (>90 bpm) is one SIRS criterion present in this patient."
+            ],
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": [],
+            "SOFA Score Increase (\u22652 points)": [
+                "She presents with shortness of breath.",
+                "Her respiratory rate is frequently between 35 and 49 breaths per minute.",
+                "Her oxygen saturation declined from 95% to a range of 88\u201391% while in the ED.",
+                "A decline in SpO2 to 88\u201391% indicates progressive hypoxemia and respiratory compromise.",
+                "Respiratory compromise and respiratory symptoms suggest the source of sepsis is likely pulmonary."
+            ],
+            "Early Antibiotic/Culture Orders (within 2 hours)": []
+        },
+        "category_alignment_scores": {
+            "Elderly Susceptibility (Age \u226565 years)": 0.0,
+            "SIRS Positivity (\u22652 Criteria)": 1.0,
+            "High qSOFA Score (\u22652)": 0.5,
+            "Elevated NEWS Score (\u22655 points)": 1.0,
+            "Elevated Serum Lactate (\u22652 mmol/L)": 0.0,
+            "Elevated Shock Index (\u22651.0)": 0.5,
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": 0.0,
+            "SOFA Score Increase (\u22652 points)": 0.5,
+            "Early Antibiotic/Culture Orders (within 2 hours)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Elderly Susceptibility (Age \u226565 years)": "No claims about the patient's age are provided, so there is no information to support or satisfy the category's criterion (age \u2265 65 years).",
+            "SIRS Positivity (\u22652 Criteria)": "The claims provide specific vital signs and labs that directly meet SIRS thresholds: WBC 16.5 K/\u00b5L (>12 K/\u00b5L), heart rate 100\u2013113 bpm (>90 bpm), and respiratory rate 35\u201349/min (>20/min). These satisfy \u22652 SIRS criteria, and the notes about neutrophilia and suspected infection further support the sepsis context.",
+            "High qSOFA Score (\u22652)": "The first claim clearly meets one qSOFA criterion (respiratory rate \u226522/min). The second claim references SIRS tachypnea (>20/min) rather than providing evidence for a second qSOFA component (systolic BP \u2264100 mmHg or altered mentation). Because only one qSOFA criterion is supported and no additional qSOFA criteria are provided, alignment is partial.",
+            "Elevated NEWS Score (\u22655 points)": "The claims give specific deranged vital signs that map directly onto NEWS components: tachypnea (RR 35\u201349 \u2192 3 points), hypoxemia (SpO2 88\u201391% \u2192 3 points), and tachycardia (HR 100\u2013113 \u2192 1\u20132 points). Together these findings would produce a NEWS well into the \u22655 range, directly supporting the \"Elevated NEWS Score (\u22655)\" category.",
+            "Elevated Serum Lactate (\u22652 mmol/L)": "The claims describe vital sign abnormalities and SIRS criteria (tachycardia, tachypnea, and hypoxemia) and suggest early sepsis, but they provide no information about serum lactate measurements or levels. Because the category specifically requires a serum lactate \u22652 mmol/L to signal tissue hypoperfusion, the provided claims do not address or satisfy this criterion.",
+            "Elevated Shock Index (\u22651.0)": "The claims provide the heart rate (100\u2013113 bpm) \u2014 the numerator needed for shock index \u2014 and note tachycardia, but they do not provide systolic blood pressure (the denominator) or any shock\u2011index calculation. Without SBP (or a reported SI \u22651.0 or rise \u22650.3), the criterion cannot be confirmed. Thus the claims partially address the category but lack the key detail required for complete alignment.",
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": "No claims or vitals are provided that reference systolic BP, MAP, or a drop from baseline, so nothing supports or satisfies the sepsis\u2011associated hypotension criteria.",
+            "SOFA Score Increase (\u22652 points)": "The claims describe clear respiratory compromise and hypoxemia (SpO2 fall to 88\u201391% and very high RR), which are consistent with new organ dysfunction of the respiratory system. However, the SOFA respiratory criterion is defined by a PaO2/FiO2 ratio (<300) and/or an explicit increase in SOFA points; the claims provide SpO2 and symptoms but no PaO2 or FiO2 values or documented SOFA change. Thus the information is relevant but not specific enough to fully satisfy the SOFA \u22652\u2011point criterion.",
+            "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided about administration of antibiotics or drawing blood cultures within 2 hours, so there is no evidence addressing this category."
+        },
+        "final_alignment_score": 0.7619047619047619,
+        "accuracy": 1
+    },
+    {
+        "input": "9.0: HR, 52.0; 9.0: RR, 21.0; 9.0: SpO2, 95.0; 9.0: SBP, 109.0; 9.0: DBP, 66.0; 9.0: MAP, 80.3333333333333; 9.0: Temp, 97.7; 14.0: Pain, 0.0; 24.0: 1min HRV, 93.5697956964034; 25.0: HR, 68.8095238095238; 25.0: RR, 20.8139534883721; 25.0: 1min HRV, 150.611798591611; 26.0: HR, 72.0169491525424; 26.0: RR, 26.2033898305085; 26.0: 1min HRV, 136.429824623598; 27.0: HR, 73.0862068965517; 27.0: RR, 26.5344827586207; 27.0: 1min HRV, 157.527450949884; 28.0: HR, 69.2372881355932; 28.0: RR, 26.2203389830509; 28.0: 1min HRV, 151.38903005099; 28.0: 5min HRV, 149.259967235833; 29.0: HR, 74.5254237288136; 29.0: RR, 24.9830508474576; 29.0: 1min HRV, 118.454084625056; 30.0: HR, 72.1896551724138; 30.0: RR, 27.8965517241379; 30.0: 1min HRV, 170.495017732214; 31.0: HR, 72.3898305084746; 31.0: RR, 26.5593220338983; 31.0: 1min HRV, 151.602216803279; 32.0: HR, 75.0172413793104; 32.0: RR, 22.051724137931; 32.0: 1min HRV, 142.085060839938; 33.0: HR, 72.3389830508475; 33.0: RR, 26.2033898305085; 33.0: 1min HRV, 123.504036145035; 33.0: 5min HRV, 145.860900818221; 34.0: HR, 73.448275862069; 34.0: RR, 25.2068965517241; 34.0: 1min HRV, 147.834197083811; 35.0: HR, 75.4406779661017; 35.0: RR, 25.4915254237288; 35.0: 1min HRV, 111.673931684643; 36.0: HR, 70.8813559322034; 36.0: RR, 23.135593220339; 36.0: 1min HRV, 167.748472296097; 37.0: HR, 73.6551724137931; 37.0: RR, 22.2241379310345; 37.0: 1min HRV, 118.385614401507; 38.0: POC GLUCOSE BY METER, 155 mg/dL; 38.0: HR, 72.8474576271186; 38.0: RR, 23.7796610169492; 38.0: 1min HRV, 133.982715303132; 38.0: 5min HRV, 139.773578920329; 39.0: HR, 71.3620689655172; 39.0: RR, 24.4655172413793; 39.0: 1min HRV, 103.378371030661; 40.0: HR, 69.6949152542373; 40.0: RR, 23.8135593220339; 40.0: 1min HRV, 155.317618302292; 41.0: HR, 72.1186440677966; 41.0: RR, 20.6610169491525; 41.0: 1min HRV, 118.609346923986; 42.0: HR, 72.5; 42.0: RR, 27.7931034482759; 42.0: 1min HRV, 125.156010394507; 43.0: SARS-COV-2 RNA, Not Detected; 43.0: HR, 71.4915254237288; 43.0: RR, 31.2372881355932; 43.0: 1min HRV, 149.165839505507; 43.0: 5min HRV, 134.933220246312; 44.0: HR, 70.6379310344828; 44.0: RR, 27.8620689655172; 44.0: 1min HRV, 134.000693595308; 45.0: HR, 74.9830508474576; 45.0: RR, 22.8983050847458; 45.0: 1min HRV, 116.36359246332; 46.0: HR, 73.0338983050848; 46.0: RR, 20.1864406779661; 46.0: 1min HRV, 135.078368115993; 47.0: HR, 69.948275862069; 47.0: RR, 22.5689655172414; 47.0: 1min HRV, 158.989383158599; 48.0: HR, 72.0; 48.0: RR, 19.2033898305085; 48.0: 1min HRV, 143.642265580274; 48.0: 5min HRV, 140.867484017322; 61.0: POC HCT ISTAT, 42 %; 61.0: POC HGB (CALC) ISTAT, 14.3 g/dL; 61.0: POC POTASSIUM ISTAT, 4.0 mmol/L; 61.0: POC SODIUM ISTAT, 134 mmol/L; 61.0: POC GLUCOSE ISTAT, 169 mg/dL; 63.0: POC PH (V) ISTAT, 7.38; 63.0: POC PO2 (V) ISTAT, 140 mmHg; 63.0: POC PCO2 (V) ISTAT, 55.5 mmHg; 63.0: POC LACTATE ISTAT, 1.55 mmol/L; 63.0: POC O2 SATURATION ISTAT VENOUS, 99 %; 63.0: POC TCO2 (V) ISTAT, 34 mmol/L; 63.0: POC HCO3 (V) ISTAT, 32.6 mmol/L; 63.0: POC BASE EXCESS ISTAT, 7 mmol/L; 107.0: CK TOTAL, 41 U/L; 107.0: MAGNESIUM, 2.3 mg/dL; 107.0: PHOSPHORUS, 3.0 mg/dL; 107.0: SBP, 94.0; 107.0: DBP, 82.0; 107.0: MAP, 86.0; 107.0: LR IV BOLUS -, 1000 ML; 112.0: CREATININE:, 4.20 mg/dL; 112.0: EGFR REFIT WITHOUT RACE (2021), 10 mL/min/1.73 m2; 112.0: ANION GAP, 15 mmol/L; 112.0: GLOBULIN, 2.8 g/dL; 112.0: ALT (SGPT), 26 U/L; 112.0: DIGOXIN, 2.2 ng/mL; 112.0: ALKALINE PHOSPHATASE, 89 U/L; 112.0: CALCIUM, 9.5 mg/dL; 112.0: BILIRUBIN TOTAL, 0.6 mg/dL; 112.0: EGFR FOR AFRICAN AMERICAN, 11 mL/min/1.73 m2; 112.0: CO2, 29 mmol/L; 112.0: ALBUMIN, 3.6 g/dL; 112.0: CHLORIDE, 94 mmol/L; 112.0: CORRECTED CALCIUM, 9.8 mg/dL; 112.0: PROTEIN TOTAL, 6.4 g/dL; 112.0: POTASSIUM, 4.3 mmol/L; 112.0: AST (SGOT), 32 U/L; 112.0: SODIUM, 138 mmol/L; 112.0: BLOOD UREA NITROGEN (BUN), 41 mg/dL; 112.0: GLUCOSE, 172 mg/dL; 112.0: Pain, 0.0; 0.0: Age, 77; 0.0: Gender, F; 0.0: Race, Asian; 0.0: Means of arrival, Self; 0.0: Triage Temp, 36.5; 0.0: Triage HR, 52.0; 0.0: Triage RR, 21.0; 0.0: Triage SBP, 109.0; 0.0: Triage DBP, 66.0; 0.0: Triage acuity, 2-Emergent; 0.0: CC, SHORTNESS OF BREATH",
+        "answer": 1,
+        "llm_answer": "No",
+        "llm_explanation": "This 77-year-old female presents with shortness of breath but lacks classic early sepsis indicators. Her vital signs are relatively stable with no fever (36.5\u00b0C), no tachycardia (HR 52-75), no hypotension, and adequate oxygen saturation (95%). Critically, her lactate is normal at 1.55 mmol/L, which is reassuring against significant tissue hypoperfusion. While she does have significant chronic kidney disease (creatinine 4.20 mg/dL, eGFR 10-11) and elevated BUN, these appear to be chronic findings rather than acute sepsis-related organ dysfunction, and there is no leukocytosis data or clear infectious source documented. The negative COVID test and absence of fever or other SIRS criteria suggest her presentation is more likely related to cardiac or renal issues (notably elevated digoxin level at 2.2 ng/mL) rather than early sepsis.",
+        "claims": [
+            "The patient is a 77-year-old female.",
+            "She presents with shortness of breath.",
+            "She lacks classic early sepsis indicators.",
+            "Her vital signs are relatively stable.",
+            "She has no fever; her temperature is 36.5\u00b0C.",
+            "She has no tachycardia; her heart rate is 52\u201375 beats per minute.",
+            "She has no hypotension.",
+            "Her oxygen saturation is adequate at 95%.",
+            "Her lactate is normal at 1.55 mmol/L.",
+            "A lactate of 1.55 mmol/L is reassuring against significant tissue hypoperfusion.",
+            "She has significant chronic kidney disease.",
+            "Her creatinine is 4.20 mg/dL.",
+            "Her estimated glomerular filtration rate (eGFR) is 10\u201311.",
+            "She has an elevated blood urea nitrogen (BUN).",
+            "The elevated creatinine, low eGFR, and elevated BUN appear to be chronic findings rather than acute sepsis-related organ dysfunction.",
+            "There is no leukocytosis data documented.",
+            "There is no clear infectious source documented.",
+            "Her COVID test is negative.",
+            "There is an absence of other SIRS criteria.",
+            "Her digoxin level is elevated at 2.2 ng/mL.",
+            "The negative COVID test and the absence of fever or other SIRS criteria suggest the presentation is more likely related to cardiac or renal issues rather than early sepsis."
+        ],
+        "relevant_claims": [
+            "Her vital signs are relatively stable.",
+            "She has no fever; her temperature is 36.5\u00b0C.",
+            "She has no tachycardia; her heart rate is 52\u201375 beats per minute.",
+            "She has no hypotension.",
+            "Her oxygen saturation is adequate at 95%.",
+            "Her lactate is normal at 1.55 mmol/L.",
+            "A lactate of 1.55 mmol/L is reassuring against significant tissue hypoperfusion.",
+            "There is no leukocytosis data documented.",
+            "There is no clear infectious source documented.",
+            "The negative COVID test and the absence of fever or other SIRS criteria suggest the presentation is more likely related to cardiac or renal issues rather than early sepsis."
+        ],
+        "claims_by_category": {
+            "Elderly Susceptibility (Age \u226565 years)": [],
+            "SIRS Positivity (\u22652 Criteria)": [
+                "She has no fever; her temperature is 36.5\u00b0C.",
+                "She has no tachycardia; her heart rate is 52\u201375 beats per minute.",
+                "There is no leukocytosis data documented.",
+                "The negative COVID test and the absence of fever or other SIRS criteria suggest the presentation is more likely related to cardiac or renal issues rather than early sepsis."
+            ],
+            "High qSOFA Score (\u22652)": [
+                "She has no hypotension."
+            ],
+            "Elevated NEWS Score (\u22655 points)": [
+                "Her vital signs are relatively stable.",
+                "She has no fever; her temperature is 36.5\u00b0C.",
+                "She has no tachycardia; her heart rate is 52\u201375 beats per minute.",
+                "She has no hypotension.",
+                "Her oxygen saturation is adequate at 95%."
+            ],
+            "Elevated Serum Lactate (\u22652 mmol/L)": [
+                "Her lactate is normal at 1.55 mmol/L.",
+                "A lactate of 1.55 mmol/L is reassuring against significant tissue hypoperfusion."
+            ],
+            "Elevated Shock Index (\u22651.0)": [
+                "Her vital signs are relatively stable.",
+                "She has no tachycardia; her heart rate is 52\u201375 beats per minute.",
+                "She has no hypotension."
+            ],
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": [
+                "She has no hypotension."
+            ],
+            "SOFA Score Increase (\u22652 points)": [
+                "Her vital signs are relatively stable.",
+                "She has no hypotension.",
+                "Her oxygen saturation is adequate at 95%."
+            ],
+            "Early Antibiotic/Culture Orders (within 2 hours)": []
+        },
+        "category_alignment_scores": {
+            "Elderly Susceptibility (Age \u226565 years)": 0.0,
+            "SIRS Positivity (\u22652 Criteria)": 0.0,
+            "High qSOFA Score (\u22652)": 0.5,
+            "Elevated NEWS Score (\u22655 points)": 0.0,
+            "Elevated Serum Lactate (\u22652 mmol/L)": 0.0,
+            "Elevated Shock Index (\u22651.0)": 0.0,
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": 1.0,
+            "SOFA Score Increase (\u22652 points)": 0.0,
+            "Early Antibiotic/Culture Orders (within 2 hours)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Elderly Susceptibility (Age \u226565 years)": "No claims about the patient's age are provided, so there is no information to support or satisfy the category's criterion (age \u2265 65 years).",
+            "SIRS Positivity (\u22652 Criteria)": "The claims explicitly show the patient does not meet SIRS criteria\u2014temperature 36.5\u00b0C (not >38 or <36), heart rate 52\u201375 bpm (not >90), and no leukocyte data\u2014plus an assertion that SIRS criteria are absent. They do not identify \u22652 SIRS criteria or provide evidence of systemic inflammation, so they do not align with the SIRS Positivity category.",
+            "High qSOFA Score (\u22652)": "The claim addresses one qSOFA component (hypotension) by stating it is absent, which is relevant but does not provide information on the other two criteria (respiratory rate \u226522/min or altered mentation). Because it only negates one criterion and gives no data to confirm the \u22652 threshold, the alignment is partial.",
+            "Elevated NEWS Score (\u22655 points)": "The claims indicate normal/stable vital signs (temp 36.5\u00b0C, HR 52\u201375 bpm, no hypotension, SpO2 95%) and provide no evidence of the derangements (eg, fever, tachycardia, hypotension, low SpO2, altered consciousness, or elevated RR) that would generate a NEWS \u22655. Therefore they do not support an elevated NEWS score.",
+            "Elevated Serum Lactate (\u22652 mmol/L)": "The claims state a serum lactate of 1.55 mmol/L and interpret this as reassuring, which is explicitly below the category threshold (\u22652 mmol/L). Therefore the claims do not support the presence of elevated lactate as defined by the category.",
+            "Elevated Shock Index (\u22651.0)": "The claims report normal/stable vitals with heart rate 52\u201375 bpm and no hypotension. An elevated shock index (HR/SBP \u2265 1.0) requires relatively high HR and/or low SBP; the provided values imply a shock index well below 1.0, so the claims do not support the Elevated Shock Index category.",
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": "The claim explicitly states the patient does not have hypotension, directly addressing the category\u2019s criterion (presence vs. absence of sepsis-associated hypotension). This clearly indicates the category is not met, so it fully aligns with the category\u2019s intent.",
+            "SOFA Score Increase (\u22652 points)": "The claims do not reference any SOFA components (PaO2/FiO2, platelets, bilirubin, creatinine, or GCS) or provide evidence of a \u22652\u2011point SOFA increase. Instead they state stability\u2014no hypotension and adequate O2 saturation (95%)\u2014which does not indicate new organ dysfunction described by the category.",
+            "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided about administration of antibiotics or drawing blood cultures within 2 hours, so there is no evidence addressing this category."
+        },
+        "final_alignment_score": 0.047619047619047616,
+        "accuracy": 0
+    },
+    {
+        "input": "5.0: HR, 97.0; 5.0: RR, 18.0; 5.0: SpO2, 98.0; 5.0: SBP, 151.0; 5.0: DBP, 75.0; 5.0: MAP, 100.333333333333; 5.0: Pain, 10.0; 5.0: Temp, 99.7; 49.0: HR, 93.0; 49.0: RR, 19.0; 49.0: SpO2, 96.1818181818182; 49.0: SBP, 165.0; 49.0: DBP, 67.0; 49.0: MAP, 99.6666666666667; 49.0: Pain, 10.0; 50.0: SpO2, 94.6458333333333; 50.0: Perf, 1.25384615384615; 51.0: SpO2, 95.2075471698113; 51.0: Perf, 1.33754716981132; 52.0: SpO2, 95.7735849056604; 52.0: Perf, 1.18283018867925; 53.0: SpO2, 95.4230769230769; 53.0: Perf, 1.26884615384615; 54.0: SpO2, 94.6792452830189; 54.0: Perf, 1.4877358490566; 55.0: SpO2, 95.2884615384615; 55.0: Perf, 1.49096153846154; 56.0: SpO2, 95.7735849056604; 56.0: Perf, 1.37849056603774; 57.0: SpO2, 95.1509433962264; 57.0: Perf, 1.42283018867925; 58.0: SpO2, 94.4807692307692; 58.0: Perf, 1.36326923076923; 59.0: SpO2, 95.9622641509434; 59.0: Perf, 1.60924528301887; 59.0: NS IV BOLUS -, 500 ML; 60.0: SpO, 2: 96.5882352941176; 60.0: Perf, 1.60843137254902; 61.0: SpO2, 95.6; 61.0: Perf, 1.61; 61.0: SBP, 148.0; 61.0: DBP, 71.0; 61.0: MAP, 96.6666666666667; 62.0: SpO2, 95.1320754716981; 62.0: Perf, 1.614; 63.0: SpO2, 96.1538461538462; 63.0: Perf, 1.36326923076923; 64.0: SpO2, 96.3584905660377; 64.0: Perf, 1.16754716981132; 73.0: POC GLUCOSE BY METER, 380 mg/dL; 77.0: POC PH (V) ISTAT, 7.42; 77.0: POC HCO3 (V) ISTAT, 25.3 mmol/L; 77.0: POC LACTATE ISTAT, 0.98 mmol/L; 77.0: POC TCO2 (V) ISTAT, 26 mmol/L; 77.0: POC BASE EXCESS ISTAT, 1 mmol/L; 77.0: POC O2 SATURATION ISTAT VENOUS, 47 %; 77.0: POC PO2 (V) ISTAT, 25 mmHg; 77.0: POC PCO2 (V) ISTAT, 39.0 mmHg; 85.0: WAM DIFTYP, AUTO; 85.0: MONOCYTE % (AUTO DIFF), 7.1 %; 85.0: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 27.8 pg; 85.0: NEUTROPHIL ABSOLUTE (AUTO DIFF), 8.31 K/uL; 85.0: EOSINOPHIL % (AUTO DIFF), 1.2 %; 85.0: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 32.2 g/dL; 85.0: HEMATOCRIT (HCT), 38.2 %; 85.0: NRBC PERCENT (HEMATOLOGY), 0.0 %; 85.0: NEUTROPHIL % (AUTO DIFF), 76.0 %; 85.0: PLATELET COUNT (PLT), 267 K/uL; 85.0: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.13 K/uL; 85.0: BASOPHIL ABSOLUTE (AUTO DIFF), 0.04 K/uL; 85.0: WHITE BLOOD CELLS (WBC), 10.9 K/uL; 85.0: HEMOGLOBIN (HGB), 12.3 g/dL; 85.0: BASOPHIL % (AUTO DIFF), 0.4 %; 85.0: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.06 K/uL; 85.0: MEAN CORPUSCULAR VOLUME (MCV), 86.4 fL; 85.0: RED CELL DISTRIBUTION WIDTH (RDW), 11.8 %; 85.0: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 0.5 %; 85.0: RED BLOOD CELLS (RBC), 4.42 MIL/uL; 85.0: LYMPHOCYTE % (AUTO DIFF), 14.8 %; 85.0: MONOCYTE ABSOLUTE (AUTO DIFF), 0.78 K/uL; 85.0: NRBC ABSOLUTE (HEMATOLOGY), 0.00 K/uL; 85.0: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 1.62 K/uL; 89.0: HR, 91.0; 89.0: SpO2, 96.0; 89.0: Pain, 10.0; 89.0: HYDROMORPHONE, 1 MG/ML INJ SYRG; 91.0: ONDANSETRON HCL (PF), 4 MG/2 ML INJ SOLN; 108.0: CHLORIDE, 95 mmol/L; 108.0: ALKALINE PHOSPHATASE, 119 U/L; 108.0: POTASSIUM, 4.2 mmol/L; 108.0: BILIRUBIN TOTAL, 0.6 mg/dL; 108.0: ALBUMIN, 3.6 g/dL; 108.0: EGFR FOR AFRICAN AMERICAN, 130 mL/min/1.73 m2; 108.0: CO2, 23 mmol/L; 108.0: ANION GAP, 14 mmol/L; 108.0: EGFR REFIT WITHOUT RACE (2021), 113 mL/min/1.73 m2; 108.0: CORRECTED CALCIUM, 9.4 mg/dL; 108.0: ALT (SGPT), 14 U/L; 108.0: CREATININE, 0.65 mg/dL; 108.0: AST (SGOT), 18 U/L; 108.0: BLOOD UREA NITROGEN (BUN), 12 mg/dL; 108.0: SODIUM, 132 mmol/L; 108.0: GLUCOSE, 331 mg/dL; 108.0: GLOBULIN, 5.1 g/dL; 108.0: PROTEIN TOTAL, 8.7 g/dL; 108.0: CALCIUM, 9.1 mg/dL; 0.0: Age, 39; 0.0: Gender, F; 0.0: Race, Native Hawaiian or Other Pacific Islander; 0.0: Means of arrival, Self; 0.0: Triage Temp, 37.6; 0.0: Triage HR, 97.0; 0.0: Triage RR, 18.0; 0.0: Triage SBP, 151.0; 0.0: Triage DBP, 75.0; 0.0: Triage acuity, 3-Urgent; 0.0: CC, FEVER,SORE THROAT,DEHYDRATION",
+        "answer": 0,
+        "llm_answer": "No",
+        "llm_explanation": "Despite presenting with fever and sore throat suggesting possible infection, this 39-year-old female has reassuring clinical indicators that argue against imminent sepsis. Her vital signs are relatively stable with only mild tachycardia (HR 91-97), normal respiratory rate, adequate blood pressure, and oxygen saturation maintained above 94%. Critically, her lactate is normal at 0.98 mmol/L, which is a strong negative predictor for sepsis progression. While her WBC is mildly elevated at 10.9 K/uL with neutrophilia (76%), her other labs including renal function, liver enzymes, and acid-base status are essentially normal, and the significantly elevated glucose (331-380 mg/dL) suggests possible diabetic ketoacidosis or hyperglycemic hyperosmolar state as an alternative diagnosis rather than sepsis.",
+        "claims": [
+            "The patient is a 39-year-old female.",
+            "The patient presented with fever and sore throat.",
+            "Fever and sore throat suggest a possible infection.",
+            "The patient has reassuring clinical indicators that argue against imminent sepsis.",
+            "The patient's vital signs are relatively stable.",
+            "The patient's heart rate is 91-97 beats per minute.",
+            "A heart rate of 91-97 beats per minute represents mild tachycardia.",
+            "The patient's respiratory rate is normal.",
+            "The patient's blood pressure is adequate.",
+            "The patient's oxygen saturation is maintained above 94%.",
+            "The patient's lactate is 0.98 mmol/L.",
+            "A lactate of 0.98 mmol/L is within the normal range.",
+            "A normal lactate is a strong negative predictor for progression to sepsis.",
+            "The patient's white blood cell count is mildly elevated at 10.9 K/uL.",
+            "The patient's neutrophil percentage is 76%, indicating neutrophilia.",
+            "The patient's renal function tests are essentially normal.",
+            "The patient's liver enzymes are essentially normal.",
+            "The patient's acid-base status is essentially normal.",
+            "The patient's blood glucose is significantly elevated between 331 and 380 mg/dL.",
+            "The significantly elevated glucose suggests possible diabetic ketoacidosis.",
+            "The significantly elevated glucose suggests possible hyperglycemic hyperosmolar state.",
+            "The significantly elevated glucose suggests an alternative diagnosis such as DKA or HHS rather than sepsis."
+        ],
+        "relevant_claims": [
+            "The patient is a 39-year-old female.",
+            "The patient has reassuring clinical indicators that argue against imminent sepsis.",
+            "The patient's vital signs are relatively stable.",
+            "The patient's respiratory rate is normal.",
+            "The patient's blood pressure is adequate.",
+            "The patient's oxygen saturation is maintained above 94%.",
+            "The patient's lactate is 0.98 mmol/L.",
+            "A lactate of 0.98 mmol/L is within the normal range.",
+            "A normal lactate is a strong negative predictor for progression to sepsis.",
+            "The patient's renal function tests are essentially normal.",
+            "The patient's liver enzymes are essentially normal.",
+            "The patient's acid-base status is essentially normal."
+        ],
+        "claims_by_category": {
+            "Elderly Susceptibility (Age \u226565 years)": [],
+            "SIRS Positivity (\u22652 Criteria)": [
+                "The patient's respiratory rate is normal."
+            ],
+            "High qSOFA Score (\u22652)": [
+                "The patient's respiratory rate is normal.",
+                "The patient's blood pressure is adequate."
+            ],
+            "Elevated NEWS Score (\u22655 points)": [
+                "The patient's vital signs are relatively stable.",
+                "The patient's respiratory rate is normal.",
+                "The patient's blood pressure is adequate.",
+                "The patient's oxygen saturation is maintained above 94%."
+            ],
+            "Elevated Serum Lactate (\u22652 mmol/L)": [
+                "The patient's lactate is 0.98 mmol/L.",
+                "A lactate of 0.98 mmol/L is within the normal range.",
+                "A normal lactate is a strong negative predictor for progression to sepsis."
+            ],
+            "Elevated Shock Index (\u22651.0)": [
+                "The patient's vital signs are relatively stable.",
+                "The patient's blood pressure is adequate."
+            ],
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": [
+                "The patient's blood pressure is adequate."
+            ],
+            "SOFA Score Increase (\u22652 points)": [
+                "The patient's respiratory rate is normal.",
+                "The patient's blood pressure is adequate.",
+                "The patient's oxygen saturation is maintained above 94%.",
+                "The patient's renal function tests are essentially normal.",
+                "The patient's liver enzymes are essentially normal."
+            ],
+            "Early Antibiotic/Culture Orders (within 2 hours)": []
+        },
+        "category_alignment_scores": {
+            "Elderly Susceptibility (Age \u226565 years)": 0.0,
+            "SIRS Positivity (\u22652 Criteria)": 0.0,
+            "High qSOFA Score (\u22652)": 0.0,
+            "Elevated NEWS Score (\u22655 points)": 0.0,
+            "Elevated Serum Lactate (\u22652 mmol/L)": 0.0,
+            "Elevated Shock Index (\u22651.0)": 0.0,
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": 0.5,
+            "SOFA Score Increase (\u22652 points)": 0.0,
+            "Early Antibiotic/Culture Orders (within 2 hours)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Elderly Susceptibility (Age \u226565 years)": "No claims about the patient's age are provided, so there is no information to support or satisfy the category's criterion (age \u2265 65 years).",
+            "SIRS Positivity (\u22652 Criteria)": "The claim states the respiratory rate is normal, which explicitly indicates the patient does not meet the SIRS respiratory criterion (>20/min). It provides no evidence for any other SIRS criteria (temperature, heart rate, or WBC), so it does not support presence of \u22652 SIRS criteria.",
+            "High qSOFA Score (\u22652)": "The claims state that two qSOFA components (respiratory rate and systolic blood pressure) are normal/adequate, and do not provide any evidence of altered mentation. They therefore do not meet the qSOFA \u22652 threshold and do not support the category of a high qSOFA score.",
+            "Elevated NEWS Score (\u22655 points)": "The claims describe stable, normal vital signs (normal respiratory rate, adequate blood pressure, SpO2 >94%), which argue against a deranged physiology required for a NEWS \u22655. They do not provide any evidence of the abnormalities that would produce an elevated NEWS score and in fact suggest a low score.",
+            "Elevated Serum Lactate (\u22652 mmol/L)": "The claims explicitly state the lactate is 0.98 mmol/L (well below the \u22652 mmol/L threshold) and interpret normal lactate as a negative predictor. This directly contradicts the category focus on elevated lactate (\u22652 mmol/L) as a risk marker, so the claims do not support the category.",
+            "Elevated Shock Index (\u22651.0)": "The claims provide no heart rate or systolic BP values and explicitly state the patient is hemodynamically stable with adequate blood pressure\u2014information that neither demonstrates nor suggests a shock index \u22651.0 (or a \u22650.3 rise). Therefore they do not align with the Elevated Shock Index category.",
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": "The claim states the blood pressure is adequate, which is relevant to sepsis\u2011associated hypotension by implying the hypotension criteria are not met. However it provides no specific SBP, MAP, or change-from-baseline values to directly confirm the category thresholds, so it\u2019s not fully specific.",
+            "SOFA Score Increase (\u22652 points)": "The claims state normal findings across SOFA-relevant systems (respiration/oxygenation, blood pressure, renal and liver function), which do not demonstrate an increase of \u22652 SOFA points or new organ dysfunction. Although they reference SOFA components, they explicitly negate dysfunction, so they do not align with the category.",
+            "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided about administration of antibiotics or drawing blood cultures within 2 hours, so there is no evidence addressing this category."
+        },
+        "final_alignment_score": 0.022727272727272728,
+        "accuracy": 1
+    },
+    {
+        "input": "2.0: HR, 121.6; 2.0: RR, 11.4; 2.0: 1min HRV, 131.554832941431; 2.0: 5min HRV, 131.554832941431; 3.0: HR, 136.677966101695; 3.0: RR, 24.135593220339; 3.0: 1min HRV, 138.472290672506; 3.0: SBP, 131.0; 3.0: DBP, 96.0; 3.0: MAP, 107.666666666667; 4.0: HR, 142.206896551724; 4.0: RR, 20.7068965517241; 4.0: 1min HRV, 115.687785987164; 5.0: HR, 128.593220338983; 5.0: RR, 22.4406779661017; 5.0: 1min HRV, 141.992699105964; 6.0: HR, 118.949152542373; 6.0: RR, 22.6101694915254; 6.0: 1min HRV, 145.352134710171; 7.0: HR, 130.827586206897; 7.0: RR, 21.6724137931035; 7.0: 1min HRV, 129.56052427633; 7.0: 5min HRV, 136.764831354038; 8.0: HR, 119.64406779661; 8.0: RR, 23.6271186440678; 8.0: 1min HRV, 134.0771403863; 8.0: SBP, 131.0; 8.0: DBP, 96.0; 8.0: MAP, 107.666666666667; 8.0: Temp, 99.9; 9.0: HR, 127.672413793103; 9.0: RR, 23.1896551724138; 9.0: 1min HRV, 139.695962483068; 10.0: HR, 131.254237288136; 10.0: RR, 24.2372881355932; 10.0: 1min HRV, 125.378545997559; 11.0: HR, 121.896551724138; 11.0: RR, 23.7586206896552; 11.0: 1min HRV, 142.360744851764; 12.0: HR, 112.976190476191; 12.0: RR, 25.4324324324324; 12.0: 1min HRV, 132.600488506469; 12.0: 5min HRV, 136.338494432988; 13.0: HR, 116.508474576271; 13.0: RR, 25.406779661017; 13.0: 1min HRV, 146.223463361294; 13.0: SBP, 115.0; 13.0: DBP, 78.0; 13.0: MAP, 90.3333333333333; 14.0: HR, 127.189655172414; 14.0: RR, 19.4310344827586; 14.0: 1min HRV, 132.430424539643; 15.0: HR, 108.559322033898; 15.0: RR, 22.2881355932203; 15.0: SpO2, 98.0; 15.0: 1min HRV, 126.494846494113; 16.0: HR, 141.304347826087; 16.0: RR, 22.6458333333333; 16.0: SpO2, 96.4444444444445; 16.0: 1min HRV, 113.490292871081; 17.0: HR, 122.962962962963; 17.0: RR, 19.4576271186441; 17.0: 1min HRV, 127.816455427435; 17.0: 5min HRV, 137.836982551479; 18.0: HR, 133.661016949153; 18.0: RR, 20.7966101694915; 18.0: 1min HRV, 135.940111875485; 19.0: HR, 121.241379310345; 19.0: RR, 23.0172413793103; 19.0: 1min HRV, 133.130869325438; 20.0: HR, 115.949152542373; 20.0: RR, 21.9491525423729; 20.0: 1min HRV, 123.593366802027; 21.0: HR, 121.327586206897; 21.0: RR, 25.1034482758621; 21.0: 1min HRV, 132.189844373996; 22.0: HR, 132.186440677966; 22.0: RR, 21.7796610169492; 22.0: 1min HRV, 126.025689306722; 22.0: 5min HRV, 133.465796522139; 23.0: HR, 118.525423728814; 23.0: RR, 22.864406779661; 23.0: 1min HRV, 144.042472521994; 24.0: HR, 120.672413793103; 24.0: RR, 24.1724137931035; 24.0: 1min HRV, 149.78542175199; 25.0: HR, 105.542372881356; 25.0: RR, 23.9491525423729; 25.0: 1min HRV, 132.518569019863; 26.0: HR, 128.896551724138; 26.0: RR, 27.1206896551724; 26.0: 1min HRV, 137.08277076998; 27.0: HR, 124.389830508475; 27.0: RR, 22.3728813559322; 27.0: 1min HRV, 131.934893403814; 27.0: 5min HRV, 144.243324211766; 28.0: HR, 113.440677966102; 28.0: RR, 22.9322033898305; 28.0: SpO2, 93.0; 28.0: 1min HRV, 140.01453085848; 28.0: SBP, 116.0; 28.0: DBP, 65.0; 28.0: MAP, 82.0; 29.0: HR, 125.793103448276; 29.0: RR, 27.7586206896552; 29.0: SpO2, 92.9142857142857; 29.0: 1min HRV, 149.270312629936; 30.0: HR, 113.661016949153; 30.0: RR, 23.8305084745763; 30.0: SpO2, 93.1875; 30.0: Perf, 0.21; 30.0: 1min HRV, 104.773193953584; 31.0: HR, 127.603448275862; 31.0: RR, 28.1379310344828; 31.0: SpO2, 93.225; 31.0: Perf, 0.21; 31.0: 1min HRV, 130.451200086486; 32.0: HR, 120.677966101695; 32.0: RR, 24.3728813559322; 32.0: 1min HRV, 130.11965008666; 32.0: 5min HRV, 137.482551167283; 33.0: HR, 127.830508474576; 33.0: RR, 22.9830508474576; 33.0: 1min HRV, 134.640116892468; 34.0: HR, 120.275862068966; 34.0: RR, 21.0344827586207; 34.0: 1min HRV, 149.603922199233; 35.0: HR, 110.305084745763; 35.0: RR, 22.7796610169492; 35.0: 1min HRV, 135.483383510406; 36.0: HR, 137.362068965517; 36.0: RR, 27.3103448275862; 36.0: 1min HRV, 136.714651958629; 37.0: HR, 117.559322033898; 37.0: RR, 22.6271186440678; 37.0: 1min HRV, 123.738919029611; 37.0: 5min HRV, 138.399920914992; 38.0: HR, 127.881355932203; 38.0: RR, 25.2542372881356; 38.0: 1min HRV, 135.25595952407; 39.0: HR, 112.862068965517; 39.0: RR, 23.0; 39.0: 1min HRV, 142.232253034096; 40.0: HR, 125.677966101695; 40.0: RR, 21.5593220338983; 40.0: SpO2, 96.0; 40.0: 1min HRV, 143.973302671851; 41.0: HR, 110.155172413793; 41.0: RR, 27.0172413793103; 41.0: SpO2, 94.051724137931; 41.0: 1min HRV, 120.261295114632; 42.0: HR, 115.932203389831; 42.0: RR, 23.0677966101695; 42.0: SpO2, 92.4516129032258; 42.0: 1min HRV, 143.198612096032; 42.0: 5min HRV, 138.513584920643; 43.0: HR, 119.344827586207; 43.0: RR, 21.6034482758621; 43.0: 1min HRV, 154.436331529555; 44.0: HR, 103.525423728814; 44.0: RR, 21.9322033898305; 44.0: 1min HRV, 140.874736755865; 45.0: HR, 115.949152542373; 45.0: RR, 23.0; 45.0: SpO2, 94.2941176470588; 45.0: 1min HRV, 150.810540456791; 46.0: HR, 110.655172413793; 46.0: RR, 23.5; 46.0: SpO2, 95.4545454545454; 46.0: 1min HRV, 148.100791492019; 47.0: HR, 105.406779661017; 47.0: RR, 24.0847457627119; 47.0: 1min HRV, 126.77026630484; 47.0: 5min HRV, 146.398157232046; 48.0: HR, 108.689655172414; 48.0: RR, 23.3620689655172; 48.0: 1min HRV, 161.784134676981; 49.0: HR, 123.271186440678; 49.0: RR, 22.9661016949153; 49.0: SpO2, 94.2777777777778; 49.0: 1min HRV, 127.902724760397; 50.0: HR, 113.525423728814; 50.0: RR, 22.9322033898305; 50.0: 1min HRV, 125.13705577137; 51.0: HR, 117.758620689655; 51.0: RR, 23.551724137931; 51.0: 1min HRV, 140.452755287193; 52.0: HR, 128.35593220339; 52.0: RR, 23.6610169491525; 52.0: SpO2, 95.2333333333333; 52.0: 1min HRV, 147.845675277777; 52.0: 5min HRV, 145.961778225858; 53.0: HR, 98.8965517241379; 53.0: RR, 22.3793103448276; 53.0: SpO2, 94.6666666666667; 53.0: 1min HRV, 84.1844541876337; 54.0: HR, 119.745762711864; 54.0: RR, 22.271186440678; 54.0: SpO2, 94.275; 54.0: 1min HRV, 125.106151690614; 55.0: HR, 101.254237288136; 55.0: RR, 23.1864406779661; 55.0: 1min HRV, 136.064259594502; 56.0: HR, 135.879310344828; 56.0: RR, 21.3793103448276; 56.0: 1min HRV, 144.822004241612; 57.0: HR, 114.06779661017; 57.0: RR, 24.0847457627119; 57.0: SpO2, 92.9545454545454; 57.0: 1min HRV, 130.908279748118; 57.0: 5min HRV, 135.934190486026; 58.0: HR, 118.01724137931; 58.0: RR, 21.5; 58.0: SpO2, 94.6545454545455; 58.0: 1min HRV, 145.298219657149; 59.0: HR, 123.28813559322; 59.0: RR, 24.0169491525424; 59.0: SpO2, 94.2068965517242; 59.0: 1min HRV, 133.475414712369; 60.0: HR, 120.28813559322; 60.0: RR, 22.2033898305085; 60.0: 1min HRV, 145.58129835909; 61.0: HR, 109.98275862069; 61.0: RR, 19.6551724137931; 61.0: SpO2, 92.3684210526316; 61.0: 1min HRV, 119.905973602806; 62.0: HR, 123.593220338983; 62.0: RR, 18.9491525423729; 62.0: 1min HRV, 134.391920956495; 62.0: 5min HRV, 140.601742036291; 63.0: HR, 128.120689655172; 63.0: RR, 22.7586206896552; 63.0: 1min HRV, 141.424941851477; 64.0: HR, 107.28813559322; 64.0: RR, 20.5593220338983; 64.0: 1min HRV, 130.112664922462; 65.0: HR, 116.016949152542; 65.0: RR, 20.2203389830509; 65.0: 1min HRV, 143.109288817859; 66.0: HR, 108.189655172414; 66.0: RR, 24.8103448275862; 66.0: 1min HRV, 124.178699361042; 67.0: HR, 105.135593220339; 67.0: RR, 22.7627118644068; 67.0: 1min HRV, 125.205598994726; 67.0: 5min HRV, 140.533959512669; 68.0: HR, 130.293103448276; 68.0: RR, 21.5; 68.0: SpO2, 93.7586206896552; 68.0: 1min HRV, 130.033008611188; 69.0: HR, 105.322033898305; 69.0: RR, 21.6101694915254; 69.0: SpO2, 94.593220338983; 69.0: 1min HRV, 137.427878829356; 70.0: HR, 119.864406779661; 70.0: RR, 21.3220338983051; 70.0: SpO2, 94.0677966101695; 70.0: 1min HRV, 141.694166471131; 71.0: HR, 107.431034482759; 71.0: RR, 20.7931034482759; 71.0: SpO2, 93.9090909090909; 71.0: Perf, 0.291666666666667; 71.0: 1min HRV, 152.97996723484; 72.0: HR, 105.06779661017; 72.0: RR, 20.7457627118644; 72.0: SpO2, 93.4915254237288; 72.0: Perf, 0.293898305084746; 72.0: 1min HRV, 142.586454025838; 72.0: 5min HRV, 150.870988509347; 73.0: HR, 143.793103448276; 73.0: RR, 20.3620689655172; 73.0: SpO2, 93.7843137254902; 73.0: Perf, 0.294901960784314; 73.0: 1min HRV, 125.425373426924; 74.0: HR, 112.610169491525; 74.0: RR, 21.6949152542373; 74.0: SpO2, 93.135593220339; 74.0: Perf, 0.28; 74.0: 1min HRV, 144.758161094297; 75.0: HR, 104.931034482759; 75.0: RR, 20.8965517241379; 75.0: SpO2, 93.6896551724138; 75.0: Perf, 0.286724137931035; 75.0: 1min HRV, 153.664283525641; 76.0: HR, 105.491525423729; 76.0: RR, 21.6779661016949; 76.0: SpO2, 93.3559322033898; 76.0: Perf, 0.27; 76.0: 1min HRV, 137.152514189269; 77.0: HR, 108.084745762712; 77.0: RR, 20.9491525423729; 77.0: SpO2, 92.7083333333333; 77.0: Perf, 0.27; 77.0: 1min HRV, 133.100131221557; 77.0: 5min HRV, 149.705086083575; 78.0: HR, 141.724137931035; 78.0: RR, 26.948275862069; 78.0: SpO2, 93.7037037037037; 78.0: Perf, 0.27; 78.0: 1min HRV, 103.680252761666; 79.0: HR, 107.728813559322; 79.0: RR, 23.1186440677966; 79.0: SpO2, 94.0; 79.0: Perf, 0.27; 79.0: 1min HRV, 137.507581687349; 80.0: HR, 131.568965517241; 80.0: RR, 23.9137931034483; 80.0: Perf, 0.27; 80.0: 1min HRV, 131.320495519866; 81.0: HR, 117.728813559322; 81.0: RR, 23.9152542372881; 81.0: Perf, 0.27; 81.0: 1min HRV, 140.071427649432; 82.0: HR, 143.186440677966; 82.0: RR, 21.1525423728814; 82.0: Perf, 0.27; 82.0: 1min HRV, 107.450214903486; 82.0: 5min HRV, 132.584026264956; 83.0: HR, 125.637931034483; 83.0: RR, 24.1551724137931; 83.0: Perf, 0.27; 83.0: 1min HRV, 131.846302096652; 84.0: HR, 107.864406779661; 84.0: RR, 21.0338983050848; 84.0: SpO2, 93.2571428571428; 84.0: Perf, 0.270169491525424; 84.0: 1min HRV, 132.840119077934; 85.0: HR, 134.793103448276; 85.0: RR, 22.3103448275862; 85.0: SpO2, 95.1379310344828; 85.0: Perf, 0.318275862068966; 85.0: 1min HRV, 129.249199965067; 86.0: HR, 105.944444444444; 86.0: RR, 19.8983050847458; 86.0: SpO2, 98.0638297872341; 86.0: Perf, 0.41; 86.0: 1min HRV, 119.098786938612; 87.0: HR, 99.728813559322; 87.0: RR, 17.8305084745763; 87.0: Perf, 0.41; 87.0: 1min HRV, 103.558363509558; 87.0: 5min HRV, 137.018728493008; 88.0: HR, 115.724137931035; 88.0: RR, 21.4137931034483; 88.0: Perf, 0.41; 88.0: 1min HRV, 152.008535534303; 89.0: HR, 118.762711864407; 89.0: RR, 23.7457627118644; 89.0: Perf, 0.41; 89.0: 1min HRV, 146.204198978561; 90.0: HR, 100.051724137931; 90.0: RR, 20.3103448275862; 90.0: Perf, 0.41; 90.0: 1min HRV, 129.336479332274; 91.0: HR, 132.813559322034; 91.0: RR, 20.8813559322034; 91.0: Perf, 0.41; 91.0: 1min HRV, 132.335454715904; 92.0: HR, 111.661016949153; 92.0: RR, 23.0847457627119; 92.0: SpO2, 96.6; 92.0: Perf, 0.41; 92.0: 1min HRV, 138.137683492202; 92.0: 5min HRV, 147.245573733624; 93.0: HR, 120.068965517241; 93.0: RR, 24.1724137931035; 93.0: SpO2, 96.0; 93.0: Perf, 0.41; 93.0: 1min HRV, 154.968331359484; 94.0: HR, 108.966101694915; 94.0: RR, 19.3898305084746; 94.0: Perf, 0.41; 94.0: 1min HRV, 147.751385713458; 95.0: HR, 121.672413793103; 95.0: RR, 25.3275862068966; 95.0: Perf, 0.41; 95.0: 1min HRV, 116.775781842069; 96.0: HR, 142.694915254237; 96.0: RR, 21.5423728813559; 96.0: SpO2, 87.0; 96.0: Perf, 0.41; 96.0: 1min HRV, 140.706893376799; 97.0: HR, 111.844827586207; 97.0: RR, 18.9655172413793; 97.0: Perf, 0.41; 97.0: 1min HRV, 140.082998159179; 97.0: 5min HRV, 147.378042074335; 98.0: HR, 123.271186440678; 98.0: RR, 19.8983050847458; 98.0: Perf, 0.41; 98.0: 1min HRV, 134.591263479152; 99.0: HR, 125.305084745763; 99.0: RR, 20.0338983050848; 99.0: Perf, 0.41; 99.0: 1min HRV, 103.822259178168; 100.0: HR, 120.344827586207; 100.0: RR, 19.7241379310345; 100.0: Perf, 0.41; 100.0: 1min HRV, 130.670395147029; 101.0: HR, 131.322033898305; 101.0: RR, 20.4915254237288; 101.0: Perf, 0.41; 101.0: 1min HRV, 135.06565674687; 102.0: HR, 115.237288135593; 102.0: RR, 19.5932203389831; 102.0: 1min HRV, 130.898596856163; 102.0: 5min HRV, 139.600690305192; 103.0: HR, 108.034482758621; 103.0: RR, 19.7068965517241; 103.0: SpO2, 97.8095238095238; 103.0: 1min HRV, 146.1146847302; 103.0: SBP, 31.0; 103.0: DBP, 23.0; 103.0: MAP, 25.6666666666667; 104.0: HR, 130.508474576271; 104.0: RR, 22.5593220338983; 104.0: 1min HRV, 143.632365538636; 105.0: HR, 100.034482758621; 105.0: RR, 20.4310344827586; 105.0: 1min HRV, 110.831894633617; 106.0: HR, 136.559322033898; 106.0: RR, 21.3898305084746; 106.0: 1min HRV, 133.750958938668; 107.0: HR, 102.965517241379; 107.0: RR, 20.2586206896552; 107.0: 1min HRV, 145.515713323338; 107.0: 5min HRV, 150.004835545333; 107.0: SBP, 94.0; 107.0: DBP, 75.0; 107.0: MAP, 81.3333333333333; 108.0: HR, 108.372881355932; 108.0: RR, 19.9322033898305; 108.0: 1min HRV, 157.638069201821; 109.0: HR, 120.758620689655; 109.0: RR, 21.8793103448276; 109.0: 1min HRV, 156.925292528912; 110.0: HR, 121.677966101695; 110.0: RR, 21.7627118644068; 110.0: 1min HRV, 129.977337727442; 111.0: INFLUENZA A, Not Detected; 111.0: RSV, Not Detected; 111.0: INFLUENZA B, Not Detected; 111.0: SARS-COV-2 RNA, Not Detected; 111.0: HR, 122.610169491525; 111.0: RR, 22.0169491525424; 111.0: 1min HRV, 146.649633176563; 111.0: SBP, 114.0; 111.0: DBP, nan; 111.0: MAP, nan; 112.0: HR, 128.896551724138; 112.0: RR, 22.5172413793103; 112.0: 1min HRV, 126.944181204878; 112.0: 5min HRV, 153.039801270327; 113.0: HR, 99.7118644067797; 113.0: RR, 20.0677966101695; 113.0: 1min HRV, 106.622556826707; 113.0: SBP, 148.0; 113.0: DBP, 128.0; 113.0: MAP, 134.666666666667; 114.0: POC PH (V) ISTAT, 7.40; 114.0: POC HCO3 (V) ISTAT, 26.6 mmol/L; 114.0: POC BASE EXCESS ISTAT, 2 mmol/L; 114.0: POC LACTATE ISTAT, 2.00 mmol/L; 114.0: POC TCO2 (V) ISTAT, 28 mmol/L; 114.0: POC O2 SATURATION ISTAT VENOUS, 54 %; 114.0: POC PCO2 (V) ISTAT, 42.8 mmHg; 114.0: POC PO2 (V) ISTAT, 29 mmHg; 114.0: HR, 134.542372881356; 114.0: RR, 21.2033898305085; 114.0: 1min HRV, 93.5220019233442; 115.0: POC SODIUM ISTAT, 132 mmol/L; 115.0: POC POTASSIUM ISTAT, 3.3 mmol/L; 115.0: POC HGB (CALC) ISTAT, 12.2 g/dL; 115.0: POC GLUCOSE ISTAT, 109 mg/dL; 115.0: POC HCT ISTAT, 36 %; 115.0: HR, 108.327586206897; 115.0: RR, 18.5862068965517; 115.0: 1min HRV, 121.738078526456; 116.0: HR, 120.06779661017; 116.0: RR, 19.6949152542373; 116.0: SpO2, 83.0; 116.0: 1min HRV, 129.346434044391; 117.0: HR, 110.844827586207; 117.0: RR, 18.6034482758621; 117.0: 1min HRV, 118.402134854885; 117.0: 5min HRV, 134.665671679691; 117.0: LR IV BOLUS -, 1000 ML; 118.0: HR:, 127.050847457627; 118.0: RR, 21.8305084745763; 118.0: 1min HRV, 163.989930897898; 118.0: SBP, 104.0; 118.0: DBP, 80.0; 118.0: MAP, 88.0; 118.0: ACETAMINOPHEN, 1 000 MG/100 ML (10 MG/ML) IV SOLN; 119.0: HR:, 120.186440677966; 119.0: RR, 20.0338983050848; 119.0: 1min HRV, 131.032430138219; 0.0: Age, 90; 0.0: Gender, F; 0.0: Race, White; 0.0: Means of arrival, EMS; 0.0: Triage Temp, 37.7; 0.0: Triage HR, 110.0; 0.0: Triage RR, 24.0; 0.0: Triage SBP, 131.0; 0.0: Triage DBP, 96.0; 0.0: Triage acuity, 2-Emergent; 0.0: CC, FEVER,LEG PAIN",
+        "answer": 1,
+        "llm_answer": "Yes",
+        "llm_explanation": "This 90-year-old female presents with fever and leg pain, arriving by EMS with a triage acuity of 2-Emergent, indicating high clinical concern. She demonstrates persistent tachycardia throughout the observation period (HR consistently 100-140s), tachypnea (RR 20-28), and fever (temp 99.9\u00b0F/37.7\u00b0C at triage), meeting SIRS criteria. The combination of advanced age, suspected infection (fever + leg pain suggesting possible cellulitis or deep tissue infection), and hemodynamic instability (note the significant blood pressure drop at time 103 with MAP of 25.7, though likely artifact, and later readings showing variability) raises significant concern. Additionally, the lactate of 2.0 mmol/L at time 114, while borderline, combined with intermittent hypoxemia (SpO2 dropping to 83-87% at times) and the need for IV fluid bolus and acetaminophen administration suggests early sepsis recognition and treatment initiation by the clinical team.",
+        "claims": [
+            "The patient is a 90-year-old female.",
+            "The patient presents with fever.",
+            "The patient presents with leg pain.",
+            "The patient arrived by EMS.",
+            "The patient's triage acuity was 2-Emergent.",
+            "A triage acuity of 2-Emergent indicates high clinical concern.",
+            "The patient demonstrated persistent tachycardia throughout the observation period.",
+            "The patient's heart rate was consistently in the 100-140s.",
+            "The patient was tachypneic.",
+            "The patient's respiratory rate was between 20 and 28 breaths per minute.",
+            "The patient had a fever of 99.9\u00b0F (37.7\u00b0C) at triage.",
+            "The patient's vital signs meet SIRS criteria.",
+            "The patient's advanced age is a risk factor for clinical deterioration.",
+            "The combination of fever and leg pain suggests a suspected infection such as cellulitis or a deep tissue infection.",
+            "The patient exhibited hemodynamic instability.",
+            "There was a significant blood pressure drop at time 103 with a mean arterial pressure (MAP) of 25.7.",
+            "The MAP of 25.7 at time 103 was likely an artifact.",
+            "Later blood pressure readings showed variability.",
+            "The combination of advanced age, suspected infection, and hemodynamic instability raises significant concern for sepsis.",
+            "The patient's lactate was 2.0 mmol/L at time 114.",
+            "A lactate of 2.0 mmol/L is borderline.",
+            "The patient experienced intermittent hypoxemia.",
+            "The patient's SpO2 dropped to 83\u201387% at times.",
+            "The patient received an IV fluid bolus.",
+            "The patient was given acetaminophen.",
+            "The administration of IV fluids and acetaminophen suggests early sepsis recognition and treatment initiation by the clinical team."
+        ],
+        "relevant_claims": [
+            "The patient is a 90-year-old female.",
+            "The patient presents with fever.",
+            "The patient's triage acuity was 2-Emergent.",
+            "A triage acuity of 2-Emergent indicates high clinical concern.",
+            "The patient demonstrated persistent tachycardia throughout the observation period.",
+            "The patient's heart rate was consistently in the 100-140s.",
+            "The patient was tachypneic.",
+            "The patient's respiratory rate was between 20 and 28 breaths per minute.",
+            "The patient had a fever of 99.9\u00b0F (37.7\u00b0C) at triage.",
+            "The patient's vital signs meet SIRS criteria.",
+            "The patient's advanced age is a risk factor for clinical deterioration.",
+            "The combination of fever and leg pain suggests a suspected infection such as cellulitis or a deep tissue infection.",
+            "The patient exhibited hemodynamic instability.",
+            "There was a significant blood pressure drop at time 103 with a mean arterial pressure (MAP) of 25.7.",
+            "The MAP of 25.7 at time 103 was likely an artifact.",
+            "Later blood pressure readings showed variability.",
+            "The combination of advanced age, suspected infection, and hemodynamic instability raises significant concern for sepsis.",
+            "The patient's lactate was 2.0 mmol/L at time 114.",
+            "A lactate of 2.0 mmol/L is borderline.",
+            "The patient experienced intermittent hypoxemia.",
+            "The patient's SpO2 dropped to 83\u201387% at times.",
+            "The patient received an IV fluid bolus.",
+            "The patient was given acetaminophen.",
+            "The administration of IV fluids and acetaminophen suggests early sepsis recognition and treatment initiation by the clinical team."
+        ],
+        "claims_by_category": {
+            "Elderly Susceptibility (Age \u226565 years)": [
+                "The patient is a 90-year-old female.",
+                "The patient's advanced age is a risk factor for clinical deterioration.",
+                "The combination of advanced age, suspected infection, and hemodynamic instability raises significant concern for sepsis."
+            ],
+            "SIRS Positivity (\u22652 Criteria)": [
+                "The patient presents with fever.",
+                "The patient demonstrated persistent tachycardia throughout the observation period.",
+                "The patient's heart rate was consistently in the 100-140s.",
+                "The patient was tachypneic.",
+                "The patient's respiratory rate was between 20 and 28 breaths per minute.",
+                "The patient's vital signs meet SIRS criteria."
+            ],
+            "High qSOFA Score (\u22652)": [
+                "The patient was tachypneic.",
+                "The patient's respiratory rate was between 20 and 28 breaths per minute."
+            ],
+            "Elevated NEWS Score (\u22655 points)": [
+                "The patient presents with fever.",
+                "The patient demonstrated persistent tachycardia throughout the observation period.",
+                "The patient's heart rate was consistently in the 100-140s.",
+                "The patient was tachypneic.",
+                "The patient's respiratory rate was between 20 and 28 breaths per minute.",
+                "The patient had a fever of 99.9\u00b0F (37.7\u00b0C) at triage.",
+                "The patient exhibited hemodynamic instability.",
+                "There was a significant blood pressure drop at time 103 with a mean arterial pressure (MAP) of 25.7.",
+                "The MAP of 25.7 at time 103 was likely an artifact.",
+                "Later blood pressure readings showed variability.",
+                "The patient experienced intermittent hypoxemia.",
+                "The patient's SpO2 dropped to 83\u201387% at times."
+            ],
+            "Elevated Serum Lactate (\u22652 mmol/L)": [
+                "There was a significant blood pressure drop at time 103 with a mean arterial pressure (MAP) of 25.7.",
+                "The MAP of 25.7 at time 103 was likely an artifact.",
+                "Later blood pressure readings showed variability.",
+                "The patient exhibited hemodynamic instability.",
+                "The patient's lactate was 2.0 mmol/L at time 114.",
+                "A lactate of 2.0 mmol/L is borderline.",
+                "The patient received an IV fluid bolus.",
+                "The administration of IV fluids and acetaminophen suggests early sepsis recognition and treatment initiation by the clinical team."
+            ],
+            "Elevated Shock Index (\u22651.0)": [
+                "The patient demonstrated persistent tachycardia throughout the observation period.",
+                "The patient's heart rate was consistently in the 100-140s.",
+                "The patient exhibited hemodynamic instability.",
+                "There was a significant blood pressure drop at time 103 with a mean arterial pressure (MAP) of 25.7.",
+                "The MAP of 25.7 at time 103 was likely an artifact.",
+                "Later blood pressure readings showed variability.",
+                "The patient received an IV fluid bolus."
+            ],
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": [
+                "The patient exhibited hemodynamic instability.",
+                "There was a significant blood pressure drop at time 103 with a mean arterial pressure (MAP) of 25.7.",
+                "The MAP of 25.7 at time 103 was likely an artifact.",
+                "Later blood pressure readings showed variability.",
+                "The patient received an IV fluid bolus.",
+                "The administration of IV fluids and acetaminophen suggests early sepsis recognition and treatment initiation by the clinical team.",
+                "The combination of advanced age, suspected infection, and hemodynamic instability raises significant concern for sepsis."
+            ],
+            "SOFA Score Increase (\u22652 points)": [
+                "The patient exhibited hemodynamic instability.",
+                "There was a significant blood pressure drop at time 103 with a mean arterial pressure (MAP) of 25.7.",
+                "The patient experienced intermittent hypoxemia.",
+                "The patient's SpO2 dropped to 83\u201387% at times."
+            ],
+            "Early Antibiotic/Culture Orders (within 2 hours)": []
+        },
+        "category_alignment_scores": {
+            "Elderly Susceptibility (Age \u226565 years)": 1.0,
+            "SIRS Positivity (\u22652 Criteria)": 1.0,
+            "High qSOFA Score (\u22652)": 0.5,
+            "Elevated NEWS Score (\u22655 points)": 1.0,
+            "Elevated Serum Lactate (\u22652 mmol/L)": 1.0,
+            "Elevated Shock Index (\u22651.0)": 0.5,
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": 0.5,
+            "SOFA Score Increase (\u22652 points)": 0.5,
+            "Early Antibiotic/Culture Orders (within 2 hours)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Elderly Susceptibility (Age \u226565 years)": "The claims explicitly state the patient is 90 years old (well above the \u226565 threshold) and directly identify advanced age as a risk factor for deterioration and sepsis risk; they therefore fully capture the category\u2019s intent.",
+            "SIRS Positivity (\u22652 Criteria)": "The claims explicitly document fever and persistent tachycardia with heart rates in the 100\u2013140s (HR > 90 bpm), which are two distinct SIRS criteria. Tachypnea is also reported (RR up to 28/min), further supporting SIRS. Because \u22652 SIRS criteria are met, the claims fully align with the category.",
+            "High qSOFA Score (\u22652)": "The claims indicate tachypnea and give a respiratory rate range (20\u201328/min) that could include values meeting the qSOFA respiratory criterion (\u226522/min) but is not specific\u2014it may also be below threshold (e.g., 20/min). No other qSOFA components (SBP \u2264100 mmHg or altered mentation) are provided. Because the respiratory criterion is only ambiguously satisfied, alignment is partial.",
+            "Elevated NEWS Score (\u22655 points)": "The claims provide multiple concrete deranged vital signs that map directly to NEWS components\u2014persistent tachycardia (HR 100\u2013140), tachypnea (RR 20\u201328), and severe intermittent hypoxemia (SpO2 83\u201387%)\u2014all of which would accrue substantial NEWS points. Although the fever reported (99.9\u00b0F/37.7\u00b0C) is mild and one MAP of 25.7 is likely an artifact, the constellation of abnormal HR, RR, and SpO2 is specific and sufficient to support an elevated NEWS (\u22655).",
+            "Elevated Serum Lactate (\u22652 mmol/L)": "The claims include a measured serum lactate of 2.0 mmol/L, which meets the category threshold (\u22652 mmol/L). Although labeled \"borderline,\" that value still satisfies the criterion and is supported by concurrent hemodynamic instability and initiation of fluids, which reinforce the clinical relevance. The other notes about a probable MAP artifact do not negate the reported elevated lactate.",
+            "Elevated Shock Index (\u22651.0)": "The claims include sustained tachycardia (HR 100\u2013140s) and describe hemodynamic instability and a clinician response (IV fluids), all of which are consistent with conditions that would raise the shock index. However, no reliable systolic blood pressure value or an explicit shock\u2011index calculation is provided; the one extreme MAP (25.7) that would strongly support an elevated shock index is noted as likely artifactual, and later BPs are only described as variable. Because key SBP data are missing/unreliable, the evidence supports but does not definitively establish an elevated shock index.",
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": "There is one claim of a MAP of 25.7, which would clearly meet the category threshold for sepsis\u2011associated hypotension, but that same measurement is explicitly called \"likely an artifact\" and subsequent readings are variable. Other statements (hemodynamic instability, IV fluids given) suggest clinical concern and treatment but are indirect and do not definitively document validated SBP <90 mmHg, MAP <70 mmHg, or a \u226540 mmHg drop. Because the hypotensive measurement is present but questionable and the rest of the evidence is suggestive rather than confirmatory, the alignment is partial.",
+            "SOFA Score Increase (\u22652 points)": "The claims document severe physiologic derangements\u2014profound hypotension (MAP 25.7) and marked hypoxemia (SpO2 83\u201387%)\u2014that correspond to cardiovascular and respiratory SOFA components and would likely produce a \u22652\u2011point SOFA increase. However, the claims do not state SOFA component values/changes explicitly (e.g., PaO2/FiO2, vasopressor dosing, baseline SOFA) and use SpO2 rather than PaO2/FiO2, so they only partially and indirectly satisfy the category criteria.",
+            "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided about administration of antibiotics or drawing blood cultures within 2 hours, so there is no evidence addressing this category."
+        },
+        "final_alignment_score": 0.7692307692307693,
+        "accuracy": 1
+    },
+    {
+        "input": "5.0: HR, 120.0; 5.0: RR, 16.0; 5.0: SpO2, 97.0; 5.0: SBP, 132.0; 5.0: DBP, 75.0; 5.0: MAP, 94.0; 5.0: Temp, 98.2; 9.0: Pain, 5.0; 57.0: WAM DIFTYP, AUTO; 57.0: HEMOGLOBIN (HGB), 14.6 g/dL; 57.0: HEMATOCRIT (HCT), 42.6 %; 57.0: RED CELL DISTRIBUTION WIDTH (RDW), 12.1 %; 57.0: NRBC PERCENT (HEMATOLOGY), 0.0 %; 57.0: BASOPHIL % (AUTO DIFF), 0.1 %; 57.0: IMMATURE GRANULOCYTE % (AUTODIFF) WAM, 0.5 %; 57.0: BASOPHIL ABSOLUTE (AUTO DIFF), 0.01 K/uL; 57.0: MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION (MCHC), 34.3 g/dL; 57.0: NEUTROPHIL % (AUTO DIFF), 85.9 %; 57.0: MONOCYTE ABSOLUTE (AUTO DIFF), 0.58 K/uL; 57.0: MONOCYTE % (AUTO DIFF), 5.4 %; 57.0: NRBC ABSOLUTE (HEMATOLOGY), 0.00 K/uL; 57.0: LYMPHOCYTE ABSOLUTE (AUTO DIFF), 0.87 K/uL; 57.0: EOSINOPHIL ABSOLUTE (AUTO DIFF), 0.01 K/uL; 57.0: NEUTROPHIL ABSOLUTE (AUTO DIFF), 9.30 K/uL; 57.0: IMMATURE GRANULOCYTE ABSOLUTE (AUTO DIFF) WAM, 0.05 K/uL; 57.0: EOSINOPHIL % (AUTO DIFF), 0.1 %; 57.0: MEAN CORPUSCULAR VOLUME (MCV), 92.6 fL; 57.0: RED BLOOD CELLS (RBC), 4.60 MIL/uL; 57.0: WHITE BLOOD CELLS (WBC), 10.8 K/uL; 57.0: PLATELET COUNT (PLT), 150 K/uL; 57.0: LYMPHOCYTE % (AUTO DIFF), 8.0 %; 57.0: MEAN CORPUSCULAR HEMOGLOBIN (MCH), 31.7 pg; 66.0: SpO2, 95.5185185185185; 66.0: Perf, 9.72; 67.0: HR, 101.933333333333; 67.0: SpO2, 95.8813559322034; 67.0: Perf, 8.91305084745763; 67.0: 1min HRV, 13.5740495408201; 68.0: HR, 99.4915254237288; 68.0: SpO2, 96.0; 68.0: Perf, 8.10813559322034; 68.0: 1min HRV, 26.8411627078378; 69.0: HR, 97.5172413793104; 69.0: SpO2, 95.6206896551724; 69.0: Perf, 7.74344827586207; 69.0: 1min HRV, 24.6720202854286; 69.0: 5min HRV, 26.0597348006997; 70.0: HR, 96.7457627118644; 70.0: SpO2, 95.1016949152542; 70.0: Perf, 7.36813559322034; 70.0: 1min HRV, 41.1734920899692; 71.0: HR, 94.6551724137931; 71.0: SpO2, 95.3448275862069; 71.0: Perf, 7.29396551724138; 71.0: 1min HRV, 42.4053682423799; 72.0: HR, 94.5254237288136; 72.0: SpO2, 94.728813559322; 72.0: Perf, 7.30338983050848; 72.0: 1min HRV, 42.5793364109479; 73.0: HR, 97.9655172413793; 73.0: SpO2, 95.8103448275862; 73.0: Perf, 6.23706896551724; 73.0: 1min HRV, 30.4956633763646; 74.0: HR, 95.8983050847458; 74.0: SpO2, 96.2542372881356; 74.0: Perf, 6.46983050847458; 74.0: 1min HRV, 40.3323859045996; 74.0: 5min HRV, 40.7856508021342; 75.0: HR, 96.6101694915255; 75.0: SpO2, 95.728813559322; 75.0: Perf, 6.38983050847458; 75.0: 1min HRV, 36.5092379000155; 75.0: SBP, 119.0; 75.0: DBP, 82.0; 75.0: MAP, 94.3333333333333; 76.0: HR, 97.1206896551724; 76.0: SpO2, 95.448275862069; 76.0: Perf, 6.35; 76.0: 1min HRV, 30.3097447190433; 77.0: HR, 97.5762711864407; 77.0: SpO2, 95.0677966101695; 77.0: Perf, 6.76220338983051; 77.0: 1min HRV, 25.7652853839659; 78.0: HR, 96.6724137931035; 78.0: SpO2, 95.6551724137931; 78.0: Perf, 6.165; 78.0: 1min HRV, 33.0464082351973; 79.0: HR, 94.8813559322034; 79.0: SpO2, 95.0338983050848; 79.0: Perf, 5.96898305084746; 79.0: 1min HRV, 39.3422482834929; 79.0: 5min HRV, 34.2168322498849; 80.0: HR, 96.4237288135593; 80.0: SpO2, 95.593220338983; 80.0: Perf, 5.80135593220339; 80.0: 1min HRV, 33.3119811890143; 81.0: HR, 95.948275862069; 81.0: SpO2, 95.0; 81.0: Perf, 5.32362068965517; 81.0: 1min HRV, 36.4610731312503; 82.0: ALKALINE PHOSPHATASE, 84 U/L; 82.0: CHLORIDE, 99 mmol/L; 82.0: BILIRUBIN TOTAL, 1.2 mg/dL; 82.0: GLUCOSE, 174 mg/dL; 82.0: ALBUMIN, 4.6 g/dL; 82.0: GLOBULIN, 3.3 g/dL; 82.0: CO2, 22 mmol/L; 82.0: CORRECTED CALCIUM, 8.8 mg/dL; 82.0: ANION GAP, 16 mmol/L; 82.0: SODIUM, 137 mmol/L; 82.0: POTASSIUM, 3.5 mmol/L; 82.0: CALCIUM, 9.3 mg/dL; 82.0: BLOOD UREA NITROGEN (BUN), 13 mg/dL; 82.0: ALT (SGPT), 18 U/L; 82.0: AST (SGOT), 23 U/L; 82.0: CREATININE, 0.63 mg/dL; 82.0: EGFR REFIT WITHOUT RACE (2021), 99 mL/min/1.73 m2; 82.0: PROTEIN TOTAL, 7.9 g/dL; 82.0: HR, 94.3050847457627; 82.0: SpO2, 95.3728813559322; 82.0: Perf, 5.00779661016949; 82.0: 1min HRV, 36.3124460185943; 83.0: HR, 93.8103448275862; 83.0: SpO2, 95.9827586206896; 83.0: Perf, 5.58241379310345; 83.0: 1min HRV, 37.8442042269586; 84.0: RSV, Not Detected; 84.0: SARS-COV-2 RNA, Not Detected; 84.0: INFLUENZA B, Not Detected; 84.0: INFLUENZA A, Not Detected; 84.0: HR, 97.3793103448276; 84.0: SpO2, 95.2586206896552; 84.0: Perf, 5.74362068965517; 84.0: 1min HRV, 25.8651852737642; 84.0: 5min HRV, 35.6363785405986; 85.0: HR, 94.9152542372881; 85.0: SpO2, 94.9661016949152; 85.0: Perf, 5.69406779661017; 85.0: 1min HRV, 32.181169331994; 86.0: HR, 92.3965517241379; 86.0: SpO2, 93.5344827586207; 86.0: Perf, 5.84672413793104; 86.0: 1min HRV, 41.2073127210677; 87.0: HR, 91.1186440677966; 87.0: SpO2, 94.2203389830508; 87.0: Perf, 5.45779661016949; 87.0: 1min HRV, 46.8611591891479; 88.0: HR, 92.4655172413793; 88.0: SpO2, 95.0862068965517; 88.0: Perf, 4.83241379310345; 88.0: 1min HRV, 44.0954887553112; 89.0: HR, 93.2372881355932; 89.0: SpO2, 95.6271186440678; 89.0: Perf, 4.94372881355932; 89.0: 1min HRV, 34.6952217369631; 89.0: 5min HRV, 40.9859617917785; 90.0: HR, 93.3898305084746; 90.0: SpO2, 95.2881355932203; 90.0: Perf, 5.54915254237288; 90.0: 1min HRV, 38.5310086891087; 91.0: HR, 92.2586206896552; 91.0: SpO2, 94.5689655172414; 91.0: Perf, 6.02655172413793; 91.0: 1min HRV, 43.6857914605509; 92.0: HR, 93.0508474576271; 92.0: SpO2, 96.3050847457627; 92.0: Perf, 5.26101694915254; 92.0: 1min HRV, 36.2862116245864; 93.0: HR, 90.0862068965517; 93.0: SpO2, 94.0; 93.0: Perf, 5.00362068965517; 93.0: 1min HRV, 41.7670775304198; 94.0: HR, 90.1379310344828; 94.0: SpO2, 93.4827586206896; 94.0: Perf, 4.50758620689655; 94.0: 1min HRV, 44.6206164041245; 94.0: 5min HRV, 42.0696841187304; 95.0: HR, 90.1864406779661; 95.0: SpO2, 95.7627118644068; 95.0: Perf, 4.34627118644068; 95.0: 1min HRV, 44.6482359017218; 96.0: HR, 89.948275862069; 96.0: SpO2, 93.4137931034483; 96.0: Perf, 5.02637931034483; 96.0: 1min HRV, 38.9685058020505; 97.0: HR, 88.6949152542373; 97.0: SpO2, 94.135593220339; 97.0: Perf, 4.92152542372882; 97.0: 1min HRV, 53.390337314381; 98.0: HR, 86.8448275862069; 98.0: SpO2, 94.1724137931035; 98.0: Perf, 5.02568965517241; 98.0: 1min HRV, 47.3816385012488; 99.0: HR, 86.9491525423729; 99.0: SpO2, 94.4915254237288; 99.0: Perf, 4.55610169491525; 99.0: 1min HRV, 47.4332218779164; 99.0: 5min HRV, 48.0094452092841; 100.0: HR, 86.135593220339; 100.0: SpO2, 94.0338983050848; 100.0: Perf, 4.70559322033898; 100.0: 1min HRV, 45.2178033117927; 101.0: HR, 85.6896551724138; 101.0: SpO2, 94.7413793103448; 101.0: Perf, 4.2; 101.0: 1min HRV, 49.4121673653061; 102.0: HR, 83.3389830508475; 102.0: SpO2, 94.5254237288136; 102.0: Perf, 4.42966101694915; 102.0: 1min HRV, 48.7471516711662; 103.0: HR, 85.5; 103.0: SpO2, 94.3620689655172; 103.0: Perf, 3.78172413793103; 103.0: 1min HRV, 58.6372419640598; 104.0: HR, 91.1379310344828; 104.0: SpO2, 96.0; 104.0: Perf, 3.67; 104.0: 1min HRV, 43.607198692163; 104.0: 5min HRV, 52.8891851392384; 105.0: HR, 87.7931034482759; 105.0: SpO2, 94.4655172413793; 105.0: Perf, 4.60706896551724; 105.0: 1min HRV, 49.4468054604939; 106.0: HR, 90.2881355932203; 106.0: SpO2, 95.1864406779661; 106.0: Perf, 4.17491525423729; 106.0: 1min HRV, 45.3239999242764; 107.0: HR, 87.8983050847458; 107.0: SpO2, 93.9322033898305; 107.0: Perf, 4.65949152542373; 107.0: 1min HRV, 45.191090286693; 108.0: TROPONIN I, <.017 ng/mL; 108.0: HR, 85.5862068965517; 108.0: SpO2, 93.2758620689655; 108.0: Perf, 4.76844827586207; 108.0: 1min HRV, 49.6602585753833; 109.0: HR, 84.9152542372882; 109.0: SpO2, 93.3389830508475; 109.0: Perf, 4.0606779661017; 109.0: 1min HRV, 52.7002547415759; 109.0: 5min HRV, 50.5054765772578; 110.0: HR, 84.4137931034483; 110.0: SpO2, 93.9655172413793; 110.0: Perf, 4.05862068965517; 110.0: 1min HRV, 50.8228880678489; 111.0: HR, 85.6440677966102; 111.0: SpO2, 94.5423728813559; 111.0: Perf, 3.53983050847458; 111.0: 1min HRV, 48.5713926655097; 112.0: HR, 86.7966101694915; 112.0: SpO2, 94.3050847457627; 112.0: Perf, 3.94135593220339; 112.0: 1min HRV, 44.0487477531806; 113.0: HR, 85.7931034482759; 113.0: SpO2, 94.051724137931; 113.0: Perf, 3.84224137931035; 113.0: 1min HRV, 49.0966401009698; 114.0: HR, 84.0677966101695; 114.0: SpO2, 93.9491525423729; 114.0: Perf, 3.98796610169492; 114.0: 1min HRV, 43.0686784770515; 114.0: 5min HRV, 47.9238490418157; 115.0: HR, 86.1052631578948; 115.0: SpO2, 94.4385964912281; 115.0: Perf, 3.31789473684211; 115.0: 1min HRV, 43.7192880691106; 115.0: SBP, 118.0; 115.0: DBP, 72.0; 115.0: MAP, 87.3333333333333; 116.0: HR, 84.5084745762712; 116.0: SpO2, 94.135593220339; 116.0: Perf, 4.3728813559322; 116.0: 1min HRV, 45.0337259238921; 117.0: HR, 86.4576271186441; 117.0: SpO2, 94.2372881355932; 117.0: Perf, 3.89203389830508; 117.0: 1min HRV, 46.5797658604563; 118.0: HR, 84.5862068965517; 118.0: SpO2, 93.7586206896552; 118.0: Perf, 4.15655172413793; 118.0: 1min HRV, 42.0486786490823; 119.0: HR, 84.0169491525424; 119.0: SpO2, 94.0; 119.0: Perf, 3.76661016949153; 119.0: 1min HRV, 40.4598319153196; 119.0: 5min HRV, 44.1361626197975; 0.0: Age, 63; 0.0: Gender, F; 0.0: Race, Asian; 0.0: Means of arrival, Self; 0.0: Triage Temp, 36.8; 0.0: Triage HR, 120.0; 0.0: Triage RR, 16.0; 0.0: Triage SBP, 132.0; 0.0: Triage DBP, 75.0; 0.0: Triage acuity, 3-Urgent; 0.0: CC, COUGH",
+        "answer": 0,
+        "llm_answer": "No",
+        "llm_explanation": "While the patient presents with tachycardia (HR 120 at triage, improving to 84-90s over time) and cough as chief complaint suggesting possible respiratory infection, several factors argue against high sepsis risk: temperature is normal (36.8\u00b0C/98.2\u00b0F), blood pressure is stable and adequate (MAP 94), WBC is only mildly elevated (10.8) with neutrophilia but no bandemia or significant left shift, and all metabolic/organ function labs (creatinine, bilirubin, lactate not reported but albumin normal) are reassuring. The respiratory viral panel is negative, SpO2 remains adequate (93-97%), and the patient arrived independently with urgent (not emergent) triage acuity, suggesting the clinical presentation is more consistent with a non-septic respiratory illness rather than early sepsis.",
+        "claims": [
+            "The patient presented with tachycardia, with a heart rate of 120 at triage.",
+            "The heart rate improved to the 84\u201390s over time.",
+            "Cough was the chief complaint.",
+            "The tachycardia and cough suggest a possible respiratory infection.",
+            "The temperature is normal at 36.8\u00b0C (98.2\u00b0F).",
+            "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94.",
+            "The white blood cell count is mildly elevated at 10.8.",
+            "There is neutrophilia.",
+            "There is no bandemia or significant left shift.",
+            "Metabolic and organ function labs are generally reassuring.",
+            "Creatinine and bilirubin results are reassuring.",
+            "Lactate was not reported.",
+            "Albumin is normal.",
+            "The respiratory viral panel is negative.",
+            "Pulse oximetry (SpO2) remains adequate, ranging from 93% to 97%.",
+            "The patient arrived independently.",
+            "The triage acuity was urgent, not emergent.",
+            "These clinical findings argue against a high risk of sepsis.",
+            "The overall clinical presentation is more consistent with a non-septic respiratory illness than with early sepsis."
+        ],
+        "relevant_claims": [
+            "The heart rate improved to the 84\u201390s over time.",
+            "The temperature is normal at 36.8\u00b0C (98.2\u00b0F).",
+            "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94.",
+            "There is no bandemia or significant left shift.",
+            "Metabolic and organ function labs are generally reassuring.",
+            "Creatinine and bilirubin results are reassuring.",
+            "Lactate was not reported.",
+            "Albumin is normal.",
+            "The respiratory viral panel is negative.",
+            "Pulse oximetry (SpO2) remains adequate, ranging from 93% to 97%.",
+            "The triage acuity was urgent, not emergent.",
+            "These clinical findings argue against a high risk of sepsis.",
+            "The overall clinical presentation is more consistent with a non-septic respiratory illness than with early sepsis."
+        ],
+        "claims_by_category": {
+            "Elderly Susceptibility (Age \u226565 years)": [],
+            "SIRS Positivity (\u22652 Criteria)": [
+                "The heart rate improved to the 84\u201390s over time.",
+                "The temperature is normal at 36.8\u00b0C (98.2\u00b0F).",
+                "There is no bandemia or significant left shift."
+            ],
+            "High qSOFA Score (\u22652)": [
+                "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94."
+            ],
+            "Elevated NEWS Score (\u22655 points)": [
+                "The heart rate improved to the 84\u201390s over time.",
+                "The temperature is normal at 36.8\u00b0C (98.2\u00b0F).",
+                "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94.",
+                "Pulse oximetry (SpO2) remains adequate, ranging from 93% to 97%."
+            ],
+            "Elevated Serum Lactate (\u22652 mmol/L)": [
+                "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94.",
+                "Metabolic and organ function labs are generally reassuring.",
+                "Creatinine and bilirubin results are reassuring.",
+                "Lactate was not reported."
+            ],
+            "Elevated Shock Index (\u22651.0)": [
+                "The heart rate improved to the 84\u201390s over time.",
+                "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94."
+            ],
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": [
+                "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94."
+            ],
+            "SOFA Score Increase (\u22652 points)": [
+                "Blood pressure is stable and adequate, with a mean arterial pressure (MAP) of 94.",
+                "Metabolic and organ function labs are generally reassuring.",
+                "Creatinine and bilirubin results are reassuring.",
+                "Pulse oximetry (SpO2) remains adequate, ranging from 93% to 97%."
+            ],
+            "Early Antibiotic/Culture Orders (within 2 hours)": []
+        },
+        "category_alignment_scores": {
+            "Elderly Susceptibility (Age \u226565 years)": 0.0,
+            "SIRS Positivity (\u22652 Criteria)": 0.0,
+            "High qSOFA Score (\u22652)": 0.5,
+            "Elevated NEWS Score (\u22655 points)": 0.0,
+            "Elevated Serum Lactate (\u22652 mmol/L)": 0.0,
+            "Elevated Shock Index (\u22651.0)": 0.5,
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": 0.0,
+            "SOFA Score Increase (\u22652 points)": 0.0,
+            "Early Antibiotic/Culture Orders (within 2 hours)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Elderly Susceptibility (Age \u226565 years)": "No claims about the patient's age are provided, so there is no information to support or satisfy the category's criterion (age \u2265 65 years).",
+            "SIRS Positivity (\u22652 Criteria)": "The claims do not support \u22652 SIRS criteria. Heart rate is reported in the mid\u201180s to ~90 bpm (not clearly >90), temperature is normal at 36.8\u00b0C (not >38 or <36), and there is no bandemia/left shift (no evidence of abnormal WBC). Therefore the provided information does not meet the SIRS positivity definition.",
+            "High qSOFA Score (\u22652)": "The claim addresses one qSOFA component (blood pressure) but indicates the patient does not meet the hypotension threshold (MAP 94, described as stable/adequate). No information is provided about the other two qSOFA criteria (respiratory rate or altered mentation), so the claims do not establish a qSOFA score \u22652.",
+            "Elevated NEWS Score (\u22655 points)": "The claims describe mostly normal/stable vitals (normal temperature, adequate MAP, heart rate in the 84\u201390 range, and SpO2 93\u201397%). These findings do not demonstrate the degree of vital-sign derangement required for a NEWS \u22655; at best the low end SpO2 of 93% could contribute a small score, but the other parameters are reassuring and respiratory rate/neurologic status (key contributors to NEWS) are not provided. Therefore the claims do not support an elevated NEWS \u22655.",
+            "Elevated Serum Lactate (\u22652 mmol/L)": "The claims provide no serum lactate value and explicitly state \"Lactate was not reported.\" Other findings (stable MAP, reassuring labs) do not establish or suggest a lactate \u22652 mmol/L. Because the key criterion (measured elevated lactate) is absent, the claims do not align with the category.",
+            "Elevated Shock Index (\u22651.0)": "The claims report heart rate and overall blood pressure status (MAP 94), which are relevant to shock\u2011index assessment, but they omit the systolic blood pressure or any calculated shock index. MAP 94 and \u201cstable/adequate\u201d BP argue against an elevated shock index, and there\u2019s no evidence of an SI \u22651.0 or a \u22650.3 rise from baseline. Therefore the alignment is partial.",
+            "Sepsis-Associated Hypotension (SBP <90 mmHg or MAP <70 mmHg, or \u226540 mmHg drop)": "The claim reports a normal MAP of 94 mmHg, which does not meet any criteria for sepsis\u2011associated hypotension (MAP < 70 mmHg, SBP < 90 mmHg, or \u226540 mmHg drop). It therefore does not support the category.",
+            "SOFA Score Increase (\u22652 points)": "The claims provide no evidence of a \u22652\u2011point SOFA increase; they explicitly state organ labs (creatinine, bilirubin) are reassuring and oxygenation and perfusion are adequate. None of the SOFA thresholds (e.g., creatinine >2 mg/dL, bilirubin >2 mg/dL, PaO2/FiO2 <300, GCS <12, platelets <100\u00d710^9/L) are met or even suggested. Therefore the claims do not align with the category.",
+            "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided about administration of antibiotics or drawing blood cultures within 2 hours, so there is no evidence addressing this category."
+        },
+        "final_alignment_score": 0.05263157894736842,
+        "accuracy": 1
+    }
+]
