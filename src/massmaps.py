@@ -240,7 +240,7 @@ def get_llm_generated_answer(
             answer[0].split(": ")[0]: parse_float(answer[0].split(": ")[1]), 
             answer[1].split(": ")[0]: parse_float(answer[1].split(": ")[1])
         }
-        return explanation, answer
+        return answer, explanation
         
 
     if isinstance(image, list):
@@ -420,6 +420,12 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
     Returns:
         float: The alignment score for the claims in the category.
     """
+    if len(claims) == 0:
+        return {
+            "alignment_label": "none",
+            "alignment_score": 0.0,
+            "reasoning": "No claims provided"
+        }
     prompt = category_alignment_massmaps.format(
         f'{category} - {category_mapping_massmaps["name2description"][category]}', 
         '\n'.join(claims) if isinstance(claims, list) and len(claims) > 0 else 'N/A'
