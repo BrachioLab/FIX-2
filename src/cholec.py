@@ -5,7 +5,9 @@ import json
 import time
 from tqdm import tqdm
 from typing import Any
+import argparse
 import numpy as np
+from collections import defaultdict
 import torch
 import PIL
 import re
@@ -775,39 +777,366 @@ def get_yes_no_confirmation(prompt):
             print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
 
-if __name__ == "__main__":
-    _start_time = time.time()
+def run_cholec_generation(
+    model: str = "gpt-4o",
+    method: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+    num_samples: int = 100,
+    debug: bool = False,
+) -> list[CholecExample]:
+    """
+    Runs the cholec generation pipeline.
+    """
+    from pathlib import Path
+    from tqdm.auto import tqdm
 
-    # Take a few random, unique samples from the dataset
-    random.seed(42)
-    num_samples = 150
     dataset = CholecDataset(split="test", image_size=(360, 640))
-    random_indices = random.sample(range(len(dataset)), num_samples)
-    print(f"Random indices: {random_indices}")
-    items = [dataset[i] for i in random_indices]
 
-    # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.5-pro-exp-03-25"]
-    # models = ["gpt-4o", "o1", "claude-3-5-sonnet-latest", "gemini-2.0-flash"]
-    models = ["gemini-2.0-flash"]
-    baselines = ["vanilla", "cot", "socratic", "subq"]
+    root_dir = Path(__file__).resolve().parent.parent
+    save_dir = root_dir / "notebooks" / f"_dump/cholec/intermediate/{model}/{method}"
+    save_dir.mkdir(parents=True, exist_ok=True)
 
-    # Can be very expensive!
-    if get_yes_no_confirmation("You are about to spend a lot of money"):
-        # Run the models and baselines
-        for model in models:
-            _model_time = time.time()
-            for baseline in baselines:
-                print(f"\nRunning {model} with {baseline} baseline...")
-                run_cholec_pipeline(
-                    items=items,
-                    explanation_model=model,
-                    evaluation_model="gpt-4o",
-                    baseline=baseline,
-                    verbose=True,
-                )
-            print(f"Time taken for {model}: {time.time() - _model_time:.3f} seconds")
+    print(f"Starting to save intermediate results to {save_dir}")
 
-    else:
-        print("Your bank account is safe!")
+    grid_size = 40
+    a2d = torch.nn.AvgPool2d(kernel_size=grid_size, stride=grid_size)
 
-    print(f"Total time taken: {time.time() - _start_time:.3f} seconds")
+    for idx in tqdm(range(num_samples)):
+        save_path = os.path.join(save_dir, f"{idx}.json")
+        if os.path.exists(save_path) and not overwrite_existing:
+            continue
+
+        item = dataset[idx]
+        image = item["image"]
+
+        llm_answers = get_llm_generated_answer(
+            [image],
+            baseline=method,
+            model=model,
+        )
+        if not llm_answers:
+            continue
+        llm_explanation, llm_safe_list, llm_unsafe_list = extract_explanation_safe_unsafe(llm_answers[0])
+
+        true_safe_avg = (_avg_pool_mask((item["gonogo"] == 1).float(), a2d).squeeze() > 0.1).long()
+        true_unsafe_avg = (_avg_pool_mask((item["gonogo"] == 2).float(), a2d).squeeze() > 0.1).long()
+
+        true_safe_list = true_safe_avg.view(-1).nonzero().view(-1).tolist()
+        true_unsafe_list = true_unsafe_avg.view(-1).nonzero().view(-1).tolist()
+
+        example = CholecExample(
+            id=item["id"],
+            image=image,
+            true_safe_list=true_safe_list,
+            true_unsafe_list=true_unsafe_list,
+            llm_raw_output=llm_answers[0],
+            llm_explanation=llm_explanation,
+            llm_safe_list=llm_safe_list,
+            llm_unsafe_list=llm_unsafe_list,
+        )
+
+        save_dict = {}
+        for k, v in example.__dict__.items():
+            if k == "image":
+                continue
+            save_dict[k] = v if not isinstance(v, torch.Tensor) else v.cpu().numpy().tolist()
+        with open(save_path, "wt") as output_file:
+            json.dump(save_dict, output_file)
+
+
+def load_and_evaluate_cholec_generation(
+    model: str = "gpt-4o",
+    method: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+    num_samples: int = 100,
+    debug: bool = False,
+    eval_model: str = "gpt-5-mini-2025-08-07",
+) -> list[CholecExample]:
+    """
+    Loads and evaluates the cholec generation pipeline.
+    """
+    from pathlib import Path
+    from tqdm.auto import tqdm
+
+    dataset = CholecDataset(split="test", image_size=(360, 640))
+
+    root_dir = Path(__file__).resolve().parent.parent
+    load_dir = root_dir / "notebooks" / f"_dump/cholec/intermediate/{model}/{method}"
+    if not load_dir.is_dir():
+        print(f"Warning: {load_dir} does not exist, skipping.")
+        return []
+
+    filenames = sorted([f for f in os.listdir(load_dir) if f.endswith(".json")], key=lambda x: int(x.split(".")[0]))
+    all_results = []
+    for filename in tqdm(filenames):
+        path = os.path.join(load_dir, filename)
+        with open(path, "rt") as input_file:
+            data = json.load(input_file)
+        all_results.append(data)
+
+    save_dir = root_dir / "notebooks" / f"_dump/cholec/final/{model}/{method}/eval.{eval_model}"
+    os.makedirs(save_dir, exist_ok=True)
+    for idx in tqdm(range(len(all_results))):
+        if idx >= num_samples:
+            break
+        save_path = os.path.join(save_dir, filenames[idx])
+        if os.path.isfile(save_path):
+            continue
+
+        example_dict = all_results[idx]
+        dataset_idx = int(os.path.basename(save_path).split(".")[0])
+        if dataset[dataset_idx]["id"] != example_dict["id"]:
+            raise ValueError(
+                "dataset[dataset_idx]['id'] != example_dict['id'], dataset[dataset_idx]['id'] is ",
+                dataset[dataset_idx]["id"],
+                " and example_dict['id'] is ",
+                example_dict["id"],
+            )
+
+        example = CholecExample(
+            id=example_dict["id"],
+            image=dataset[dataset_idx]["image"],
+            true_safe_list=example_dict["true_safe_list"],
+            true_unsafe_list=example_dict["true_unsafe_list"],
+            llm_raw_output=example_dict["llm_raw_output"],
+            llm_explanation=example_dict["llm_explanation"],
+            llm_safe_list=example_dict["llm_safe_list"],
+            llm_unsafe_list=example_dict["llm_unsafe_list"],
+        )
+
+        claims = isolate_individual_features(example.llm_explanation, model=eval_model)
+        if claims is None:
+            continue
+        example.all_claims = [claim.strip() for claim in claims]
+
+        relevant_claims = distill_relevant_features(
+            example.image,
+            example.all_claims,
+            model=eval_model,
+        )
+        example.relevant_claims = relevant_claims
+
+        claims_by_category, category_alignment_scores, category_alignment_reasonings = calculate_expert_alignment_score(
+            relevant_claims,
+            eval_model,
+        )
+
+        example.claims_by_category = claims_by_category
+        example.category_alignment_scores = category_alignment_scores
+        example.category_alignment_reasonings = category_alignment_reasonings
+
+        alignment_matrix = make_alignment_matrix(
+            example.all_claims,
+            claims_by_category,
+            category_alignment_scores,
+        )
+
+        final_alignment_score = alignment_matrix.max(axis=-1).mean()
+        example.final_alignment_score = final_alignment_score
+
+        save_dict = {}
+        for k, v in example.__dict__.items():
+            if k == "image":
+                continue
+            save_dict[k] = v if not isinstance(v, torch.Tensor) else v.cpu().numpy().tolist()
+        with open(save_path, "wt") as output_file:
+            json.dump(save_dict, output_file)
+
+
+def run_cholec_pipeline(
+    model: str = "gpt-4o",
+    method: str = "vanilla",
+    verbose: bool = False,
+    overwrite_existing: bool = False,
+    num_samples: int = 100,
+    debug: bool = False,
+    run_generation: bool = True,
+    run_evaluation: bool = True,
+    eval_model: str = "gpt-5-mini-2025-08-07",
+):
+    """
+    Runs the cholec generation pipeline.
+    """
+    if run_generation:
+        run_cholec_generation(model, method, verbose, overwrite_existing, num_samples, debug)
+    if run_evaluation:
+        load_and_evaluate_cholec_generation(model, method, verbose, overwrite_existing, num_samples, debug, eval_model)
+
+
+def aggregate_all_results(
+    models=[
+        "gpt-5.2-pro-2025-12-11",
+        "gpt-5-mini-2025-08-07",
+        "claude-opus-4-5-20251101",
+        "claude-haiku-4-5-20251001",
+        "gemini-2.5-pro",
+        "gemini-2.5-flash",
+    ],
+    eval_model="gpt-5-mini-2025-08-07",
+    num_samples=100,
+):
+    """
+    Aggregate/compare results across models/methods and save combined outputs.
+    """
+    root_dir = Path(__file__).resolve().parent.parent
+    final_results_dir = root_dir / "notebooks" / "_dump" / "cholec" / "final"
+    aggregated_results_dir = root_dir / "results"
+
+    models = [
+        "gpt-5.2-pro-2025-12-11",
+        "gpt-5-mini-2025-08-07",
+        "claude-opus-4-5-20251101",
+        "claude-haiku-4-5-20251001",
+        "gemini-2.5-pro",
+        "gemini-2.5-flash",
+    ]
+
+    methods = [
+        "vanilla",
+        "cot",
+        "socratic",
+        "subq",
+    ]
+
+    aggregated_paths = []
+    loaded_dirs = []
+
+    for model in models:
+        filenames_per_method = {}
+        for method in methods:
+            load_dir = os.path.join(final_results_dir, model, method, f"eval.{eval_model}")
+            if not os.path.isdir(load_dir):
+                print(f"Warning: {load_dir} does not exist, skipping.")
+                filenames_per_method[method] = set()
+                continue
+            filenames = set(os.listdir(load_dir))
+            filenames_per_method[method] = filenames
+
+        for method in methods:
+            file_list = [fn for fn in filenames_per_method[method] if fn.endswith(".json")]
+            file_list = sorted(file_list)[:num_samples]
+            filenames_per_method[method] = file_list
+
+        all_results = defaultdict(list)
+        for method in tqdm(methods, desc=f"Aggregate-{model}"):
+            load_dir = os.path.join(final_results_dir, model, method, f"eval.{eval_model}")
+            loaded_dirs.append(load_dir)
+            for filename in filenames_per_method[method]:
+                path = os.path.join(load_dir, filename)
+                if not os.path.exists(path):
+                    print(f"Missing file {path}, skipping.")
+                    continue
+                with open(path, "rt") as input_file:
+                    data = json.load(input_file)
+
+                true_safes = set(data["true_safe_list"])
+                true_unsafes = set(data["true_unsafe_list"])
+                llm_safes = set(data["llm_safe_list"])
+                llm_unsafes = set(data["llm_unsafe_list"])
+
+                if len(true_safes) > 0:
+                    data["safe_iou"] = len(true_safes & llm_safes) / len(true_safes | llm_safes)
+                else:
+                    data["safe_iou"] = 0.0
+
+                if len(true_unsafes) > 0:
+                    data["unsafe_iou"] = len(true_unsafes & llm_unsafes) / len(true_unsafes | llm_unsafes)
+                else:
+                    data["unsafe_iou"] = 0.0
+
+                data["_filename"] = filename
+                all_results[method].append(data)
+
+        for method in all_results:
+            save_dir = os.path.join(aggregated_results_dir, method)
+            os.makedirs(save_dir, exist_ok=True)
+            save_path = os.path.join(save_dir, f"cholec_{model}_{eval_model}.json")
+            save_path2 = os.path.join(save_dir, f"cholec_{model}.json")
+            with open(save_path, "wt") as output_file:
+                json.dump(all_results[method], output_file, indent=4)
+            aggregated_paths.append(save_path)
+            if eval_model == "gpt-5-mini-2025-08-07":
+                with open(save_path2, "wt") as output_file:
+                    json.dump(all_results[method], output_file, indent=4)
+                aggregated_paths.append(save_path2)
+            print(f"Saved: {save_path}")
+
+    print("====")
+    print("Loaded directories:")
+    for dir_path in set(loaded_dirs):
+        print(dir_path)
+
+    print("----")
+    print("Paths of aggregated result files:")
+    for path in aggregated_paths:
+        print(path)
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Cholec Generation and Evaluation Pipeline")
+
+    subparsers = parser.add_subparsers(dest="command", help="Mode of operation", required=True)
+
+    gen_eval_parser = subparsers.add_parser("run", help="Run generation/evaluation for a model/method")
+    group_run = gen_eval_parser.add_argument_group("Run Generation/Evaluation")
+    group_run.add_argument("--model", type=str, default="gpt-4o", help="Model name (e.g. gpt-4o, gpt-4, etc)")
+    group_run.add_argument("--method", type=str, default="vanilla", help="Method (e.g. vanilla, xyz)")
+    group_run.add_argument("--verbose", action="store_true", help="Verbose output")
+    group_run.add_argument("--overwrite_existing", action="store_true", help="Overwrite existing results")
+    group_run.add_argument("--num_samples", type=int, default=100, help="Number of samples to process")
+    group_run.add_argument("--debug", action="store_true", help="Debug mode (silent try/except during evaluation)")
+    group_run.add_argument("--run_generation", action="store_true", help="Run generation step")
+    group_run.add_argument("--run_evaluation", action="store_true", help="Run evaluation step")
+    group_run.add_argument("--eval_model", type=str, default="gpt-5-mini-2025-08-07", help="Evaluation model name")
+    group_run.set_defaults(run_generation=False, run_evaluation=False)
+
+    agg_parser = subparsers.add_parser("aggregate", help="Aggregate all available result JSONs")
+    group_agg = agg_parser.add_argument_group("Aggregate Results")
+    group_agg.add_argument("--num_samples", type=int, default=100, help="Number of samples to aggregate")
+    group_agg.add_argument("--eval_model", type=str, default="gpt-5-mini-2025-08-07", help="Evaluation model name")
+
+    return parser.parse_args()
+
+
+def load_api_keys(root_dir):
+    with open(f"{root_dir}/API_KEYS2.json", "r") as file:
+        api_keys = json.load(file)
+    os.environ["OPENAI_API_KEY"] = api_keys["OPENAI_API_KEY"]
+    os.environ["ANTHROPIC_API_KEY"] = api_keys["ANTHROPIC_API_KEY"]
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join(root_dir, api_keys["GOOGLE_APPLICATION_CREDENTIALS"])
+    os.environ["CACHE_DIR"] = os.path.join(root_dir, "cache_dir3")
+    return api_keys
+
+
+if __name__ == "__main__":
+    import sys
+
+    sys.path.append("../src")
+
+    root_dir = Path(__file__).resolve().parent.parent
+    load_api_keys(root_dir)
+
+    args = parse_args()
+
+    if args.command == "aggregate":
+        aggregate_all_results(
+            eval_model=args.eval_model,
+            num_samples=args.num_samples,
+        )
+    elif args.command == "run":
+        if not (args.run_generation or args.run_evaluation):
+            print("No operation specified. Use --run_generation and/or --run_evaluation. See --help.")
+            exit(1)
+        run_cholec_pipeline(
+            model=args.model,
+            method=args.method,
+            verbose=args.verbose,
+            overwrite_existing=args.overwrite_existing,
+            num_samples=args.num_samples,
+            debug=args.debug,
+            run_generation=args.run_generation,
+            run_evaluation=args.run_evaluation,
+            eval_model=args.eval_model,
+        )

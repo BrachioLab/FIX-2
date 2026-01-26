@@ -134,7 +134,8 @@
             "Cystic lymph node guide": "No claims provided",
             "No division without ID": "The claim explicitly states the CVS requirement that exactly two structures (cystic duct and cystic artery) must be seen entering the gallbladder, which directly enforces unequivocal identification of ducts/vessels before division. This fully captures the intent of the \"No division without ID\" rule.",
             "Inflammation bailout": "The claim addresses safe dissection technique in inflamed tissue\u2014emphasizing that the cystic plate is only safer once the correct subserosal plane is developed\u2014so it relates to avoiding blind cutting in distorted anatomy. However it does not mention or recommend the actual bailout actions (conversion to open surgery or a fenestrated subtotal cholecystectomy) when the plane cannot be developed. Therefore it only partially captures the bailout category's intent."
-        }
+        },
+        "_filename": "0.json"
     },
     {
         "id": "M2CCAI2016_video107_002.png",
@@ -364,7 +365,8 @@
             "Cystic lymph node guide": "The claims correctly identify the right-sided pedicle/neck region as high-risk and note that critical structures (including the cystic artery) may be present there and should not be blindly divided\u2014points that relate to the safety intent of using an anatomic landmark to avoid injuring the hepatic artery. However, they do not mention the cystic lymph node itself or the explicit technical recommendation to identify the node and clip the artery on the gallbladder side of the node, which is the core of this category. Because the central guidance about the cystic lymph node and clipping location is missing, the alignment is partial.",
             "No division without ID": "The claims repeatedly warn against blind division, identify the right-sided pedicle as containing potential cystic duct/artery (and even CBD), and explicitly state that cutting without a confirmed Critical View of Safety risks biliary or vascular injury. They emphasize only dividing in a small, superficial area and avoiding areas where structures are not unequivocally identified, directly matching the category's instruction to not divide any duct or vessel until clearly identified as the cystic structure entering the gallbladder.",
             "Inflammation bailout": "The claims clearly describe dense inflammation and distorted/obscured anatomy in the hepatocystic triangle, close instrument proximity to liver/parenchyma, indistinct tissue planes, and explicit warnings to avoid blind division\u2014precisely the factors that justify abandoning standard dissection. Although they do not verbatim list \"convert to open\" or \"fenestrated subtotal,\" they fully capture the intent and rationale for performing an inflammation bailout rather than continuing risky laparoscopic cutting."
-        }
+        },
+        "_filename": "1.json"
     },
     {
         "id": "M2CCAI2016_video107_003.png",
@@ -520,7 +522,8 @@
             "Cystic lymph node guide": "No claims provided",
             "No division without ID": "The claims give preconditions that facilitate safe identification (clear the triangle of fat/fibrosis; separate the gallbladder fundus/infundibulum by taking the lower third off the liver bed) and thus are consistent with the intent of not cutting until anatomy is clear. However they do not explicitly state the core rule\u2014never divide a duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder\u2014so they lack the explicit requirement to confirm structure identity before division.",
             "Inflammation bailout": "The claims emphasize avoiding cutting while the hepatocystic triangle is obscured (waiting until the lower third of the gallbladder is detached and the triangle is cleared of fat/fibrosis), which aligns with the core safety concern of not performing blind division in an inflamed/distorted field. However, they do not mention the key bailout actions specified by the category\u2014conversion to open surgery or performing a fenestrated subtotal cholecystectomy\u2014so they omit the recommended alternatives when clearing is not possible."
-        }
+        },
+        "_filename": "2.json"
     },
     {
         "id": "M2CCAI2016_video107_004.png",
@@ -694,7 +697,8 @@
             "Cystic lymph node guide": "The claims address the same safety goal\u2014avoiding biliary/vascular injury by favoring superficial, lateral dissection and avoiding deep medial/hilar dissection and inflamed/obscured planes\u2014but they do not mention the cystic lymph node or the specific instruction to clip the artery on the gallbladder side of that node. Thus they capture the general rationale and safer vs unsafe zones but omit the key landmark-based action the category requires.",
             "No division without ID": "The claims explicitly reference the Critical View of Safety and state that the hepatocystic triangle and porta hepatis are high-risk until CVS is obtained, warn against deep medial dissection and inflamed/obliterated planes that predispose to misidentification, and distinguish safe (superficial avascular peritoneum) from unsafe (dense connective tissue, tubular or pulsatile structures, convergence zones) areas. These statements directly reflect and fully capture the requirement to unequivocally identify the cystic structures before dividing any duct or vessel.",
             "Inflammation bailout": "The claims describe dense scarring, obliterated planes, inflamed/bleeding tissue, and high-risk medial dissection that predispose to misidentification and injury\u2014precisely the clinical circumstances that mandate abandoning standard dissection and performing a bailout (open or subtotal) approach. They identify unsafe zones and the risks that justify a bailout strategy, fully capturing the category's intent."
-        }
+        },
+        "_filename": "3.json"
     },
     {
         "id": "M2CCAI2016_video107_005.png",
@@ -856,6 +860,7 @@
             "Cystic lymph node guide": "The claims highlight that the hepatocystic triangle/porta hepatis is high-risk and advise against deep dissection in inflamed/scarred tissue, which is consistent with the category's aim of avoiding hepatic artery injury. However, they do not mention the specific tactic of identifying the cystic lymph node or clipping the cystic artery on the gallbladder side of that node \u2014 the key actionable guidance the category requires. Therefore the alignment is partial.",
             "No division without ID": "The claims emphasize that the hepatocystic triangle is high-risk and that deep dissection in inflamed or scarred porta hepatis tissue is unsafe, which supports the rationale for requiring caution. However, they do not explicitly state the key procedural mandate \u2014 that no duct or vessel should be divided until it is unequivocally identified as the cystic structure entering the gallbladder. Thus they align with the intent but omit the specific identification-before-division rule.",
             "Inflammation bailout": "The claims identify the hepatocystic triangle/hilum as high-risk and state that deep dissection into inflamed, scarred, or bleeding tissue near the porta hepatis is unsafe. That directly supports the expert rationale to abandon standard dissection when anatomy is distorted (i.e., perform a bailout such as conversion or fenestrated subtotal rather than blind cutting)."
-        }
+        },
+        "_filename": "4.json"
     }
 ]

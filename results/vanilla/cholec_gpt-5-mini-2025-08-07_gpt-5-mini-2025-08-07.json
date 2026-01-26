@@ -230,7 +230,8 @@
             "Cystic lymph node guide": "The claims clearly identify hazardous vascular and biliary anatomy in the hepatocystic region and recommend staying lateral/superior in peripheral peritoneal/fatty planes\u2014consistent with the goal of avoiding injury to the hepatic artery. However, they do not mention identifying the cystic (Mascagni) lymph node or the specific instruction to clip the cystic artery on the gallbladder side of that node, which is the central element of the category. Therefore the match is partial.",
             "No division without ID": "The claims explicitly mark central/right\u2011lower vascularized tissue as unsafe to cut, recommend avoiding those areas to prevent bile-duct or vascular injury, and specify safer peripheral peritoneal/fatty planes for initial dissection. Although they don't verbatim state \"don't divide until unequivocal ID,\" they convey the same precaution and safe alternative steps, directly matching the category's intent.",
             "Inflammation bailout": "The claims emphasize avoiding cutting into vascularized/central hepatocystic tissue and instead limiting dissection to lateral/superior peritoneal and fatty planes, which aligns with the bailout principle of not performing blind cuts in hazardous/obscured anatomy. However, they do not mention the key recommended actions of the category\u2014converting to open surgery or performing a fenestrated subtotal/bailout approach\u2014nor explicitly reference dense scarring or distorted anatomy as the trigger. Therefore the fit is partial."
-        }
+        },
+        "_filename": "0.json"
     },
     {
         "id": "M2CCAI2016_video107_002.png",
@@ -452,7 +453,8 @@
             "Cystic lymph node guide": "The claims describe safe superficial dissection corridors, caution about the hepatocystic triangle, and the need to avoid cutting until cystic structures are identified\u2014concepts related to avoiding hepatic artery injury. However they do not mention identifying the cystic lymph node or using it as the landmark to clip the artery on the gallbladder side. Because the specific lymph-node\u2013based guidance (and clipping distal to it) is absent, the alignment is partial.",
             "No division without ID": "The claims explicitly identify safe superficial dissection corridors and flag the hepatocystic triangle/gallbladder fossa as unsafe until anatomy is clear, advising surgeons to avoid cutting in those right/lower areas until the cystic structures are definitively identified. This directly captures the rule of not dividing ducts or vessels without unequivocal identification.",
             "Inflammation bailout": "The claims identify distorted/vascularized tissue, unsafe zones (hepatocystic triangle, gallbladder fossa), and explicitly advise avoiding cutting and staying on a superficial safe plane \u2014 all consistent with the rationale to avoid blind dissection when anatomy is unclear. However, they do not mention the key bailout actions specified by the category (convert to open surgery or perform a fenestrated subtotal cholecystectomy). Therefore the alignment is partial."
-        }
+        },
+        "_filename": "1.json"
     },
     {
         "id": "M2CCAI2016_video107_003.png",
@@ -711,7 +713,8 @@
             "Cystic lymph node guide": "The claims describe which peripheral peritoneal/fatty areas are safer to open and warn against central/darker zones where adhesions and smoke obscure anatomy \u2014 advice relevant to choosing safer dissection planes. However, they do not mention identifying the cystic lymph node or using it as a landmark to place the arterial clip on the gallbladder side to protect the hepatic artery, which is the specific intent of the category. Therefore the alignment is partial.",
             "No division without ID": "The claims emphasize avoiding central/darker zones where anatomy is obscured and recommend dissecting peripheral, avascular peritoneum and fat\u2014which aligns with the precautionary intent of not cutting in uncertain areas. However, they do not explicitly state the core rule\u2014never divide a duct or vessel until it has been unequivocally identified\u2014nor describe how identification should be confirmed. Thus the claims are relevant but incomplete.",
             "Inflammation bailout": "The claims identify central scarring/obscured zones as unsafe, note adhesions and smoke that hide critical landmarks, and explicitly recommend opening peripheral, avascular peritoneal/fatty planes away from the dark central dissection \u2014 all of which support abandoning risky central dissection and using a safer peripheral/fenestrating approach. Although conversion to open is not named, the guidance to avoid blind cutting in the distorted central area and to use peripheral fenestration directly reflects the intent of an inflammation bailout strategy."
-        }
+        },
+        "_filename": "2.json"
     },
     {
         "id": "M2CCAI2016_video107_004.png",
@@ -905,7 +908,8 @@
             "Cystic lymph node guide": "The claims describe identifying a cleared, relatively avascular plane anterior to the gallbladder, delineating safe vs unsafe (vascular/liver) zones in the hepatocystic triangle, and warning about vascular tissue\u2014points related to safe dissection around the cystic structures. However, they do not mention the cystic lymph node or the specific strategy of identifying the node and clipping the cystic artery on the gallbladder side of that node to avoid injuring the hepatic artery. Because the node-specific landmark and clipping guidance are missing, the alignment is partial.",
             "No division without ID": "The claims explicitly distinguish a safe, cleared avascular dissection plane from darker, more vascular/adhesive zones (hepatocystic triangle and liver bed) and state these areas should be treated as unsafe \"until anatomy is confirmed.\" That directly reflects the rule of not dividing ducts or vessels until they are unequivocally identified as cystic structures. The statements about safe central zone versus broadly designated unsafe regions align fully with the category intent.",
             "Inflammation bailout": "The claims identify vascular, adherent liver/hepatocystic tissue as unsafe and advise treating those regions cautiously until anatomy is confirmed, which corresponds to the core intent of avoiding blind cutting in distorted/inflamed anatomy. However, they do not mention or recommend the specific bailout actions (conversion to open surgery or fenestrated subtotal cholecystectomy) required by the category. Therefore the match is partial."
-        }
+        },
+        "_filename": "3.json"
     },
     {
         "id": "M2CCAI2016_video107_005.png",
@@ -1089,6 +1093,7 @@
             "Cystic lymph node guide": "The claims locate the activity in the hepatocystic (infundibular) triangle and note it contains the cystic artery/duct and is highly vascular \u2014 relevant background for the cystic lymph node guide. However they do not mention identifying the cystic lymph node or the specific advice to clip the artery on the gallbladder side of that node to protect the hepatic artery. Because the key instructional element (node identification and clipping relative to it) is missing, the alignment is partial.",
             "No division without ID": "The claims explicitly locate active dissection in the hepatocystic (infundibular) triangle, note that this region contains the cystic duct and artery and is more vascular/critical, and flag it as an unsafe zone. These observations directly justify the expert rule of not dividing any duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.",
             "Inflammation bailout": "No claims provided"
-        }
+        },
+        "_filename": "4.json"
     }
 ]

@@ -334,7 +334,8 @@
             "Cystic lymph node guide": "The claims describe safe versus unsafe dissection planes, the hepatocystic (critical view) area, and avoiding deep cuts into vascular liver \u2014 all relevant to safe identification and handling of structures in the triangle. However, they do not mention the cystic lymph node itself or the specific instruction to clip the artery on the gallbladder side of the node to protect the hepatic artery. Key details central to this category are missing.",
             "No division without ID": "The claims describe identification of safe vs unsafe dissection planes, note absence of major vessels/ducts in the central plane, and emphasize caution near the hepatocystic triangle\u2014topics relevant to avoiding inadvertent division. However they do not explicitly state the core rule that no duct or vessel should be divided until it is unequivocally identified as the cystic structure (no mention of confirming cystic duct/artery or of withholding division until identification). Because they address related safety zoning and caution but omit the explicit identification/verification requirement, the alignment is partial.",
             "Inflammation bailout": "The claims describe distorted, vascular, indistinct tissue in the hepatocystic triangle and a transition from an avascular plane to dense/complex tissue \u2014 exactly the conditions that indicate Calot's triangle is obscured. However, they do not state the recommended action (convert to open or perform a fenestrated subtotal cholecystectomy) specified by the \"inflammation bailout\" category. Thus they capture the problem but not the prescribed bailout response."
-        }
+        },
+        "_filename": "0.json"
     },
     {
         "id": "M2CCAI2016_video107_002.png",
@@ -632,7 +633,8 @@
             "Cystic lymph node guide": "The claims describe a safe avascular dissection plane near the gallbladder neck and identify a vascular unsafe zone likely containing cystic structures, which is relevant to safely locating and protecting the cystic artery. However, they do not mention the cystic (Lund) lymph node itself nor the specific technique of clipping the artery on the gallbladder side of the node to avoid the hepatic artery. Because the claims relate to safe/unsafe zones around Calot's triangle but omit the explicit lymph node-guided clipping instruction, the alignment is partial.",
             "No division without ID": "The claims explicitly identify an avascular safe dissection plane suitable for initiating dissection and for beginning to define hepatocystic triangle structures, and they highlight a nearby hemorrhagic/vascular zone likely containing the cystic duct and artery. They therefore support the principle of not dividing any duct or vessel until it is unequivocally identified, and they warn that the instrument is close to the critical transition where identification (not division) is required.",
             "Inflammation bailout": "The claims describe a highly vascular, hemorrhagic, and inflamed hepatocystic/CALOT region with obscured planes and instruments dangerously close to the transition zone\u2014conditions that directly justify abandoning standard dissection and performing a bailout (open conversion or fenestrated subtotal) to avoid blind cutting. They therefore capture the intent of the inflammation bailout category."
-        }
+        },
+        "_filename": "1.json"
     },
     {
         "id": "M2CCAI2016_video107_003.png",
@@ -1008,7 +1010,8 @@
             "Cystic lymph node guide": "The claims describe general safe dissection regions and tissue characteristics (peritoneal reflections, adipose, avascular planes) but do not mention the cystic lymph node, its identification, or the critical instruction to clip the artery on the gallbladder side of that node. Because the central element of the category (using the cystic lymph node as a landmark and clipping relative to it) is absent, the claims do not align with the category.",
             "No division without ID": "The claims emphasize the need for clear visibility, peritoneal reflections, and defined tissue planes for safe dissection and label obscured/hemorrhagic areas as unsafe because they prevent clear identification. This matches the intent of requiring unequivocal identification before proceeding. However, the claims do not explicitly state the prohibition on dividing ducts or vessels nor specifically mention identifying the cystic duct/artery entering the gallbladder, so they do not fully capture the category's explicit directive.",
             "Inflammation bailout": "The claims identify inflamed/hemorrhagic tissue and any obscured visibility (smoke/steam) that prevents clear identification of anatomical structures \u2014 exactly the circumstances that justify abandoning standard dissection and performing a bailout (open conversion or fenestrated subtotal). Although they don't name the specific bailout maneuvers, they fully capture the operative rationale for abandoning safe clipping/cutting when Calot's triangle is obscured."
-        }
+        },
+        "_filename": "2.json"
     },
     {
         "id": "M2CCAI2016_video107_004.png",
@@ -1382,7 +1385,8 @@
             "Cystic lymph node guide": "The claims describe visual dissection planes (yellowish subserosal fat vs. dark liver parenchyma), safe vs. unsafe zones, and risks in the critical view, but they do not mention identifying the cystic lymph node or using the node as a landmark to clip the artery on the gallbladder side. The specific guidance about the cystic lymph node and clipping strategy is absent, so the claims do not align with this category.",
             "No division without ID": "The claims emphasize distinguishing safe vs unsafe zones visually, describe the clear avascular dissection plane, identify the congested/vascular \"critical view\" as high risk, and explicitly state that dissection there without clear identification of structures risks bile duct or vascular injury. These points directly reflect and support the rule to never divide a duct or vessel until it is unequivocally identified as the cystic structure entering the gallbladder.",
             "Inflammation bailout": "The claims describe an obscured, congested/vascular critical-view region, unclear boundaries between fatty avascular planes and solid liver parenchyma, and a high risk of biliary or vascular injury if dissection proceeds\u2014precisely the clinical findings that justify abandoning standard dissection and performing an inflammation bailout (open conversion or fenestrated subtotal). These observations directly capture the intent of the category."
-        }
+        },
+        "_filename": "3.json"
     },
     {
         "id": "M2CCAI2016_video107_005.png",
@@ -1670,6 +1674,7 @@
             "Cystic lymph node guide": "The claims correctly localize a dangerous dissection zone in the hepatocystic (Calot\u2019s) triangle, note dense/vascular/inflamed tissue and increased risk to biliary and vascular structures, and describe the transition marking the unsafe boundary \u2014 all relevant to avoiding hepatic artery injury. However, they do not mention identifying the cystic lymph node specifically or the tactical guidance to clip the artery on the gallbladder side of that node. Therefore the claims are relevant but omit the key, specific cystic-node\u2013based instruction in the category.",
             "No division without ID": "The claims explicitly identify the hepatocystic (Calot's) triangle as an unsafe zone, describe dense/vascular/inflamed tissues there, state that dissection without clear identification risks biliary/vascular injury, and note active dissection in that critical area. These points directly encapsulate the rule to never divide ducts or vessels until they are unequivocally identified as cystic structures entering the gallbladder.",
             "Inflammation bailout": "The claims explicitly identify the hepatocystic (Calot\u2019s) triangle as unsafe, describe dense/vascular/inflamed tissue and obscured anatomy, and state that dissection there carries high risk of biliary or vascular injury (with active dissection ongoing). These observations directly justify abandoning standard dissection and performing a bailout approach when anatomy is distorted."
-        }
+        },
+        "_filename": "4.json"
     }
 ]

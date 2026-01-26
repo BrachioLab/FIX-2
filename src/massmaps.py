@@ -143,7 +143,7 @@ def get_llm_output(prompt, images=None, model='gpt-4o'):
     llm = load_model(model)
 
     result = llm([(prompt, *images)])[0]
-    print('result: ', result)
+    # print('result: ', result)
     # import pdb; pdb.set_trace()
     return result
 
@@ -676,7 +676,6 @@ def run_massmaps_generation(
             llm_answer=llm_answer,
             llm_explanation=llm_explanation
         )
-        massmaps_examples.append(example)
         example.idx = idx
 
         # save intermediate
@@ -693,6 +692,7 @@ def load_and_evaluate_massmaps_generation(
     overwrite_existing: bool = False,
     num_samples: int = 100,
     debug: bool = False,
+    eval_model: str = "gpt-5-mini-2025-08-07",
 ) -> list[MassMapsExample]:
     """
     Loads and evaluates the massmaps generation pipeline.
@@ -717,9 +717,11 @@ def load_and_evaluate_massmaps_generation(
             data = json.load(input_file)
         all_results.append(data)
     
-    save_dir = root_dir / "notebooks" / f"_dump/massmaps/final/{model}/{method}/eval.{model}"
+    save_dir = root_dir / "notebooks" / f"_dump/massmaps/final/{model}/{method}/eval.{eval_model}"
     os.makedirs(save_dir, exist_ok=True)
     for idx in tqdm(range(len(all_results))):
+        if idx >= num_samples:
+            break
         save_path = os.path.join(save_dir, filenames[idx])
         if os.path.isfile(save_path):
             print('save_path', save_path)
@@ -742,7 +744,7 @@ def load_and_evaluate_massmaps_generation(
 
         # isolate individual features
         claims = isolate_individual_features(example.llm_explanation, model=eval_model)
-        print('claims', claims)
+        # print('claims', claims)
         if claims is None:
             continue
         example.claims = [claim.strip() for claim in claims]
@@ -785,7 +787,7 @@ def load_and_evaluate_massmaps_generation(
         with open(save_path, 'wt') as output_file:
             json.dump(save_dict, output_file)
 
-def main(
+def run_massmaps_pipeline(
     model: str = "gpt-4o", 
     method: str = "vanilla", 
     verbose: bool = False, 
@@ -794,6 +796,7 @@ def main(
     debug: bool = False,
     run_generation: bool = True,
     run_evaluation: bool = True,
+    eval_model: str = "gpt-5-mini-2025-08-07",
 ):
     """
     Runs the massmaps generation pipeline.
@@ -801,38 +804,52 @@ def main(
     if run_generation:
         run_massmaps_generation(model, method, verbose, overwrite_existing, num_samples, debug)
     if run_evaluation:
-        load_and_evaluate_massmaps_generation(model, method, verbose, overwrite_existing, num_samples, debug)
+        load_and_evaluate_massmaps_generation(model, method, verbose, overwrite_existing, num_samples, debug, eval_model)
 
 
 def aggregate_all_results(
-    models=None,
+    models=[
+        "gpt-5.2-pro-2025-12-11",
+        "gpt-5-mini-2025-08-07",
+        "claude-opus-4-5-20251101",
+        "claude-haiku-4-5-20251001",
+        "gemini-2.5-pro",
+        "gemini-2.5-flash"
+    ],
     eval_model="gpt-5-mini-2025-08-07",
-    num_check=100,
-    root_dir=".",
-    results_dir='_dump/massmaps/final',
-    results_out_root='results'
+    num_samples=100,
 ):
     """
     Aggregate/compare results across models/methods, compute mse, and save combined outputs.
     """
-    if models is None:
-        # If not specified, search for model directories in results_dir
-        models = [
-            d for d in os.listdir(results_dir)
-            if os.path.isdir(os.path.join(results_dir, d)) and not d.startswith(".")
-        ]
+    # Adjust results_dir to notebooks/_dump/massmaps/final by default, relative to root_dir
+    root_dir = Path(__file__).resolve().parent.parent
+    final_results_dir = root_dir / "notebooks" / "_dump" / "massmaps" / "final"
+    aggregated_results_dir = root_dir / "results"
+    
+    models = [
+        "gpt-5.2-pro-2025-12-11",
+        "gpt-5-mini-2025-08-07",
+        "claude-opus-4-5-20251101",
+        "claude-haiku-4-5-20251001",
+        "gemini-2.5-pro",
+        "gemini-2.5-flash"
+    ]
 
     methods = [
         'vanilla', 
-        # 'cot', 
-        # 'socratic', 
-        # 'subq'
+        'cot', 
+        'socratic', 
+        'subq'
     ]
+
+    aggregated_paths = []
+    loaded_dirs = []
 
     for model in models:
         filenames_per_method = {}
         for method in methods:
-            load_dir = os.path.join(results_dir, model, method, f"eval.{eval_model}")
+            load_dir = os.path.join(final_results_dir, model, method, f"eval.{eval_model}")
             if not os.path.isdir(load_dir):
                 print(f"Warning: {load_dir} does not exist, skipping.")
                 filenames_per_method[method] = set()
@@ -840,20 +857,17 @@ def aggregate_all_results(
             filenames = set(os.listdir(load_dir))
             filenames_per_method[method] = filenames
 
-        # Only keep jsons common to all methods
-        if filenames_per_method:
-            common_filenames = set.intersection(*(fns for fns in filenames_per_method.values() if fns))
-        else:
-            common_filenames = set()
-        common_filenames = [fn for fn in common_filenames if fn.endswith('.json')]
-        common_filenames = sorted(common_filenames)[:num_check]
-
-        print(f"Model '{model}': Found {len(common_filenames)} common examples among methods")
+        # Instead of using intersection, just keep the actual filenames for each method
+        for method in methods:
+            file_list = [fn for fn in filenames_per_method[method] if fn.endswith('.json')]
+            file_list = sorted(file_list)[:num_samples]
+            filenames_per_method[method] = file_list
 
         all_results = defaultdict(list)
         for method in tqdm(methods, desc=f"Aggregate-{model}"):
-            load_dir = os.path.join(results_dir, model, method, f"eval.{eval_model}")
-            for filename in common_filenames:
+            load_dir = os.path.join(final_results_dir, model, method, f"eval.{eval_model}")
+            loaded_dirs.append(load_dir)
+            for filename in filenames_per_method[method]:
                 path = os.path.join(load_dir, filename)
                 if not os.path.exists(path):
                     print(f"Missing file {path}, skipping.")
@@ -882,17 +896,29 @@ def aggregate_all_results(
                 all_results[method].append(data)
         
         for method in all_results:
-            save_dir = os.path.join(root_dir, results_out_root, method)
+            save_dir = os.path.join(aggregated_results_dir, method)
             os.makedirs(save_dir, exist_ok=True)
             save_path = os.path.join(save_dir, f'massmaps_{model}_{eval_model}.json')
             save_path2 = os.path.join(save_dir, f'massmaps_{model}.json')
             with open(save_path, 'wt') as output_file:
                 json.dump(all_results[method], output_file, indent=4)
+            aggregated_paths.append(save_path)
             if eval_model == "gpt-5-mini-2025-08-07":
                 with open(save_path2, 'wt') as output_file:
                     json.dump(all_results[method], output_file, indent=4)
+                aggregated_paths.append(save_path2)
             print(f"Saved: {save_path}")
 
+    print("====")
+    print("Loaded directories:")
+    for dir_path in set(loaded_dirs):
+        print(dir_path)
+
+    print("----")
+    print("Paths of aggregated result files:")
+    for path in aggregated_paths:
+        print(path)
+ 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Massmaps Generation and Evaluation Pipeline")
@@ -910,28 +936,97 @@ def parse_args():
     group_run.add_argument('--debug', action="store_true", help="Debug mode (silent try/except during evaluation)")
     group_run.add_argument('--run_generation', action="store_true", help="Run generation step")
     group_run.add_argument('--run_evaluation', action="store_true", help="Run evaluation step")
+    group_run.add_argument('--eval_model', type=str, default="gpt-5-mini-2025-08-07", help="Evaluation model name (e.g. gpt-5-mini-2025-08-07, gpt-4o, etc)")
     group_run.set_defaults(run_generation=False, run_evaluation=False)
 
     # Aggregate parser
     agg_parser = subparsers.add_parser("aggregate", help="Aggregate all available result JSONs")
     group_agg = agg_parser.add_argument_group("Aggregate Results")
-    group_agg.add_argument('--results_dir', type=str, default="results_massmaps/", help="Directory for result JSONs")
-    group_agg.add_argument('--output_file', type=str, default="aggregated_results.json", help="Output file for aggregation")
+    group_agg.add_argument('--num_samples', type=int, default=100, help="Number of samples to aggregate")
+    group_agg.add_argument('--eval_model', type=str, default="gpt-5-mini-2025-08-07", help="Evaluation model name (e.g. gpt-5-mini-2025-08-07, gpt-4o, etc)")
 
     return parser.parse_args()
 
+def load_api_keys(root_dir):
+    import json
+    with open(f"{root_dir}/API_KEYS2.json", "r") as file:
+        api_keys = json.load(file)
+    os.environ['OPENAI_API_KEY'] = api_keys['OPENAI_API_KEY']
+    os.environ['ANTHROPIC_API_KEY'] = api_keys['ANTHROPIC_API_KEY']
+    # os.environ['GOOGLE_API_KEY'] = api_keys['GOOGLE_API_KEY']
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.join(root_dir, api_keys['GOOGLE_APPLICATION_CREDENTIALS'])
+    os.environ['CACHE_DIR'] = os.path.join(root_dir, 'cache_dir3')
+    return api_keys
+
 if __name__ == "__main__":
+    """
+    Example command lines for running the script in generation-only or evaluation-only mode:
+
+    To run only generation for model "gpt-5.2-pro-2025-12-11" and method "vanilla":
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method vanilla --run_generation
+
+    To run only evaluation (no generation) for model "gpt-5.2-pro-2025-12-11" and method "vanilla":
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method vanilla --run_evaluation
+
+    Example command line for running the script with chain-of-thought (cot) reasoning enabled:
+
+    To run generation for model "gpt-5.2-pro-2025-12-11" and method "cot":
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method cot --run_generation
+
+    To run both generation and evaluation for model "gpt-5.2-pro-2025-12-11" and method "cot" with 50 samples:
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method cot --run_generation --run_evaluation --num_samples 50 --eval_model gpt-5-mini-2025-08-07
+
+    To run both generation and evaluation for model "gpt-5.2-pro-2025-12-11" and method "vanilla":
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method vanilla --run_generation --run_evaluation --eval_model gpt-5-mini-2025-08-07
+
+    Example command lines for running the script in generation-only or evaluation-only mode with different num_samples:
+
+    To run only generation for model "gpt-5.2-pro-2025-12-11" and method "vanilla" with 5 samples:
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method vanilla --run_generation --num_samples 5
+
+    To run only evaluation (no generation) for model "gpt-5.2-pro-2025-12-11" and method "vanilla" with 10 samples:
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method vanilla --run_evaluation --num_samples 10
+
+    To run both generation and evaluation for model "gpt-5.2-pro-2025-12-11" and method "vanilla" using 100 samples:
+      python src/massmaps.py run --model gpt-5.2-pro-2025-12-11 --method vanilla --run_generation --run_evaluation --eval_model gpt-5-mini-2025-08-07 --num_samples 100
+    
+    # Example command line for aggregation mode:
+    #
+    # To aggregate results from all models and methods (default settings):
+    #   python src/massmaps.py aggregate
+    #
+    # To aggregate with custom result directories:
+    #   python src/massmaps.py aggregate --final_results_dir notebooks/_dump/massmaps/final --aggregated_results_dir results
+    #
+    # To aggregate only a limited number of examples (e.g., 25 examples):
+    #   python src/massmaps.py aggregate --num_samples 25
+    """
+    # Uncomment line below to install exlib
+    # !pip install diskcache
+    import sys; 
+    sys.path.append('../src')
+
+    ROOT_DIR = Path(__file__).resolve().parent.parent
+
+    import openai
+    import os
+
+    load_api_keys(ROOT_DIR)
+
     args = parse_args()
 
     if args.command == "aggregate":
-        aggregate_all_results(results_dir=args.results_dir, output_file=args.output_file)
+        aggregate_all_results(
+            eval_model=args.eval_model,
+            num_samples=args.num_samples,
+        )
 
     elif args.command == "run":
         # Determine what to run based on CLI flags
         if not (args.run_generation or args.run_evaluation):
             print("No operation specified. Use --run_generation and/or --run_evaluation. See --help.")
             exit(1)
-        main(
+        run_massmaps_pipeline(
             model=args.model,
             method=args.method,
             verbose=args.verbose,
@@ -940,4 +1035,5 @@ if __name__ == "__main__":
             debug=args.debug,
             run_generation=args.run_generation,
             run_evaluation=args.run_evaluation,
+            eval_model=args.eval_model,
         )
