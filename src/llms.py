@@ -18,8 +18,12 @@ import hashlib
 from pathlib import Path
 
 # Create a cache in this directory
-cache = diskcache.Cache(Path(__file__).parent / ".llms.py.cache")
+cache_path = os.getenv("LLMS_CACHE_PATH")
 
+if cache_path:
+    cache = diskcache.Cache(cache_path)
+else:
+    cache = diskcache.Cache(Path(__file__).parent / ".llms.py.cache")
 
 # ==============================
 # Shared image & cache utilities
