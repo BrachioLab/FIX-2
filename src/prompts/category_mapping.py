@@ -130,11 +130,11 @@ category_mapping_sepsis = {
 
 category_mapping_cardiac = {
     'name2id': {
-        'Ventricular Tachyarrhythmias': 1,
-        'Ventricular Ectopy / NSVT': 2,
-        'Bradycardia or Heart-Rate Drop': 3,
-        'QRS Widening (Conduction Delay)': 4,
-        'Dynamic ST-Segment Changes': 5,
+        'Ventricular Ectopy / NSVT': 1,
+        'Bradycardia or Heart-Rate Drop': 2,
+        'QRS Widening (Conduction Delay)': 3,
+        'Dynamic ST-Segment Changes': 4,
+        'QTc Prolongation': 5,
         'Severe Hyperkalemia Signs': 6,
         'Advanced Age': 7,
         'Male Sex': 8,
@@ -142,15 +142,27 @@ category_mapping_cardiac = {
         'Critical Illness (Sepsis/Shock)': 10    
     },
     'id2name': {
-        1: 'Ventricular Tachyarrhythmias',
-        2: 'Ventricular Ectopy / NSVT',
-        3: 'Bradycardia or Heart-Rate Drop',
-        4: 'QRS Widening (Conduction Delay))',
-        5: 'Dynamic ST-Segment Changes',
+        1: 'Ventricular Ectopy / NSVT',
+        2: 'Bradycardia or Heart-Rate Drop',
+        3: 'QRS Widening (Conduction Delay))',
+        4: 'Dynamic ST-Segment Changes',
+        5: 'QTc Prolongation',
         6: 'Severe Hyperkalemia Signs',
         7: 'Advanced Age',
         8: 'Male Sex',
         9: 'Underlying Cardiac Disease',
         10: 'Critical Illness (Sepsis/Shock)'
+    },
+    'name2description': {
+        'Ventricular Ectopy / NSVT': 'Runs of non-sustained ventricular tachycardia (NSVT) or frequent premature ventricular contractions may indicate electrical instability in critically ill patients, particularly those with underlying coronary disease or cardiomyopathy. While NSVT is generally considered a more benign form of ventricular tachyarrhythmia, its presence reflects transient abnormal rhythms originating from the lower chambers and does not necessarily always signal impending cardiac arrest.',
+        'Bradycardia or Heart-Rate Drop': 'The onset of significant bradycardia or a sudden ≥30% decline in heart rate is a well-documented precursor to in-hospital cardiac arrest (often preceding pulseless electrical activity or asystole) and should be treated as an alarm sign',
+        'QRS Widening (Conduction Delay)': 'New or progressive prolongation of the QRS duration on the ECG is an ominous finding in the ICU, often observed in the minutes before cardiac arrest and associated with higher mortality due to deteriorating ventricular conduction',
+        'Dynamic ST-Segment Changes': 'Acute ischemic changes on continuous ECG (notably ST-segment elevation or depression) signal low blood flow in the coronary arteries, indicating myocardial infarction or injury, and may precede imminent ventricular fibrillation or cardiac arrest. As blood flow continues to decrease, the ischemic heart can fibrillate or go into VT/VF (i.e. cardiac arrest). Although ST segment changes are common, the link to cardiac arrest is rare but possible.',
+        'QTc Prolongation': 'Prolongation of the corrected QT (QTc) interval reflects abnormal ventricular repolarization and increases vulnerability to malignant arrhythmias such as torsades de pointes. QTc prolongation may result from medications, electrolyte disturbances (e.g., hypokalemia or hypomagnesemia), or underlying cardiac disease and is a known precursor to sudden cardiac arrest.',
+        'Severe Hyperkalemia Signs': 'Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention. Hyperkalemia is a frequent cause of in-hospital cardiac arrest especially among patients on dialysis / end stage renal disease. Looking for signs of hyperkalemia can be important to understand risk of cardiac arrest, especially in selected populations.',
+        'Advanced Age': 'Increasing age is a major risk factor for cardiac arrest, with events being uncommon in younger patients and substantially more frequent in older ICU populations. Patients over 65 years are more prone to sudden deterioration due to reduced physiologic reserve and a higher burden of cardiovascular disease.',
+        'Male Sex': 'Male gender is associated with a higher incidence of cardiac arrest, as most cardiac arrests occur in men (with women’s risk rising post-menopause).',
+        'Underlying Cardiac Disease': 'The presence of serious cardiac conditions – such as coronary artery disease (especially a recent myocardial infarction) or severe heart failure – greatly elevates short-term cardiac arrest risk by creating an electrically and hemodynamically unstable myocardium.',
+        'Critical Illness (Sepsis/Shock)': 'Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.'
     }
 }

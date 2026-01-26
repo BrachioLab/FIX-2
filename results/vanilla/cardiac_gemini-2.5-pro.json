@@ -1,0 +1,911 @@
+[
+    {
+        "record_name": "99741192_2",
+        "background": "The patient is age 45, gender M, race Other, and was admitted to the ICU for Intraparenchymal hematoma of brain, right, without loss of consciousness, initial encounter (CMS-HCC).",
+        "duration_sec": 120,
+        "pred_window_sec": 300,
+        "ground_truth": "Yes",
+        "llm_label": "Yes",
+        "llm_explanation": "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and the specific features of the ECG waveform. The patient's primary diagnosis, an intraparenchymal hematoma, is a known trigger for severe cardiovascular complications, including arrhythmias. The ECG tracing demonstrates a sustained and very fast heart rhythm, estimated to be between 160 and 180 beats per minute. Furthermore, the spacing between the heartbeats is consistently irregular throughout the two-minute period, a pattern highly suggestive of atrial fibrillation with a rapid ventricular response (RVR). This severe tachyarrhythmia is hemodynamically compromising because it reduces the heart's filling time and drastically increases its oxygen demand. In the context of a critical illness like a brain hemorrhage, such a sustained and uncontrolled rapid rhythm can rapidly lead to myocardial ischemia, hemodynamic collapse, and deterioration into a lethal arrhythmia, thereby posing a very high risk of cardiac arrest in the immediate future.",
+        "all_claims": [
+            "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform.",
+            "The patient's primary diagnosis is an intraparenchymal hematoma.",
+            "An intraparenchymal hematoma is a known trigger for severe cardiovascular complications, including arrhythmias.",
+            "The ECG tracing demonstrates a sustained and very fast heart rhythm estimated to be between 160 and 180 beats per minute.",
+            "The spacing between the heartbeats is consistently irregular throughout the two-minute period.",
+            "The consistently irregular spacing pattern is highly suggestive of atrial fibrillation with a rapid ventricular response (RVR).",
+            "This severe tachyarrhythmia is hemodynamically compromising because it reduces the heart's filling time.",
+            "This severe tachyarrhythmia drastically increases the heart's oxygen demand.",
+            "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can rapidly lead to myocardial ischemia.",
+            "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can cause hemodynamic collapse.",
+            "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can deteriorate into a lethal arrhythmia.",
+            "These potential consequences pose a very high risk of cardiac arrest in the immediate future."
+        ],
+        "relevant_claims": [
+            "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform.",
+            "The patient's primary diagnosis is an intraparenchymal hematoma.",
+            "An intraparenchymal hematoma is a known trigger for severe cardiovascular complications, including arrhythmias.",
+            "The ECG tracing demonstrates a sustained and very fast heart rhythm estimated to be between 160 and 180 beats per minute.",
+            "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can cause hemodynamic collapse.",
+            "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can deteriorate into a lethal arrhythmia."
+        ],
+        "alignable_claims": [],
+        "alignment_category_ids": [],
+        "alignment_categories": [],
+        "alignment_scores": [],
+        "alignment_raws": [],
+        "alignment_reasonings": [],
+        "claims_by_category": {
+            "Ventricular Ectopy / NSVT": [
+                "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform.",
+                "The patient's primary diagnosis is an intraparenchymal hematoma.",
+                "An intraparenchymal hematoma is a known trigger for severe cardiovascular complications, including arrhythmias.",
+                "The ECG tracing demonstrates a sustained and very fast heart rhythm estimated to be between 160 and 180 beats per minute.",
+                "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can cause hemodynamic collapse.",
+                "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can deteriorate into a lethal arrhythmia."
+            ],
+            "Bradycardia or Heart-Rate Drop": [
+                "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform.",
+                "The patient's primary diagnosis is an intraparenchymal hematoma.",
+                "An intraparenchymal hematoma is a known trigger for severe cardiovascular complications, including arrhythmias."
+            ],
+            "QRS Widening (Conduction Delay)": [
+                "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform.",
+                "An intraparenchymal hematoma is a known trigger for severe cardiovascular complications, including arrhythmias."
+            ],
+            "Dynamic ST-Segment Changes": [
+                "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform."
+            ],
+            "QTc Prolongation": [
+                "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform.",
+                "An intraparenchymal hematoma is a known trigger for severe cardiovascular complications, including arrhythmias."
+            ],
+            "Severe Hyperkalemia Signs": [],
+            "Advanced Age": [],
+            "Male Sex": [],
+            "Underlying Cardiac Disease": [
+                "The ECG tracing demonstrates a sustained and very fast heart rhythm estimated to be between 160 and 180 beats per minute.",
+                "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can cause hemodynamic collapse.",
+                "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can deteriorate into a lethal arrhythmia."
+            ],
+            "Critical Illness (Sepsis/Shock)": [
+                "The prediction of high risk for cardiac arrest is based on the combination of the patient's acute neurological condition and specific features of the ECG waveform.",
+                "The patient's primary diagnosis is an intraparenchymal hematoma.",
+                "An intraparenchymal hematoma is a known trigger for severe cardiovascular complications, including arrhythmias.",
+                "The ECG tracing demonstrates a sustained and very fast heart rhythm estimated to be between 160 and 180 beats per minute.",
+                "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can cause hemodynamic collapse.",
+                "In the context of a critical illness such as a brain hemorrhage, a sustained and uncontrolled rapid rhythm can deteriorate into a lethal arrhythmia."
+            ]
+        },
+        "category_alignment_scores": {
+            "Ventricular Ectopy / NSVT": 0.5,
+            "Bradycardia or Heart-Rate Drop": 0.5,
+            "QRS Widening (Conduction Delay)": 0.5,
+            "Dynamic ST-Segment Changes": 0.5,
+            "QTc Prolongation": 0.5,
+            "Severe Hyperkalemia Signs": 0.0,
+            "Advanced Age": 0.0,
+            "Male Sex": 0.0,
+            "Underlying Cardiac Disease": 0.0,
+            "Critical Illness (Sepsis/Shock)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Ventricular Ectopy / NSVT": "The claims discuss arrhythmia risk (including a very rapid sustained rhythm and arrhythmias triggered by a brain bleed), which is relevant to electrical instability. However they do not mention ventricular ectopy, PVCs, or non-sustained ventricular tachycardia specifically; instead they describe a sustained, very fast rhythm (more consistent with sustained VT or supraventricular tachycardia) and emphasize neurologic triggers and hemodynamic collapse. Because the claims relate to arrhythmic risk but do not capture the specific phenomena of NSVT/frequent PVCs described in the category, the alignment is partial.",
+            "Bradycardia or Heart-Rate Drop": "The claims reference an acute neurological insult (intraparenchymal hematoma) and ECG abnormalities/arrhythmias, which can be linked to neurogenic cardiac effects including bradyarrhythmias. However, they do not explicitly mention bradycardia or a \u226530% heart-rate drop nor provide specific heart-rate/ECG evidence of bradycardia. Because the connection to bradycardia is indirect and nonspecific, the alignment is partial.",
+            "QRS Widening (Conduction Delay)": "The claims refer to ECG waveform features and note an intraparenchymal hematoma as an arrhythmogenic trigger, which is relevant to cardiac electrical instability. However they do not specifically mention QRS duration, new/progressive QRS widening, or ventricular conduction delay\u2014the precise phenomenon defined by the category\u2014so they only partially match its intent.",
+            "Dynamic ST-Segment Changes": "The claim mentions \"specific features of the ECG waveform,\" which could relate to ST-segment changes, so it partially touches the category's focus on ECG ischemic changes. However it is vague (doesn't specify ST elevation/depression or ischemia) and also cites the patient's acute neurological condition \u2014 an unrelated factor to the category's mechanism. Because it lacks the key detail about dynamic ST-segment ischemic changes and includes noise, the alignment is partial.",
+            "QTc Prolongation": "The claims reference ECG features and arrhythmia risk and note that intracerebral hemorrhage can provoke cardiac arrhythmias, which is broadly related to electrical instability. However they do not identify QT interval prolongation, corrected QT (QTc) specifically, torsades-de-pointes, or the typical causes (medications, electrolytes, etc.). Because the link to QTc prolongation is implied but not specified, the alignment is partial.",
+            "Severe Hyperkalemia Signs": "No claims were provided to reference ECG findings, potassium status, renal disease, or dialysis. Because there is no information linking the patient to hyperkalemia signs (peaked T waves, P\u2011wave loss, QRS widening, sine wave pattern) or related risk factors, the claims do not align with the category.",
+            "Advanced Age": "No claims were provided (listed as \"N/A\"), so nothing references patient age or relates to the advanced-age risk factor. Without any age-related statement, the claims do not align with the category.",
+            "Male Sex": "No claims were provided to reference the patient's sex or any information about male gender. Because the category specifically concerns male sex as a risk factor, absence of any related claim means there is no alignment.",
+            "Underlying Cardiac Disease": "The claims describe a sustained, very rapid arrhythmia and its hemodynamic consequences in the setting of critical illness, but they do not mention chronic cardiac conditions (CAD, recent MI, severe heart failure) or any underlying structural/electrical heart disease. Therefore they do not address the presence of underlying cardiac disease that the category requires.",
+            "Critical Illness (Sepsis/Shock)": "The claims center on an acute neurologic catastrophe (intraparenchymal hemorrhage) and a sustained fast tachyarrhythmia as the basis for high arrest risk. The expert category specifically concerns severe sepsis or septic shock causing hypoxia, hypotension, and metabolic derangements that typically lead to PEA/asystole. The claims do not mention sepsis, shock physiology, hypotension from infection, or metabolic disturbance; instead they describe a different pathway (brain hemorrhage and tachyarrhythmia). Therefore the claims do not align with the sepsis/shock category."
+        },
+        "alignment_matrix": [
+            [
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.5,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ]
+        ],
+        "final_alignment_score": 0.5,
+        "accuracy": 1
+    },
+    {
+        "record_name": "99340002_1",
+        "background": "The patient is age 36, gender M, race White, and was admitted to the ICU for Dizziness.",
+        "duration_sec": 120,
+        "pred_window_sec": 300,
+        "ground_truth": "No",
+        "llm_label": "No",
+        "llm_explanation": "The decision is based on the analysis of the ECG data, which appears to be overwhelmingly corrupted by artifact. The entire 120-second strip shows a high-frequency, chaotic baseline that obscures any underlying cardiac rhythm. This pattern is not consistent with a true physiological rhythm like ventricular fibrillation, but rather with severe electrical interference, patient movement, or muscle tremor. For instance, the massive, non-physiological spike in voltage to nearly 5 mV around the 38-second mark is a clear indicator of artifact, not a cardiac event. If this were a true lethal arrhythmia lasting for two minutes, the patient would already be in a state of cardiac arrest. Since no discernible P waves, QRS complexes, or T waves can be reliably identified, there is no ECG evidence to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest. Therefore, based on the uninterpretable and artifact-laden nature of this ECG, a high risk of imminent cardiac arrest cannot be determined.",
+        "all_claims": [
+            "The decision is based on analysis of the ECG data.",
+            "The ECG data appears to be overwhelmingly corrupted by artifact.",
+            "The entire 120-second strip shows a high-frequency, chaotic baseline.",
+            "The high-frequency, chaotic baseline obscures any underlying cardiac rhythm.",
+            "The observed pattern is not consistent with a true physiological rhythm such as ventricular fibrillation.",
+            "The pattern is more consistent with severe electrical interference, patient movement, or muscle tremor.",
+            "There is a massive, non-physiological spike in voltage to nearly 5 mV around the 38-second mark.",
+            "The massive spike around the 38-second mark is a clear indicator of artifact, not a cardiac event.",
+            "If a true lethal arrhythmia had persisted for two minutes, the patient would already be in a state of cardiac arrest.",
+            "No discernible P waves, QRS complexes, or T waves can be reliably identified in the strip.",
+            "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest.",
+            "Based on the uninterpretable, artifact-laden nature of this ECG, a high risk of imminent cardiac arrest cannot be determined."
+        ],
+        "relevant_claims": [
+            "The observed pattern is not consistent with a true physiological rhythm such as ventricular fibrillation.",
+            "The pattern is more consistent with severe electrical interference, patient movement, or muscle tremor.",
+            "There is a massive, non-physiological spike in voltage to nearly 5 mV around the 38-second mark.",
+            "The massive spike around the 38-second mark is a clear indicator of artifact, not a cardiac event.",
+            "If a true lethal arrhythmia had persisted for two minutes, the patient would already be in a state of cardiac arrest.",
+            "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest."
+        ],
+        "alignable_claims": [],
+        "alignment_category_ids": [],
+        "alignment_categories": [],
+        "alignment_scores": [],
+        "alignment_raws": [],
+        "alignment_reasonings": [],
+        "claims_by_category": {
+            "Ventricular Ectopy / NSVT": [
+                "The observed pattern is not consistent with a true physiological rhythm such as ventricular fibrillation.",
+                "The pattern is more consistent with severe electrical interference, patient movement, or muscle tremor.",
+                "There is a massive, non-physiological spike in voltage to nearly 5 mV around the 38-second mark.",
+                "The massive spike around the 38-second mark is a clear indicator of artifact, not a cardiac event.",
+                "If a true lethal arrhythmia had persisted for two minutes, the patient would already be in a state of cardiac arrest.",
+                "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest."
+            ],
+            "Bradycardia or Heart-Rate Drop": [
+                "The observed pattern is not consistent with a true physiological rhythm such as ventricular fibrillation.",
+                "The pattern is more consistent with severe electrical interference, patient movement, or muscle tremor.",
+                "There is a massive, non-physiological spike in voltage to nearly 5 mV around the 38-second mark.",
+                "The massive spike around the 38-second mark is a clear indicator of artifact, not a cardiac event.",
+                "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest."
+            ],
+            "QRS Widening (Conduction Delay)": [
+                "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest."
+            ],
+            "Dynamic ST-Segment Changes": [
+                "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest."
+            ],
+            "QTc Prolongation": [],
+            "Severe Hyperkalemia Signs": [],
+            "Advanced Age": [],
+            "Male Sex": [],
+            "Underlying Cardiac Disease": [
+                "The observed pattern is not consistent with a true physiological rhythm such as ventricular fibrillation.",
+                "If a true lethal arrhythmia had persisted for two minutes, the patient would already be in a state of cardiac arrest.",
+                "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest."
+            ],
+            "Critical Illness (Sepsis/Shock)": [
+                "The observed pattern is not consistent with a true physiological rhythm such as ventricular fibrillation.",
+                "If a true lethal arrhythmia had persisted for two minutes, the patient would already be in a state of cardiac arrest.",
+                "There is no ECG evidence in this recording to suggest ischemia, ectopy, or other arrhythmic precursors to cardiac arrest."
+            ]
+        },
+        "category_alignment_scores": {
+            "Ventricular Ectopy / NSVT": 0.5,
+            "Bradycardia or Heart-Rate Drop": 0.0,
+            "QRS Widening (Conduction Delay)": 0.5,
+            "Dynamic ST-Segment Changes": 0.5,
+            "QTc Prolongation": 0.0,
+            "Severe Hyperkalemia Signs": 0.0,
+            "Advanced Age": 0.0,
+            "Male Sex": 0.0,
+            "Underlying Cardiac Disease": 0.0,
+            "Critical Illness (Sepsis/Shock)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Ventricular Ectopy / NSVT": "The claims explicitly state there is no ECG evidence of ischemia, ectopy, or arrhythmic precursors and attribute the abnormal signal to artifact\u2014directly addressing the category's subject (ventricular ectopy/NSVT) but only to deny its presence. They do not identify or describe features of PVCs or NSVT when present, nor quantify ectopy/frequency. Therefore they partially align with the category by ruling it out rather than demonstrating it.",
+            "Bradycardia or Heart-Rate Drop": "The claims focus on ECG artifact and the absence of arrhythmic or ischemic findings; they do not identify or describe bradycardia, a sudden \u226530% heart-rate drop, or any slow-heart-rate physiology that would match the category. Because they deny relevant cardiac rhythm changes rather than reference bradycardia, they do not align with the category.",
+            "QRS Widening (Conduction Delay)": "The claim broadly states there are no ischemic or arrhythmic precursors on the ECG, which touches on ECG-based risk assessment, but it does not specifically mention QRS duration or new/progressive QRS widening (the core feature of this category). Because it addresses ECG findings generally without the specific conduction-delay metric, the alignment is partial.",
+            "Dynamic ST-Segment Changes": "The claim directly refers to ischemia and ECG arrhythmic precursors (the exact features the category uses\u2014ST-segment changes\u2014to assess risk) but states their absence rather than identifying acute ST-segment elevation/depression. Because it addresses the relevant ECG findings but lacks the presence of the category's key risk sign, the alignment is partial.",
+            "QTc Prolongation": "No claims were provided to reference QTc interval, medications, electrolyte disturbances, or abnormal ventricular repolarization. Because there is no information linking the patient to QTc prolongation or its causes, the set of claims does not align with the category.",
+            "Severe Hyperkalemia Signs": "No claims were provided to reference ECG findings, potassium status, renal disease, or dialysis. Because there is no information linking the patient to hyperkalemia signs (peaked T waves, P\u2011wave loss, QRS widening, sine wave pattern) or related risk factors, the claims do not align with the category.",
+            "Advanced Age": "No claims were provided (listed as \"N/A\"), so nothing references patient age or relates to the advanced-age risk factor. Without any age-related statement, the claims do not align with the category.",
+            "Male Sex": "No claims were provided to reference the patient's sex or any information about male gender. Because the category specifically concerns male sex as a risk factor, absence of any related claim means there is no alignment.",
+            "Underlying Cardiac Disease": "The claims focus on ECG interpretation and explicitly state there is no evidence of ischemia, ectopy, or lethal arrhythmia; they do not identify or reference chronic cardiac conditions (CAD, recent MI, or heart failure) that the category describes. Because they deny the acute ischemic/arrhythmic findings and do not mention underlying structural or coronary disease, they do not align with the category.",
+            "Critical Illness (Sepsis/Shock)": "The claims only describe the absence of primary arrhythmic/ischemic ECG findings and note that a sustained lethal arrhythmia would already indicate arrest. They do not reference sepsis, shock, hypotension, hypoxia, metabolic derangements, PEA, or asystole \u2014 the pathophysiologic drivers in the Critical Illness (Sepsis/Shock) category. Therefore the claims do not align with this category's content or rationale."
+        },
+        "alignment_matrix": [
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.5,
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ]
+        ],
+        "final_alignment_score": 0.5,
+        "accuracy": 1
+    },
+    {
+        "record_name": "99860008_1",
+        "background": "The patient is age 75, gender M, race Other, and was admitted to the ICU for Fever, unspecified fever cause.",
+        "duration_sec": 120,
+        "pred_window_sec": 300,
+        "ground_truth": "No",
+        "llm_label": "Yes",
+        "llm_explanation": "My prediction is based on the extremely abnormal patterns observed in the ECG data. The patient is of advanced age, 75, which is a general risk factor for cardiac events. More importantly, the ECG trace shows profound instability. In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic, disorganized, and lacks any discernible normal QRS complexes. This pattern is highly suspicious for ventricular fibrillation, a life-threatening arrhythmia that constitutes a cardiac arrest. Following this chaotic period, the rhythm remains very rapid and irregular, suggesting ongoing severe cardiac electrical instability. The presence of such a disorganized and rapid rhythm, indicative of ventricular fibrillation or polymorphic ventricular tachycardia, places the patient at an extremely high and immediate risk of experiencing a sustained cardiac arrest.",
+        "all_claims": [
+            "The prediction is based on extremely abnormal patterns observed in the ECG data.",
+            "The patient is 75 years old.",
+            "Advanced age (75) is a general risk factor for cardiac events.",
+            "The ECG trace shows profound instability.",
+            "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+            "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+            "This chaotic, disorganized waveform pattern is highly suspicious for ventricular fibrillation.",
+            "Ventricular fibrillation is a life-threatening arrhythmia that constitutes a cardiac arrest.",
+            "Following the chaotic period, the rhythm remains very rapid and irregular.",
+            "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+            "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia.",
+            "A disorganized and rapid rhythm places the patient at an extremely high and immediate risk of experiencing a sustained cardiac arrest."
+        ],
+        "relevant_claims": [
+            "The prediction is based on extremely abnormal patterns observed in the ECG data.",
+            "The patient is 75 years old.",
+            "Advanced age (75) is a general risk factor for cardiac events.",
+            "The ECG trace shows profound instability.",
+            "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+            "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+            "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+            "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia."
+        ],
+        "alignable_claims": [],
+        "alignment_category_ids": [],
+        "alignment_categories": [],
+        "alignment_scores": [],
+        "alignment_raws": [],
+        "alignment_reasonings": [],
+        "claims_by_category": {
+            "Ventricular Ectopy / NSVT": [
+                "The prediction is based on extremely abnormal patterns observed in the ECG data.",
+                "The ECG trace shows profound instability.",
+                "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+                "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+                "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia."
+            ],
+            "Bradycardia or Heart-Rate Drop": [
+                "The ECG trace shows profound instability.",
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes."
+            ],
+            "QRS Widening (Conduction Delay)": [
+                "The ECG trace shows profound instability.",
+                "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+                "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+                "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia."
+            ],
+            "Dynamic ST-Segment Changes": [
+                "The prediction is based on extremely abnormal patterns observed in the ECG data.",
+                "The ECG trace shows profound instability.",
+                "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+                "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+                "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia."
+            ],
+            "QTc Prolongation": [
+                "The prediction is based on extremely abnormal patterns observed in the ECG data.",
+                "The ECG trace shows profound instability.",
+                "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+                "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+                "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia."
+            ],
+            "Severe Hyperkalemia Signs": [
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes."
+            ],
+            "Advanced Age": [
+                "The patient is 75 years old.",
+                "Advanced age (75) is a general risk factor for cardiac events."
+            ],
+            "Male Sex": [],
+            "Underlying Cardiac Disease": [
+                "The prediction is based on extremely abnormal patterns observed in the ECG data.",
+                "The patient is 75 years old.",
+                "Advanced age (75) is a general risk factor for cardiac events.",
+                "The ECG trace shows profound instability.",
+                "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+                "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+                "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia."
+            ],
+            "Critical Illness (Sepsis/Shock)": [
+                "The prediction is based on extremely abnormal patterns observed in the ECG data.",
+                "The ECG trace shows profound instability.",
+                "In the initial portion of the recording, particularly between approximately 5 and 30 seconds, the waveform is chaotic and disorganized.",
+                "The waveform between approximately 5 and 30 seconds lacks any discernible normal QRS complexes.",
+                "The rapid and irregular rhythm suggests ongoing severe cardiac electrical instability.",
+                "The presence of a disorganized and rapid rhythm is indicative of ventricular fibrillation or polymorphic ventricular tachycardia."
+            ]
+        },
+        "category_alignment_scores": {
+            "Ventricular Ectopy / NSVT": 0.0,
+            "Bradycardia or Heart-Rate Drop": 1.0,
+            "QRS Widening (Conduction Delay)": 0.5,
+            "Dynamic ST-Segment Changes": 0.0,
+            "QTc Prolongation": 0.5,
+            "Severe Hyperkalemia Signs": 1.0,
+            "Advanced Age": 1.0,
+            "Male Sex": 0.0,
+            "Underlying Cardiac Disease": 0.5,
+            "Critical Illness (Sepsis/Shock)": 0.0
+        },
+        "category_alignment_reasonings": {
+            "Ventricular Ectopy / NSVT": "The claims describe a chaotic, disorganized rhythm with no discernible QRS complexes and explicitly suggest ventricular fibrillation or polymorphic VT \u2014 findings consistent with malignant sustained ventricular arrhythmia/flatline-like VF rather than runs of NSVT or frequent PVCs. The expert category concerns organized, short runs of ventricular ectopy (NSVT/PVCs), which is different in morphology, severity, and implication. Because the claims point to a distinct and more severe arrhythmia, they do not align with the NSVT/ventricular ectopy category.",
+            "Bradycardia or Heart-Rate Drop": "The claims describe an ECG with no discernible normal QRS complexes over a prolonged interval, which implies a severe drop in organized ventricular activity (extreme bradycardia, asystole, or PEA). This directly corresponds to the category\u2019s focus on significant bradycardia or sudden heart-rate loss as an alarm sign preceding cardiac arrest.",
+            "QRS Widening (Conduction Delay)": "The claims describe a chaotic, disorganized rhythm consistent with ventricular fibrillation or polymorphic VT (absence of identifiable QRS complexes), which indicates severe electrical instability and high arrest risk. However, they do not reference new or progressive prolongation of the QRS duration or conduction delay specifically. Because the statements concern a different ECG phenomenon (VF/VT) rather than QRS widening, the alignment is partial.",
+            "Dynamic ST-Segment Changes": "The claims describe chaotic, disorganized rhythms consistent with ventricular fibrillation or polymorphic VT (loss of discernible QRS complexes and rapid irregular rhythm). These findings indicate malignant arrhythmia rather than dynamic ST-segment elevation/depression or ischemic ST changes. The claims do not mention ST-segment deviations, acute ischemia, or evolving ischemic changes in the ECG, so they do not align with the Dynamic ST-Segment Changes category.",
+            "QTc Prolongation": "The claims describe a chaotic, rapid, polymorphic ventricular arrhythmia (VF/PMVT), which can be the acute manifestation of prolonged QTc (e.g., torsades). However, they do not reference the QT/QTc interval, abnormal ventricular repolarization, or predisposing causes (medications, electrolytes, underlying disease). Because the link to QTc prolongation is implied but not specified, the alignment is partial.",
+            "Severe Hyperkalemia Signs": "The claim describes a profound ECG abnormality\u2014absence of discernible normal QRS complexes\u2014which directly corresponds to the severe conduction/\u201csine-wave\u201d pattern and QRS destruction highlighted in the hyperkalemia category. Although it doesn't name hyperkalemia explicitly, the finding is a specific, classic electrocardiographic sign the category is focused on.",
+            "Advanced Age": "The claims explicitly identify the patient's age (75) and note that advanced age is a risk factor, directly matching the category's emphasis on patients >65 having higher short-term cardiac arrest risk due to reduced reserve and comorbid burden.",
+            "Male Sex": "No claims were provided to reference the patient's sex or any information about male gender. Because the category specifically concerns male sex as a risk factor, absence of any related claim means there is no alignment.",
+            "Underlying Cardiac Disease": "The claims describe profound ECG instability (chaotic waveform, absent QRS, likely VF/polymorphic VT) and advanced age, which explain high short-term arrest risk but do not identify chronic structural or ischemic heart disease (e.g., CAD, recent MI, or severe heart failure) that the category specifies. Arrhythmias and age are related to the category\u2019s intent but the claims lack explicit evidence of underlying cardiac disease, so they only partially match the category.",
+            "Critical Illness (Sepsis/Shock)": "The claims describe chaotic, disorganized ECG activity consistent with primary malignant ventricular arrhythmias (ventricular fibrillation or polymorphic VT). The Critical Illness (Sepsis/Shock) category centers on systemic infection/hypotension causing hypoxia, metabolic derangement, and typically pulseless electrical activity or asystole rather than primary chaotic ventricular arrhythmias. The claims do not reference sepsis, shock, hypotension, hypoxia, metabolic abnormalities, or PEA/asystole, so they do not align with this category."
+        },
+        "alignment_matrix": [
+            [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.5,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.5,
+                0.0
+            ],
+            [
+                0.0,
+                1.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0
+            ],
+            [
+                0.0,
+                1.0,
+                0.5,
+                0.0,
+                0.5,
+                1.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0
+            ]
+        ],
+        "final_alignment_score": 0.75,
+        "accuracy": 0
+    },
+    {
+        "record_name": "99441004_1",
+        "background": "The patient is age 30, gender M, race Asian, and was admitted to the ICU for Dehiscence of intestinal anastomosis, initial encounter.",
+        "duration_sec": 120,
+        "pred_window_sec": 300,
+        "ground_truth": "No",
+        "llm_label": "Yes",
+        "llm_explanation": "The primary basis for this prediction is the visual analysis of the provided Electrocardiogram (ECG) data. The entire two-minute tracing displays a chaotic, extremely rapid, and irregular electrical activity with no discernible P waves, QRS complexes, or T waves. This waveform morphology is the hallmark of Ventricular Fibrillation (VFib), a life-threatening cardiac arrhythmia. In VFib, the ventricles quiver ineffectively instead of pumping blood, which constitutes a state of cardiac arrest. Therefore, the patient is not just at high risk; the ECG suggests they are actively experiencing a cardiac arrest event. The patient's underlying critical illness, dehiscence of intestinal anastomosis, could contribute to systemic instability predisposing them to such a malignant arrhythmia, but the ECG pattern itself is the most definitive and alarming feature indicating an immediate life-threatening emergency.",
+        "all_claims": [
+            "The primary basis for this prediction is the visual analysis of the provided Electrocardiogram (ECG) data.",
+            "The entire two-minute ECG tracing displays chaotic, extremely rapid, and irregular electrical activity.",
+            "The ECG tracing shows no discernible P waves, QRS complexes, or T waves.",
+            "This waveform morphology is the hallmark of Ventricular Fibrillation (VFib).",
+            "Ventricular Fibrillation (VFib) is a life-threatening cardiac arrhythmia.",
+            "In VFib, the ventricles quiver ineffectively instead of pumping blood.",
+            "Ineffective ventricular quivering constitutes a state of cardiac arrest.",
+            "The patient is at high risk of experiencing cardiac arrest.",
+            "The ECG suggests the patient is actively experiencing a cardiac arrest event.",
+            "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+            "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+            "Systemic instability can predispose a patient to malignant arrhythmias like VFib.",
+            "The ECG pattern itself is the most definitive and alarming feature indicating an immediate life-threatening emergency."
+        ],
+        "relevant_claims": [
+            "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+            "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+            "Systemic instability can predispose a patient to malignant arrhythmias like VFib."
+        ],
+        "alignable_claims": [],
+        "alignment_category_ids": [],
+        "alignment_categories": [],
+        "alignment_scores": [],
+        "alignment_raws": [],
+        "alignment_reasonings": [],
+        "claims_by_category": {
+            "Ventricular Ectopy / NSVT": [
+                "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+                "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+                "Systemic instability can predispose a patient to malignant arrhythmias like VFib."
+            ],
+            "Bradycardia or Heart-Rate Drop": [
+                "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+                "Dehiscence of intestinal anastomosis could contribute to systemic instability."
+            ],
+            "QRS Widening (Conduction Delay)": [
+                "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+                "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+                "Systemic instability can predispose a patient to malignant arrhythmias like VFib."
+            ],
+            "Dynamic ST-Segment Changes": [
+                "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+                "Systemic instability can predispose a patient to malignant arrhythmias like VFib."
+            ],
+            "QTc Prolongation": [
+                "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+                "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+                "Systemic instability can predispose a patient to malignant arrhythmias like VFib."
+            ],
+            "Severe Hyperkalemia Signs": [
+                "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+                "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+                "Systemic instability can predispose a patient to malignant arrhythmias like VFib."
+            ],
+            "Advanced Age": [],
+            "Male Sex": [],
+            "Underlying Cardiac Disease": [],
+            "Critical Illness (Sepsis/Shock)": [
+                "The patient has an underlying critical illness: dehiscence of intestinal anastomosis.",
+                "Dehiscence of intestinal anastomosis could contribute to systemic instability.",
+                "Systemic instability can predispose a patient to malignant arrhythmias like VFib."
+            ]
+        },
+        "category_alignment_scores": {
+            "Ventricular Ectopy / NSVT": 0.5,
+            "Bradycardia or Heart-Rate Drop": 0.0,
+            "QRS Widening (Conduction Delay)": 0.0,
+            "Dynamic ST-Segment Changes": 0.0,
+            "QTc Prolongation": 0.5,
+            "Severe Hyperkalemia Signs": 0.0,
+            "Advanced Age": 0.0,
+            "Male Sex": 0.0,
+            "Underlying Cardiac Disease": 0.0,
+            "Critical Illness (Sepsis/Shock)": 0.5
+        },
+        "category_alignment_reasonings": {
+            "Ventricular Ectopy / NSVT": "The claims link the patient's critical illness and systemic instability to a higher risk of malignant arrhythmias, which is relevant to electrical instability. However, they do not mention ventricular ectopy, PVCs, or runs of NSVT specifically\u2014the precise phenomena described in the category\u2014so they only partially capture the category's focus.",
+            "Bradycardia or Heart-Rate Drop": "The claims describe a critical surgical complication and systemic instability but do not mention heart rate, bradycardia, or a sudden \u226530% decline in heart rate. They do not address the specific physiologic trigger (bradycardia/heart\u2011rate drop) identified in the category.",
+            "QRS Widening (Conduction Delay)": "The claims describe a non-cardiac surgical complication causing systemic instability and a generic increased risk of malignant arrhythmias, but they do not reference QRS duration, conduction delay, or specific ECG changes. Because the category centers on new/progressive QRS widening as the mechanism signaling imminent arrest, these claims do not address that feature.",
+            "Dynamic ST-Segment Changes": "The claims describe a non-cardiac source of systemic instability and a general link from instability to malignant arrhythmias (VF). They do not mention ECG findings, ST-segment elevation/depression, myocardial ischemia/infarction, or dynamic ischemic changes\u2014any of which are central to the Dynamic ST-Segment Changes category. Because the claims do not reference the specific ischemic ECG features or mechanism emphasized by the category, they do not align with it.",
+            "QTc Prolongation": "The claims link critical illness and systemic instability to an increased risk of malignant arrhythmias, which is broadly related to the category\u2019s concern about arrhythmic risk. However, they do not mention QTc interval, abnormal ventricular repolarization, ECG findings, or common causes of QTc prolongation (medications, hypokalemia/hypomagnesemia, underlying cardiac disease). Because key specifics that define the QTc Prolongation category are missing, the alignment is partial.",
+            "Severe Hyperkalemia Signs": "The claims describe a surgical complication (anastomotic dehiscence) and general systemic instability that might lead to arrhythmia, but they do not reference potassium levels, characteristic ECG findings (peaked T-waves, loss of P-waves, QRS widening/sine-wave), renal failure, or dialysis \u2014 all central to the Severe Hyperkalemia Signs category. Thus they do not meaningfully align with this category.",
+            "Advanced Age": "No claims were provided (listed as \"N/A\"), so nothing references patient age or relates to the advanced-age risk factor. Without any age-related statement, the claims do not align with the category.",
+            "Male Sex": "No claims were provided to reference the patient's sex or any information about male gender. Because the category specifically concerns male sex as a risk factor, absence of any related claim means there is no alignment.",
+            "Underlying Cardiac Disease": "No claims were provided (N/A), so there is nothing referencing underlying cardiac conditions, recent MI, or heart failure. Therefore the set of claims does not align with the category.",
+            "Critical Illness (Sepsis/Shock)": "The claims identify a significant surgical complication (intestinal anastomosis dehiscence) and note it can cause systemic instability\u2014this plausibly links to sepsis/shock and elevated short-term arrest risk, so they touch on the category\u2019s core idea. However, they do not explicitly mention sepsis, hypotension, hypoxia, or metabolic derangements (the key mechanisms in the category) and instead emphasize malignant arrhythmias like VFib rather than the PEA/asystole pattern most typical of septic shock. Thus the match is relevant but incomplete."
+        },
+        "alignment_matrix": [
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ],
+            [
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ]
+        ],
+        "final_alignment_score": 0.5,
+        "accuracy": 0
+    },
+    {
+        "record_name": "99795008_1",
+        "background": "The patient is age 77, gender F, race Other, and was admitted to the ICU for Skin lesion of scalp.",
+        "duration_sec": 120,
+        "pred_window_sec": 300,
+        "ground_truth": "No",
+        "llm_label": "Yes",
+        "llm_explanation": "The decision is based almost exclusively on the provided ECG data. The entire two-minute waveform is grossly abnormal and chaotic, lacking any identifiable normal P-QRS-T complexes. The rhythm is highly irregular, disorganized, and displays varying amplitude and morphology, which is characteristic of coarse ventricular fibrillation (VF). Ventricular fibrillation is a lethal arrhythmia where the heart quivers instead of pumping blood, which is a form of cardiac arrest. A patient displaying this ECG pattern is not just at high risk for cardiac arrest; they are actively in a state of cardiac arrest and require immediate defibrillation and advanced life support. The advanced age of the patient (77) increases baseline risk, but the ECG trace itself is the overwhelming and definitive factor for this prediction.",
+        "all_claims": [
+            "The decision is based almost exclusively on the provided ECG data.",
+            "The entire two-minute waveform is grossly abnormal and chaotic.",
+            "The waveform lacks any identifiable normal P-QRS-T complexes.",
+            "The rhythm is highly irregular.",
+            "The rhythm is disorganized.",
+            "The rhythm displays varying amplitude and morphology.",
+            "The rhythm\u2019s irregularity, disorganization, and varying amplitude and morphology are characteristic of coarse ventricular fibrillation (VF).",
+            "Ventricular fibrillation is a lethal arrhythmia in which the heart quivers instead of pumping blood.",
+            "Ventricular fibrillation is a form of cardiac arrest.",
+            "A patient displaying this ECG pattern is actively in a state of cardiac arrest.",
+            "A patient in this state requires immediate defibrillation.",
+            "A patient in this state requires advanced life support.",
+            "The advanced age of the patient (77) increases baseline risk.",
+            "The ECG trace itself is the overwhelming and definitive factor for this prediction."
+        ],
+        "relevant_claims": [
+            "The entire two-minute waveform is grossly abnormal and chaotic.",
+            "The waveform lacks any identifiable normal P-QRS-T complexes.",
+            "The rhythm is highly irregular.",
+            "The rhythm is disorganized.",
+            "The rhythm displays varying amplitude and morphology.",
+            "The advanced age of the patient (77) increases baseline risk."
+        ],
+        "alignable_claims": [],
+        "alignment_category_ids": [],
+        "alignment_categories": [],
+        "alignment_scores": [],
+        "alignment_raws": [],
+        "alignment_reasonings": [],
+        "claims_by_category": {
+            "Ventricular Ectopy / NSVT": [
+                "The entire two-minute waveform is grossly abnormal and chaotic.",
+                "The waveform lacks any identifiable normal P-QRS-T complexes.",
+                "The rhythm is highly irregular.",
+                "The rhythm is disorganized.",
+                "The rhythm displays varying amplitude and morphology."
+            ],
+            "Bradycardia or Heart-Rate Drop": [
+                "The waveform lacks any identifiable normal P-QRS-T complexes."
+            ],
+            "QRS Widening (Conduction Delay)": [
+                "The entire two-minute waveform is grossly abnormal and chaotic.",
+                "The waveform lacks any identifiable normal P-QRS-T complexes.",
+                "The rhythm is highly irregular.",
+                "The rhythm is disorganized.",
+                "The rhythm displays varying amplitude and morphology."
+            ],
+            "Dynamic ST-Segment Changes": [
+                "The entire two-minute waveform is grossly abnormal and chaotic.",
+                "The waveform lacks any identifiable normal P-QRS-T complexes.",
+                "The rhythm is highly irregular.",
+                "The rhythm is disorganized.",
+                "The rhythm displays varying amplitude and morphology."
+            ],
+            "QTc Prolongation": [
+                "The entire two-minute waveform is grossly abnormal and chaotic.",
+                "The waveform lacks any identifiable normal P-QRS-T complexes.",
+                "The rhythm is highly irregular.",
+                "The rhythm is disorganized.",
+                "The rhythm displays varying amplitude and morphology."
+            ],
+            "Severe Hyperkalemia Signs": [
+                "The waveform lacks any identifiable normal P-QRS-T complexes."
+            ],
+            "Advanced Age": [
+                "The advanced age of the patient (77) increases baseline risk."
+            ],
+            "Male Sex": [],
+            "Underlying Cardiac Disease": [
+                "The entire two-minute waveform is grossly abnormal and chaotic.",
+                "The waveform lacks any identifiable normal P-QRS-T complexes.",
+                "The rhythm is highly irregular.",
+                "The rhythm is disorganized.",
+                "The rhythm displays varying amplitude and morphology."
+            ],
+            "Critical Illness (Sepsis/Shock)": [
+                "The entire two-minute waveform is grossly abnormal and chaotic.",
+                "The waveform lacks any identifiable normal P-QRS-T complexes.",
+                "The rhythm is highly irregular.",
+                "The rhythm is disorganized.",
+                "The rhythm displays varying amplitude and morphology."
+            ]
+        },
+        "category_alignment_scores": {
+            "Ventricular Ectopy / NSVT": 0.0,
+            "Bradycardia or Heart-Rate Drop": 0.5,
+            "QRS Widening (Conduction Delay)": 0.5,
+            "Dynamic ST-Segment Changes": 0.0,
+            "QTc Prolongation": 0.0,
+            "Severe Hyperkalemia Signs": 1.0,
+            "Advanced Age": 1.0,
+            "Male Sex": 0.0,
+            "Underlying Cardiac Disease": 0.0,
+            "Critical Illness (Sepsis/Shock)": 0.5
+        },
+        "category_alignment_reasonings": {
+            "Ventricular Ectopy / NSVT": "The claims describe a grossly chaotic, disorganized waveform with no identifiable P\u2013QRS\u2013T complexes and varying amplitude/morphology \u2014 findings more consistent with ventricular fibrillation or artifact than with discrete ventricular ectopy or runs of NSVT. They do not mention identifiable premature ventricular complexes, short runs of wide-complex ventricular beats, or the patterning typical of NSVT/PVCs, so they do not align with the Ventricular Ectopy/NSVT category.",
+            "Bradycardia or Heart-Rate Drop": "The claim notes absence of identifiable P\u2011QRS\u2011T complexes, which could reflect severe bradyarrhythmia progressing to asystole or another terminal rhythm\u2014but it does not explicitly describe a slow heart rate or a \u226530% drop in heart rate. Because the statement is ambiguous (could indicate artifact, VF, or asystole) and lacks the specific heart-rate decline or bradycardia detail the category requires, the alignment is partial.",
+            "QRS Widening (Conduction Delay)": "The claims describe a grossly abnormal, disorganized rhythm with no identifiable P-QRS-T complexes and variable morphology\u2014findings more consistent with chaotic arrhythmias (e.g., ventricular fibrillation) than a specific new or progressive QRS prolongation. They indicate severe ventricular electrical instability but do not mention QRS duration/widening or progressive conduction delay, so they only partially touch on the category\u2019s focus.",
+            "Dynamic ST-Segment Changes": "The claims describe a grossly abnormal, chaotic, disorganized rhythm without identifiable P\u2011QRS\u2011T complexes and with variable amplitude/morphology \u2014 findings more consistent with ventricular fibrillation or severe arrhythmia. They do not reference ST\u2011segment elevation or depression, ischemic changes, or dynamic ST abnormalities that indicate coronary ischemia, so they do not match the category's focus on ST\u2011segment ischemic changes.",
+            "QTc Prolongation": "The claims describe a chaotic, disorganized rhythm with no identifiable P\u2011QRS\u2011T complexes and varying morphology\u2014findings more consistent with ventricular fibrillation or a non\u2011organized arrhythmia. They do not reference QT interval duration, prolonged repolarization, T\u2011wave morphology, medications, or electrolyte abnormalities that cause QTc prolongation. Therefore they do not capture the specific concept of QTc prolongation.",
+            "Severe Hyperkalemia Signs": "The claim directly describes a loss of normal P-QRS-T morphology, which matches key severe-hyperkalemia ECG features (loss of P-waves, QRS distortion/sine-wave evolution). Although it doesn't name potassium explicitly, the ECG finding is a specific, classic sign of severe hyperkalemia and therefore fully aligns with the category.",
+            "Advanced Age": "The claim explicitly cites the patient's age (77) and states it increases baseline risk, directly reflecting the category's focus on age >65 as a major risk factor for cardiac arrest. It is specific and fully captures the category's intent.",
+            "Male Sex": "No claims were provided to reference the patient's sex or any information about male gender. Because the category specifically concerns male sex as a risk factor, absence of any related claim means there is no alignment.",
+            "Underlying Cardiac Disease": "The claims describe an acute, chaotic ECG rhythm (e.g., ventricular fibrillation or grossly disorganized electrical activity) and do not mention chronic structural heart disease, recent MI, or heart failure. They document an arrhythmic presentation rather than the underlying cardiac conditions that the category addresses.",
+            "Critical Illness (Sepsis/Shock)": "The claims describe a grossly abnormal, chaotic, and disorganized rhythm lacking identifiable P\u2011QRS\u2011T complexes \u2014 findings that indicate imminent cardiac arrest (e.g., VF or terminal electrical activity). However, they do not mention sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the \"Critical Illness (Sepsis/Shock)\" category. Because the electrical findings are relevant to arrest but not tied to the sepsis/shock etiology, the alignment is partial."
+        },
+        "alignment_matrix": [
+            [
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ],
+            [
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ],
+            [
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ],
+            [
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ],
+            [
+                0.0,
+                0.0,
+                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.5
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ]
+        ],
+        "final_alignment_score": 0.6666666666666666,
+        "accuracy": 0
+    }
+]
