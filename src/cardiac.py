@@ -109,6 +109,8 @@ class CardiacExample:
         self.alignment_scores : list[float] = [] # Same length as alignable claims
         self.alignment_raws : list[float] = [] # Same length as alignable claims
         self.alignment_reasonings : list[str] = [] # Same length as alignable claims
+        
+        self.idx : int = -1
         self.claims_by_category : list[str] = []
         self.category_alignment_scores: list[float] = []
         self.category_alignment_reasonings: list[str] = []
@@ -144,6 +146,7 @@ class CardiacExample:
             "alignment_scores": self.alignment_scores,
             "alignment_raws": self.alignment_raws,            
             "alignment_reasonings": self.alignment_reasonings,
+            "idx": self.idx,
             "claims_by_category": self.claims_by_category,
             "category_alignment_scores": self.category_alignment_scores,
             "category_alignment_reasonings": self.category_alignment_reasonings,
@@ -405,10 +408,10 @@ def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", 
 
         related_claims = claim_grouping_info["related_claims"]
         reasoning = claim_grouping_info["reasoning"]
-        if verbose:
-            print('category: ', category)
-            print('related_claims: ', related_claims)
-            print('reasoning: ', reasoning)
+        # if verbose:
+        #     print('category: ', category)
+        #     print('related_claims: ', related_claims)
+        #     print('reasoning: ', reasoning)
         claims_by_category[category] = related_claims
     return claims_by_category
 
@@ -591,12 +594,14 @@ def cardiac_data_to_examples(
         # print(llm_label, explanation)
         if llm_label is None:
             continue
-        cardiac_examples.append(CardiacExample(
+        example = CardiacExample(
             data=row,
             ground_truth=row['label'],
             llm_label=llm_label,
             llm_explanation=explanation
-        ))
+        )
+        example.idx = idx
+        cardiac_examples.append(example)
 
 
     # Step 1: Decompose the LLM explanation into atomic claims
@@ -665,6 +670,9 @@ def cardiac_data_to_examples(
         )
         example.alignment_matrix = alignment_matrix
         example.final_alignment_score = alignment_matrix.max(axis=-1).mean()
+        if model in ('gemini-2.5-pro', 'gemini-2.5-flash'):
+            time.sleep(1.5)
+        
 
     # if verbose:
     #     print(f"Time taken to calculate expert alignment scores: {time.time() - _t:.3f} seconds")
