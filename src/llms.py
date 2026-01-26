@@ -233,6 +233,7 @@ class MyOpenAIModel:
         batch_size: int = 24,
         use_cache: bool = True,
         verbose: bool = False,
+        temperature: float = 0,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
@@ -271,18 +272,35 @@ class MyOpenAIModel:
             if ret is not None and ret != "":
                 return ret
 
+        if int(self.model_name.lower().replace('gpt-', '')[0]) < 5 or self.model_name.lower().startswith('o'):
+            chat_mode = True
+        else:
+            chat_mode = False
+
         if isinstance(prompt, str):
-            content = [{"type": "text", "text": prompt}]
+            if chat_mode:
+                content = [{"type": "text", "text": prompt}]
+            else:
+                content = [{"type": "input_text", "text": prompt}]
         elif isinstance(prompt, tuple):
             content = []
             for p in prompt:
                 if isinstance(p, str):
-                    content.append({"type": "text", "text": p})
+                    if chat_mode:
+                        content.append({"type": "text", "text": p})
+                    else:
+                        content.append({"type": "input_text", "text": p})
                 elif is_image(p):
-                    content.append({
-                        "type": "image_url",
-                        "image_url": {"url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"}
-                    })
+                    if chat_mode:
+                        content.append({
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"}
+                        })
+                    else:
+                        content.append({
+                            "type": "input_image", 
+                            "image_url": f"data:image/png;base64,{image_to_base64(p,'PNG')}"
+                        })
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")
         else:
@@ -291,18 +309,45 @@ class MyOpenAIModel:
         messages = [{"role": "user", "content": content}]
         response_text = ""
         for _ in range(self.num_tries_per_request):
+
             try:
-                response = self.client.chat.completions.create(
-                    model=self.model_name,
-                    messages=messages,
-                    max_completion_tokens=self.max_tokens,
-                )
-                response_text = response.choices[0].message.content.strip()
-                if response_text != "":
-                    break
+                # if self.verbose:
+                #     print("self.model_name: ", self.model_name)
+                    # print("--- Messages ---")
+                    # print(messages)
+                if chat_mode:
+                    response = self.client.chat.completions.create(
+                        model=self.model_name,
+                        messages=messages,
+                        max_completion_tokens=self.max_tokens,
+                    )
+                    response_text = response.choices[0].message.content.strip()
+                    # if self.verbose:
+                    #     # print("--- Messages ---")
+                    #     # print(messages)
+                    #     print("--- Response ---")
+                    #     print(response_text)
+                    if response_text != "":
+                        break
+                else:
+                    response = self.client.responses.create(
+                        model=self.model_name,
+                        input=messages,
+                        max_output_tokens=self.max_tokens,
+                    )
+                    response_text = response.output_text.strip()
+                    # if self.verbose:
+                    #     # print("--- Messages ---")
+                    #     # print(messages)
+                    #     print("--- Response ---")
+                    #     print(response_text)
+                    if response_text != "":
+                        break
             except Exception as e:
-                if self.verbose:
-                    print(f"Error calling OpenAI's API: {e}")
+                print("--- Messages ---")
+                print(messages)
+                # if self.verbose:
+                print(f"Error calling OpenAI's API: {e}")
                 time.sleep(3)
 
         if self.use_cache and response_text != "":
@@ -318,7 +363,7 @@ class MyAnthropicModel:
         model_name: str = "claude-3-5-sonnet-latest",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
-        temperature: float = 0.1,
+        temperature: float = 0,
         max_tokens: int = 2048,
         use_cache: bool = True,
         batch_size: int = 24,
@@ -387,8 +432,8 @@ class MyAnthropicModel:
                 if response_text != "":
                     break
             except Exception as e:
-                if self.verbose:
-                    print(f"Error calling Anthropic's API: {e}")
+                # if self.verbose:
+                print(f"Error calling Anthropic's API: {e}")
                 time.sleep(3)
 
         if self.use_cache and response_text != "":
@@ -404,7 +449,7 @@ class MyGoogleModel:
         model_name: str = "gemini-2.0-flash",
         api_key: Optional[str] = None,
         num_tries_per_request: int = 3,
-        temperature: float = 0.1,
+        temperature: float = 0,
         max_tokens: int = 2048,
         use_cache: bool = True,
         batch_size: int = 24,
@@ -418,10 +463,28 @@ class MyGoogleModel:
         self.use_cache = use_cache
         self.verbose = verbose
 
-        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
-        if not self.api_key:
-            raise ValueError("GOOGLE_API_KEY environment variable not set")
-        self.client = genai.Client(api_key=self.api_key)
+        self.use_vertex = bool(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+        if self.use_vertex:
+            try:
+                from vertexai import init as vertex_init
+                from vertexai.generative_models import GenerativeModel, Image as VertexImage
+            except Exception as e:
+                raise ValueError(f"Vertex AI SDK not available: {e}")
+
+            project_id = (
+                os.getenv("VERTEX_PROJECT_ID")
+                or os.getenv("GOOGLE_CLOUD_PROJECT")
+                or "tfix-485319"
+            )
+            location = os.getenv("VERTEX_LOCATION") or "us-central1"
+            vertex_init(project=project_id, location=location)
+            self.vertex_model = GenerativeModel(self.model_name)
+            self.vertex_image_cls = VertexImage
+        else:
+            self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
+            if not self.api_key:
+                raise ValueError("GOOGLE_API_KEY environment variable not set")
+            self.client = genai.Client(api_key=self.api_key)
 
     def __call__(self, prompts: Union[str, List[Union[str, tuple]]]):
         if isinstance(prompts, (str, tuple)):
@@ -437,6 +500,15 @@ class MyGoogleModel:
             if ret is not None and ret != "":
                 return ret
 
+        def _to_vertex_image(pil_img: PIL.Image.Image):
+            if hasattr(self.vertex_image_cls, "from_bytes"):
+                with io.BytesIO() as buffer:
+                    pil_img.save(buffer, format="PNG")
+                    return self.vertex_image_cls.from_bytes(buffer.getvalue())
+            if hasattr(self.vertex_image_cls, "from_pil_image"):
+                return self.vertex_image_cls.from_pil_image(pil_img)
+            return pil_img
+
         if isinstance(prompt, str):
             content = [prompt]
         elif isinstance(prompt, tuple):
@@ -445,7 +517,8 @@ class MyGoogleModel:
                 if isinstance(p, str):
                     content.append(p)
                 elif is_image(p):
-                    content.append(to_pil_image(p))
+                    pil_img = to_pil_image(p)
+                    content.append(_to_vertex_image(pil_img) if self.use_vertex else pil_img)
                 else:
                     raise ValueError(f"Invalid prompt type: {type(p)}")
         else:
@@ -454,20 +527,23 @@ class MyGoogleModel:
         response_text = ""
         for _ in range(self.num_tries_per_request):
             try:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
-                    contents=content,
-                    config=genai_types.GenerateContentConfig(
-                        temperature=self.temperature,
-                        max_output_tokens=self.max_tokens,
+                if self.use_vertex:
+                    response = self.vertex_model.generate_content(content)
+                else:
+                    response = self.client.models.generate_content(
+                        model=self.model_name,
+                        contents=content,
+                        config=genai_types.GenerateContentConfig(
+                            temperature=self.temperature,
+                            max_output_tokens=self.max_tokens,
+                        )
                     )
-                )
                 response_text = response.text.strip()
                 if response_text != "":
                     break
             except Exception as e:
-                if self.verbose:
-                    print(f"Error calling Google's API: {e}")
+                # if self.verbose:
+                print(f"Error calling Google's API: {e}")
                 time.sleep(3)
 
         if self.use_cache and response_text != "":

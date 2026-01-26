@@ -87,16 +87,6 @@ Category Alignment Rating: partial
 
 Example 3:
 INPUT:
-Category: Density Contrast Extremes - Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
-Claims:
-N/A
-
-OUTPUT:
-Reasoning: There is no claim and thus no alignment with the expert category.
-Category Alignment Rating: none
-
-Example 4:
-INPUT:
 Category: Connectivity of the Cosmic Web - A highly interconnected filament network … hints at a higher Omega_m …
 Claims:
 There is a highly interconnected filament network in the map.
@@ -106,7 +96,7 @@ OUTPUT:
 Reasoning: The claims correctly identify an interconnected filament network, but they explicitly infer the opposite Omega_m direction from the expert category. Because the category states interconnectedness supports higher Omega_m (not lower), the claims misinterpret the category rather than partially matching it.
 Category Alignment Rating: none
 
-Example 5:
+Example 4:
 INPUT:
 Category: Filament Thickness and Sharpness - Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
 Claims:
@@ -194,18 +184,6 @@ The obscured landmarks increase the risk of injuring the common bile duct and he
 OUTPUT:
 Reasoning: The claims correctly identify injury risk near the common bile duct, but they do not mention Rouviere's sulcus, the R4U line, or the requirement to remain cephalad to this landmark. The claims are related to biliary injury risk but do not capture the specific spatial safety rule of this category.
 Category Alignment Rating: partial
-
---------------------------------------------------
-
-Example 5:
-INPUT:
-Category: Cystic lymph node (calot's node) guide - Identify the cystic lymph node and clip the artery on the gallbladder side of the node to avoid injuring the hepatic artery.
-Claims:
-N/A
-
-OUTPUT:
-Reasoning: There are no claims provided and therefore no information that could align with the expert category.
-Category Alignment Rating: none
 
 Now, determine the alignment rating for the following expert category and set of claims:
 Category: {}
@@ -359,6 +337,84 @@ Irregular and persistent flux variability is characteristic of active galactic n
 OUTPUT:
 Reasoning: Both claims directly address long-lasting variability, which is the core concept of event duration. The first explicitly states that the activity persists over a long time, and the second links this long-duration, irregular behavior to AGN, a class distinguished from short-lived transients precisely by extended event duration.
 Category Alignment Rating: complete
+
+Now, determine the alignment rating for the following expert category and set of claims:
+Category: {}
+Claims: {}
+"""
+
+category_alignment_cardiac = """You will be given a set of claims explaining why a patient was predicted to be at high or low risk of experiencing imminent cardiac arrest (Yes/No). You will also be given a series of categories that an expert clinician would use to perform this type of cardiac arrest prediction.
+
+Your task is as follows:
+Rate how strongly the set of claims align with the category. Choose from complete, partial, or none.
+
+Alignment explanations:
+Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
+Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
+None: The claim references something unrelated to the expert category, or misinterprets the category's meaning
+
+Return your answer as:
+Reasoning: <A brief explanation of why you judged the alignment rating as you did.>
+Category Alignment Rating: <rating>
+
+Example 1:
+INPUT: 
+Category: Advanced Age: Increasing age is a major risk factor for cardiac arrest, with events being uncommon in younger patients and substantially more frequent in older ICU populations. Patients over 65 years are more prone to sudden deterioration due to reduced physiologic reserve and a higher burden of cardiovascular disease.
+Claims:
+The patient is young.
+
+OUTPUT:
+Reasoning: The claim references the specific variable (age) discussed in the category. While the category title is "Advanced Age," the description explicitly notes that events are "uncommon in younger patients." Therefore, noting that a patient is young is relevant to the category's logic regarding risk stratification (specifically explaining a lower risk). It aligns with the category's intent to distinguish risk based on age, even if it describes the absence of the primary risk factor.
+Category Alignment Rating: partial
+
+Example 2:
+INPUT: 
+Category: QRS Widening (Conduction Delay): New or progressive prolongation of the QRS duration on the ECG is an ominous finding in the ICU, often observed in the minutes before cardiac arrest and associated with higher mortality due to deteriorating ventricular conduction.
+Claims:
+The patient's age is 73.
+The patient is male.
+The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI).
+This combination of demographic risk factors and a notable ECG irregularity supports the prediction of high cardiac arrest risk.
+
+OUTPUT:
+Reasoning: These claims do not reference QRS duration, conduction delay, or ventricular conduction abnormalities. They instead focus on demographics and general risk assessment.
+Category Alignment Rating: none
+
+Example 3:
+INPUT: 
+Category: Underlying Cardiac Disease: The presence of serious cardiac conditions – such as coronary artery disease (especially a recent myocardial infarction) or severe heart failure – greatly elevates short-term cardiac arrest risk by creating an electrically and hemodynamically unstable myocardium.
+Claims:
+The primary reason for the patient's ICU admission is ST elevation myocardial infarction (STEMI) and they had a previous diagnosis of Coronary artery disease (CAD).
+Coronary artery disease (CAD) significantly elevates cardiac arrest risk.
+
+OUTPUT:
+Reasoning: These claims align with Underlying Cardiac Disease because they explicitly identify both a chronic cardiac condition (coronary artery disease) and an acute myocardial infarction (STEMI) in this patient. Coronary artery disease can exist for years and predisposes the myocardium to ischemia, while a recent STEMI represents acute myocardial injury. Together, these conditions create an electrically and hemodynamically unstable heart muscle, which substantially increases the patient’s short-term risk of cardiac arrest, directly matching the definition of this expert category.
+Category Alignment Rating: complete
+
+Example 4:
+INPUT:
+Category: Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (including peaked T-waves, loss of P-waves, and widening of the QRS complex) herald an impending cardiac arrest. As potassium levels rise further, the ECG may evolve into a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention. Hyperkalemia is a frequent cause of in-hospital cardiac arrest, especially among patients with renal failure or on dialysis.
+Claims:
+The patient is 83 years old, which is a significant risk factor for cardiac complications.
+COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events.
+The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.
+Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues.
+
+OUTPUT:
+Reasoning: Although the claims mention vague ECG irregularities such as potentially abnormal QRS complexes or P-wave absence, they do not specifically attribute these findings to hyperkalemia or reference elevated potassium levels, peaked T-waves, renal failure, or dialysis, which are central to the Severe Hyperkalemia Signs category. Instead, the claims focus on age, COVID-19, and general arrhythmia or conduction issues. Because the explanation does not identify hyperkalemia or its characteristic ECG pattern as the cause of risk, the claims do not meaningfully align with this expert category.
+Category Alignment Rating: none
+
+Example 5: 
+INPUT: 
+Category: Dynamic ST-Segment Changes: Acute ischemic changes on continuous ECG monitoring (notably ST-segment elevation or depression) signal reduced coronary blood flow and myocardial injury. Severe ischemia can destabilize cardiac electrical activity and precipitate malignant arrhythmias or cardiac arrest. Although ST-segment changes are common, their progression in unstable patients may indicate elevated short-term risk.
+Claims:
+The ECG graph appears to show a consistent rhythm with no significant irregularities or alarming patterns."
+There are no pronounced arrhythmias or notable ST segment changes on the ECG graph."
+The baseline variation that might suggest issues like ventricular fibrillation or other critical arrhythmias isn't evident."
+
+OUTPUT:
+Reasoning: The claims explicitly reference the absence of ST-segment changes and the lack of ischemic or arrhythmic patterns on the ECG. While they do not describe acute ST-segment elevation or depression (the core risk indicators in this category), they still engage directly with the same ECG feature used by the category to assess risk. By noting that no significant ST-segment changes are present, the claims relate to the category’s logic of risk stratification based on ischemic ECG findings, but describe the absence of the risk factor rather than its presence.
+Category Alignment Rating: partial
 
 Now, determine the alignment rating for the following expert category and set of claims:
 Category: {}

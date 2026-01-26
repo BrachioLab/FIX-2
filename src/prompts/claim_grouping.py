@@ -277,7 +277,7 @@ Task description:
 Input: An expert sepsis clinician's explanation of why the patient is at high risk of developing sepsis within the next 12 hours, based on electronic health record (EHR) data collected during the first 2 hours of their emergency department (ED) admission, and a list of atomic claims.
 Output: 
 RELATED CLAIMS: A list of atomic claims that are related to the given expert category that are copied verbatim from the input claims following the format in the examples. If there are no claims that are related to the given expert category, then the output should be "N/A". 
-REASONING: A brief explanation of why you selected the claims that are related to the given expert category and why you judged the claims as you did.
+REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
 
 Here are some examples:
 Example 1:
@@ -360,10 +360,10 @@ You are an astrophysics expert specializing in astrophysical classification. The
 We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
 
 Task description:
-Input: An expert surgeon's explanation of why certain criteria were used to determine what is safe and unsafe in performing a laparoscopic cholecystectomy, and a list of atomic claims.
+Input: An astrophysics expert's explanation for why a particular multivariate time-series was classified into one of the above categories, and a list of atomic claims.
 Output:
 RELATED CLAIMS: A list of atomic claims that are related to the given expert category, copied verbatim from the input claims (one per line) following the format in the examples. If there are no claims related to the category, output "N/A".
-REASONING: A brief explanation of (1) why the selected claims are related to the category (i.e., why they belong in this group) and (2) why key non-selected claims were excluded (e.g., they pertain to a different CVS criterion / different anatomical structure / general context but not evidence for this category).
+REASONING: A brief explanation of why the selected claims support the category and why key non-selected claims were excluded (e.g., they relate to a different category or provide only general context rather than evidence).
 
 Important guidelines:
 - Only copy claims verbatim; do not rewrite claims.
@@ -441,6 +441,88 @@ The flux variability pattern is persistent over a long duration.
 Irregular and persistent flux variability is characteristic of active galactic nuclei (AGN).
 REASONING:
 The first claim is related because it directly states the event lasts a long time, which is exactly what event duration measures and uses for discrimination. The third claim is also related because it describes persistent variability as characteristic of AGN, tying a long-duration pattern to a specific class compared to shorter-lived transients. The second claim is not included because “activity across a wide range of wavelengths” is about spectral coverage, not how long the event persists from detection to baseline.
+
+Now identify which atomic claims are related to the given expert category:
+CATEGORY: {}
+CLAIMS: {}
+"""
+
+claim_grouping_cardiac = """
+You are a medical expert specializing in cardiac arrest prediction. 
+You have a deep understanding of this subject. 
+Your task is to behave like an expert clinician specializing in cardiac arrest and identify which atomic claims are related to the given expert category.
+We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+If the claim explicitly states a condition, measurement, intervention, or fact that is part of the expert category definition, it must be included, even if it does not provide additional explanation or reasoning. 
+
+Task description:
+Input: An expert cardiac arrest clinician's explanation of why the patient is at high risk of experiencing imminent cardiac arrest, based on patient background information and ECG time-series data collected in the initial ICU monitoring, and a set of atomic claims.
+
+Output: 
+RELATED CLAIMS: A list of atomic claims that are related to the given expert category that are copied verbatim from the input claims following the format in the examples. If there are no claims that are related to the given expert category, then the output should be "N/A". 
+REASONING: A brief explanation of why you selected the claims that are related to the given expert category and why you judged the claims as you did.
+
+Here are some examples:
+
+Example 1:
+CATEGORY: Advanced Age: Increasing age is a major risk factor for cardiac arrest (events are very rare in patients under 30), with older ICU patients being significantly more prone to sudden arrest.
+CLAIMS:
+The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
+The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
+The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
+The patient is young.
+The primary risk factor stems from trauma-induced complications from a motor vehicle collision.
+Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
+
+OUTPUT:
+RELATED CLAIMS:
+The patient is young.
+REASONING:
+This claim is related because it directly comments on the patient's age as a factor for why they may or may not experience imminent cardiac arrest, whereas the other claims do not relate to age.
+
+Example 2:
+CATEGORY: Severe Hyperkalemia Signs: Electrocardiographic signs of severe hyperkalemia (such as peaked T-waves, loss of P-waves, and a widening QRS complex) herald an impending arrest – as potassium levels rise, the ECG may evolve to a sine-wave pattern and typically culminate in ventricular fibrillation or asystole without immediate intervention. Hyperkalemia is a frequent cause of in-hospital cardiac arrest especially among patients on dialysis / end stage renal disease. Looking for signs of hyperkalemia can be important to understand risk of cardiac arrest, especially in selected populations.
+CLAIMS:
+The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
+The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
+The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
+The patient is young.
+The primary risk factor stems from trauma-induced complications from a motor vehicle collision.
+Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
+
+OUTPUT:
+RELATED CLAIMS:
+N/A
+REASONING:
+None of the provided claims mention electrocardiographic features specific to severe hyperkalemia (such as peaked T-waves, loss of P-waves, widening QRS complexes, or sine-wave patterns), nor do they reference elevated potassium levels, renal failure, or dialysis. The claims describe general ECG irregularities, arrhythmias (e.g., ventricular tachycardia or fibrillation), age, and trauma-related causes, which are not specific indicators of hyperkalemia-related cardiac arrest risk. Therefore, no claim directly supports or relates to the expert category of severe hyperkalemia signs.
+
+Example 3:
+CATEGORY: QRS Widening (Conduction Delay): New or progressive prolongation of the QRS duration on the ECG reflects worsening ventricular conduction and may indicate ischemia, electrolyte abnormalities, or drug toxicity. QRS widening is frequently observed in the minutes before cardiac arrest and is associated with higher mortality due to impaired ventricular depolarization.
+CLAIMS:
+The patient is 83 years old, which is a significant risk factor for cardiac complications.
+COVID-19 can lead to cardiac stress and complications, increasing the risk of cardiac events.
+The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.
+Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues.
+
+OUTPUT:
+RELATED CLAIMS:
+The ECG graph shows irregularities, including potentially abnormal QRS complexes or P-wave absence.
+Potentially abnormal QRS complexes or P-wave absence may suggest arrhythmias or conduction issues.
+REASONING:
+These claims directly reference abnormalities in the QRS complexes and conduction issues on the ECG, which are central to the expert category of QRS widening and conduction delay. QRS abnormalities reflect impaired ventricular depolarization and are known to precede cardiac arrest. The other claims (advanced age and COVID-19) describe general risk factors for cardiac complications but do not specifically address QRS duration or ventricular conduction abnormalities.
+
+Example 4:
+CATEGORY: Critical Illness (Sepsis/Shock): Severe sepsis or septic shock substantially raises the likelihood of cardiac arrest in the near term by causing hypoxia, hypotension, and metabolic derangements that often lead to pulseless electrical activity or asystole.
+CLAIMS:
+The ECG graph shows two significant drops in amplitude around the 20-second and 30-second marks.
+The drops in amplitude on the ECG graph may indicate potential ventricular arrhythmias or signal artifacts.
+Metabolic or neurological disturbances may have cardiovascular implications.
+The ECG irregularities may indicate instability in the patient's condition.
+
+OUTPUT:
+RELATED CLAIMS:
+Metabolic or neurological disturbances may have cardiovascular implications.
+REASONING:
+This claim is related to the expert category of critical illness (sepsis/shock) because it refers to systemic metabolic disturbances that can affect cardiovascular function, which is a key mechanism by which severe sepsis or shock increases the risk of imminent cardiac arrest.
 
 Now identify which atomic claims are related to the given expert category:
 CATEGORY: {}

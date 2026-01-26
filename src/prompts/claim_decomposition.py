@@ -202,7 +202,8 @@ OUTPUT:
 The patient's ECG graph shows significant irregularities with frequent and pronounced spikes and dips, indicating potential arrhythmic events.
 The ECG patterns deviate from the normal consistent rhythm expected in a healthy heart.
 The pronounced spikes on the ECG graph, particularly prominent around the 60 to 120-second marks, could signify ventricular tachycardia or fibrillation.
-The patient is young, and the primary risk factor stems from trauma-induced complications from a motor vehicle collision.
+The patient is young.
+The primary risk factor stems from trauma-induced complications from a motor vehicle collision.
 Trauma-induced complications such as cardiac tamponade or myocardial contusion contribute to the prediction of high cardiac risk.
 
 Now decompose the following paragraph into atomic, standalone claims:
