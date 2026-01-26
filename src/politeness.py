@@ -57,10 +57,11 @@ class PolitenessExample:
         self.mse = 0.0
         self.claims = []
         self.relevant_claims = []
-        self.alignment_scores = []
-        self.alignment_categories = []
-        self.alignment_reasonings = []
-        self.final_alignment_score = 0.0
+        self.claims_by_category = []
+        # self.alignment_scores = []
+        # self.alignment_categories = []
+        # self.alignment_reasonings = []
+        # self.final_alignment_score = 0.0
     
     def print(self, verbose=False):
         print("Utterance: ", self.utterance)
@@ -133,7 +134,7 @@ def query_gemini(prompt, model="gemini-2.0-flash"):
     return "ERROR"
 
 @cache.memoize()
-def query_openai(prompt, model="gpt-4o"):
+def query_openai(prompt, model="gpt-5-mini-2025-08-07"):
     """
     Sends a prompt to the OpenAI chat API and returns the model's response.
 
@@ -142,7 +143,7 @@ def query_openai(prompt, model="gpt-4o"):
 
     Args:
         prompt (str): The input prompt to send to the model.
-        model (str): The OpenAI model to use (default is "gpt-4o").
+        model (str): The OpenAI model to use (default is "gpt-5-mini-2025-08-07").
 
     Returns:
         str: The content of the model's response, or "ERROR" if all retries fail.
@@ -169,7 +170,7 @@ def query_openai(prompt, model="gpt-4o"):
     return "ERROR"
 
 
-def get_llm_generated_answer(utterance: str, baseline: str = "vanilla", model: str = "gpt-4o"):
+def get_llm_generated_answer(utterance: str, baseline: str = "vanilla", model: str = "gpt-5-mini-2025-08-07"):
     """
     Constructs a baseline-specific politeness prompt for an utterance and queries the LLM.
 
@@ -301,10 +302,16 @@ def get_claims_by_category(category: str, claims: list[str]):
     response = query_openai(prompt).replace("\n\n", "\n")
     if response == "ERROR":
         print("Error in querying OpenAI API")
+        return None 
+    try:
+        assert "RELATED CLAIMS:" in response and "REASONING:" in response
+    except:
+        print("ERROR: Issue with claim grouping parsing")
+        print(response)
         return None
-    response = response.replace("ATOMIC CLAIMS:", "").strip()
+    response = response.split("RELATED CLAIMS:")[1].strip()
     response = response.split("\n")
-    response = [r for r in response if r.strip() != ""]
+    response = [r for r in response if r.strip() != "" and r.strip() != "None"]
     return response
 
 def group_claims_by_category(relevant_claims: list[str]):
@@ -318,10 +325,10 @@ def group_claims_by_category(relevant_claims: list[str]):
     for category in categories_list:
         related_claims = get_claims_by_category(category, relevant_claims)
         if related_claims is None:
+            claims_by_category[category] = []
             continue
         claims_by_category[category] = related_claims
     return claims_by_category
-
 
 def calculate_expert_alignment_score_for_category(category: str, claims: list[str]):
     """
@@ -336,21 +343,34 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
-    response = response.replace("Category:", "").strip()
-    response = response.split("\n")
-    response = [r for r in response if r.strip() != ""]
+    response = response.split("Category Alignment Rating:")[1].strip()
+    try:
+        assert response in ["complete", "partial", "none"]
+    except:
+        print("ERROR: Issue with alignment score parsing")
+        print(response)
+        return None
     return response
 
-def calculate_expert_alignment_score(claims: list[str]):
-    claims_by_category = group_claims_by_category(claims)
+def calculate_expert_alignment_score(claims_by_category: dict[str, list[str]]):
+    """
+    Args:
+        claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+    Returns:
+        dict[str, float]: A dictionary where the keys are the categories and the values are the alignment scores.
+    """
     category_alignment_scores = {}
-
+    score_mapping = {"none": 0, "partial": 0.5, "complete": 1}
     for category in claims_by_category.keys():
-        category_alignment_score = calculate_expert_alignment_score_for_category(category, claims_by_category[category])
-        if category_alignment_score is None:
-            raise Exception("Error in calculating expert alignment score for category: {}".format(category))
-        category_alignment_scores[category] = category_alignment_score
-    return claims_by_category, category_alignment_scores
+        if len(claims_by_category[category]) == 0:
+            category_alignment_scores[category] = 0
+        else:
+            category_alignment_score = calculate_expert_alignment_score_for_category(category, claims_by_category[category])
+            if category_alignment_score is None:
+                category_alignment_scores[category] = 0
+                continue
+            category_alignment_scores[category] = score_mapping[category_alignment_score]
+    return category_alignment_scores
 
 
 def make_alignment_matrix(categories, claims, claims_by_category, category_alignment_scores):
@@ -438,8 +458,7 @@ def load_politeness_data():
     sampled_data = sampled_data.reset_index(drop=True)
     return sampled_data
 
-
-def run_pipeline(politeness_data, baseline="vanilla", model="gpt-4o"):
+def run_pipeline(politeness_data, baseline="vanilla", model="gpt-5-mini-2025-08-07"):
     """
     Executes the full politeness evaluation pipeline on a dataset of utterances.
 
@@ -447,8 +466,11 @@ def run_pipeline(politeness_data, baseline="vanilla", model="gpt-4o"):
     1. Generating LLM scores and explanations.
     2. Extracting claims from explanations.
     3. Filtering relevant claims.
-    4. Scoring alignment of claims using expert heuristics.
-    5. Saving the resulting list of annotated PolitenessExample objects to disk.
+    4. Grouping the relevant claims by category.
+    5. Calculating the alignment score for each category.
+    6. Making a matrix of alignment scores for the claims in the categories.
+    7. Aggregating the alignment scores from the matrix.
+    8. Saving the results to a JSON file.
 
     Args:
         politeness_data (pandas.DataFrame): The input dataset with columns including 'Utterance' and 'politeness'.
@@ -472,33 +494,33 @@ def run_pipeline(politeness_data, baseline="vanilla", model="gpt-4o"):
     for example in politeness_examples:
         example.mse = (example.ground_truth - example.llm_score) ** 2
 
-    for example in politeness_examples:
+    print("----- Isolating atomic claims -----")
+    for example in tqdm(politeness_examples):
         claims = isolate_individual_features(example.llm_explanation)
         if claims is None:
             continue
         example.claims = [claim.strip() for claim in claims]
 
-    for example in politeness_examples:
+    print("----- Distilling relevant claims -----")
+    for example in tqdm(politeness_examples):
         relevant_claims = distill_relevant_features(example)
         example.relevant_claims = relevant_claims
 
-    for example in politeness_examples:
-        alignment_scores = []
-        alignment_categories = []
-        alignment_reasonings = []
-        for claim in tqdm(example.relevant_claims):
-            category, alignment_score, reasoning = calculate_expert_alignment_score(claim)
-            if category is None:
-                continue
-            alignment_scores.append(alignment_score)
-            alignment_categories.append(category)
-            alignment_reasonings.append(reasoning)
-        example.alignment_scores = alignment_scores
-        example.alignment_categories = alignment_categories
-        example.final_alignment_score = np.sum(alignment_scores)/len(example.claims)
-        example.alignment_reasonings = alignment_reasonings
+    print("----- Grouping claims by category -----")
+    for example in tqdm(politeness_examples):
+        print(example.utterance)
+        claims_by_category = group_claims_by_category(example.relevant_claims)
+        example.claims_by_category = claims_by_category
 
-        
+    print("----- Calculating expert alignment scores -----")
+    for example in tqdm(politeness_examples):
+        category_alignment_scores = calculate_expert_alignment_score(example.claims_by_category)
+        example.category_alignment_scores = category_alignment_scores
+        example.alignment_matrix = make_alignment_matrix(categories_list, example.claims, example.claims_by_category, example.category_alignment_scores)
+        final_aligned_score = example.alignment_matrix.max(axis=-1).mean()
+        example.final_aligned_score = final_aligned_score
+    
+    print("----- Saving results -----")
     data_to_save = [example.to_dict() for example in politeness_examples]
     with open("../results/{}/politeness_{}.json".format(baseline, model), "w") as f:
         json.dump(data_to_save, f, indent=4)
@@ -515,7 +537,6 @@ def aggregate_alignment_scores(alignment_scores, total_claims):
     total_score = sum([score_map[score] for score in alignment_scores])
     return total_score / total_claims
 
-def recalculate_alignment(politeness_data, baseline="vanilla", model="gpt-4o"):
     results_dict = {}
     with open("../results/{}/politeness_{}.json".format(baseline, model), 'r') as f:
         results_dict = json.load(f)
@@ -556,28 +577,30 @@ def recalculate_alignment(politeness_data, baseline="vanilla", model="gpt-4o"):
         json.dump(data_to_save, f, indent=4)
 
 if __name__ == "__main__":
-    politeness_data = load_politeness_data()
+    politeness_data = load_politeness_data()[:5]
+    run_pipeline(politeness_data, baseline="vanilla", model="gpt-5.2-pro-2025-12-11")
 
-    #model = "gemini-2.0-flash"
-    recalculate_alignment(politeness_data, baseline="vanilla", model="gemini-2.0-flash")
-    recalculate_alignment(politeness_data, baseline="cot", model="gemini-2.0-flash")
-    recalculate_alignment(politeness_data, baseline="socratic", model="gemini-2.0-flash")
-    recalculate_alignment(politeness_data, baseline="subq", model="gemini-2.0-flash")
 
-    # #model = "o1"
-    recalculate_alignment(politeness_data, baseline="vanilla", model="o1")
-    recalculate_alignment(politeness_data, baseline="cot", model="o1")
-    recalculate_alignment(politeness_data, baseline="socratic", model="o1")
-    recalculate_alignment(politeness_data, baseline="subq", model="o1")
+    # #model = "gemini-2.0-flash"
+    # recalculate_alignment(politeness_data, baseline="vanilla", model="gemini-2.0-flash")
+    # recalculate_alignment(politeness_data, baseline="cot", model="gemini-2.0-flash")
+    # recalculate_alignment(politeness_data, baseline="socratic", model="gemini-2.0-flash")
+    # recalculate_alignment(politeness_data, baseline="subq", model="gemini-2.0-flash")
 
-    # #model = "claude-3-5-sonnet-latest"
-    recalculate_alignment(politeness_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
-    recalculate_alignment(politeness_data, baseline="cot", model="claude-3-5-sonnet-latest")
-    recalculate_alignment(politeness_data, baseline="socratic", model="claude-3-5-sonnet-latest")
-    recalculate_alignment(politeness_data, baseline="subq", model="claude-3-5-sonnet-latest")
+    # # #model = "o1"
+    # recalculate_alignment(politeness_data, baseline="vanilla", model="o1")
+    # recalculate_alignment(politeness_data, baseline="cot", model="o1")
+    # recalculate_alignment(politeness_data, baseline="socratic", model="o1")
+    # recalculate_alignment(politeness_data, baseline="subq", model="o1")
 
-    # #model = "gpt-4o"
-    recalculate_alignment(politeness_data, baseline="vanilla", model="gpt-4o")
-    recalculate_alignment(politeness_data, baseline="cot", model="gpt-4o")
-    recalculate_alignment(politeness_data, baseline="socratic", model="gpt-4o")
-    recalculate_alignment(politeness_data, baseline="subq", model="gpt-4o")
+    # # #model = "claude-3-5-sonnet-latest"
+    # recalculate_alignment(politeness_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
+    # recalculate_alignment(politeness_data, baseline="cot", model="claude-3-5-sonnet-latest")
+    # recalculate_alignment(politeness_data, baseline="socratic", model="claude-3-5-sonnet-latest")
+    # recalculate_alignment(politeness_data, baseline="subq", model="claude-3-5-sonnet-latest")
+
+    # #model = "gpt-5-mini-2025-08-07"
+    # recalculate_alignment(politeness_data, baseline="vanilla", model="gpt-5-mini-2025-08-07")
+    # recalculate_alignment(politeness_data, baseline="cot", model="gpt-5-mini-2025-08-07")
+    # recalculate_alignment(politeness_data, baseline="socratic", model="gpt-5-mini-2025-08-07")
+    # recalculate_alignment(politeness_data, baseline="subq", model="gpt-5-mini-2025-08-07")

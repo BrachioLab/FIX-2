@@ -27,6 +27,47 @@ Task description:
 Input: An expert psychologist's explanation of why a certain level of politeness might be attributed to an utterance, and a list of atomic claims.
 Output: A list of atomic claims that are related to the given expert category.
 
+Here are the definitions of the expert categories:
+-----
+1. Honorifics and Formal Address: The presence of respectful or formal address forms (e.g., “sir,” “usted,” “您”) signals politeness by expressing deference to the hearer’s status or social distance.
+2. Courteous Politeness Markers: Words such as “please,” “kindly,” or their multilingual variants soften requests and reflect courteous intent.
+3. Gratitude Expressions: Use of expressions like “thank you,” “thanks,” or “I appreciate it” signals recognition of the other’s contribution and positive face.
+4. Apologies and Acknowledgment of Fault: Phrases such as “sorry” or “I apologize” express humility and repair social breaches, marking a clear politeness strategy.
+5. Indirect and Modal Requests: Requests using modal verbs (“could you,” “would you”) or softening cues like “by the way” reduce imposition and signal respect for the hearer’s autonomy.
+6. Hedging and Tentative Language: Words like “I think,” “maybe,” or “usually” lower assertion strength and make statements more negotiable, reflecting interpersonal sensitivity.
+7. Inclusive Pronouns and Group-Oriented Phrasing: Use of “we,” “our,” or “together” expresses solidarity and reduces hierarchical distance in requests or critiques.
+8. Greeting and Interaction Initiation: Opening with a salutation (“hi,” “hello”) creates a cooperative tone and frames the conversation positively.
+9. Compliments and Praise: Positive evaluations (“great,” “awesome,” “neat”) attend to the hearer’s positive face and foster a friendly environment.
+10. Softened Disagreement or Face-Saving Critique: When disagreeing, the use of softeners, partial agreements, or concern for clarity preserves the hearer’s dignity.
+11. Urgency or Immediacy of Language: Utterances emphasizing emergency or speed (“asap,” “immediately”) can heighten perceived imposition and reduce politeness if not softened.
+12. Avoidance of Profanity or Negative Emotion: The presence of strong negative words or swearing is a key indicator of rudeness and face threat.
+13. Bluntness and Direct Commands: Requests lacking modal verbs or mitigation (“Do this”) are perceived as less polite due to their imperative structure.
+14. Empathy or Emotional Support: Recognizing the hearer’s emotional context or challenges is a politeness strategy of concern and goodwill.
+15. First-Person Subjectivity Markers: Statements that begin with “I think,” “I feel,” or “In my view” convey humility and subjectivity, reducing imposition.
+16. Second Person Responsibility or Engagement: Sentences starting with “you” or directly addressing the hearer can either signal engagement or come across as accusatory, depending on context and tone.
+17. Questions as Indirect Strategies: Questions (“what do you think?” or “could you clarify?”) reduce imposition by inviting rather than demanding input.
+18. Discourse Management with Markers: Use of discourse markers like “so,” “then,” “but” organizes conversation flow and may help manage face needs in conflict or negotiation.
+19. Ingroup Language and Informality: Use of group-identifying slang or casual expressions (“mate,” “dude,” “bro”) may foster solidarity or seem disrespectful, depending on relational norms.
+-----
+
+Return your answer as:
+REASONING: <A brief explanation of why you selected the claims that are related to the given expert category and why you judged the claims as you did.>
+RELATED CLAIMS: <newline separated list of atomic claims that are related to the given expert category. If there are no claims that are related to the given expert category, then the output should be "None">
+
+Here are some examples:
+[Example 1]
+CATEGORY: Honorifics and Formal Address
+CLAIMS: ["The utterance uses the title "Dr." to address the other person, which is a sign of respect and politeness.", "The utterance accuses the other person of fabricating information.", "The utterance has a formal tone", "The utterance is neutral."]
+REASONING: 
+The first claim is related to the expert category because it talks about the use of a title to address the other person, which is a sign of respect and politeness. The second claim is not related to the expert category because it talks about the other person fabricating information, which is not related to the use of titles to address the other person. The third claim is related to the expert category because it talks about the utterance having a formal tone. The fourth claim is not related to the expert category because it talks about the utterance being neutral, which is not related to the use of titles to address the other person.
+RELATED CLAIMS: 
+"The utterance uses the title "Dr." to address the other person, which is a sign of respect and politeness."
+"The utterance has a formal tone"
+
+Now identify which atomic claims are related to the given expert category:
+CATEGORY: {}
+CLAIMS: {}
+
 """
 
 claim_grouping_massmaps = """

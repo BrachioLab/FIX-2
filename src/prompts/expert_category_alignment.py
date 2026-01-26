@@ -31,6 +31,21 @@ Alignment explanations:
 Complete: The claim is specific, directly relevant, and fully captures the meaning and intent of the expert category.
 Partial: The claim partially refers to the expert category but lacks key details, uses vague language, is overly general, or contains noise.
 None: The claim references something unrelated to the expert category, or misinterprets the category's meaning.
+
+Return your answer as:
+Reasoning: <A brief explanation of why you judged the alignment rating as you did.>
+Category Alignment Rating: <rating>
+
+Here are some examples:
+[Example 1]
+Category: Honorifics and Formal Address
+Claims: "The utterance uses the title "Dr." to address the other person, which is a sign of respect and politeness."
+Reasoning: The claim has complete alignment with the category because the claim directly talks about the use of a title to address the other person, which a type of formal address.
+Category Alignment Rating: complete
+
+Now, determine the alignment rating for the following expert category and set of claims:
+Category: {}
+Claims: {}
 """
 
 category_alignment_massmaps = """You will be given a set of claims that relate to why predictions for Omega_m and sigma_8 values were given to a weak lensing mass map. You will also be given a series of categories that an expert cosmologist would use to perform this type of cosmological parameter prediction.
