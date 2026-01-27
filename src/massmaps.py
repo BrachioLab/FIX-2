@@ -345,7 +345,7 @@ def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-4
         dict: {"related_claims": list[str], "reasoning": str}
     """
     prompt = claim_grouping_massmaps.format(
-        f'{category} - {category_mapping_massmaps["name2description"][category]}',
+        f'{category}: {category_mapping_massmaps["name2description"][category]}',
         '\n'.join(claims)
     )
     llm = load_model(model)
@@ -440,7 +440,7 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
             "reasoning": "No claims provided"
         }
     prompt = category_alignment_massmaps.format(
-        f'{category} - {category_mapping_massmaps["name2description"][category]}', 
+        f'{category}: {category_mapping_massmaps["name2description"][category]}', 
         '\n'.join(claims) if isinstance(claims, list) and len(claims) > 0 else 'N/A'
         )
     llm = load_model(model)

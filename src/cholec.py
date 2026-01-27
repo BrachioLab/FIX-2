@@ -331,7 +331,7 @@ def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-4
         dict: {"related_claims": list[str], "reasoning": str}
     """
     prompt = claim_grouping_cholec.format(
-        f'{category} - {category_mapping_cholec["name2description"][category]}',
+        f'{category}: {category_mapping_cholec["name2description"][category]}',
         '\n'.join(claims)
     )
     llm = load_model(model)
@@ -342,6 +342,7 @@ def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-4
     if verbose:
         print('===============================================')
         print("GETTING CLAIMS BY CATEGORY")
+        # print('prompt: ', prompt)
         print('category: ', category)
         print('claims: ', claims)
         print('response:', response)
@@ -406,8 +407,9 @@ def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", 
         reasoning = claim_grouping_info["reasoning"]
         if verbose:
             print('category: ', category)
-            print('related_claims: ', related_claims)
-            print('reasoning: ', reasoning)
+            print('related_claims: ', related_claims[:10])
+            print('reasoning: ', reasoning[:100])
+            print('===============================================')
         claims_by_category[category] = related_claims
     return claims_by_category
 
@@ -426,7 +428,7 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
             "reasoning": "No claims provided"
         }
     prompt = category_alignment_cholec.format(
-        f'{category} - {category_mapping_cholec["name2description"][category]}', 
+        f'{category}: {category_mapping_cholec["name2description"][category]}', 
         '\n'.join(claims) if isinstance(claims, list) and len(claims) > 0 else 'N/A'
         )
     llm = load_model(model)

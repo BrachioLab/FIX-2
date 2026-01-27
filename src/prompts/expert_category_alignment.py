@@ -160,7 +160,7 @@ Category Alignment Rating: <rating>
 Here are some examples:
 Example 1:
 INPUT:
-Category: Lensing Peak (Cluster) Abundance - A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
+Category: Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
 Claims:
 Yellow indicates significant mass concentrations or clusters.
 The presence of several yellow regions, the significant mass concentrations or clusters, indicates a relatively high sigma_8.
@@ -171,7 +171,7 @@ Category Alignment Rating: complete
 
 Example 2:
 INPUT:
-Category: Void Size and Frequency - Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
+Category: Void Size and Frequency: Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
 Claims:
 The presence of blue and gray indicates underdense areas in the map.
 The mix of blue and gray, the underdense areas, suggests a moderate Omega_m.
@@ -203,7 +203,7 @@ Category Alignment Rating: none
 
 Example 5:
 INPUT:
-Category: Filament Thickness and Sharpness - Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
+Category: Filament Thickness and Sharpness: Bold, sharply defined filaments threading between clusters imply a higher sigma_8 (stronger small-scale clustering), whereas thin or diffuse filaments point to a lower amplitude of matter fluctuations.
 Claims:
 The map shows several filaments connecting dense regions, some of which appear well defined.
 Some filaments appear relatively thick and well defined, while others are faint and diffuse.
@@ -237,7 +237,7 @@ Here are some examples:
 
 Example 1:
 INPUT:
-Category: Calot's triangle cleared - Hepatocystic triangle must be fully cleared of fat/fibrosis so that its boundaries are unmistakable.
+Category: Calot's triangle cleared: Hepatocystic triangle must be fully cleared of fat/fibrosis so that its boundaries are unmistakable.
 Claims:
 Inflamed Calot's triangle tissue appears to be centrally located.
 There is evidence of scarring and possible adhesions.
@@ -252,7 +252,7 @@ Category Alignment Rating: complete
 
 Example 2:
 INPUT:
-Category: Inflammation bailout - If dense scarring or distorted anatomy obscures Calot's triangle, convert to open surgery or a fenestrated subtotal approach rather than blind cutting.
+Category: Inflammation bailout: If dense scarring or distorted anatomy obscures Calot's triangle, convert to open surgery or a fenestrated subtotal approach rather than blind cutting.
 Claims:
 The tissue types visible include inflamed fibrous tissue, likely from chronic or acute cholecystitis.
 There is evidence of scarring and possible adhesions.
@@ -267,7 +267,7 @@ Category Alignment Rating: complete
 
 Example 3:
 INPUT:
-Category: Only two structures visible - Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
+Category: Only two structures visible: Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
 Claims:
 The Calot's triangle is bordered by the cystic duct inferiorly, common hepatic duct medially, and liver edge superiorly.
 Inflamed Calot's triangle tissue appears to be centrally located.
@@ -281,7 +281,7 @@ Category Alignment Rating: none
 
 Example 4:
 INPUT:
-Category: Above the R4U line - Dissection must remain cephalad to an imaginary line from Rouviere's sulcus to liver segment IV umbilical fissure to avoid the common bile duct.
+Category: Above the R4U line: Dissection must remain cephalad to an imaginary line from Rouviere's sulcus to liver segment IV umbilical fissure to avoid the common bile duct.
 Claims:
 Key unsafe zones include the area directly adjacent to the common bile duct and hepatic artery, as aberrant anatomy or inflammation here increases the risk of vascular or biliary injury.
 The obscured landmarks increase the risk of injuring the common bile duct and hepatic artery during laparoscopic cholecystectomy.

@@ -178,7 +178,7 @@ REASONING: A brief explanation of why you selected the claims that are related t
 
 Here are some examples:
 Example 1:
-CATEGORY: Lensing Peak (Cluster) Abundance - A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
+CATEGORY: Lensing Peak (Cluster) Abundance: A higher count of prominent, high-convergence peaks in the map indicates a larger sigma_8, since a clumpier matter distribution produces more frequent massive halos.
 CLAIMS:
 The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
 The presence of blue and gray indicates underdense areas in the map.
@@ -197,7 +197,7 @@ REASONING:
 These claims focus on the presence and multiplicity of significant mass concentrations, corresponding to prominent high-convergence peaks and their abundance, which directly reflects the notion of lensing peak or cluster count in this category. Claims describing underdense regions (blue and gray) are excluded because they pertain to voids rather than peaks. Claims about contrast between peaks and voids or overall distribution and intensity are excluded because they describe variance or relative structure rather than the number of clusters. More general statements about the presence of red and yellow regions are also excluded because they do not specifically emphasize peak abundance or cluster frequency.
 
 Example 2:
-CATEGORY: Void Size and Frequency - Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
+CATEGORY: Void Size and Frequency: Extensive low-convergence void regions suggest a lower Omega_m, as a reduced overall matter density allows bigger underdense expanses to form in the cosmic web.
 CLAIMS:
 The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
 The presence of blue and gray indicates underdense areas in the map.
@@ -216,7 +216,7 @@ REASONING:
 These claims describe the presence of underdense regions and relate the prevalence of blue and gray areas to the matter density parameter Omega_m, which reflects the existence and interpretation of void regions underlying this category. Claims describing overdense regions or clusters (red and yellow) are excluded because they pertain to peaks rather than voids. Claims about contrast between peaks and voids or overall distribution and intensity are excluded because they describe relative variance or structural contrast rather than the size or frequency of underdense regions themselves. Claims inferring sigma_8 are excluded because this category is concerned with matter density and void expansiveness rather than clustering amplitude.
 
 Example 3:
-CATEGORY: Density Contrast Extremes - Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
+CATEGORY: Density Contrast Extremes: Very pronounced contrast between dense regions and empty voids - i.e. bright lensing peaks adjacent to dark void areas - signals an enhanced variance of the density field (high sigma_8), whereas subdued contrast suggests lower sigma_8.
 CLAIMS:
 The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
 The presence of blue and gray indicates underdense areas in the map.
@@ -237,7 +237,7 @@ REASONING:
 These claims describe the presence of both overdense and underdense regions in the map and explicitly refer to the contrast between peaks and voids and the distribution and intensity of dense and empty areas. Together, they characterize how mass concentrations and void regions coexist and vary in strength across the map, which corresponds to the notion of density contrast and variance of the density field captured by this category.
 
 Example 4:
-CATEGORY: Connectivity of the Cosmic Web - A highly interconnected filament network (with filaments linking most clusters into a continuous web) hints at a higher Omega_m, whereas a more fragmented scene of isolated clumps separated by wide gaps is expected for a lower Omega_m.
+CATEGORY: Connectivity of the Cosmic Web: A highly interconnected filament network (with filaments linking most clusters into a continuous web) hints at a higher Omega_m, whereas a more fragmented scene of isolated clumps separated by wide gaps is expected for a lower Omega_m.
 CLAIMS:
 The weak lensing map shows a mix of blue, gray, red, and some yellow regions.
 The presence of blue and gray indicates underdense areas in the map.
@@ -271,12 +271,14 @@ Output:
 RELATED CLAIMS: A list of atomic claims that are related to the given expert category, copied verbatim from the input claims (one per line) following the format in the examples. If there are no claims related to the category, output "N/A".
 REASONING: A brief explanation of (1) why the selected claims are related to the category (i.e., why they belong in this group) and (2) why key non-selected claims were excluded (e.g., they pertain to a different CVS criterion / different anatomical structure / general context but not evidence for this category).
 
-Important guidelines:
+Guidelines:
 - Only copy claims verbatim; do not rewrite claims.
 - Prefer atomic, direct evidence claims for the category (e.g., visibility/identification of duct/artery, degree of clearance, detachment plane).
-- Exclude claims that are about different categories even if they appear in the same scene (e.g., “two structures visible” vs “triangle cleared” vs “gallbladder detachment” are distinct).
+- Exclude claims that are not mentioning any anatomical structures or landmarks directly related to the given expert category, and is mainly making a different point.
 - If a claim is purely general context (e.g., “the liver is on the left”) and does not support the category, exclude it.
-- Include “risk/unsafe” claims only if they directly follow from (or explicitly reference) the category-specific deficiency (e.g., obscured Calot’s landmarks for “triangle cleared” / “inflammation bailout”).
+
+- Procedural categories require claims about where to begin, when to act, or identification before action; general anatomy or safe tissue handling alone is insufficient.
+- Landmark-based categories require claims that reference the relevant landmark, boundary, or structure; general “safe/unsafe region” claims should be excluded unless they clearly relate to that landmark.
 
 Here are some examples:
 
@@ -330,7 +332,7 @@ The tissue in the central area looks thickened and fibrotic, obscuring normal an
 The inflammation and scarring obscure key landmarks in Calot's triangle.
 The obscured landmarks increase the risk of injuring the common bile duct and hepatic artery during laparoscopic cholecystectomy.
 REASONING:
-These claims collectively indicate severe inflammation/scarring and distorted planes that obscure Calot’s triangle landmarks, which is the key trigger for a bailout decision (avoid blind dissection and consider conversion or subtotal approach). Claims about simple anatomic location (liver/gallbladder position) are excluded because they do not establish obscured anatomy. Claims defining the triangle boundaries are excluded here because the bailout decision depends primarily on whether those boundaries are not safely identifiable due to scarring, rather than on reciting the standard anatomy.
+These claims collectively indicate severe inflammation/scarring and distorted planes that obscure Calot’s triangle landmarks, which is the key trigger for a bailout decision. Claims about simple anatomic location are excluded because they do not establish obscured anatomy. Claims defining standard boundaries are excluded because the bailout decision depends primarily on whether those boundaries are not safely identifiable.
 
 Example 3:
 CATEGORY: Only two structures visible: Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
@@ -353,10 +355,64 @@ N/A
 REASONING:
 None of the claims state that exactly two tubular structures (cystic duct and cystic artery) are visible entering the gallbladder, nor do they describe identification of these two structures prior to clipping/cutting. The claims focus on inflammation, scarring, triangle boundaries, and general risk zones rather than explicit confirmation of “two structures only,” so they do not provide evidence for this category.
 
+Example 4:
+CATEGORY: Infundibulum start point: Dissection can begin at the gallbladder infundibulum–cystic duct junction or at the lateral or medial edges of the gallbladder to obtain mobility before entering Calot’s triangle.
+CLAIMS:
+The gallbladder body and fundus provide a safe surface for grasping and retraction.
+The plane between the gallbladder body and the liver bed is a safe dissection plane.
+The truly safe zone is the gallbladder tissue lateral to the dissection point.
+The liver parenchyma visible at the top and right should never be dissected.
+Inflamed Calot's triangle tissue appears to be centrally located.
+
+OUTPUT:
+RELATED CLAIMS:
+The gallbladder body and fundus provide a safe surface for grasping and retraction.
+The plane between the gallbladder body and the liver bed is a safe dissection plane.
+The truly safe zone is the gallbladder tissue lateral to the dissection point.
+REASONING:
+These claims describe safe initial handling surfaces and lateral or gallbladder–liver interface planes that are commonly used to begin dissection and mobilize the gallbladder before entering Calot’s triangle. The claim about avoiding liver parenchyma is excluded because it is a general safety prohibition and does not indicate where to start dissection. The claim about inflamed Calot’s triangle is excluded because it pertains to triangle condition or bailout considerations rather than the starting point of dissection.
+
+Example 5:
+CATEGORY: Cystic lymph node guide: Identify the cystic lymph node and clip the artery on the gallbladder side of the node.
+CLAIMS:
+The central hepatocystic triangle shows inflammation and changes from dissection.
+The plane between the gallbladder body and the liver bed is a safe dissection plane.
+The gallbladder body and fundus provide a safe surface for grasping and retraction.
+
+OUTPUT:
+RELATED CLAIMS:
+N/A
+REASONING:
+None of the claims mention the cystic lymph node, the cystic artery, or clipping relative to the node. Although the claims describe dissection planes and handling, they do not reference the landmark or vascular guidance required for this category and therefore are not related.
+
+Example 6:
+CATEGORY: Only two structures visible: Only the cystic duct and cystic artery should be seen entering the gallbladder before any clipping or cutting.
+CLAIMS:
+The cystic duct is clearly seen entering the gallbladder.
+The cystic artery is visualized running directly into the gallbladder wall.
+Exactly two tubular structures are visible entering the gallbladder, with no additional ducts or vessels identified.
+No other tubular structures are seen attaching to the gallbladder.
+The surrounding tissue appears mildly inflamed.
+The hepatocystic triangle contains darker, more vascular tissue.
+The boundary between safe and unsafe regions is clearly visible.
+Formal identification of structures is recommended before clipping.
+
+OUTPUT:
+RELATED CLAIMS:
+The cystic duct is clearly seen entering the gallbladder.
+The cystic artery is visualized running directly into the gallbladder wall.
+Exactly two tubular structures are visible entering the gallbladder, with no additional ducts or vessels identified.
+No other tubular structures are seen attaching to the gallbladder.
+Formal identification of structures is recommended before clipping.
+The hepatocystic triangle contains darker, more vascular tissue.
+REASONING:
+The selected claims include those that directly identify the cystic duct and artery, confirm the count of tubular structures entering the gallbladder, reference the anatomical region (hepatocystic triangle) where these structures are located, and discuss the procedural requirement to identify structures before clipping. These are all topically relevant to confirming that only two structures are visible. Claims about general tissue inflammation or spatial boundaries were excluded as they provide operative context unrelated to structure identification or enumeration.
+
 Now identify which atomic claims are related to the given expert category:
 CATEGORY: {}
 CLAIMS: {}
 """
+
 
 claim_grouping_sepsis = """
 You are a medical expert specializing in sepsis risk prediction. You have a deep understanding of this subject. 
