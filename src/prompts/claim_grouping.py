@@ -25,7 +25,139 @@ We define "related" as claims that are topically relevant to the expert category
 
 Task description:
 Input: An expert psychologist's explanation of why a certain level of politeness might be attributed to an utterance, and a list of atomic claims.
-Output: A list of atomic claims that are related to the given expert category.
+Output: A list of atomic claims that are related to the given expert category. We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+
+Here are the definitions of the expert categories:
+-----
+1. Honorifics and Formal Address: The presence of respectful or formal address forms (e.g., “sir,” “usted,” “您”) signals politeness by expressing deference to the hearer’s status or social distance.
+2. Courteous Politeness Markers: Words such as “please,” “kindly,” or their multilingual variants soften requests and reflect courteous intent.
+3. Gratitude Expressions: Use of expressions like “thank you,” “thanks,” or “I appreciate it” signals recognition of the other’s contribution and positive face.
+4. Apologies and Acknowledgment of Fault: Phrases such as “sorry” or “I apologize” express humility and repair social breaches, marking a clear politeness strategy.
+5. Indirect and Modal Requests: Requests using modal verbs (“could you,” “would you”) or softening cues like “by the way” reduce imposition and signal respect for the hearer’s autonomy.
+6. Hedging and Tentative Language: Words like “I think,” “maybe,” or “usually” lower assertion strength and make statements more negotiable, reflecting interpersonal sensitivity.
+7. Inclusive Pronouns and Group-Oriented Phrasing: Use of “we,” “our,” or “together” expresses solidarity and reduces hierarchical distance in requests or critiques.
+8. Greeting and Interaction Initiation: Opening with a salutation (“hi,” “hello”) creates a cooperative tone and frames the conversation positively.
+9. Compliments and Praise: Positive evaluations (“great,” “awesome,” “neat”) attend to the hearer’s positive face and foster a friendly environment.
+10. Softened Disagreement or Face-Saving Critique: When disagreeing, the use of softeners, partial agreements, or concern for clarity preserves the hearer’s dignity.
+11. Urgency or Immediacy of Language: Utterances emphasizing emergency or speed (“asap,” “immediately”) can heighten perceived imposition and reduce politeness if not softened.
+12. Avoidance of Profanity or Negative Emotion: The presence of strong negative words or swearing is a key indicator of rudeness and face threat.
+13. Bluntness and Direct Commands: Requests lacking modal verbs or mitigation (“Do this”) are perceived as less polite due to their imperative structure.
+14. Empathy or Emotional Support: Recognizing the hearer’s emotional context or challenges is a politeness strategy of concern and goodwill.
+15. First-Person Subjectivity Markers: Statements that begin with “I think,” “I feel,” or “In my view” convey humility and subjectivity, reducing imposition.
+16. Second Person Responsibility or Engagement: Sentences starting with “you” or directly addressing the hearer can either signal engagement or come across as accusatory, depending on context and tone.
+17. Questions as Indirect Strategies: Questions (“what do you think?” or “could you clarify?”) reduce imposition by inviting rather than demanding input.
+18. Discourse Management with Markers: Use of discourse markers like “so,” “then,” “but” organizes conversation flow and may help manage face needs in conflict or negotiation.
+19. Ingroup Language and Informality: Use of group-identifying slang or casual expressions (“mate,” “dude,” “bro”) may foster solidarity or seem disrespectful, depending on relational norms.
+-----
+
+Return your answer as:
+REASONING: <A brief explanation of why you selected the claims that are related to the given expert category and why you judged the claims as you did.>
+RELATED CLAIMS: <newline separated list of atomic claims that are related to the given expert category. If there are no claims that are related to the given expert category, then the output should be "None">
+
+Here are some examples:
+[Example 1]
+CATEGORY: Honorifics and Formal Address
+CLAIMS: ["The utterance uses the title "Dr." to address the other person.", "Use of "Dr." in the utterance is a sign of respect and politeness.", "The speaker of the utterance requests additional discussion.", "The utterance has a formal tone", "The utterance is polite and respectful."]
+REASONING: 
+The definition of the expert category is the presence of respectful or formal address forms (e.g., “sir,” “usted,” “您”) signals politeness by expressing deference to the hearer’s status or social distance. The first claim is related to the expert category because it talks about the use of the title "Dr." to address the other person, which is an honorific. The second claim is related to the expert category because it also discusses use of the honorific. The last three claims are not related to the expert category because they do not discuss the use of the honorific. The request of the utterance, the tone of the utterance, and the politeness of the utterance are not related to either honorifics or formal address.
+RELATED CLAIMS: 
+"The utterance uses the title "Dr." to address the other person."
+"Use of "Dr." in the utterance is a sign of respect and politeness."
+
+[Example 2]
+CATEGORY: Courteous Politeness Markers
+CLAIMS: ["The statement conveys skepticism.", "The statement conveys a slightly belittling tone.", "The rhetorical question about reading the discussions contributes to the belittling tone.", "The phrase "I'd bet money" implies disbelief in the other person's statement.", "Questioning the addressee's reading suggests they might be ignorant or careless.", "The statement is direct and disrespectful enough to be somewhat rude.", "The statement is not extremely offensive."]
+REASONING: 
+The definition of the expert category is the use of words such as “please,” “kindly,” or their multilingual variants soften requests and reflect courteous intent.
+None of the claims are related to the expert category, as they do not discuss either the use courteous politeness markers, or the lack of their use. None of the claims reference such markers at all.
+RELATED CLAIMS: None
+
+[Example 3]
+CATEGORY: Avoidance of Profanity or Negative Emotion
+CLAIMS: ["The statement criticizes the other person's grammar in a condescending manner.", "The phrase "your grammar is terrible" is a direct insult.", "The commands about how to write English come across as patronizing.", "The speaker's tone is dismissive and unfriendly."]
+REASONING: 
+The definition of the expert category is the presence of strong negative words or swearing is a key indicator of rudeness and face threat. The first claim is related to the expert category because it talks about the criticizing the other person's grammar in a condescending manner, which is a sign of rudeness. The second claim is related to the expert category because it talks about the phrase "your grammar is terrible" being a direct insult, which is indicative of a negative emotion. The third claim is related to the expert category because it also references an insult. The fourth claim is related to the expert category because it talks about the speaker's tone being dismissive and unfriendly, which is also a sign of rudeness
+RELATED CLAIMS: 
+"The statement criticizes the other person's grammar in a condescending manner."
+"The phrase "your grammar is terrible" is a direct insult."
+"The commands about how to write English come across as patronizing."
+"The speaker's tone is dismissive and unfriendly."
+
+Now identify which atomic claims are related to the given expert category:
+CATEGORY: {}
+CLAIMS: {}
+
+"""
+
+claim_grouping_emotion = """
+You are an expert in emotion psychology. You have a deep understanding of this subject. 
+Your task is to behave like an expert emotion psychologist and identify which atomic claims are related to the given expert category.
+We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+
+Task description:
+Input: An expert emotion psychologist's explanation of why a certain emotion label might be attributed to an utterance, and a list of atomic claims.
+Output: A list of atomic claims that are related to the given expert category. We define "related" as claims that are topically relevant to the expert category and/or can be used to support the expert category.
+
+Here are the definitions of the expert categories:
+-----
+1. Valence: Decide if the overall tone is pleasant or unpleasant; positive tones suggest joy or admiration, negative tones suggest sadness or anger.
+2. Arousal: Gauge how energized the wording is—calm phrasing implies low arousal emotions, intense phrasing implies high arousal emotions.
+3. Emotion Words & Emojis: Look for direct emotion terms or emoticons that explicitly name the feeling.
+4. Expressive Punctuation: Multiple exclamation marks, ALL-CAPS, or stretched spellings signal higher emotional intensity.
+5. Humor/Laughter Markers: Tokens like “haha,” “lol,” or laughing emojis reliably indicate amusement.
+6. Confusion Phrases: Statements such as “I don’t get it” clearly mark confusion.
+7. Curiosity Questions: Genuine information-seeking phrases (“I wonder…”, “why is…?”) point to curiosity.
+8. Surprise Exclamations: Reactions of astonishment (“No way!”, “I can’t believe it!”) denote surprise.
+9. Threat/Worry Language: References to danger or fear (“I’m scared,” “terrifying”) signal fear or nervousness.
+10. Loss or Let-Down Words: Mentions of loss or disappointment cue sadness, disappointment, or grief.
+11. Other-Blame Statements: Assigning fault to someone else for a bad outcome suggests anger or disapproval.
+12. Self-Blame & Apologies: Admitting fault and saying “I’m sorry” marks remorse.
+13. Aversion Terms: Words like “gross,” “nasty,” or “disgusting” point to disgust.
+14. Praise & Compliments: Positive evaluations of someone’s actions show admiration or approval.
+15. Gratitude Expressions: Phrases such as “thanks” or “much appreciated” indicate gratitude.
+16. Affection & Care Words: Loving or nurturing language (“love this,” “sending hugs”) signals love or caring.
+17. Self-Credit Statements: Boasting about one’s own success (“I nailed it”) signals pride.
+18. Relief Indicators: Release phrases like “phew,” “finally over,” or “what a relief” mark relief after stress ends.
+-----
+
+Return your answer as:
+REASONING: <A brief explanation of why you selected the claims that are related to the given expert category and why you judged the claims as you did.>
+RELATED CLAIMS: <newline separated list of atomic claims that are related to the given expert category. If there are no claims that are related to the given expert category, then the output should be "None">
+
+Here are some examples:
+[Example 1]
+CATEGORY: Valence
+CLAIMS: ["The text contains laughter ("hahaha").", "Laughter is an indicator of amusement.", "The text contains an expression of surprise and lightheartedness ("omg").", ""omg" is an indicator of amusement.", "The phrase "sling yoghurt" is mentioned in a playful context.", "The playful context contributes to the humorous tone.", "The overall expression is informal.", "The overall expression is casual."]
+REASONING: 
+The definition of the expert category is to decide if the overall tone is pleasant or unpleasant. The claims about laughter, amusement, lightheartedness, playful context, and humorous tone all indicate a positive, pleasant emotional tone, so they align with valence. The claims about the expression being informal or casual describe style rather than emotional positivity, so they are not directly related to valence.
+RELATED CLAIMS: 
+"The text contains laughter ("hahaha")."
+"Laughter is an indicator of amusement."
+"The text contains an expression of surprise and lightheartedness ("omg")."
+""omg" is an indicator of amusement."
+"The phrase "sling yoghurt" is mentioned in a playful context."
+"The playful context contributes to the humorous tone."
+
+[Example 2]
+CATEGORY: Other-Blame Statements
+CLAIMS: ["The text conveys a strong negative judgment towards the subject's perceived hypocrisy.", "This indicates a lack of acceptance.", "This indicates a lack of respect.", "Words such as "perfectly comfortable" paired with "hypocrite" suggest criticism.", "The phrase "utterly outraged" heightens the negative connotation.", "The phrase "utterly outraged" emphasizes the speaker's disapproval of the subject's behavior.", "The overall tone is critical.", "The overall tone is condemnatory.", "The primary emotion is disapproval."]
+REASONING: 
+The definition of the expert category is assigning fault to someone else for a bad outcome, signaling anger or disapproval. The claims that explicitly describe criticism of the subject’s hypocrisy, label the subject a hypocrite, and emphasize disapproval of the subject’s behavior directly assign blame or fault. The remaining claims speak more generally about tone (critical, condemnatory) or abstract lack of acceptance/respect, which reflect negative sentiment but do not explicitly assign fault to someone’s actions.
+RELATED CLAIMS: 
+"The text conveys a strong negative judgment towards the subject's perceived hypocrisy."
+"Words such as "perfectly comfortable" paired with "hypocrite" suggest criticism."
+"The phrase "utterly outraged" emphasizes the speaker's disapproval of the subject's behavior."
+
+[Example 3]
+CATEGORY: Expressive Punctuation
+CLAIMS: ["The statement "He'd hate me" suggests an awareness of a negative response.", "The statement "He'd hate me" suggests an awareness of a potential conflict.", "The speaker's mention of "My standards are even higher" indicates possible frustration.", "The speaker's mention of "My standards are even higher" indicates possible irritation with perceived expectations.", "The speaker's mention of "My standards are even higher" indicates possible irritation with misunderstandings.", "The tone of defensiveness aligns with feelings of annoyance.", "The reference to "hate" aligns with feelings of annoyance.", "The comment suggests a negative tension.", "The comment does not suggest a neutral emotion.", "The comment does not suggest a positive emotion."]
+REASONING: 
+The definition of the expert category is the presence of multiple exclamation marks, ALL-CAPS, or stretched spellings that signal heightened emotional intensity. None of the claims mention punctuation, capitalization, or elongated spellings as evidence, so there are no claims related to expressive punctuation here.
+RELATED CLAIMS: None
+
+Now identify which atomic claims are related to the given expert category:
+CATEGORY: {}
+CLAIMS: {}
 
 """
 

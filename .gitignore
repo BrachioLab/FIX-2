@@ -7,3 +7,5 @@ cache_dir
 src/.llms.py.cache
 api.txt
 results/*/*v1*
+gcp-creds.json
+scripts/
