@@ -241,17 +241,35 @@ def get_llm_generated_answer(
     llm = load_model(model)
 
     def process_response(response: str):
-        response_split = [r.strip() for r in response.split("\n") if r.strip() != "" \
-            and r.strip().startswith("Explanation:") or r.strip().startswith("Prediction:")]
+        response_split = [
+            r.strip()
+            for r in response.split("\n")
+            if r.strip() != ""
+            and (r.strip().startswith("Explanation:") or r.strip().startswith("Prediction:"))
+        ]
         
-        explanation = response_split[0].split("Explanation: ")[1].strip()
-        answer = response_split[-1].split("Prediction: ")[1].strip()
-        answer = answer.split(", ")
-        answer = {
-            answer[0].split(": ")[0]: parse_float(answer[0].split(": ")[1]), 
-            answer[1].split(": ")[0]: parse_float(answer[1].split(": ")[1])
-        }
-        return answer, explanation
+        try:
+            if (
+                len(response_split) < 2
+                or not response_split[0].startswith("Explanation:")
+                or not response_split[-1].startswith("Prediction:")
+            ):
+                explanation = response.split("Prediction:")[0].split("Explanation:")[-1].strip()
+                answer_text = response.split("Prediction:")[-1].strip()
+            else:
+                explanation = response_split[0].split("Explanation: ", 1)[1].strip()
+                answer_text = response_split[-1].split("Prediction: ", 1)[1].strip()
+
+            answer_parts = [p.strip() for p in answer_text.split(", ") if p.strip()]
+            answer = {
+                answer_parts[0].split(": ")[0]: parse_float(answer_parts[0].split(": ")[1]),
+                answer_parts[1].split(": ")[0]: parse_float(answer_parts[1].split(": ")[1]),
+            }
+            return answer, explanation
+        except Exception as e:
+            print("exception: ", e)
+            import pdb; pdb.set_trace()
+            raise Exception(f"Error in parsing response {response}")
         
 
     if isinstance(image, list):
@@ -414,6 +432,7 @@ def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", 
         claim_grouping_info = get_claims_by_category(category, relevant_claims, model, verbose)
         
         if claim_grouping_info is None or claim_grouping_info["related_claims"] is None:
+            claims_by_category[category] = []
             continue
 
         related_claims = claim_grouping_info["related_claims"]
@@ -848,7 +867,7 @@ def aggregate_all_results(
 
     for model in models:
         filenames_per_method = {}
-        for method in methods:
+        for method in tqdm(methods, desc=f"Loading filenames for {model}"):
             load_dir = os.path.join(final_results_dir, model, method, f"eval.{eval_model}")
             if not os.path.isdir(load_dir):
                 print(f"Warning: {load_dir} does not exist, skipping.")
@@ -858,16 +877,16 @@ def aggregate_all_results(
             filenames_per_method[method] = filenames
 
         # Instead of using intersection, just keep the actual filenames for each method
-        for method in methods:
+        for method in tqdm(methods, desc=f"Sorting filenames for {model}"):
             file_list = [fn for fn in filenames_per_method[method] if fn.endswith('.json')]
             file_list = sorted(file_list)[:num_samples]
             filenames_per_method[method] = file_list
 
         all_results = defaultdict(list)
-        for method in tqdm(methods, desc=f"Aggregate-{model}"):
+        for method in tqdm(methods, desc=f"Loading results for {model}"):
             load_dir = os.path.join(final_results_dir, model, method, f"eval.{eval_model}")
             loaded_dirs.append(load_dir)
-            for filename in filenames_per_method[method]:
+            for filename in tqdm(filenames_per_method[method], desc=f"Loading results for {model} {method}"):
                 path = os.path.join(load_dir, filename)
                 if not os.path.exists(path):
                     print(f"Missing file {path}, skipping.")
@@ -895,7 +914,7 @@ def aggregate_all_results(
                 data["_filename"] = filename
                 all_results[method].append(data)
         
-        for method in all_results:
+        for method in tqdm(all_results, desc=f"Saving results for {model}"):
             save_dir = os.path.join(aggregated_results_dir, method)
             os.makedirs(save_dir, exist_ok=True)
             save_path = os.path.join(save_dir, f'massmaps_{model}_{eval_model}.json')
@@ -1013,15 +1032,18 @@ if __name__ == "__main__":
 
     load_api_keys(ROOT_DIR)
 
+
     args = parse_args()
 
     if args.command == "aggregate":
+        
         aggregate_all_results(
             eval_model=args.eval_model,
             num_samples=args.num_samples,
         )
 
     elif args.command == "run":
+        os.environ['LLMS_CACHE_PATH'] = os.path.join(ROOT_DIR, f'{args.model}.{args.method}.llms.py.cache')
         # Determine what to run based on CLI flags
         if not (args.run_generation or args.run_evaluation):
             print("No operation specified. Use --run_generation and/or --run_evaluation. See --help.")
