@@ -401,6 +401,8 @@ def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", 
         claim_grouping_info = get_claims_by_category(category, relevant_claims, model, verbose)
         
         if claim_grouping_info is None or claim_grouping_info["related_claims"] is None:
+            claims_by_category[category] = []
+            print(f"No claims found for category: {category}")
             continue
 
         related_claims = claim_grouping_info["related_claims"]
