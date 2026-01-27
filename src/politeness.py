@@ -1,16 +1,13 @@
+import os
 import pandas as pd
 import numpy as np
 from datasets import load_dataset
-import openai
-from openai import OpenAI
 import json
-import time
 from tqdm import tqdm
 from fuzzywuzzy import fuzz
-import anthropic
-import google.generativeai as genai
 import re
-
+import argparse
+from llms import load_model
 from prompts.claim_decomposition import decomposition_politeness
 from prompts.relevance_filtering import relevance_politeness
 from prompts.expert_alignment import alignment_politeness
@@ -20,6 +17,14 @@ from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseli
 
 from diskcache import Cache
 cache = Cache("/shared_data0/shreyah/llm_cache")
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/shreyah/FIX-2/gcp-creds.json"
+
+def _load_api_key(filename: str) -> str:
+    path = os.path.join(os.path.dirname(__file__), "..", filename)
+    with open(path, "r") as f:
+        return f.read().strip()
+
 
 prompt_dict = {"vanilla": vanilla_baseline,
                "cot": cot_baseline,
@@ -58,10 +63,10 @@ class PolitenessExample:
         self.claims = []
         self.relevant_claims = []
         self.claims_by_category = []
-        # self.alignment_scores = []
-        # self.alignment_categories = []
-        # self.alignment_reasonings = []
-        # self.final_alignment_score = 0.0
+        self.category_alignment_scores = []
+        self.alignment_matrix = []
+        self.final_aligned_score = 0.0
+       
     
     def print(self, verbose=False):
         print("Utterance: ", self.utterance)
@@ -86,88 +91,33 @@ class PolitenessExample:
             'mse': self.mse,
             'claims': self.claims,
             'relevant_claims': self.relevant_claims,
-            'alignment_scores': self.alignment_scores,
-            'alignment_categories': self.alignment_categories,
-            'alignment_reasonings': self.alignment_reasonings,
-            'final_alignment_score': self.final_alignment_score
+            'claims_by_category': self.claims_by_category,
+            'category_alignment_scores': self.category_alignment_scores,
+            'alignment_matrix': self.alignment_matrix.tolist(),
+            'final_aligned_score': self.final_aligned_score,
         }
 
 
 @cache.memoize()
-def query_anthropic(prompt, model="claude-3-5-sonnet-latest"):
-    with open("../Anthropic_API_KEY.txt", "r") as file:
-        api_key = file.read()
-    client = anthropic.Anthropic(api_key=api_key)
-
-    num_tries = 0
-    for i in range(3):
-        try:
-            response = client.messages.create(
-            model=model,
-            max_tokens=2048,
-            temperature=0.1,
-            messages=[
-                {"role": "user", "content": prompt}
-            ])
-            return response.content[0].text
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(5)
+def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
+    api_key = _load_api_key("Anthropic_API_KEY.txt")
+    llm = load_model(model, api_key=api_key)
+    out = llm(prompt)
+    return out if out else "ERROR"
 
 @cache.memoize()
-def query_gemini(prompt, model="gemini-2.0-flash"):
-    with open("../Google_API_KEY.txt", "r") as file:
-        api_key = file.read()
-    genai.configure(api_key=api_key)
-    
-    num_tries = 0
-    for i in range(3):
-        try:
-            model_obj = genai.GenerativeModel(model)
-            response = model_obj.generate_content(prompt)
-            return response.text
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(5)
-    return "ERROR"
+def query_gemini(prompt, model="gemini-2.5-flash"):
+    #make sur
+    llm = load_model(model)
+    out = llm(prompt)
+    return out if out else "ERROR"
 
 @cache.memoize()
 def query_openai(prompt, model="gpt-5-mini-2025-08-07"):
-    """
-    Sends a prompt to the OpenAI chat API and returns the model's response.
-
-    Uses diskcache to memoize results to avoid repeated API calls.
-    Handles up to three retries in case of errors.
-
-    Args:
-        prompt (str): The input prompt to send to the model.
-        model (str): The OpenAI model to use (default is "gpt-5-mini-2025-08-07").
-
-    Returns:
-        str: The content of the model's response, or "ERROR" if all retries fail.
-    """
-    with open("../API_KEY.txt", "r") as file:
-        api_key = file.read()
-    client = OpenAI(api_key=api_key)
-
-    num_tries = 0
-    for i in range(3):
-        try:
-            translation = client.chat.completions.create(
-                messages=[{
-                    "role": "user",
-                    "content": prompt,
-                }],
-                model=model,
-            )
-            return translation.choices[0].message.content
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(5)
-    return "ERROR"
+    api_key = _load_api_key("API_KEY.txt")
+    llm = load_model(model, api_key=api_key)
+    out = llm(prompt)
+    return out if out else "ERROR"
 
 
 def get_llm_generated_answer(utterance: str, baseline: str = "vanilla", model: str = "gpt-5-mini-2025-08-07"):
@@ -196,7 +146,7 @@ def get_llm_generated_answer(utterance: str, baseline: str = "vanilla", model: s
         return None
 
     if response == "ERROR":
-        print("Error in querying OpenAI API")
+        print("Error in querying API for model: ", model)
         return None
     
     match = re.search(r"Rating: (.*)\nExplanation: (.*)", response)
@@ -386,49 +336,10 @@ def make_alignment_matrix(categories, claims, claims_by_category, category_align
     matrix = np.zeros((len(claims), len(categories)))
     for i, claim in enumerate(claims):
         for j, category in enumerate(categories):
-            if claim in claims_by_category[category]:
+            if any(fuzz.ratio(claim, c) > 90 for c in claims_by_category[category]):
                 matrix[i, j] = category_alignment_scores[category]
     return matrix
 
-def calculate_expert_alignment_score_old(claim: str):
-    """
-    Assesses a claim's alignment with expert criteria using the alignment prompt.
-
-    Extracts the category, alignment score, and reasoning.
-
-    Args:
-        claim (str): A relevant claim to evaluate.
-
-    Returns:
-        Tuple[str, str, str] or None: The alignment category, score, and reasoning, or None on error.
-    """
-    prompt = alignment_politeness.format(claim)
-    response = query_openai(prompt).replace("\n\n", "\n")
-    if response == "ERROR":
-        print("Error in querying OpenAI API")
-        return None
-    response = response.replace("Category:", "").strip()
-    response = response.split("\n")
-    response = [r for r in response if r.strip() != ""]
-    category = response[0].strip().replace("‑", "-")
-    try:
-        alignment_score = response[1].replace("Category Alignment Rating:", "").strip()
-        reasoning = response[2].replace("Reasoning:", "").strip()
-        assert alignment_score in ["none", "partial", "complete"]
-        assert(len(category) > 5)
-        for c in categories_list:
-            if fuzz.ratio(c.lower(), category.lower()) > 90:
-                category = c
-                break
-        if(category not in categories_list): category = None
-        assert(len(reasoning) > 10)
-    except:
-        print("ERROR: Issue with alignment score parsing")
-        print(response)
-        alignment_score = None
-        category = None
-        reasoning = None
-    return category, alignment_score, reasoning
 
 def load_politeness_data():
     """
@@ -458,7 +369,7 @@ def load_politeness_data():
     sampled_data = sampled_data.reset_index(drop=True)
     return sampled_data
 
-def run_pipeline(politeness_data, baseline="vanilla", model="gpt-5-mini-2025-08-07"):
+def run_pipeline(politeness_data, baseline="vanilla", model="gpt-5.2-pro-2025-12-11"):
     """
     Executes the full politeness evaluation pipeline on a dataset of utterances.
 
@@ -526,81 +437,18 @@ def run_pipeline(politeness_data, baseline="vanilla", model="gpt-5-mini-2025-08-
         json.dump(data_to_save, f, indent=4)
 
 
-def aggregate_alignment_scores(alignment_scores, total_claims):
-    score_map = {
-        "none": 0.0,
-        "partial": 0.5,
-        "complete": 1.0
-    }
-    if total_claims == 0:
-        return 0.0
-    total_score = sum([score_map[score] for score in alignment_scores])
-    return total_score / total_claims
-
-    results_dict = {}
-    with open("../results/{}/politeness_{}.json".format(baseline, model), 'r') as f:
-        results_dict = json.load(f)
-
-    politeness_examples = []
-    for res in results_dict:
-        example = PolitenessExample(
-            utterance=res['utterance'],
-            ground_truth=res['ground_truth'],
-            llm_score=res['llm_score'],
-            llm_explanation=res['llm_explanation'] 
-        )
-        example.mse = res['mse']
-        example.claims = res['claims']
-        example.relevant_claims = res['relevant_claims']
-        politeness_examples.append(example)
-
-    print("Recalculating alignment scores for {} examples: {}, {}".format(len(politeness_examples), baseline, model))
-
-    for example in politeness_examples:
-        alignment_scores = []
-        alignment_categories = []
-        alignment_reasonings = []
-        for claim in tqdm(example.relevant_claims):
-            category, alignment_score, reasoning = calculate_expert_alignment_score(claim)
-            if category is None:
-                continue
-            alignment_scores.append(alignment_score)
-            alignment_categories.append(category)
-            alignment_reasonings.append(reasoning)
-        example.alignment_scores = alignment_scores
-        example.alignment_categories = alignment_categories
-        example.alignment_reasonings = alignment_reasonings
-        example.final_alignment_score = aggregate_alignment_scores(alignment_scores, len(example.claims))
-
-    data_to_save = [example.to_dict() for example in politeness_examples]
-    with open("../results/{}/politeness_{}.json".format(baseline, model), 'w') as f:
-        json.dump(data_to_save, f, indent=4)
-
 if __name__ == "__main__":
-    politeness_data = load_politeness_data()[:5]
-    run_pipeline(politeness_data, baseline="vanilla", model="gpt-5.2-pro-2025-12-11")
+    politeness_data = load_politeness_data()
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--baseline", type=str, default="vanilla")
+    args = parser.parse_args()
+    baseline = args.baseline
+    assert baseline in ["vanilla", "cot", "socratic", "subq"]
 
-    # #model = "gemini-2.0-flash"
-    # recalculate_alignment(politeness_data, baseline="vanilla", model="gemini-2.0-flash")
-    # recalculate_alignment(politeness_data, baseline="cot", model="gemini-2.0-flash")
-    # recalculate_alignment(politeness_data, baseline="socratic", model="gemini-2.0-flash")
-    # recalculate_alignment(politeness_data, baseline="subq", model="gemini-2.0-flash")
-
-    # # #model = "o1"
-    # recalculate_alignment(politeness_data, baseline="vanilla", model="o1")
-    # recalculate_alignment(politeness_data, baseline="cot", model="o1")
-    # recalculate_alignment(politeness_data, baseline="socratic", model="o1")
-    # recalculate_alignment(politeness_data, baseline="subq", model="o1")
-
-    # # #model = "claude-3-5-sonnet-latest"
-    # recalculate_alignment(politeness_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
-    # recalculate_alignment(politeness_data, baseline="cot", model="claude-3-5-sonnet-latest")
-    # recalculate_alignment(politeness_data, baseline="socratic", model="claude-3-5-sonnet-latest")
-    # recalculate_alignment(politeness_data, baseline="subq", model="claude-3-5-sonnet-latest")
-
-    # #model = "gpt-5-mini-2025-08-07"
-    # recalculate_alignment(politeness_data, baseline="vanilla", model="gpt-5-mini-2025-08-07")
-    # recalculate_alignment(politeness_data, baseline="cot", model="gpt-5-mini-2025-08-07")
-    # recalculate_alignment(politeness_data, baseline="socratic", model="gpt-5-mini-2025-08-07")
-    # recalculate_alignment(politeness_data, baseline="subq", model="gpt-5-mini-2025-08-07")
+    run_pipeline(politeness_data, baseline=baseline, model="gpt-5.2-pro-2025-12-11")
+    run_pipeline(politeness_data, baseline=baseline, model="gpt-5-mini-2025-08-07")
+    run_pipeline(politeness_data, baseline=baseline, model="claude-opus-4-5-20251101")
+    run_pipeline(politeness_data, baseline=baseline, model="claude-haiku-4-5-20251001")
+    run_pipeline(politeness_data, baseline=baseline, model="gemini-2.5-pro")
+    run_pipeline(politeness_data, baseline=baseline, model="gemini-2.5-flash")

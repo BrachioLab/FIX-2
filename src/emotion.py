@@ -1,34 +1,31 @@
+import os
 import pandas as pd
 import numpy as np
 from datasets import load_dataset
-import openai
-from openai import OpenAI
-import time
 from tqdm import tqdm
-
-import re
+import argparse
 import json
 from fuzzywuzzy import fuzz
-import anthropic
-import google.generativeai as genai
-
-
 from prompts.claim_decomposition import decomposition_emotion
 from prompts.relevance_filtering import relevance_emotion
-from prompts.expert_alignment import alignment_emotion
+from prompts.claim_grouping import claim_grouping_emotion
+from prompts.expert_category_alignment import category_alignment_emotion
 from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, emotion_prompt
 
 from diskcache import Cache
-# cache = Cache("/shared_data0/shreyah/llm_cache")
-from pathlib import Path
 
 from llms import load_model
 
-base_dir = Path(__file__).parent
-cache_path = base_dir / ".." / ".." / "llm_cache"
-cache = Cache(cache_path)
+cache = Cache("/shared_data0/shreyah/llm_cache")
 
-default_model = "gpt-4o"
+default_model = "gpt-5-mini-2025-08-07"
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/shreyah/FIX-2/gcp-creds.json"
+
+def _load_api_key(filename: str) -> str:
+    path = os.path.join(os.path.dirname(__file__), "..", filename)
+    with open(path, "r") as f:
+        return f.read().strip()
 
 
 prompt_dict = {"vanilla": vanilla_baseline,
@@ -96,10 +93,10 @@ class EmotionExample:
         self.accuracy = 0.0
         self.claims = []
         self.relevant_claims = []
-        self.alignment_scores = []
-        self.alignment_categories = []
-        self.alignment_reasonings = []
-        self.final_alignment_score = 0.0
+        self.claims_by_category = []
+        self.category_alignment_scores = []
+        self.alignment_matrix = []
+        self.final_aligned_score = 0.0
 
     def print(self, verbose=False):
         print("Text: ", self.text)
@@ -108,12 +105,12 @@ class EmotionExample:
         print("LLM Explanation: ", self.llm_explanation)
         print("Claims: ", self.claims)
         print("Relevant Claims: ", self.relevant_claims)
-        print("Alignment Scores: ", self.alignment_scores)
+        print("Category Alignment Scores: ", self.category_alignment_scores)
         
-        print("Final Alignment Score: ", self.final_alignment_score)
+        print("Final Alignment Score: ", self.final_aligned_score)
         if(verbose):
-            print("Alignment Categories: ", self.alignment_categories)
-            print("Alignment Reasonings: ", self.alignment_reasonings)
+            print("Claims By Category: ", self.claims_by_category)
+            print("Alignment Matrix: ", self.alignment_matrix)
     
     def to_dict(self):
         return {
@@ -124,78 +121,35 @@ class EmotionExample:
             'accuracy': self.accuracy,
             'claims': self.claims,
             'relevant_claims': self.relevant_claims,
-            'alignment_scores': self.alignment_scores,
-            'alignment_categories': self.alignment_categories,
-            'alignment_reasonings': self.alignment_reasonings,
-            'final_alignment_score': self.final_alignment_score
+            'claims_by_category': self.claims_by_category,
+            'category_alignment_scores': self.category_alignment_scores,
+            'alignment_matrix': self.alignment_matrix.tolist(),
+            'final_aligned_score': self.final_aligned_score
         }
     
 @cache.memoize()
-def query_anthropic(prompt, model="claude-3-5-sonnet-latest"):
-    with open("../Anthropic_API_KEY.txt", "r") as file:
-        api_key = file.read()
-    client = anthropic.Anthropic(api_key=api_key)
-
-    num_tries = 0
-    for i in range(3):
-        try:
-            response = client.messages.create(
-            model=model,
-            max_tokens=2048,
-            temperature=0.1,
-            messages=[
-                {"role": "user", "content": prompt}
-            ])
-            return response.content[0].text
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(5)
+def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
+    api_key = _load_api_key("Anthropic_API_KEY.txt")
+    llm = load_model(model, api_key=api_key)
+    out = llm(prompt)
+    return out if out else "ERROR"
 
 
 @cache.memoize()
-def query_gemini(prompt, model="gemini-2.0-flash"):
-    with open("../Google_API_KEY.txt", "r") as file:
-        api_key = file.read()
-    genai.configure(api_key=api_key)
-    
-    num_tries = 0
-    for i in range(3):
-        try:
-            model_obj = genai.GenerativeModel(model)
-            response = model_obj.generate_content(prompt)
-            return response.text
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(5)
-    return "ERROR"
+def query_gemini(prompt, model="gemini-2.5-flash"):
+    llm = load_model(model)
+    out = llm(prompt)
+    return out if out else "ERROR"
     
 
 @cache.memoize()
-def query_openai(prompt, model="gpt-4o"):
-    with open("../API_KEY.txt", "r") as file:
-        api_key = file.read()
-    client = OpenAI(api_key=api_key)
+def query_openai(prompt, model="gpt-5-mini-2025-08-07"):
+    api_key = _load_api_key("API_KEY.txt")
+    llm = load_model(model, api_key=api_key)
+    out = llm(prompt)
+    return out if out else "ERROR"
 
-    num_tries = 0
-    for i in range(3):
-        try:
-            response = client.chat.completions.create(
-                messages=[{
-                    "role": "user",
-                    "content": prompt,
-                }],
-                model=model,
-            )
-            return response.choices[0].message.content
-        except Exception as e:
-            num_tries += 1
-            print("Try {}; Error: {}".format(str(num_tries), str(e)))     
-            time.sleep(5)
-    return "ERROR"
-
-def get_llm_generated_answer(text: str, baseline: str = "vanilla", model = "gpt-4o"):
+def get_llm_generated_answer(text: str, baseline: str = "vanilla", model = "gpt-5-mini-2025-08-07"):
     prompt = emotion_prompt.replace("[BASELINE_PROMPT", prompt_dict[baseline]).format(text)
 
     if("gpt" in model or "o1" in model):
@@ -209,7 +163,7 @@ def get_llm_generated_answer(text: str, baseline: str = "vanilla", model = "gpt-
         return None
 
     if response == "ERROR":
-        print("Error in querying OpenAI API")
+        print("Error in querying API for model: ", model)
         return None
     response_split = [e for e in response.split("\n") if (e != '' and e.split()[0] in ['Label:', 'Explanation:'])]
     llm_label = response_split[0].split("Label: ")[1].strip().lower()
@@ -224,7 +178,6 @@ def get_llm_generated_answer(text: str, baseline: str = "vanilla", model = "gpt-
 
 
 def isolate_individual_features(explanation: str, model: str = default_model):
-    
     prompt = decomposition_emotion.format(explanation)
     
     if model == default_model:
@@ -240,7 +193,6 @@ def isolate_individual_features(explanation: str, model: str = default_model):
     return claims
 
 def is_claim_relevant(text: str, rating: str, claim: str, model: str = default_model):
-    
     prompt = relevance_emotion.format(text, rating, claim)
     if model == default_model:
         response = query_openai(prompt).replace("\n\n", "\n")
@@ -261,7 +213,8 @@ def is_claim_relevant(text: str, rating: str, claim: str, model: str = default_m
     except:
         print("ERROR: Could not determine relevance")
         print(response)
-        return None, None
+        relevance = "No"
+        reasoning = "ERROR"
     return relevance, reasoning
 
 
@@ -276,174 +229,104 @@ def distill_relevant_features(example: EmotionExample, model: str = default_mode
     return relevant_claims
 
 
-def calculate_expert_alignment_score(claim: str, model: str = default_model):
+def get_claims_by_category(category: str, claims: list[str]):
     """
-    Returns: (category: Optional[str], alignment_score: {'none','partial','complete'}, reasoning: str)
-    Robust parsing that tolerates extra text, variant keys, and JSON-like outputs.
+    Args:
+        category (str): The category to find claims for.
+        claims (list[str]): A list of relevant claims.
+    Returns:
+        list[str]: A list of relevant claims that are related to the category.
     """
-    # Build + query
-    prompt = alignment_emotion.format(claim)
-    if model == default_model:
-        response = query_openai(prompt)
-    else:
-        llm = load_model(model)
-        response = llm([prompt])[0]
-
-    if not response or response == "ERROR":
+    prompt = claim_grouping_emotion.format(category, claims)
+    response = query_openai(prompt).replace("\n\n", "\n")
+    if response == "ERROR":
         print("Error in querying OpenAI API")
-        return None, "none", ""
-
-    text = str(response).strip()
-
-    # -------------------------------------------------------
-    # 1) Try JSON(-ish) first (including code fences)
-    # -------------------------------------------------------
-    def _maybe_parse_json(s: str):
-        # Strip common code fences
-        s = s.strip()
-        fence = "```"
-        if s.startswith(fence) and s.endswith(fence):
-            s = s.strip("`")
-        # Try to locate a JSON object/array substring
-        m = re.search(r"(\{.*\}|\[.*\])", s, flags=re.DOTALL)
-        if m:
-            try:
-                return json.loads(m.group(1))
-            except Exception:
-                return None
-        # Try raw full string as JSON
-        try:
-            return json.loads(s)
-        except Exception:
-            return None
-
-    parsed_json = _maybe_parse_json(text)
-
-    # Accept a few reasonable label variants
-    KEY_ALIASES = {
-        "category": {"category"},
-        "alignment": {"alignment", "category alignment", "category alignment rating", "alignment rating"},
-        "reasoning": {"reasoning", "rationale", "explanation"},
-    }
-
-    # Normalize to one of allowed alignments
-    def _norm_align(a: str) -> str:
-        if not a:
-            return "none"
-        a = a.strip().lower()
-        if "complete" in a:
-            return "complete"
-        if "partial" in a:
-            return "partial"
-        if "none" in a:
-            return "none"
-        # map a few common variants
-        if a in {"full", "fully", "yes", "aligned", "high"}:
-            return "complete"
-        if a in {"some", "part", "medium"}:
-            return "partial"
-        if a in {"no", "low", "not aligned"}:
-            return "none"
-        return "none"
-
-    def _which_field(k: str) -> str | None:
-        k_norm = k.strip().lower()
-        for field, aliases in KEY_ALIASES.items():
-            if k_norm in aliases:
-                return field
+        return None 
+    try:
+        assert "RELATED CLAIMS:" in response and "REASONING:" in response
+    except:
+        print("ERROR: Issue with claim grouping parsing")
+        print(response)
         return None
+    response = response.split("RELATED CLAIMS:")[1].strip()
+    response = response.split("\n")
+    response = [r for r in response if r.strip() != "" and r.strip() != "None"]
+    return response
 
-    category = None
-    alignment_score = "none"
-    reasoning = ""
+def group_claims_by_category(relevant_claims: list[str]):
+    """
+    Args:
+        relevant_claims (list[str]): A list of strings where each string is a relevant claim.
+    Returns:
+        dict[str, list[str]]: A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+    """
+    claims_by_category = {}
+    for category in categories_list:
+        related_claims = get_claims_by_category(category, relevant_claims)
+        if related_claims is None:
+            claims_by_category[category] = []
+            continue
+        claims_by_category[category] = related_claims
+    return claims_by_category
 
-    # -------------------------------------------------------
-    # 2) If we got JSON, try to read fields from it
-    # -------------------------------------------------------
-    if isinstance(parsed_json, dict):
-        # Flatten one level of dict if the model wrapped the result
-        cand = parsed_json
-        # Find potential keys by alias
-        for k, v in list(cand.items()):
-            field = _which_field(str(k))
-            if field == "category":
-                category = str(v).strip()
-            elif field == "alignment":
-                alignment_score = _norm_align(str(v))
-            elif field == "reasoning":
-                reasoning = str(v).strip()
+def calculate_expert_alignment_score_for_category(category: str, claims: list[str]):
+    """
+    Args:
+        category (str): The category to calculate the alignment score for.
+        claims (list[str]): A list of strings where each string is a relevant claim.
+    Returns:
+        float: The alignment score for the claims in the category.
+    """
+    prompt = category_alignment_emotion.format(category, claims)
+    response = query_openai(prompt).replace("\n\n", "\n")
+    if response == "ERROR":
+        print("Error in querying OpenAI API")
+        return None
+    response = response.split("Category Alignment Rating:")[1].strip()
+    try:
+        assert response in ["complete", "partial", "none"]
+    except:
+        print("ERROR: Issue with alignment score parsing")
+        print(response)
+        return None
+    return response
 
-    elif isinstance(parsed_json, list) and parsed_json and isinstance(parsed_json[0], dict):
-        # Take the first dict-like item
-        cand = parsed_json[0]
-        for k, v in list(cand.items()):
-            field = _which_field(str(k))
-            if field == "category":
-                category = str(v).strip()
-            elif field == "alignment":
-                alignment_score = _norm_align(str(v))
-            elif field == "reasoning":
-                reasoning = str(v).strip()
-
-    # -------------------------------------------------------
-    # 3) If still missing, parse "Key: Value" / "Key - Value" lines
-    # -------------------------------------------------------
-    if category is None or reasoning == "" or alignment_score == "none":
-        # Split into non-empty lines and normalize
-        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
-        # Regex to split "Key: Value" OR "Key - Value" (first separator only)
-        kv_re = re.compile(r"^\s*([^:\-]+)\s*[:\-]\s*(.+?)\s*$")
-
-        for ln in lines:
-            m = kv_re.match(ln)
-            if not m:
+def calculate_expert_alignment_score(claims_by_category: dict[str, list[str]]):
+    """
+    Args:
+        claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+    Returns:
+        dict[str, float]: A dictionary where the keys are the categories and the values are the alignment scores.
+    """
+    category_alignment_scores = {}
+    score_mapping = {"none": 0, "partial": 0.5, "complete": 1}
+    for category in claims_by_category.keys():
+        if len(claims_by_category[category]) == 0:
+            category_alignment_scores[category] = 0
+        else:
+            category_alignment_score = calculate_expert_alignment_score_for_category(category, claims_by_category[category])
+            if category_alignment_score is None:
+                category_alignment_scores[category] = 0
                 continue
-            key, value = m.group(1), m.group(2)
-            field = _which_field(key)
-            if field is None:
-                continue
+            category_alignment_scores[category] = score_mapping[category_alignment_score]
+    return category_alignment_scores
 
-            if field == "category" and not category:
-                category = value.strip()
-            elif field == "alignment":
-                alignment_score = _norm_align(value)
-            elif field == "reasoning" and not reasoning:
-                reasoning = value.strip()
-
-    # -------------------------------------------------------
-    # 4) Final cleanup + fuzzy category mapping
-    # -------------------------------------------------------
-    # Replace odd hyphen
-    if category:
-        category = category.replace("-", "-").strip()
-
-    # Fuzzy map to your canonical list (keep your existing logic)
-    if category:
-        try:
-            for c in categories_list:
-                if fuzz.ratio(c.lower(), category.lower()) > 90:
-                    category = c
-                    break
-            if category not in categories_list:
-                category = None
-        except Exception:
-            category = None
-
-    # Reasoning sanity: ensure it's not trivially short
-    if not reasoning or len(reasoning.strip()) < 5:
-        # Try to salvage something sensible (e.g., the first non-key line)
-        # Fallback to empty string if nothing reasonable
-        reasoning = reasoning.strip()
-
-    # Ensure alignment is one of the allowed strings
-    if alignment_score not in {"none", "partial", "complete"}:
-        alignment_score = _norm_align(alignment_score)
-
-    # Safety guard (match your original try/except intent, but non-fatal)
-    if alignment_score not in {"none", "partial", "complete"}:
-        alignment_score = "none"
-
-    return category, alignment_score, reasoning
+def make_alignment_matrix(categories, claims, claims_by_category, category_alignment_scores):
+    """
+    Args:
+        categories (list[str]): A list of all expertcategories.
+        claims (list[str]): A list of all atomic claims.
+        claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+        category_alignment_scores (dict[str, float]): A dictionary where the keys are the categories and the values are the alignment scores.
+    Returns:
+        list[list[float]]: A matrix of alignment scores for the claims in the categories.
+    """
+    matrix = np.zeros((len(claims), len(categories)))
+    for i, claim in enumerate(claims):
+        for j, category in enumerate(categories):
+            if any(fuzz.ratio(claim, c) > 90 for c in claims_by_category[category]):
+                matrix[i, j] = category_alignment_scores[category]
+    return matrix
 
 
 def load_emotion_data():
@@ -462,7 +345,7 @@ def load_emotion_data():
     return emotion_data
 
 
-def run_pipeline(emotion_data, baseline="vanilla", model="gpt-4o"):
+def run_pipeline(emotion_data, baseline="vanilla", model="gpt-5.2-pro-2025-12-11"):
     emotion_examples = []
     for idx,row in tqdm(emotion_data.iterrows()):
         label, explanation = get_llm_generated_answer(row['text'], baseline, model)
@@ -478,84 +361,33 @@ def run_pipeline(emotion_data, baseline="vanilla", model="gpt-4o"):
     for example in emotion_examples:
         example.accuracy = int(example.ground_truth == example.llm_label)
 
-    for example in emotion_examples:
+    print("----- Isolating atomic claims -----")
+    for example in tqdm(emotion_examples):
         claims = isolate_individual_features(example.llm_explanation)
         if claims is None:
             continue
         example.claims = [claim.strip() for claim in claims]
 
-    for example in emotion_examples:
+    print("----- Distilling relevant claims -----")
+    for example in tqdm(emotion_examples):
         relevant_claims = distill_relevant_features(example)
         example.relevant_claims = relevant_claims
 
-    for example in emotion_examples:
-        alignment_scores = []
-        alignment_categories = []
-        alignment_reasonings = []
-        for claim in tqdm(example.relevant_claims):
-            category, alignment_score, reasoning = calculate_expert_alignment_score(claim)
-            if category is None:
-                continue
-            alignment_scores.append(alignment_score)
-            alignment_categories.append(category)
-            alignment_reasonings.append(reasoning)
-        example.alignment_scores = alignment_scores
-        example.alignment_categories = alignment_categories
-        example.final_alignment_score = np.sum(alignment_scores)/len(example.claims)
-        example.alignment_reasonings = alignment_reasonings
+    print("----- Grouping claims by category -----")
+    for example in tqdm(emotion_examples):
+        print(example.text)
+        claims_by_category = group_claims_by_category(example.relevant_claims)
+        example.claims_by_category = claims_by_category
+
+    print("----- Calculating expert alignment scores -----")
+    for example in tqdm(emotion_examples):
+        category_alignment_scores = calculate_expert_alignment_score(example.claims_by_category)
+        example.category_alignment_scores = category_alignment_scores
+        example.alignment_matrix = make_alignment_matrix(categories_list, example.claims, example.claims_by_category, example.category_alignment_scores)
+        final_aligned_score = example.alignment_matrix.max(axis=-1).mean()
+        example.final_aligned_score = final_aligned_score
         
-    data_to_save = [example.to_dict() for example in emotion_examples]
-    with open("../results/{}/emotion_{}.json".format(baseline, model), 'w') as f:
-        json.dump(data_to_save, f, indent=4)
-
-
-def aggregate_alignment_scores(alignment_scores, total_claims):
-    score_map = {
-        "none": 0.0,
-        "partial": 0.5,
-        "complete": 1.0
-    }
-    if total_claims == 0:
-        return 0.0
-    total_score = sum([score_map[score] for score in alignment_scores])
-    return total_score / total_claims
-
-def recalculate_alignment(emotion_data, baseline="vanilla", model="gpt-4o"):
-    results_dict = {}
-    with open("../results/{}/emotion_{}.json".format(baseline, model), 'r') as f:
-        results_dict = json.load(f)
-    
-    emotion_examples = []
-    for res in results_dict:
-        example = EmotionExample(
-            text=res['text'],
-            ground_truth=res['ground_truth'],
-            llm_label=res['llm_label'],
-            llm_explanation=res['llm_explanation']
-        )
-        example.accuracy = res['accuracy']
-        example.claims = res['claims']
-        example.relevant_claims = res['relevant_claims']
-        emotion_examples.append(example)
-    
-    print("Recalculating alignment scores for {} examples: {}, {}".format(len(emotion_examples), baseline, model))
-
-    for example in emotion_examples:
-        alignment_scores = []
-        alignment_categories = []
-        alignment_reasonings = []
-        for claim in tqdm(example.relevant_claims):
-            category, alignment_score, reasoning = calculate_expert_alignment_score(claim)
-            if category is None:
-                continue
-            alignment_scores.append(alignment_score)
-            alignment_categories.append(category)
-            alignment_reasonings.append(reasoning)
-        example.alignment_scores = alignment_scores
-        example.alignment_categories = alignment_categories
-        example.alignment_reasonings = alignment_reasonings
-        example.final_alignment_score = aggregate_alignment_scores(alignment_scores, len(example.claims))
-
+    print("----- Saving results -----")
     data_to_save = [example.to_dict() for example in emotion_examples]
     with open("../results/{}/emotion_{}.json".format(baseline, model), 'w') as f:
         json.dump(data_to_save, f, indent=4)
@@ -564,26 +396,17 @@ def recalculate_alignment(emotion_data, baseline="vanilla", model="gpt-4o"):
 if __name__ == "__main__":
     emotion_data = load_emotion_data()
 
-    #model = "gemini-2.0-flash"
-    recalculate_alignment(emotion_data, baseline="vanilla", model="gemini-2.0-flash")
-    recalculate_alignment(emotion_data, baseline="cot", model="gemini-2.0-flash")
-    recalculate_alignment(emotion_data, baseline="socratic", model="gemini-2.0-flash")
-    recalculate_alignment(emotion_data, baseline="subq", model="gemini-2.0-flash")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--baseline", type=str, default="vanilla")
+    args = parser.parse_args()
+    baseline = args.baseline
+    assert baseline in ["vanilla", "cot", "socratic", "subq"]
 
-    # #model = "o1"
-    recalculate_alignment(emotion_data, baseline="vanilla", model="o1")
-    recalculate_alignment(emotion_data, baseline="cot", model="o1")
-    recalculate_alignment(emotion_data, baseline="socratic", model="o1")
-    recalculate_alignment(emotion_data, baseline="subq", model="o1")
+    run_pipeline(emotion_data, baseline=baseline, model="gpt-5.2-pro-2025-12-11")
+    run_pipeline(emotion_data, baseline=baseline, model="gpt-5-mini-2025-08-07")
+    run_pipeline(emotion_data, baseline=baseline, model="claude-opus-4-5-20251101")
+    run_pipeline(emotion_data, baseline=baseline, model="claude-haiku-4-5-20251001")
+    run_pipeline(emotion_data, baseline=baseline, model="gemini-2.5-pro")
+    run_pipeline(emotion_data, baseline=baseline, model="gemini-2.5-flash")
 
-    # #model = "claude-3-5-sonnet-latest"
-    recalculate_alignment(emotion_data, baseline="vanilla", model="claude-3-5-sonnet-latest")
-    recalculate_alignment(emotion_data, baseline="cot", model="claude-3-5-sonnet-latest")
-    recalculate_alignment(emotion_data, baseline="socratic", model="claude-3-5-sonnet-latest")
-    recalculate_alignment(emotion_data, baseline="subq", model="claude-3-5-sonnet-latest")
-
-    # #model = "gpt-4o"
-    recalculate_alignment(emotion_data, baseline="vanilla", model="gpt-4o")
-    recalculate_alignment(emotion_data, baseline="cot", model="gpt-4o")
-    recalculate_alignment(emotion_data, baseline="socratic", model="gpt-4o")
-    recalculate_alignment(emotion_data, baseline="subq", model="gpt-4o")
+    
