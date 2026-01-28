@@ -13,10 +13,19 @@ from prompts.expert_category_alignment import category_alignment_emotion
 from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, emotion_prompt
 
 from diskcache import Cache
+import functools
 
 from llms import load_model
 
-cache = Cache("/shared_data0/shreyah/llm_cache")
+cache = None  # Will be set inside main
+
+def memoize(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        if cache is None:
+            return func(*args, **kwargs)
+        return cache.memoize()(func)(*args, **kwargs)
+    return wrapper
 
 default_model = "gpt-5-mini-2025-08-07"
 
@@ -127,7 +136,7 @@ class EmotionExample:
             'final_aligned_score': self.final_aligned_score
         }
     
-@cache.memoize()
+@memoize
 def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
     api_key = _load_api_key("Anthropic_API_KEY.txt")
     llm = load_model(model, api_key=api_key)
@@ -135,14 +144,14 @@ def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
     return out if out else "ERROR"
 
 
-@cache.memoize()
+@memoize
 def query_gemini(prompt, model="gemini-2.5-flash"):
     llm = load_model(model)
     out = llm(prompt)
     return out if out else "ERROR"
     
 
-@cache.memoize()
+@memoize
 def query_openai(prompt, model="gpt-5-mini-2025-08-07"):
     api_key = _load_api_key("API_KEY.txt")
     llm = load_model(model, api_key=api_key)
@@ -394,19 +403,21 @@ def run_pipeline(emotion_data, baseline="vanilla", model="gpt-5.2-pro-2025-12-11
 
 
 if __name__ == "__main__":
-    emotion_data = load_emotion_data()
+    emotion_data = load_emotion_data().sample(100, random_state=11)
+    emotion_data = emotion_data.reset_index(drop=True)
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--baseline", type=str, default="vanilla")
+    parser.add_argument("--model", type=str, default="gpt-5.2-pro-2025-12-11")
     args = parser.parse_args()
     baseline = args.baseline
+    model = args.model
     assert baseline in ["vanilla", "cot", "socratic", "subq"]
+    assert model in ["gpt-5.2-pro-2025-12-11", "gpt-5-mini-2025-08-07", "claude-opus-4-5-20251101", "claude-haiku-4-5-20251001", "gemini-2.5-pro", "gemini-2.5-flash"]
 
-    run_pipeline(emotion_data, baseline=baseline, model="gpt-5.2-pro-2025-12-11")
-    run_pipeline(emotion_data, baseline=baseline, model="gpt-5-mini-2025-08-07")
-    run_pipeline(emotion_data, baseline=baseline, model="claude-opus-4-5-20251101")
-    run_pipeline(emotion_data, baseline=baseline, model="claude-haiku-4-5-20251001")
-    run_pipeline(emotion_data, baseline=baseline, model="gemini-2.5-pro")
-    run_pipeline(emotion_data, baseline=baseline, model="gemini-2.5-flash")
+    #set cache directory
+    cache = Cache("/shared_data0/shreyah/llm_cache/emotion/{}".format(baseline))
+
+    run_pipeline(emotion_data, baseline=baseline, model=model)
 
     

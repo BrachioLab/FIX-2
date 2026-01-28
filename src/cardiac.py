@@ -670,7 +670,7 @@ def cardiac_data_to_examples(
         )
         example.alignment_matrix = alignment_matrix
         example.final_alignment_score = alignment_matrix.max(axis=-1).mean()
-        if model in ('gemini-2.5-pro', 'gemini-2.5-flash'):
+        if explanation_model in ('gemini-2.5-pro', 'gemini-2.5-flash'):
             time.sleep(1.5)
         
 
