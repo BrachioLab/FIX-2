@@ -596,7 +596,7 @@ class LLaVAModel:
                         self.use_vllm = False
                         return self._load_transformers_model()
 
-                from vllm import LLM, SamplingParams
+                from .vllm import LLM, SamplingParams
                 if self.verbose:
                     print(f"Loading LLaVA with vLLM: {self.model_name}")
                 self.model = LLM(
