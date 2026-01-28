@@ -73654,7 +73654,7 @@
             "Connectivity of the Cosmic Web": "The claims describe a fragmented field of compact peaks and large underdense patches and note the absence of a few massive contiguous structures, which is related to the connectivity vs fragmentation idea in the category. However they never explicitly discuss filamentary connectivity linking clusters (the category's key element) and they conclude a moderate Omega_m (and emphasize sigma_8) rather than directly mapping fragmentation to a lower Omega_m. Because the core connectivity mechanism is only indirectly and incompletely addressed, the alignment is partial.",
             "Density Contrast Extremes": "The claims explicitly describe pronounced overdense peaks adjacent to extended underdense regions and directly link that high contrast to strong small-scale clustering and a higher sigma_8. This matches the category\u2019s mechanism (contrast extremes \u2192 enhanced density variance \u2192 high sigma_8) without contradiction or significant missing detail."
         },
-        "final_alignment_score": 0.8888888888888888,
+        "final_alignment_score": 0.9444444444444444,
         "mse_loss": {
             "Omega_m": 0.005554907226562499,
             "sigma_8": 0.29151562466714537
@@ -110520,7 +110520,7 @@
             "Connectivity of the Cosmic Web": "The claims clearly describe a highly interconnected, high-contrast filamentary web (coherent filaments and compact peaks), which maps directly onto the connectivity aspect of the category. However, they stop short of explicitly linking that connectivity to a higher Omega_m, instead phrasing the result as \"strong nonlinear structure\" and \"large overall lensing amplitude\" (which could instead indicate higher sigma_8). Because the mapping to a higher Omega_m is implied but not stated and the emphasis is on lensing amplitude, the match is partial.",
             "Density Contrast Extremes": "The claims explicitly describe high-contrast features (compact high-significance peaks, deep underdense regions, coherent filaments) and directly link the coexistence of bright peaks and dark voids to pronounced density fluctuations and a higher \u03c3\u2088, matching the category's mechanism. The caveat that the overall map implies a high but not extreme \u03c3\u2088 further aligns with weighing contrast amplitude."
         },
-        "final_alignment_score": 0.8571428571428571,
+        "final_alignment_score": 0.9285714285714286,
         "mse_loss": {
             "Omega_m": 0.0037563499127515046,
             "sigma_8": 0.07127441191542952

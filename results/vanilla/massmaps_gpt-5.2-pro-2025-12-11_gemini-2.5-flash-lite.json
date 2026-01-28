@@ -50509,7 +50509,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims directly address the \"pronounced contrast between dense regions and empty voids\" and link it to \"elevated sigma_8\", which perfectly aligns with the expert category's description of \"Very pronounced contrast between dense regions and empty voids ... signals an enhanced variance of the density field (high sigma_8)\". The claims also mention \"compact high-significance overdensity peaks\" and their relation to \"strong small-scale clustering\" and \"high fluctuation amplitude\", which further supports the mechanism described in the category."
         },
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.75,
         "mse_loss": {
             "Omega_m": 1.089523555725127e-05,
             "sigma_8": 0.04060776956146642
@@ -183609,7 +183609,7 @@
             "Connectivity of the Cosmic Web": "The claims mention \"strong red filamentary structure\" and \"coherent structures,\" which directly relate to the \"interconnected filament network\" described in the expert category. The claims also explicitly link these structures to the abundance of peaks and a \"moderately high matter density,\" which aligns with the category's implication of higher Omega_m for a more interconnected web. While \"moderately high\" is not as strong as \"higher,\" it aligns directionally. The claims also argue against a \"very low-\u03a9m universe,\" which is consistent with the category.",
             "Density Contrast Extremes": "The claims directly describe pronounced contrast between dense regions (high-significance overdensity peaks, frequent yellow pixels above 2.9\u03c3, strong red filamentary structure) and empty voids (extended blue underdensities). They then explicitly state that this contrast suggests a large fluctuation amplitude, which in turn points to a high sigma_8. This perfectly aligns with the expert category."
         },
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.7916666666666666,
         "mse_loss": {
             "Omega_m": 0.000971685791015626,
             "sigma_8": 0.19639440742321376
@@ -234081,7 +234081,7 @@
             "Connectivity of the Cosmic Web": "The claims directly mention \"substantial connected overdense structure\" and that the field is \"not dominated by voids,\" which aligns with the expert category's description of a \"highly interconnected filament network\" hinting at a higher Omega_m. The claims also correctly infer a \"moderate-to-high matter density \u03a9\u2098\" from this observation.",
             "Density Contrast Extremes": "The claims directly describe a pronounced contrast between red/yellow (overdense) and blue (underdense) regions, which aligns with the \"Density Contrast Extremes\" category. The claims also mention high-significance peaks and large matter fluctuations, which are explicitly linked to a high sigma_8 in the category. Finally, the claims connect the presence of overdense structure (rather than voids) to a moderate-to-high Omega_m, which is consistent with the general idea of density contrast affecting Omega_m as well."
         },
-        "final_alignment_score": 0.8181818181818182,
+        "final_alignment_score": 0.9090909090909091,
         "mse_loss": {
             "Omega_m": 0.01959453163146972,
             "sigma_8": 0.32120334188046407
@@ -321285,7 +321285,7 @@
             "Connectivity of the Cosmic Web": "The claims mention red filaments and underdense blue regions, which are components of a cosmic web. However, they do not describe the connectivity or interconnectedness of these filaments, nor do they relate the structure to Omega_m. The expert category specifically focuses on how a highly interconnected filament network (linking clusters) suggests higher Omega_m, while fragmented clumps suggest lower Omega_m. The claims do not provide this crucial information about connectivity.",
             "Density Contrast Extremes": "The claims describe a high contrast between underdense and overdense regions, specifically mentioning \"numerous overdense red filaments\" and \"multiple compact yellow peaks above the 2.9\u03c3 threshold.\" This directly aligns with the \"pronounced contrast between dense regions and empty voids\" mentioned in the expert category. The claims further elaborate on this by stating \"abundance of high-significance peaks points to a relatively high fluctuation amplitude\" and \"pronounced small-scale variation points to a relatively high fluctuation amplitude,\" which is consistent with the category's link between pronounced contrast and high sigma_8 (enhanced variance of the density field). The concluding statement about a \"moderately high S\u2088, achieved with \u03c3\u2088 around ~1.0\" also directly relates to the sigma_8 parameter."
         },
-        "final_alignment_score": 0.5833333333333334,
+        "final_alignment_score": 0.6666666666666666,
         "mse_loss": {
             "Omega_m": 0.000993727487605101,
             "sigma_8": 0.1855556788807741
@@ -325894,7 +325894,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims explicitly mention \"pronounced contrast between overdense and underdense regions\" and then directly link this pronounced contrast to a \"relatively large fluctuation amplitude\" and subsequently a \"higher \u03c3\u2088.\" This directly aligns with the expert category's description of \"very pronounced contrast between dense regions and empty voids... signals an enhanced variance of the density field (high sigma_8).\""
         },
-        "final_alignment_score": 0.7333333333333333,
+        "final_alignment_score": 0.8,
         "mse_loss": {
             "Omega_m": 0.033864626646181575,
             "sigma_8": 0.07953062295969639
@@ -335067,7 +335067,7 @@
             "Connectivity of the Cosmic Web": "The claims mention \"coherent web-like connectivity\" which directly relates to the \"highly interconnected filament network\" in the category. The category states that such a network hints at a higher Omega_m. The claim's conclusion of \"moderately high matter density\" aligns with this implication.",
             "Density Contrast Extremes": "The claims explicitly mention \"numerous high-significance peaks (yellow)\" and \"extended red filaments\", which correspond to dense regions and filaments in a weak lensing map. They also state that the \"abundance and contrast of these dense regions relative to the gray background suggest a relatively high fluctuation amplitude\" and that \"A relatively high fluctuation amplitude favors a higher sigma_8\". This directly aligns with the expert category's description of pronounced contrast between dense regions and voids signaling a high sigma_8."
         },
-        "final_alignment_score": 0.6818181818181818,
+        "final_alignment_score": 0.7272727272727273,
         "mse_loss": {
             "Omega_m": 0.003656469726562502,
             "sigma_8": 5.508458241877245e-05
@@ -339650,7 +339650,7 @@
             "Connectivity of the Cosmic Web": "The claim mentions \"connected reddish filaments\" which aligns with the \"highly interconnected filament network\" in the category. However, it relates this to \"nonlinear structure formation\" rather than directly to Omega_m. While nonlinear structure formation is influenced by Omega_m, the claim does not make the direct inference of higher Omega_m as stated in the category.",
             "Density Contrast Extremes": "The claims directly describe a pronounced contrast between dense (red-to-yellow peaks) and empty (blue underdensities) regions, which is the core concept of the \"Density Contrast Extremes\" category. The claims also explicitly link this strong contrast and the presence of numerous high-sigma overdense peaks to an \"elevated fluctuation amplitude,\" which directly corresponds to a high sigma_8 as stated in the category."
         },
-        "final_alignment_score": 0.6111111111111112,
+        "final_alignment_score": 0.7222222222222222,
         "mse_loss": {
             "Omega_m": 0.0011469867928885268,
             "sigma_8": 0.15628743378315182

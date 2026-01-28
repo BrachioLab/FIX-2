@@ -45,7 +45,11 @@ from prompts.category_mapping import category_mapping_massmaps
 from prompts.claim_grouping import claim_grouping_massmaps
 from prompts.expert_category_alignment import category_alignment_massmaps
 
-cache = Cache(os.environ.get("CACHE_DIR"))
+try:
+    cache = Cache(os.environ.get("CACHE_DIR"))
+except Exception as e:
+    print("Error in initializing cache: ", e)
+    cache = None
 
 categories_list = [name for name, _ in sorted(category_mapping_massmaps["name2id"].items(), key=lambda x: x[1])]
 
@@ -132,20 +136,6 @@ def massmap_to_pil_norm(
 
     return img
 
-@cache.memoize()
-def get_llm_output(prompt, images=None, model='gpt-4o'):
-    """
-    prompt: str
-    images: list of PIL images
-    system_prompt: str
-    """
-
-    llm = load_model(model)
-
-    result = llm([(prompt, *images)])[0]
-    # print('result: ', result)
-    # import pdb; pdb.set_trace()
-    return result
 
 _number_pat = re.compile(r"[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?")
 
@@ -161,62 +151,6 @@ def parse_float(s: str) -> float:
     if not m:
         raise ValueError(f"No numeric value found in {s!r}")
     return float(m.group())
-
-# def get_llm_generated_answer(
-#     example: list[str] | str | torch.Tensor, #Image | Timeseries,
-#     method: str = "vanilla",
-#     model: str = "gpt-4o",
-#     massmap_to_pil_norm: Callable = massmap_to_pil_norm,
-# ) -> str:
-#     """
-#     Args:
-#         example (str | Image | timeseries): The input example from which we want an LLM to generate some answer to a task,
-#           e.g., the emotion classification task.
-#     """
-
-#     if method == 'least_to_most':
-#         method = 'subq'
-
-#     if method == "vanilla":
-#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", '')
-#     elif method == "cot":
-#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", cot_baseline)
-#     elif method == "socratic":
-#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", socratic_baseline)
-#     elif method == "subq":
-#         prompt = massmaps_prompt.replace("[BASELINE_PROMPT]", least_to_most_baseline)
-#     else:
-#         raise ValueError(f"Invalid method: {method}")
-
-#     prompt = prompt.replace(
-#         '[LAST_IMAGE_NUM]',
-#         '1'
-#     )
-    
-
-#     image_pil = [massmap_to_pil_norm(example)]
-
-#     llm_response = get_llm_output(prompt, image_pil, model=model)
-
-#     response_split = [r.strip() for r in llm_response.split("\n") if r.strip() != "" \
-#         and r.strip().startswith("Explanation:") or r.strip().startswith("Prediction:")]
-#     try:
-        
-#         explanation = response_split[0].split("Explanation: ")[1].strip()
-#         answer = response_split[-1].split("Prediction: ")[1].strip()
-#         # split the answer into Omega_m and sigma_8
-#         answer = answer.split(", ")
-#         answer = {
-#             answer[0].split(": ")[0]: parse_float(answer[0].split(": ")[1]), 
-#             answer[1].split(": ")[0]: parse_float(answer[1].split(": ")[1])
-#         }
-        
-#         return answer, explanation
-#     except Exception as e:
-#         print("exception: ", e)
-#         print(f"Error in parsing response {llm_response}")
-#         import pdb; pdb.set_trace()
-#         return None, None
 
 def get_llm_generated_answer(
     image: torch.Tensor | np.ndarray | PIL.Image.Image | list[Any],
@@ -532,23 +466,70 @@ def calculate_expert_alignment_score(claims: list[str], model: str | object = "g
     return claims_by_category, category_alignment_scores, category_alignment_reasonings
 
 
-def make_alignment_matrix(claims, claims_by_category, category_alignment_scores):
+# def make_alignment_matrix(claims, claims_by_category, category_alignment_scores):
+#     """
+#     Args:
+#         # categories (list[str]): A list of all expert categories.
+#         claims (list[str]): A list of all atomic claims.
+#         claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+#         category_alignment_scores (dict[str, float]): A dictionary where the keys are the categories and the values are the alignment scores.
+#     Returns:
+#         list[list[float]]: A matrix of alignment scores for the claims in the categories.
+#     """
+#     categories = categories_list
+#     matrix = np.zeros((len(claims), len(categories)))
+#     for i, claim in enumerate(claims):
+#         for j, category in enumerate(categories):
+#             if claim in claims_by_category[category]:
+#                 matrix[i, j] = category_alignment_scores[category]
+#     return matrix
+
+def make_alignment_matrix(claims, claims_by_category, category_alignment_scores, threshold=90):
     """
     Args:
-        # categories (list[str]): A list of all expert categories.
         claims (list[str]): A list of all atomic claims.
-        claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
-        category_alignment_scores (dict[str, float]): A dictionary where the keys are the categories and the values are the alignment scores.
+        claims_by_category (dict[str, list[str]]): keys=category, values=list of claims aligned with the category.
+        category_alignment_scores (dict[str, float]): keys=category, values=alignment score.
+        threshold (int): fuzzy match threshold (exclusive), default > 90 to match original behavior.
     Returns:
-        list[list[float]]: A matrix of alignment scores for the claims in the categories.
+        np.ndarray: shape (len(claims), len(categories))
     """
-    categories = categories_list
-    matrix = np.zeros((len(claims), len(categories)))
+    from fuzzywuzzy import fuzz
+    import numpy as np
+
+    categories = categories_list  # kept as in your original code
+
+    # Optional normalization (uncomment if you want it)
+    def norm(s: str) -> str:
+        return s  # or: return s.strip("- ").lower()
+
+    # ---- 1) Precompute matches for unique claims ----
+    unique_claims = {norm(c) for c in claims}
+
+    # Map: claim -> set(categories it matches)
+    claim_match_map = {c: set() for c in unique_claims}
+
+    for category in categories:
+        cat_claims = [norm(x) for x in claims_by_category.get(category, [])]
+        if not cat_claims:
+            continue
+
+        for c in unique_claims:
+            # Match if ANY claim in that category is similar enough
+            if any(fuzz.ratio(c, cc) > threshold for cc in cat_claims):
+                claim_match_map[c].add(category)
+
+    # ---- 2) Build matrix via lookup ----
+    matrix = np.zeros((len(claims), len(categories)), dtype=float)
+
     for i, claim in enumerate(claims):
-        for j, category in enumerate(categories):
-            if claim in claims_by_category[category]:
-                matrix[i, j] = category_alignment_scores[category]
+        c = norm(claim)
+        for category in claim_match_map.get(c, ()):
+            j = categories.index(category)  # small categories => fine; see note below
+            matrix[i, j] = category_alignment_scores[category]
+
     return matrix
+
     
 def calculate_expert_alignment_scores_old(
     claims: list[str],
@@ -925,6 +906,7 @@ def aggregate_all_results(
             with open(save_path, 'wt') as output_file:
                 json.dump(all_results[method], output_file, indent=4)
             aggregated_paths.append(save_path)
+            print(f"saved {len(all_results[method])} results to {save_path}")
             if eval_model == "gpt-5-mini-2025-08-07":
                 with open(save_path2, 'wt') as output_file:
                     json.dump(all_results[method], output_file, indent=4)

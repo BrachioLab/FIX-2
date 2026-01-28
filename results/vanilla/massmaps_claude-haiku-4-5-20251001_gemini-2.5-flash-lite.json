@@ -4582,7 +4582,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims describe the presence of both positive and negative density perturbations and localized peaks reaching into a high sigma regime (>2.9\u03c3). This relates to the \"Density Contrast Extremes\" category, as pronounced peaks and voids contribute to the density contrast. However, the claims conclude \"moderate sigma_8 values because the fluctuations are present but not exceptionally pronounced,\" which directly contradicts the category's statement that \"very pronounced contrast... signals an enhanced variance of the density field (high sigma_8)\". The category implies that significant overdensities and voids (high contrast) lead to *high* sigma_8, not moderate."
         },
-        "final_alignment_score": 0.39285714285714285,
+        "final_alignment_score": 0.42857142857142855,
         "mse_loss": {
             "Omega_m": 0.013324012756347654,
             "sigma_8": 0.028351448041014957
@@ -142040,7 +142040,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims mention \"red and yellow peaks\" which can be interpreted as bright lensing peaks, and they refer to \"moderate matter density fluctuations\" and \"not heavily clustered\" distributions of high-density regions. This directly relates to the concept of contrast between dense regions and voids, and the magnitude of density fluctuations. However, the claims do not explicitly describe \"empty voids\" or a pronounced \"contrast\" between peaks and voids. The conclusion of \"moderate matter density fluctuations\" and \"not heavily clustered\" is vague and doesn't directly align with the \"enhanced variance\" (high sigma_8) or \"subdued contrast\" (lower sigma_8) implied by the expert category's emphasis on pronounced or subdued contrast."
         },
-        "final_alignment_score": 0.3181818181818182,
+        "final_alignment_score": 0.36363636363636365,
         "mse_loss": {
             "Omega_m": 0.01312188285053711,
             "sigma_8": 0.23194944841330933
@@ -265840,7 +265840,7 @@
             "Connectivity of the Cosmic Web": "The claims discuss the overall distribution of matter, mentioning a \"balanced mix of overdensities,\" \"significant peaks,\" \"somewhat clumpy but not highly concentrated,\" and a \"prevalence of blue underdensities alongside the overdensities.\" The expert category, however, specifically focuses on the *connectivity of the cosmic web*, particularly how filaments link clusters into a continuous web, and how this relates to Omega_m. The claims do not describe the presence or absence of filaments, their connectivity, or how they link clusters. Instead, they describe the general \"clumpiness\" or \"smoothness\" of the distribution, which is related to sigma_8 but not directly to the filamentary connectivity that the category emphasizes for Omega_m.",
             "Density Contrast Extremes": "The claims discuss the presence of \"significant peaks\" and \"somewhat clumpy but not highly concentrated\" spatial distribution, which relates to the density contrast. The category talks about \"pronounced contrast between dense regions and empty voids\" for high sigma_8 and \"subdued contrast\" for low sigma_8. The claims, by stating \"neither extreme clustering nor very smooth distribution\" and \"intermediate values of both Omega_m and sigma_8\", are describing a subdued contrast and therefore would imply lower sigma_8 according to the category. However, they explicitly state \"moderate to moderately-high clustering amplitude,\" which can be interpreted as moderate sigma_8. The claims do not clearly link pronounced contrast to high sigma_8 or subdued contrast to low sigma_8. They describe an intermediate scenario, which partially aligns with the concept of density contrast but doesn't fully capture the direct implications for sigma_8 as defined in the category."
         },
-        "final_alignment_score": 0.36363636363636365,
+        "final_alignment_score": 0.4090909090909091,
         "mse_loss": {
             "Omega_m": 0.024714051611465414,
             "sigma_8": 0.00039882803103012156
@@ -293331,7 +293331,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims describe the presence of both positive (red and yellow peaks) and negative (blue regions) density fluctuations. The category explicitly discusses the contrast between dense regions (bright peaks) and empty voids (dark areas). The claims mention these elements and interpret the overall picture as \"moderate matter clustering\" and \"intermediate amplitude fluctuations,\" which is consistent with \"subdued contrast\" and a lower sigma_8. The specific mention of \"yellow pixels being scattered throughout but not overwhelmingly dominant\" further supports the idea of moderate, not extreme, contrast."
         },
-        "final_alignment_score": 0.65,
+        "final_alignment_score": 0.7,
         "mse_loss": {
             "Omega_m": 0.014446911714132912,
             "sigma_8": 0.06366749933604207
@@ -330005,7 +330005,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims directly address the \"density contrast\" by mentioning \"bright yellow peaks\" and \"substantial blue (underdense) regions.\" They also explicitly state that this \"density contrast and clustering strength\" would be produced by a sigma_8 value within a specific range, which directly aligns with the category's description of how pronounced contrast signals higher sigma_8."
         },
-        "final_alignment_score": 0.4166666666666667,
+        "final_alignment_score": 0.4583333333333333,
         "mse_loss": {
             "Omega_m": 8.789051324132637e-05,
             "sigma_8": 0.05076571191251335
@@ -362078,7 +362078,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims directly address the \"Density Contrast Extremes\" by identifying \"significant high-density peaks\" (yellow pixels >2.9 sigma) and \"well-defined underdensities\" (blue pixels), which represent the contrast. The claims then explicitly state that this pattern is \"consistent with a universe having moderate-to-high clustering amplitude\" and \"suggests a cosmology with above-average sigma_8,\" which directly aligns with the category's statement that pronounced contrast signals \"high sigma_8.\""
         },
-        "final_alignment_score": 0.6153846153846154,
+        "final_alignment_score": 0.7307692307692307,
         "mse_loss": {
             "Omega_m": 0.03522219886779785,
             "sigma_8": 0.14066160559421464
@@ -380421,7 +380421,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims mention \"bright yellow peaks\" indicating \"significant overdensities\" which is topically related to \"bright lensing peaks\" in the category. The claims also mention \"not showing extremely concentrated high-density structures\" and \"not showing extremely extended high-density structures\" and \"Extremely dense clustering is not observed\" which all relate to the contrast between dense regions and voids. However, the category specifically links \"very pronounced contrast\" to high sigma_8, and subdued contrast to lower sigma_8. The claims state that the *absence* of \"extremely concentrated\" or \"extremely extended\" high-density structures indicates lower sigma_8, and that the frequency of high-significance peaks suggests *intermediate* clustering amplitude. This directly contradicts the category's assertion that pronounced contrast leads to high sigma_8. Therefore, the claims misinterpret the category's meaning."
         },
-        "final_alignment_score": 0.26666666666666666,
+        "final_alignment_score": 0.3,
         "mse_loss": {
             "Omega_m": 0.045689061225950726,
             "sigma_8": 0.1420347476542002
@@ -430816,7 +430816,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims mention \"high-significance peaks\" (yellow regions) which correspond to \"bright lensing peaks\" in the category. However, the claims describe these as \"moderate matter concentration\" and state the \"overall pattern shows neither extreme clustering nor excessive smoothness.\" This directly contradicts the category's assertion that very pronounced contrast (implying significant peaks and voids) signals a *high* sigma_8, and subdued contrast suggests a *lower* sigma_8. The claims describe a moderate situation which does not align with the extreme contrasts described in the category."
         },
-        "final_alignment_score": 0.16666666666666666,
+        "final_alignment_score": 0.2222222222222222,
         "mse_loss": {
             "Omega_m": 0.004116525650024413,
             "sigma_8": 0.021409069267195272

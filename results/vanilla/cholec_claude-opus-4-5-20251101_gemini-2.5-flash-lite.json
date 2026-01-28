@@ -721,7 +721,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7352941176470589,
+        "final_alignment_score": 0.7647058823529411,
         "safe_iou": 0.0,
         "unsafe_iou": 0.21348314606741572,
         "claims_by_category": {
@@ -6610,7 +6610,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5483870967741935,
+        "final_alignment_score": 0.5806451612903226,
         "safe_iou": 0.1794871794871795,
         "unsafe_iou": 0.4883720930232558,
         "claims_by_category": {
@@ -7184,7 +7184,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7380952380952381,
+        "final_alignment_score": 0.7619047619047619,
         "safe_iou": 0.2391304347826087,
         "unsafe_iou": 0.2926829268292683,
         "claims_by_category": {
@@ -12870,7 +12870,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5434782608695652,
+        "final_alignment_score": 0.5652173913043478,
         "safe_iou": 0.024390243902439025,
         "unsafe_iou": 0.0,
         "claims_by_category": {
@@ -15559,7 +15559,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6739130434782609,
+        "final_alignment_score": 0.6956521739130435,
         "safe_iou": 0.0,
         "unsafe_iou": 0.22807017543859648,
         "claims_by_category": {
@@ -22448,7 +22448,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5588235294117647,
+        "final_alignment_score": 0.5882352941176471,
         "safe_iou": 0.05555555555555555,
         "unsafe_iou": 0.31868131868131866,
         "claims_by_category": {
@@ -23859,7 +23859,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.5344827586206896,
         "safe_iou": 0.2564102564102564,
         "unsafe_iou": 0.5957446808510638,
         "claims_by_category": {

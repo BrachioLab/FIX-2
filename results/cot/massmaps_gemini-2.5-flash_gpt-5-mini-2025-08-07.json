@@ -335589,7 +335589,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims explicitly identify numerous high-amplitude peaks, clear contrasts between overdense (red/yellow) and underdense (blue) regions, and conclude these indicate strong structure and a large sigma_8. This directly matches the category's mechanism that pronounced density-contrast extremes imply higher sigma_8."
         },
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.7777777777777778,
         "mse_loss": {
             "Omega_m": 0.017022094726562506,
             "sigma_8": 0.011539464350790335
@@ -353966,7 +353966,7 @@
             "Connectivity of the Cosmic Web": "The claims describe many distinct, localized peaks and noticeable voids (a fragmented scene) and do not describe an interconnected filament network. Despite this, they conclude a moderate-to-high Omega_m\u2014explicitly the opposite inference the expert category prescribes (fragmentation implies lower Omega_m). Therefore the claims misinterpret or contradict the category rather than align with it.",
             "Density Contrast Extremes": "The claims explicitly identify pronounced high-significance peaks and adjacent voids, link that contrast to a large amplitude of matter fluctuations, and even note a moderation (peaks not pervasive) affecting the maximum sigma_8 \u2014 directly matching the category's mechanism and nuance."
         },
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.75,
         "mse_loss": {
             "Omega_m": 0.0015411763102747872,
             "sigma_8": 0.3251449612353463

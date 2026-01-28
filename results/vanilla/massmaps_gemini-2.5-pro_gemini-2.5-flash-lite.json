@@ -27471,7 +27471,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims describe the presence of \"deep voids\" (blue regions) and \"widespread overdensities\" with \"bright yellow pixels\" representing \"massive peaks of the density field.\" This directly aligns with the concept of \"pronounced contrast between dense regions and empty voids\" mentioned in the category. Furthermore, the claims explicitly state that the \"high frequency of bright yellow pixels\" and the \"combination of strong overall clustering and numerous extreme peaks\" suggest a \"large amplitude of matter fluctuations\" and a \"high sigma_8,\" which precisely matches the category's implication that pronounced contrast signals an enhanced variance of the density field (high sigma_8)."
         },
-        "final_alignment_score": 0.7777777777777778,
+        "final_alignment_score": 0.8888888888888888,
         "mse_loss": {
             "Omega_m": 0.01391201679767113,
             "sigma_8": 0.32164630017941864
@@ -54956,7 +54956,7 @@
             "Connectivity of the Cosmic Web": "The claims mention a \"highly structured universe\" and \"well-developed large structures,\" which aligns with the idea of an interconnected cosmic web. However, the claims directly link these structures to a \"relatively high total matter density (Omega_m)\" and \"high values for both Omega_m and sigma_8.\" The expert category specifically states that a \"highly interconnected filament network\" hints at a *higher* Omega_m, which is consistent with the claim. The claim about \"prominent, large-scale over-dense (red) and under-dense (blue) regions\" also supports the idea of a structured universe where the cosmic web would be well-developed.",
             "Density Contrast Extremes": "The claims mention both over-dense (red) and under-dense (blue) regions, and specifically call out the \"significant number of distinct, high-density peaks (yellow spots, >2.9\u03c3)\" which are indicative of high sigma_8. The category states that pronounced contrast between dense regions and voids signals high sigma_8. The claims directly support this by mentioning both dense peaks and underdense regions, and explicitly links the high-density peaks to a high sigma_8. The claim that prominent, large-scale under-dense regions suggest a high Omega_m is not directly supported by the category, but the other claims are strongly aligned."
         },
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.7,
         "mse_loss": {
             "Omega_m": 0.003383057473134288,
             "sigma_8": 0.49876150866653823
@@ -228975,7 +228975,7 @@
             "Connectivity of the Cosmic Web": "The claims directly describe a \"fragmented cosmic web with few large, contiguous structures\" and relate this to \"a low overall matter density (Omega_m)\". This is precisely the inverse scenario described in the expert category, which states that a \"highly interconnected filament network ... hints at a higher Omega_m, whereas a more fragmented scene ... is expected for a lower Omega_m.\" Therefore, the claims explicitly conclude the opposite parameter direction for Omega_m.",
             "Density Contrast Extremes": "The claims directly address the contrast between dense (yellow) and void (blue) regions and its implication for sigma_8. Specifically, the claim about the rarity of extreme high-density peaks and the conclusion of low sigma_8 directly aligns with the category's description of subdued contrast suggesting lower sigma_8."
         },
-        "final_alignment_score": 0.6875,
+        "final_alignment_score": 0.8125,
         "mse_loss": {
             "Omega_m": 0.0061340732173995605,
             "sigma_8": 0.025282234620862286
@@ -270215,7 +270215,7 @@
             "Connectivity of the Cosmic Web": "The claims describe a \"vast and well-defined network of filaments,\" which directly corresponds to the \"highly interconnected filament network\" mentioned in the expert category. Furthermore, the claims connect this observation to \"efficient and prolonged structure growth\" and a \"universe with a large total matter density,\" which aligns with the category's implication that such a network hints at a higher Omega_m.",
             "Density Contrast Extremes": "The claims directly address the \"Density Contrast Extremes\" category by stating \"extreme contrast between overdense and underdense regions\" and linking \"bright yellow peaks\" to a \"high amplitude of matter fluctuations\" which in turn indicates a \"very high sigma_8 value.\" The claims also describe the intensity of these peaks, directly aligning with the category's mention of \"bright lensing peaks.\" Finally, the claims suggest the overall structural maturity and parameter values are at the upper end, reinforcing the idea of high sigma_8."
         },
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.85,
         "mse_loss": {
             "Omega_m": 0.0621684112151619,
             "sigma_8": 0.3843758111944428
@@ -370991,7 +370991,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims directly describe the presence of both \"large, deep underdense regions (voids)\" and \"a significant number of high-density peaks (clusters)\". They then explicitly state that the \"abundance of bright yellow pixels... is a strong indicator of a high amplitude of matter fluctuations\" and \"points to a high sigma_8 value\". This is a direct match to the \"Density Contrast Extremes\" category, which links pronounced contrast (bright peaks adjacent to dark voids) to high sigma_8."
         },
-        "final_alignment_score": 0.625,
+        "final_alignment_score": 0.75,
         "mse_loss": {
             "Omega_m": 0.026026761992834546,
             "sigma_8": 0.20727392460219615
@@ -393884,7 +393884,7 @@
             "Connectivity of the Cosmic Web": "No claims provided",
             "Density Contrast Extremes": "The claims directly describe the \"pronounced contrast between dense regions and empty voids\" by mentioning \"extreme density peaks (yellow)\" and \"underdense voids (blue)\" and \"high-contrast cosmic web\". They also correctly link this pronounced contrast to an \"enhanced variance of the density field (high sigma_8)\" through the intermediary of \"high amplitude of matter fluctuations\". The claims specifically state that extreme density peaks are massive halos and that the abundance of these is a strong indicator of high sigma_8. This is a complete match to the category."
         },
-        "final_alignment_score": 0.6153846153846154,
+        "final_alignment_score": 0.7692307692307693,
         "mse_loss": {
             "Omega_m": 0.0012580322265624995,
             "sigma_8": 0.5327859349021687

@@ -4685,7 +4685,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.58,
+        "final_alignment_score": 0.62,
         "safe_iou": 0.07407407407407407,
         "unsafe_iou": 0.1323529411764706,
         "claims_by_category": {
@@ -12589,7 +12589,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.42105263157894735,
+        "final_alignment_score": 0.4473684210526316,
         "safe_iou": 0.2631578947368421,
         "unsafe_iou": 0.2898550724637681,
         "claims_by_category": {
@@ -16232,7 +16232,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7962962962962963,
+        "final_alignment_score": 0.8333333333333334,
         "safe_iou": 0.041666666666666664,
         "unsafe_iou": 0.3157894736842105,
         "claims_by_category": {
@@ -17712,7 +17712,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8611111111111112,
+        "final_alignment_score": 0.8888888888888888,
         "safe_iou": 0.34615384615384615,
         "unsafe_iou": 0.0,
         "claims_by_category": {

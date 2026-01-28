@@ -9,3 +9,4 @@ api.txt
 results/*/*v1*
 gcp-creds.json
 scripts/
+results/**/*.old.json

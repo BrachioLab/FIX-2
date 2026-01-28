@@ -119856,7 +119856,7 @@
             "Connectivity of the Cosmic Web": "The claims describe a fragmented map with many small-scale structures and lack of large-scale filaments, which is directly relevant to the connectivity-of-the-cosmic-web category. However, they stop short of the category's specific inference (fragmentation \u2192 lower Omega_m), instead concluding only \"moderate\" matter density and power. They also do not explicitly discuss filamentary links or quantify connectivity. Because the claims touch the right observables but omit the key directional conclusion and some detail, the alignment is partial.",
             "Density Contrast Extremes": "The claims explicitly describe the amplitude and symmetry of density contrasts (positive peaks and negative troughs, ~2\u20133\u03c3) and conclude a moderate power in density perturbations (moderate sigma_8). That directly addresses the category's focus on contrast extremes as the indicator of sigma_8, and the conclusion (neither high nor low) follows from the described moderate contrasts."
         },
-        "final_alignment_score": 0.8666666666666667,
+        "final_alignment_score": 0.9,
         "mse_loss": {
             "Omega_m": 0.02157226737588648,
             "sigma_8": 0.002789162674546805
@@ -212108,7 +212108,7 @@
             "Connectivity of the Cosmic Web": "The claims describe clusters, voids, and a moderate/mid-range Omega_m, which is related to the general idea that the web's morphology informs Omega_m. However they do not address the key element of this category\u2014the degree of filamentary connectivity (whether clusters are linked into a continuous network versus isolated clumps). Because the claims lack explicit discussion of filament interconnection and instead provide only general statements about clustering and balance of over-/underdensities, they only partially capture the expert category's intent.",
             "Density Contrast Extremes": "The claims explicitly identify positive and negative density fluctuations, peaks and voids, and discuss the amplitude of fluctuations\u2014so they address the density-contrast mechanism in the category. However, they repeatedly conclude only moderate (neither very high nor very low) sigma_8 and note that fluctuations are not extremely pronounced, rather than invoking the strong contrast \u2192 high sigma_8 link the category emphasizes. Thus the claims are related but lack the strong, specific connection to contrast extremes required for a complete match."
         },
-        "final_alignment_score": 0.6785714285714286,
+        "final_alignment_score": 0.7142857142857143,
         "mse_loss": {
             "Omega_m": 0.020911869614012576,
             "sigma_8": 0.021149787071720348
@@ -230570,7 +230570,7 @@
             "Connectivity of the Cosmic Web": "The claims describe overall clustering strength as moderate (neither very clumpy nor very smooth) and note a mix of voids and clusters, which is related to the category's idea that structure connectivity reflects Omega_m. However they do not address the key feature of the category\u2014the degree to which filaments interconnect clusters into a continuous web versus fragmentation\u2014nor do they describe filament network topology. Because the claims capture general clustering/fragmentation only implicitly and lack explicit filament connectivity information, the alignment is partial.",
             "Density Contrast Extremes": "The claims directly address contrasts between overdense peaks and voids (mentioning positive/negative fluctuations, yellow peaks ~2.9+\u03c3, and voids) and interpret those features in terms of clustering strength. However, they do not describe pronounced contrast that would imply high sigma_8; instead they emphasize that overdensities are not extremely dominant and conclude a moderate clustering strength. Thus the claims are relevant to the category but only partially capture its key point about extreme contrasts indicating high sigma_8."
         },
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.9166666666666666,
         "mse_loss": {
             "Omega_m": 0.0008020407753066656,
             "sigma_8": 0.0034814581392338655
