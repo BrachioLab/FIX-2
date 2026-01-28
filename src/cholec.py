@@ -272,7 +272,7 @@ def get_llm_generated_answer(
 
 def isolate_individual_features(
     explanation: str | list[str],
-    model: str = default_model,
+    model: str | object = default_model,
 ) -> list[str]:
     """
     Isolate individual features from the explanation by breaking it down into atomic claims.
@@ -304,7 +304,7 @@ def isolate_individual_features(
 def distill_relevant_features(
     example_image: PIL.Image.Image | torch.Tensor | np.ndarray,
     atomic_claims: list[str],
-    model: str = default_model,
+    model: str | object = default_model,
 ) -> list[str]:
     """
     Distill the relevant features from the atomic claims.
@@ -322,7 +322,7 @@ def distill_relevant_features(
 
     return relevant_claims
 
-def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-4o", verbose: bool = False):
+def get_claims_by_category(category: str, claims: list[str], model: str | object = "gpt-4o", verbose: bool = False):
     """
     Args:
         category (str): The category to find claims for.
@@ -389,7 +389,7 @@ def get_claims_by_category(category: str, claims: list[str], model: str = "gpt-4
         "reasoning": reasoning
     }
 
-def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", verbose: bool = False):
+def group_claims_by_category(relevant_claims: list[str], model: str | object = "gpt-4o", verbose: bool = False):
     """
     Args:
         relevant_claims (list[str]): A list of strings where each string is a relevant claim.
@@ -415,7 +415,7 @@ def group_claims_by_category(relevant_claims: list[str], model: str = "gpt-4o", 
         claims_by_category[category] = related_claims
     return claims_by_category
 
-def calculate_expert_alignment_score_for_category(category: str, claims: list[str], model: str = "gpt-4o", verbose: bool = False):
+def calculate_expert_alignment_score_for_category(category: str, claims: list[str], model: str | object = "gpt-4o", verbose: bool = False):
     """
     Args:
         category (str): The category to calculate the alignment score for.
@@ -487,7 +487,7 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
     }
 
 
-def calculate_expert_alignment_score(claims: list[str], model: str = "gpt-4o", verbose: bool = False):
+def calculate_expert_alignment_score(claims: list[str], model: str | object = "gpt-4o", verbose: bool = False):
     claims_by_category = group_claims_by_category(claims, model, verbose)
     category_alignment_scores = {}
     category_alignment_reasonings = {}
@@ -856,7 +856,7 @@ def load_and_evaluate_cholec_generation(
     overwrite_existing: bool = False,
     num_samples: int = 100,
     debug: bool = False,
-    eval_model: str = "gpt-5-mini-2025-08-07",
+    eval_model: str | object = "gpt-5-mini-2025-08-07",
 ) -> list[CholecExample]:
     """
     Loads and evaluates the cholec generation pipeline.
@@ -880,7 +880,10 @@ def load_and_evaluate_cholec_generation(
             data = json.load(input_file)
         all_results.append(data)
 
-    save_dir = root_dir / "notebooks" / f"_dump/cholec/final/{model}/{method}/eval.{eval_model}"
+    eval_model_obj = load_model(eval_model)
+    eval_model_name = getattr(eval_model_obj, "model_name", str(eval_model))
+    eval_model_dirname = eval_model_name.replace("/", "_")
+    save_dir = root_dir / "notebooks" / f"_dump/cholec/final/{model}/{method}/eval.{eval_model_dirname}"
     os.makedirs(save_dir, exist_ok=True)
     for idx in tqdm(range(len(all_results))):
         if idx >= num_samples:
@@ -910,7 +913,7 @@ def load_and_evaluate_cholec_generation(
             llm_unsafe_list=example_dict["llm_unsafe_list"],
         )
 
-        claims = isolate_individual_features(example.llm_explanation, model=eval_model)
+        claims = isolate_individual_features(example.llm_explanation, model=eval_model_obj)
         if claims is None:
             continue
         example.all_claims = [claim.strip() for claim in claims]
@@ -918,13 +921,13 @@ def load_and_evaluate_cholec_generation(
         relevant_claims = distill_relevant_features(
             example.image,
             example.all_claims,
-            model=eval_model,
+            model=eval_model_obj,
         )
         example.relevant_claims = relevant_claims
 
         claims_by_category, category_alignment_scores, category_alignment_reasonings = calculate_expert_alignment_score(
             relevant_claims,
-            eval_model,
+            eval_model_obj,
         )
 
         example.claims_by_category = claims_by_category

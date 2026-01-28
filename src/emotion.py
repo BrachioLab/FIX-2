@@ -13,14 +13,22 @@ from prompts.expert_category_alignment import category_alignment_emotion
 from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, emotion_prompt
 
 from diskcache import Cache
+import functools
 
 from llms import load_model
 
-cache = Cache("/shared_data0/shreyah/llm_cache")
+cache = None  # Will be set inside main
+
+def memoize(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        if cache is None:
+            return func(*args, **kwargs)
+        return cache.memoize()(func)(*args, **kwargs)
+    return wrapper
 
 default_model = "gpt-5-mini-2025-08-07"
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/shreyah/FIX-2/gcp-creds.json"
 
 def _load_api_key(filename: str) -> str:
     path = os.path.join(os.path.dirname(__file__), "..", filename)
@@ -127,7 +135,7 @@ class EmotionExample:
             'final_aligned_score': self.final_aligned_score
         }
     
-@cache.memoize()
+@memoize
 def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
     api_key = _load_api_key("Anthropic_API_KEY.txt")
     llm = load_model(model, api_key=api_key)
@@ -135,14 +143,14 @@ def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
     return out if out else "ERROR"
 
 
-@cache.memoize()
+@memoize
 def query_gemini(prompt, model="gemini-2.5-flash"):
     llm = load_model(model)
     out = llm(prompt)
     return out if out else "ERROR"
     
 
-@cache.memoize()
+@memoize
 def query_openai(prompt, model="gpt-5-mini-2025-08-07"):
     api_key = _load_api_key("API_KEY.txt")
     llm = load_model(model, api_key=api_key)
@@ -229,7 +237,7 @@ def distill_relevant_features(example: EmotionExample, model: str = default_mode
     return relevant_claims
 
 
-def get_claims_by_category(category: str, claims: list[str]):
+def get_claims_by_category(category: str, claims: list[str], model: str = default_model):
     """
     Args:
         category (str): The category to find claims for.
@@ -238,7 +246,11 @@ def get_claims_by_category(category: str, claims: list[str]):
         list[str]: A list of relevant claims that are related to the category.
     """
     prompt = claim_grouping_emotion.format(category, claims)
-    response = query_openai(prompt).replace("\n\n", "\n")
+    if model == default_model:
+        response = query_openai(prompt).replace("\n\n", "\n")
+    else:
+        llm = load_model(model)
+        response = llm([prompt])[0]
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None 
@@ -253,7 +265,7 @@ def get_claims_by_category(category: str, claims: list[str]):
     response = [r for r in response if r.strip() != "" and r.strip() != "None"]
     return response
 
-def group_claims_by_category(relevant_claims: list[str]):
+def group_claims_by_category(relevant_claims: list[str], model: str = default_model):
     """
     Args:
         relevant_claims (list[str]): A list of strings where each string is a relevant claim.
@@ -262,14 +274,14 @@ def group_claims_by_category(relevant_claims: list[str]):
     """
     claims_by_category = {}
     for category in categories_list:
-        related_claims = get_claims_by_category(category, relevant_claims)
+        related_claims = get_claims_by_category(category, relevant_claims, model=model)
         if related_claims is None:
             claims_by_category[category] = []
             continue
         claims_by_category[category] = related_claims
     return claims_by_category
 
-def calculate_expert_alignment_score_for_category(category: str, claims: list[str]):
+def calculate_expert_alignment_score_for_category(category: str, claims: list[str], model: str = default_model):
     """
     Args:
         category (str): The category to calculate the alignment score for.
@@ -278,7 +290,11 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
         float: The alignment score for the claims in the category.
     """
     prompt = category_alignment_emotion.format(category, claims)
-    response = query_openai(prompt).replace("\n\n", "\n")
+    if model == default_model:
+        response = query_openai(prompt).replace("\n\n", "\n")
+    else:
+        llm = load_model(model)
+        response = llm([prompt])[0]
     if response == "ERROR":
         print("Error in querying OpenAI API")
         return None
@@ -291,7 +307,7 @@ def calculate_expert_alignment_score_for_category(category: str, claims: list[st
         return None
     return response
 
-def calculate_expert_alignment_score(claims_by_category: dict[str, list[str]]):
+def calculate_expert_alignment_score(claims_by_category: dict[str, list[str]], model: str = default_model):
     """
     Args:
         claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
@@ -304,7 +320,7 @@ def calculate_expert_alignment_score(claims_by_category: dict[str, list[str]]):
         if len(claims_by_category[category]) == 0:
             category_alignment_scores[category] = 0
         else:
-            category_alignment_score = calculate_expert_alignment_score_for_category(category, claims_by_category[category])
+            category_alignment_score = calculate_expert_alignment_score_for_category(category, claims_by_category[category], model=model)
             if category_alignment_score is None:
                 category_alignment_scores[category] = 0
                 continue
@@ -394,19 +410,23 @@ def run_pipeline(emotion_data, baseline="vanilla", model="gpt-5.2-pro-2025-12-11
 
 
 if __name__ == "__main__":
-    emotion_data = load_emotion_data()
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/shreyah/FIX-2/gcp-creds.json"
+
+    emotion_data = load_emotion_data().sample(100, random_state=11)
+    emotion_data = emotion_data.reset_index(drop=True)
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--baseline", type=str, default="vanilla")
+    parser.add_argument("--model", type=str, default="gpt-5.2-pro-2025-12-11")
     args = parser.parse_args()
     baseline = args.baseline
+    model = args.model
     assert baseline in ["vanilla", "cot", "socratic", "subq"]
+    assert model in ["gpt-5.2-pro-2025-12-11", "gpt-5-mini-2025-08-07", "claude-opus-4-5-20251101", "claude-haiku-4-5-20251001", "gemini-2.5-pro", "gemini-2.5-flash"]
 
-    run_pipeline(emotion_data, baseline=baseline, model="gpt-5.2-pro-2025-12-11")
-    run_pipeline(emotion_data, baseline=baseline, model="gpt-5-mini-2025-08-07")
-    run_pipeline(emotion_data, baseline=baseline, model="claude-opus-4-5-20251101")
-    run_pipeline(emotion_data, baseline=baseline, model="claude-haiku-4-5-20251001")
-    run_pipeline(emotion_data, baseline=baseline, model="gemini-2.5-pro")
-    run_pipeline(emotion_data, baseline=baseline, model="gemini-2.5-flash")
+    #set cache directory
+    cache = Cache("/shared_data0/shreyah/llm_cache/emotion/{}".format(baseline))
+
+    run_pipeline(emotion_data, baseline=baseline, model=model)
 
     
