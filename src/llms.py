@@ -596,7 +596,7 @@ class LLaVAModel:
                         self.use_vllm = False
                         return self._load_transformers_model()
 
-                from .vllm import LLM, SamplingParams
+                from vllm import LLM, SamplingParams
                 if self.verbose:
                     print(f"Loading LLaVA with vLLM: {self.model_name}")
                 self.model = LLM(
@@ -764,6 +764,7 @@ class QwenVLModel:
         verbose: bool = True,
         use_vllm: bool = True,
         device: str = "cuda",
+        max_model_len: int = 8192,
     ):
         self.model_name = model_name
         self.num_tries_per_request = num_tries_per_request
@@ -774,6 +775,7 @@ class QwenVLModel:
         self.verbose = verbose
         self.use_vllm = use_vllm
         self.device = device
+        self.max_model_len = max_model_len
         self._load_model()
 
     def _load_model(self):
@@ -785,7 +787,7 @@ class QwenVLModel:
                 self.model = LLM(
                     model=self.model_name,
                     dtype="auto",
-                    max_model_len=8192,
+                    max_model_len=self.max_model_len,
                     trust_remote_code=True,
                     limit_mm_per_prompt={"image": 10},
                 )
