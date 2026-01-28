@@ -16,7 +16,17 @@ from prompts.expert_category_alignment import category_alignment_politeness
 from prompts.explanations import vanilla_baseline, cot_baseline, socratic_baseline, least_to_most_baseline, politeness_prompt
 
 from diskcache import Cache
-cache = Cache("/shared_data0/shreyah/llm_cache")
+import functools
+cache = None  # Will be set inside main
+
+
+def memoize(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        if cache is None:
+            return func(*args, **kwargs)
+        return cache.memoize()(func)(*args, **kwargs)
+    return wrapper
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/shreyah/FIX-2/gcp-creds.json"
 
@@ -98,21 +108,21 @@ class PolitenessExample:
         }
 
 
-@cache.memoize()
+@memoize
 def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
     api_key = _load_api_key("Anthropic_API_KEY.txt")
     llm = load_model(model, api_key=api_key)
     out = llm(prompt)
     return out if out else "ERROR"
 
-@cache.memoize()
+@memoize
 def query_gemini(prompt, model="gemini-2.5-flash"):
     #make sur
     llm = load_model(model)
     out = llm(prompt)
     return out if out else "ERROR"
 
-@cache.memoize()
+@memoize
 def query_openai(prompt, model="gpt-5-mini-2025-08-07"):
     api_key = _load_api_key("API_KEY.txt")
     llm = load_model(model, api_key=api_key)
@@ -364,7 +374,7 @@ def load_politeness_data():
             politeness_data = politeness_data['train'].to_pandas()
             politeness_data = politeness_data[politeness_data['language'] == lang]
             politeness_data = politeness_data[np.round(politeness_data['politeness']) == cls]
-            politeness_data = politeness_data.sample(6, random_state=11).reset_index(drop=True)
+            politeness_data = politeness_data.sample(5, random_state=11).reset_index(drop=True)
             sampled_data = pd.concat([sampled_data, politeness_data], ignore_index=True)
     sampled_data = sampled_data.reset_index(drop=True)
     return sampled_data
@@ -442,13 +452,14 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--baseline", type=str, default="vanilla")
+    parser.add_argument("--model", type=str, default="gpt-5.2-pro-2025-12-11")
     args = parser.parse_args()
     baseline = args.baseline
+    model = args.model
     assert baseline in ["vanilla", "cot", "socratic", "subq"]
+    assert model in ["gpt-5.2-pro-2025-12-11", "gpt-5-mini-2025-08-07", "claude-opus-4-5-20251101", "claude-haiku-4-5-20251001", "gemini-2.5-pro", "gemini-2.5-flash"]
 
-    run_pipeline(politeness_data, baseline=baseline, model="gpt-5.2-pro-2025-12-11")
-    run_pipeline(politeness_data, baseline=baseline, model="gpt-5-mini-2025-08-07")
-    run_pipeline(politeness_data, baseline=baseline, model="claude-opus-4-5-20251101")
-    run_pipeline(politeness_data, baseline=baseline, model="claude-haiku-4-5-20251001")
-    run_pipeline(politeness_data, baseline=baseline, model="gemini-2.5-pro")
-    run_pipeline(politeness_data, baseline=baseline, model="gemini-2.5-flash")
+    #set cache directory
+    cache = Cache("/shared_data0/shreyah/llm_cache/politeness/{}".format(baseline))
+
+    run_pipeline(politeness_data, baseline=baseline, model=model)
