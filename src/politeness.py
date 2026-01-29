@@ -117,7 +117,6 @@ def query_anthropic(prompt, model="claude-haiku-4-5-20251001"):
 
 @memoize
 def query_gemini(prompt, model="gemini-2.5-flash"):
-    #make sur
     llm = load_model(model)
     out = llm(prompt)
     return out if out else "ERROR"
@@ -153,11 +152,11 @@ def get_llm_generated_answer(utterance: str, baseline: str = "vanilla", model: s
         response = query_gemini(prompt, model=model).replace("\n\n", "\n")
     else:
         print("ERROR: Model not supported")
-        return None
+        return None, None
 
     if response == "ERROR":
         print("Error in querying API for model: ", model)
-        return None
+        return None, None
     
     match = re.search(r"Rating: (.*)\nExplanation: (.*)", response)
     if not match:
