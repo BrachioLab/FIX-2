@@ -1741,8 +1741,8 @@
         "model2": "gemini-2.5-flash-lite",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.09067882934059406,
-            "bootstrap_std": 0.014789200139133304,
+            "mean": 0.7510474860107211,
+            "bootstrap_std": 0.02356242472892057,
             "n": 100
           },
           "accuracy": {
@@ -1758,8 +1758,8 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.1615741341991342,
-            "bootstrap_std": 0.02160228178652625,
+            "mean": 0.8073382034632034,
+            "bootstrap_std": 0.02164575606224502,
             "n": 100
           },
           "accuracy": {
@@ -1894,14 +1894,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.10143956043956043,
-            "bootstrap_std": 0.017008187993928805,
-            "n": 100
+            "mean": 0.6111111111111112,
+            "bootstrap_std": 0.258467832496135,
+            "n": 3
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 100
+            "n": 3
           }
         },
         "file": "results/vanilla/emotion_gemini-2.5-flash_qwen2.5-vl.json"
@@ -1945,14 +1945,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.09645238095238096,
-            "bootstrap_std": 0.018057460857683002,
-            "n": 100
+            "mean": 0.5982142857142857,
+            "bootstrap_std": 0.25040407720922886,
+            "n": 3
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 100
+            "n": 3
           }
         },
         "file": "results/vanilla/emotion_gemini-2.5-pro_qwen2.5-vl.json"
@@ -2030,14 +2030,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.16995238095238097,
-            "bootstrap_std": 0.02591164972857348,
-            "n": 100
+            "mean": 0.9,
+            "bootstrap_std": 0.0814382722814783,
+            "n": 3
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 100
+            "n": 3
           }
         },
         "file": "results/vanilla/emotion_gpt-5-mini-2025-08-07_qwen2.5-vl.json"
@@ -2064,8 +2064,8 @@
         "model2": "gemini-2.5-flash-lite",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.12085070485070486,
-            "bootstrap_std": 0.01909350464534059,
+            "mean": 0.7288478327228327,
+            "bootstrap_std": 0.019468652786151917,
             "n": 100
           },
           "accuracy": {
@@ -2081,14 +2081,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.15314285714285714,
-            "bootstrap_std": 0.019953950654701253,
-            "n": 100
+            "mean": 0.6666666666666666,
+            "bootstrap_std": 0.2784226748174782,
+            "n": 3
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 100
+            "n": 3
           }
         },
         "file": "results/vanilla/emotion_gpt-5.2-pro-2025-12-11_qwen2.5-vl.json"
