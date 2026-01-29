@@ -438,7 +438,7 @@ def run_pipeline(politeness_data, baseline="vanilla", model="gpt-5.2-pro-2025-12
         example.category_alignment_scores = category_alignment_scores
         example.alignment_matrix = make_alignment_matrix(categories_list, example.claims, example.claims_by_category, example.category_alignment_scores)
         final_aligned_score = example.alignment_matrix.max(axis=-1).mean()
-        example.final_aligned_score = final_aligned_score
+        example.final_alignment_score = final_aligned_score
     
     print("----- Saving results -----")
     data_to_save = [example.to_dict() for example in politeness_examples]
