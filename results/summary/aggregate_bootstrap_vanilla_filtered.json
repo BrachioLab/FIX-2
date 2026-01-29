@@ -1690,9 +1690,9 @@
         "model2": "gpt-5-mini-2025-08-07",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.5328408446712017,
+            "bootstrap_std": 0.015082406346682441,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.24107142857142858,
@@ -1707,9 +1707,9 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.5648472930839002,
+            "bootstrap_std": 0.01990750435774706,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.0,
@@ -1826,9 +1826,9 @@
         "model2": "gpt-5-mini-2025-08-07",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.49497413548752833,
+            "bootstrap_std": 0.017144581970658882,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.22321428571428573,
@@ -1843,9 +1843,9 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.5668483302411874,
+            "bootstrap_std": 0.022096487362090363,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.0,
@@ -1962,9 +1962,9 @@
         "model2": "gpt-5-mini-2025-08-07",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.4938206015214943,
+            "bootstrap_std": 0.017625466991041852,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.25892857142857145,
@@ -1979,9 +1979,9 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.5791542658730159,
+            "bootstrap_std": 0.02265597515601697,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.0,
@@ -2098,9 +2098,9 @@
         "model2": "gpt-5-mini-2025-08-07",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.5209289965986394,
+            "bootstrap_std": 0.015845576066125626,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.30357142857142855,
@@ -2115,9 +2115,9 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": null,
-            "bootstrap_std": null,
-            "n": 0
+            "mean": 0.5669161319830963,
+            "bootstrap_std": 0.02423722434005516,
+            "n": 112
           },
           "accuracy": {
             "mean": 0.0,
