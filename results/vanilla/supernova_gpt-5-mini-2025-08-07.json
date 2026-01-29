@@ -3729,7 +3729,7 @@
             "Secondary maxima": "No claims were provided to evaluate against the category, so there is no information that could align with or address the presence or absence of filter\u2011specific secondary maxima.",
             "Monotonic flux trends": "The category concerns locally smooth, monotonic trends (plateaus or linear decays) that characterize single\u2011event SN II light\u2011curve evolution. The claims instead describe repeated, long\u2011period, large\u2011amplitude, roughly periodic maxima (Mira/long\u2011period pulsator behavior) and explicitly state the absence of a single transient peak and inconsistency with a supernova. This is the opposite of the monotonic, single\u2011event behavior the category addresses, so the claims do not align."
         },
-        "final_alignment_score": 0.9285714285714286,
+        "final_alignment_score": 1.0,
         "accuracy": 0
     },
     {
@@ -4261,7 +4261,7 @@
             "Secondary maxima": "The claims describe fast decline, red/near\u2011IR dominance at peak, subluminous behavior, and identification with 1991bg\u2011like SNe Ia. These properties are relevant to distinguishing SN subtypes and are indirectly related to the secondary\u2011maximum topic because 1991bg\u2011like, fast\u2011declining events typically differ from normal SNe Ia in their red/IR morphology (often lacking a prominent secondary maximum). However, the claims do not explicitly mention the presence or absence of filter\u2011specific secondary maxima or directly address that diagnostic feature. Therefore they only partially capture the intent of the category.",
             "Monotonic flux trends": "The claims do describe a single transient with a rapid, monotonic decline and return to baseline and mention color (red), which are relevant to identifying monotonic flux trends. However they do not address the specific monotonic morphologies emphasized by the category (e.g., plateaus vs linear decays across bands) nor do they focus on distinguishing SN II\u2011P vs SN II\u2011L; several claims instead point toward a fast\u2011declining 1991bg\u2011like Type Ia and rule out microlensing/repeating variability. Thus the set only partially captures the category's intent."
         },
-        "final_alignment_score": 0.84375,
+        "final_alignment_score": 0.90625,
         "accuracy": 0
     },
     {

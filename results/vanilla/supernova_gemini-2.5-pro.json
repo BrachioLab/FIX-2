@@ -1147,7 +1147,7 @@
             "Secondary maxima": "The claims describe a single, very short flare and note that supernovae are longer-lived, which implies the absence of multi-peaked/secondary features. However, they do not mention filter\u2011specific or red/near\u2011IR secondary maxima or explicitly address the presence/absence of a secondary peak; key details of the category (wavelength dependence and a distinct secondary maximum/shoulder) are missing. Therefore the alignment is partial.",
             "Monotonic flux trends": "The claims describe a short, rapid flare on an otherwise quiescent baseline and note that supernovae are longer\u2014this touches on duration-based discrimination relevant to the category. However, they do not describe locally smooth, monotonic behaviors (plateaus or linear decays) that the category focuses on for distinguishing SN II\u2011P/II\u2011L. Because the claims partially relate by contrasting durations but fail to capture the key monotonic trend features, the alignment is partial."
         },
-        "final_alignment_score": 0.4666666666666667,
+        "final_alignment_score": 0.5333333333333333,
         "accuracy": 0
     },
     {

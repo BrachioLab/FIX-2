@@ -4599,7 +4599,7 @@
             "Secondary maxima": "No claims were provided to assess against the category, so there is nothing that can align with or capture the concept of filter\u2011specific secondary maxima.",
             "Monotonic flux trends": "No claims were provided to evaluate against the category, so there is no information that could align with the expert concept of locally smooth, monotonic flux trends."
         },
-        "final_alignment_score": 0.8571428571428571,
+        "final_alignment_score": 0.8928571428571429,
         "accuracy": 0
     },
     {
@@ -6473,7 +6473,7 @@
             "Secondary maxima": "The claims describe multi\u2011band, correlated, periodic oscillations characteristic of RR Lyrae and explicitly argue against a supernova origin. They do not mention filter\u2011specific secondary maxima or red/near\u2011IR shoulders (the defining feature of the category) and in fact contradict the SNe\u2011Ia interpretation by ruling out supernovae. Therefore they do not align with the category.",
             "Monotonic flux trends": "The claims describe short\u2011period, periodic oscillations with modest amplitudes and multi\u2011band correlated variability\u2014features characteristic of pulsating variables (e.g., RR Lyrae) and explicitly non\u2011monotonic. The expert category concerns locally smooth, monotonic flux trends (plateaus or linear decays) used to identify SN II\u2011P/II\u2011L and similar transients. The claims therefore contradict the category's core concept and do not capture its intent."
         },
-        "final_alignment_score": 0.28125,
+        "final_alignment_score": 0.34375,
         "accuracy": 0
     },
     {

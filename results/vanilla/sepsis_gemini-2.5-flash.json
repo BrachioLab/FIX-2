@@ -230,7 +230,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims reference manifestations that map onto SOFA components\u2014hypoxemia (respiratory/PaO\u2082/FiO\u2082) and coagulopathy (platelet/coagulation)\u2014and suggest organ dysfunction, but they lack specific measured values or thresholds (e.g., PaO\u2082/FiO\u2082, platelet count, creatinine, bilirubin, or GCS) and do not confirm a \u22652\u2011point SOFA increase. Because they are relevant but nonspecific, the alignment is partial.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided to indicate administration of antibiotics or drawing of blood cultures within the first 2 hours. Without any evidence of early antibiotic/culture orders, the set of claims does not support this category."
         },
-        "final_alignment_score": 0.575,
+        "final_alignment_score": 0.6,
         "accuracy": 0
     },
     {
@@ -1448,7 +1448,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims or data are provided that reference any SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS, etc.) or indicate a \u22652\u2011point increase. Therefore nothing supports the category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided to indicate administration of antibiotics or drawing of blood cultures within the first 2 hours. Without any evidence of early antibiotic/culture orders, the set of claims does not support this category."
         },
-        "final_alignment_score": 0.7333333333333333,
+        "final_alignment_score": 0.8,
         "accuracy": 0
     },
     {
@@ -7428,7 +7428,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims speak to the absence of organ dysfunction (normal BP and vitals, no clear organ dysfunction on presentation), which is related to the SOFA increase concept, but they provide no specific SOFA component measurements (PaO2/FiO2, platelets, bilirubin, creatinine, GCS) or quantitative evidence needed to confirm or refute a \u22652\u2011point SOFA rise. Thus they only partially address the category and lack the required detail.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided to indicate administration of antibiotics or drawing of blood cultures within the first 2 hours. Without any evidence of early antibiotic/culture orders, the set of claims does not support this category."
         },
-        "final_alignment_score": 0.34375,
+        "final_alignment_score": 0.4375,
         "accuracy": 1
     },
     {
@@ -8007,7 +8007,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims provide specific SOFA-relevant findings: platelet count 40 K/\u00b5L (well below the <100\u00d710^9/L threshold) and total bilirubin 16.6 mg/dL (far above the >2 mg/dL threshold), and they describe persistent hypotension despite fluids consistent with cardiovascular SOFA dysfunction. These concrete lab values and clinical signs directly satisfy SOFA component criteria for \u22652\u2011point organ dysfunction.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided to indicate administration of antibiotics or drawing of blood cultures within the first 2 hours. Without any evidence of early antibiotic/culture orders, the set of claims does not support this category."
         },
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.7727272727272727,
         "accuracy": 1
     },
     {
@@ -9003,7 +9003,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims or data are provided that reference any SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS, etc.) or indicate a \u22652\u2011point increase. Therefore nothing supports the category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided to indicate administration of antibiotics or drawing of blood cultures within the first 2 hours. Without any evidence of early antibiotic/culture orders, the set of claims does not support this category."
         },
-        "final_alignment_score": 0.3333333333333333,
+        "final_alignment_score": 0.4166666666666667,
         "accuracy": 1
     },
     {

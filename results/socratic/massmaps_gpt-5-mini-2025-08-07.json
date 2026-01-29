@@ -114954,7 +114954,7 @@
             "Connectivity of the Cosmic Web": "The claims discuss the balance of overdense peaks versus voids and infer a moderate matter density, which is related to the same physical idea as connectivity (more connected filaments \u2192 higher Omega_m). However, they focus on counts and isolated high-significance peaks and underdensities rather than explicitly describing a highly interconnected filament network or clusters linked by filaments. The use of \"isolated\" peaks and lack of explicit filament/connectivity descriptions means the claims only partially capture the expert category's intent.",
             "Density Contrast Extremes": "The claims explicitly identify high-significance overdense peaks (red/yellow >2.9\u03c3) and sizable underdense (blue) regions, discuss their balance, and conclude this implies fairly strong (though not extreme) clustering. This directly matches the category's focus on pronounced density contrasts indicating higher sigma_8, so the alignment is complete."
         },
-        "final_alignment_score": 0.7727272727272727,
+        "final_alignment_score": 0.8636363636363636,
         "mse_loss": {
             "Omega_m": 0.004347755478322647,
             "sigma_8": 0.09912660192698297

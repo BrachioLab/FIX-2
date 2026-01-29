@@ -262698,7 +262698,7 @@
             "Connectivity of the Cosmic Web": "The claims explicitly describe well-defined peaks and filamentary connections between overdensities and interpret this as evidence for a substantial matter component. That directly matches the category\u2019s diagnostic linking a highly interconnected filament network to a higher Omega_m.",
             "Density Contrast Extremes": "The claims explicitly identify high-amplitude lensing peaks (>2.9\u03c3), accompanying underdense (blue) regions, and well-defined contrast/filamentary structure, and they infer a mid-to-high sigma_8 (\u22480.85\u20130.95). This directly matches the category\u2019s mechanism that pronounced peak\u2013void contrast signals enhanced density variance (high sigma_8), so the claims fully capture the category."
         },
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.6666666666666666,
         "mse_loss": {
             "Omega_m": 0.0344566384121776,
             "sigma_8": 0.007385249808431236

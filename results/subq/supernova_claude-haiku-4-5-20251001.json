@@ -3063,7 +3063,7 @@
             "Secondary maxima": "The claims describe achromatic, regular, repeating variability (similar amplitudes/phases across wavelengths) and explicitly rule out transient-like dramatic rises/decays. That implies the absence of filter\u2011specific red/near\u2011IR secondary maxima, but they do not specifically mention or evaluate secondary maxima/shoulders in red/near\u2011IR bands as the category requires. They focus on periodic stellar variability (e.g., RR Lyrae) rather than directly addressing the presence or diagnostic role of secondary maxima in SNe Ia.",
             "Monotonic flux trends": "The claims partly touch the category\u2014statements that the amplitude is inconsistent with dramatic transient rises/decays and that bands show correlated, similarly phased/amplitude variability relate to multi\u2011band, smooth behaviors rather than explosive transients. However several claims describe a regular, repeating pattern and explicitly rule out transients; periodic or repeating variability is not the same as the \u201clocally smooth, monotonic\u201d plateaus/linear decays the category targets. Because the set mixes relevant points about lack of transient-like rises/decays with off\u2011target emphasis on periodicity, the alignment is partial."
         },
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.53125,
         "accuracy": 0
     },
     {
@@ -5359,7 +5359,7 @@
             "Secondary maxima": "No claims were provided to assess against the category. Without any statements about filter\u2011specific secondary maxima or related red/near\u2011IR features, there is nothing that can align with the expert category.",
             "Monotonic flux trends": "The claims describe a rapid rise followed by a slower decline, which matches the idea of monotonic rise/decay segments. However, describing the behavior as \"sawtooth\u2011like\" implies repeated, non\u2011smooth oscillations rather than the locally smooth, plateau or linear monotonic trends emphasized by the category. Thus the claims only partially capture the category's intent."
         },
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.5625,
         "accuracy": 0
     },
     {
@@ -6889,7 +6889,7 @@
             "Secondary maxima": "No claims were provided to assess against the category. Without any statements about filter\u2011specific secondary maxima or related red/near\u2011IR features, there is nothing that can align with the expert category.",
             "Monotonic flux trends": "The claims describe clear periodic behavior (dips, multi\u2011wavelength periodicity, eclipsing binaries) and explicitly rule out single\u2011event transients. This is fundamentally different from the category\u2019s focus on locally smooth, monotonic trends (plateaus or linear decays) used to characterize supernovae classes. The claims do not address monotonic flux evolution and in fact contradict the category\u2019s intent."
         },
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.7222222222222222,
         "accuracy": 0
     },
     {
@@ -10115,7 +10115,7 @@
             "Secondary maxima": "The claims describe uniform phasing/amplitude across wavelengths and associate this with RR Lyrae behavior, which is the opposite of the category's focus on filter\u2011specific (red/near\u2011IR) secondary maxima that differ between bands and are diagnostic of SNe Ia. They do not reference or support wavelength\u2011dependent secondary bumps and instead point to a different variable-star morphology, so they do not align with the category.",
             "Monotonic flux trends": "The claim refers to consistency in timing (phasing) across wavelengths, which is related to multi-band behavior, but it does not describe the core elements of the category\u2014locally smooth, monotonic trends such as plateaus or linear decays. It omits mention of monotonicity, smoothness, or the specific trend shapes that distinguish SN II\u2011P/II\u2011L, so it only partially aligns."
         },
-        "final_alignment_score": 0.07894736842105263,
+        "final_alignment_score": 0.10526315789473684,
         "accuracy": 0
     },
     {
@@ -10194,7 +10194,7 @@
             "Secondary maxima": "The claims describe uniform phasing/amplitude across wavelengths and associate this with RR Lyrae behavior, which is the opposite of the category's focus on filter\u2011specific (red/near\u2011IR) secondary maxima that differ between bands and are diagnostic of SNe Ia. They do not reference or support wavelength\u2011dependent secondary bumps and instead point to a different variable-star morphology, so they do not align with the category.",
             "Monotonic flux trends": "The claim refers to consistency in timing (phasing) across wavelengths, which is related to multi-band behavior, but it does not describe the core elements of the category\u2014locally smooth, monotonic trends such as plateaus or linear decays. It omits mention of monotonicity, smoothness, or the specific trend shapes that distinguish SN II\u2011P/II\u2011L, so it only partially aligns."
         },
-        "final_alignment_score": 0.07894736842105263,
+        "final_alignment_score": 0.10526315789473684,
         "accuracy": 0
     },
     {

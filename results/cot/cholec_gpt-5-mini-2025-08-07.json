@@ -1115,7 +1115,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.8,
+        "final_alignment_score": 0.9333333333333333,
         "safe_iou": 0.0,
         "unsafe_iou": 0.0,
         "claims_by_category": {
@@ -6066,7 +6066,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.7272727272727273,
+        "final_alignment_score": 0.9090909090909091,
         "safe_iou": 0.0,
         "unsafe_iou": 0.0,
         "claims_by_category": {

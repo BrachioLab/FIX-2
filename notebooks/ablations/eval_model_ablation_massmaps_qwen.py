@@ -45,11 +45,11 @@ import json
 
 # model = 'gpt-4o'
 models = [
-    "gpt-5.2-pro-2025-12-11",
+    # "gpt-5.2-pro-2025-12-11",
     # "gpt-5-mini-2025-08-07",
     # "claude-opus-4-5-20251101",
     # "claude-haiku-4-5-20251001",
-    # "gemini-2.5-pro",
+    "gemini-2.5-pro",
     # "gemini-2.5-flash"
 ]
 

@@ -160986,7 +160986,7 @@
             "Connectivity of the Cosmic Web": "The claims discuss the distribution of peaks and extended voids and infer a moderate Omega_m, which is related to the overall connected vs. fragmented structure that the category describes. However, they do not address filament connectivity explicitly (whether filaments link most clusters into a continuous web versus isolated clumps) and lack the specific detail about network interconnection that the category emphasizes. Thus the match is partial.",
             "Density Contrast Extremes": "The claims directly describe strong density contrasts (extended underdensities and compact, high-significance peaks), quantify peak significance (>2.9\u03c3), and link that contrast to an elevated\u2014here moderately high\u2014sigma_8. This matches the category\u2019s mechanism that pronounced peak\u2013void contrast implies higher sigma_8, so the alignment is complete."
         },
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.7083333333333334,
         "mse_loss": {
             "Omega_m": 0.030796136856079098,
             "sigma_8": 0.06609015431022328
@@ -197820,7 +197820,7 @@
             "Connectivity of the Cosmic Web": "The claims describe a fragmented map with many small-scale fluctuations and few large coherent clusters, which relates to the connectivity criterion (fragmentation \u2192 lower Omega_m). However, they don't explicitly reference filament connectivity and conclude only a vague \"typical, not extreme\" matter density rather than directly linking the fragmentation to a lower Omega_m. Thus the match is relevant but incomplete.",
             "Density Contrast Extremes": "The claims describe localized high-significance peaks and positive/negative deviations from a near-zero mean and explicitly infer a moderately high sigma_8, so they point in the same direction as the category (stronger contrast \u2192 higher sigma_8). However, they emphasize moderate deviations and isolated peaks rather than \"very pronounced\" peak-to-void contrasts or deep voids the category specifies, and conclude only a moderate (not strong) sigma_8. Therefore the match is relevant but not a full capture of the category's emphasis on extreme contrasts."
         },
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.8333333333333334,
         "mse_loss": {
             "Omega_m": 0.010000001192092933,
             "sigma_8": 0.09000001430511528
@@ -202431,7 +202431,7 @@
             "Connectivity of the Cosmic Web": "The claims address the scale and coherence of structures (small-to-moderate scale, modest coherence) and infer a mid-range Omega_m, which is directly related to the connectivity vs. fragmentation described by the category. However, they do not explicitly describe filamentary connectivity or isolated large gaps; they focus on patch/peak counts and modest coherence rather than the continuous web vs. fragmented clumps contrast. Thus they partially capture the category's intent but lack the specific filament-network detail.",
             "Density Contrast Extremes": "The claims explicitly identify high-significance positive peaks (>2.9\u03c3), negative/blue void regions, and connect \u03c38 estimation to the abundance and contrast of these peaks plus pixel-to-pixel variance. They interpret multiple but non-dominant high peaks as indicating fairly strong (but not extreme) fluctuations and conclude a relatively high \u03c38. This directly matches the category's mechanism that pronounced peak-void contrast implies higher \u03c38."
         },
-        "final_alignment_score": 0.7142857142857143,
+        "final_alignment_score": 0.7857142857142857,
         "mse_loss": {
             "Omega_m": 0.013595925767440387,
             "sigma_8": 0.11675837238784936
@@ -220873,7 +220873,7 @@
             "Connectivity of the Cosmic Web": "The claims describe many scattered small peaks (a fragmented, clumpy appearance), which is related to the category's notion of fragmentation versus an interconnected web. However, they do not address filament connectivity explicitly or connect this morphology to Omega_m (they emphasize small-scale clustering instead), so they only partially capture the category's intent.",
             "Density Contrast Extremes": "The claims directly describe pronounced contrast (moderate-to-high variance), many bright peaks adjacent to void-like colors, and explicitly link small-scale peak abundance to a higher fluctuation amplitude, culminating in a moderately high sigma_8. This matches the category's mechanism and conclusion closely and specifically."
         },
-        "final_alignment_score": 0.5769230769230769,
+        "final_alignment_score": 0.6538461538461539,
         "mse_loss": {
             "Omega_m": 0.014083015330694655,
             "sigma_8": 0.002558934660629011
@@ -266932,7 +266932,7 @@
             "Connectivity of the Cosmic Web": "The claims describe a small number of scattered, weakly clustered high-significance peaks and large negative/underdense regions, which implies a fragmented mass distribution consistent with the category's prediction of lower Omega_m. However, they do not explicitly discuss filamentary connections or the continuity of a cosmic web (the key aspect of \"connectivity\"), so they only partially capture the expert category's mechanism and intent.",
             "Density Contrast Extremes": "The claims explicitly describe the abundance and contrast of high-significance positive peaks and negative (void) regions, quantify peak significance, and interpret the pronounced (though not extreme) contrast as indicating a relatively high fluctuation amplitude. This directly matches the category linking strong density-contrast extremes to higher sigma_8."
         },
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.8333333333333334,
         "mse_loss": {
             "Omega_m": 0.024714051611465414,
             "sigma_8": 0.0324105563177733
@@ -414185,7 +414185,7 @@
             "Connectivity of the Cosmic Web": "The claims discuss clustering strength, counts of high peaks and underdense troughs, and infer a moderate Omega_m \u2014 which is related to the connectivity/fragmentation concept in the category. However, they do not explicitly describe the filament network or the degree to which clusters are linked into a continuous web (the core of the category). Because the claims address clustering broadly but omit the key filament/connectivity detail, the match is partial.",
             "Density Contrast Extremes": "The claims explicitly describe both high-significance peaks and deep underdense troughs (bright peaks adjacent to dark voids), which directly relates to density-contrast arguments for sigma_8. However, they repeatedly characterize the contrast as moderate/intermediate (a modest number of high peaks and moderate variance) and conclude a moderately high \u03c38 (somewhat below unity) rather than the pronounced extremes the category ties to a strong high \u03c38. Thus the claims are relevant but lack the strong, unambiguous contrast the expert category describes."
         },
-        "final_alignment_score": 0.7916666666666666,
+        "final_alignment_score": 0.8333333333333334,
         "mse_loss": {
             "Omega_m": 0.003571929219178892,
             "sigma_8": 0.0005585109535610379

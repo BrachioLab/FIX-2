@@ -250,7 +250,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4230769230769231,
         "accuracy": 0
     },
     {
@@ -587,7 +587,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4375,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 1
     },
     {
@@ -941,7 +941,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.39473684210526316,
         "accuracy": 1
     },
     {
@@ -1231,7 +1231,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.34375,
         "accuracy": 1
     },
     {
@@ -1464,7 +1464,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.5294117647058824,
         "accuracy": 1
     },
     {
@@ -1697,7 +1697,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.45,
+        "final_alignment_score": 0.28125,
         "accuracy": 0
     },
     {
@@ -1933,7 +1933,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.25,
         "accuracy": 0
     },
     {
@@ -2256,7 +2256,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4666666666666667,
+        "final_alignment_score": 0.35,
         "accuracy": 1
     },
     {
@@ -2585,7 +2585,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -2874,7 +2874,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 1
     },
     {
@@ -3135,7 +3135,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 0
     },
     {
@@ -3415,7 +3415,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8,
+        "final_alignment_score": 0.4444444444444444,
         "accuracy": 0
     },
     {
@@ -3664,7 +3664,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2777777777777778,
         "accuracy": 0
     },
     {
@@ -3916,7 +3916,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8636363636363636,
+        "final_alignment_score": 0.475,
         "accuracy": 1
     },
     {
@@ -4133,7 +4133,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4444444444444444,
+        "final_alignment_score": 0.25,
         "accuracy": 0
     },
     {
@@ -4438,7 +4438,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.43333333333333335,
         "accuracy": 1
     },
     {
@@ -4754,7 +4754,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4583333333333333,
+        "final_alignment_score": 0.3235294117647059,
         "accuracy": 0
     },
     {
@@ -5075,7 +5075,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9642857142857143,
+        "final_alignment_score": 0.5869565217391305,
         "accuracy": 0
     },
     {
@@ -5363,7 +5363,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9615384615384616,
+        "final_alignment_score": 0.625,
         "accuracy": 0
     },
     {
@@ -5679,7 +5679,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9285714285714286,
+        "final_alignment_score": 0.7647058823529411,
         "accuracy": 0
     },
     {
@@ -5890,7 +5890,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.19444444444444445,
         "accuracy": 1
     },
     {
@@ -6224,7 +6224,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.40625,
         "accuracy": 0
     },
     {
@@ -6481,7 +6481,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.45454545454545453,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 0
     },
     {
@@ -6804,7 +6804,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.43333333333333335,
+        "final_alignment_score": 0.30952380952380953,
         "accuracy": 1
     },
     {
@@ -7120,7 +7120,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8846153846153846,
+        "final_alignment_score": 0.6052631578947368,
         "accuracy": 1
     },
     {
@@ -7362,7 +7362,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2777777777777778,
         "accuracy": 0
     },
     {
@@ -7627,7 +7627,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.45454545454545453,
+        "final_alignment_score": 0.3125,
         "accuracy": 0
     },
     {
@@ -7965,7 +7965,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3409090909090909,
         "accuracy": 1
     },
     {
@@ -8270,7 +8270,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5769230769230769,
+        "final_alignment_score": 0.5357142857142857,
         "accuracy": 0
     },
     {
@@ -8511,7 +8511,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 1
     },
     {
@@ -8953,7 +8953,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.42857142857142855,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -9185,7 +9185,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.5625,
         "accuracy": 0
     },
     {
@@ -9458,7 +9458,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.65625,
         "accuracy": 1
     },
     {
@@ -9739,7 +9739,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.525,
         "accuracy": 1
     },
     {
@@ -10046,7 +10046,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6153846153846154,
+        "final_alignment_score": 0.47058823529411764,
         "accuracy": 0
     },
     {
@@ -10383,7 +10383,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.7894736842105263,
         "accuracy": 1
     },
     {
@@ -10633,7 +10633,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.34375,
         "accuracy": 0
     },
     {
@@ -11012,7 +11012,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3541666666666667,
         "accuracy": 1
     },
     {
@@ -11270,7 +11270,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.8461538461538461,
         "accuracy": 1
     },
     {
@@ -11511,7 +11511,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 0.5625,
         "accuracy": 0
     },
     {
@@ -11819,7 +11819,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5416666666666666,
+        "final_alignment_score": 0.34210526315789475,
         "accuracy": 1
     },
     {
@@ -12102,7 +12102,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4,
         "accuracy": 0
     },
     {
@@ -12455,7 +12455,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -12798,7 +12798,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4,
         "accuracy": 0
     },
     {
@@ -13099,7 +13099,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4230769230769231,
+        "final_alignment_score": 0.34375,
         "accuracy": 1
     },
     {
@@ -13402,7 +13402,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.325,
         "accuracy": 0
     },
     {
@@ -13711,7 +13711,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8076923076923077,
+        "final_alignment_score": 0.65625,
         "accuracy": 1
     },
     {
@@ -14086,7 +14086,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8823529411764706,
+        "final_alignment_score": 0.7142857142857143,
         "accuracy": 0
     },
     {
@@ -14354,7 +14354,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4,
         "accuracy": 0
     },
     {
@@ -14664,7 +14664,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9230769230769231,
+        "final_alignment_score": 0.6666666666666666,
         "accuracy": 1
     },
     {
@@ -14903,7 +14903,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3076923076923077,
         "accuracy": 0
     },
     {
@@ -15198,7 +15198,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3611111111111111,
         "accuracy": 0
     },
     {
@@ -15528,7 +15528,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -15786,7 +15786,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2894736842105263,
         "accuracy": 0
     },
     {
@@ -16105,7 +16105,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.9615384615384616,
+        "final_alignment_score": 0.6578947368421053,
         "accuracy": 1
     },
     {
@@ -16471,7 +16471,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.8888888888888888,
         "accuracy": 0
     },
     {
@@ -16729,7 +16729,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.95,
+        "final_alignment_score": 0.6785714285714286,
         "accuracy": 0
     },
     {
@@ -17022,7 +17022,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.625,
         "accuracy": 1
     },
     {
@@ -17366,7 +17366,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.4666666666666667,
+        "final_alignment_score": 0.4375,
         "accuracy": 1
     },
     {
@@ -17574,7 +17574,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.25,
         "accuracy": 1
     },
     {
@@ -17831,7 +17831,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.625,
         "accuracy": 1
     },
     {
@@ -18148,7 +18148,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3409090909090909,
         "accuracy": 0
     },
     {
@@ -18475,7 +18475,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3611111111111111,
         "accuracy": 1
     },
     {
@@ -18773,7 +18773,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4230769230769231,
+        "final_alignment_score": 0.3235294117647059,
         "accuracy": 1
     },
     {
@@ -19090,7 +19090,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9642857142857143,
+        "final_alignment_score": 0.7941176470588235,
         "accuracy": 0
     },
     {
@@ -19443,7 +19443,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4411764705882353,
         "accuracy": 1
     },
     {
@@ -19737,7 +19737,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.5294117647058824,
         "accuracy": 1
     },
     {
@@ -20036,7 +20036,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.65,
         "accuracy": 0
     },
     {
@@ -20286,7 +20286,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.7,
+        "final_alignment_score": 0.3888888888888889,
         "accuracy": 1
     },
     {
@@ -20485,7 +20485,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2692307692307692,
         "accuracy": 1
     },
     {
@@ -20787,7 +20787,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8461538461538461,
+        "final_alignment_score": 0.7333333333333333,
         "accuracy": 1
     },
     {
@@ -21027,7 +21027,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.39285714285714285,
         "accuracy": 0
     },
     {
@@ -21294,7 +21294,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.36363636363636365,
+        "final_alignment_score": 0.25,
         "accuracy": 1
     },
     {
@@ -21560,7 +21560,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2777777777777778,
         "accuracy": 0
     },
     {
@@ -21848,7 +21848,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.35294117647058826,
         "accuracy": 0
     },
     {
@@ -22146,7 +22146,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.46153846153846156,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 1
     },
     {
@@ -22410,7 +22410,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8181818181818182,
+        "final_alignment_score": 0.5625,
         "accuracy": 1
     },
     {
@@ -22735,7 +22735,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9615384615384616,
+        "final_alignment_score": 0.8333333333333334,
         "accuracy": 0
     },
     {
@@ -22974,7 +22974,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.38461538461538464,
         "accuracy": 1
     },
     {
@@ -23246,7 +23246,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.625,
         "accuracy": 1
     },
     {
@@ -23529,7 +23529,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.375,
+        "final_alignment_score": 0.25,
         "accuracy": 1
     },
     {
@@ -23735,7 +23735,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.21875,
         "accuracy": 0
     },
     {
@@ -24073,7 +24073,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.7352941176470589,
         "accuracy": 1
     },
     {
@@ -24353,7 +24353,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3055555555555556,
         "accuracy": 1
     },
     {
@@ -24623,7 +24623,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 0
     },
     {
@@ -24863,7 +24863,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.36666666666666664,
         "accuracy": 0
     },
     {
@@ -25204,7 +25204,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5384615384615384,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 1
     },
     {
@@ -25559,7 +25559,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4444444444444444,
         "accuracy": 0
     },
     {
@@ -25810,7 +25810,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.29411764705882354,
         "accuracy": 1
     },
     {
@@ -26039,7 +26039,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.38461538461538464,
         "accuracy": 0
     },
     {
@@ -26314,7 +26314,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3055555555555556,
         "accuracy": 0
     },
     {
@@ -26586,7 +26586,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.5526315789473685,
         "accuracy": 1
     },
     {
@@ -26864,7 +26864,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.6,
         "accuracy": 0
     },
     {
@@ -27172,7 +27172,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.46153846153846156,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -27493,7 +27493,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.42857142857142855,
+        "final_alignment_score": 0.3157894736842105,
         "accuracy": 1
     },
     {
@@ -27856,7 +27856,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.90625,
+        "final_alignment_score": 0.6904761904761905,
         "accuracy": 1
     },
     {
@@ -28224,7 +28224,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -28423,7 +28423,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.21875,
         "accuracy": 1
     },
     {
@@ -28698,7 +28698,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8,
+        "final_alignment_score": 0.6666666666666666,
         "accuracy": 0
     },
     {
@@ -28974,7 +28974,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.375,
         "accuracy": 0
     },
     {
@@ -29314,7 +29314,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 1
     },
     {
@@ -29580,7 +29580,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4230769230769231,
         "accuracy": 1
     },
     {
@@ -29830,7 +29830,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.36666666666666664,
         "accuracy": 1
     },
     {
@@ -30066,7 +30066,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.45,
+        "final_alignment_score": 0.34615384615384615,
         "accuracy": 1
     },
     {
@@ -30350,7 +30350,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.5882352941176471,
         "accuracy": 1
     },
     {
@@ -30705,7 +30705,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4375,
+        "final_alignment_score": 0.3684210526315789,
         "accuracy": 1
     },
     {
@@ -30986,7 +30986,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.625,
+        "final_alignment_score": 0.5357142857142857,
         "accuracy": 0
     },
     {
@@ -31340,7 +31340,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 0.6136363636363636,
         "accuracy": 1
     },
     {
@@ -31626,7 +31626,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.5882352941176471,
         "accuracy": 1
     },
     {
@@ -31946,7 +31946,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.30434782608695654,
         "accuracy": 0
     },
     {
@@ -32258,7 +32258,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.46153846153846156,
+        "final_alignment_score": 0.3,
         "accuracy": 0
     },
     {
@@ -32631,7 +32631,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9411764705882353,
+        "final_alignment_score": 0.8421052631578947,
         "accuracy": 1
     },
     {
@@ -32855,7 +32855,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.32142857142857145,
         "accuracy": 1
     },
     {
@@ -33195,7 +33195,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.6785714285714286,
+        "final_alignment_score": 0.475,
         "accuracy": 1
     },
     {
@@ -33485,7 +33485,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.39285714285714285,
         "accuracy": 0
     },
     {
@@ -33698,7 +33698,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.8571428571428571,
+        "final_alignment_score": 0.46153846153846156,
         "accuracy": 0
     },
     {
@@ -33961,7 +33961,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3157894736842105,
         "accuracy": 1
     },
     {
@@ -34248,7 +34248,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.35294117647058826,
         "accuracy": 1
     },
     {
@@ -34482,7 +34482,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2647058823529412,
         "accuracy": 0
     },
     {
@@ -34730,7 +34730,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.45,
+        "final_alignment_score": 0.3125,
         "accuracy": 1
     },
     {
@@ -35055,7 +35055,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8928571428571429,
+        "final_alignment_score": 0.78125,
         "accuracy": 1
     },
     {
@@ -35382,7 +35382,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.375,
         "accuracy": 0
     },
     {
@@ -35629,7 +35629,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.35714285714285715,
         "accuracy": 1
     },
     {
@@ -35865,7 +35865,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.46875,
         "accuracy": 1
     },
     {
@@ -36117,7 +36117,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.55,
+        "final_alignment_score": 0.39285714285714285,
         "accuracy": 0
     },
     {
@@ -36389,7 +36389,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.36363636363636365,
+        "final_alignment_score": 0.3076923076923077,
         "accuracy": 0
     },
     {
@@ -36660,7 +36660,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8181818181818182,
+        "final_alignment_score": 0.6923076923076923,
         "accuracy": 1
     },
     {
@@ -36941,7 +36941,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.40625,
         "accuracy": 1
     },
     {
@@ -37298,7 +37298,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9333333333333333,
+        "final_alignment_score": 0.7,
         "accuracy": 1
     },
     {
@@ -37558,7 +37558,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.45454545454545453,
+        "final_alignment_score": 0.23809523809523808,
         "accuracy": 1
     }
 ]

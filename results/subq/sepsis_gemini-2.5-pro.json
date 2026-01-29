@@ -3251,7 +3251,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims only state stable vital signs and absence of qSOFA criteria, which pertain to bedside physiological criteria, not the SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS, etc.). They provide no information about any SOFA parameter or a \u22652\u2011point SOFA increase, so they do not align with the SOFA increase category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claim discusses administration of an oral antibiotic and implies the infection is localized and not severe; it does not indicate early broad\u2011spectrum antibiotic administration or drawing blood cultures within 2 hours. In fact, it suggests the opposite of clinician suspicion for serious infection required by the category."
         },
-        "final_alignment_score": 0.2727272727272727,
+        "final_alignment_score": 0.3181818181818182,
         "accuracy": 1
     },
     {
@@ -4294,7 +4294,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims describe borderline hypotension (SBP 93) and a mildly elevated lactate with fluid resuscitation and clinical concern for sepsis, but they do not report any SOFA component values or thresholds (PaO2/FiO2, platelets, bilirubin, creatinine, GCS, MAP/vasopressor use) or show a \u22652\u2011point change in a SOFA domain. Lactate and SBP alone do not directly satisfy the SOFA increase criteria, so the claims do not align with this category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claims demonstrate clinician suspicion and early management for sepsis (fever, elevated lactate, rapid fluid bolus for hypotension), which is conceptually related to the intent of the category (that such suspicion should anchor risk assessment). However, they do not mention the specific actions the category requires\u2014administration of broad\u2011spectrum antibiotics or drawing blood cultures within 2 hours\u2014so the criteria are not directly satisfied."
         },
-        "final_alignment_score": 0.7894736842105263,
+        "final_alignment_score": 0.8157894736842105,
         "accuracy": 1
     },
     {

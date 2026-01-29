@@ -214,7 +214,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims document worsening oxygenation (SpO2 drop to 87\u201388%) suggesting new respiratory dysfunction and a later MAP of 68 mmHg indicating hypotension. However, SOFA respiratory scoring requires PaO2/FiO2 (or equivalent) thresholds to confirm a \u22652\u2011point respiratory change and FiO2/PaO2 data are not provided; the reported MAP of 68 mmHg would typically correspond to only 1 SOFA cardiovascular point (MAP <70), not a \u22652\u2011point increase. No platelet, bilirubin, creatinine, or GCS data are given. Therefore the information hints at organ dysfunction but is insufficient to confirm a \u22652\u2011point SOFA increase in any component.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claims describe clinical presentation, acuity, and laboratory/vital sign abnormalities suggestive of early sepsis, but they do not mention administration of antibiotics, drawing blood cultures, or any early (within 2\u2011hour) diagnostic/therapeutic orders. Because the category specifically requires evidence of early antibiotic or culture actions, the provided claims do not align."
         },
-        "final_alignment_score": 0.4375,
+        "final_alignment_score": 0.4583333333333333,
         "accuracy": 0
     },
     {

@@ -11276,7 +11276,7 @@
             "Secondary maxima": "The claims explicitly describe the absence of filter\u2011dependent secondary bumps\u2014single symmetric brightening, near\u2011achromatic behavior, similar timing and shapes across bands, and minimal color evolution\u2014which directly contrasts with the red/NIR secondary maxima highlighted in the category. This fully captures the category's intent (identifying the presence or absence of filter\u2011specific secondary maxima and their diagnostic power), and correctly links the observed morphology to an alternative explanation (microlensing) that would not show such secondary maxima.",
             "Monotonic flux trends": "The claims describe a single transient brightening that returns to baseline, with simultaneous, similarly shaped light curves across wavelengths (near\u2011achromatic behavior and no strong color evolution) and explicitly exclude periodic variability. These points directly reflect the core of the category\u2014locally smooth, monotonic multi\u2011band flux evolution that characterizes transient classes (e.g., distinguishing plateau vs. linear decay behaviors)\u2014so they fully capture the category's intent."
         },
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 1.0,
         "accuracy": 0
     },
     {

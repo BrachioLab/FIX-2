@@ -661,7 +661,7 @@
             "Secondary maxima": "No claims were provided to evaluate against the category, so there is no information to confirm any alignment with the concept of filter\u2011specific secondary maxima.",
             "Monotonic flux trends": "The claims do not describe locally smooth, monotonic plateaus or linear decays; instead they emphasize long (>1000 d) duration, absence of a singular explosive event, and aperiodic/stochastic variability\u2014i.e., evidence against the monotonic SN\u2011like behaviors the category targets. They therefore relate to the classification task (they help rule out SN monotonic trends and point to long\u2011term variable sources) but do not capture or specify the monotonic flux features themselves. Hence the alignment is partial."
         },
-        "final_alignment_score": 0.6923076923076923,
+        "final_alignment_score": 0.7692307692307693,
         "accuracy": 0
     },
     {

@@ -6618,7 +6618,7 @@
             "Secondary maxima": "The claims describe a single, achromatic peak with simultaneous multi\u2011band maxima and negligible color evolution, which directly implies the absence of filter\u2011specific (red/near\u2011IR) secondary maxima or shoulders. That absence (and the assertion that the behavior is not consistent with supernova variability) addresses exactly the distinguishing feature the category highlights about SNe Ia versus core\u2011collapse SNe.",
             "Monotonic flux trends": "The claims describe a clean, isolated, achromatic transient (single large peak, quiescent baseline, simultaneous multi\u2011band peaks, little color evolution), which partially matches the idea of coherent, band\u2011consistent flux evolution. However they do not specify locally smooth, monotonic behaviors like plateaus or linear decays (key examples in the category) nor do they invoke the plateau vs. linear\u2011decay distinctions used to separate SN II\u2011P and SN II\u2011L. Therefore the match is partial."
         },
-        "final_alignment_score": 0.5625,
+        "final_alignment_score": 0.59375,
         "accuracy": 0
     },
     {
@@ -7475,7 +7475,7 @@
             "Secondary maxima": "The claims partially match the category: multiple broad maxima and stronger variability/higher amplitudes in red/IR bands are relevant to the idea of secondary maxima being prominent in red/near\u2011IR. However the claims do not explicitly identify a filter\u2011specific secondary maximum or shoulder (they imply several maxima across bands and note the maxima are similarly shaped), which misses the key point that secondary maxima are a red/near\u2011IR\u2013specific morphological feature often absent in core\u2011collapse SNe. Therefore the alignment is incomplete.",
             "Monotonic flux trends": "The claims describe repeated, long\u2011period broad maxima and variability stronger in red bands\u2014i.e., a repeating, non\u2011transient oscillation\u2014explicitly arguing against one\u2011off monotonic events like SN II\u2011P/II\u2011L plateaus or linear decays. They do not identify locally smooth, monotonic flux trends (plateaus or linear declines) and in fact contradict the category\u2019s focus on single\u2011event monotonic evolution."
         },
-        "final_alignment_score": 0.9166666666666666,
+        "final_alignment_score": 1.0,
         "accuracy": 0
     },
     {

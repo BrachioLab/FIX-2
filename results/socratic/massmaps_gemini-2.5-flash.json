@@ -110181,7 +110181,7 @@
             "Connectivity of the Cosmic Web": "The claims describe numerous distinct peaks and deep troughs and explicitly infer a high amplitude of matter fluctuations (sigma_8). They do not address the connectivity or filament network linking clusters (the key observable for this category) nor do they link features to Omega_m. Because they focus on peak/void abundance and sigma_8 rather than the web connectivity \u2192 Omega_m relationship, they do not match the category.",
             "Density Contrast Extremes": "The claims explicitly describe pronounced high peaks (yellow) and deep voids (blue), quantify peak significance (>2.9\u03c3), and directly conclude these contrasts imply high amplitude matter fluctuations\u2014exactly matching the category's mechanism linking strong density-contrast extremes to high sigma_8."
         },
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.9444444444444444,
         "mse_loss": {
             "Omega_m": 0.0004532244359143429,
             "sigma_8": 0.12039004073012684
@@ -284716,7 +284716,7 @@
             "Connectivity of the Cosmic Web": "The claims describe widespread, coherent overdense and underdense regions and efficient structure formation and conclude higher Omega_m \u2014 which is directionally consistent with the connectivity category (a well-developed web implying higher Omega_m). However, they do not explicitly reference filamentary connectivity linking clusters (the key metric in the category) and include vague/contradictory language about clumping not being extreme. Therefore the match is relevant but incomplete.",
             "Density Contrast Extremes": "The claims identify high-significance peaks (>2.9\u03c3) and coherent overdense and underdense regions, and explicitly link these density-contrast features to strong matter fluctuations \u2014 which directly matches the category\u2019s mechanism connecting pronounced contrast to high sigma_8. However, the claims also state the map \"does not show an extreme level of clumping\" (contradicting a clear strong-contrast conclusion) and additionally infer Omega_m is high (the category focuses on sigma_8). Because of that internal contradiction and the extra, nonessential inference about Omega_m, the match is not fully clean or specific."
         },
-        "final_alignment_score": 0.6818181818181818,
+        "final_alignment_score": 0.7272727272727273,
         "mse_loss": {
             "Omega_m": 0.019995730910450368,
             "sigma_8": 0.01591933602467234

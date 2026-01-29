@@ -2490,7 +2490,7 @@
             "Secondary maxima": "No claims were provided to assess alignment with the category, so there is no information that could match or address secondary\u2011maximum features.",
             "Monotonic flux trends": "The claims directly describe a flat, sustained flux (plateau), the absence of rise\u2011and\u2011decline behavior, and non\u2011stochastic variability\u2014each of which maps onto the concept of locally smooth, monotonic trends used to identify plateaus or linear decays and to distinguish supernova subtypes from AGN. They are specific and relevant to the category's intent."
         },
-        "final_alignment_score": 0.8214285714285714,
+        "final_alignment_score": 0.8571428571428571,
         "accuracy": 1
     },
     {
@@ -4574,7 +4574,7 @@
             "Secondary maxima": "No claims were provided to assess alignment with the category, so there is no information that could match or address secondary\u2011maximum features.",
             "Monotonic flux trends": "Two claims explicitly describe a flat/plateau light curve across bands and observing windows, which directly matches the category's focus on locally smooth, monotonic (plateau) trends. However, the third claim is misleading or incorrect\u2014stating that no coherent rise/decline is expected for supernovae, TDEs, or kilonovae contradicts common knowledge (these classes typically show rise/decline behavior) and thus introduces noise/misinterpretation. Because of that problematic claim, the alignment is not fully clean."
         },
-        "final_alignment_score": 0.9642857142857143,
+        "final_alignment_score": 1.0,
         "accuracy": 0
     },
     {

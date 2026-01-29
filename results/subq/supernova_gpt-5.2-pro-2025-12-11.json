@@ -6270,7 +6270,7 @@
             "Secondary maxima": "The claims discuss light\u2011curve morphology, color/ wavelength dependence, and classify the event as a normal SNIa (which is directly related to the category). However they do not explicitly address filter\u2011specific secondary maxima in the red/near\u2011IR; several claims assert a single isolated peak (implying absence of a secondary maximum), which conflicts with the category's focus on SNe Ia having red/near\u2011IR secondary maxima. Thus the claims are only partially aligned.",
             "Monotonic flux trends": "The claims explicitly describe a single, smooth rise to peak followed by a decline and emphasize the absence of a long plateau\u2014key monotonic-flux features used to separate plateau-type SN II (II\u2011P) from other classes. They correctly use the lack of a plateau to disfavor SN II classifications and invoke the rise/decline morphology consistent with non\u2011plateau transients (e.g., SNe Ia). Thus the claims directly capture the intent of using locally monotonic trends (plateau vs. decline) to distinguish classes."
         },
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.8666666666666667,
         "accuracy": 0
     },
     {

@@ -18496,7 +18496,7 @@
             "Connectivity of the Cosmic Web": "The claims describe the number, prominence, and spatial distribution of density peaks/clusters, which is related to the cosmic-web morphology, but they do not address the key concept of connectivity (whether filaments link clusters into a continuous network versus isolated clumps). Because the claims lack explicit information about filamentary links or fragmentation, they only partially capture the category.",
             "Density Contrast Extremes": "The claims explicitly identify overdense peaks and underdense voids, note the level of contrast between them, and directly map that contrast to the amplitude of clustering (sigma_8). They conclude a moderate/smid-range sigma_8 based on the observed moderate contrast and peak/void strengths, which matches the category's mechanism (contrast \u2194 sigma_8). The extra mentions of Omega_m are ancillary but the primary mapping to sigma_8 is consistent and specific."
         },
-        "final_alignment_score": 0.9705882352941176,
+        "final_alignment_score": 1.0,
         "mse_loss": {
             "Omega_m": 0.00277268129177395,
             "sigma_8": 0.020551917236298886
@@ -23122,7 +23122,7 @@
             "Connectivity of the Cosmic Web": "The claims explicitly mention filamentary structures connecting clusters and the distribution of clustered peaks, which directly relates to the cosmic-web connectivity criterion. However, they describe only moderate/intermediate connectivity and conclude a moderate Omega_m (~0.3) rather than clearly linking strong interconnectedness to a higher Omega_m. Because the mechanism is referenced but not strongly or specifically applied, the alignment is partial.",
             "Density Contrast Extremes": "The claims explicitly identify pronounced overdense (yellow/red) peaks and underdense (blue) voids, quantify significant peaks (>2.9\u03c3), note clear contrast and filaments, and infer a moderate-to-high sigma_8 (even ~0.8). This directly matches the category\u2019s mechanism linking strong density-contrast extremes to higher sigma_8 and subdued contrast to lower sigma_8."
         },
-        "final_alignment_score": 0.96875,
+        "final_alignment_score": 1.0,
         "mse_loss": {
             "Omega_m": 0.0007328014961444193,
             "sigma_8": 0.030755028885417236
@@ -69258,7 +69258,7 @@
             "Connectivity of the Cosmic Web": "The claims address the general level of clustering and density balance and conclude intermediate Omega_m, which is related to the connectivity idea (more connected \u2192 higher Omega_m; more fragmented \u2192 lower). However, they do not specifically describe the filamentary network or the degree to which clusters are linked vs isolated, and their language is vague/moderate rather than directly invoking connectivity. Therefore the match to the expert category is partial.",
             "Density Contrast Extremes": "The claims explicitly identify overdense (red/yellow) and underdense (blue) regions, note high-significance peaks, and link peak significance/contrast to sigma_8 \u2014 all directly relevant to the density-contrast \u2192 sigma_8 mechanism. However, they describe only moderate/intermediate contrast and conclude intermediate or moderately high sigma_8 (and also bring in Omega_m), rather than describing the very pronounced contrast that the category ties to high sigma_8. Because they partially capture the mechanism but lack the key emphasis on extreme contrasts and clear high-sigma_8 inference, the alignment is partial."
         },
-        "final_alignment_score": 0.7857142857142857,
+        "final_alignment_score": 0.8928571428571429,
         "mse_loss": {
             "Omega_m": 0.01847900228574876,
             "sigma_8": 0.08400941323489006
@@ -249164,7 +249164,7 @@
             "Connectivity of the Cosmic Web": "The claims describe a fragmented scene with many small, scattered peaks and only moderate clustering \u2014 directly touching on the connectivity/fragmentation aspect of the cosmic web \u2014 but they do not explicitly discuss filamentary links between clusters, and they interpret the fragmentation as implying a moderate (not clearly low) Omega_m (~0.3). Because the claims partially reflect the category's mechanism (connectivity vs fragmentation) but lack the specific filament/connectivity detail and give a more ambiguous/moderate parameter inference, the alignment is partial.",
             "Density Contrast Extremes": "The claims identify exactly the relevant observables (overdense yellow/red regions, underdensities, multiple >2.9\u03c3 peaks, and a good dynamic range) that the category uses to infer sigma_8, so they are directly related. However, the claims conclude only a moderate/intermediate sigma_8 (and even mention Omega_m), which contradicts the category\u2019s stated implication that pronounced contrast implies a high sigma_8. Therefore the match is partial rather than complete."
         },
-        "final_alignment_score": 0.7,
+        "final_alignment_score": 0.7333333333333333,
         "mse_loss": {
             "Omega_m": 0.003773126236046672,
             "sigma_8": 8.880808716696636e-05
@@ -392323,7 +392323,7 @@
             "Connectivity of the Cosmic Web": "The claims describe scattered, dispersed peaks and moderate contrast between peaks and voids, which relates to the idea of a less interconnected (more fragmented) web implying lower Omega_m. However, they do not explicitly address filament connectivity (links between clusters) or the degree of interconnection; instead they use vague/moderate language and infer intermediate parameters rather than clearly invoking the connectivity mechanism. Therefore the connection to the expert category is partial.",
             "Density Contrast Extremes": "The claims explicitly describe the contrast between bright peaks and dark voids (noting peak significance, number/brightness, and underdense regions) and conclude that the moderate contrast implies intermediate sigma_8 \u2014 directly matching the category's mechanism that stronger contrast means higher sigma_8 and subdued contrast means lower sigma_8. Although the claims also mention Omega_m, their treatment of contrast and its implication for sigma_8 is specific and on-point."
         },
-        "final_alignment_score": 0.9166666666666666,
+        "final_alignment_score": 0.9583333333333334,
         "mse_loss": {
             "Omega_m": 4.255515905100645e-05,
             "sigma_8": 0.0037971562566241346

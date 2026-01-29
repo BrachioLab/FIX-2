@@ -1918,7 +1918,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims do not demonstrate any SOFA component worsening to meet a \u22652\u2011point increase. Oxygenation is described as improved on low\u2011flow O2 (no PaO2/FiO2 <300 or hypoxemia documented), creatinine is normal (no renal dysfunction), and blood pressure is near-normal/not persistently hypotensive (no cardiovascular SOFA criterion met). Therefore the claims fail to show new organ dysfunction required by this category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support this category."
         },
-        "final_alignment_score": 0.18,
+        "final_alignment_score": 0.26,
         "accuracy": 1
     },
     {

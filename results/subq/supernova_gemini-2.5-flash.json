@@ -330,7 +330,7 @@
             "Secondary maxima": "The claims refer to red/near\u2011IR prominence and link the light\u2011curve morphology to Type Ia events, which is related to the category\u2019s focus on red/near\u2011IR features. However they do not explicitly mention filter\u2011specific secondary maxima (the defining feature of the category). Moreover, invoking SNIa\u201191bg is potentially contradictory: 91bg\u2011like SNe are fast, red, and subluminous but typically lack the normal secondary near\u2011IR/ red maxima. Thus the claims only partially capture the category intent.",
             "Monotonic flux trends": "The set contains a few claims that directly address plateau/decline behavior (e.g., \"There is no plateau phase\" and \"The absence of a plateau phase rules out many Type II supernovae\"), which map to the category\u2019s focus on plateau vs. linear-decay morphology. One claim about fast-declining SN 1991bg is also relevant because decline rate is a monotonic trend. However several statements are off-target or noisy: a \"sharp rise\" does not speak to the plateau/monotonic-decay diagnostic the category emphasizes; the claims conflating lack of periodicity with ruling out stellar variables and especially ruling out AGN are either incomplete reasoning or incorrect for this category. Because the set mixes directly relevant points with vague/incorrect ones, the overall alignment is partial."
         },
-        "final_alignment_score": 0.47058823529411764,
+        "final_alignment_score": 0.5882352941176471,
         "accuracy": 0
     },
     {
@@ -3547,7 +3547,7 @@
             "Secondary maxima": "The claims focus on the event being red/peaked in redder bands, which is relevant to filter\u2011dependent red/near\u2011IR behaviour. However they do not state or identify a filter\u2011specific secondary maximum/shoulder (the core of the category). The reference to a peculiar 91bg\u2011like Ia (which are red but often lack the canonical near\u2011IR secondary maximum) also introduces a potential mismatch. Therefore the alignment is only partial.",
             "Monotonic flux trends": "No claims were provided to evaluate against the category, so there is nothing that can confirm or address monotonic, locally smooth flux trends as described."
         },
-        "final_alignment_score": 0.16666666666666666,
+        "final_alignment_score": 0.20833333333333334,
         "accuracy": 0
     },
     {
@@ -3858,7 +3858,7 @@
             "Secondary maxima": "The claims describe red/NIR-dominated behavior (higher flux in red bands, broader/red evolution), which is relevant to filter\u2011specific red/near\u2011IR features. However they do not explicitly state the presence of a distinct secondary maximum or shoulder (timing/secondary peak relative to the primary maximum), nor do they specify the characteristic rebrightening morphology that defines the category. Therefore the alignment is only partial.",
             "Monotonic flux trends": "The claims describe rapid, short-lived evolution and band-dependent peak widths (timescale and color behavior), which relate to light-curve morphology, but they do not mention locally smooth, monotonic trends such as plateaus or linear decays\u2014the key features used to distinguish SN II\u2011P vs II\u2011L. Thus they only partially address the category."
         },
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.5384615384615384,
         "accuracy": 0
     },
     {
@@ -6152,7 +6152,7 @@
             "Secondary maxima": "The claims describe filter-dependent behavior (larger scatter in red bands) and long\u2011duration, aperiodic multiwavelength variability that argues against short\u2011lived SNe and toward AGN. That touches on wavelength\u2011specific differences relevant to the category, but they do not mention or identify the specific morphological feature\u2014red/near\u2011IR secondary maxima or shoulders\u2014central to the category. Thus the alignment is partial.",
             "Monotonic flux trends": "The claims describe irregular, sparse, aperiodic, stochastic long\u2011term multiwavelength variability (pointing to AGN) and explicitly rule out short\u2011duration, smooth rise/decline transients. That contradicts the category\u2019s focus on locally smooth, monotonic flux trends (plateaus/linear decays) used to identify SN II\u2011P/II\u2011L style behavior, so they do not capture the category intent."
         },
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.8333333333333334,
         "accuracy": 0
     },
     {

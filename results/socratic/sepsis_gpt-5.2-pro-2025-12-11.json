@@ -3578,7 +3578,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims explicitly state there was no organ dysfunction, no hypotension, and no altered mental status in the first 2 hours and provide no abnormal SOFA component values (e.g., PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS). The single normal blood pressure reading (131/69 mmHg) does not meet SOFA criteria. Because the claims assert absence of the required \u22652\u2011point SOFA worsening and provide no supporting abnormal laboratory or physiologic data, they do not align with the SOFA increase category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claim describes outpatient oral amoxicillin\u2011clavulanate for a localized dental infection, which is not the same as early in\u2011hospital broad\u2011spectrum antibiotic administration or blood culture orders within 2 hours that indicate clinician concern for systemic infection/sepsis. It therefore does not support the category."
         },
-        "final_alignment_score": 0.4523809523809524,
+        "final_alignment_score": 0.47619047619047616,
         "accuracy": 1
     },
     {
@@ -9254,7 +9254,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims explicitly reference multiple SOFA components (blood pressure/MAP, oxygenation, platelets, creatinine/lactate) and state that none meet abnormal thresholds, and they conclude there is a lack of organ dysfunction in the initial 2 hours. This directly and specifically addresses the SOFA\u2011score increase criterion by providing evidence against a \u22652\u2011point SOFA rise.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.6842105263157895,
+        "final_alignment_score": 0.7368421052631579,
         "accuracy": 1
     },
     {
@@ -10678,7 +10678,7 @@
             "SOFA Score Increase (\u22652 points)": "The claim indicates respiratory impairment (sustained hypoxemia), which is relevant to the SOFA respiratory component (PaO2/FiO2 < 300). However, it gives only SpO2 values and no PaO2 or FiO2 (or oxygen support level), so it does not definitively demonstrate a \u22652\u2011point SOFA increase. Therefore the alignment is partial.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.4642857142857143,
+        "final_alignment_score": 0.5357142857142857,
         "accuracy": 0
     },
     {

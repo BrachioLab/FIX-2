@@ -3362,7 +3362,7 @@
             "Secondary maxima": "The claims include direct, relevant statements about the lack of secondary features (no rebrightening, smooth single\u2011peaked light curve), which map onto the category's focus on secondary maxima/shoulders. However many claims shift to tangential or stronger conclusions\u2014emphasizing achromatic, multi\u2011wavelength behavior, microlensing as the explanation, and outright ruling out various transients\u2014which go beyond the specific concept of filter\u2011dependent secondary maxima in red/NIR bands. Because the set mixes directly relevant observations with broader, not\u2011necessarily implied interpretations, the alignment is partial.",
             "Monotonic flux trends": "Several claims (smooth, single\u2011peaked light curve; absence of secondary features; no rebrightening; correlated multi\u2011wavelength brightening) directly support the idea of locally smooth, monotonic behaviour across bands. However, other claims (a symmetric peak, explicitly rapid rise and rapid fall, and the statement that correlated brightening argues against intrinsic variability) either emphasize non\u2011monotonic peak symmetry or draw conclusions outside the category\u2019s focus on monotonic plateaus/linear decays and class discrimination. Because the set mixes directly relevant descriptors with off\u2011topic or conflicting details, the overall alignment is partial."
         },
-        "final_alignment_score": 0.725,
+        "final_alignment_score": 0.75,
         "accuracy": 0
     },
     {
@@ -4969,7 +4969,7 @@
             "Secondary maxima": "The claims state the data lack a supernova light\u2011curve and favor a microlensing interpretation, which is relevant to the category by implying the absence of SN\u2011specific features (including secondary maxima). However, they do not specifically address filter\u2011 or red/near\u2011IR\u2011dependent secondary maxima or the presence/absence of shoulders in those bands. Because they refer generally to absence of an SN morphology rather than explicitly to the category's filter\u2011specific secondary maxima, the alignment is partial.",
             "Monotonic flux trends": "No claims were provided to assess against the category, so there is no information that can align with or capture the concept of locally smooth, monotonic flux trends."
         },
-        "final_alignment_score": 0.34615384615384615,
+        "final_alignment_score": 0.38461538461538464,
         "accuracy": 0
     },
     {
@@ -10465,7 +10465,7 @@
             "Secondary maxima": "No claims were provided to assess against the category, so there is no information that could match or address filter\u2011specific secondary maxima.",
             "Monotonic flux trends": "The claims explicitly describe a smooth, gradual decline in flux across multiple wavelengths with correlated multi\u2011band behavior, and note the absence of rapid variability or extended plateaus\u2014these are exactly the types of locally smooth, monotonic trends the category emphasizes for distinguishing transient classes (e.g., plateau vs linear decay). While one claim references SNe Ia (a different class than the SN II\u2011P/II\u2011L examples), it still supports the notion of smooth monotonic behavior rather than contradicting the category. The comparative exclusions (kilonovae, TDEs, RR Lyrae) further reinforce the diagnostic intent of the category."
         },
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.65,
         "accuracy": 1
     },
     {

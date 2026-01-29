@@ -8037,7 +8037,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.6904761904761905,
+        "final_alignment_score": 0.7142857142857143,
         "safe_iou": 0.22807017543859648,
         "unsafe_iou": 0.28205128205128205,
         "claims_by_category": {

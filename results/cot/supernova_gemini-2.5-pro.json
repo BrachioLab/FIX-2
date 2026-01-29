@@ -6217,7 +6217,7 @@
             "Secondary maxima": "The claims mostly describe a faint, red source with no significant variability over >1000 days. While the red color and higher red-band flux touch on the filter/near\u2011IR aspect of the category, they say nothing about the temporal morphology (presence of a filter\u2011specific secondary maximum or shoulder). The explicit statement of no discernible transient behavior actually argues against detecting a secondary maximum. Thus the claims are relevant but do not capture the core, time\u2011dependent feature the category describes.",
             "Monotonic flux trends": "The claims describe an absence of signal\u2014flux near zero, no transient behavior over >1000 days, and no variability\u2014which does not describe locally smooth, monotonic flux evolutions (plateaus or linear decays) used to identify and distinguish SN II\u2011P/II\u2011L. They therefore fail to capture the intended concept of monotonic flux trends."
         },
-        "final_alignment_score": 0.4583333333333333,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -7009,7 +7009,7 @@
             "Secondary maxima": "The claims point to a wavelength\u2011specific bright detection confined to the reddest band and a subsequent rapid fade, which could indicate a filter\u2011specific peak consistent with the idea of a red/near\u2011IR secondary maximum. However, they lack key details: the wavelength given (9730 nm) is far beyond typical \"red/near\u2011IR\" bands, the feature is described as a single isolated bright point (could be an outlier) with no timing relative to a primary peak to confirm it is a true secondary maximum/shoulder. Therefore the alignment is only partial.",
             "Monotonic flux trends": "The claim describes a clear, monotonic decline\u2014rapid fading to non\u2011detection across all subsequent observations (i.e., across bands)\u2014which directly matches the category's focus on smooth, monotonic flux trends (decays) used to identify physical evolution stages and distinguish transient classes."
         },
-        "final_alignment_score": 0.3888888888888889,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -7462,7 +7462,7 @@
             "Secondary maxima": "The claims indicate a lack of transient rise\u2011and\u2011fall and instead describe persistent, stochastic variability consistent with an AGN. That does relate to the absence of supernova\u2011like features (which would include secondary maxima), but the claims do not mention filter\u2011specific or red/near\u2011IR secondary maxima or the specific shoulder morphology emphasized by the category. They are broader and more focused on persistence/aperiodicity than on the specific secondary\u2011maximum diagnostic, so the alignment is partial.",
             "Monotonic flux trends": "The claims explicitly state that there is no transient rise\u2011and\u2011fall and instead a persistent, aperiodic/stochastic flux \u2014 directly addressing the presence/absence of locally smooth, monotonic trends that the category uses to identify SNe II\u2011P/II\u2011L. They use that absence to argue against a supernova origin and point to AGN-like behavior, which aligns with the category's intent to distinguish transient monotonic trends from persistent variability."
         },
-        "final_alignment_score": 0.7777777777777778,
+        "final_alignment_score": 0.8333333333333334,
         "accuracy": 0
     },
     {
