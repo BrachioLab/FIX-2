@@ -3283,7 +3283,7 @@
             "Secondary maxima": "The claims describe a single, symmetric, microlensing\u2011like transient that returns to baseline and explicitly argue the pattern is inconsistent with typical supernovae. They do not mention filter\u2011specific secondary maxima or red/near\u2011IR shoulders (the defining feature of the category) and in fact imply their absence. Thus the claims do not align with the category\u2019s intent.",
             "Monotonic flux trends": "The claims describe a single, isolated transient with a distinct, relatively smooth rise and decay over weeks that returns to baseline and is inconsistent with periodic, AGN, or kilonova behavior. These points directly reflect the core idea of locally smooth, monotonic flux evolution used to identify and distinguish SN\u2011type events (plateaus/linear decays) from other variability. The only minor mismatch is the mention of a \u201csomewhat symmetric\u201d rise/decay (SN II classes often show plateaus or asymmetric decay), but this does not meaningfully undermine the overall alignment."
         },
-        "final_alignment_score": 0.8666666666666667,
+        "final_alignment_score": 0.9333333333333333,
         "accuracy": 0
     },
     {

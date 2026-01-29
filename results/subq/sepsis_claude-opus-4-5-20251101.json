@@ -1521,7 +1521,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims are incomplete (\"At\") and provide no measurements or statements about SOFA components (PaO2/FiO2, platelets, bilirubin, creatinine, GCS, etc.), so there is no information to support an increase of \u22652 SOFA points.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claims explicitly state that no empiric antibiotics were given and document absence of infection signs, vitals were stable, and labs were normal. They provide no evidence of early administration of broad\u2011spectrum antibiotics or blood culture orders within 2 hours, so they do not satisfy or capture the category\u2019s criterion."
         },
-        "final_alignment_score": 0.6296296296296297,
+        "final_alignment_score": 0.6666666666666666,
         "accuracy": 0
     },
     {
@@ -4983,7 +4983,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims describe normal organ function (creatinine 0.65, normal liver enzymes, adequate oxygenation) and explicitly state a lack of significant organ dysfunction and low immediate sepsis risk. The SOFA\u2011increase category requires evidence of new/worsening organ dysfunction (\u22652\u2011point SOFA increase)\u2014e.g., elevated creatinine, low PaO\u2082/FiO\u2082, high bilirubin, low platelets, or reduced GCS. The claims provide the opposite (no SOFA criteria met), so they do not support the category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided that indicate antibiotics were administered or blood cultures drawn within 2 hours (or any timeframe). Without evidence of early antibiotic or culture orders, the set does not support this category."
         },
-        "final_alignment_score": 0.16666666666666666,
+        "final_alignment_score": 0.18181818181818182,
         "accuracy": 1
     },
     {
@@ -11593,7 +11593,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims explicitly state there is no hypotension and assert \"no evidence of organ dysfunction,\" which is directly relevant to whether a SOFA increase has occurred. However, they do not provide specific SOFA component values (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS) or objective measurements to confirm the absence of a \u22652\u2011point SOFA increase. The wording is therefore relevant but non\u2011specific/missing key details.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided that indicate antibiotics were administered or blood cultures drawn within 2 hours (or any timeframe). Without evidence of early antibiotic or culture orders, the set does not support this category."
         },
-        "final_alignment_score": 0.2833333333333333,
+        "final_alignment_score": 0.31666666666666665,
         "accuracy": 1
     },
     {

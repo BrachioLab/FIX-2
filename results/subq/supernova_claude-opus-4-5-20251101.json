@@ -5597,7 +5597,7 @@
             "Secondary maxima": "The claims describe wavelength\u2011dependent peak timing (bluer bands peaking earlier) and cooling behaviour, which touches on filter\u2011dependent light\u2011curve morphology. However they do not mention or identify red/near\u2011IR secondary maxima or shoulders specifically (nor link the feature to SNe Ia); one claim even attributes the behavior to superluminous SNe rather than the SNe Ia context of the category. Thus the match is partial, not complete or absent.",
             "Monotonic flux trends": "The claims consistently describe long, smooth, monotonic behavior (slow rise, gradual decline, broad/smooth peak, 100\u2013200+ day timescales) and explicitly use those properties to exclude short-duration or periodic sources\u2014exactly the aspects the category emphasizes for distinguishing SN II\u2011P/II\u2011L and related classes. They are specific and directly relevant to the category\u2019s intent."
         },
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.9166666666666666,
         "accuracy": 0
     },
     {
@@ -7196,7 +7196,7 @@
             "Secondary maxima": "The claims describe chromatic behavior (bluer bands peaking earlier and declining faster) that is indeed characteristic of SNe Ia, but they do not mention or address the specific feature in the category\u2014filter\u2011specific secondary maxima/shoulders in red/near\u2011IR bands. Because the claims capture related color evolution but omit the defining secondary\u2011maximum morphology, the alignment is partial.",
             "Monotonic flux trends": "The claims describe smooth, monotonic rise-and-decline behavior (specific rise and decline rates, a ~30\u201340 day timescale, and a smooth/symmetric light curve), explicitly note the absence of the SN II plateau, and use chromatic band-dependent peak/decline behavior to distinguish SN Ia from slower-evolving SN II/SLSN-I. These points directly capture the category\u2019s focus on locally smooth, monotonic trends across bands to differentiate SN II\u2011P/II\u2011L and related classes."
         },
-        "final_alignment_score": 0.6190476190476191,
+        "final_alignment_score": 0.6666666666666666,
         "accuracy": 0
     },
     {
@@ -12559,7 +12559,7 @@
             "Secondary maxima": "The claims consistently argue the source is long\u2011duration, multi\u2011band, irregular/AGN\u2011like variability and not a transient with a single peak or systematic color evolution. That supports ruling out typical SNe, but none of the claims explicitly reference filter\u2011specific secondary maxima or red/near\u2011IR shoulders (the specific morphological feature the category targets). Thus they are relevant to distinguishing SNe vs AGN but do not directly address the presence/absence of secondary maxima.",
             "Monotonic flux trends": "The claims mostly assert the absence of smooth, monotonic behavior (long duration, no single peak/decline, irregular nonperiodic variability, persistent multi-band correlated fluctuations) and use that to rule out supernovae and stellar variables in favor of AGN. That is directly relevant to the category because it speaks to whether monotonic plateau/decay trends (used to identify SN II\u2011P/II\u2011L) are present. However, the claims emphasize negative evidence and classification by exclusion rather than explicitly describing the monotonic trends themselves (plateaus, linear decays) or the specific diagnostic features the category highlights. Some claims are broad or noisy (e.g., absolute exclusion of SNe at ~1000+ days). For these reasons the alignment is partial."
         },
-        "final_alignment_score": 0.8611111111111112,
+        "final_alignment_score": 0.8888888888888888,
         "accuracy": 0
     },
     {

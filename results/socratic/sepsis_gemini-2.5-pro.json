@@ -3174,7 +3174,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims were provided that reference any SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS, etc.) or document an increase \u22652 points. Without such data, the set cannot support the SOFA increase category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.23076923076923078,
+        "final_alignment_score": 0.2692307692307692,
         "accuracy": 1
     },
     {
@@ -7701,7 +7701,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims describe clear brain and lung dysfunction (altered mental status, SpO2 70%, need for significant oxygen, and hypercapnic respiratory failure), which are directly relevant to SOFA components. However, they do not provide the specific SOFA criteria or numeric thresholds required to confirm a \u22652\u2011point SOFA increase (e.g., GCS score <12 or a PaO2/FiO2 ratio <300), nor do they quantify the SOFA point change. Therefore the alignment is partial.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.6190476190476191,
+        "final_alignment_score": 0.6666666666666666,
         "accuracy": 0
     },
     {

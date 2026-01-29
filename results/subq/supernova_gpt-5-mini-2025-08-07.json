@@ -820,7 +820,7 @@
             "Secondary maxima": "The claims repeatedly emphasize wavelength-dependent red/near\u2011IR behavior, long timescales, and a sustained red excess\u2014elements related to filter\u2011specific red\u2011band morphology. However, they do not describe a distinct secondary maximum or shoulder (the defining feature of the category). Instead the claims describe a single long rise and persistent red excess and invoke dust echoes or long\u2011lived thermal emission as explanations, which differ from the canonical secondary\u2011maximum interpretation in SNe Ia. Because the claims touch on relevant red\u2011band phenomena but omit the explicit secondary peak/shoulder and mix in alternative mechanisms, the alignment is partial.",
             "Monotonic flux trends": "The claims partially touch the category: absence of flickering and months\u2011long evolution support the idea of smooth, long\u2011timescale behavior consistent with monotonic trends. However, the claims emphasize a single long rise (rather than plateau or linear decay morphology) and focus on a sustained red excess and a TDE interpretation\u2014these do not specifically describe the plateau/linear decay shapes used to distinguish SN II\u2011P vs SN II\u2011L. Thus the set only partially captures the category\u2019s intent."
         },
-        "final_alignment_score": 0.6111111111111112,
+        "final_alignment_score": 0.6388888888888888,
         "accuracy": 0
     },
     {

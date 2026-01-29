@@ -567,7 +567,7 @@
             "Secondary maxima": "The claims describe a single\u2011peaked, blue\u2011dominated light curve, decline timescale, and absence of a plateau\u2014features relevant to distinguishing SNe Ia from SNe II\u2014but they do not address the specific, filter\u2011dependent red/near\u2011IR secondary maxima that the category targets. In fact, asserting a single peak across multiple bands can contradict the category\u2019s defining feature (SNe Ia often show a red/NIR secondary maximum). Thus the claims fail to capture or correctly engage the category\u2019s intent.",
             "Monotonic flux trends": "The claims explicitly describe a smooth, single-peaked light curve with a monotonic decline over weeks\u2013months and note the absence of a prolonged plateau\u2014elements that directly relate to the category's focus on monotonic flux trends and distinguishing plateaus/linear declines. However, the claims overreach by stating that absence of a plateau \"rules out a SN II classification\" (neglecting SN II\u2011L, which lacks a plateau) and introduce additional classification evidence (single-peak shape, color) beyond the narrow monotonic\u2011trend criterion. These inaccuracies and extra, non\u2011central details make the alignment partial rather than complete."
         },
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.8888888888888888,
         "accuracy": 0
     },
     {
@@ -2509,7 +2509,7 @@
             "Secondary maxima": "The claims explicitly describe achromatic behavior (points from different wavelengths coincide during bright epochs), a single isolated brightening that returns to baseline, and lack of color-evolving, asymmetric features. These observations directly indicate the absence of filter\u2011specific secondary maxima (particularly red/near\u2011IR shoulders) emphasized by the category, so they fully capture the category's intent.",
             "Monotonic flux trends": "The claims describe an achromatic, single isolated brightening that returns toward baseline and explicitly rule out long\u2011term stochastic behaviors (AGN, Mira), which directly capture the core idea of a smooth, band\u2011consistent transient evolution used to identify monotonic flux trends and distinguish supernova\u2011like events. While they do not spell out plateau vs. linear\u2011decay shapes, they fully convey the relevant, distinguishing monotonic transient behavior across bands."
         },
-        "final_alignment_score": 0.7083333333333334,
+        "final_alignment_score": 0.75,
         "accuracy": 0
     },
     {
@@ -10239,7 +10239,7 @@
             "Secondary maxima": "The claims explicitly describe an achromatic, single\u2011peaked light curve with no band\u2011dependent or long\u2011timescale color evolution and note limited epoch sampling \u2014 all directly address the presence/absence of filter\u2011specific secondary maxima (particularly in red/near\u2011IR). They conclude the lack of such color\u2011dependent features argues against a SN Ia and instead favors microlensing, which exactly corresponds to the category's focus on identifying (or ruling out) secondary, filter\u2011specific maxima.",
             "Monotonic flux trends": "The claims touch on multi\u2011band consistency and lack of color evolution (achromatic behavior), which is relevant to the category's focus on flux trends across bands. However, they describe a single broad brightening (not an explicit plateau or linear decay), note few epochs (limiting assessment of smooth monotonic trends), and explicitly argue against a supernova classification\u2014an inference beyond the category\u2019s intent. Because the claims partially reference band\u2011wise monotonicity but lack the specific plateau/decay characterization and include noisy/insufficient-data points, the alignment is partial."
         },
-        "final_alignment_score": 0.9166666666666666,
+        "final_alignment_score": 0.9444444444444444,
         "accuracy": 0
     },
     {
@@ -12396,7 +12396,7 @@
             "Secondary maxima": "The claims explicitly describe an achromatic, single, symmetric brightening with simultaneous, equal-amplitude peaks across bands and no color\u2011dependent features or long\u2011timescale SN evolution\u2014i.e., the absence of filter\u2011specific secondary maxima or red/IR shoulders. This directly matches the category's focus on the presence/absence of secondary maxima and even identifies an alternative explanation (microlensing), so the alignment is complete.",
             "Monotonic flux trends": "The claims touch on cross\u2011band consistency (simultaneous peak, similar amplitude, achromatic behavior, no color\u2011dependent rise/decay) and a single event returning to baseline, which are relevant to assessing monotonic, band\u2011coherent trends. However, they do not describe the specific monotonic morphologies emphasized by the category (plateaus or linear decays) and the explicit rates/shape of rise or decline that distinguish SN II\u2011P vs II\u2011L. The claim of a symmetric brightening also does not match the typical plateau or linear\u2011decay forms. Thus the set partially matches the category but lacks the key, specific monotonic\u2011trend details."
         },
-        "final_alignment_score": 0.9375,
+        "final_alignment_score": 1.0,
         "accuracy": 0
     },
     {
@@ -14190,7 +14190,7 @@
             "Secondary maxima": "The claims describe low\u2011amplitude, stochastic, multiwavelength variability without a clear single\u2011peaked rise/decline and explicitly favor AGN\u2011type behavior. They do not identify or support the presence of filter\u2011specific secondary maxima/shoulders in red/near\u2011IR bands (the defining feature of the category) and in fact argue against the supernova\u2011like signatures the category targets. Therefore they do not align with the \"Secondary maxima\" category.",
             "Monotonic flux trends": "The category focuses on smooth, locally monotonic flux behaviors (plateaus, linear decays, single-peaked rises/declines) that characterize supernova evolution. The claims instead describe low\u2011amplitude, stochastic, irregular multiwavelength variability with no clear single\u2011peaked rise or decline and explicitly conclude an AGN-like origin. That directly contradicts and does not capture the monotonic\u2011trend concept, so the claims do not align with the category."
         },
-        "final_alignment_score": 0.78125,
+        "final_alignment_score": 0.84375,
         "accuracy": 0
     },
     {

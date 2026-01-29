@@ -4014,7 +4014,7 @@
             "Secondary maxima": "The claims describe color evolution and that bluer bands decline faster than redder bands, which is consistent with the filter\u2011dependent behavior underlying red/NIR secondary maxima (i.e., differential band evolution). However, they do not explicitly identify or describe a filter\u2011specific secondary maximum or shoulder in the red/near\u2011IR bands\u2014so they only partially capture the category's specific morphological feature.",
             "Monotonic flux trends": "The claims describe smooth, monotonic rise-and-decline behavior and multi-band color evolution (bluer bands declining faster), which directly relate to the idea of locally smooth, monotonic flux trends across bands. However, most claims frame the morphology in terms of Type Ia/thermonuclear supernovae (and give specific decline-duration assertions) rather than addressing plateaus or linear decays used to distinguish SN\u202fII\u2011P vs SN\u202fII\u2011L as emphasized by the category. Some specific numerical/typing claims also shift focus away from the category's intended class distinctions. Therefore the alignment is only partial."
         },
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.6333333333333333,
         "accuracy": 0
     },
     {

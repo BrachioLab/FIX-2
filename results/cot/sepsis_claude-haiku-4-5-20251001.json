@@ -3534,7 +3534,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims describe clear respiratory compromise (severe hypoxemia on SpO2 65\u201376%, progressive respiratory acidosis with PCO2 83 mmHg, and escalation to high\u2011flow/10 L/min oxygen), which is consistent with the type of organ dysfunction captured by the SOFA respiratory component. However, they do not provide the required SOFA metric (PaO2/FiO2 ratio or explicit FiO2/PaO2 values) nor report other SOFA components (platelets, bilirubin, creatinine, GCS) or an explicit \u22652\u2011point SOFA increase. Because the evidence implies but does not directly document the SOFA criterion (PaO2/FiO2 <300 or a quantified SOFA change), the alignment is partial.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided that mention antibiotic administration or blood culture orders within 2 hours (or any timing), so there is no evidence to support this category."
         },
-        "final_alignment_score": 0.5925925925925926,
+        "final_alignment_score": 0.6111111111111112,
         "accuracy": 1
     },
     {
@@ -6373,7 +6373,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims explicitly document acute kidney injury with serum creatinine 2.34 mg/dL, which exceeds the SOFA renal threshold (>2 mg/dL) and thus corresponds to a \u22652\u2011point increase in SOFA for renal dysfunction. Elevated BUN and reduced eGFR further corroborate acute renal impairment. This directly and specifically satisfies the category criteria for new organ dysfunction.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided that mention antibiotic administration or blood culture orders within 2 hours (or any timing), so there is no evidence to support this category."
         },
-        "final_alignment_score": 0.54,
+        "final_alignment_score": 0.56,
         "accuracy": 1
     },
     {
@@ -11532,7 +11532,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims or clinical data are provided to indicate any SOFA component change (e.g., PaO2/FiO2, platelets, bilirubin, creatinine, or GCS). Without evidence of an increase \u22652 points, the claims do not support the category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims are provided that mention antibiotic administration or blood culture orders within 2 hours (or any timing), so there is no evidence to support this category."
         },
-        "final_alignment_score": 0.45,
+        "final_alignment_score": 0.55,
         "accuracy": 1
     },
     {

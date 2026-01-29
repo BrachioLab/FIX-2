@@ -14174,7 +14174,7 @@
         "aligned_category_ids": [],
         "alignment_scores": [],
         "alignment_reasonings": [],
-        "final_alignment_score": 0.5333333333333333,
+        "final_alignment_score": 0.6,
         "safe_iou": 0.0,
         "unsafe_iou": 0.2127659574468085,
         "claims_by_category": {

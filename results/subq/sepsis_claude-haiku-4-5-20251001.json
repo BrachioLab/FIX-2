@@ -97,7 +97,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims describe normal blood gases, normal coagulation, and stable hemodynamics\u2014none of which indicate the SOFA component thresholds (PaO\u2082/FiO\u2082 <300, platelets <100\u00d710\u2079/L, bilirubin >2 mg/dL, creatinine >2 mg/dL, or GCS <12) or an increase of \u22652 SOFA points. They actually argue against new organ dysfunction, so they do not align with the SOFA\u2011score\u2011increase category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided that reference administration of antibiotics, drawing of blood cultures, or timing within 2 hours. Without any supporting evidence, the set of claims does not align with the category."
         },
-        "final_alignment_score": 0.08823529411764706,
+        "final_alignment_score": 0.11764705882352941,
         "accuracy": 1
     },
     {
@@ -2710,7 +2710,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims hint at organ dysfunction but do not specifically meet the SOFA component thresholds required for a \u22652\u2011point increase. Platelets are mildly low (113 K/\u00b5L) but above the SOFA example cutoff (<100 K/\u00b5L). The respiratory data describe hypercapnic respiratory acidosis (PCO2 68 mmHg) rather than a PaO2/FiO2 ratio (<300) used by SOFA. Blood pressures given (systolic 81\u2013103 mmHg) suggest possible hypotension but do not provide MAP values or vasopressor use required for the cardiovascular SOFA scoring. The statement \u201claboratory evidence of organ dysfunction\u201d is nonspecific. Therefore the claims partially refer to organ dysfunction but lack the specific measures/thresholds to confirm a SOFA \u22652 increase.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided that reference administration of antibiotics, drawing of blood cultures, or timing within 2 hours. Without any supporting evidence, the set of claims does not align with the category."
         },
-        "final_alignment_score": 0.375,
+        "final_alignment_score": 0.4,
         "accuracy": 1
     },
     {
@@ -4621,7 +4621,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims reference relevant SOFA domains (oxygenation and blood\u2011pressure/hypotension) and argue absence of organ dysfunction, but they do not provide SOFA\u2011specific measurements (e.g., PaO2/FiO2 ratio, platelet, bilirubin, creatinine, or GCS values) or demonstrate a \u22652\u2011point increase. Because they are general/negative statements about not meeting criteria rather than specific SOFA data, the alignment is partial.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided that reference administration of antibiotics, drawing of blood cultures, or timing within 2 hours. Without any supporting evidence, the set of claims does not align with the category."
         },
-        "final_alignment_score": 0.21428571428571427,
+        "final_alignment_score": 0.2619047619047619,
         "accuracy": 1
     },
     {
@@ -10912,7 +10912,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims or clinical data are provided to indicate any SOFA component values or a \u22652\u2011point increase. Without measurements (e.g., PaO2/FiO2, platelets, bilirubin, creatinine, GCS), the category cannot be supported.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claims document clinician treatment for a localized infection (abscess) and note initiation of antibiotics (cephalexin) and procedures consistent with drainage, which imply clinical concern for infection. However, they do not specify that antibiotics or cultures were ordered within the 2\u2011hour window required by the category, nor do they describe broad\u2011spectrum antibiotics or any blood culture draws. Therefore the claims partially support the category but lack the key timing and breadth/culture details."
         },
-        "final_alignment_score": 0.3055555555555556,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 0
     },
     {

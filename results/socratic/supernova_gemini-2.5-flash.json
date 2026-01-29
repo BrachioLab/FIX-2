@@ -2836,7 +2836,7 @@
             "Secondary maxima": "The claims concern strong red/near\u2011IR flux and very low blue flux, which relate to the wavelength regime called out in the category. However, they describe a static/spectral color (high flux at 9710 nm vs low at 3670 nm) and do not mention the temporally localized feature the category requires \u2014 a filter\u2011specific secondary maximum or shoulder in the red/near\u2011IR light curve. Thus they touch the wavelength aspect but fail to capture the key morphological (temporal) signature.",
             "Monotonic flux trends": "The first claim (very rapid decay) partially matches the category since it describes a monotonic decline in flux, but it omits key details about smoothness, band behavior, and typical SN II\u2011P/II\u2011L timescales (plateaus or linear, slower decays). The second claim invokes kilonovae (rapid week\u2011long evolution), which is not relevant to the category\u2019s focus on monotonic trends used to distinguish SN II\u2011P/II\u2011L and thus conflicts with the intended class examples. Because one claim only partially fits and the other is unrelated, the overall alignment is partial."
         },
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.6428571428571429,
         "accuracy": 0
     },
     {
@@ -2918,7 +2918,7 @@
             "Secondary maxima": "The claims address chromatic behavior and explicitly note the absence of a red-band brightening, which is directly relevant to the presence/absence of red/near\u2011IR secondary maxima. However the claims focus on a \"strong blue excess\" rather than describing red/near\u2011IR secondary maxima themselves, include incorrect/ambiguous wavelength-to-color mapping (e.g., labeling very long wavelengths as \"blue\"), and overgeneralize by saying this distinguishes the event from \"most supernovae.\" Because they partially refer to the key idea (absence of red/NIR secondary maxima) but contain inaccuracies and missing/ambiguous details, the alignment is partial.",
             "Monotonic flux trends": "No claims were provided to evaluate against the category, so there is nothing that can be judged as aligning with the concept of locally smooth, monotonic flux trends."
         },
-        "final_alignment_score": 0.3181818181818182,
+        "final_alignment_score": 0.36363636363636365,
         "accuracy": 0
     },
     {
@@ -10931,7 +10931,7 @@
             "Secondary maxima": "The claims together describe post\u2011peak variability with a pronounced red\u2011band peak and relatively faster fading in blue bands, which directly matches the defining features of filter\u2011specific secondary maxima (red/near\u2011IR shoulders) seen in SNe Ia. Although the first claim is a bit general, the multi\u2011wavelength details explicitly capture the red secondary maximum behavior and associated color evolution.",
             "Monotonic flux trends": "The claims describe a clear, locally smooth monotonic behavior\u2014a single outburst with a slower, prolonged (hundreds of days) decay\u2014which directly matches the category's focus on plateaus/linear decays that capture physical evolution stages. The multi-wavelength note (faster decay in bluer light) is also relevant as a band-dependent monotonic trend useful for class discrimination. The rapid rise is not the category's core focus but does not conflict with the monotonic-decay emphasis."
         },
-        "final_alignment_score": 0.7692307692307693,
+        "final_alignment_score": 0.8461538461538461,
         "accuracy": 0
     },
     {

@@ -979,7 +979,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims only state that MAP >65 mmHg and no hypotension is present, which argues against the cardiovascular SOFA criteria rather than demonstrating a \u22652\u2011point SOFA increase. They provide no evidence for any other SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS) increasing. Therefore the claims do not support the category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims or evidence are provided regarding antibiotic administration or blood culture orders within the first 2 hours, so nothing supports the category."
         },
-        "final_alignment_score": 0.20967741935483872,
+        "final_alignment_score": 0.22580645161290322,
         "accuracy": 1
     },
     {
@@ -4933,7 +4933,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims provide no evidence of an increase in any SOFA component and in fact describe normal/stable physiology (normal respiratory rate and oxygenation, stable hemodynamics, no organ\u2011dysfunction labs). Key SOFA criteria (PaO2/FiO2, platelets, bilirubin, creatinine, GCS or hypotension requiring vasopressors) are absent or contradicted. Therefore the claims do not support a \u22652\u2011point SOFA increase.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims or evidence are provided regarding antibiotic administration or blood culture orders within the first 2 hours, so nothing supports the category."
         },
-        "final_alignment_score": 0.22,
+        "final_alignment_score": 0.24,
         "accuracy": 1
     },
     {

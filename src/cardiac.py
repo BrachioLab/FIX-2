@@ -28,20 +28,20 @@ from prompts.category_mapping import category_mapping_cardiac
 from prompts.claim_grouping import claim_grouping_cardiac
 from prompts.expert_category_alignment import category_alignment_cardiac
 
+if __name__ == "__main__":
+    with open("../OPENAI_API_KEY.txt", "r") as file:
+        openai_api_key = file.read()
+    with open("../ANTHROPIC_API_KEY.txt", "r") as file:
+        anthropic_api_key = file.read()
+    with open("../GOOGLE_API_KEY.txt", "r") as file:
+        google_api_key = file.read()
 
-with open("../OPENAI_API_KEY.txt", "r") as file:
-    openai_api_key = file.read()
-with open("../ANTHROPIC_API_KEY.txt", "r") as file:
-    anthropic_api_key = file.read()
-with open("../GOOGLE_API_KEY.txt", "r") as file:
-    google_api_key = file.read()
 
-
-ROOT_DIR = '..'
-os.environ['OPENAI_API_KEY'] = openai_api_key
-os.environ['ANTHROPIC_API_KEY'] = anthropic_api_key
-os.environ['GOOGLE_API_KEY'] = google_api_key
-os.environ['CACHE_DIR'] = os.path.join(ROOT_DIR, 'cache_dir')
+    ROOT_DIR = '..'
+    os.environ['OPENAI_API_KEY'] = openai_api_key
+    os.environ['ANTHROPIC_API_KEY'] = anthropic_api_key
+    os.environ['GOOGLE_API_KEY'] = google_api_key
+    os.environ['CACHE_DIR'] = os.path.join(ROOT_DIR, 'cache_dir')
 
 client = openai.OpenAI(api_key=openai.api_key)
 cache = Cache(os.environ.get("CACHE_DIR"))
@@ -499,24 +499,69 @@ def calculate_expert_alignment_score(claims: list[str], model: str = "gpt-4o", v
     return claims_by_category, category_alignment_scores, category_alignment_reasonings
 
 
-def make_alignment_matrix(claims, claims_by_category, category_alignment_scores):
+# def make_alignment_matrix(claims, claims_by_category, category_alignment_scores):
+#     """
+#     Args:
+#         # categories (list[str]): A list of all expert categories.
+#         claims (list[str]): A list of all atomic claims.
+#         claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
+#         category_alignment_scores (dict[str, float]): A dictionary where the keys are the categories and the values are the alignment scores.
+#     Returns:
+#         list[list[float]]: A matrix of alignment scores for the claims in the categories.
+#     """
+#     categories = categories_list
+#     matrix = np.zeros((len(claims), len(categories)))
+#     for i, claim in enumerate(claims):
+#         for j, category in enumerate(categories):
+#             if claim in claims_by_category[category]:
+#                 matrix[i, j] = category_alignment_scores[category]
+#     return matrix
+
+def make_alignment_matrix(claims, claims_by_category, category_alignment_scores, threshold=90):
     """
     Args:
-        # categories (list[str]): A list of all expert categories.
         claims (list[str]): A list of all atomic claims.
-        claims_by_category (dict[str, list[str]]): A dictionary where the keys are the categories and the values are lists of claims that are aligned with the category.
-        category_alignment_scores (dict[str, float]): A dictionary where the keys are the categories and the values are the alignment scores.
+        claims_by_category (dict[str, list[str]]): keys=category, values=list of claims aligned with the category.
+        category_alignment_scores (dict[str, float]): keys=category, values=alignment score.
+        threshold (int): fuzzy match threshold (exclusive), default > 90 to match original behavior.
     Returns:
-        list[list[float]]: A matrix of alignment scores for the claims in the categories.
+        np.ndarray: shape (len(claims), len(categories))
     """
-    categories = categories_list
-    matrix = np.zeros((len(claims), len(categories)))
-    for i, claim in enumerate(claims):
-        for j, category in enumerate(categories):
-            if claim in claims_by_category[category]:
-                matrix[i, j] = category_alignment_scores[category]
-    return matrix
+    from fuzzywuzzy import fuzz
+    import numpy as np
 
+    categories = categories_list  # kept as in your original code
+
+    # Optional normalization (uncomment if you want it)
+    def norm(s: str) -> str:
+        return s  # or: return s.strip("- ").lower()
+
+    # ---- 1) Precompute matches for unique claims ----
+    unique_claims = {norm(c) for c in claims}
+
+    # Map: claim -> set(categories it matches)
+    claim_match_map = {c: set() for c in unique_claims}
+
+    for category in categories:
+        cat_claims = [norm(x) for x in claims_by_category.get(category, [])]
+        if not cat_claims:
+            continue
+
+        for c in unique_claims:
+            # Match if ANY claim in that category is similar enough
+            if any(fuzz.ratio(c, cc) > threshold for cc in cat_claims):
+                claim_match_map[c].add(category)
+
+    # ---- 2) Build matrix via lookup ----
+    matrix = np.zeros((len(claims), len(categories)), dtype=float)
+
+    for i, claim in enumerate(claims):
+        c = norm(claim)
+        for category in claim_match_map.get(c, ()):
+            j = categories.index(category)  # small categories => fine; see note below
+            matrix[i, j] = category_alignment_scores[category]
+
+    return matrix
 
 def calculate_expert_alignment_scores_old(
     claims: list[str],

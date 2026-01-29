@@ -3929,7 +3929,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims describe clear respiratory compromise (marked tachypnea, RR >30\u201340, persistent hypoxemia with SpO2 ~88\u201393%) and explicitly suggest evolving respiratory organ stress, which is relevant to the SOFA respiratory component. However, they do not provide the SOFA\u2011specific objective metric (PaO2/FiO2 ratio) or document an actual \u22652\u2011point change in any SOFA component. The absence of explicit PaO2/FiO2, ventilator/oxygenation settings, or a quantified SOFA delta means the criterion is suggested but not confirmed.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claims describe infectious symptoms and worsening vital signs (chills, shortness of breath, marked tachypnea, tachycardia) and suggest concern for a respiratory source, but they do not mention administration of antibiotics, drawing blood cultures, or any clinician orders within the first 2 hours. Because there is no evidence of the specific early antibiotic/culture actions the category requires, the alignment is none."
         },
-        "final_alignment_score": 0.48148148148148145,
+        "final_alignment_score": 0.5,
         "accuracy": 1
     },
     {
@@ -4882,7 +4882,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims address relevant SOFA components (respiratory status/oxygenation, blood pressure/MAP, mentation, and laboratory evidence) and explicitly state no documented dysfunction in the available data. However, they do not provide the specific SOFA criteria or threshold values (e.g., PaO2/FiO2, platelet count, bilirubin, creatinine, or GCS scores) and note that no labs were available to confirm organ dysfunction. Because the statements are relevant but lack the required specific measurements to confirm a \u22652\u2011point SOFA increase, the alignment is partial.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claims explicitly state that no labs or cultures were obtained within the first 2 hours and give only a chief complaint of \"fever.\" There is no documentation of early broad\u2011spectrum antibiotic administration or blood culture orders\u2014so the claims do not satisfy the category criteria."
         },
-        "final_alignment_score": 0.4318181818181818,
+        "final_alignment_score": 0.45454545454545453,
         "accuracy": 1
     },
     {

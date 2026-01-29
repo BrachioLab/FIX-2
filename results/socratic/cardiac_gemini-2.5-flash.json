@@ -63,7 +63,7 @@
             "Critical Illness (Sepsis/Shock)": "No claims were provided (N/A), so there is no reference to sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the Critical Illness (Sepsis/Shock) category. Therefore the claims do not capture or address this risk factor."
         },
         "alignment_matrix": [],
-        "final_alignment_score": NaN,
+        "final_alignment_score": 0.0,
         "accuracy": 1
     },
     {
@@ -188,7 +188,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 0
     },
     {
@@ -311,7 +311,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.18181818181818182,
         "accuracy": 0
     },
     {
@@ -462,7 +462,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.16666666666666666,
         "accuracy": 0
     },
     {
@@ -611,7 +611,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.2,
+        "final_alignment_score": 0.09090909090909091,
         "accuracy": 0
     },
     {
@@ -923,7 +923,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9230769230769231,
+        "final_alignment_score": 0.8,
         "accuracy": 1
     },
     {
@@ -1186,7 +1186,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 0.6,
         "accuracy": 1
     },
     {
@@ -1311,7 +1311,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.15,
         "accuracy": 0
     },
     {
@@ -1440,7 +1440,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.25,
         "accuracy": 0
     },
     {
@@ -1697,7 +1697,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.4,
         "accuracy": 0
     },
     {
@@ -1863,7 +1863,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4166666666666667,
+        "final_alignment_score": 0.20833333333333334,
         "accuracy": 0
     },
     {
@@ -2001,7 +2001,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.13636363636363635,
         "accuracy": 1
     },
     {
@@ -2164,7 +2164,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.21428571428571427,
         "accuracy": 1
     },
     {
@@ -2423,7 +2423,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.55,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -2625,7 +2625,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2916666666666667,
         "accuracy": 1
     },
     {
@@ -2763,7 +2763,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.375,
+        "final_alignment_score": 0.125,
         "accuracy": 0
     },
     {
@@ -3001,7 +3001,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.45,
+        "final_alignment_score": 0.32142857142857145,
         "accuracy": 1
     },
     {
@@ -3187,7 +3187,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.42857142857142855,
         "accuracy": 1
     },
     {
@@ -3404,7 +3404,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6111111111111112,
+        "final_alignment_score": 0.5,
         "accuracy": 1
     },
     {
@@ -3617,7 +3617,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.5833333333333334,
         "accuracy": 1
     },
     {
@@ -3818,7 +3818,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.23333333333333334,
         "accuracy": 0
     },
     {
@@ -4069,7 +4069,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.6818181818181818,
         "accuracy": 1
     },
     {
@@ -4263,7 +4263,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.23076923076923078,
         "accuracy": 0
     },
     {
@@ -4471,7 +4471,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -4680,7 +4680,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.4444444444444444,
+        "final_alignment_score": 0.4,
         "accuracy": 1
     },
     {
@@ -4857,7 +4857,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6428571428571429,
+        "final_alignment_score": 0.4090909090909091,
         "accuracy": 1
     },
     {
@@ -5091,7 +5091,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8888888888888888,
+        "final_alignment_score": 0.5714285714285714,
         "accuracy": 1
     },
     {
@@ -5399,7 +5399,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9230769230769231,
+        "final_alignment_score": 0.6666666666666666,
         "accuracy": 1
     },
     {
@@ -5624,7 +5624,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5555555555555556,
+        "final_alignment_score": 0.45454545454545453,
         "accuracy": 0
     },
     {
@@ -5754,7 +5754,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.11538461538461539,
         "accuracy": 0
     },
     {
@@ -5884,7 +5884,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.125,
         "accuracy": 0
     },
     {
@@ -6049,7 +6049,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.45454545454545453,
         "accuracy": 1
     },
     {
@@ -6233,7 +6233,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.25,
         "accuracy": 0
     },
     {
@@ -6419,7 +6419,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.5454545454545454,
         "accuracy": 0
     },
     {
@@ -6562,7 +6562,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.36363636363636365,
         "accuracy": 1
     },
     {
@@ -6688,7 +6688,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.125,
         "accuracy": 1
     },
     {
@@ -6854,7 +6854,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -6960,7 +6960,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.1,
         "accuracy": 0
     },
     {
@@ -7171,7 +7171,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.7777777777777778,
         "accuracy": 0
     },
     {
@@ -7402,7 +7402,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.6111111111111112,
+        "final_alignment_score": 0.4583333333333333,
         "accuracy": 1
     },
     {
@@ -7603,7 +7603,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.3125,
+        "final_alignment_score": 0.19230769230769232,
         "accuracy": 0
     },
     {
@@ -7857,7 +7857,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.375,
         "accuracy": 1
     },
     {
@@ -8045,7 +8045,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.2857142857142857,
         "accuracy": 0
     },
     {
@@ -8159,7 +8159,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.09090909090909091,
         "accuracy": 1
     },
     {
@@ -8319,7 +8319,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.2,
+        "final_alignment_score": 0.18181818181818182,
         "accuracy": 0
     },
     {
@@ -8464,7 +8464,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2,
         "accuracy": 1
     },
     {
@@ -8593,7 +8593,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.11538461538461539,
         "accuracy": 0
     },
     {
@@ -8705,7 +8705,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.08333333333333333,
         "accuracy": 1
     },
     {
@@ -8888,7 +8888,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.42857142857142855,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 0
     },
     {
@@ -9077,7 +9077,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.7142857142857143,
+        "final_alignment_score": 0.4166666666666667,
         "accuracy": 0
     },
     {
@@ -9210,7 +9210,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.3076923076923077,
         "accuracy": 1
     },
     {
@@ -9505,7 +9505,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.9285714285714286,
         "accuracy": 1
     },
     {
@@ -9692,7 +9692,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.3076923076923077,
         "accuracy": 0
     },
     {
@@ -9825,7 +9825,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 1
     },
     {
@@ -10048,7 +10048,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.42857142857142855,
         "accuracy": 0
     },
     {
@@ -10341,7 +10341,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.75,
         "accuracy": 1
     },
     {
@@ -10617,7 +10617,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.46153846153846156,
         "accuracy": 0
     },
     {
@@ -10796,7 +10796,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.7142857142857143,
         "accuracy": 0
     },
     {
@@ -10924,7 +10924,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.16666666666666666,
         "accuracy": 0
     },
     {
@@ -11125,7 +11125,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.8571428571428571,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -11303,7 +11303,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.25,
         "accuracy": 0
     },
     {
@@ -11499,7 +11499,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.42857142857142855,
+        "final_alignment_score": 0.2,
         "accuracy": 1
     },
     {
@@ -11637,7 +11637,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.19230769230769232,
         "accuracy": 0
     },
     {
@@ -11783,7 +11783,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.17857142857142858,
         "accuracy": 0
     },
     {
@@ -11851,7 +11851,7 @@
             "Critical Illness (Sepsis/Shock)": "No claims were provided (N/A), so there is no reference to sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the Critical Illness (Sepsis/Shock) category. Therefore the claims do not capture or address this risk factor."
         },
         "alignment_matrix": [],
-        "final_alignment_score": NaN,
+        "final_alignment_score": 0.0,
         "accuracy": 1
     },
     {
@@ -11979,7 +11979,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.1,
         "accuracy": 0
     },
     {
@@ -12149,7 +12149,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.17857142857142858,
         "accuracy": 0
     },
     {
@@ -12455,7 +12455,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.46153846153846156,
         "accuracy": 1
     },
     {
@@ -12577,7 +12577,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.16666666666666666,
         "accuracy": 0
     },
     {
@@ -12720,7 +12720,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.3333333333333333,
         "accuracy": 0
     },
     {
@@ -12929,7 +12929,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.7142857142857143,
+        "final_alignment_score": 0.4166666666666667,
         "accuracy": 0
     },
     {
@@ -13048,7 +13048,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.15,
         "accuracy": 1
     },
     {
@@ -13245,7 +13245,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.7857142857142857,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -13366,7 +13366,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.15,
         "accuracy": 0
     },
     {
@@ -13527,7 +13527,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 0.45,
         "accuracy": 1
     },
     {
@@ -13810,7 +13810,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.42857142857142855,
         "accuracy": 0
     },
     {
@@ -13876,7 +13876,7 @@
             "Critical Illness (Sepsis/Shock)": "No claims were provided (N/A), so there is no reference to sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the Critical Illness (Sepsis/Shock) category. Therefore the claims do not capture or address this risk factor."
         },
         "alignment_matrix": [],
-        "final_alignment_score": NaN,
+        "final_alignment_score": 0.0,
         "accuracy": 0
     },
     {
@@ -14090,7 +14090,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.8888888888888888,
         "accuracy": 0
     },
     {
@@ -14223,7 +14223,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.10714285714285714,
         "accuracy": 0
     },
     {
@@ -14522,7 +14522,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.9230769230769231,
+        "final_alignment_score": 0.8571428571428571,
         "accuracy": 1
     },
     {
@@ -14650,7 +14650,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.3333333333333333,
+        "final_alignment_score": 0.08333333333333333,
         "accuracy": 0
     },
     {
@@ -14803,7 +14803,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.3,
+        "final_alignment_score": 0.16666666666666666,
         "accuracy": 1
     },
     {
@@ -14890,7 +14890,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.05,
         "accuracy": 0
     },
     {
@@ -15151,7 +15151,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.6,
+        "final_alignment_score": 0.375,
         "accuracy": 0
     },
     {
@@ -15331,7 +15331,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.46153846153846156,
         "accuracy": 1
     },
     {
@@ -15558,7 +15558,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.625,
+        "final_alignment_score": 0.4166666666666667,
         "accuracy": 1
     },
     {
@@ -15779,7 +15779,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.8125,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -15892,7 +15892,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.16666666666666666,
         "accuracy": 1
     },
     {
@@ -16156,7 +16156,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.36666666666666664,
         "accuracy": 0
     },
     {
@@ -16325,7 +16325,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 0.39285714285714285,
         "accuracy": 1
     },
     {
@@ -16519,7 +16519,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.9166666666666666,
+        "final_alignment_score": 0.5,
         "accuracy": 1
     },
     {
@@ -16679,7 +16679,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.20833333333333334,
         "accuracy": 0
     },
     {
@@ -16860,7 +16860,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.2916666666666667,
         "accuracy": 1
     },
     {
@@ -16966,7 +16966,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.25,
+        "final_alignment_score": 0.05,
         "accuracy": 0
     },
     {
@@ -17203,7 +17203,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.4090909090909091,
         "accuracy": 0
     },
     {
@@ -17382,7 +17382,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.36363636363636365,
         "accuracy": 0
     },
     {
@@ -17582,7 +17582,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.25,
         "accuracy": 0
     },
     {
@@ -17707,7 +17707,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.2,
         "accuracy": 0
     },
     {
@@ -17821,7 +17821,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.09090909090909091,
         "accuracy": 1
     },
     {
@@ -18038,7 +18038,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.6818181818181818,
         "accuracy": 1
     },
     {
@@ -18340,7 +18340,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.875,
+        "final_alignment_score": 0.75,
         "accuracy": 0
     },
     {
@@ -18449,7 +18449,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.08333333333333333,
         "accuracy": 0
     },
     {
@@ -18623,7 +18623,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -18919,7 +18919,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.7142857142857143,
         "accuracy": 0
     },
     {
@@ -19109,7 +19109,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.3125,
+        "final_alignment_score": 0.2777777777777778,
         "accuracy": 0
     },
     {
@@ -19175,7 +19175,7 @@
             "Critical Illness (Sepsis/Shock)": "No claims were provided (N/A), so there is no reference to sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the Critical Illness (Sepsis/Shock) category. Therefore the claims do not capture or address this risk factor."
         },
         "alignment_matrix": [],
-        "final_alignment_score": NaN,
+        "final_alignment_score": 0.0,
         "accuracy": 0
     },
     {
@@ -19308,7 +19308,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 0.8333333333333334,
+        "final_alignment_score": 0.20833333333333334,
         "accuracy": 1
     },
     {
@@ -19375,7 +19375,7 @@
             "Critical Illness (Sepsis/Shock)": "No claims were provided (N/A), so there is no reference to sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the Critical Illness (Sepsis/Shock) category. Therefore the claims do not capture or address this risk factor."
         },
         "alignment_matrix": [],
-        "final_alignment_score": NaN,
+        "final_alignment_score": 0.0,
         "accuracy": 0
     },
     {
@@ -19595,7 +19595,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.5333333333333333,
         "accuracy": 0
     },
     {
@@ -19730,7 +19730,7 @@
                 1.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.21428571428571427,
         "accuracy": 1
     },
     {
@@ -19885,7 +19885,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.14285714285714285,
         "accuracy": 1
     },
     {
@@ -19955,7 +19955,7 @@
             "Critical Illness (Sepsis/Shock)": "No claims were provided (N/A), so there is no reference to sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the Critical Illness (Sepsis/Shock) category. Therefore the claims do not capture or address this risk factor."
         },
         "alignment_matrix": [],
-        "final_alignment_score": NaN,
+        "final_alignment_score": 0.0,
         "accuracy": 0
     },
     {
@@ -20082,7 +20082,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.11538461538461539,
         "accuracy": 0
     },
     {
@@ -20316,7 +20316,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3076923076923077,
         "accuracy": 0
     },
     {
@@ -20452,7 +20452,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.75,
+        "final_alignment_score": 0.25,
         "accuracy": 1
     },
     {
@@ -20611,7 +20611,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.9,
+        "final_alignment_score": 0.32142857142857145,
         "accuracy": 0
     },
     {
@@ -20781,7 +20781,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.20833333333333334,
         "accuracy": 0
     },
     {
@@ -20975,7 +20975,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.7142857142857143,
+        "final_alignment_score": 0.42857142857142855,
         "accuracy": 0
     },
     {
@@ -21139,7 +21139,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.7,
+        "final_alignment_score": 0.23333333333333334,
         "accuracy": 1
     },
     {
@@ -21258,7 +21258,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.3333333333333333,
+        "final_alignment_score": 0.07692307692307693,
         "accuracy": 0
     },
     {
@@ -21372,7 +21372,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.15384615384615385,
         "accuracy": 0
     },
     {
@@ -21493,7 +21493,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.21428571428571427,
         "accuracy": 1
     },
     {
@@ -21598,7 +21598,7 @@
                 0.5
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.1,
         "accuracy": 0
     },
     {
@@ -21786,7 +21786,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -21895,7 +21895,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.125,
         "accuracy": 0
     },
     {
@@ -22038,7 +22038,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.375,
+        "final_alignment_score": 0.1,
         "accuracy": 1
     },
     {
@@ -22105,7 +22105,7 @@
             "Critical Illness (Sepsis/Shock)": "No claims were provided (N/A), so there is no reference to sepsis, shock, hypotension, hypoxia, or metabolic derangements that define the Critical Illness (Sepsis/Shock) category. Therefore the claims do not capture or address this risk factor."
         },
         "alignment_matrix": [],
-        "final_alignment_score": NaN,
+        "final_alignment_score": 0.0,
         "accuracy": 0
     },
     {
@@ -22292,7 +22292,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 1.0,
+        "final_alignment_score": 0.5,
         "accuracy": 0
     },
     {
@@ -22490,7 +22490,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.3181818181818182,
         "accuracy": 1
     },
     {
@@ -22664,7 +22664,7 @@
                 0.0
             ]
         ],
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.25,
         "accuracy": 0
     }
 ]

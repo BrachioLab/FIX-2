@@ -55148,7 +55148,7 @@
             "Connectivity of the Cosmic Web": "The claims explicitly identify well-defined, clumpy, and interconnected cosmic-web structures and interpret them as evidence of efficient structure growth. That directly matches the category's link between a highly interconnected filament network and a higher Omega_m.",
             "Density Contrast Extremes": "The claims explicitly identify pronounced high-density peaks (yellow/red, >2.9\u03c3) alongside clear underdense blue regions and directly conclude this contrast implies a high amplitude of mass fluctuations. This exactly matches the category's mechanism that strong density-void contrast signals high sigma_8, with specific quantitative and qualitative detail reinforcing the match."
         },
-        "final_alignment_score": 0.6666666666666666,
+        "final_alignment_score": 0.75,
         "mse_loss": {
             "Omega_m": 0.013962744257878553,
             "sigma_8": 0.3436661904444925

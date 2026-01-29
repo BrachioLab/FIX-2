@@ -1045,7 +1045,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims were provided that reference any SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS, etc.) or document an increase \u22652 points. Without such data, the set cannot support the SOFA increase category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.7058823529411765,
+        "final_alignment_score": 0.7352941176470589,
         "accuracy": 0
     },
     {
@@ -3896,7 +3896,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims reference SOFA-relevant domains (cardiovascular/hypotension and respiratory/oxygenation) but they describe normal findings (no hypotension, excellent O2 saturation) rather than an increase in SOFA score or specific abnormal thresholds (e.g., PaO2/FiO2 <300, MAP <70, need for vasopressors). Thus they relate to the category but do not provide the required evidence of a \u22652\u2011point SOFA increase.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.5714285714285714,
         "accuracy": 1
     },
     {
@@ -4217,7 +4217,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims were provided that reference any SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS, etc.) or document an increase \u22652 points. Without such data, the set cannot support the SOFA increase category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.21428571428571427,
+        "final_alignment_score": 0.35714285714285715,
         "accuracy": 1
     },
     {
@@ -7412,7 +7412,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims describe clear neurologic and respiratory deterioration (altered mental status, acute respiratory failure with SpO2 70%, need for supplemental O2, and respiratory acidosis), which plausibly reflect SOFA-relevant organ dysfunction. However, they do not provide the specific SOFA metrics required to confirm a \u22652\u2011point increase (no GCS score <12, no PaO2/FiO2 ratio or exact FiO2 to translate SpO2 to P/F, and no numeric values for other SOFA components). Because the information suggests but does not quantify SOFA criteria, the alignment is partial.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.6538461538461539,
+        "final_alignment_score": 0.7307692307692307,
         "accuracy": 0
     },
     {
@@ -8224,7 +8224,7 @@
             "SOFA Score Increase (\u22652 points)": "The claims document new liver enzyme abnormalities (ALT, AST, Alk Phos) and suggest liver injury and possible intra\u2011abdominal infection, which is relevant to organ dysfunction. However, the SOFA hepatic component is defined by bilirubin level (>2 mg/dL), not transaminases or alkaline phosphatase, and no bilirubin value or other SOFA component data are provided. Therefore the claims hint at hepatic dysfunction but do not specifically meet or document the SOFA \u22652 criterion.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "The claims describe SIRS criteria, suspected infection, and possible intra\u2011abdominal infection/early organ dysfunction, but they do not mention administration of antibiotics, drawing of blood cultures, or any clinician orders/timing within 2 hours. Because the category specifically requires early antibiotic or culture orders as the signal of clinician suspicion, the provided claims do not meet that criterion."
         },
-        "final_alignment_score": 0.5,
+        "final_alignment_score": 0.5333333333333333,
         "accuracy": 0
     },
     {
@@ -8679,7 +8679,7 @@
             "SOFA Score Increase (\u22652 points)": "No claims were provided that reference any SOFA components (PaO\u2082/FiO\u2082, platelets, bilirubin, creatinine, GCS, etc.) or document an increase \u22652 points. Without such data, the set cannot support the SOFA increase category.",
             "Early Antibiotic/Culture Orders (within 2 hours)": "No claims were provided (N/A), so there is no evidence of antibiotic administration or blood culture orders within 2 hours. Therefore the set of claims does not support the Early Antibiotic/Culture Orders category."
         },
-        "final_alignment_score": 0.15,
+        "final_alignment_score": 0.2,
         "accuracy": 1
     },
     {

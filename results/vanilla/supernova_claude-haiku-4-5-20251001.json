@@ -2339,7 +2339,7 @@
             "Secondary maxima": "The claims describe periodic flux dips and a stable baseline consistent with an eclipsing binary, explicitly ruling out transient events like supernovae/kilonovae. They do not reference filter\u2011specific secondary maxima or red/near\u2011IR shoulders characteristic of SNe Ia, so they do not capture the category's focus.",
             "Monotonic flux trends": "The claims predominantly describe periodic, two-level/eclipse-like behavior and argue for an eclipsing binary interpretation\u2014features that are not the monotonic, locally smooth plateaus or linear decays used to identify SN II\u2011P/II\u2011L. However, one claim (a relatively stable baseline between eclipses) does touch on the idea of a plateau-like segment, so there is a partial overlap with the category's notion of locally smooth/flat flux behavior. Overall the set does not capture the supernova-focused monotonic evolution the category targets."
         },
-        "final_alignment_score": 0.6071428571428571,
+        "final_alignment_score": 0.6785714285714286,
         "accuracy": 0
     },
     {
@@ -5839,7 +5839,7 @@
             "Secondary maxima": "No claims were provided to evaluate against the category, so there is no information that can align with or address the presence/absence of filter\u2011specific secondary maxima.",
             "Monotonic flux trends": "No claims were provided to evaluate against the category, so there is no information that could align with or address monotonic flux trends."
         },
-        "final_alignment_score": 0.34615384615384615,
+        "final_alignment_score": 0.38461538461538464,
         "accuracy": 0
     },
     {
@@ -9266,7 +9266,7 @@
             "Secondary maxima": "No claims were provided to evaluate against the category, so there is no information that can align with or address the presence/absence of filter\u2011specific secondary maxima.",
             "Monotonic flux trends": "Several claims relate to smooth, band-consistent flux behavior (claim 1: gradual post\u2011peak decline; claim 4: multi\u2011wavelengths track same trend), which directly matches the category\u2019s focus on monotonic trends across bands. However, claim 2 invokes thermonuclear explosion timescales (Type Ia context), which is outside the category\u2019s emphasis on plateau/linear decays used to distinguish SN II\u2011P/II\u2011L, and claim 3\u2019s \u201crelatively symmetric rise and fall\u201d describes a different morphology (symmetric transient) rather than the specific monotonic plateaus or linear decays the category highlights. Because the set contains both directly relevant and mismatched elements, the alignment is partial."
         },
-        "final_alignment_score": 0.35714285714285715,
+        "final_alignment_score": 0.39285714285714285,
         "accuracy": 1
     },
     {
@@ -10709,7 +10709,7 @@
             "Secondary maxima": "The claims touch on the same idea by noting a smooth, well\u2011sampled decline and an absence of secondary/rapid peaks and strong color evolution\u2014statements that can imply no red/NIR secondary maxima. However they lack the category's specificity (filter\u2011/red\u2011NIR\u2013specific secondary maxima) and even misattribute secondary peaks to SNIbc rather than to SNe Ia. Because of this vagueness and the incorrect class reference, the alignment is only partial.",
             "Monotonic flux trends": "The claims explicitly describe a smooth, well-sampled, and wavelength\u2011homogeneous decline and note the absence of features (secondary peaks, extended plateau) that would indicate non\u2011monotonic behavior or other SN types. These points directly address locally smooth, monotonic flux trends across bands and their use in distinguishing SN classes, matching the category intent."
         },
-        "final_alignment_score": 0.5714285714285714,
+        "final_alignment_score": 0.6428571428571429,
         "accuracy": 0
     },
     {

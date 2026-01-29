@@ -197437,7 +197437,7 @@
             "Connectivity of the Cosmic Web": "The claims describe large, prominent voids, numerous distinct high-mass peaks, and a high contrast (i.e., fragmented structure with wide gaps), and they explicitly conclude this implies a lower Omega_m. That directly matches the category's diagnostic that a fragmented scene with isolated clumps and wide gaps indicates lower Omega_m. The claims therefore capture the category's intent and conclusion.",
             "Density Contrast Extremes": "The claims explicitly identify high-contrast maps and numerous high-mass peaks as indicators of a high sigma_8, which directly matches the category. However, they also introduce extraneous and inconsistent inferences about Omega_m (e.g., large voids or high contrast implying low Omega_m) that the category does not assert and that add noise/confusion. Because the set includes both correct, specific sigma_8 statements and conflicting/irrelevant Omega_m claims, the alignment is not fully clean."
         },
-        "final_alignment_score": 0.5666666666666667,
+        "final_alignment_score": 0.6,
         "mse_loss": {
             "Omega_m": 0.04840000262260441,
             "sigma_8": 0.2500000238418584
@@ -247971,7 +247971,7 @@
             "Connectivity of the Cosmic Web": "The claims focus on \"clumpiness\" and infer a high sigma_8 from numerous distinct high-density peaks, whereas the category concerns the connectivity of the filament network and its implications for Omega_m. The claims do not address filament connectivity or Omega_m, so they do not align with this category.",
             "Density Contrast Extremes": "The claims explicitly identify high-contrast, high-density (yellow) peaks and state these imply large matter fluctuations and higher sigma_8, which directly matches the category. However, many claims pivot to Omega_m (saying voids imply lower Omega_m or predicting low Omega_m from the same features) and introduce extra noise/uncertainty rather than focusing solely on contrast \u2192 sigma_8. Because the set mixes correct, directly relevant statements with unrelated or ambiguous material, it only partially captures the expert category."
         },
-        "final_alignment_score": 0.6818181818181818,
+        "final_alignment_score": 0.7272727272727273,
         "mse_loss": {
             "Omega_m": 7.351727827918655e-05,
             "sigma_8": 0.11599214508896745
