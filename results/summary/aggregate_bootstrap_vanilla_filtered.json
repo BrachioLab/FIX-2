@@ -1792,8 +1792,8 @@
         "model2": "gemini-2.5-flash-lite",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.09761200727377199,
-            "bootstrap_std": 0.01855310207051066,
+            "mean": 0.7962291099423453,
+            "bootstrap_std": 0.01921796085130976,
             "n": 100
           },
           "accuracy": {
@@ -1809,8 +1809,8 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.1784960317460317,
-            "bootstrap_std": 0.02431884159976625,
+            "mean": 0.7522777777777779,
+            "bootstrap_std": 0.02734997758494287,
             "n": 100
           },
           "accuracy": {
@@ -1877,8 +1877,8 @@
         "model2": "gemini-2.5-flash-lite",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.07976767676767677,
-            "bootstrap_std": 0.014903150583099593,
+            "mean": 0.7724882756132756,
+            "bootstrap_std": 0.025612143224787207,
             "n": 100
           },
           "accuracy": {
@@ -1894,14 +1894,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.6111111111111112,
-            "bootstrap_std": 0.258467832496135,
-            "n": 3
+            "mean": 0.7434099511599511,
+            "bootstrap_std": 0.02830574579589546,
+            "n": 100
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 3
+            "n": 100
           }
         },
         "file": "results/vanilla/emotion_gemini-2.5-flash_qwen2.5-vl.json"
@@ -1928,8 +1928,8 @@
         "model2": "gemini-2.5-flash-lite",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.06451370851370851,
-            "bootstrap_std": 0.014401419316962588,
+            "mean": 0.806428155178155,
+            "bootstrap_std": 0.023214219300485187,
             "n": 100
           },
           "accuracy": {
@@ -1945,14 +1945,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.5982142857142857,
-            "bootstrap_std": 0.25040407720922886,
-            "n": 3
+            "mean": 0.7232123015873013,
+            "bootstrap_std": 0.028992905002053808,
+            "n": 100
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 3
+            "n": 100
           }
         },
         "file": "results/vanilla/emotion_gemini-2.5-pro_qwen2.5-vl.json"
@@ -2013,8 +2013,8 @@
         "model2": "gemini-2.5-flash-lite",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.11540112665112666,
-            "bootstrap_std": 0.018343076522141767,
+            "mean": 0.7303553113553114,
+            "bootstrap_std": 0.019691001041816127,
             "n": 100
           },
           "accuracy": {
@@ -2030,14 +2030,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.9,
-            "bootstrap_std": 0.0814382722814783,
-            "n": 3
+            "mean": 0.7511289682539681,
+            "bootstrap_std": 0.02450423460821756,
+            "n": 100
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 3
+            "n": 100
           }
         },
         "file": "results/vanilla/emotion_gpt-5-mini-2025-08-07_qwen2.5-vl.json"
@@ -2081,14 +2081,14 @@
         "model2": "qwen2.5-vl",
         "metrics": {
           "final_aligned_score": {
-            "mean": 0.6666666666666666,
-            "bootstrap_std": 0.2784226748174782,
-            "n": 3
+            "mean": 0.7282463647463646,
+            "bootstrap_std": 0.027604666834506453,
+            "n": 100
           },
           "accuracy": {
             "mean": 0.0,
             "bootstrap_std": 0.0,
-            "n": 3
+            "n": 100
           }
         },
         "file": "results/vanilla/emotion_gpt-5.2-pro-2025-12-11_qwen2.5-vl.json"
