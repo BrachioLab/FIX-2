@@ -73644,7 +73644,7 @@
             "Connectivity of the Cosmic Web": "The claims describe a fragmented, \"clumpy\" mass field with many small peaks and few large coherent superclusters \u2014 details that directly relate to the connectivity vs. fragmentation described by the category. However, the claims do not explicitly discuss the filamentary connectivity metric (linking clusters into a continuous web) and they assign only a moderate \u03a9m (rather than the lower \u03a9m the category associates with fragmentation). They also emphasize \u03c38 (high) which is outside this category's primary focus on connectivity \u2192 \u03a9m. Therefore the match is partial rather than complete or none.",
             "Density Contrast Extremes": "The claims explicitly describe pronounced high-convergence peaks (red/yellow, several >2.9\u03c3) and deep voids (pervasive blue troughs), emphasize many small-scale peaks and overall clumpiness, and conclude a high fluctuation amplitude. These specifics directly match the category\u2019s mechanism that strong dense\u2013void contrast implies high sigma_8."
         },
-        "final_alignment_score": 0.7307692307692307,
+        "final_alignment_score": 0.7692307692307693,
         "mse_loss": {
             "Omega_m": 0.005554907226562499,
             "sigma_8": 0.29151562466714537
@@ -363771,7 +363771,7 @@
             "Connectivity of the Cosmic Web": "The claims reference connectivity (explicitly noting the lack of an extreme percolating network) and use that to temper the Omega_m inference, but they emphasize peak counts, high-contrast peaks/troughs, and sigma_8-like arguments rather than directly assessing a continuous filamentary web linking clusters. They therefore touch on the category\u2019s connectivity concept but do not specifically describe or use the filamentary network linking clusters as the primary diagnostic, so the match is partial.",
             "Density Contrast Extremes": "The claims explicitly describe pronounced high-convergence peaks (compact yellow >2.9\u03c3) alongside substantial blue underdensities, link that high contrast to a large fluctuation amplitude, and conclude this implies high \u03c38. This directly and specifically matches the category's mechanism that strong dense/void contrast signals high \u03c38."
         },
-        "final_alignment_score": 0.6538461538461539,
+        "final_alignment_score": 0.6923076923076923,
         "mse_loss": {
             "Omega_m": 0.04312923011779786,
             "sigma_8": 0.030642083880957814

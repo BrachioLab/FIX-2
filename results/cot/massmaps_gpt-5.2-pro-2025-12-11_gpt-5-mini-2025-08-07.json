@@ -9191,7 +9191,7 @@
             "Connectivity of the Cosmic Web": "The claims describe multiple compact peaks embedded in extended, coherent filaments \u2014 directly matching the \"interconnected filament network\" feature in the category. However, the claims infer a large fluctuation amplitude (sigma_8) and emphasize nonlinear clustering rather than explicitly linking the connectivity to a higher Omega_m. Because they capture the structural aspect but do not make the category's specific inference about Omega_m, the alignment is partial.",
             "Density Contrast Extremes": "The claims explicitly describe pronounced high-contrast features (multiple strong, compact peaks alongside bluish underdense background), link those features to nonlinear clustering and large fluctuation amplitude, and conclude that this implies high \u03c3\u2088. This directly matches the category's mechanism and conclusion about density-contrast extremes signaling higher \u03c3\u2088."
         },
-        "final_alignment_score": 0.9166666666666666,
+        "final_alignment_score": 1.0,
         "mse_loss": {
             "Omega_m": 0.04678095984631219,
             "sigma_8": 0.008195195649751083
@@ -216264,7 +216264,7 @@
             "Connectivity of the Cosmic Web": "The claims correctly identify interconnected filaments linking compact peaks and link that to stronger non-linear clustering and high \u03c38, which is directly relevant to the cosmic-web connectivity idea. However, they stop short of asserting the category's main inference (that high connectivity implies a higher Omega_m), instead claiming only a moderate matter density. Because they address the connectivity aspect but do not fully capture the category's Omega_m implication, the match is partial.",
             "Density Contrast Extremes": "The claims explicitly describe pronounced high-significance peaks adjacent to broad underdensities, note substantial peak-to-void contrast, and directly conclude that this implies a high \u03c38 (even giving a numeric estimate). This matches the category's mechanism\u2014strong density-contrast extremes imply enhanced variance/high \u03c38\u2014so the alignment is complete."
         },
-        "final_alignment_score": 0.85,
+        "final_alignment_score": 0.95,
         "mse_loss": {
             "Omega_m": 0.01963282456258315,
             "sigma_8": 0.1451282778242609

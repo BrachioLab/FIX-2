@@ -436674,7 +436674,7 @@
             "Connectivity of the Cosmic Web": "The claims directly address the connectivity/fragmentation of structures (compact overdensities, lack of vast interconnected filaments) which is the core of the category. However, instead of mapping fragmentation to a lower Omega_m or strong connectivity to a higher Omega_m, the claims hedge and conclude a moderate Omega_m and moderate coherence. They thus reference the correct mechanism but lack the clear directional implication and specificity the expert category describes.",
             "Density Contrast Extremes": "The claims explicitly describe pronounced high-contrast features (bright/yellow, red vs blue), compact, sharp peaks, and state that this high contrast implies higher sigma_8. These points directly match the category's mechanism linking strong density-contrast extremes to an enhanced density variance (high sigma_8)."
         },
-        "final_alignment_score": 0.7857142857142857,
+        "final_alignment_score": 0.8214285714285714,
         "mse_loss": {
             "Omega_m": 0.007138928741309828,
             "sigma_8": 0.04185701392125391

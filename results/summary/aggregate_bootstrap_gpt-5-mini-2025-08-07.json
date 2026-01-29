@@ -1,0 +1,987 @@
+{
+  "eval_model": "gpt-5-mini-2025-08-07",
+  "num_bootstrap": 1000,
+  "seed": 0,
+  "datasets": {
+    "massmaps": {
+      "cot": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7773663638992585,
+              "bootstrap_std": 0.013016011696728752,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.01058954609859041,
+              "bootstrap_std": 0.0011642418878106224,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.06672639875938725,
+              "bootstrap_std": 0.007768100409622308,
+              "n": 100
+            }
+          },
+          "file": "results/cot/massmaps_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7819103445574035,
+              "bootstrap_std": 0.01731189095338809,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010180198424459018,
+              "bootstrap_std": 0.0010546474914437157,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.06083787042906117,
+              "bootstrap_std": 0.006979741475920104,
+              "n": 100
+            }
+          },
+          "file": "results/cot/massmaps_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8144587773337773,
+              "bootstrap_std": 0.010422966021808137,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.016234468054652725,
+              "bootstrap_std": 0.00214872457565866,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.16128334617998438,
+              "bootstrap_std": 0.01820931171168072,
+              "n": 100
+            }
+          },
+          "file": "results/cot/massmaps_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8090819735819736,
+              "bootstrap_std": 0.010737390621816568,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.028907318781526595,
+              "bootstrap_std": 0.002968919920327512,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.17222891533003165,
+              "bootstrap_std": 0.01736240071319697,
+              "n": 100
+            }
+          },
+          "file": "results/cot/massmaps_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7548200688200687,
+              "bootstrap_std": 0.013643720297125758,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010461171102762736,
+              "bootstrap_std": 0.001154887325328224,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.08128386953475308,
+              "bootstrap_std": 0.008889326817168992,
+              "n": 100
+            }
+          },
+          "file": "results/cot/massmaps_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.9050508519258519,
+              "bootstrap_std": 0.00904217748616359,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.011542952396870173,
+              "bootstrap_std": 0.0012876142467069518,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.1041165895116551,
+              "bootstrap_std": 0.010078527175746177,
+              "n": 100
+            }
+          },
+          "file": "results/cot/massmaps_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      },
+      "socratic": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.685369253789726,
+              "bootstrap_std": 0.01187869029315105,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.009976151576877151,
+              "bootstrap_std": 0.0010726067171186215,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.08782916591503456,
+              "bootstrap_std": 0.008542915510023579,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/massmaps_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8325866739469682,
+              "bootstrap_std": 0.012228536428211307,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010228928875923669,
+              "bootstrap_std": 0.0011345499357427245,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.05957452475812268,
+              "bootstrap_std": 0.00671615410428103,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/massmaps_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.788390768953269,
+              "bootstrap_std": 0.012449208213768237,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.017232924966693437,
+              "bootstrap_std": 0.0022292644786079735,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.15091974524214102,
+              "bootstrap_std": 0.01424323201667086,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/massmaps_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6702031440781441,
+              "bootstrap_std": 0.012968641606125765,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.023507938209438833,
+              "bootstrap_std": 0.0029426115451732255,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.16186816109258959,
+              "bootstrap_std": 0.01605180412751432,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/massmaps_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7284825195229608,
+              "bootstrap_std": 0.014932451750300816,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010847288224101576,
+              "bootstrap_std": 0.001224190627752288,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.08324149174907043,
+              "bootstrap_std": 0.008954483434331697,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/massmaps_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8031823454323456,
+              "bootstrap_std": 0.010524792009958787,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.011326784402490173,
+              "bootstrap_std": 0.0013760839185533878,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.1120972601428254,
+              "bootstrap_std": 0.010759299474729962,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/massmaps_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      },
+      "subq": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6225007091721487,
+              "bootstrap_std": 0.015573183862862931,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010034928983212031,
+              "bootstrap_std": 0.001086931506346678,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.0756364135971291,
+              "bootstrap_std": 0.008510662757126744,
+              "n": 100
+            }
+          },
+          "file": "results/subq/massmaps_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7625499007356592,
+              "bootstrap_std": 0.014740542029234615,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010183905462265526,
+              "bootstrap_std": 0.0011429798298929848,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.05986425183560681,
+              "bootstrap_std": 0.006760828945651534,
+              "n": 100
+            }
+          },
+          "file": "results/subq/massmaps_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7998348179598179,
+              "bootstrap_std": 0.011502970534322747,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.015442546218991791,
+              "bootstrap_std": 0.0018583267748836201,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.15551718381430935,
+              "bootstrap_std": 0.015902938464547496,
+              "n": 100
+            }
+          },
+          "file": "results/subq/massmaps_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7277761266511266,
+              "bootstrap_std": 0.01460995037127581,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.024187310884013682,
+              "bootstrap_std": 0.002656496575886158,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.15032966134227108,
+              "bootstrap_std": 0.0155424160285182,
+              "n": 100
+            }
+          },
+          "file": "results/subq/massmaps_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.715794628982129,
+              "bootstrap_std": 0.017658484082930095,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010939788284898316,
+              "bootstrap_std": 0.0011497043955924218,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.08932383634903264,
+              "bootstrap_std": 0.009218042197495679,
+              "n": 100
+            }
+          },
+          "file": "results/subq/massmaps_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8101779205271853,
+              "bootstrap_std": 0.01313459471512044,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010465553911686456,
+              "bootstrap_std": 0.0011571253357056024,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.11175367148568464,
+              "bootstrap_std": 0.011133120784961936,
+              "n": 100
+            }
+          },
+          "file": "results/subq/massmaps_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      },
+      "vanilla": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7408407356532356,
+              "bootstrap_std": 0.014840689955289553,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010244698479295287,
+              "bootstrap_std": 0.0011643031727496223,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.07023119127871824,
+              "bootstrap_std": 0.007243604014825624,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/massmaps_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7742459762459762,
+              "bootstrap_std": 0.017397910217355806,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010239764852166685,
+              "bootstrap_std": 0.001102593190336007,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.059920478015445,
+              "bootstrap_std": 0.006873200299637728,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/massmaps_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8347259407259408,
+              "bootstrap_std": 0.011327626154411633,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.017169530573130164,
+              "bootstrap_std": 0.002163043670068151,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.14562508832933735,
+              "bootstrap_std": 0.013311640127347703,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/massmaps_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7986365644159761,
+              "bootstrap_std": 0.01196250222397669,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.02012935490691713,
+              "bootstrap_std": 0.0023273714522285597,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.17322423434951137,
+              "bootstrap_std": 0.01603121916644924,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/massmaps_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8412830502830502,
+              "bootstrap_std": 0.010882604179439747,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.011123823447704826,
+              "bootstrap_std": 0.0012226485835163117,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.0857310651936753,
+              "bootstrap_std": 0.008840723877486092,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/massmaps_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.8997285631035631,
+              "bootstrap_std": 0.008325690673640517,
+              "n": 100
+            },
+            "mse_loss.Omega_m": {
+              "mean": 0.010949714103103197,
+              "bootstrap_std": 0.001196201376861729,
+              "n": 100
+            },
+            "mse_loss.sigma_8": {
+              "mean": 0.10916191549756363,
+              "bootstrap_std": 0.009799277767642174,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/massmaps_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      }
+    },
+    "cholec": {
+      "cot": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7219659885047723,
+              "bootstrap_std": 0.011542050384445115,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.2727847837870424,
+              "bootstrap_std": 0.01843294855390394,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.2948370350554774,
+              "bootstrap_std": 0.019034648771140614,
+              "n": 100
+            }
+          },
+          "file": "results/cot/cholec_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7724813692499451,
+              "bootstrap_std": 0.011888267057463401,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.2551607664899901,
+              "bootstrap_std": 0.018432542816411393,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.31903123711148973,
+              "bootstrap_std": 0.020266188606439195,
+              "n": 100
+            }
+          },
+          "file": "results/cot/cholec_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6946526613283914,
+              "bootstrap_std": 0.010830910259476287,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.170957354031329,
+              "bootstrap_std": 0.014611905287392046,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.23598460738982827,
+              "bootstrap_std": 0.015953463326511912,
+              "n": 100
+            }
+          },
+          "file": "results/cot/cholec_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6899157863979848,
+              "bootstrap_std": 0.017296909690978433,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.21764591979330222,
+              "bootstrap_std": 0.01857776879082252,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.22114336787788577,
+              "bootstrap_std": 0.01591436498876528,
+              "n": 100
+            }
+          },
+          "file": "results/cot/cholec_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.605966944819886,
+              "bootstrap_std": 0.030331834010031807,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.06701457290778355,
+              "bootstrap_std": 0.013198606624691337,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.06660512131013878,
+              "bootstrap_std": 0.014640357491357196,
+              "n": 100
+            }
+          },
+          "file": "results/cot/cholec_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6318115956232089,
+              "bootstrap_std": 0.032367549565785934,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.15085126353380252,
+              "bootstrap_std": 0.017383254950904918,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.17344278542526775,
+              "bootstrap_std": 0.018108138791571773,
+              "n": 100
+            }
+          },
+          "file": "results/cot/cholec_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      },
+      "socratic": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6857494003534268,
+              "bootstrap_std": 0.01221789453546405,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.28102316148299655,
+              "bootstrap_std": 0.01800980542173244,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.32515825990324715,
+              "bootstrap_std": 0.019503433282543177,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/cholec_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6474587606880563,
+              "bootstrap_std": 0.013839970619161635,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.20022411815961091,
+              "bootstrap_std": 0.019578135739051903,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.32101391426917947,
+              "bootstrap_std": 0.01929871077773878,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/cholec_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6197425293001294,
+              "bootstrap_std": 0.011549468127749303,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.09462071023707061,
+              "bootstrap_std": 0.01619855806761504,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.11482613656601943,
+              "bootstrap_std": 0.015404639032268625,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/cholec_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.67004653835904,
+              "bootstrap_std": 0.012925611828957738,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.1951372831572747,
+              "bootstrap_std": 0.018941215658234572,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.19472008906071048,
+              "bootstrap_std": 0.016853597622408786,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/cholec_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.5059162255051003,
+              "bootstrap_std": 0.03301376972030941,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.018499983163158006,
+              "bootstrap_std": 0.007482489425557611,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.017608311947549294,
+              "bootstrap_std": 0.006876042149524305,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/cholec_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6510618054625048,
+              "bootstrap_std": 0.02388185863517269,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.08601481680310898,
+              "bootstrap_std": 0.015334255466909275,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.10909667360848616,
+              "bootstrap_std": 0.01791426405477156,
+              "n": 100
+            }
+          },
+          "file": "results/socratic/cholec_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      },
+      "subq": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6158068505490686,
+              "bootstrap_std": 0.012332539627352701,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.2782830759571555,
+              "bootstrap_std": 0.018205549519098654,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.3132474823694963,
+              "bootstrap_std": 0.018707064711664497,
+              "n": 100
+            }
+          },
+          "file": "results/subq/cholec_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.5456344003219004,
+              "bootstrap_std": 0.01354848089585705,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.22750406379276064,
+              "bootstrap_std": 0.017719424151188993,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.3264825941534993,
+              "bootstrap_std": 0.020808058860280792,
+              "n": 100
+            }
+          },
+          "file": "results/subq/cholec_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6879775652546131,
+              "bootstrap_std": 0.011568202013793064,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.15639736914218497,
+              "bootstrap_std": 0.015377065225893414,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.22352925140396146,
+              "bootstrap_std": 0.01728672873927199,
+              "n": 100
+            }
+          },
+          "file": "results/subq/cholec_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6539291502065933,
+              "bootstrap_std": 0.01381631452851241,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.16102192113775504,
+              "bootstrap_std": 0.02039880270817573,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.14016406977101167,
+              "bootstrap_std": 0.015602507429583311,
+              "n": 100
+            }
+          },
+          "file": "results/subq/cholec_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.5279304002670875,
+              "bootstrap_std": 0.033433905891117194,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.014691291644726092,
+              "bootstrap_std": 0.005627501134374548,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.006432094221567906,
+              "bootstrap_std": 0.003737443823538043,
+              "n": 100
+            }
+          },
+          "file": "results/subq/cholec_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6388793726483355,
+              "bootstrap_std": 0.022033114209134824,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.14639604923980876,
+              "bootstrap_std": 0.019379584529257973,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.14509695464957933,
+              "bootstrap_std": 0.017069713707744318,
+              "n": 100
+            }
+          },
+          "file": "results/subq/cholec_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      },
+      "vanilla": {
+        "claude-haiku-4-5-20251001": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.6766659655246191,
+              "bootstrap_std": 0.009595938721166371,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.27850896845807194,
+              "bootstrap_std": 0.018169453386668616,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.3005168190139932,
+              "bootstrap_std": 0.0197320578367961,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/cholec_claude-haiku-4-5-20251001_gpt-5-mini-2025-08-07.json"
+        },
+        "claude-opus-4-5-20251101": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7516980586605031,
+              "bootstrap_std": 0.010888754520661039,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.2401952146334878,
+              "bootstrap_std": 0.018835379973422477,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.30503786675378874,
+              "bootstrap_std": 0.01887348260136205,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/cholec_claude-opus-4-5-20251101_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-flash": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.685124766444426,
+              "bootstrap_std": 0.011599346051714372,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.1780654638953127,
+              "bootstrap_std": 0.01679688445525964,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.22409500358537204,
+              "bootstrap_std": 0.015293146585706132,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/cholec_gemini-2.5-flash_gpt-5-mini-2025-08-07.json"
+        },
+        "gemini-2.5-pro": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.696596819546123,
+              "bootstrap_std": 0.011831245082947937,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.2147668820341052,
+              "bootstrap_std": 0.017166334794766952,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.21759746656412968,
+              "bootstrap_std": 0.016046374305659146,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/cholec_gemini-2.5-pro_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5-mini-2025-08-07": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.7550441531507707,
+              "bootstrap_std": 0.01584801354905839,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.11640287215788508,
+              "bootstrap_std": 0.016587954697070216,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.18185283363212512,
+              "bootstrap_std": 0.02008315343399114,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/cholec_gpt-5-mini-2025-08-07_gpt-5-mini-2025-08-07.json"
+        },
+        "gpt-5.2-pro-2025-12-11": {
+          "metrics": {
+            "final_alignment_score": {
+              "mean": 0.5377680183264419,
+              "bootstrap_std": 0.030064762939686216,
+              "n": 100
+            },
+            "safe_iou": {
+              "mean": 0.009448631260479696,
+              "bootstrap_std": 0.004330387363327887,
+              "n": 100
+            },
+            "unsafe_iou": {
+              "mean": 0.01827953258070905,
+              "bootstrap_std": 0.008148819336424525,
+              "n": 100
+            }
+          },
+          "file": "results/vanilla/cholec_gpt-5.2-pro-2025-12-11_gpt-5-mini-2025-08-07.json"
+        }
+      }
+    }
+  }
+}
