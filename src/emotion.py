@@ -168,11 +168,11 @@ def get_llm_generated_answer(text: str, baseline: str = "vanilla", model = "gpt-
         response = query_gemini(prompt, model=model).replace("\n\n", "\n")
     else:
         print("ERROR: Model not supported")
-        return None
+        return None, None
 
     if response == "ERROR":
         print("Error in querying API for model: ", model)
-        return None
+        return None, None
     response_split = [e for e in response.split("\n") if (e != '' and e.split()[0] in ['Label:', 'Explanation:'])]
     llm_label = response_split[0].split("Label: ")[1].strip().lower()
     explanation = response_split[1].split("Explanation: ")[1].strip()
